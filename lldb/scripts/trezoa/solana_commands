@@ -1,0 +1,3 @@
+type summary add -F trezoa_lookup.summary_lookup trezoa_program::account_info::AccountInfo --category Trezoa
+type summary add -F trezoa_lookup.summary_lookup trezoa_program::pubkey::Pubkey --category Trezoa
+type category enable Trezoa
