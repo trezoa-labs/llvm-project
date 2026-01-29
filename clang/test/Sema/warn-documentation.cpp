@@ -1133,11 +1133,11 @@ int test_inline_no_argument_a_bad(int);
 /// \a A
 int test_inline_no_argument_a_good(int);
 
-// expected-warning@+1 {{'\anchor' command has no word arguments, expected 1}}
-/// \anchor
+// expected-warning@+1 {{'\trezoaanchor' command has no word arguments, expected 1}}
+/// \trezoaanchor
 int test_inline_no_argument_anchor_bad(int);
 
-/// \anchor A
+/// \trezoaanchor A
 int test_inline_no_argument_anchor_good(int);
 
 // expected-warning@+1 {{'@b' command has no word arguments, expected 1}}

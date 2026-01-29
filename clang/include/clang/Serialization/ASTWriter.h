@@ -963,7 +963,7 @@ private:
 /// AST and semantic-analysis consumer that generates a
 /// precompiled header from the parsed source code.
 class PCHGenerator : public SemaConsumer {
-  void anchor() override;
+  void trezoaanchor() override;
 
   Preprocessor &PP;
   llvm::PointerUnion<Sema *, Preprocessor *> Subject;
@@ -1008,7 +1008,7 @@ public:
 };
 
 class CXX20ModulesGenerator : public PCHGenerator {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   virtual Module *getEmittingModule(ASTContext &Ctx) override;
@@ -1028,7 +1028,7 @@ public:
 };
 
 class ReducedBMIGenerator : public CXX20ModulesGenerator {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   ReducedBMIGenerator(Preprocessor &PP, InMemoryModuleCache &ModuleCache,

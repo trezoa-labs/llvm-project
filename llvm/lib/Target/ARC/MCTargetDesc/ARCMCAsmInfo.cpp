@@ -9,7 +9,7 @@
 #include "ARCMCAsmInfo.h"
 using namespace llvm;
 
-void ARCMCAsmInfo::anchor() {}
+void ARCMCAsmInfo::trezoaanchor() {}
 
 ARCMCAsmInfo::ARCMCAsmInfo(const Triple &TT) {
   SupportsDebugInformation = true;

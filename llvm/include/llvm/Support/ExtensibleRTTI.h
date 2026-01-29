@@ -82,7 +82,7 @@ public:
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   static char ID;
 };

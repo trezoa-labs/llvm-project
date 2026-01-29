@@ -1,18 +1,18 @@
-# RUN: llvm-mc %s -triple=sbf-solana-solana --mcpu=v3 --show-encoding \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa --mcpu=v3 --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK-ASM-NEW
-# RUN: llvm-mc %s -triple=sbpfv3-solana-solana --show-encoding \
+# RUN: llvm-mc %s -triple=sbpfv3-trezoa-trezoa --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK-ASM-NEW
-# RUN: llvm-mc %s -triple=sbpfv2-solana-solana --show-encoding \
+# RUN: llvm-mc %s -triple=sbpfv2-trezoa-trezoa --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK-ASM-V2
-# RUN: llvm-mc %s -triple=sbf-solana-solana --show-encoding \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK-ASM-OLD
-# RUN: llvm-mc %s -triple=sbf-solana-solana --mcpu=v3 -filetype=obj \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa --mcpu=v3 -filetype=obj \
 # RUN:     | llvm-objdump -d -r - \
 # RUN:     | FileCheck --check-prefix=CHECK-OBJ-NEW %s
-# RUN: llvm-mc %s -triple=sbf-solana-solana --mcpu=v2 -filetype=obj \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa --mcpu=v2 -filetype=obj \
 # RUN:     | llvm-objdump -d -r - \
 # RUN:     | FileCheck --check-prefix=CHECK-OBJ-V2 %s
-# RUN: llvm-mc %s -triple=sbf-solana-solana -filetype=obj \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa -filetype=obj \
 # RUN:     | llvm-objdump -d -r - \
 # RUN:     | FileCheck --check-prefix=CHECK-OBJ-OLD %s
 

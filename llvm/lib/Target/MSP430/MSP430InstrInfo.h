@@ -25,7 +25,7 @@ class MSP430Subtarget;
 
 class MSP430InstrInfo : public MSP430GenInstrInfo {
   const MSP430RegisterInfo RI;
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   explicit MSP430InstrInfo(MSP430Subtarget &STI);
 

@@ -79,7 +79,7 @@ public:
 }; // NVPTXTargetMachine.
 
 class NVPTXTargetMachine32 : public NVPTXTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   NVPTXTargetMachine32(const Target &T, const Triple &TT, StringRef CPU,
@@ -90,7 +90,7 @@ public:
 };
 
 class NVPTXTargetMachine64 : public NVPTXTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   NVPTXTargetMachine64(const Target &T, const Triple &TT, StringRef CPU,

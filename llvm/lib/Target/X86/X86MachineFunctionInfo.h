@@ -56,7 +56,7 @@ template <> struct MappingTraits<X86MachineFunctionInfo> {
 /// X86MachineFunctionInfo - This class is derived from MachineFunction and
 /// contains private X86 target-specific information for each MachineFunction.
 class X86MachineFunctionInfo : public MachineFunctionInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// ForceFramePointer - True if the function is required to use of frame
   /// pointer for reasons other than it containing dynamic allocation or

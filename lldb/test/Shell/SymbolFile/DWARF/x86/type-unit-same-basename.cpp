@@ -22,7 +22,7 @@
 namespace NS {
 struct Struct {
   int x = 47;
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 } // namespace NS
 
@@ -41,5 +41,5 @@ struct X : NS::Outer::Struct {};
 extern constexpr X x = {};
 #endif
 #ifdef FILE_B
-void NS::Struct::anchor() {}
+void NS::Struct::trezoaanchor() {}
 #endif

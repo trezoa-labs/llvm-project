@@ -90,7 +90,7 @@ public:
 static ClangTidyModuleRegistry::Add<misc::MiscModule>
     X("misc-module", "Adds miscellaneous lint checks.");
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the MiscModule.
 volatile int MiscModuleAnchorSource = 0;
 

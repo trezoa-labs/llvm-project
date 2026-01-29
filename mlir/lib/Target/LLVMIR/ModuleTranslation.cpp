@@ -1988,7 +1988,7 @@ ModuleTranslation::getOrInsertNamedModuleMetadata(StringRef name) {
   return llvmModule->getOrInsertNamedMetadata(name);
 }
 
-void ModuleTranslation::StackFrame::anchor() {}
+void ModuleTranslation::StackFrame::trezoaanchor() {}
 
 static std::unique_ptr<llvm::Module>
 prepareLLVMModule(Operation *m, llvm::LLVMContext &llvmContext,

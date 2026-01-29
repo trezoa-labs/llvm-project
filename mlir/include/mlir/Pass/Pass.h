@@ -300,7 +300,7 @@ protected:
 private:
   /// Out of line virtual method to ensure vtables and metadata are emitted to a
   /// single .o file.
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// Represents a unique identifier for the pass.
   TypeID passID;

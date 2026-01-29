@@ -28,7 +28,7 @@
 namespace llvm {
 
 class NVPTXSubtarget : public NVPTXGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
   std::string TargetName;
 
   // PTX version x.y is represented as 10*x+y, e.g. 3.1 == 31

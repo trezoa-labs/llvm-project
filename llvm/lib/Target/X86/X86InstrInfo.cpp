@@ -79,7 +79,7 @@ static cl::opt<unsigned> UndefRegClearance(
     cl::init(128), cl::Hidden);
 
 // Pin the vtable to this file.
-void X86InstrInfo::anchor() {}
+void X86InstrInfo::trezoaanchor() {}
 
 X86InstrInfo::X86InstrInfo(X86Subtarget &STI)
     : X86GenInstrInfo((STI.isTarget64BitLP64() ? X86::ADJCALLSTACKDOWN64

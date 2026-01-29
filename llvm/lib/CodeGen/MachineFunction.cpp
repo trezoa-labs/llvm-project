@@ -131,7 +131,7 @@ void setUnsafeStackSize(const Function &F, MachineFrameInfo &FrameInfo) {
 }
 
 // Pin the vtable to this file.
-void MachineFunction::Delegate::anchor() {}
+void MachineFunction::Delegate::trezoaanchor() {}
 
 void MachineFunctionProperties::print(raw_ostream &OS) const {
   const char *Separator = "";
@@ -1442,7 +1442,7 @@ Printable llvm::printJumpTableEntryReference(unsigned Idx) {
 //  MachineConstantPool implementation
 //===----------------------------------------------------------------------===//
 
-void MachineConstantPoolValue::anchor() {}
+void MachineConstantPoolValue::trezoaanchor() {}
 
 unsigned MachineConstantPoolValue::getSizeInBytes(const DataLayout &DL) const {
   return DL.getTypeAllocSize(Ty);

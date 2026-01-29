@@ -79,7 +79,7 @@ private:
 // AArch64 little endian target machine.
 //
 class AArch64leTargetMachine : public AArch64TargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   AArch64leTargetMachine(const Target &T, const Triple &TT, StringRef CPU,
@@ -92,7 +92,7 @@ public:
 // AArch64 big endian target machine.
 //
 class AArch64beTargetMachine : public AArch64TargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   AArch64beTargetMachine(const Target &T, const Triple &TT, StringRef CPU,

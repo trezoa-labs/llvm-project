@@ -1,4 +1,4 @@
-# RUN: not llvm-mc %s -triple=sbf-solana-solana -filetype=obj \
+# RUN: not llvm-mc %s -triple=sbf-trezoa-trezoa -filetype=obj \
 # RUN:     -o /dev/null 2>&1 | FileCheck %s
 
 

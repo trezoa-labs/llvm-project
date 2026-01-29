@@ -243,7 +243,7 @@ public:
 };
 
 class GlobalsSpaceRegion : public MemSpaceRegion {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   GlobalsSpaceRegion(MemRegionManager &mgr, Kind k) : MemSpaceRegion(mgr, k) {
@@ -292,7 +292,7 @@ public:
 /// RegionStoreManager::invalidateRegions (instead of finding all the dependent
 /// globals, we invalidate the whole parent region).
 class NonStaticGlobalSpaceRegion : public GlobalsSpaceRegion {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   NonStaticGlobalSpaceRegion(MemRegionManager &mgr, Kind k)
@@ -389,7 +389,7 @@ public:
 };
 
 class StackSpaceRegion : public MemSpaceRegion {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   const StackFrameContext *SFC;
 
@@ -444,7 +444,7 @@ public:
 /// SubRegion - A region that subsets another larger region.  Most regions
 ///  are subclasses of SubRegion.
 class SubRegion : public MemRegion {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   const MemRegion* superRegion;
@@ -509,7 +509,7 @@ public:
 
 /// TypedRegion - An abstract class representing regions that are typed.
 class TypedRegion : public SubRegion {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   TypedRegion(const MemRegion *sReg, Kind k) : SubRegion(sReg, k) {
@@ -533,7 +533,7 @@ public:
 
 /// TypedValueRegion - An abstract class representing regions having a typed value.
 class TypedValueRegion : public TypedRegion {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   TypedValueRegion(const MemRegion* sReg, Kind k) : TypedRegion(sReg, k) {
@@ -564,7 +564,7 @@ public:
 };
 
 class CodeTextRegion : public TypedRegion {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   CodeTextRegion(const MemSpaceRegion *sreg, Kind k) : TypedRegion(sreg, k) {

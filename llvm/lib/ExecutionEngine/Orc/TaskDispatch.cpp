@@ -19,8 +19,8 @@ char IdleTask::ID = 0;
 
 const char *GenericNamedTask::DefaultDescription = "Generic Task";
 
-void Task::anchor() {}
-void IdleTask::anchor() {}
+void Task::trezoaanchor() {}
+void IdleTask::trezoaanchor() {}
 
 TaskDispatcher::~TaskDispatcher() = default;
 

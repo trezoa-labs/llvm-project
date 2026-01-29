@@ -51,7 +51,7 @@ class ProgramStateManager;
 class StoreRef;
 
 class SValBuilder {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   ASTContext &Context;

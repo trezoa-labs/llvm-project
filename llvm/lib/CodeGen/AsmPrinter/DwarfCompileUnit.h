@@ -90,7 +90,7 @@ class DwarfCompileUnit final : public DwarfUnit {
   const DIFile *LastFile = nullptr;
   unsigned LastFileID;
 
-  /// \anchor applyConcreteDbgVariableAttribute
+  /// \trezoaanchor applyConcreteDbgVariableAttribute
   /// \name applyConcreteDbgVariableAttribute
   /// Overload set which applies attributes to \c VariableDie based on
   /// the active variant of \c DV, which is passed as the first argument.

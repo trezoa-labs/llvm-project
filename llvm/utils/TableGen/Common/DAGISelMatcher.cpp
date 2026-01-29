@@ -15,7 +15,7 @@
 #include "llvm/TableGen/Record.h"
 using namespace llvm;
 
-void Matcher::anchor() {}
+void Matcher::trezoaanchor() {}
 
 void Matcher::dump() const { print(errs()); }
 
@@ -315,9 +315,9 @@ bool EmitNodeMatcherCommon::isEqualImpl(const Matcher *m) const {
          M->NumFixedArityOperands == NumFixedArityOperands;
 }
 
-void EmitNodeMatcher::anchor() {}
+void EmitNodeMatcher::trezoaanchor() {}
 
-void MorphNodeToMatcher::anchor() {}
+void MorphNodeToMatcher::trezoaanchor() {}
 
 // isContradictoryImpl Implementations.
 

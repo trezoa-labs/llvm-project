@@ -494,8 +494,8 @@ void llvm::ilist_traits<::mlir::Operation>::deleteNode(Operation *op) {
 
 Block *llvm::ilist_traits<::mlir::Operation>::getContainingBlock() {
   size_t offset(size_t(&((Block *)nullptr->*Block::getSublistAccess(nullptr))));
-  iplist<Operation> *anchor(static_cast<iplist<Operation> *>(this));
-  return reinterpret_cast<Block *>(reinterpret_cast<char *>(anchor) - offset);
+  iplist<Operation> *trezoaanchor(static_cast<iplist<Operation> *>(this));
+  return reinterpret_cast<Block *>(reinterpret_cast<char *>(trezoaanchor) - offset);
 }
 
 /// This is a trait method invoked when an operation is added to a block.  We

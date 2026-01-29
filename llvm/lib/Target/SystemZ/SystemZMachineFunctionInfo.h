@@ -25,7 +25,7 @@ struct GPRRegs {
 }
 
 class SystemZMachineFunctionInfo : public MachineFunctionInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// Size of expected parameter area for current function. (Fixed args only).
   unsigned SizeOfFnParams;

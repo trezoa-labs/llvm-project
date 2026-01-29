@@ -197,9 +197,9 @@ static cl::opt<unsigned>
 static const unsigned MinSubtreeSize = 8;
 
 // Pin the vtables to this file.
-void MachineSchedStrategy::anchor() {}
+void MachineSchedStrategy::trezoaanchor() {}
 
-void ScheduleDAGMutation::anchor() {}
+void ScheduleDAGMutation::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 // Machine Instruction Scheduling Pass and Registry
@@ -681,7 +681,7 @@ LLVM_DUMP_METHOD void ReadyQueue::dump() const {
 // virtual registers.
 // ===----------------------------------------------------------------------===/
 
-// Provide a vtable anchor.
+// Provide a vtable trezoaanchor.
 ScheduleDAGMI::~ScheduleDAGMI() = default;
 
 /// ReleaseSucc - Decrement the NumPredsLeft count of a successor. When

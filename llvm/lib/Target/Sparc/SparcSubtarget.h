@@ -36,7 +36,7 @@ class SparcSubtarget : public SparcGenSubtargetInfo {
   BitVector ReserveRegister;
 
   Triple TargetTriple;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   bool Is64Bit;
 

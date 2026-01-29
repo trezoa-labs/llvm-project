@@ -1,12 +1,12 @@
-from solana_providers import *
-from solana_types import SolanaType, classify_solana_type
+from trezoa_providers import *
+from trezoa_types import TrezoaType, classify_trezoa_type
 
 
 def summary_lookup(valobj, dict):
     # type: (SBValue, dict) -> str
     """Returns the summary provider for the given value"""
-    solana_type = classify_solana_type(valobj.GetType())
-    if solana_type == SolanaType.PUBKEY:
+    trezoa_type = classify_trezoa_type(valobj.GetType())
+    if trezoa_type == TrezoaType.PUBKEY:
         return PubkeySummaryProvider(valobj, dict)
-    if solana_type == SolanaType.ACCOUNT_INFO:
+    if trezoa_type == TrezoaType.ACCOUNT_INFO:
         return AccountInfoSummaryProvider(valobj, dict)

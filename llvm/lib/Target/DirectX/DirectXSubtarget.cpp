@@ -26,4 +26,4 @@ DirectXSubtarget::DirectXSubtarget(const Triple &TT, StringRef CPU,
                                    StringRef FS, const DirectXTargetMachine &TM)
     : DirectXGenSubtargetInfo(TT, CPU, CPU, FS), FL(*this), TL(TM, *this) {}
 
-void DirectXSubtarget::anchor() {}
+void DirectXSubtarget::trezoaanchor() {}

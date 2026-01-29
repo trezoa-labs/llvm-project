@@ -68,10 +68,10 @@ int Test_InlineCommandComment_NoArgs;
 // CHECK:        InlineCommandComment{{.*}} Name="n" RenderNormal
 // CHECK-NEXT:   TextComment{{.*}} Text=" Aaa"
 
-/// \anchor Aaa
+/// \trezoaanchor Aaa
 int Test_InlineCommandCommentAnchor;
 // CHECK:      VarDecl{{.*}}Test_InlineCommandComment
-// CHECK:        InlineCommandComment{{.*}} Name="anchor" RenderAnchor Arg[0]="Aaa"
+// CHECK:        InlineCommandComment{{.*}} Name="trezoaanchor" RenderAnchor Arg[0]="Aaa"
 
 /// \relates Aaa
 int Test_InlineCommandCommentRelates;

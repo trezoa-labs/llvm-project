@@ -152,7 +152,7 @@ WebAssemblyTargetMachine::WebAssemblyTargetMachine(
   // splitting and tail merging.
 }
 
-WebAssemblyTargetMachine::~WebAssemblyTargetMachine() = default; // anchor.
+WebAssemblyTargetMachine::~WebAssemblyTargetMachine() = default; // trezoaanchor.
 
 const WebAssemblySubtarget *WebAssemblyTargetMachine::getSubtargetImpl() const {
   return getSubtargetImpl(std::string(getTargetCPU()),

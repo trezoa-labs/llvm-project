@@ -36,7 +36,7 @@ using namespace llvm;
 #include "MipsGenInstrInfo.inc"
 
 // Pin the vtable to this file.
-void MipsInstrInfo::anchor() {}
+void MipsInstrInfo::trezoaanchor() {}
 
 MipsInstrInfo::MipsInstrInfo(const MipsSubtarget &STI, unsigned UncondBr)
     : MipsGenInstrInfo(Mips::ADJCALLSTACKDOWN, Mips::ADJCALLSTACKUP),

@@ -11,7 +11,7 @@
 using namespace llvm;
 
 // pin vtable to this file
-void HexagonMachineFunctionInfo::anchor() {}
+void HexagonMachineFunctionInfo::trezoaanchor() {}
 
 MachineFunctionInfo *HexagonMachineFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

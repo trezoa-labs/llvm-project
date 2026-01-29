@@ -29,7 +29,7 @@
 
 using namespace llvm;
 
-void CallLowering::anchor() {}
+void CallLowering::trezoaanchor() {}
 
 /// Helper function which updates \p Flags when \p AttrFn returns true.
 static void
@@ -1337,7 +1337,7 @@ Register CallLowering::ValueHandler::extendRegister(Register ValReg,
   llvm_unreachable("unable to extend register");
 }
 
-void CallLowering::ValueAssigner::anchor() {}
+void CallLowering::ValueAssigner::trezoaanchor() {}
 
 Register CallLowering::IncomingValueHandler::buildExtensionHint(
     const CCValAssign &VA, Register SrcReg, LLT NarrowTy) {

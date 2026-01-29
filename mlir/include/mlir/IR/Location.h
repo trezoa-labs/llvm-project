@@ -27,7 +27,7 @@ class WalkResult;
 //===----------------------------------------------------------------------===//
 
 /// Location objects represent source locations information in MLIR.
-/// LocationAttr acts as the anchor for all Location based attributes.
+/// LocationAttr acts as the trezoaanchor for all Location based attributes.
 class LocationAttr : public Attribute {
 public:
   using Attribute::Attribute;

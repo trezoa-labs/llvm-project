@@ -977,7 +977,7 @@ isl::schedule polly::hoistExtensionNodes(isl::schedule Sched) {
   if (!containsExtensionNode(Sched))
     return Sched;
 
-  // Build options can anchor schedule nodes, such that the schedule tree cannot
+  // Build options can trezoaanchor schedule nodes, such that the schedule tree cannot
   // be modified anymore. Therefore, apply build options after the tree has been
   // created.
   CollectASTBuildOptions Collector;

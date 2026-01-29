@@ -122,7 +122,7 @@ struct EvalCallOptions {
 };
 
 class ExprEngine {
-  void anchor();
+  void trezoaanchor();
 
 public:
   /// The modes of inlining, which override the default analysis-wide settings.

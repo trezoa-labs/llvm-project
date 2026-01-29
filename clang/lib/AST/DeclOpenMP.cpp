@@ -23,7 +23,7 @@ using namespace clang;
 // OMPThreadPrivateDecl Implementation.
 //===----------------------------------------------------------------------===//
 
-void OMPThreadPrivateDecl::anchor() {}
+void OMPThreadPrivateDecl::trezoaanchor() {}
 
 OMPThreadPrivateDecl *OMPThreadPrivateDecl::Create(ASTContext &C,
                                                    DeclContext *DC,
@@ -52,7 +52,7 @@ void OMPThreadPrivateDecl::setVars(ArrayRef<Expr *> VL) {
 // OMPAllocateDecl Implementation.
 //===----------------------------------------------------------------------===//
 
-void OMPAllocateDecl::anchor() { }
+void OMPAllocateDecl::trezoaanchor() { }
 
 OMPAllocateDecl *OMPAllocateDecl::Create(ASTContext &C, DeclContext *DC,
                                          SourceLocation L, ArrayRef<Expr *> VL,
@@ -81,7 +81,7 @@ void OMPAllocateDecl::setVars(ArrayRef<Expr *> VL) {
 // OMPRequiresDecl Implementation.
 //===----------------------------------------------------------------------===//
 
-void OMPRequiresDecl::anchor() {}
+void OMPRequiresDecl::trezoaanchor() {}
 
 OMPRequiresDecl *OMPRequiresDecl::Create(ASTContext &C, DeclContext *DC,
                                          SourceLocation L,
@@ -109,7 +109,7 @@ OMPDeclareReductionDecl::OMPDeclareReductionDecl(
   setInitializer(nullptr, OMPDeclareReductionInitKind::Call);
 }
 
-void OMPDeclareReductionDecl::anchor() {}
+void OMPDeclareReductionDecl::trezoaanchor() {}
 
 OMPDeclareReductionDecl *OMPDeclareReductionDecl::Create(
     ASTContext &C, DeclContext *DC, SourceLocation L, DeclarationName Name,
@@ -139,7 +139,7 @@ OMPDeclareReductionDecl::getPrevDeclInScope() const {
 // OMPDeclareMapperDecl Implementation.
 //===----------------------------------------------------------------------===//
 
-void OMPDeclareMapperDecl::anchor() {}
+void OMPDeclareMapperDecl::trezoaanchor() {}
 
 OMPDeclareMapperDecl *OMPDeclareMapperDecl::Create(
     ASTContext &C, DeclContext *DC, SourceLocation L, DeclarationName Name,
@@ -171,7 +171,7 @@ const OMPDeclareMapperDecl *OMPDeclareMapperDecl::getPrevDeclInScope() const {
 // OMPCapturedExprDecl Implementation.
 //===----------------------------------------------------------------------===//
 
-void OMPCapturedExprDecl::anchor() {}
+void OMPCapturedExprDecl::trezoaanchor() {}
 
 OMPCapturedExprDecl *OMPCapturedExprDecl::Create(ASTContext &C, DeclContext *DC,
                                                  IdentifierInfo *Id, QualType T,

@@ -33,7 +33,7 @@
 using namespace clang;
 using namespace ento;
 
-void SymExpr::anchor() {}
+void SymExpr::trezoaanchor() {}
 
 StringRef SymbolConjured::getKindStr() const { return "conj_$"; }
 StringRef SymbolDerived::getKindStr() const { return "derived_$"; }
@@ -102,7 +102,7 @@ void SymbolMetadata::dumpToStream(raw_ostream &os) const {
   os << getKindStr() << getSymbolID() << '{' << getRegion() << ',' << T << '}';
 }
 
-void SymbolData::anchor() {}
+void SymbolData::trezoaanchor() {}
 
 void SymbolRegionValue::dumpToStream(raw_ostream &os) const {
   os << getKindStr() << getSymbolID() << '<' << getType() << ' ' << R << '>';

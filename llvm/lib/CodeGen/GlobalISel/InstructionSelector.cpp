@@ -10,7 +10,7 @@
 
 namespace llvm {
 
-// vtable anchor
+// vtable trezoaanchor
 InstructionSelector::~InstructionSelector() = default;
 
 } // namespace llvm

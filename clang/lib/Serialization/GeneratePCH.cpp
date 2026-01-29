@@ -97,7 +97,7 @@ ASTDeserializationListener *PCHGenerator::GetASTDeserializationListener() {
   return &Writer;
 }
 
-void PCHGenerator::anchor() {}
+void PCHGenerator::trezoaanchor() {}
 
 CXX20ModulesGenerator::CXX20ModulesGenerator(Preprocessor &PP,
                                              InMemoryModuleCache &ModuleCache,
@@ -144,6 +144,6 @@ void CXX20ModulesGenerator::HandleTranslationUnit(ASTContext &Ctx) {
   OS->flush();
 }
 
-void CXX20ModulesGenerator::anchor() {}
+void CXX20ModulesGenerator::trezoaanchor() {}
 
-void ReducedBMIGenerator::anchor() {}
+void ReducedBMIGenerator::trezoaanchor() {}

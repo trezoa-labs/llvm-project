@@ -12,7 +12,7 @@ using namespace llvm;
 
 
 // pin vtable to this file
-void SystemZMachineFunctionInfo::anchor() {}
+void SystemZMachineFunctionInfo::trezoaanchor() {}
 
 MachineFunctionInfo *SystemZMachineFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

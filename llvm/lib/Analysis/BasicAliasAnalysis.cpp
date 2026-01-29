@@ -1972,7 +1972,7 @@ BasicAAWrapperPass::BasicAAWrapperPass() : FunctionPass(ID) {
 
 char BasicAAWrapperPass::ID = 0;
 
-void BasicAAWrapperPass::anchor() {}
+void BasicAAWrapperPass::trezoaanchor() {}
 
 INITIALIZE_PASS_BEGIN(BasicAAWrapperPass, "basic-aa",
                       "Basic Alias Analysis (stateless AA impl)", true, true)

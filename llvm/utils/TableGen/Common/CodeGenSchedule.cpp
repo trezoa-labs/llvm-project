@@ -92,7 +92,7 @@ struct InstRegexOp : public SetTheory::Operator {
         PrintFatalError(Loc, "instregex requires pattern string: " +
                                  Expr->getAsString());
       StringRef Original = SI->getValue();
-      // Drop an explicit ^ anchor to not interfere with prefix search.
+      // Drop an explicit ^ trezoaanchor to not interfere with prefix search.
       bool HadAnchor = Original.consume_front("^");
 
       // Extract a prefix that we can binary search on.
@@ -122,7 +122,7 @@ struct InstRegexOp : public SetTheory::Operator {
       if (!PatStr.empty()) {
         // For the rest use a python-style prefix match.
         std::string pat = std::string(PatStr);
-        // Add ^ anchor. If we had one originally, don't need the group.
+        // Add ^ trezoaanchor. If we had one originally, don't need the group.
         if (HadAnchor) {
           pat.insert(0, "^");
         } else {

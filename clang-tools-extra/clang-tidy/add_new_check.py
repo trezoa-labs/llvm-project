@@ -548,7 +548,7 @@ def update_checks_list(clang_tidy_path: str) -> None:
                 or match.group(1) == "https://clang.llvm.org/docs/analyzer/checkers"
             ):
                 title = "Clang Static Analyzer " + check_file
-                # Preserve the anchor in checkers.html from group 2.
+                # Preserve the trezoaanchor in checkers.html from group 2.
                 target = "" if not match else match.group(1) + ".html" + match.group(2)
                 autofix = ""
                 ref_begin = ""

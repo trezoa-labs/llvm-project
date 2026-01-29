@@ -125,7 +125,7 @@ protected:
 struct SymbolAnchor {
   uint64_t offset;
   Defined *d;
-  bool end; // true for the anchor of st_value+st_size
+  bool end; // true for the trezoaanchor of st_value+st_size
 };
 
 struct RelaxAux {

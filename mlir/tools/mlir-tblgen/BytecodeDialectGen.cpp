@@ -66,7 +66,7 @@ static std::string format(StringRef templ,
                           std::map<std::string, std::string> &&map) {
   std::string s = templ.str();
   for (const auto &[from, to] : map)
-    // All replacements start with $, don't treat as anchor.
+    // All replacements start with $, don't treat as trezoaanchor.
     s = std::regex_replace(s, std::regex("\\" + from), to);
   return s;
 }

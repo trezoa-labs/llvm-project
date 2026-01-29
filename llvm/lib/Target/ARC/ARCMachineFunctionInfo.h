@@ -21,7 +21,7 @@ namespace llvm {
 /// ARCFunctionInfo - This class is derived from MachineFunction private
 /// ARC target-specific information for each MachineFunction.
 class ARCFunctionInfo : public MachineFunctionInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
   bool ReturnStackOffsetSet;
   int VarArgsFrameIndex;
   unsigned ReturnStackOffset;

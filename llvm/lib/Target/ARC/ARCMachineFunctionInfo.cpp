@@ -10,7 +10,7 @@
 
 using namespace llvm;
 
-void ARCFunctionInfo::anchor() {}
+void ARCFunctionInfo::trezoaanchor() {}
 
 MachineFunctionInfo *
 ARCFunctionInfo::clone(BumpPtrAllocator &Allocator, MachineFunction &DestMF,

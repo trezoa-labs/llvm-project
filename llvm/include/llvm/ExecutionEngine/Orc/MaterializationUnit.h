@@ -89,7 +89,7 @@ protected:
   SymbolStringPtr InitSymbol;
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// Implementations of this method should discard the given symbol
   ///        from the source (e.g. if the source is an LLVM IR Module and the

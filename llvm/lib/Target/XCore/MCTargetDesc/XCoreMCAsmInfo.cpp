@@ -9,7 +9,7 @@
 #include "XCoreMCAsmInfo.h"
 using namespace llvm;
 
-void XCoreMCAsmInfo::anchor() { }
+void XCoreMCAsmInfo::trezoaanchor() { }
 
 XCoreMCAsmInfo::XCoreMCAsmInfo(const Triple &TT) {
   SupportsDebugInformation = true;

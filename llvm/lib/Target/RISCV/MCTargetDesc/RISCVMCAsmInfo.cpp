@@ -17,7 +17,7 @@
 #include "llvm/TargetParser/Triple.h"
 using namespace llvm;
 
-void RISCVMCAsmInfo::anchor() {}
+void RISCVMCAsmInfo::trezoaanchor() {}
 
 RISCVMCAsmInfo::RISCVMCAsmInfo(const Triple &TT) {
   CodePointerSize = CalleeSaveStackSlotSize = TT.isArch64Bit() ? 8 : 4;

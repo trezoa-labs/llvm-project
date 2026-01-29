@@ -33,7 +33,7 @@ public:
   virtual json::Value toJSON() const { return "not implemented"; }
   virtual bool isSerializable() const { return true; }
 
-  void anchor() override;
+  void trezoaanchor() override;
 };
 } // namespace mca
 } // namespace llvm

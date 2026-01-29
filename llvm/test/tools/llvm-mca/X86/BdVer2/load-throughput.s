@@ -2,7 +2,7 @@
 # RUN: llvm-mca -mtriple=x86_64-unknown-unknown -mcpu=bdver2 -scheduler-stats -dispatch-stats -iterations=100 -timeline -timeline-max-iterations=1 < %s | FileCheck %s
 
 # LLVM-MCA-BEGIN
-movb (%rax), %spl
+movb (%rax), %tpl
 movb (%rcx), %bpl
 movb (%rdx), %sil
 movb (%rbx), %dil
@@ -71,7 +71,7 @@ vmovaps (%rbx), %ymm3
 # CHECK-NEXT: [6]: HasSideEffects (U)
 
 # CHECK:      [1]    [2]    [3]    [4]    [5]    [6]    Instructions:
-# CHECK-NEXT:  1      5     1.00    *                   movb	(%rax), %spl
+# CHECK-NEXT:  1      5     1.00    *                   movb	(%rax), %tpl
 # CHECK-NEXT:  1      5     1.00    *                   movb	(%rcx), %bpl
 # CHECK-NEXT:  1      5     1.00    *                   movb	(%rdx), %sil
 # CHECK-NEXT:  1      5     1.00    *                   movb	(%rbx), %dil
@@ -139,7 +139,7 @@ vmovaps (%rbx), %ymm3
 
 # CHECK:      Resource pressure by instruction:
 # CHECK-NEXT: [0.0]  [0.1]  [1]    [2]    [3]    [4]    [5]    [6]    [7.0]  [7.1]  [8.0]  [8.1]  [9]    [10]   [11]   [12]   [13]   [14]   [15]   [16.0] [16.1] [17]   [18]   Instructions:
-# CHECK-NEXT:  -     2.00    -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -     2.00    -      -     movb	(%rax), %spl
+# CHECK-NEXT:  -     2.00    -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -     2.00    -      -     movb	(%rax), %tpl
 # CHECK-NEXT: 2.00    -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -     2.00    -      -      -     movb	(%rcx), %bpl
 # CHECK-NEXT:  -     2.00    -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -     2.00    -      -     movb	(%rdx), %sil
 # CHECK-NEXT: 2.00    -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -      -     2.00    -      -      -     movb	(%rbx), %dil
@@ -147,7 +147,7 @@ vmovaps (%rbx), %ymm3
 # CHECK:      Timeline view:
 # CHECK-NEXT: Index     0123456789
 
-# CHECK:      [0,0]     DeeeeeER .   movb	(%rax), %spl
+# CHECK:      [0,0]     DeeeeeER .   movb	(%rax), %tpl
 # CHECK-NEXT: [0,1]     DeeeeeER .   movb	(%rcx), %bpl
 # CHECK-NEXT: [0,2]     D==eeeeeER   movb	(%rdx), %sil
 # CHECK-NEXT: [0,3]     D==eeeeeER   movb	(%rbx), %dil
@@ -159,7 +159,7 @@ vmovaps (%rbx), %ymm3
 # CHECK-NEXT: [3]: Average time elapsed from WB until retire stage
 
 # CHECK:            [0]    [1]    [2]    [3]
-# CHECK-NEXT: 0.     1     1.0    1.0    0.0       movb	(%rax), %spl
+# CHECK-NEXT: 0.     1     1.0    1.0    0.0       movb	(%rax), %tpl
 # CHECK-NEXT: 1.     1     1.0    1.0    0.0       movb	(%rcx), %bpl
 # CHECK-NEXT: 2.     1     3.0    3.0    0.0       movb	(%rdx), %sil
 # CHECK-NEXT: 3.     1     3.0    3.0    0.0       movb	(%rbx), %dil

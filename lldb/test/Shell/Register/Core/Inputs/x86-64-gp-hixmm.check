@@ -57,7 +57,7 @@
 # CHECK-DAG: dil = 0x27
 # CHECK-DAG: sil = 0x26
 # CHECK-DAG: bpl = 0x25
-# CHECK-DAG: spl = 0x24
+# CHECK-DAG: tpl = 0x24
 # CHECK-DAG: r8l = 0x28
 # CHECK-DAG: r9l = 0x29
 # CHECK-DAG: r10l = 0x2a

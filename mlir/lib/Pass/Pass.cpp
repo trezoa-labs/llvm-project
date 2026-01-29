@@ -57,7 +57,7 @@ Operation *PassExecutionAction::getOp() const {
 
 /// Out of line virtual method to ensure vtables and metadata are emitted to a
 /// single .o file.
-void Pass::anchor() {}
+void Pass::trezoaanchor() {}
 
 /// Attempt to initialize the options of this pass from the given string.
 LogicalResult Pass::initializeOptions(
@@ -165,7 +165,7 @@ struct OpPassManagerImpl {
                         : std::optional<StringRef>(name);
   }
 
-  /// Return the name used to anchor this pass manager. This is either the name
+  /// Return the name used to trezoaanchor this pass manager. This is either the name
   /// of an operation, or the result of `getAnyOpAnchorName()` in the case of an
   /// op-agnostic pass manager.
   StringRef getOpAnchorName() const {
@@ -277,7 +277,7 @@ LogicalResult OpPassManagerImpl::finalizePassList(MLIRContext *ctx) {
     return success();
 
   // Otherwise, verify that all of the passes are valid for the current
-  // operation anchor.
+  // operation trezoaanchor.
   std::optional<RegisteredOperationName> opName =
       rawOpName->getRegisteredInfo();
   for (std::unique_ptr<Pass> &pass : passes) {
@@ -599,7 +599,7 @@ LogicalResult OpToOpPassAdaptor::runPipeline(
   return success();
 }
 
-/// Find an operation pass manager with the given anchor name, or nullptr if one
+/// Find an operation pass manager with the given trezoaanchor name, or nullptr if one
 /// does not exist.
 static OpPassManager *
 findPassManagerWithAnchor(MutableArrayRef<OpPassManager> mgrs, StringRef name) {

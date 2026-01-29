@@ -19,7 +19,7 @@
 
 using namespace clang;
 
-void FileSystemStatCache::anchor() {}
+void FileSystemStatCache::trezoaanchor() {}
 
 /// FileSystemStatCache::get - Get the 'stat' information for the specified
 /// path, using the cache to accelerate it if possible.  This returns true if

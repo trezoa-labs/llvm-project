@@ -37,7 +37,7 @@ static ClangTidyModuleRegistry::Add<PortabilityModule>
 
 } // namespace portability
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the PortabilityModule.
 volatile int PortabilityModuleAnchorSource = 0;
 

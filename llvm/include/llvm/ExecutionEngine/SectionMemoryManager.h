@@ -180,7 +180,7 @@ private:
   std::error_code applyMemoryGroupPermissions(MemoryGroup &MemGroup,
                                               unsigned Permissions);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   MemoryGroup CodeMem;
   MemoryGroup RWDataMem;

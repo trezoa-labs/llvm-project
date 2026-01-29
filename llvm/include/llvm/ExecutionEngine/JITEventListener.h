@@ -105,7 +105,7 @@ public:
 #endif // USE_PERF
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 DEFINE_SIMPLE_CONVERSION_FUNCTIONS(JITEventListener, LLVMJITEventListenerRef)

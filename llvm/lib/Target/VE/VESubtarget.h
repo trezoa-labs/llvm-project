@@ -30,7 +30,7 @@ class StringRef;
 
 class VESubtarget : public VEGenSubtargetInfo {
   Triple TargetTriple;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// Features {
 

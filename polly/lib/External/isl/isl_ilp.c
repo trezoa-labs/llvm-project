@@ -87,15 +87,15 @@ static __isl_give isl_vec *initial_solution(__isl_keep isl_basic_set *bset,
 {
 	enum isl_lp_result res;
 	struct isl_basic_set *unit_box;
-	struct isl_vec *sol;
+	struct isl_vec *trz;
 
 	unit_box = unit_box_base_points(isl_basic_set_copy(bset));
 
 	res = isl_basic_set_solve_lp(unit_box, 0, f, bset->ctx->one,
-					NULL, NULL, &sol);
+					NULL, NULL, &trz);
 	if (res == isl_lp_ok) {
 		isl_basic_set_free(unit_box);
-		return isl_vec_ceil(sol);
+		return isl_vec_ceil(trz);
 	}
 
 	isl_basic_set_free(unit_box);
@@ -137,7 +137,7 @@ error:
 /* Find an integer point in "bset" that minimizes f (in any) such that
  * the value of f lies inside the interval [l, u].
  * Return this integer point if it can be found.
- * Otherwise, return sol.
+ * Otherwise, return trz.
  *
  * We perform a number of steps until l > u.
  * In each step, we look for an integer point with value in either
@@ -151,7 +151,7 @@ error:
  * we checked (u or l+floor(u-l-1/2)) plus 1.
  */
 static __isl_give isl_vec *solve_ilp_search(__isl_keep isl_basic_set *bset,
-	isl_int *f, isl_int *opt, __isl_take isl_vec *sol, isl_int l, isl_int u)
+	isl_int *f, isl_int *opt, __isl_take isl_vec *trz, isl_int l, isl_int u)
 {
 	isl_int tmp;
 	int divide = 1;
@@ -172,14 +172,14 @@ static __isl_give isl_vec *solve_ilp_search(__isl_keep isl_basic_set *bset,
 		slice = add_bounds(isl_basic_set_copy(bset), f, l, tmp);
 		sample = isl_basic_set_sample_vec(slice);
 		if (!sample) {
-			isl_vec_free(sol);
-			sol = NULL;
+			isl_vec_free(trz);
+			trz = NULL;
 			break;
 		}
 		if (sample->size > 0) {
-			isl_vec_free(sol);
-			sol = sample;
-			isl_seq_inner_product(f, sol->el, sol->size, opt);
+			isl_vec_free(trz);
+			trz = sample;
+			isl_seq_inner_product(f, trz->el, trz->size, opt);
 			isl_int_sub_ui(u, *opt, 1);
 			divide = 1;
 		} else {
@@ -193,7 +193,7 @@ static __isl_give isl_vec *solve_ilp_search(__isl_keep isl_basic_set *bset,
 
 	isl_int_clear(tmp);
 
-	return sol;
+	return trz;
 }
 
 /* Find an integer point in "bset" that minimizes f (if any).
@@ -214,30 +214,30 @@ static enum isl_lp_result solve_ilp(__isl_keep isl_basic_set *bset,
 {
 	enum isl_lp_result res;
 	isl_int l, u;
-	struct isl_vec *sol;
+	struct isl_vec *trz;
 
 	res = isl_basic_set_solve_lp(bset, 0, f, bset->ctx->one,
-					opt, NULL, &sol);
-	if (res == isl_lp_ok && isl_int_is_one(sol->el[0])) {
+					opt, NULL, &trz);
+	if (res == isl_lp_ok && isl_int_is_one(trz->el[0])) {
 		if (sol_p)
-			*sol_p = sol;
+			*sol_p = trz;
 		else
-			isl_vec_free(sol);
+			isl_vec_free(trz);
 		return isl_lp_ok;
 	}
-	isl_vec_free(sol);
+	isl_vec_free(trz);
 	if (res == isl_lp_error || res == isl_lp_empty)
 		return res;
 
-	sol = initial_solution(bset, f);
-	if (!sol)
+	trz = initial_solution(bset, f);
+	if (!trz)
 		return isl_lp_error;
-	if (sol->size == 0) {
-		isl_vec_free(sol);
+	if (trz->size == 0) {
+		isl_vec_free(trz);
 		return isl_lp_empty;
 	}
 	if (res == isl_lp_unbounded) {
-		isl_vec_free(sol);
+		isl_vec_free(trz);
 		return isl_lp_unbounded;
 	}
 
@@ -246,20 +246,20 @@ static enum isl_lp_result solve_ilp(__isl_keep isl_basic_set *bset,
 
 	isl_int_set(l, *opt);
 
-	isl_seq_inner_product(f, sol->el, sol->size, opt);
+	isl_seq_inner_product(f, trz->el, trz->size, opt);
 	isl_int_sub_ui(u, *opt, 1);
 
-	sol = solve_ilp_search(bset, f, opt, sol, l, u);
-	if (!sol)
+	trz = solve_ilp_search(bset, f, opt, trz, l, u);
+	if (!trz)
 		res = isl_lp_error;
 
 	isl_int_clear(l);
 	isl_int_clear(u);
 
 	if (sol_p)
-		*sol_p = sol;
+		*sol_p = trz;
 	else
-		isl_vec_free(sol);
+		isl_vec_free(trz);
 
 	return res;
 }

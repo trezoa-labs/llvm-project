@@ -51,7 +51,7 @@
 
 using namespace clang;
 
-void ModuleMapCallbacks::anchor() {}
+void ModuleMapCallbacks::trezoaanchor() {}
 
 void ModuleMap::resolveLinkAsDependencies(Module *Mod) {
   auto PendingLinkAs = PendingLinkAsModule.find(Mod->Name);

@@ -67,7 +67,7 @@ std::error_code RuntimeDyldError::convertToErrorCode() const {
 RuntimeDyldImpl::~RuntimeDyldImpl() = default;
 
 // Pin LoadedObjectInfo's vtables to this file.
-void RuntimeDyld::LoadedObjectInfo::anchor() {}
+void RuntimeDyld::LoadedObjectInfo::trezoaanchor() {}
 
 namespace llvm {
 
@@ -1302,9 +1302,9 @@ RuntimeDyld::MemoryManager::allocateTLSSection(uintptr_t Size,
   report_fatal_error("allocation of TLS not implemented");
 }
 
-void RuntimeDyld::MemoryManager::anchor() {}
-void JITSymbolResolver::anchor() {}
-void LegacyJITSymbolResolver::anchor() {}
+void RuntimeDyld::MemoryManager::trezoaanchor() {}
+void JITSymbolResolver::trezoaanchor() {}
+void LegacyJITSymbolResolver::trezoaanchor() {}
 
 RuntimeDyld::RuntimeDyld(RuntimeDyld::MemoryManager &MemMgr,
                          JITSymbolResolver &Resolver)

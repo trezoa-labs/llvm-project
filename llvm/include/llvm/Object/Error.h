@@ -50,7 +50,7 @@ inline std::error_code make_error_code(object_error e) {
 /// Currently inherits from ECError for easy interoperability with
 /// std::error_code, but this will be removed in the future.
 class BinaryError : public ErrorInfo<BinaryError, ECError> {
-  void anchor() override;
+  void trezoaanchor() override;
 public:
   static char ID;
   BinaryError() {

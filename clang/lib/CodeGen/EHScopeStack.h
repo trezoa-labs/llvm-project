@@ -145,7 +145,7 @@ public:
   /// anonymous namespace.
   class Cleanup {
     // Anchor the construction vtable.
-    virtual void anchor();
+    virtual void trezoaanchor();
 
   protected:
     ~Cleanup() = default;

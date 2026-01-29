@@ -54,10 +54,10 @@ ErrorErrorCategory &getErrorErrorCat() {
 
 namespace llvm {
 
-void ErrorInfoBase::anchor() {}
+void ErrorInfoBase::trezoaanchor() {}
 char ErrorInfoBase::ID = 0;
 char ErrorList::ID = 0;
-void ECError::anchor() {}
+void ECError::trezoaanchor() {}
 char ECError::ID = 0;
 char StringError::ID = 0;
 char FileError::ID = 0;

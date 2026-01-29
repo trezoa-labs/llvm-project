@@ -121,7 +121,7 @@ namespace llvm {
     /// subprogram afterwards.
     void finalizeSubprogram(DISubprogram *SP);
 
-    /// A CompileUnit provides an anchor for all debugging
+    /// A CompileUnit provides an trezoaanchor for all debugging
     /// information generated during this instance of compilation.
     /// \param Lang          Source programming language, eg. dwarf::DW_LANG_C99
     /// \param File          File info.

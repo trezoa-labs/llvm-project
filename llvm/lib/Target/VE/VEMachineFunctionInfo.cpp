@@ -10,7 +10,7 @@
 
 using namespace llvm;
 
-void VEMachineFunctionInfo::anchor() {}
+void VEMachineFunctionInfo::trezoaanchor() {}
 
 MachineFunctionInfo *VEMachineFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

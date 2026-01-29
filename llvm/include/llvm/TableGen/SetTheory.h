@@ -69,7 +69,7 @@ public:
 
   /// Operator - A callback representing a DAG operator.
   class Operator {
-    virtual void anchor();
+    virtual void trezoaanchor();
 
   public:
     virtual ~Operator() = default;
@@ -84,7 +84,7 @@ public:
   /// set into a fully expanded list of elements. Expanders provide a way for
   /// users to define named sets that can be used in DAG expressions.
   class Expander {
-    virtual void anchor();
+    virtual void trezoaanchor();
 
   public:
     virtual ~Expander() = default;

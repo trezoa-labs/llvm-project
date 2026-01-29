@@ -35,7 +35,7 @@ static cl::opt<unsigned>
                         cl::desc("Restrict range of BPr instructions (DEBUG)"));
 
 // Pin the vtable to this file.
-void SparcInstrInfo::anchor() {}
+void SparcInstrInfo::trezoaanchor() {}
 
 SparcInstrInfo::SparcInstrInfo(SparcSubtarget &ST)
     : SparcGenInstrInfo(SP::ADJCALLSTACKDOWN, SP::ADJCALLSTACKUP), RI(),

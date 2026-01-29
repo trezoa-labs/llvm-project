@@ -172,7 +172,7 @@ static ToolExecutorPluginRegistry::Add<AllTUsToolExecutorPlugin>
     X("all-TUs", "Runs FrontendActions on all TUs in the compilation database. "
                  "Tool results are stored in memory.");
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the plugin.
 volatile int AllTUsToolExecutorAnchorSource = 0;
 

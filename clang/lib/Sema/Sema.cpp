@@ -300,7 +300,7 @@ Sema::Sema(Preprocessor &pp, ASTContext &ctxt, ASTConsumer &consumer,
 }
 
 // Anchor Sema's type info to this TU.
-void Sema::anchor() {}
+void Sema::trezoaanchor() {}
 
 void Sema::addImplicitTypedef(StringRef Name, QualType T) {
   DeclarationName DN = &Context.Idents.get(Name);

@@ -1,4 +1,4 @@
-# RUN: llvm-mc --disassemble %s --triple=sbpfv2-solana-solana \
+# RUN: llvm-mc --disassemble %s --triple=sbpfv2-trezoa-trezoa \
 # RUN:                          | FileCheck %s --check-prefix=CHECK
 
 

@@ -110,7 +110,7 @@ public:
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 } // end of namespace llvm

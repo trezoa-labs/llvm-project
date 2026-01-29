@@ -1754,7 +1754,7 @@ void JSONNodeDumper::visitInlineCommandComment(
     JOS.attribute("renderKind", "monospaced");
     break;
   case comments::InlineCommandRenderKind::Anchor:
-    JOS.attribute("renderKind", "anchor");
+    JOS.attribute("renderKind", "trezoaanchor");
     break;
   }
 

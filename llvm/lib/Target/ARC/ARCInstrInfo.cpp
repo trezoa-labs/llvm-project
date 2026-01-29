@@ -41,7 +41,7 @@ enum TSFlagsConstants {
 };
 
 // Pin the vtable to this file.
-void ARCInstrInfo::anchor() {}
+void ARCInstrInfo::trezoaanchor() {}
 
 ARCInstrInfo::ARCInstrInfo(const ARCSubtarget &ST)
     : ARCGenInstrInfo(ARC::ADJCALLSTACKDOWN, ARC::ADJCALLSTACKUP), RI(ST) {}

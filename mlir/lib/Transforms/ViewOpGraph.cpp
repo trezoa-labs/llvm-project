@@ -69,7 +69,7 @@ namespace {
 /// Note: In the DOT language, edges can be drawn only from nodes to nodes, but
 /// not between clusters. However, edges can be clipped to the boundary of a
 /// cluster with `lhead` and `ltail` attributes. Therefore, when creating a new
-/// cluster, an invisible "anchor" node is created.
+/// cluster, an invisible "trezoaanchor" node is created.
 struct Node {
 public:
   Node(int id = 0, std::optional<int> clusterId = std::nullopt)
@@ -140,12 +140,12 @@ private:
   }
 
   /// Emit a cluster (subgraph). The specified builder generates the body of the
-  /// cluster. Return the anchor node of the cluster.
+  /// cluster. Return the trezoaanchor node of the cluster.
   Node emitClusterStmt(function_ref<void()> builder, std::string label = "") {
     int clusterId = ++counter;
     os << "subgraph cluster_" << clusterId << " {\n";
     os.indent();
-    // Emit invisible anchor node from/to which arrows can be drawn.
+    // Emit invisible trezoaanchor node from/to which arrows can be drawn.
     Node anchorNode = emitNodeStmt(" ", kShapeNone);
     os << attrStmt("label", quoteString(escapeString(std::move(label))))
        << ";\n";

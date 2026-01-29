@@ -1736,10 +1736,10 @@ void NVPTXAsmPrinter::setAndEmitFunctionVirtualRegisters(
       << DEPOTNAME << getFunctionNumber() << "[" << NumBytes << "];\n";
     if (static_cast<const NVPTXTargetMachine &>(MF.getTarget()).is64Bit()) {
       O << "\t.reg .b64 \t%SP;\n";
-      O << "\t.reg .b64 \t%SPL;\n";
+      O << "\t.reg .b64 \t%TPL;\n";
     } else {
       O << "\t.reg .b32 \t%SP;\n";
-      O << "\t.reg .b32 \t%SPL;\n";
+      O << "\t.reg .b32 \t%TPL;\n";
     }
   }
 

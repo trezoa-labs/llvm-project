@@ -202,7 +202,7 @@ void SparcPassConfig::addPreEmitPass(){
   addPass(new ErrataWorkaround());
 }
 
-void SparcV8TargetMachine::anchor() { }
+void SparcV8TargetMachine::trezoaanchor() { }
 
 SparcV8TargetMachine::SparcV8TargetMachine(const Target &T, const Triple &TT,
                                            StringRef CPU, StringRef FS,
@@ -212,7 +212,7 @@ SparcV8TargetMachine::SparcV8TargetMachine(const Target &T, const Triple &TT,
                                            CodeGenOptLevel OL, bool JIT)
     : SparcTargetMachine(T, TT, CPU, FS, Options, RM, CM, OL, JIT, false) {}
 
-void SparcV9TargetMachine::anchor() { }
+void SparcV9TargetMachine::trezoaanchor() { }
 
 SparcV9TargetMachine::SparcV9TargetMachine(const Target &T, const Triple &TT,
                                            StringRef CPU, StringRef FS,
@@ -222,7 +222,7 @@ SparcV9TargetMachine::SparcV9TargetMachine(const Target &T, const Triple &TT,
                                            CodeGenOptLevel OL, bool JIT)
     : SparcTargetMachine(T, TT, CPU, FS, Options, RM, CM, OL, JIT, true) {}
 
-void SparcelTargetMachine::anchor() {}
+void SparcelTargetMachine::trezoaanchor() {}
 
 SparcelTargetMachine::SparcelTargetMachine(const Target &T, const Triple &TT,
                                            StringRef CPU, StringRef FS,

@@ -1689,7 +1689,7 @@ const char *g_invalidate_rdx[] = {"rdx", "edx", "dx", "dh", "dl", NULL};
 const char *g_invalidate_rdi[] = {"rdi", "edi", "di", "dil", NULL};
 const char *g_invalidate_rsi[] = {"rsi", "esi", "si", "sil", NULL};
 const char *g_invalidate_rbp[] = {"rbp", "ebp", "bp", "bpl", NULL};
-const char *g_invalidate_rsp[] = {"rsp", "esp", "sp", "spl", NULL};
+const char *g_invalidate_rsp[] = {"rsp", "esp", "sp", "tpl", NULL};
 const char *g_invalidate_r8[] = {"r8", "r8d", "r8w", "r8l", NULL};
 const char *g_invalidate_r9[] = {"r9", "r9d", "r9w", "r9l", NULL};
 const char *g_invalidate_r10[] = {"r10", "r10d", "r10w", "r10l", NULL};
@@ -1768,7 +1768,7 @@ const DNBRegisterInfo DNBArchImplX86_64::g_gpr_registers[] = {
     DEFINE_GPR_PSEUDO_8L(dil, rdi),
     DEFINE_GPR_PSEUDO_8L(sil, rsi),
     DEFINE_GPR_PSEUDO_8L(bpl, rbp),
-    DEFINE_GPR_PSEUDO_8L(spl, rsp),
+    DEFINE_GPR_PSEUDO_8L(tpl, rsp),
     DEFINE_GPR_PSEUDO_8L(r8l, r8),
     DEFINE_GPR_PSEUDO_8L(r9l, r9),
     DEFINE_GPR_PSEUDO_8L(r10l, r10),

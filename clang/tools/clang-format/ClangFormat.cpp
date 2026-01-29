@@ -394,7 +394,7 @@ static void outputXML(const Replacements &Replaces,
 }
 
 class ClangFormatDiagConsumer : public DiagnosticConsumer {
-  virtual void anchor() {}
+  virtual void trezoaanchor() {}
 
   void HandleDiagnostic(DiagnosticsEngine::Level DiagLevel,
                         const Diagnostic &Info) override {

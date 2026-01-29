@@ -32,7 +32,7 @@ private:
   const CheckerBase *Checker;
   bool SuppressOnSink;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   BugType(CheckerNameRef CheckerName, StringRef Desc,

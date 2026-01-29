@@ -349,7 +349,7 @@ void BackendConsumer::HandleVTable(CXXRecordDecl *RD) {
   Gen->HandleVTable(RD);
 }
 
-void BackendConsumer::anchor() { }
+void BackendConsumer::trezoaanchor() { }
 
 } // namespace clang
 
@@ -1184,26 +1184,26 @@ void CodeGenAction::ExecuteAction() {
 
 //
 
-void EmitAssemblyAction::anchor() { }
+void EmitAssemblyAction::trezoaanchor() { }
 EmitAssemblyAction::EmitAssemblyAction(llvm::LLVMContext *_VMContext)
   : CodeGenAction(Backend_EmitAssembly, _VMContext) {}
 
-void EmitBCAction::anchor() { }
+void EmitBCAction::trezoaanchor() { }
 EmitBCAction::EmitBCAction(llvm::LLVMContext *_VMContext)
   : CodeGenAction(Backend_EmitBC, _VMContext) {}
 
-void EmitLLVMAction::anchor() { }
+void EmitLLVMAction::trezoaanchor() { }
 EmitLLVMAction::EmitLLVMAction(llvm::LLVMContext *_VMContext)
   : CodeGenAction(Backend_EmitLL, _VMContext) {}
 
-void EmitLLVMOnlyAction::anchor() { }
+void EmitLLVMOnlyAction::trezoaanchor() { }
 EmitLLVMOnlyAction::EmitLLVMOnlyAction(llvm::LLVMContext *_VMContext)
   : CodeGenAction(Backend_EmitNothing, _VMContext) {}
 
-void EmitCodeGenOnlyAction::anchor() { }
+void EmitCodeGenOnlyAction::trezoaanchor() { }
 EmitCodeGenOnlyAction::EmitCodeGenOnlyAction(llvm::LLVMContext *_VMContext)
   : CodeGenAction(Backend_EmitMCNull, _VMContext) {}
 
-void EmitObjAction::anchor() { }
+void EmitObjAction::trezoaanchor() { }
 EmitObjAction::EmitObjAction(llvm::LLVMContext *_VMContext)
   : CodeGenAction(Backend_EmitObj, _VMContext) {}

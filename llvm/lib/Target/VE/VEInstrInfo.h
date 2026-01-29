@@ -50,7 +50,7 @@ enum {
 
 class VEInstrInfo : public VEGenInstrInfo {
   const VERegisterInfo RI;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit VEInstrInfo(VESubtarget &ST);

@@ -548,7 +548,7 @@ raw_ostream &raw_ostream::reverseColor() {
   return *this;
 }
 
-void raw_ostream::anchor() {}
+void raw_ostream::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 //  Formatted Output
@@ -886,7 +886,7 @@ raw_fd_ostream::tryLockFor(Duration const& Timeout) {
   return errorCodeToError(EC);
 }
 
-void raw_fd_ostream::anchor() {}
+void raw_fd_ostream::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 //  outs(), errs(), nulls()
@@ -1003,11 +1003,11 @@ uint64_t raw_null_ostream::current_pos() const {
 void raw_null_ostream::pwrite_impl(const char *Ptr, size_t Size,
                                    uint64_t Offset) {}
 
-void raw_pwrite_stream::anchor() {}
+void raw_pwrite_stream::trezoaanchor() {}
 
-void buffer_ostream::anchor() {}
+void buffer_ostream::trezoaanchor() {}
 
-void buffer_unique_ostream::anchor() {}
+void buffer_unique_ostream::trezoaanchor() {}
 
 Error llvm::writeToOutput(StringRef OutputFileName,
                           std::function<Error(raw_ostream &)> Write) {

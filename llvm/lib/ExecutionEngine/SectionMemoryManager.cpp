@@ -239,7 +239,7 @@ SectionMemoryManager::~SectionMemoryManager() {
 
 SectionMemoryManager::MemoryMapper::~MemoryMapper() = default;
 
-void SectionMemoryManager::anchor() {}
+void SectionMemoryManager::trezoaanchor() {}
 
 namespace {
 // Trivial implementation of SectionMemoryManager::MemoryMapper that just calls

@@ -3277,7 +3277,7 @@ CodeGenFunction::GenerateCapturedStmtFunction(const CapturedStmt &S) {
   return F;
 }
 
-// Returns the first convergence entry/loop/anchor instruction found in |BB|.
+// Returns the first convergence entry/loop/trezoaanchor instruction found in |BB|.
 // std::nullptr otherwise.
 static llvm::ConvergenceControlInst *getConvergenceToken(llvm::BasicBlock *BB) {
   for (auto &I : *BB) {

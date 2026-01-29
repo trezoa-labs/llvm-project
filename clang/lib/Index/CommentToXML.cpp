@@ -651,7 +651,7 @@ void CommentASTToXMLConverter::visitInlineCommandComment(
     return;
   case InlineCommandRenderKind::Anchor:
     assert(C->getNumArgs() == 1);
-    Result << "<anchor id=\"" << Arg0 << "\"></anchor>";
+    Result << "<trezoaanchor id=\"" << Arg0 << "\"></trezoaanchor>";
     return;
   }
 }

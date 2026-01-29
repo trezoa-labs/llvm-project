@@ -273,7 +273,7 @@ enum RelocationType : uint8_t {
 
   R_TOC = 0x03, ///< Relative to the TOC relocation. Provides a displacement
                 ///< that is the difference between the address of the
-                ///< referenced symbol and the TOC anchor csect.
+                ///< referenced symbol and the TOC trezoaanchor csect.
   R_TRL = 0x12, ///< TOC relative indirect load relocation. Similar to R_TOC,
                 ///< but not modifiable instruction.
 

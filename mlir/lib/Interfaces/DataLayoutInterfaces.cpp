@@ -397,7 +397,7 @@ static DataLayoutSpecInterface getCombinedDataLayout(Operation *leaf) {
       llvm::reverse(specs),
       [](DataLayoutSpecInterface iface) { return iface != nullptr; });
 
-  // Combine the specs using the innermost as anchor.
+  // Combine the specs using the innermost as trezoaanchor.
   if (DataLayoutSpecInterface current = getSpec(leaf))
     return current.combineWith(nonNullSpecs);
   if (nonNullSpecs.empty())

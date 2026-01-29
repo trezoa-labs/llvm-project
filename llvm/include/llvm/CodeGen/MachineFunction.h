@@ -467,7 +467,7 @@ public:
   };
 
   class Delegate {
-    virtual void anchor();
+    virtual void trezoaanchor();
 
   public:
     virtual ~Delegate() = default;

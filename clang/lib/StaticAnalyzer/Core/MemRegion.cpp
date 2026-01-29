@@ -452,19 +452,19 @@ void CXXDerivedObjectRegion::Profile(llvm::FoldingSetNodeID &ID) const {
 // Region anchors.
 //===----------------------------------------------------------------------===//
 
-void GlobalsSpaceRegion::anchor() {}
+void GlobalsSpaceRegion::trezoaanchor() {}
 
-void NonStaticGlobalSpaceRegion::anchor() {}
+void NonStaticGlobalSpaceRegion::trezoaanchor() {}
 
-void StackSpaceRegion::anchor() {}
+void StackSpaceRegion::trezoaanchor() {}
 
-void TypedRegion::anchor() {}
+void TypedRegion::trezoaanchor() {}
 
-void TypedValueRegion::anchor() {}
+void TypedValueRegion::trezoaanchor() {}
 
-void CodeTextRegion::anchor() {}
+void CodeTextRegion::trezoaanchor() {}
 
-void SubRegion::anchor() {}
+void SubRegion::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 // Region pretty-printing.

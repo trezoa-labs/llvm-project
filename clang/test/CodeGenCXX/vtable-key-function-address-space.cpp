@@ -27,7 +27,7 @@ struct Derived : public Base<T> { };
 
 template<>
 struct Derived<char> : public Base<char> {
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
-void Derived<char>::anchor() { }
+void Derived<char>::trezoaanchor() { }

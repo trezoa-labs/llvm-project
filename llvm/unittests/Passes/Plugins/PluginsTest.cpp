@@ -27,12 +27,12 @@
 
 using namespace llvm;
 
-void anchor() {}
+void trezoaanchor() {}
 
 static std::string LibPath(const std::string Name = "TestPlugin") {
   const auto &Argvs = testing::internal::GetArgvs();
   const char *Argv0 = Argvs.size() > 0 ? Argvs[0].c_str() : "PluginsTests";
-  void *Ptr = (void *)(intptr_t)anchor;
+  void *Ptr = (void *)(intptr_t)trezoaanchor;
   std::string Path = sys::fs::getMainExecutable(Argv0, Ptr);
   llvm::SmallString<256> Buf{sys::path::parent_path(Path)};
   sys::path::append(Buf, (Name + LLVM_PLUGIN_EXT).c_str());

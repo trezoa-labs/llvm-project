@@ -230,7 +230,7 @@ public:
 class InputAction : public Action {
   const llvm::opt::Arg &Input;
   std::string Id;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   InputAction(const llvm::opt::Arg &Input, types::ID Type,
@@ -247,7 +247,7 @@ public:
 };
 
 class BindArchAction : public Action {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// The architecture to bind, or 0 if the default architecture
   /// should be bound.
@@ -267,7 +267,7 @@ public:
 /// programming model implementation needs and propagates the offloading kind to
 /// its dependences.
 class OffloadAction final : public Action {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   /// Type used to communicate device actions. It associates bound architecture,
@@ -398,7 +398,7 @@ public:
 };
 
 class JobAction : public Action {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   JobAction(ActionClass Kind, Action *Input, types::ID Type);
@@ -412,7 +412,7 @@ public:
 };
 
 class PreprocessJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   PreprocessJobAction(Action *Input, types::ID OutputType);
@@ -423,7 +423,7 @@ public:
 };
 
 class PrecompileJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   PrecompileJobAction(ActionClass Kind, Action *Input, types::ID OutputType);
@@ -437,7 +437,7 @@ public:
 };
 
 class ExtractAPIJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   ExtractAPIJobAction(Action *Input, types::ID OutputType);
@@ -450,7 +450,7 @@ public:
 };
 
 class AnalyzeJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   AnalyzeJobAction(Action *Input, types::ID OutputType);
@@ -461,7 +461,7 @@ public:
 };
 
 class MigrateJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   MigrateJobAction(Action *Input, types::ID OutputType);
@@ -472,7 +472,7 @@ public:
 };
 
 class CompileJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   CompileJobAction(Action *Input, types::ID OutputType);
@@ -483,7 +483,7 @@ public:
 };
 
 class BackendJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   BackendJobAction(Action *Input, types::ID OutputType);
@@ -494,7 +494,7 @@ public:
 };
 
 class AssembleJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   AssembleJobAction(Action *Input, types::ID OutputType);
@@ -505,7 +505,7 @@ public:
 };
 
 class IfsMergeJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   IfsMergeJobAction(ActionList &Inputs, types::ID Type);
@@ -516,7 +516,7 @@ public:
 };
 
 class LinkJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   LinkJobAction(ActionList &Inputs, types::ID Type);
@@ -527,7 +527,7 @@ public:
 };
 
 class LipoJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   LipoJobAction(ActionList &Inputs, types::ID Type);
@@ -538,7 +538,7 @@ public:
 };
 
 class DsymutilJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   DsymutilJobAction(ActionList &Inputs, types::ID Type);
@@ -549,7 +549,7 @@ public:
 };
 
 class VerifyJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   VerifyJobAction(ActionClass Kind, Action *Input, types::ID Type);
@@ -561,7 +561,7 @@ public:
 };
 
 class VerifyDebugInfoJobAction : public VerifyJobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   VerifyDebugInfoJobAction(Action *Input, types::ID Type);
@@ -572,7 +572,7 @@ public:
 };
 
 class VerifyPCHJobAction : public VerifyJobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   VerifyPCHJobAction(Action *Input, types::ID Type);
@@ -583,7 +583,7 @@ public:
 };
 
 class OffloadBundlingJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   // Offloading bundling doesn't change the type of output.
@@ -595,7 +595,7 @@ public:
 };
 
 class OffloadUnbundlingJobAction final : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   /// Type that provides information about the actions that depend on this
@@ -644,7 +644,7 @@ public:
 };
 
 class OffloadPackagerJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   OffloadPackagerJobAction(ActionList &Inputs, types::ID Type);
@@ -655,7 +655,7 @@ public:
 };
 
 class LinkerWrapperJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   LinkerWrapperJobAction(ActionList &Inputs, types::ID Type);
@@ -666,7 +666,7 @@ public:
 };
 
 class StaticLibJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   StaticLibJobAction(ActionList &Inputs, types::ID Type);
@@ -677,7 +677,7 @@ public:
 };
 
 class BinaryAnalyzeJobAction : public JobAction {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   BinaryAnalyzeJobAction(Action *Input, types::ID Type);

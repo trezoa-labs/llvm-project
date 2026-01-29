@@ -2559,7 +2559,7 @@ struct AAICVTrackerCallSite : AAICVTracker {
       : AAICVTracker(IRP, A) {}
 
   void initialize(Attributor &A) override {
-    assert(getAnchorScope() && "Expected anchor function");
+    assert(getAnchorScope() && "Expected trezoaanchor function");
 
     // We only initialize this AA for getters, so we need to know which ICV it
     // gets.
@@ -2697,7 +2697,7 @@ struct AAExecutionDomainFunction : public AAExecutionDomain {
 
   void initialize(Attributor &A) override {
     Function *F = getAnchorScope();
-    assert(F && "Expected anchor function");
+    assert(F && "Expected trezoaanchor function");
     RPOT = new ReversePostOrderTraversal<Function *>(F);
   }
 
@@ -4253,7 +4253,7 @@ struct AAKernelInfoFunction : AAKernelInfo {
       return false;
     }
 
-    // Get the actual kernel, could be the caller of the anchor scope if we have
+    // Get the actual kernel, could be the caller of the trezoaanchor scope if we have
     // a debug wrapper.
     Function *Kernel = getAnchorScope();
     if (Kernel->hasLocalLinkage()) {

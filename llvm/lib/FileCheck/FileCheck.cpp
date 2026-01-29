@@ -2083,7 +2083,7 @@ static Error printNoMatch(bool ExpectedMatch, const SourceMgr &SM,
   // we add the "not found" diagnostic to Diags even if there are pattern
   // errors.  The reason is that we need to attach pattern errors as notes
   // somewhere in the input, and the input search range from the "not found"
-  // diagnostic is all we have to anchor them.
+  // diagnostic is all we have to trezoaanchor them.
   SMRange SearchRange = ProcessMatchResult(MatchTy, SM, Loc, Pat.getCheckTy(),
                                            Buffer, 0, Buffer.size(), Diags);
   if (Diags) {

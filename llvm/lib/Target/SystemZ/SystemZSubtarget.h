@@ -31,7 +31,7 @@ class GlobalValue;
 class StringRef;
 
 class SystemZSubtarget : public SystemZGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 protected:
 // Bool members corresponding to the SubtargetFeatures defined in tablegen.
 #define GET_SUBTARGETINFO_MACRO(ATTRIBUTE, DEFAULT, GETTER)                    \

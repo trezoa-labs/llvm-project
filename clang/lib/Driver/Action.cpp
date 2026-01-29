@@ -177,17 +177,17 @@ StringRef Action::GetOffloadKindName(OffloadKind Kind) {
   llvm_unreachable("invalid offload kind");
 }
 
-void InputAction::anchor() {}
+void InputAction::trezoaanchor() {}
 
 InputAction::InputAction(const Arg &_Input, types::ID _Type, StringRef _Id)
     : Action(InputClass, _Type), Input(_Input), Id(_Id.str()) {}
 
-void BindArchAction::anchor() {}
+void BindArchAction::trezoaanchor() {}
 
 BindArchAction::BindArchAction(Action *Input, StringRef ArchName)
     : Action(BindArchClass, Input), ArchName(ArchName) {}
 
-void OffloadAction::anchor() {}
+void OffloadAction::trezoaanchor() {}
 
 OffloadAction::OffloadAction(const HostDependence &HDep)
     : Action(OffloadClass, HDep.getAction()), HostTC(HDep.getToolChain()) {
@@ -339,7 +339,7 @@ OffloadAction::HostDependence::HostDependence(Action &A, const ToolChain &TC,
     HostOffloadKinds |= K;
 }
 
-void JobAction::anchor() {}
+void JobAction::trezoaanchor() {}
 
 JobAction::JobAction(ActionClass Kind, Action *Input, types::ID Type)
     : Action(Kind, Input, Type) {}
@@ -347,12 +347,12 @@ JobAction::JobAction(ActionClass Kind, Action *Input, types::ID Type)
 JobAction::JobAction(ActionClass Kind, const ActionList &Inputs, types::ID Type)
     : Action(Kind, Inputs, Type) {}
 
-void PreprocessJobAction::anchor() {}
+void PreprocessJobAction::trezoaanchor() {}
 
 PreprocessJobAction::PreprocessJobAction(Action *Input, types::ID OutputType)
     : JobAction(PreprocessJobClass, Input, OutputType) {}
 
-void PrecompileJobAction::anchor() {}
+void PrecompileJobAction::trezoaanchor() {}
 
 PrecompileJobAction::PrecompileJobAction(Action *Input, types::ID OutputType)
     : JobAction(PrecompileJobClass, Input, OutputType) {}
@@ -363,57 +363,57 @@ PrecompileJobAction::PrecompileJobAction(ActionClass Kind, Action *Input,
   assert(isa<PrecompileJobAction>((Action*)this) && "invalid action kind");
 }
 
-void ExtractAPIJobAction::anchor() {}
+void ExtractAPIJobAction::trezoaanchor() {}
 
 ExtractAPIJobAction::ExtractAPIJobAction(Action *Inputs, types::ID OutputType)
     : JobAction(ExtractAPIJobClass, Inputs, OutputType) {}
 
-void AnalyzeJobAction::anchor() {}
+void AnalyzeJobAction::trezoaanchor() {}
 
 AnalyzeJobAction::AnalyzeJobAction(Action *Input, types::ID OutputType)
     : JobAction(AnalyzeJobClass, Input, OutputType) {}
 
-void MigrateJobAction::anchor() {}
+void MigrateJobAction::trezoaanchor() {}
 
 MigrateJobAction::MigrateJobAction(Action *Input, types::ID OutputType)
     : JobAction(MigrateJobClass, Input, OutputType) {}
 
-void CompileJobAction::anchor() {}
+void CompileJobAction::trezoaanchor() {}
 
 CompileJobAction::CompileJobAction(Action *Input, types::ID OutputType)
     : JobAction(CompileJobClass, Input, OutputType) {}
 
-void BackendJobAction::anchor() {}
+void BackendJobAction::trezoaanchor() {}
 
 BackendJobAction::BackendJobAction(Action *Input, types::ID OutputType)
     : JobAction(BackendJobClass, Input, OutputType) {}
 
-void AssembleJobAction::anchor() {}
+void AssembleJobAction::trezoaanchor() {}
 
 AssembleJobAction::AssembleJobAction(Action *Input, types::ID OutputType)
     : JobAction(AssembleJobClass, Input, OutputType) {}
 
-void IfsMergeJobAction::anchor() {}
+void IfsMergeJobAction::trezoaanchor() {}
 
 IfsMergeJobAction::IfsMergeJobAction(ActionList &Inputs, types::ID Type)
     : JobAction(IfsMergeJobClass, Inputs, Type) {}
 
-void LinkJobAction::anchor() {}
+void LinkJobAction::trezoaanchor() {}
 
 LinkJobAction::LinkJobAction(ActionList &Inputs, types::ID Type)
     : JobAction(LinkJobClass, Inputs, Type) {}
 
-void LipoJobAction::anchor() {}
+void LipoJobAction::trezoaanchor() {}
 
 LipoJobAction::LipoJobAction(ActionList &Inputs, types::ID Type)
     : JobAction(LipoJobClass, Inputs, Type) {}
 
-void DsymutilJobAction::anchor() {}
+void DsymutilJobAction::trezoaanchor() {}
 
 DsymutilJobAction::DsymutilJobAction(ActionList &Inputs, types::ID Type)
     : JobAction(DsymutilJobClass, Inputs, Type) {}
 
-void VerifyJobAction::anchor() {}
+void VerifyJobAction::trezoaanchor() {}
 
 VerifyJobAction::VerifyJobAction(ActionClass Kind, Action *Input,
                                  types::ID Type)
@@ -422,45 +422,45 @@ VerifyJobAction::VerifyJobAction(ActionClass Kind, Action *Input,
          "ActionClass is not a valid VerifyJobAction");
 }
 
-void VerifyDebugInfoJobAction::anchor() {}
+void VerifyDebugInfoJobAction::trezoaanchor() {}
 
 VerifyDebugInfoJobAction::VerifyDebugInfoJobAction(Action *Input,
                                                    types::ID Type)
     : VerifyJobAction(VerifyDebugInfoJobClass, Input, Type) {}
 
-void VerifyPCHJobAction::anchor() {}
+void VerifyPCHJobAction::trezoaanchor() {}
 
 VerifyPCHJobAction::VerifyPCHJobAction(Action *Input, types::ID Type)
     : VerifyJobAction(VerifyPCHJobClass, Input, Type) {}
 
-void OffloadBundlingJobAction::anchor() {}
+void OffloadBundlingJobAction::trezoaanchor() {}
 
 OffloadBundlingJobAction::OffloadBundlingJobAction(ActionList &Inputs)
     : JobAction(OffloadBundlingJobClass, Inputs, Inputs.back()->getType()) {}
 
-void OffloadUnbundlingJobAction::anchor() {}
+void OffloadUnbundlingJobAction::trezoaanchor() {}
 
 OffloadUnbundlingJobAction::OffloadUnbundlingJobAction(Action *Input)
     : JobAction(OffloadUnbundlingJobClass, Input, Input->getType()) {}
 
-void OffloadPackagerJobAction::anchor() {}
+void OffloadPackagerJobAction::trezoaanchor() {}
 
 OffloadPackagerJobAction::OffloadPackagerJobAction(ActionList &Inputs,
                                                    types::ID Type)
     : JobAction(OffloadPackagerJobClass, Inputs, Type) {}
 
-void LinkerWrapperJobAction::anchor() {}
+void LinkerWrapperJobAction::trezoaanchor() {}
 
 LinkerWrapperJobAction::LinkerWrapperJobAction(ActionList &Inputs,
                                                types::ID Type)
     : JobAction(LinkerWrapperJobClass, Inputs, Type) {}
 
-void StaticLibJobAction::anchor() {}
+void StaticLibJobAction::trezoaanchor() {}
 
 StaticLibJobAction::StaticLibJobAction(ActionList &Inputs, types::ID Type)
     : JobAction(StaticLibJobClass, Inputs, Type) {}
 
-void BinaryAnalyzeJobAction::anchor() {}
+void BinaryAnalyzeJobAction::trezoaanchor() {}
 
 BinaryAnalyzeJobAction::BinaryAnalyzeJobAction(Action *Input, types::ID Type)
     : JobAction(BinaryAnalyzeJobClass, Input, Type) {}

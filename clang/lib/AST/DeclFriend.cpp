@@ -23,7 +23,7 @@
 
 using namespace clang;
 
-void FriendDecl::anchor() {}
+void FriendDecl::trezoaanchor() {}
 
 FriendDecl *FriendDecl::getNextFriendSlowCase() {
   return cast_or_null<FriendDecl>(

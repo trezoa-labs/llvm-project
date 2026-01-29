@@ -1081,7 +1081,7 @@ we don't sink the store.  We need partially dead store sinking.
 
 //===---------------------------------------------------------------------===//
 
-[LOAD PRE CRIT EDGE SPLITTING]
+[LOAD PRE CRIT EDGE TPLITTING]
 
 GCC PR37166: Sinking of loads prevents SROA'ing the "g" struct on the stack
 leading to excess stack traffic. This could be handled by GVN with some crazy

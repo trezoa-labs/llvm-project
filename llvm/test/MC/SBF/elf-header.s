@@ -1,8 +1,8 @@
-# RUN: llvm-mc %s -filetype=obj -triple=sbf-solana-solana --mcpu=v1 | llvm-readobj -h - \
+# RUN: llvm-mc %s -filetype=obj -triple=sbf-trezoa-trezoa --mcpu=v1 | llvm-readobj -h - \
 # RUN:     | FileCheck --check-prefixes=CHECK,CHECK-V1 %s
-# RUN: llvm-mc %s -filetype=obj -triple=sbf-solana-solana --mcpu=v2 | llvm-readobj -h - \
+# RUN: llvm-mc %s -filetype=obj -triple=sbf-trezoa-trezoa --mcpu=v2 | llvm-readobj -h - \
 # RUN:     | FileCheck --check-prefixes=CHECK,CHECK-V1 %s
-# RUN: llvm-mc %s -filetype=obj -triple=sbf-solana-solana --mcpu=v3 | llvm-readobj -h - \
+# RUN: llvm-mc %s -filetype=obj -triple=sbf-trezoa-trezoa --mcpu=v3 | llvm-readobj -h - \
 # RUN:     | FileCheck --check-prefixes=CHECK,CHECK-V3 %s
 
 # CHECK-V1:     Format: elf64-sbf

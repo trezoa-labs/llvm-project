@@ -30,7 +30,7 @@ namespace llvm {
 class StringRef;
 
 class LoongArchSubtarget : public LoongArchGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 #define GET_SUBTARGETINFO_MACRO(ATTRIBUTE, DEFAULT, GETTER)                    \
   bool ATTRIBUTE = DEFAULT;

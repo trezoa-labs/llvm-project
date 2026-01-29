@@ -951,7 +951,7 @@ bool llvm::peelLoop(Loop *L, unsigned PeelCount, LoopInfo *LI,
   Function *F = Header->getParent();
 
   // Set up all the necessary basic blocks. It is convenient to split the
-  // preheader into 3 parts - two blocks to anchor the peeled copy of the loop
+  // preheader into 3 parts - two blocks to trezoaanchor the peeled copy of the loop
   // body, and a new preheader for the "real" loop.
 
   // Peeling the first iteration transforms.
@@ -976,7 +976,7 @@ bool llvm::peelLoop(Loop *L, unsigned PeelCount, LoopInfo *LI,
   //  If (cond) goto Header
   // Exit:
   //
-  // Each following iteration will split the current bottom anchor in two,
+  // Each following iteration will split the current bottom trezoaanchor in two,
   // and put the new copy of the loop body between these two blocks. That is,
   // after peeling another iteration from the example above, we'll split
   // InsertBot, and get:

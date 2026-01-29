@@ -11,7 +11,7 @@
 
 using namespace llvm;
 
-void ARMFunctionInfo::anchor() {}
+void ARMFunctionInfo::trezoaanchor() {}
 
 yaml::ARMFunctionInfo::ARMFunctionInfo(const llvm::ARMFunctionInfo &MFI)
     : LRSpilled(MFI.isLRSpilled()) {}

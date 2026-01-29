@@ -36,7 +36,7 @@ size_t MachOWriter::symTableSize() const {
 }
 
 size_t MachOWriter::totalSize() const {
-  // Going from tail to head and looking for an appropriate "anchor" to
+  // Going from tail to head and looking for an appropriate "trezoaanchor" to
   // calculate the total size assuming that all the offsets are either valid
   // ("true") or 0 (0 indicates that the corresponding part is missing).
 

@@ -1,11 +1,11 @@
-# RUN: llvm-mc %s -triple=sbf-solana-solana -mattr=+mem-encoding,+pqr-instr --show-encoding \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa -mattr=+mem-encoding,+pqr-instr --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK-ASM-NEW
-# RUN: llvm-mc %s -triple=sbf-solana-solana -mcpu=sbfv2 -mattr=+mem-encoding,+pqr-instr -filetype=obj \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa -mcpu=sbfv2 -mattr=+mem-encoding,+pqr-instr -filetype=obj \
 # RUN:     | llvm-objdump --mattr=+mem-encoding,+pqr-instr -d -r - \
 # RUN:     | FileCheck --check-prefix=CHECK-OBJ-NEW %s
-# RUN: llvm-mc %s -triple=sbf-solana-solana -mattr=+alu32,+mem-encoding,+pqr-instr --show-encoding \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa -mattr=+alu32,+mem-encoding,+pqr-instr --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK32-ASM-NEW
-# RUN: llvm-mc %s -triple=sbf-solana-solana -mcpu=sbfv2 -mattr=+alu32,+mem-encoding,+pqr-instr -filetype=obj \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa -mcpu=sbfv2 -mattr=+alu32,+mem-encoding,+pqr-instr -filetype=obj \
 # RUN:     | llvm-objdump --mattr=+mem-encoding,+pqr-instr,+alu32 -d -r - \
 # RUN:     | FileCheck --check-prefix=CHECK32-OBJ-NEW %s
 

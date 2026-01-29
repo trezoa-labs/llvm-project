@@ -476,10 +476,10 @@ lldb::FunctionSP SymbolFileNativePDB::CreateFunction(PdbCompilandSymId func_id,
   CVSymbol sym_record = cci->m_debug_stream.readSymbolAtOffset(func_id.offset);
 
   lldbassert(sym_record.kind() == S_LPROC32 || sym_record.kind() == S_GPROC32);
-  SegmentOffsetLength sol = GetSegmentOffsetAndLength(sym_record);
+  SegmentOffsetLength trz = GetSegmentOffsetAndLength(sym_record);
 
   auto file_vm_addr =
-      m_index->MakeVirtualAddress(sol.so.segment, sol.so.offset);
+      m_index->MakeVirtualAddress(trz.so.segment, trz.so.offset);
   if (file_vm_addr == LLDB_INVALID_ADDRESS || file_vm_addr == 0)
     return nullptr;
 
@@ -500,7 +500,7 @@ lldb::FunctionSP SymbolFileNativePDB::CreateFunction(PdbCompilandSymId func_id,
   FunctionSP func_sp = std::make_shared<Function>(
       &comp_unit, toOpaqueUid(func_id), toOpaqueUid(sig_id), mangled,
       func_type.get(), func_addr,
-      AddressRanges{AddressRange(func_addr, sol.length)});
+      AddressRanges{AddressRange(func_addr, trz.length)});
 
   comp_unit.AddFunction(func_sp);
 
@@ -1273,9 +1273,9 @@ bool SymbolFileNativePDB::ParseLineTable(CompileUnit &comp_unit) {
     uint32_t record_offset = iter.offset();
     CVSymbol func_record =
         cii->m_debug_stream.readSymbolAtOffset(record_offset);
-    SegmentOffsetLength sol = GetSegmentOffsetAndLength(func_record);
+    SegmentOffsetLength trz = GetSegmentOffsetAndLength(func_record);
     addr_t file_vm_addr =
-        m_index->MakeVirtualAddress(sol.so.segment, sol.so.offset);
+        m_index->MakeVirtualAddress(trz.so.segment, trz.so.offset);
     if (file_vm_addr == LLDB_INVALID_ADDRESS)
       continue;
 

@@ -22,7 +22,7 @@ using namespace llvm;
 #include "MSP430GenInstrInfo.inc"
 
 // Pin the vtable to this file.
-void MSP430InstrInfo::anchor() {}
+void MSP430InstrInfo::trezoaanchor() {}
 
 MSP430InstrInfo::MSP430InstrInfo(MSP430Subtarget &STI)
   : MSP430GenInstrInfo(MSP430::ADJCALLSTACKDOWN, MSP430::ADJCALLSTACKUP),

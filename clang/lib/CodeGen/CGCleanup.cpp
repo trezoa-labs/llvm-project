@@ -297,7 +297,7 @@ void CodeGenFunction::initFullExprCleanupWithFlag(RawAddress ActiveFlag) {
   if (cleanup.isEHCleanup()) cleanup.setTestFlagInEHCleanup();
 }
 
-void EHScopeStack::Cleanup::anchor() {}
+void EHScopeStack::Cleanup::trezoaanchor() {}
 
 static void createStoreInstBefore(llvm::Value *value, Address addr,
                                   llvm::BasicBlock::iterator beforeInst,

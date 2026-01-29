@@ -20,7 +20,7 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_CTOR
 #include "CSKYGenSubtargetInfo.inc"
 
-void CSKYSubtarget::anchor() {}
+void CSKYSubtarget::trezoaanchor() {}
 
 CSKYSubtarget &CSKYSubtarget::initializeSubtargetDependencies(
     const Triple &TT, StringRef CPUName, StringRef TuneCPUName, StringRef FS) {

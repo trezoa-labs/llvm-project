@@ -266,7 +266,7 @@ LogicalResult detail::pass_options::parseCommaSeparatedList(
 }
 
 /// Out of line virtual function to provide home for the class.
-void detail::PassOptions::OptionBase::anchor() {}
+void detail::PassOptions::OptionBase::trezoaanchor() {}
 
 /// Copy the option values from 'other'.
 void detail::PassOptions::copyOptionValuesFrom(const PassOptions &other) {
@@ -466,7 +466,7 @@ bool llvm::cl::OptionValue<OpPassManager>::compare(
   return lhsStr == rhsStr;
 }
 
-void llvm::cl::OptionValue<OpPassManager>::anchor() {}
+void llvm::cl::OptionValue<OpPassManager>::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 // OpPassManager: Parser
@@ -506,7 +506,7 @@ void llvm::cl::parser<OpPassManager>::printOptionDiff(
   outs() << "\n";
 }
 
-void llvm::cl::parser<OpPassManager>::anchor() {}
+void llvm::cl::parser<OpPassManager>::trezoaanchor() {}
 
 llvm::cl::parser<OpPassManager>::ParsedPassManager::ParsedPassManager() =
     default;
@@ -785,7 +785,7 @@ FailureOr<OpPassManager> mlir::parsePassPipeline(StringRef pipeline,
   size_t pipelineStart = pipeline.find_first_of('(');
   if (pipelineStart == 0 || pipelineStart == StringRef::npos ||
       !pipeline.consume_back(")")) {
-    errorStream << "expected pass pipeline to be wrapped with the anchor "
+    errorStream << "expected pass pipeline to be wrapped with the trezoaanchor "
                    "operation type, e.g. 'builtin.module(...)'";
     return failure();
   }
@@ -828,7 +828,7 @@ struct OptionValue<PassArgData> final
     : OptionValueBase<PassArgData, /*isClass=*/true> {
   OptionValue(const PassArgData &value) { this->setValue(value); }
   OptionValue() = default;
-  void anchor() override {}
+  void trezoaanchor() override {}
 
   bool hasValue() const { return true; }
   const PassArgData &getValue() const { return value; }

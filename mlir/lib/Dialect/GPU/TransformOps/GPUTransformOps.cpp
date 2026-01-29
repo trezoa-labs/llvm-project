@@ -586,7 +586,7 @@ DiagnosedSilenceableFailure mlir::transform::gpu::mapForallToBlocksImpl(
   LDBG("Start mapForallToBlocksImpl");
 
   {
-    // GPU-specific verifications. There is no better place to anchor
+    // GPU-specific verifications. There is no better place to trezoaanchor
     // those right now: the ForallOp is target-independent and the transform
     // op does not apply to individual ForallOp.
     DiagnosedSilenceableFailure diag =
@@ -809,7 +809,7 @@ DiagnosedSilenceableFailure mlir::transform::gpu::mapOneForallToThreadsImpl(
     bool syncAfterDistribute) {
 
   {
-    // GPU-specific verifications. There is no better place to anchor
+    // GPU-specific verifications. There is no better place to trezoaanchor
     // those right now: the ForallOp is target-independent and the transform
     // op does not apply to individual ForallOp.
     DiagnosedSilenceableFailure diag =

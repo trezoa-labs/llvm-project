@@ -13,7 +13,7 @@
 using namespace llvm;
 using namespace llvm::orc;
 
-void RedirectionManager::anchor() {}
+void RedirectionManager::trezoaanchor() {}
 
 Error RedirectableSymbolManager::createRedirectableSymbols(
     ResourceTrackerSP RT, SymbolMap InitialDests) {

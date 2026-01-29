@@ -28,7 +28,7 @@ class Archive;
 class IRObjectFile;
 
 class MachOUniversalBinary : public Binary {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   uint32_t Magic;
   uint32_t NumberOfObjects;

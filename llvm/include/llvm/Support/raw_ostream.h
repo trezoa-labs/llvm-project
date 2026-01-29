@@ -414,7 +414,7 @@ private:
   /// flushing. The result is affected by calls to enable_color().
   bool prepare_colors();
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// Call the appropriate insertion operator, given an rvalue reference to a
@@ -433,7 +433,7 @@ operator<<(OStream &&OS, const T &Value) {
 /// but needs to patch in a header that needs to know the output size.
 class raw_pwrite_stream : public raw_ostream {
   virtual void pwrite_impl(const char *Ptr, size_t Size, uint64_t Offset) = 0;
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit raw_pwrite_stream(bool Unbuffered = false,
@@ -490,7 +490,7 @@ class raw_fd_ostream : public raw_pwrite_stream {
   /// Determine an efficient buffer size.
   size_t preferred_buffer_size() const override;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   /// Set the flag indicating that an output error has been encountered.
@@ -746,7 +746,7 @@ class buffer_ostream : public raw_svector_ostream {
   raw_ostream &OS;
   SmallVector<char, 0> Buffer;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   buffer_ostream(raw_ostream &OS) : raw_svector_ostream(Buffer), OS(OS) {}
@@ -757,7 +757,7 @@ class buffer_unique_ostream : public raw_svector_ostream {
   std::unique_ptr<raw_ostream> OS;
   SmallVector<char, 0> Buffer;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   buffer_unique_ostream(std::unique_ptr<raw_ostream> OS)

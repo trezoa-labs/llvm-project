@@ -80,7 +80,7 @@ public:
 /// complexity behind a simple interface.
 ///
 class AbstractInterpreter {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static LLC *createLLC(const char *Argv0, std::string &Message,

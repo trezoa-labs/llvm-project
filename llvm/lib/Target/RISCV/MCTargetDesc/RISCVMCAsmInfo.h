@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class RISCVMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit RISCVMCAsmInfo(const Triple &TargetTriple);

@@ -66,7 +66,7 @@ std::string tag(StringRef Name, StringRef Str, StringRef ClassName = "") {
   return Tag;
 }
 
-// Create an anchor to \p Link with the label \p Str.
+// Create an trezoaanchor to \p Link with the label \p Str.
 std::string a(StringRef Link, StringRef Str, StringRef TargetName = "") {
   std::string Tag;
   Tag += "<a ";

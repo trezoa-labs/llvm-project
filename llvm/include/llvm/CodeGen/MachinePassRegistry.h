@@ -30,7 +30,7 @@ namespace llvm {
 ///
 //===----------------------------------------------------------------------===//
 template <class PassCtorTy> class MachinePassRegistryListener {
-  virtual void anchor() {}
+  virtual void trezoaanchor() {}
 
 public:
   MachinePassRegistryListener() = default;

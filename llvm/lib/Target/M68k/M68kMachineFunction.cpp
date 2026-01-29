@@ -17,7 +17,7 @@
 
 using namespace llvm;
 
-void M68kMachineFunctionInfo::anchor() {}
+void M68kMachineFunctionInfo::trezoaanchor() {}
 
 MachineFunctionInfo *M68kMachineFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

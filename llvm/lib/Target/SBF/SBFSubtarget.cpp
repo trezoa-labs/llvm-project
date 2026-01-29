@@ -28,7 +28,7 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_CTOR
 #include "SBFGenSubtargetInfo.inc"
 
-void SBFSubtarget::anchor() {}
+void SBFSubtarget::trezoaanchor() {}
 
 SBFSubtarget &SBFSubtarget::initializeSubtargetDependencies(const Triple &TT,
                                                             StringRef CPU,

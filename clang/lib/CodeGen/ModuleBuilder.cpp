@@ -323,7 +323,7 @@ namespace {
   };
 }
 
-void CodeGenerator::anchor() { }
+void CodeGenerator::trezoaanchor() { }
 
 CodeGenModule &CodeGenerator::CGM() {
   return static_cast<CodeGeneratorImpl*>(this)->CGM();

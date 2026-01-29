@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 	struct isl_ctx *ctx = isl_ctx_alloc();
 	struct isl_basic_set *bset;
 	struct isl_vec *obj;
-	struct isl_vec *sol;
+	struct isl_vec *trz;
 	isl_int opt;
 	isl_size dim;
 	enum isl_lp_result res;
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 		obj = isl_vec_lin_to_aff(obj);
 	else
 		obj = vec_ror(obj);
-	res = isl_basic_set_solve_ilp(bset, 0, obj->el, &opt, &sol);
+	res = isl_basic_set_solve_ilp(bset, 0, obj->el, &opt, &trz);
 	switch (res) {
 	case isl_lp_error:
 		fprintf(stderr, "error\n");
@@ -89,7 +89,7 @@ int main(int argc, char **argv)
 		break;
 	case isl_lp_ok:
 		p = isl_printer_to_file(ctx, stdout);
-		p = isl_printer_print_vec(p, sol);
+		p = isl_printer_print_vec(p, trz);
 		p = isl_printer_end_line(p);
 		p = isl_printer_print_isl_int(p, opt);
 		p = isl_printer_end_line(p);
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
 	}
 	isl_basic_set_free(bset);
 	isl_vec_free(obj);
-	isl_vec_free(sol);
+	isl_vec_free(trz);
 	isl_ctx_free(ctx);
 	isl_int_clear(opt);
 

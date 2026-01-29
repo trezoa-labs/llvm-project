@@ -227,7 +227,7 @@ public:
 /// of this object are created by createObjectFile, which figures out which type
 /// to create.
 class ObjectFile : public SymbolicFile {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   ObjectFile(unsigned int Type, MemoryBufferRef Source);

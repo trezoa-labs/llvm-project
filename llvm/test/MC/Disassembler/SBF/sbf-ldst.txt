@@ -1,6 +1,6 @@
-# RUN: llvm-mc --disassemble %s -triple=sbf-solana-solana \
+# RUN: llvm-mc --disassemble %s -triple=sbf-trezoa-trezoa \
 # RUN:                          | FileCheck %s --check-prefix=CHECK-NEW
-# RUN: llvm-mc --disassemble %s -triple=sbf-solana-solana -mattr=+alu32 \
+# RUN: llvm-mc --disassemble %s -triple=sbf-trezoa-trezoa -mattr=+alu32 \
 # RUN:                          | FileCheck %s --check-prefix=CHECK32-NEW
 
 # TODO: Test immediate field ranges and some hex immediates.

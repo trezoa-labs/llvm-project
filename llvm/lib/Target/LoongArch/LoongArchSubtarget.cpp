@@ -25,7 +25,7 @@ using namespace llvm;
 static cl::opt<bool> UseAA("loongarch-use-aa", cl::init(true),
                            cl::desc("Enable the use of AA during codegen."));
 
-void LoongArchSubtarget::anchor() {}
+void LoongArchSubtarget::trezoaanchor() {}
 
 // Enable use of alias analysis during code generation (during MI scheduling,
 // DAGCombine, etc.).

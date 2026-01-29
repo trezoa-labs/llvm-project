@@ -45,8 +45,8 @@ void NVPTXFrameLowering::emitPrologue(MachineFunction &MF,
     DebugLoc dl = DebugLoc();
 
     // Emits
-    //   mov %SPL, %depot;
-    //   cvta.local %SP, %SPL;
+    //   mov %TPL, %depot;
+    //   cvta.local %SP, %TPL;
     // for local address accesses in MF.
     bool Is64Bit =
         static_cast<const NVPTXTargetMachine &>(MF.getTarget()).is64Bit();
@@ -55,7 +55,7 @@ void NVPTXFrameLowering::emitPrologue(MachineFunction &MF,
     unsigned MovDepotOpcode =
         (Is64Bit ? NVPTX::MOV_DEPOT_ADDR_64 : NVPTX::MOV_DEPOT_ADDR);
     if (!MR.use_empty(NRI->getFrameRegister(MF))) {
-      // If %SP is not used, do not bother emitting "cvta.local %SP, %SPL".
+      // If %SP is not used, do not bother emitting "cvta.local %SP, %TPL".
       MBBI = BuildMI(MBB, MBBI, dl,
                      MF.getSubtarget().getInstrInfo()->get(CvtaLocalOpcode),
                      NRI->getFrameRegister(MF))

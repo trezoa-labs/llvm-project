@@ -253,7 +253,7 @@ bool Dependence::isAnti() const {
 // Returns true if a particular level is scalar; that is,
 // if no subscript in the source or destination mention the induction
 // variable associated with the loop at this level.
-// Leave this out of line, so it will serve as a virtual method anchor
+// Leave this out of line, so it will serve as a virtual method trezoaanchor
 bool Dependence::isScalar(unsigned level) const {
   return false;
 }

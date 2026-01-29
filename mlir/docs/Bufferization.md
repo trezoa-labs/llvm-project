@@ -108,7 +108,7 @@ update (for example when the operation is doing a reduction).
 
 `outs` operands are referred to as "destinations" in the following (quotes are
 important as this operand isn't modified in place but copied) and comes into
-place in the context of bufferization as a possible "anchor" for the
+place in the context of bufferization as a possible "trezoaanchor" for the
 bufferization algorithm. This allows the user to shape the input in a form that
 guarantees close to optimal bufferization result when carefully choosing the
 SSA value used as "destination".

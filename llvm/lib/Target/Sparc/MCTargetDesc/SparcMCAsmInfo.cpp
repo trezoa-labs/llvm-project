@@ -20,7 +20,7 @@
 
 using namespace llvm;
 
-void SparcELFMCAsmInfo::anchor() {}
+void SparcELFMCAsmInfo::trezoaanchor() {}
 
 SparcELFMCAsmInfo::SparcELFMCAsmInfo(const Triple &TheTriple) {
   bool isV9 = (TheTriple.getArch() == Triple::sparcv9);

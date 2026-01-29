@@ -266,7 +266,7 @@ struct Impl : RecursiveASTVisitor<Impl> {
 };
 } // namespace
 
-void DynamicRecursiveASTVisitor::anchor() {}
+void DynamicRecursiveASTVisitor::trezoaanchor() {}
 
 bool DynamicRecursiveASTVisitor::TraverseAST(ASTContext &AST) {
   return Impl(*this).RecursiveASTVisitor<Impl>::TraverseAST(AST);

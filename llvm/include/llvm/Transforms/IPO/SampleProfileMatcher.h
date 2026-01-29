@@ -35,7 +35,7 @@ class SampleProfileMatcher {
   // in the profile.
   StringMap<LocToLocMap> FuncMappings;
 
-  // Match state for an anchor/callsite.
+  // Match state for an trezoaanchor/callsite.
   enum class MatchState {
     Unknown = 0,
     // Initial match between input profile and current IR.

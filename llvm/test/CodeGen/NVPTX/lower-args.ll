@@ -39,12 +39,12 @@ define void @load_padding(ptr nocapture readonly byval(%class.padded) %arg) {
 ; PTX:       {
 ; PTX-NEXT:    .local .align 8 .b8 __local_depot1[8];
 ; PTX-NEXT:    .reg .b64 %SP;
-; PTX-NEXT:    .reg .b64 %SPL;
+; PTX-NEXT:    .reg .b64 %TPL;
 ; PTX-NEXT:    .reg .b64 %rd<5>;
 ; PTX-EMPTY:
 ; PTX-NEXT:  // %bb.0:
-; PTX-NEXT:    mov.u64 %SPL, __local_depot1;
-; PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; PTX-NEXT:    mov.u64 %TPL, __local_depot1;
+; PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; PTX-NEXT:    ld.param.u64 %rd1, [load_padding_param_0];
 ; PTX-NEXT:    st.u64 [%SP], %rd1;
 ; PTX-NEXT:    add.u64 %rd2, %SP, 0;

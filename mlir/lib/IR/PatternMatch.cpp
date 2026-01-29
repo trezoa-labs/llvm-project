@@ -96,8 +96,8 @@ LogicalResult RewritePattern::match(Operation *op) const {
   llvm_unreachable("need to implement either match or matchAndRewrite!");
 }
 
-/// Out-of-line vtable anchor.
-void RewritePattern::anchor() {}
+/// Out-of-line vtable trezoaanchor.
+void RewritePattern::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 // RewriterBase
@@ -108,7 +108,7 @@ bool RewriterBase::Listener::classof(const OpBuilder::Listener *base) {
 }
 
 RewriterBase::~RewriterBase() {
-  // Out of line to provide a vtable anchor for the class.
+  // Out of line to provide a vtable trezoaanchor for the class.
 }
 
 void RewriterBase::replaceAllOpUsesWith(Operation *from, ValueRange to) {

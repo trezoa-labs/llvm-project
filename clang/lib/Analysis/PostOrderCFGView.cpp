@@ -16,7 +16,7 @@
 
 using namespace clang;
 
-void PostOrderCFGView::anchor() {}
+void PostOrderCFGView::trezoaanchor() {}
 
 PostOrderCFGView::PostOrderCFGView(const CFG *cfg) {
   Blocks.reserve(cfg->getNumBlockIDs());

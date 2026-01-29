@@ -42,7 +42,7 @@ class StringRef;
 class M68kTargetMachine;
 
 class M68kSubtarget : public M68kGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   // These define which ISA is supported. Since each Motorola M68k ISA is

@@ -396,7 +396,7 @@ public:
 /// The TemplateDecl class stores the list of template parameters and a
 /// reference to the templated scoped declaration: the underlying AST node.
 class TemplateDecl : public NamedDecl {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   // Construct a template decl with name, parameters, and templated element.
@@ -732,7 +732,7 @@ class RedeclarableTemplateDecl : public TemplateDecl,
     return getMostRecentDecl();
   }
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   template <typename EntryType> struct SpecEntryTraits {
@@ -1633,7 +1633,7 @@ class TemplateTemplateParmDecl final
                            TemplateParameterList *Params,
                            ArrayRef<TemplateParameterList *> Expansions);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -1776,7 +1776,7 @@ class BuiltinTemplateDecl : public TemplateDecl {
   BuiltinTemplateDecl(const ASTContext &C, DeclContext *DC,
                       DeclarationName Name, BuiltinTemplateKind BTK);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   // Implement isa/cast/dyncast support
@@ -2130,7 +2130,7 @@ class ClassTemplatePartialSpecializationDecl
     : ClassTemplateSpecializationDecl(C, ClassTemplatePartialSpecialization),
       InstantiatedFromMember(nullptr, false) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -2473,7 +2473,7 @@ public:
 /// \note This class is not currently in use.  All of the above
 /// will yield a FriendDecl, not a FriendTemplateDecl.
 class FriendTemplateDecl : public Decl {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   using FriendUnion = llvm::PointerUnion<NamedDecl *,TypeSourceInfo *>;
@@ -2904,7 +2904,7 @@ class VarTemplatePartialSpecializationDecl
                                       Context),
         InstantiatedFromMember(nullptr, false) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;

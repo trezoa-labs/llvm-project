@@ -61,7 +61,7 @@ TEST(InsertionPointTests, Generic) {
   EXPECT_EQ(Point("", Anchor::Below), Code.point("end"));
   EXPECT_EQ(Point("no_match", Anchor::Below), Position{});
 
-  // Test anchor chaining.
+  // Test trezoaanchor chaining.
   auto Chain = [&](llvm::StringLiteral P1, llvm::StringLiteral P2) {
     auto Loc = insertionPoint(NS, {Anchor{StartsWith(P1), Anchor::Above},
                                    Anchor{StartsWith(P2), Anchor::Above}});

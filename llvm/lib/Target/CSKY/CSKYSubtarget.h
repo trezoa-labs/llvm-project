@@ -28,7 +28,7 @@ namespace llvm {
 class StringRef;
 
 class CSKYSubtarget : public CSKYGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   CSKYFrameLowering FrameLowering;
   CSKYInstrInfo InstrInfo;

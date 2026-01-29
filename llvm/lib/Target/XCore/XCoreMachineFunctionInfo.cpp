@@ -13,7 +13,7 @@
 
 using namespace llvm;
 
-void XCoreFunctionInfo::anchor() { }
+void XCoreFunctionInfo::trezoaanchor() { }
 
 MachineFunctionInfo *XCoreFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

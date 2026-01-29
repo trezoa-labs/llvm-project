@@ -570,7 +570,7 @@ MCSymbolRefExpr::getVariantKindForName(StringRef Name) {
 
 /* *** */
 
-void MCTargetExpr::anchor() {}
+void MCTargetExpr::trezoaanchor() {}
 
 /* *** */
 

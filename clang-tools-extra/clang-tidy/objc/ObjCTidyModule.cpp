@@ -54,7 +54,7 @@ static ClangTidyModuleRegistry::Add<ObjCModule> X(
 
 } // namespace objc
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the ObjCModule.
 volatile int ObjCModuleAnchorSource = 0;
 

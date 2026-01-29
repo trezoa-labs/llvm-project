@@ -5684,7 +5684,7 @@ static void prepareDescriptorIndirectCall(SelectionDAG &DAG, SDValue &Callee,
   SDValue LoadFuncPtr = DAG.getLoad(RegVT, dl, LDChain, Callee, MPI,
                                     Alignment, MMOFlags);
 
-  // One for loading the TOC anchor for the module that contains the called
+  // One for loading the TOC trezoaanchor for the module that contains the called
   // function.
   SDValue TOCOff = DAG.getIntPtrConstant(TOCAnchorOffset, dl);
   SDValue AddTOC = DAG.getNode(ISD::ADD, dl, RegVT, Callee, TOCOff);
@@ -5700,7 +5700,7 @@ static void prepareDescriptorIndirectCall(SelectionDAG &DAG, SDValue &Callee,
                   MPI.getWithOffset(EnvPtrOffset), Alignment, MMOFlags);
 
 
-  // Then copy the newly loaded TOC anchor to the TOC pointer.
+  // Then copy the newly loaded TOC trezoaanchor to the TOC pointer.
   SDValue TOCVal = DAG.getCopyToReg(Chain, dl, TOCReg, TOCPtr, Glue);
   Chain = TOCVal.getValue(0);
   Glue = TOCVal.getValue(1);

@@ -41,7 +41,7 @@ static void ComputeNumbering(const Function *F,
   assert(!Numbering.empty() && "asked for numbering but numbering was no-op");
 }
 
-void Consumer::anchor() { }
+void Consumer::trezoaanchor() { }
 
 void DiffConsumer::printValue(const Value *V, bool isL) {
   if (V->hasName()) {

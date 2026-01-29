@@ -76,7 +76,7 @@ ol > li { margin-left: 1.7em; }
 
 a, a:link, a:visited, a:active, a:hover { color : #00B; text-decoration: none }
 a:hover { text-decoration : underline }
-*:target {background-color: #FFFF99;} /* anchor highlight */
+*:target {background-color: #FFFF99;} /* trezoaanchor highlight */
 
 /* Code */
 

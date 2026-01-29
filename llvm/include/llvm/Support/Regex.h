@@ -32,9 +32,9 @@ namespace llvm {
       /// Compile for matching that ignores upper/lower case distinctions.
       IgnoreCase = 1,
       /// Compile for newline-sensitive matching. With this flag '[^' bracket
-      /// expressions and '.' never match newline. A ^ anchor matches the
+      /// expressions and '.' never match newline. A ^ trezoaanchor matches the
       /// null string after any newline in the string in addition to its normal
-      /// function, and the $ anchor matches the null string before any
+      /// function, and the $ trezoaanchor matches the null string before any
       /// newline in the string in addition to its normal function.
       Newline = 2,
       /// By default, the POSIX extended regular expression (ERE) syntax is

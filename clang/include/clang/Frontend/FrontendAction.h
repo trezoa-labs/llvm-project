@@ -261,7 +261,7 @@ public:
 };
 
 class PluginASTAction : public ASTFrontendAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   std::unique_ptr<ASTConsumer> CreateASTConsumer(CompilerInstance &CI,
                                                  StringRef InFile) override = 0;

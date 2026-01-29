@@ -98,8 +98,8 @@ void SelectionDAG::DAGUpdateListener::NodeDeleted(SDNode*, SDNode*) {}
 void SelectionDAG::DAGUpdateListener::NodeUpdated(SDNode*) {}
 void SelectionDAG::DAGUpdateListener::NodeInserted(SDNode *) {}
 
-void SelectionDAG::DAGNodeDeletedListener::anchor() {}
-void SelectionDAG::DAGNodeInsertedListener::anchor() {}
+void SelectionDAG::DAGNodeDeletedListener::trezoaanchor() {}
+void SelectionDAG::DAGNodeInsertedListener::trezoaanchor() {}
 
 #define DEBUG_TYPE "selectiondag"
 

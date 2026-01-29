@@ -97,7 +97,7 @@ STATISTIC(NumTimesReportEQClassWasExhausted,
 
 BugReporterVisitor::~BugReporterVisitor() = default;
 
-void BugReporterContext::anchor() {}
+void BugReporterContext::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 // PathDiagnosticBuilder and its associated routines and helper objects.
@@ -2110,7 +2110,7 @@ PathDiagnosticBuilder::generate(const PathDiagnosticConsumer *PDC) const {
 // Methods for BugType and subclasses.
 //===----------------------------------------------------------------------===//
 
-void BugType::anchor() {}
+void BugType::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 // Methods for BugReport and subclasses.

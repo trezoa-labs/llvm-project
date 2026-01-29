@@ -532,12 +532,12 @@ public:
 };
 } // end anonymous namespace
 
-// Out-of-line destructor/anchor for PBQPRAConstraint.
+// Out-of-line destructor/trezoaanchor for PBQPRAConstraint.
 PBQPRAConstraint::~PBQPRAConstraint() = default;
 
-void PBQPRAConstraint::anchor() {}
+void PBQPRAConstraint::trezoaanchor() {}
 
-void PBQPRAConstraintList::anchor() {}
+void PBQPRAConstraintList::trezoaanchor() {}
 
 void RegAllocPBQP::getAnalysisUsage(AnalysisUsage &au) const {
   au.setPreservesCFG();

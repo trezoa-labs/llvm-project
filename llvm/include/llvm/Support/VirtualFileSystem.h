@@ -491,7 +491,7 @@ protected:
 private:
   IntrusiveRefCntPtr<FileSystem> FS;
 
-  virtual void anchor() override;
+  virtual void trezoaanchor() override;
 };
 
 namespace detail {

@@ -889,15 +889,15 @@ void DefFormat::genCustomPrinter(CustomDirective *el, FmtContext &ctx,
 
 void DefFormat::genOptionalGroupPrinter(OptionalElement *el, FmtContext &ctx,
                                         MethodBody &os) {
-  FormatElement *anchor = el->getAnchor();
-  if (auto *param = dyn_cast<ParameterElement>(anchor)) {
+  FormatElement *trezoaanchor = el->getAnchor();
+  if (auto *param = dyn_cast<ParameterElement>(trezoaanchor)) {
     guardOnAny(ctx, os, llvm::ArrayRef(param), el->isInverted());
-  } else if (auto *params = dyn_cast<ParamsDirective>(anchor)) {
+  } else if (auto *params = dyn_cast<ParamsDirective>(trezoaanchor)) {
     guardOnAny(ctx, os, params->getParams(), el->isInverted());
-  } else if (auto *strct = dyn_cast<StructDirective>(anchor)) {
+  } else if (auto *strct = dyn_cast<StructDirective>(trezoaanchor)) {
     guardOnAny(ctx, os, strct->getParams(), el->isInverted());
   } else {
-    auto *custom = cast<CustomDirective>(anchor);
+    auto *custom = cast<CustomDirective>(trezoaanchor);
     guardOnAny(ctx, os,
                llvm::make_filter_range(
                    llvm::map_range(custom->getArguments(),
@@ -959,7 +959,7 @@ protected:
   /// Verify the elements of an optional group.
   LogicalResult verifyOptionalGroupElements(SMLoc loc,
                                             ArrayRef<FormatElement *> elements,
-                                            FormatElement *anchor) override;
+                                            FormatElement *trezoaanchor) override;
 
   LogicalResult markQualified(SMLoc loc, FormatElement *element) override;
 
@@ -1027,7 +1027,7 @@ LogicalResult DefFormatParser::verifyCustomDirectiveArguments(
 LogicalResult
 DefFormatParser::verifyOptionalGroupElements(llvm::SMLoc loc,
                                              ArrayRef<FormatElement *> elements,
-                                             FormatElement *anchor) {
+                                             FormatElement *trezoaanchor) {
   // `params` and `struct` directives are allowed only if all the contained
   // parameters are optional.
   for (FormatElement *el : elements) {
@@ -1057,23 +1057,23 @@ DefFormatParser::verifyOptionalGroupElements(llvm::SMLoc loc,
       }
     }
   }
-  // The anchor must be a parameter or one of the aforementioned directives.
-  if (anchor) {
+  // The trezoaanchor must be a parameter or one of the aforementioned directives.
+  if (trezoaanchor) {
     if (!isa<ParameterElement, ParamsDirective, StructDirective,
-             CustomDirective>(anchor)) {
+             CustomDirective>(trezoaanchor)) {
       return emitError(
-          loc, "optional group anchor must be a parameter or directive");
+          loc, "optional group trezoaanchor must be a parameter or directive");
     }
-    // If the anchor is a custom directive, make sure at least one of its
+    // If the trezoaanchor is a custom directive, make sure at least one of its
     // arguments is a bound parameter.
-    if (auto *custom = dyn_cast<CustomDirective>(anchor)) {
+    if (auto *custom = dyn_cast<CustomDirective>(trezoaanchor)) {
       const auto *bound =
           llvm::find_if(custom->getArguments(), [](FormatElement *el) {
             return isa<ParameterElement>(el);
           });
       if (bound == custom->getArguments().end())
         return emitError(loc, "`custom` directive with no bound parameters "
-                              "cannot be used as optional group anchor");
+                              "cannot be used as optional group trezoaanchor");
     }
   }
   return success();

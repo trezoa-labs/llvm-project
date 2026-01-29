@@ -199,7 +199,7 @@ Expected<int> LLI::ExecuteProgram(const std::string &Bitcode,
                                OutputFile, Timeout, MemoryLimit);
 }
 
-void AbstractInterpreter::anchor() {}
+void AbstractInterpreter::trezoaanchor() {}
 
 ErrorOr<std::string> llvm::FindProgramByName(const std::string &ExeName,
                                              const char *Argv0,

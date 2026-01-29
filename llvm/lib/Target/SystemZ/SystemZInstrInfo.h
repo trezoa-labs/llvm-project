@@ -206,7 +206,7 @@ class SystemZInstrInfo : public SystemZGenInstrInfo {
                 unsigned LowLowOpcode, unsigned Size, bool KillSrc,
                 bool UndefSrc) const;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   /// Commutes the operands in the given instruction by changing the operands

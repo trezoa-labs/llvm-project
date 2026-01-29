@@ -1525,7 +1525,7 @@ TEST_F(TransformerTest, TwoChangesInOneMacroExpansion) {
 }
 
 // Tests case where the rule's match spans both source from the macro and its
-// arg, with the begin location (the "anchor") being the arg.
+// arg, with the begin location (the "trezoaanchor") being the arg.
 TEST_F(TransformerTest, MatchSpansMacroTextButChangeDoesNot) {
   std::string Input = R"cc(
 #define PLUS_ONE(a) a + 1
@@ -1543,7 +1543,7 @@ TEST_F(TransformerTest, MatchSpansMacroTextButChangeDoesNot) {
 }
 
 // Tests case where the rule's match spans both source from the macro and its
-// arg, with the begin location (the "anchor") being inside the macro.
+// arg, with the begin location (the "trezoaanchor") being inside the macro.
 TEST_F(TransformerTest, MatchSpansMacroTextButChangeDoesNotAnchoredInMacro) {
   std::string Input = R"cc(
 #define PLUS_ONE(a) 1 + a

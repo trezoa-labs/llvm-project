@@ -393,7 +393,7 @@ std::string HTMLDiagnostics::GenerateHTML(const PathDiagnostic& D, Rewriter &R,
   }
 
   if (SupportsCrossFileDiagnostics && FileIDs.size() > 1) {
-    // Prefix file names, anchor tags, and nav cursors to every file
+    // Prefix file names, trezoaanchor tags, and nav cursors to every file
     for (auto I = FileIDs.begin(), E = FileIDs.end(); I != E; I++) {
       std::string s;
       llvm::raw_string_ostream os(s);

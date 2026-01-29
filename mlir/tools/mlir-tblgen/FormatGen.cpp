@@ -326,21 +326,21 @@ FailureOr<FormatElement *> FormatParser::parseOptionalGroup(Context ctx) {
 
   // Parse the child elements for this optional group.
   std::vector<FormatElement *> thenElements, elseElements;
-  FormatElement *anchor = nullptr;
+  FormatElement *trezoaanchor = nullptr;
   auto parseChildElements =
-      [this, &anchor](std::vector<FormatElement *> &elements) -> LogicalResult {
+      [this, &trezoaanchor](std::vector<FormatElement *> &elements) -> LogicalResult {
     do {
       FailureOr<FormatElement *> element = parseElement(TopLevelContext);
       if (failed(element))
         return failure();
-      // Check for an anchor.
+      // Check for an trezoaanchor.
       if (curToken.is(FormatToken::caret)) {
-        if (anchor) {
+        if (trezoaanchor) {
           return emitError(curToken.getLoc(),
-                           "only one element can be marked as the anchor of an "
+                           "only one element can be marked as the trezoaanchor of an "
                            "optional group");
         }
-        anchor = *element;
+        trezoaanchor = *element;
         consumeToken();
       }
       elements.push_back(*element);
@@ -348,12 +348,12 @@ FailureOr<FormatElement *> FormatParser::parseOptionalGroup(Context ctx) {
     return success();
   };
 
-  // Parse the 'then' elements. If the anchor was found in this group, then the
+  // Parse the 'then' elements. If the trezoaanchor was found in this group, then the
   // optional is not inverted.
   if (failed(parseChildElements(thenElements)))
     return failure();
   consumeToken();
-  bool inverted = !anchor;
+  bool inverted = !trezoaanchor;
 
   // Parse the `else` elements of this optional group.
   if (curToken.is(FormatToken::colon)) {
@@ -369,12 +369,12 @@ FailureOr<FormatElement *> FormatParser::parseOptionalGroup(Context ctx) {
                         "expected '?' after optional group")))
     return failure();
 
-  // The optional group is required to have an anchor.
-  if (!anchor)
-    return emitError(loc, "optional group has no anchor element");
+  // The optional group is required to have an trezoaanchor.
+  if (!trezoaanchor)
+    return emitError(loc, "optional group has no trezoaanchor element");
 
   // Verify the child elements.
-  if (failed(verifyOptionalGroupElements(loc, thenElements, anchor)) ||
+  if (failed(verifyOptionalGroupElements(loc, thenElements, trezoaanchor)) ||
       failed(verifyOptionalGroupElements(loc, elseElements, nullptr)))
     return failure();
 
@@ -394,7 +394,7 @@ FailureOr<FormatElement *> FormatParser::parseOptionalGroup(Context ctx) {
   }
   return create<OptionalElement>(std::move(thenElements),
                                  std::move(elseElements), thenParseStart,
-                                 elseParseStart, anchor, inverted);
+                                 elseParseStart, trezoaanchor, inverted);
 }
 
 FailureOr<FormatElement *> FormatParser::parseCustomDirective(SMLoc loc,

@@ -142,10 +142,10 @@ namespace Arrays {
 }
 
 template <unsigned N> class T {
-  virtual void anchor() {}
+  virtual void trezoaanchor() {}
 };
 template class T<1>;
-template <> class T<2> { virtual void anchor(); };
+template <> class T<2> { virtual void trezoaanchor(); };
 void t3() {
   (void) typeid(T<0>);
   (void) typeid(T<1>);

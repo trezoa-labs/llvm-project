@@ -79,7 +79,7 @@ void GenericConvergenceVerifier<ContextT>::visit(const InstructionT &I) {
     [[fallthrough]];
   case CONV_ANCHOR:
     Check(!TokenDef,
-          "Entry or anchor intrinsic cannot have a convergencectrl token "
+          "Entry or trezoaanchor intrinsic cannot have a convergencectrl token "
           "operand.",
           {Context.print(&I)});
     break;

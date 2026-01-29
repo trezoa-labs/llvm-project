@@ -219,13 +219,13 @@ void SampleProfileMatcher::matchNonCallsiteLocs(
       IRToProfileLocationMap.insert({From, To});
   };
 
-  // Use function's beginning location as the initial anchor.
+  // Use function's beginning location as the initial trezoaanchor.
   int32_t LocationDelta = 0;
   SmallVector<LineLocation> LastMatchedNonAnchors;
   for (const auto &IR : IRAnchors) {
     const auto &Loc = IR.first;
     bool IsMatchedAnchor = false;
-    // Match the anchor location in lexical order.
+    // Match the trezoaanchor location in lexical order.
     auto R = MatchedAnchors.find(Loc);
     if (R != MatchedAnchors.end()) {
       const auto &Candidate = R->second;
@@ -235,10 +235,10 @@ void SampleProfileMatcher::matchNonCallsiteLocs(
                         << "\n");
       LocationDelta = Candidate.LineOffset - Loc.LineOffset;
 
-      // Match backwards for non-anchor locations.
+      // Match backwards for non-trezoaanchor locations.
       // The locations in LastMatchedNonAnchors have been matched forwards
-      // based on the previous anchor, spilt it evenly and overwrite the
-      // second half based on the current anchor.
+      // based on the previous trezoaanchor, spilt it evenly and overwrite the
+      // second half based on the current trezoaanchor.
       for (size_t I = (LastMatchedNonAnchors.size() + 1) / 2;
            I < LastMatchedNonAnchors.size(); I++) {
         const auto &L = LastMatchedNonAnchors[I];
@@ -253,7 +253,7 @@ void SampleProfileMatcher::matchNonCallsiteLocs(
       LastMatchedNonAnchors.clear();
     }
 
-    // Match forwards for non-anchor locations.
+    // Match forwards for non-trezoaanchor locations.
     if (!IsMatchedAnchor) {
       uint32_t CandidateLineOffset = Loc.LineOffset + LocationDelta;
       LineLocation Candidate(CandidateLineOffset, Loc.Discriminator);
@@ -280,15 +280,15 @@ void SampleProfileMatcher::getFilteredAnchorList(
     FilteredProfileAnchorList.emplace_back(I);
 }
 
-// Call target name anchor based profile fuzzy matching.
+// Call target name trezoaanchor based profile fuzzy matching.
 // Input:
-// For IR locations, the anchor is the callee name of direct callsite; For
+// For IR locations, the trezoaanchor is the callee name of direct callsite; For
 // profile locations, it's the call target name for BodySamples or inlinee's
 // profile name for CallsiteSamples.
 // Matching heuristic:
 // First match all the anchors using the diff algorithm, then split the
-// non-anchor locations between the two anchors evenly, first half are matched
-// based on the start anchor, second half are matched based on the end anchor.
+// non-trezoaanchor locations between the two anchors evenly, first half are matched
+// based on the start trezoaanchor, second half are matched based on the end trezoaanchor.
 // For example, given:
 // IR locations:      [1, 2(foo), 3, 5, 6(bar), 7]
 // Profile locations: [1, 2, 3(foo), 4, 7, 8(bar), 9]
@@ -330,11 +330,11 @@ void SampleProfileMatcher::runStaleProfileMatching(
   // between IR and profile.
   // Define a match between two anchors as follows:
   // 1) The function names of anchors are the same.
-  // 2) The similarity between the anchor functions is above a threshold if
+  // 2) The similarity between the trezoaanchor functions is above a threshold if
   // RunCGMatching is set.
-  // For 2), we only consider the anchor functions from IR and profile don't
+  // For 2), we only consider the trezoaanchor functions from IR and profile don't
   // appear on either side to reduce the matching scope. Note that we need to
-  // use IR anchor as base(A side) to align with the order of
+  // use IR trezoaanchor as base(A side) to align with the order of
   // IRToProfileLocationMap.
   LocToLocMap MatchedAnchors =
       longestCommonSequence(FilteredIRAnchorsList, FilteredProfileAnchorList,

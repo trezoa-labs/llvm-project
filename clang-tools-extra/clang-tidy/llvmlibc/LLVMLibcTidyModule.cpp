@@ -37,7 +37,7 @@ static ClangTidyModuleRegistry::Add<LLVMLibcModule>
 
 } // namespace llvm_libc
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the LLVMLibcModule.
 volatile int LLVMLibcModuleAnchorSource = 0;
 

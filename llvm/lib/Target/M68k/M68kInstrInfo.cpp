@@ -40,7 +40,7 @@ using namespace llvm;
 #include "M68kGenInstrInfo.inc"
 
 // Pin the vtable to this file.
-void M68kInstrInfo::anchor() {}
+void M68kInstrInfo::trezoaanchor() {}
 
 M68kInstrInfo::M68kInstrInfo(const M68kSubtarget &STI)
     : M68kGenInstrInfo(M68k::ADJCALLSTACKDOWN, M68k::ADJCALLSTACKUP, 0,

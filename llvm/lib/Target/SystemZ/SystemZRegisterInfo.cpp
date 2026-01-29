@@ -333,7 +333,7 @@ SystemZRegisterInfo::eliminateFrameIndex(MachineBasicBlock::iterator MI,
     MI->getOperand(FIOperandNum).ChangeToRegister(BasePtr, false);
   }
   else {
-    // Create an anchor point that is in range.  Start at 0xffff so that
+    // Create an trezoaanchor point that is in range.  Start at 0xffff so that
     // can use LLILH to load the immediate.
     int64_t OldOffset = Offset;
     int64_t Mask = 0xffff;
@@ -357,7 +357,7 @@ SystemZRegisterInfo::eliminateFrameIndex(MachineBasicBlock::iterator MI,
       MI->getOperand(FIOperandNum + 2).ChangeToRegister(ScratchReg,
                                                         false, false, true);
     } else {
-      // Load the anchor address into a scratch register.
+      // Load the trezoaanchor address into a scratch register.
       unsigned LAOpcode = TII->getOpcodeForOffset(SystemZ::LA, HighOffset);
       if (LAOpcode)
         BuildMI(MBB, MI, DL, TII->get(LAOpcode),ScratchReg)

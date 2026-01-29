@@ -18,7 +18,7 @@
 # CHECK32-NEXT:   Entry point address: 0x1111
 # CHECK32-NEXT:   .text section start address: 0x2222
 # CHECK32-NEXT:   .data section start address: 0x3333
-# CHECK32-NEXT:   TOC anchor address: 0x4444
+# CHECK32-NEXT:   TOC trezoaanchor address: 0x4444
 # CHECK32-NEXT:   Section number of entryPoint: 1
 # CHECK32-NEXT:   Section number of .text: 2
 # CHECK32-NEXT:   Section number of .data: 3
@@ -51,7 +51,7 @@
 # CHECK64-NEXT:   Reserved for debugger: 0x0
 # CHECK64-NEXT:   .text section start address: 0x2222
 # CHECK64-NEXT:   .data section start address: 0x3333
-# CHECK64-NEXT:   TOC anchor address: 0x4444
+# CHECK64-NEXT:   TOC trezoaanchor address: 0x4444
 # CHECK64-NEXT:   Section number of entryPoint: 1
 # CHECK64-NEXT:   Section number of .text: 2
 # CHECK64-NEXT:   Section number of .data: 3

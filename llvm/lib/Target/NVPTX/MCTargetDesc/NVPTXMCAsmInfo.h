@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class NVPTXMCAsmInfo : public MCAsmInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit NVPTXMCAsmInfo(const Triple &TheTriple,

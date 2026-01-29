@@ -35,7 +35,7 @@ public:
   };
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
   bool ExtendedInsts = false;
   HWMultEnum HWMultMode = NoHWMult;
   MSP430InstrInfo InstrInfo;

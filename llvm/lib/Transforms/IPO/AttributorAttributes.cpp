@@ -3098,7 +3098,7 @@ struct AAUndefinedBehaviorImpl : public AAUndefinedBehavior {
         return true;
 
       // Check if a return instruction always cause UB or not
-      // Note: It is guaranteed that the returned position of the anchor
+      // Note: It is guaranteed that the returned position of the trezoaanchor
       //       scope has noundef attribute when this is called.
       //       We also ensure the return position is not "assumed dead"
       //       because the returned value was then potentially simplified to
@@ -3136,7 +3136,7 @@ struct AAUndefinedBehaviorImpl : public AAUndefinedBehavior {
     A.checkForAllCallLikeInstructions(InspectCallSiteForUB, *this,
                                       UsedAssumedInformation);
 
-    // If the returned position of the anchor scope has noundef attriubte, check
+    // If the returned position of the trezoaanchor scope has noundef attriubte, check
     // all returned instructions.
     if (!getAnchorScope()->getReturnType()->isVoidTy()) {
       const IRPosition &ReturnIRP = IRPosition::returned(*getAnchorScope());
@@ -3378,7 +3378,7 @@ struct AAWillReturnFunction final : AAWillReturnImpl {
     AAWillReturnImpl::initialize(A);
 
     Function *F = getAnchorScope();
-    assert(F && "Did expect an anchor function");
+    assert(F && "Did expect an trezoaanchor function");
     if (F->isDeclaration() || mayContainUnboundedCycle(*F, A))
       indicatePessimisticFixpoint();
   }
@@ -4506,7 +4506,7 @@ struct AAIsDeadFunction : public AAIsDead {
   /// See AbstractAttribute::initialize(...).
   void initialize(Attributor &A) override {
     Function *F = getAnchorScope();
-    assert(F && "Did expect an anchor function");
+    assert(F && "Did expect an trezoaanchor function");
     if (!isAssumedDeadInternalFunction(A)) {
       ToBeExploredFrom.insert(&F->getEntryBlock().front());
       assumeLive(A, F->getEntryBlock());
@@ -4600,7 +4600,7 @@ struct AAIsDeadFunction : public AAIsDead {
   /// See AAIsDead::isAssumedDead(BasicBlock *).
   bool isAssumedDead(const BasicBlock *BB) const override {
     assert(BB->getParent() == getAnchorScope() &&
-           "BB must be in the same anchor scope function.");
+           "BB must be in the same trezoaanchor scope function.");
 
     if (!getAssumed())
       return false;
@@ -4615,7 +4615,7 @@ struct AAIsDeadFunction : public AAIsDead {
   /// See AAIsDead::isAssumed(Instruction *I).
   bool isAssumedDead(const Instruction *I) const override {
     assert(I->getParent()->getParent() == getAnchorScope() &&
-           "Instruction must be in the same anchor scope function.");
+           "Instruction must be in the same trezoaanchor scope function.");
 
     if (!getAssumed())
       return false;
@@ -8380,7 +8380,7 @@ struct AAMemoryLocationImpl : public AAMemoryLocation {
     // `inaccessiblememorargmemonly` as we might break it via interprocedural
     // constant propagation. It is unclear if this is the best way but it is
     // unlikely this will cause real performance problems. If we are deriving
-    // attributes for the anchor function we even remove the attribute in
+    // attributes for the trezoaanchor function we even remove the attribute in
     // addition to ignoring it.
     // TODO: A better way to handle this would be to add ~NO_GLOBAL_MEM /
     // MemoryEffects::Other as a possible location.

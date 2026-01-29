@@ -1380,7 +1380,7 @@ llvm::raw_ostream &clang::operator<<(llvm::raw_ostream &OS,
 ///  reported by DiagnosticsEngine.
 bool DiagnosticConsumer::IncludeInDiagnosticCounts() const { return true; }
 
-void IgnoringDiagConsumer::anchor() {}
+void IgnoringDiagConsumer::trezoaanchor() {}
 
 ForwardingDiagnosticConsumer::~ForwardingDiagnosticConsumer() = default;
 

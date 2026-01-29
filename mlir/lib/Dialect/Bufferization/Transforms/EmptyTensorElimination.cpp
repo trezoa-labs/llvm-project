@@ -63,11 +63,11 @@ findValidInsertionPoint(Operation *emptyTensorOp, Operation *user,
   SmallVector<Operation *> insertionPointCandidates;
   insertionPointCandidates.push_back(candidateInsertionPoint);
   for (Value val : neededValues) {
-    // Note: The anchor op is using all of `neededValues`, so:
+    // Note: The trezoaanchor op is using all of `neededValues`, so:
     // * in case of a block argument: There must be at least one op in the block
-    //                                (the anchor op or one of its parents).
+    //                                (the trezoaanchor op or one of its parents).
     // * in case of an OpResult: There must be at least one op right after the
-    //                           defining op (the anchor op or one of its
+    //                           defining op (the trezoaanchor op or one of its
     //                           parents).
     if (auto bbArg = dyn_cast<BlockArgument>(val)) {
       insertionPointCandidates.push_back(

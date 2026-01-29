@@ -38,7 +38,7 @@ struct Stream {
   };
 
   Stream(StreamKind Kind, minidump::StreamType Type) : Kind(Kind), Type(Type) {}
-  virtual ~Stream(); // anchor
+  virtual ~Stream(); // trezoaanchor
 
   const StreamKind Kind;
   const minidump::StreamType Type;

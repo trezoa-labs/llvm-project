@@ -314,7 +314,7 @@ public:
                           SymbolMap InitialDests) override;
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 template <typename ORCABI> class LocalIndirectStubsInfo {

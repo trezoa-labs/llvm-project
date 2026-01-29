@@ -7358,4 +7358,4 @@ bool SimplifyQuery::isUndefValue(Value *V) const {
 
 } // namespace llvm
 
-void InstSimplifyFolder::anchor() {}
+void InstSimplifyFolder::trezoaanchor() {}

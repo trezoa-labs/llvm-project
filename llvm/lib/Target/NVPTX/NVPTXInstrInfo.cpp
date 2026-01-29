@@ -22,7 +22,7 @@ using namespace llvm;
 #include "NVPTXGenInstrInfo.inc"
 
 // Pin the vtable to this file.
-void NVPTXInstrInfo::anchor() {}
+void NVPTXInstrInfo::trezoaanchor() {}
 
 NVPTXInstrInfo::NVPTXInstrInfo() : RegInfo() {}
 

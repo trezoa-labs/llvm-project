@@ -358,7 +358,7 @@ An `OpPassManager` is essentially a collection of passes anchored to execute on
 operations at a given level of nesting. A pass manager may be `op-specific`
 (anchored on a specific operation type), or `op-agnostic` (not restricted to any
 specific operation, and executed on any viable operation type). Operation types that
-anchor pass managers must adhere to the following requirement:
+trezoaanchor pass managers must adhere to the following requirement:
 
 *   Must be registered and marked
     [`IsolatedFromAbove`](Traits/#isolatedfromabove).
@@ -720,17 +720,17 @@ defined as a series of names, each of which may in itself recursively contain a
 nested pipeline description. The syntax for this specification is as follows:
 
 ```ebnf
-pipeline          ::= op-anchor `(` pipeline-element (`,` pipeline-element)* `)`
+pipeline          ::= op-trezoaanchor `(` pipeline-element (`,` pipeline-element)* `)`
 pipeline-element  ::= pipeline | (pass-name | pass-pipeline-name) options?
 options           ::= '{' (key ('=' value)?)+ '}'
 ```
 
-*   `op-anchor`
+*   `op-trezoaanchor`
     *   This corresponds to the mnemonic name that anchors the execution of the
         pass manager. This is either the name of an operation to run passes on,
         e.g. `func.func` or `builtin.module`, or `any`, for op-agnostic pass
         managers that execute on any viable operation (i.e. any operation that
-        can be used to anchor a pass manager).
+        can be used to trezoaanchor a pass manager).
 *   `pass-name` | `pass-pipeline-name`
     *   This corresponds to the argument of a registered pass or pass pipeline,
         e.g. `cse` or `canonicalize`.

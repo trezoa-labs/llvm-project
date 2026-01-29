@@ -182,7 +182,7 @@ public:
   virtual ~HWEventListener() = default;
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 } // namespace mca
 } // namespace llvm

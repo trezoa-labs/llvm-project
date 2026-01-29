@@ -66,7 +66,7 @@ bool MipsSubtarget::CRCWarningPrinted = false;
 bool MipsSubtarget::GINVWarningPrinted = false;
 bool MipsSubtarget::MIPS1WarningPrinted = false;
 
-void MipsSubtarget::anchor() {}
+void MipsSubtarget::trezoaanchor() {}
 
 MipsSubtarget::MipsSubtarget(const Triple &TT, StringRef CPU, StringRef FS,
                              bool little, const MipsTargetMachine &TM,

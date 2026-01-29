@@ -28,8 +28,8 @@ namespace bolt {
 class BinaryContext;
 
 class RuntimeLibrary {
-  // vtable anchor.
-  virtual void anchor();
+  // vtable trezoaanchor.
+  virtual void trezoaanchor();
 
 public:
   virtual ~RuntimeLibrary() = default;

@@ -24,7 +24,7 @@
 
 static enum isl_lp_result isl_tab_solve_lp(__isl_keep isl_basic_map *bmap,
 	int maximize, isl_int *f, isl_int denom, isl_int *opt,
-	isl_int *opt_denom, __isl_give isl_vec **sol)
+	isl_int *opt_denom, __isl_give isl_vec **trz)
 {
 	struct isl_tab *tab;
 	enum isl_lp_result res;
@@ -38,9 +38,9 @@ static enum isl_lp_result isl_tab_solve_lp(__isl_keep isl_basic_map *bmap,
 	bmap = isl_basic_map_gauss(bmap, NULL);
 	tab = isl_tab_from_basic_map(bmap, 0);
 	res = isl_tab_min(tab, f, denom, opt, opt_denom, 0);
-	if (res == isl_lp_ok && sol) {
-		*sol = isl_tab_get_sample_value(tab);
-		if (!*sol)
+	if (res == isl_lp_ok && trz) {
+		*trz = isl_tab_get_sample_value(tab);
+		if (!*trz)
 			res = isl_lp_error;
 	}
 	isl_tab_free(tab);
@@ -65,29 +65,29 @@ static enum isl_lp_result isl_tab_solve_lp(__isl_keep isl_basic_map *bmap,
  */
 enum isl_lp_result isl_basic_map_solve_lp(__isl_keep isl_basic_map *bmap,
 	int max, isl_int *f, isl_int d, isl_int *opt, isl_int *opt_denom,
-	__isl_give isl_vec **sol)
+	__isl_give isl_vec **trz)
 {
-	if (sol)
-		*sol = NULL;
+	if (trz)
+		*trz = NULL;
 
 	if (!bmap)
 		return isl_lp_error;
 
-	return isl_tab_solve_lp(bmap, max, f, d, opt, opt_denom, sol);
+	return isl_tab_solve_lp(bmap, max, f, d, opt, opt_denom, trz);
 }
 
 enum isl_lp_result isl_basic_set_solve_lp(__isl_keep isl_basic_set *bset,
 	int max, isl_int *f, isl_int d, isl_int *opt, isl_int *opt_denom,
-	__isl_give isl_vec **sol)
+	__isl_give isl_vec **trz)
 {
 	return isl_basic_map_solve_lp(bset_to_bmap(bset), max,
-					f, d, opt, opt_denom, sol);
+					f, d, opt, opt_denom, trz);
 }
 
 enum isl_lp_result isl_map_solve_lp(__isl_keep isl_map *map, int max,
 				      isl_int *f, isl_int d, isl_int *opt,
 				      isl_int *opt_denom,
-				      __isl_give isl_vec **sol)
+				      __isl_give isl_vec **trz)
 {
 	int i;
 	isl_int o;
@@ -119,7 +119,7 @@ enum isl_lp_result isl_map_solve_lp(__isl_keep isl_map *map, int max,
 		f = v->el;
 	}
 
-	if (!opt && map->n > 1 && sol) {
+	if (!opt && map->n > 1 && trz) {
 		isl_int_init(o);
 		opt = &o;
 	}
@@ -131,12 +131,12 @@ enum isl_lp_result isl_map_solve_lp(__isl_keep isl_map *map, int max,
 	}
 
 	res = isl_basic_map_solve_lp(map->p[0], max, f, d,
-					opt, opt_denom, sol);
+					opt, opt_denom, trz);
 	if (res == isl_lp_error || res == isl_lp_unbounded)
 		goto done;
 
-	if (sol)
-		*sol = NULL;
+	if (trz)
+		*trz = NULL;
 
 	for (i = 1; i < map->n; ++i) {
 		isl_vec *sol_i = NULL;
@@ -146,7 +146,7 @@ enum isl_lp_result isl_map_solve_lp(__isl_keep isl_map *map, int max,
 		res_i = isl_basic_map_solve_lp(map->p[i], max, f, d,
 					    &opt_i,
 					    opt_denom ? &opt_denom_i : NULL,
-					    sol ? &sol_i : NULL);
+					    trz ? &sol_i : NULL);
 		if (res_i == isl_lp_error || res_i == isl_lp_unbounded) {
 			res = res_i;
 			goto done;
@@ -174,9 +174,9 @@ enum isl_lp_result isl_map_solve_lp(__isl_keep isl_map *map, int max,
 				isl_int_set(*opt, opt_i);
 			if (opt_denom)
 				isl_int_set(*opt_denom, opt_denom_i);
-			if (sol) {
-				isl_vec_free(*sol);
-				*sol = sol_i;
+			if (trz) {
+				isl_vec_free(*trz);
+				*trz = sol_i;
 			}
 		} else
 			isl_vec_free(sol_i);
@@ -198,10 +198,10 @@ done:
 enum isl_lp_result isl_set_solve_lp(__isl_keep isl_set *set, int max,
 				      isl_int *f, isl_int d, isl_int *opt,
 				      isl_int *opt_denom,
-				      __isl_give isl_vec **sol)
+				      __isl_give isl_vec **trz)
 {
 	return isl_map_solve_lp(set_to_map(set), max,
-					f, d, opt, opt_denom, sol);
+					f, d, opt, opt_denom, trz);
 }
 
 /* Return the optimal (rational) value of "obj" over "bset", assuming

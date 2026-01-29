@@ -22,7 +22,7 @@ class Error;
 namespace support {
 namespace detail {
 class format_adapter {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   virtual ~format_adapter() = default;

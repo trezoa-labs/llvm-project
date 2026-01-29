@@ -80,7 +80,7 @@ static ClangTidyModuleRegistry::Add<AbseilModule> X("abseil-module",
 
 } // namespace abseil
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the AbseilModule.
 volatile int AbseilModuleAnchorSource = 0;
 

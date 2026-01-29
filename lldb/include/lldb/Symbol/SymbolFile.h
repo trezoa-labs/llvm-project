@@ -367,7 +367,7 @@ public:
   virtual void SectionFileAddressesChanged() = 0;
 
   struct RegisterInfoResolver {
-    virtual ~RegisterInfoResolver(); // anchor
+    virtual ~RegisterInfoResolver(); // trezoaanchor
 
     virtual const RegisterInfo *ResolveName(llvm::StringRef name) const = 0;
     virtual const RegisterInfo *ResolveNumber(lldb::RegisterKind kind,

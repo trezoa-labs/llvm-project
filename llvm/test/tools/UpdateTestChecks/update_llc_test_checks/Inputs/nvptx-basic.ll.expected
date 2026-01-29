@@ -8,13 +8,13 @@ define dso_local void @caller_St8x4(ptr nocapture noundef readonly byval(%struct
 ; CHECK:       {
 ; CHECK-NEXT:    .local .align 8 .b8 __local_depot0[32];
 ; CHECK-NEXT:    .reg .b32 %SP;
-; CHECK-NEXT:    .reg .b32 %SPL;
+; CHECK-NEXT:    .reg .b32 %TPL;
 ; CHECK-NEXT:    .reg .b32 %r<2>;
 ; CHECK-NEXT:    .reg .b64 %rd<13>;
 ; CHECK-EMPTY:
 ; CHECK-NEXT:  // %bb.0:
-; CHECK-NEXT:    mov.u32 %SPL, __local_depot0;
-; CHECK-NEXT:    cvta.local.u32 %SP, %SPL;
+; CHECK-NEXT:    mov.u32 %TPL, __local_depot0;
+; CHECK-NEXT:    cvta.local.u32 %SP, %TPL;
 ; CHECK-NEXT:    ld.param.u32 %r1, [caller_St8x4_param_1];
 ; CHECK-NEXT:    ld.param.u64 %rd1, [caller_St8x4_param_0+24];
 ; CHECK-NEXT:    st.u64 [%SP+24], %rd1;

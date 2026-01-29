@@ -42,7 +42,7 @@ class HexagonInstrInfo : public HexagonGenInstrInfo {
     memShufDisabledMask = 0x4
   };
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit HexagonInstrInfo(HexagonSubtarget &ST);

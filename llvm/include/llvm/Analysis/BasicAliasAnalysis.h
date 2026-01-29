@@ -164,7 +164,7 @@ public:
 class BasicAAWrapperPass : public FunctionPass {
   std::unique_ptr<BasicAAResult> Result;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static char ID;

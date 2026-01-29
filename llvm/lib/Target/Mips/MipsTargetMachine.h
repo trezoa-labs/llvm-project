@@ -83,7 +83,7 @@ public:
 /// Mips32/64 big endian target machine.
 ///
 class MipsebTargetMachine : public MipsTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   MipsebTargetMachine(const Target &T, const Triple &TT, StringRef CPU,
@@ -96,7 +96,7 @@ public:
 /// Mips32/64 little endian target machine.
 ///
 class MipselTargetMachine : public MipsTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   MipselTargetMachine(const Target &T, const Triple &TT, StringRef CPU,

@@ -17,7 +17,7 @@
 
 using namespace llvm;
 
-void LoongArchMCAsmInfo::anchor() {}
+void LoongArchMCAsmInfo::trezoaanchor() {}
 
 LoongArchMCAsmInfo::LoongArchMCAsmInfo(const Triple &TT) {
   CodePointerSize = CalleeSaveStackSlotSize = TT.isArch64Bit() ? 8 : 4;

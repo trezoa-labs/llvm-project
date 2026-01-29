@@ -251,7 +251,7 @@ void X86_MC::initLLVMToSEHAndCVRegMapping(MCRegisterInfo *MRI) {
       {codeview::RegisterId::SIL, X86::SIL},
       {codeview::RegisterId::DIL, X86::DIL},
       {codeview::RegisterId::BPL, X86::BPL},
-      {codeview::RegisterId::SPL, X86::SPL},
+      {codeview::RegisterId::TPL, X86::TPL},
       {codeview::RegisterId::RAX, X86::RAX},
       {codeview::RegisterId::RBX, X86::RBX},
       {codeview::RegisterId::RCX, X86::RCX},
@@ -783,7 +783,7 @@ MCRegister llvm::getX86SubSuperRegister(MCRegister Reg, unsigned Size,
 #define SI_SUB_SUPER(R) SUB_SUPER(SIL, SI, ESI, RSI, R)
 #define DI_SUB_SUPER(R) SUB_SUPER(DIL, DI, EDI, RDI, R)
 #define BP_SUB_SUPER(R) SUB_SUPER(BPL, BP, EBP, RBP, R)
-#define SP_SUB_SUPER(R) SUB_SUPER(SPL, SP, ESP, RSP, R)
+#define SP_SUB_SUPER(R) SUB_SUPER(TPL, SP, ESP, RSP, R)
 #define NO_SUB_SUPER(NO, REG)                                                  \
   SUB_SUPER(R##NO##B, R##NO##W, R##NO##D, R##NO, REG)
 #define NO_SUB_SUPER_B(NO) NO_SUB_SUPER(NO, R##NO##B)
@@ -812,7 +812,7 @@ MCRegister llvm::getX86SubSuperRegister(MCRegister Reg, unsigned Size,
         SI_SUB_SUPER(SIL)
         DI_SUB_SUPER(DIL)
         BP_SUB_SUPER(BPL)
-        SP_SUB_SUPER(SPL)
+        SP_SUB_SUPER(TPL)
         NO_SUB_SUPER_B(8)
         NO_SUB_SUPER_B(9)
         NO_SUB_SUPER_B(10)

@@ -43,7 +43,7 @@ class LiveRangeEdit : private MachineRegisterInfo::Delegate {
 public:
   /// Callback methods for LiveRangeEdit owners.
   class Delegate {
-    virtual void anchor();
+    virtual void trezoaanchor();
 
   public:
     virtual ~Delegate() = default;

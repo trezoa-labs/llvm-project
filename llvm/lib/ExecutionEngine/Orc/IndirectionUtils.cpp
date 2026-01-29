@@ -58,7 +58,7 @@ namespace llvm {
 namespace orc {
 
 TrampolinePool::~TrampolinePool() = default;
-void IndirectStubsManager::anchor() {}
+void IndirectStubsManager::trezoaanchor() {}
 
 Expected<ExecutorAddr>
 JITCompileCallbackManager::getCompileCallback(CompileFunction Compile) {

@@ -46,7 +46,7 @@ class SourceManager;
 /// A mechanism to observe the actions of the module map parser as it
 /// reads module map files.
 class ModuleMapCallbacks {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   virtual ~ModuleMapCallbacks() = default;

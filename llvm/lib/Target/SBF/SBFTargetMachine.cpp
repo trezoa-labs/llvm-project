@@ -48,8 +48,8 @@ extern "C" LLVM_EXTERNAL_VISIBILITY void LLVMInitializeSBFTarget() {
 
 // DataLayout: little or big endian
 static std::string computeDataLayout(const Triple &TT, StringRef FS) {
-  // TOOD: jle; specialize this (and elsewhere) to Solana-only once the new
-  // back-end is integrated; e.g. we won't need IsSolana, etc.
+  // TOOD: jle; specialize this (and elsewhere) to Trezoa-only once the new
+  // back-end is integrated; e.g. we won't need IsTrezoa, etc.
   assert(TT.getArch() == Triple::sbf && "expected Triple::sbf");
   return "e-m:e-p:64:64-i64:64-n32:64-S128";
 }

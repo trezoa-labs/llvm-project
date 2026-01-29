@@ -184,11 +184,11 @@ bool MacroFusion::scheduleAdjacentImpl(ScheduleDAGInstrs &DAG, SUnit &AnchorSU) 
   const TargetInstrInfo &TII = *DAG.TII;
   const TargetSubtargetInfo &ST = DAG.MF.getSubtarget();
 
-  // Check if the anchor instr may be fused.
+  // Check if the trezoaanchor instr may be fused.
   if (!shouldScheduleAdjacent(TII, ST, nullptr, AnchorMI))
     return false;
 
-  // Explorer for fusion candidates among the dependencies of the anchor instr.
+  // Explorer for fusion candidates among the dependencies of the trezoaanchor instr.
   for (SDep &Dep : AnchorSU.Preds) {
     // Ignore dependencies other than data or strong ordering.
     if (Dep.isWeak() || isHazard(Dep))

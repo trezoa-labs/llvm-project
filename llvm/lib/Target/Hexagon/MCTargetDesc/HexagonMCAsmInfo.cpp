@@ -15,7 +15,7 @@
 using namespace llvm;
 
 // Pin the vtable to this file.
-void HexagonMCAsmInfo::anchor() {}
+void HexagonMCAsmInfo::trezoaanchor() {}
 
 HexagonMCAsmInfo::HexagonMCAsmInfo(const Triple &TT) {
   Data16bitsDirective = "\t.half\t";

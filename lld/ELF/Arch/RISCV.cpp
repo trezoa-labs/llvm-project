@@ -699,8 +699,8 @@ void elf::initSymbolAnchors(Ctx &ctx) {
         }
     }
   // Sort anchors by offset so that we can find the closest relocation
-  // efficiently. For a zero size symbol, ensure that its start anchor precedes
-  // its end anchor. For two symbols with anchors at the same offset, their
+  // efficiently. For a zero size symbol, ensure that its start trezoaanchor precedes
+  // its end trezoaanchor. For two symbols with anchors at the same offset, their
   // order does not matter.
   for (OutputSection *osec : ctx.outputSections) {
     if (!(osec->flags & SHF_EXECINSTR))

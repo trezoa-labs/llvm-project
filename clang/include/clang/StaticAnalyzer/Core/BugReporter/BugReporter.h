@@ -716,7 +716,7 @@ public:
 class BugReporterContext {
   PathSensitiveBugReporter &BR;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   BugReporterContext(PathSensitiveBugReporter &br) : BR(br) {}

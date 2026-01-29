@@ -80,7 +80,7 @@ std::string testPath(PathRef File,
                      llvm::sys::path::Style = llvm::sys::path::Style::native);
 
 // unittest: is a scheme that refers to files relative to testRoot()
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register unittest: URI scheme plugin.
 extern volatile int UnittestSchemeAnchorSource;
 

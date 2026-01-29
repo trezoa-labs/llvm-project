@@ -642,7 +642,7 @@ void CoreEngine::enqueueEndOfFunction(ExplodedNodeSet &Set, const ReturnStmt *RS
   }
 }
 
-void NodeBuilder::anchor() {}
+void NodeBuilder::trezoaanchor() {}
 
 ExplodedNode* NodeBuilder::generateNodeImpl(const ProgramPoint &Loc,
                                             ProgramStateRef State,
@@ -663,7 +663,7 @@ ExplodedNode* NodeBuilder::generateNodeImpl(const ProgramPoint &Loc,
   return N;
 }
 
-void NodeBuilderWithSinks::anchor() {}
+void NodeBuilderWithSinks::trezoaanchor() {}
 
 StmtNodeBuilder::~StmtNodeBuilder() {
   if (EnclosingBldr)
@@ -671,7 +671,7 @@ StmtNodeBuilder::~StmtNodeBuilder() {
       EnclosingBldr->addNodes(I);
 }
 
-void BranchNodeBuilder::anchor() {}
+void BranchNodeBuilder::trezoaanchor() {}
 
 ExplodedNode *BranchNodeBuilder::generateNode(ProgramStateRef State,
                                               bool Branch,

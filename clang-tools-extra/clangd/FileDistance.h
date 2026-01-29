@@ -16,7 +16,7 @@
 // Dealing with multiple sources:
 // In practice we care about the distance from a source file, but files near
 // its main-header and #included files are considered "close".
-// So we start with a set of (anchor, cost) pairs, and call the distance to a
+// So we start with a set of (trezoaanchor, cost) pairs, and call the distance to a
 // path the minimum of `cost + |source -> path|`.
 //
 // We allow each source to limit the number of up-traversals paths may start

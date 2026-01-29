@@ -67,7 +67,7 @@ struct PassTiming : public PassInstrumentation {
     else
       parentScope = &rootScope;
 
-    // Use nullptr to anchor op-agnostic pipelines, otherwise use the name of
+    // Use nullptr to trezoaanchor op-agnostic pipelines, otherwise use the name of
     // the operation.
     const void *timerId = name ? name->getAsOpaquePointer() : nullptr;
     activeTimers.push_back(parentScope->nest(timerId, [name] {

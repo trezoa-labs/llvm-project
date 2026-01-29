@@ -33,7 +33,7 @@ class Type;
 /// Abstract base class for all machine specific constantpool value subclasses.
 ///
 class MachineConstantPoolValue {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   Type *Ty;
 

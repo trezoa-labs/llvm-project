@@ -98,7 +98,7 @@ private:
     virtual ~OptionBase() = default;
 
     /// Out of line virtual function to provide home for the class.
-    virtual void anchor();
+    virtual void trezoaanchor();
 
     /// Print the name and value of this option to the given stream.
     virtual void print(raw_ostream &os) = 0;
@@ -505,7 +505,7 @@ struct OptionValue<mlir::OpPassManager> final : GenericOptionValue {
   }
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 
   /// The underlying pass manager. We use a unique_ptr to avoid the need for the
   /// full type definition.
@@ -550,7 +550,7 @@ public:
                        const OptVal &defaultValue, size_t globalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 } // namespace cl

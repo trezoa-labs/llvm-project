@@ -394,7 +394,7 @@ public:
   virtual bool allowsZeroSymbols() { return false; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// Legacy symbol resolution interface.
@@ -432,7 +432,7 @@ public:
   virtual JITSymbol findSymbol(const std::string &Name) = 0;
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 } // end namespace llvm

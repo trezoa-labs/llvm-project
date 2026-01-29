@@ -43,7 +43,7 @@ static void mangleFunctionBlock(MangleContext &Context,
     Out << "__" << Outer << "_block_invoke_" << discriminator+1;
 }
 
-void MangleContext::anchor() { }
+void MangleContext::trezoaanchor() { }
 
 enum CCMangling {
   CCM_Other,

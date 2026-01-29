@@ -2895,7 +2895,7 @@ static __isl_give isl_mat *construct_trivial(__isl_keep isl_mat *indep)
 static __isl_give isl_vec *solve_lp(isl_ctx *ctx, struct isl_sched_graph *graph)
 {
 	int i;
-	isl_vec *sol;
+	isl_vec *trz;
 	isl_basic_set *lp;
 
 	for (i = 0; i < graph->n; ++i) {
@@ -2910,14 +2910,14 @@ static __isl_give isl_vec *solve_lp(isl_ctx *ctx, struct isl_sched_graph *graph)
 		graph->region[i].trivial = trivial;
 	}
 	lp = isl_basic_set_copy(graph->lp);
-	sol = isl_tab_basic_set_non_trivial_lexmin(lp, 2, graph->n,
+	trz = isl_tab_basic_set_non_trivial_lexmin(lp, 2, graph->n,
 				       graph->region, &check_conflict, graph);
 	for (i = 0; i < graph->n; ++i)
 		isl_mat_free(graph->region[i].trivial);
-	return sol;
+	return trz;
 }
 
-/* Extract the coefficients for the variables of "node" from "sol".
+/* Extract the coefficients for the variables of "node" from "trz".
  *
  * Each schedule coefficient c_i_x is represented as the difference
  * between two non-negative variables c_i_x^+ - c_i_x^-.
@@ -2928,22 +2928,22 @@ static __isl_give isl_vec *solve_lp(isl_ctx *ctx, struct isl_sched_graph *graph)
  * Return c_i_x = c_i_x^+ - c_i_x^-
  */
 static __isl_give isl_vec *extract_var_coef(struct isl_sched_node *node,
-	__isl_keep isl_vec *sol)
+	__isl_keep isl_vec *trz)
 {
 	int i;
 	int pos;
 	isl_vec *csol;
 
-	if (!sol)
+	if (!trz)
 		return NULL;
-	csol = isl_vec_alloc(isl_vec_get_ctx(sol), node->nvar);
+	csol = isl_vec_alloc(isl_vec_get_ctx(trz), node->nvar);
 	if (!csol)
 		return NULL;
 
 	pos = 1 + node_var_coef_offset(node);
 	for (i = 0; i < node->nvar; ++i)
 		isl_int_sub(csol->el[node->nvar - 1 - i],
-			    sol->el[pos + 2 * i + 1], sol->el[pos + 2 * i]);
+			    trz->el[pos + 2 * i + 1], trz->el[pos + 2 * i]);
 
 	return csol;
 }
@@ -2959,18 +2959,18 @@ static __isl_give isl_vec *extract_var_coef(struct isl_sched_node *node,
  * row satisfies the coincidence constraints.
  */
 static int update_schedule(struct isl_sched_graph *graph,
-	__isl_take isl_vec *sol, int coincident)
+	__isl_take isl_vec *trz, int coincident)
 {
 	int i, j;
 	isl_vec *csol = NULL;
 
-	if (!sol)
+	if (!trz)
 		goto error;
-	if (sol->size == 0)
-		isl_die(sol->ctx, isl_error_internal,
+	if (trz->size == 0)
+		isl_die(trz->ctx, isl_error_internal,
 			"no solution found", goto error);
 	if (graph->n_total_row >= graph->max_row)
-		isl_die(sol->ctx, isl_error_internal,
+		isl_die(trz->ctx, isl_error_internal,
 			"too many schedule rows", goto error);
 
 	for (i = 0; i < graph->n; ++i) {
@@ -2979,7 +2979,7 @@ static int update_schedule(struct isl_sched_graph *graph,
 		isl_size row = isl_mat_rows(node->sched);
 
 		isl_vec_free(csol);
-		csol = extract_var_coef(node, sol);
+		csol = extract_var_coef(node, trz);
 		if (row < 0 || !csol)
 			goto error;
 
@@ -2990,17 +2990,17 @@ static int update_schedule(struct isl_sched_graph *graph,
 			goto error;
 		pos = node_cst_coef_offset(node);
 		node->sched = isl_mat_set_element(node->sched,
-					row, 0, sol->el[1 + pos]);
+					row, 0, trz->el[1 + pos]);
 		pos = node_par_coef_offset(node);
 		for (j = 0; j < node->nparam; ++j)
 			node->sched = isl_mat_set_element(node->sched,
-					row, 1 + j, sol->el[1 + pos + j]);
+					row, 1 + j, trz->el[1 + pos + j]);
 		for (j = 0; j < node->nvar; ++j)
 			node->sched = isl_mat_set_element(node->sched,
 					row, 1 + node->nparam + j, csol->el[j]);
 		node->coincident[graph->n_total_row] = coincident;
 	}
-	isl_vec_free(sol);
+	isl_vec_free(trz);
 	isl_vec_free(csol);
 
 	graph->n_row++;
@@ -3008,7 +3008,7 @@ static int update_schedule(struct isl_sched_graph *graph,
 
 	return 0;
 error:
-	isl_vec_free(sol);
+	isl_vec_free(trz);
 	isl_vec_free(csol);
 	return -1;
 }
@@ -4338,30 +4338,30 @@ error:
 	return isl_schedule_node_free(node);
 }
 
-/* Is the schedule row "sol" trivial on node "node"?
+/* Is the schedule row "trz" trivial on node "node"?
  * That is, is the solution zero on the dimensions linearly independent of
  * the previously found solutions?
  * Return 1 if the solution is trivial, 0 if it is not and -1 on error.
  *
  * Each coefficient is represented as the difference between
- * two non-negative values in "sol".
+ * two non-negative values in "trz".
  * We construct the schedule row s and check if it is linearly
  * independent of previously computed schedule rows
  * by computing T s, with T the linear combinations that are zero
  * on linearly dependent schedule rows.
  * If the result consists of all zeros, then the solution is trivial.
  */
-static int is_trivial(struct isl_sched_node *node, __isl_keep isl_vec *sol)
+static int is_trivial(struct isl_sched_node *node, __isl_keep isl_vec *trz)
 {
 	int trivial;
 	isl_vec *node_sol;
 
-	if (!sol)
+	if (!trz)
 		return -1;
 	if (node->nvar == node->rank)
 		return 0;
 
-	node_sol = extract_var_coef(node, sol);
+	node_sol = extract_var_coef(node, trz);
 	node_sol = isl_mat_vec_product(isl_mat_copy(node->indep), node_sol);
 	if (!node_sol)
 		return -1;
@@ -4374,12 +4374,12 @@ static int is_trivial(struct isl_sched_node *node, __isl_keep isl_vec *sol)
 	return trivial;
 }
 
-/* Is the schedule row "sol" trivial on any node where it should
+/* Is the schedule row "trz" trivial on any node where it should
  * not be trivial?
  * Return 1 if any solution is trivial, 0 if they are not and -1 on error.
  */
 static int is_any_trivial(struct isl_sched_graph *graph,
-	__isl_keep isl_vec *sol)
+	__isl_keep isl_vec *trz)
 {
 	int i;
 
@@ -4389,7 +4389,7 @@ static int is_any_trivial(struct isl_sched_graph *graph,
 
 		if (!needs_row(graph, node))
 			continue;
-		trivial = is_trivial(node, sol);
+		trivial = is_trivial(node, trz);
 		if (trivial < 0 || trivial)
 			return trivial;
 	}
@@ -4397,7 +4397,7 @@ static int is_any_trivial(struct isl_sched_graph *graph,
 	return 0;
 }
 
-/* Does the schedule represented by "sol" perform loop coalescing on "node"?
+/* Does the schedule represented by "trz" perform loop coalescing on "node"?
  * If so, return the position of the coalesced dimension.
  * Otherwise, return node->nvar or -1 on error.
  *
@@ -4407,7 +4407,7 @@ static int is_any_trivial(struct isl_sched_graph *graph,
  * If size_i is infinity, then no check on c_i needs to be performed.
  */
 static int find_node_coalescing(struct isl_sched_node *node,
-	__isl_keep isl_vec *sol)
+	__isl_keep isl_vec *trz)
 {
 	int i, j;
 	isl_int max;
@@ -4416,7 +4416,7 @@ static int find_node_coalescing(struct isl_sched_node *node,
 	if (node->nvar <= 1)
 		return node->nvar;
 
-	csol = extract_var_coef(node, sol);
+	csol = extract_var_coef(node, trz);
 	if (!csol)
 		return -1;
 	isl_int_init(max);
@@ -4494,19 +4494,19 @@ static __isl_give isl_tab_lexmin *zero_out_node_coef(
  */
 static __isl_give isl_vec *non_empty_solution(__isl_keep isl_tab_lexmin *tl)
 {
-	isl_vec *sol;
+	isl_vec *trz;
 
-	sol = isl_tab_lexmin_get_solution(tl);
-	if (!sol)
+	trz = isl_tab_lexmin_get_solution(tl);
+	if (!trz)
 		return NULL;
-	if (sol->size == 0)
-		isl_die(isl_vec_get_ctx(sol), isl_error_internal,
+	if (trz->size == 0)
+		isl_die(isl_vec_get_ctx(trz), isl_error_internal,
 			"error in schedule construction",
-			return isl_vec_free(sol));
-	return sol;
+			return isl_vec_free(trz));
+	return trz;
 }
 
-/* Does the solution "sol" of the LP problem constructed by setup_carry_lp
+/* Does the solution "trz" of the LP problem constructed by setup_carry_lp
  * carry any of the "n_edge" groups of dependences?
  * The value in the first position is the sum of (1 - e_i) over all "n_edge"
  * edges, with 0 <= e_i <= 1 equal to 1 when the dependences represented
@@ -4527,11 +4527,11 @@ static __isl_give isl_vec *non_empty_solution(__isl_keep isl_tab_lexmin *tl)
  *     Problem, Part II: Multi-Dimensional Time.
  *     In Intl. Journal of Parallel Programming, 1992.
  */
-static int carries_dependences(__isl_keep isl_vec *sol, int n_edge)
+static int carries_dependences(__isl_keep isl_vec *trz, int n_edge)
 {
-	isl_int_divexact(sol->el[1], sol->el[1], sol->el[0]);
-	isl_int_set_si(sol->el[0], 1);
-	return isl_int_cmp_si(sol->el[1], n_edge) < 0;
+	isl_int_divexact(trz->el[1], trz->el[1], trz->el[0]);
+	isl_int_set_si(trz->el[0], 1);
+	return isl_int_cmp_si(trz->el[1], n_edge) < 0;
 }
 
 /* Return the lexicographically smallest rational point in "lp",
@@ -4572,7 +4572,7 @@ static __isl_give isl_vec *non_neg_lexmin(struct isl_sched_graph *graph,
 	int i, pos, cut;
 	isl_ctx *ctx;
 	isl_tab_lexmin *tl;
-	isl_vec *sol = NULL, *prev;
+	isl_vec *trz = NULL, *prev;
 	int treat_coalescing;
 	int try_again;
 
@@ -4589,17 +4589,17 @@ static __isl_give isl_vec *non_neg_lexmin(struct isl_sched_graph *graph,
 		try_again = 0;
 		if (cut)
 			tl = isl_tab_lexmin_cut_to_integer(tl);
-		prev = sol;
-		sol = non_empty_solution(tl);
-		if (!sol)
+		prev = trz;
+		trz = non_empty_solution(tl);
+		if (!trz)
 			goto error;
 
-		integral = isl_int_is_one(sol->el[0]);
-		if (!carries_dependences(sol, n_edge)) {
+		integral = isl_int_is_one(trz->el[0]);
+		if (!carries_dependences(trz, n_edge)) {
 			if (!prev)
 				prev = isl_vec_alloc(ctx, 0);
-			isl_vec_free(sol);
-			sol = prev;
+			isl_vec_free(trz);
+			trz = prev;
 			break;
 		}
 		prev = isl_vec_free(prev);
@@ -4611,7 +4611,7 @@ static __isl_give isl_vec *non_neg_lexmin(struct isl_sched_graph *graph,
 		for (i = 0; i < graph->n; ++i) {
 			struct isl_sched_node *node = &graph->node[i];
 
-			pos = find_node_coalescing(node, sol);
+			pos = find_node_coalescing(node, trz);
 			if (pos < 0)
 				goto error;
 			if (pos < node->nvar)
@@ -4626,11 +4626,11 @@ static __isl_give isl_vec *non_neg_lexmin(struct isl_sched_graph *graph,
 
 	isl_tab_lexmin_free(tl);
 
-	return sol;
+	return trz;
 error:
 	isl_tab_lexmin_free(tl);
 	isl_vec_free(prev);
-	isl_vec_free(sol);
+	isl_vec_free(trz);
 	return NULL;
 }
 
@@ -5099,7 +5099,7 @@ static __isl_give isl_vec *compute_carrying_sol(isl_ctx *ctx,
 	isl_size n_intra, n_inter;
 	int n_edge;
 	struct isl_carry carry = { 0 };
-	isl_vec *sol;
+	isl_vec *trz;
 
 	carry.intra = collect_intra_validity(ctx, graph, coincidence,
 						&carry.lineality);
@@ -5112,13 +5112,13 @@ static __isl_give isl_vec *compute_carrying_sol(isl_ctx *ctx,
 
 	if (fallback && n_intra > 0 &&
 	    isl_options_get_schedule_carry_self_first(ctx)) {
-		sol = compute_carrying_sol_coef(ctx, graph, n_intra,
+		trz = compute_carrying_sol_coef(ctx, graph, n_intra,
 				carry.intra, carry.inter, fallback, 0);
-		if (!sol || sol->size != 0 || n_inter == 0) {
+		if (!trz || trz->size != 0 || n_inter == 0) {
 			isl_carry_clear(&carry);
-			return sol;
+			return trz;
 		}
-		isl_vec_free(sol);
+		isl_vec_free(trz);
 	}
 
 	n_edge = n_intra + n_inter;
@@ -5127,10 +5127,10 @@ static __isl_give isl_vec *compute_carrying_sol(isl_ctx *ctx,
 		return isl_vec_alloc(ctx, 0);
 	}
 
-	sol = compute_carrying_sol_coef(ctx, graph, n_edge,
+	trz = compute_carrying_sol_coef(ctx, graph, n_edge,
 				carry.intra, carry.inter, fallback, 1);
 	isl_carry_clear(&carry);
-	return sol;
+	return trz;
 error:
 	isl_carry_clear(&carry);
 	return NULL;
@@ -5172,32 +5172,32 @@ static __isl_give isl_schedule_node *carry(__isl_take isl_schedule_node *node,
 {
 	int trivial;
 	isl_ctx *ctx;
-	isl_vec *sol;
+	isl_vec *trz;
 
 	if (!node)
 		return NULL;
 
 	ctx = isl_schedule_node_get_ctx(node);
-	sol = compute_carrying_sol(ctx, graph, fallback, coincidence);
-	if (!sol)
+	trz = compute_carrying_sol(ctx, graph, fallback, coincidence);
+	if (!trz)
 		return isl_schedule_node_free(node);
-	if (sol->size == 0) {
-		isl_vec_free(sol);
+	if (trz->size == 0) {
+		isl_vec_free(trz);
 		if (graph->scc > 1)
 			return compute_component_schedule(node, graph, 1);
 		isl_die(ctx, isl_error_unknown, "unable to carry dependences",
 			return isl_schedule_node_free(node));
 	}
 
-	trivial = is_any_trivial(graph, sol);
+	trivial = is_any_trivial(graph, trz);
 	if (trivial < 0) {
-		sol = isl_vec_free(sol);
+		trz = isl_vec_free(trz);
 	} else if (trivial && graph->scc > 1) {
-		isl_vec_free(sol);
+		isl_vec_free(trz);
 		return compute_component_schedule(node, graph, 1);
 	}
 
-	if (update_schedule(graph, sol, 0) < 0)
+	if (update_schedule(graph, trz, 0) < 0)
 		return isl_schedule_node_free(node);
 	if (trivial)
 		graph->n_row--;
@@ -5666,7 +5666,7 @@ isl_stat isl_schedule_node_compute_wcc_band(isl_ctx *ctx,
 
 	use_coincidence = has_coincidence;
 	while (graph->n_row < graph->maxvar) {
-		isl_vec *sol;
+		isl_vec *trz;
 		int violated;
 		int coincident;
 
@@ -5675,13 +5675,13 @@ isl_stat isl_schedule_node_compute_wcc_band(isl_ctx *ctx,
 
 		if (setup_lp(ctx, graph, use_coincidence) < 0)
 			return isl_stat_error;
-		sol = solve_lp(ctx, graph);
-		if (!sol)
+		trz = solve_lp(ctx, graph);
+		if (!trz)
 			return isl_stat_error;
-		if (sol->size == 0) {
+		if (trz->size == 0) {
 			int empty = graph->n_total_row == graph->band_start;
 
-			isl_vec_free(sol);
+			isl_vec_free(trz);
 			if (use_coincidence && (!force_coincidence || !empty)) {
 				use_coincidence = 0;
 				continue;
@@ -5689,7 +5689,7 @@ isl_stat isl_schedule_node_compute_wcc_band(isl_ctx *ctx,
 			return isl_stat_ok;
 		}
 		coincident = !has_coincidence || use_coincidence;
-		if (update_schedule(graph, sol, coincident) < 0)
+		if (update_schedule(graph, trz, coincident) < 0)
 			return isl_stat_error;
 
 		if (!check_conditional)

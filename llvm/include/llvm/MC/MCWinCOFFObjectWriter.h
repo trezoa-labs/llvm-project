@@ -21,7 +21,7 @@ class MCValue;
 class raw_pwrite_stream;
 
 class MCWinCOFFObjectTargetWriter : public MCObjectTargetWriter {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   const unsigned Machine;
 

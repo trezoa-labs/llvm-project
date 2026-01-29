@@ -47,5 +47,5 @@ void DWARFCompileUnit::dump(raw_ostream &OS, DIDumpOptions DumpOpts) {
   }
 }
 
-// VTable anchor.
+// VTable trezoaanchor.
 DWARFCompileUnit::~DWARFCompileUnit() = default;

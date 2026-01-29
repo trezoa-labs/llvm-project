@@ -22,7 +22,7 @@ namespace llvm {
 // LanaiMachineFunctionInfo - This class is derived from MachineFunction and
 // contains private Lanai target-specific information for each MachineFunction.
 class LanaiMachineFunctionInfo : public MachineFunctionInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   // SRetReturnReg - Lanai ABI require that sret lowering includes
   // returning the value of the returned struct in a register. This field

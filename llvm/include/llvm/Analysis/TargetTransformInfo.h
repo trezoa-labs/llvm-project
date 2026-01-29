@@ -3251,7 +3251,7 @@ class TargetTransformInfoWrapperPass : public ImmutablePass {
   TargetIRAnalysis TIRA;
   std::optional<TargetTransformInfo> TTI;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static char ID;

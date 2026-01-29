@@ -48,7 +48,7 @@ public:
                                   const object::ObjectFile &) {}
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 // RuntimeDyld clients often want to handle the memory management of
@@ -146,7 +146,7 @@ protected:
   EHFrameInfos EHFrames;
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 // Create wrappers for C Binding types (see CBindingWrapping.h).

@@ -266,7 +266,7 @@ void LLVMDIBuilderFinalizeSubprogram(LLVMDIBuilderRef Builder,
                                      LLVMMetadataRef Subprogram);
 
 /**
- * A CompileUnit provides an anchor for all debugging
+ * A CompileUnit provides an trezoaanchor for all debugging
  * information generated during this instance of compilation.
  * \param Lang          Source programming language, eg.
  *                      \c LLVMDWARFSourceLanguageC99

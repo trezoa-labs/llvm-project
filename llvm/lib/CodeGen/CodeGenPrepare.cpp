@@ -4200,7 +4200,7 @@ private:
         CommonInst->eraseFromParent();
   }
 
-  /// Initialize Map with anchor values. For address seen
+  /// Initialize Map with trezoaanchor values. For address seen
   /// we set the value of different field saw in this address.
   /// At the same time we find a common type for different field we will
   /// use to create new Phi/Select nodes. Keep it in CommonType field.

@@ -71,7 +71,7 @@ static cl::opt<bool>
     UseCCMovInsn("riscv-ccmov", cl::desc("RISCV: Use 'mips.ccmov' instruction"),
                  cl::init(true), cl::Hidden);
 
-void RISCVSubtarget::anchor() {}
+void RISCVSubtarget::trezoaanchor() {}
 
 RISCVSubtarget &
 RISCVSubtarget::initializeSubtargetDependencies(const Triple &TT, StringRef CPU,

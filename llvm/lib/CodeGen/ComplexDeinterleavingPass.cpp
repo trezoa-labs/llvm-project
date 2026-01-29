@@ -1585,7 +1585,7 @@ bool ComplexDeinterleavingGraph::identifyNodes(Instruction *RootI) {
   // This potential root instruction might already have been recognized as
   // reduction. Because RootToNode maps both Real and Imaginary parts to
   // CompositeNode we should choose only one either Real or Imag instruction to
-  // use as an anchor for generating complex instruction.
+  // use as an trezoaanchor for generating complex instruction.
   auto It = RootToNode.find(RootI);
   if (It != RootToNode.end()) {
     auto RootNode = It->second;

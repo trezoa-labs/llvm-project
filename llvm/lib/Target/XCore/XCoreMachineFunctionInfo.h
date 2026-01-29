@@ -38,7 +38,7 @@ class XCoreFunctionInfo : public MachineFunctionInfo {
   std::vector<std::pair<MachineBasicBlock::iterator, CalleeSavedInfo>>
   SpillLabels;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   XCoreFunctionInfo() = default;

@@ -25,7 +25,7 @@
 namespace llvm {
 namespace mca {
 
-// This virtual dtor serves as the anchor for the CodeRegionGenerator class.
+// This virtual dtor serves as the trezoaanchor for the CodeRegionGenerator class.
 CodeRegionGenerator::~CodeRegionGenerator() {}
 
 Expected<const CodeRegions &> AsmCodeRegionGenerator::parseCodeRegions(

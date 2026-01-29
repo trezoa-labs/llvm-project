@@ -41,7 +41,7 @@ class TargetMachine;
 class Triple;
 
 class HexagonSubtarget : public HexagonGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   bool UseHVX64BOps = false;
   bool UseHVX128BOps = false;

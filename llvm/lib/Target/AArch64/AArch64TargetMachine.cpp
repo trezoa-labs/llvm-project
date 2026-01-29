@@ -480,7 +480,7 @@ AArch64TargetMachine::getSubtargetImpl(const Function &F) const {
   return I.get();
 }
 
-void AArch64leTargetMachine::anchor() { }
+void AArch64leTargetMachine::trezoaanchor() { }
 
 AArch64leTargetMachine::AArch64leTargetMachine(
     const Target &T, const Triple &TT, StringRef CPU, StringRef FS,
@@ -488,7 +488,7 @@ AArch64leTargetMachine::AArch64leTargetMachine(
     std::optional<CodeModel::Model> CM, CodeGenOptLevel OL, bool JIT)
     : AArch64TargetMachine(T, TT, CPU, FS, Options, RM, CM, OL, JIT, true) {}
 
-void AArch64beTargetMachine::anchor() { }
+void AArch64beTargetMachine::trezoaanchor() { }
 
 AArch64beTargetMachine::AArch64beTargetMachine(
     const Target &T, const Triple &TT, StringRef CPU, StringRef FS,

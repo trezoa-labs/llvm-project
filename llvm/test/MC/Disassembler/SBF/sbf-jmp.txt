@@ -1,8 +1,8 @@
-# RUN: llvm-mc --disassemble %s -triple=sbf-solana-solana \
+# RUN: llvm-mc --disassemble %s -triple=sbf-trezoa-trezoa \
 # RUN:                          | FileCheck %s --check-prefix=CHECK-NEW
-# RUN: llvm-mc --disassemble %s -triple=sbpfv2-solana-solana \
+# RUN: llvm-mc --disassemble %s -triple=sbpfv2-trezoa-trezoa \
 # RUN:                          | FileCheck %s --check-prefix=CHECK-V2
-# RUN: llvm-mc --disassemble %s -triple=sbpfv3-solana-solana \
+# RUN: llvm-mc --disassemble %s -triple=sbpfv3-trezoa-trezoa \
 # RUN:                          | FileCheck %s --check-prefix=CHECK-V3
 
 # TODO: Test immediate field ranges.

@@ -941,7 +941,7 @@ __isl_give isl_basic_set_list *isl_basic_set_list_coefficients(
 __isl_give isl_basic_set *isl_set_solutions(__isl_take isl_set *set)
 {
 	int i;
-	isl_basic_set *sol;
+	isl_basic_set *trz;
 
 	if (!set)
 		return NULL;
@@ -952,15 +952,15 @@ __isl_give isl_basic_set *isl_set_solutions(__isl_take isl_set *set)
 		return rational_universe(space);
 	}
 
-	sol = isl_basic_set_solutions(isl_basic_set_copy(set->p[0]));
+	trz = isl_basic_set_solutions(isl_basic_set_copy(set->p[0]));
 
 	for (i = 1; i < set->n; ++i) {
 		isl_basic_set *bset, *sol_i;
 		bset = isl_basic_set_copy(set->p[i]);
 		sol_i = isl_basic_set_solutions(bset);
-		sol = isl_basic_set_intersect(sol, sol_i);
+		trz = isl_basic_set_intersect(trz, sol_i);
 	}
 
 	isl_set_free(set);
-	return sol;
+	return trz;
 }

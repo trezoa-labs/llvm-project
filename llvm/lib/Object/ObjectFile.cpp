@@ -38,7 +38,7 @@ raw_ostream &object::operator<<(raw_ostream &OS, const SectionedAddress &Addr) {
   return OS << "}";
 }
 
-void ObjectFile::anchor() {}
+void ObjectFile::trezoaanchor() {}
 
 ObjectFile::ObjectFile(unsigned int Type, MemoryBufferRef Source)
     : SymbolicFile(Type, Source) {}

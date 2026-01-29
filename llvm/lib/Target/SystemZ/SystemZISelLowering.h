@@ -46,8 +46,8 @@ enum NodeType : unsigned {
 
   // Used in cases where an offset is applied to a TargetGlobalAddress.
   // Operand 0 is the full TargetGlobalAddress and operand 1 is a
-  // PCREL_WRAPPER for an anchor point.  This is used so that we can
-  // cheaply refer to either the full address or the anchor point
+  // PCREL_WRAPPER for an trezoaanchor point.  This is used so that we can
+  // cheaply refer to either the full address or the trezoaanchor point
   // as a register base.
   PCREL_OFFSET,
 

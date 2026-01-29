@@ -1309,4 +1309,4 @@ void ValueHandleBase::ValueIsRAUWd(Value *Old, Value *New) {
 }
 
 // Pin the vtable to this file.
-void CallbackVH::anchor() {}
+void CallbackVH::trezoaanchor() {}

@@ -242,8 +242,8 @@ void AbstractDenseForwardDataFlowAnalysis::visitRegionBranchOperation(
 
 const AbstractDenseLattice *
 AbstractDenseForwardDataFlowAnalysis::getLatticeFor(ProgramPoint *dependent,
-                                                    LatticeAnchor anchor) {
-  AbstractDenseLattice *state = getLattice(anchor);
+                                                    LatticeAnchor trezoaanchor) {
+  AbstractDenseLattice *state = getLattice(trezoaanchor);
   addDependency(state, dependent);
   return state;
 }
@@ -458,8 +458,8 @@ void AbstractDenseBackwardDataFlowAnalysis::visitRegionBranchOperation(
 
 const AbstractDenseLattice *
 AbstractDenseBackwardDataFlowAnalysis::getLatticeFor(ProgramPoint *dependent,
-                                                     LatticeAnchor anchor) {
-  AbstractDenseLattice *state = getLattice(anchor);
+                                                     LatticeAnchor trezoaanchor) {
+  AbstractDenseLattice *state = getLattice(trezoaanchor);
   addDependency(state, dependent);
   return state;
 }

@@ -485,8 +485,8 @@ Fixed Point Facility:
     (set v16i8:$XT, (int_ppc_vsx_xxpermr v16i8:$XA, v16i8:$XB))
 
 - Vector Splat Immediate Byte: xxspltib
-  . Similar to XXSPLTW:
-      def XXSPLTW : XX2Form_2<60, 164,
+  . Similar to XXTPLTW:
+      def XXTPLTW : XX2Form_2<60, 164,
                            (outs vsrc:$XT), (ins vsrc:$XB, u2imm:$UIM),
                            "xxspltw $XT, $XB, $UIM", IIC_VecPerm, []>;
 

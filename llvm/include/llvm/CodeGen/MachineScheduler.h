@@ -217,7 +217,7 @@ struct MachineSchedPolicy {
 /// Initialization sequence:
 ///   initPolicy -> shouldTrackPressure -> initialize(DAG) -> registerRoots
 class MachineSchedStrategy {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   virtual ~MachineSchedStrategy() = default;
@@ -313,7 +313,7 @@ public:
       : ScheduleDAGInstrs(*C->MF, C->MLI, RemoveKillFlags), AA(C->AA),
         LIS(C->LIS), SchedImpl(std::move(S)) {}
 
-  // Provide a vtable anchor
+  // Provide a vtable trezoaanchor
   ~ScheduleDAGMI() override;
 
   /// If this method returns true, handling of the scheduling regions

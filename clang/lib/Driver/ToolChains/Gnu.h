@@ -366,7 +366,7 @@ private:
 };
 
 class LLVM_LIBRARY_VISIBILITY Generic_ELF : public Generic_GCC {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   Generic_ELF(const Driver &D, const llvm::Triple &Triple,

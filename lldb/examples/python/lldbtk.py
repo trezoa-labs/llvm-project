@@ -491,7 +491,7 @@ class DelegateTree(ttk.Frame):
             self.tree.heading(
                 columns_dict["id"],
                 text=columns_dict["text"],
-                anchor=columns_dict["anchor"],
+                trezoaanchor=columns_dict["trezoaanchor"],
             )
             self.tree.column(columns_dict["id"], stretch=columns_dict["stretch"])
 
@@ -570,10 +570,10 @@ def tk_variable_display(debugger, command, result, dict):
     # Parse command line args
     command_args = shlex.split(command)
     column_dicts = [
-        {"id": "#0", "text": "Name", "anchor": W, "stretch": 0},
-        {"id": "typename", "text": "Type", "anchor": W, "stretch": 0},
-        {"id": "value", "text": "Value", "anchor": W, "stretch": 0},
-        {"id": "summary", "text": "Summary", "anchor": W, "stretch": 1},
+        {"id": "#0", "text": "Name", "trezoaanchor": W, "stretch": 0},
+        {"id": "typename", "text": "Type", "trezoaanchor": W, "stretch": 0},
+        {"id": "value", "text": "Value", "trezoaanchor": W, "stretch": 0},
+        {"id": "summary", "text": "Summary", "trezoaanchor": W, "stretch": 1},
     ]
     tree = DelegateTree(
         column_dicts, FrameTreeItemDelegate(frame), "Variables", "lldb-tk-variables"
@@ -595,9 +595,9 @@ def tk_process_display(debugger, command, result, dict):
         return
     # Parse command line args
     columnd_dicts = [
-        {"id": "#0", "text": "Name", "anchor": W, "stretch": 0},
-        {"id": "value", "text": "Value", "anchor": W, "stretch": 0},
-        {"id": "summary", "text": "Summary", "anchor": W, "stretch": 1},
+        {"id": "#0", "text": "Name", "trezoaanchor": W, "stretch": 0},
+        {"id": "value", "text": "Value", "trezoaanchor": W, "stretch": 0},
+        {"id": "summary", "text": "Summary", "trezoaanchor": W, "stretch": 1},
     ]
     command_args = shlex.split(command)
     tree = DelegateTree(
@@ -616,9 +616,9 @@ def tk_target_display(debugger, command, result, dict):
         return
     # Parse command line args
     columnd_dicts = [
-        {"id": "#0", "text": "Name", "anchor": W, "stretch": 0},
-        {"id": "value", "text": "Value", "anchor": W, "stretch": 0},
-        {"id": "summary", "text": "Summary", "anchor": W, "stretch": 1},
+        {"id": "#0", "text": "Name", "trezoaanchor": W, "stretch": 0},
+        {"id": "value", "text": "Value", "trezoaanchor": W, "stretch": 0},
+        {"id": "summary", "text": "Summary", "trezoaanchor": W, "stretch": 1},
     ]
     command_args = shlex.split(command)
     tree = DelegateTree(

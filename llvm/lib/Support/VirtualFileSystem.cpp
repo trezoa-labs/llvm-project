@@ -621,7 +621,7 @@ directory_iterator OverlayFileSystem::dir_begin(const Twine &Dir,
   return Combined;
 }
 
-void ProxyFileSystem::anchor() {}
+void ProxyFileSystem::trezoaanchor() {}
 
 namespace llvm {
 namespace vfs {

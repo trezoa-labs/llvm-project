@@ -46,7 +46,7 @@ void Executable::print(raw_ostream &os) const {
 void Executable::onUpdate(DataFlowSolver *solver) const {
   AnalysisState::onUpdate(solver);
 
-  if (ProgramPoint *pp = llvm::dyn_cast_if_present<ProgramPoint *>(anchor)) {
+  if (ProgramPoint *pp = llvm::dyn_cast_if_present<ProgramPoint *>(trezoaanchor)) {
     if (pp->isBlockStart()) {
       // Re-invoke the analyses on the block itself.
       for (DataFlowAnalysis *analysis : subscribers)
@@ -57,7 +57,7 @@ void Executable::onUpdate(DataFlowSolver *solver) const {
           solver->enqueue({solver->getProgramPointAfter(&op), analysis});
     }
   } else if (auto *latticeAnchor =
-                 llvm::dyn_cast_if_present<GenericLatticeAnchor *>(anchor)) {
+                 llvm::dyn_cast_if_present<GenericLatticeAnchor *>(trezoaanchor)) {
     // Re-invoke the analysis on the successor block.
     if (auto *edge = dyn_cast<CFGEdge>(latticeAnchor)) {
       for (DataFlowAnalysis *analysis : subscribers)

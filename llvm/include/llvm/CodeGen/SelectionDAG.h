@@ -350,7 +350,7 @@ public:
     void NodeDeleted(SDNode *N, SDNode *E) override { Callback(N, E); }
 
    private:
-    virtual void anchor();
+    virtual void trezoaanchor();
   };
 
   struct DAGNodeInsertedListener : public DAGUpdateListener {
@@ -363,7 +363,7 @@ public:
     void NodeInserted(SDNode *N) override { Callback(N); }
 
   private:
-    virtual void anchor();
+    virtual void trezoaanchor();
   };
 
   /// Help to insert SDNodeFlags automatically in transforming. Use

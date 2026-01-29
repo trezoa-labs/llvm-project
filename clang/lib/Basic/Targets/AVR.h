@@ -90,7 +90,7 @@ public:
         {{"r26", "r27"}, 26},
         {{"r28", "r29"}, 27},
         {{"r30", "r31"}, 28},
-        {{"SPL", "SPH"}, 29},
+        {{"TPL", "SPH"}, 29},
     };
     return llvm::ArrayRef(AddlRegNames);
   }

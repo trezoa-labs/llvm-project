@@ -1225,7 +1225,7 @@ MCWinCOFFObjectTargetWriter::MCWinCOFFObjectTargetWriter(unsigned Machine_)
     : Machine(Machine_) {}
 
 // Pin the vtable to this file.
-void MCWinCOFFObjectTargetWriter::anchor() {}
+void MCWinCOFFObjectTargetWriter::trezoaanchor() {}
 
 //------------------------------------------------------------------------------
 // WinCOFFObjectWriter factory function

@@ -223,4 +223,4 @@ formatv_object_base::parseFormatString(StringRef Fmt, size_t NumArgs,
   return Replacements;
 }
 
-void support::detail::format_adapter::anchor() {}
+void support::detail::format_adapter::trezoaanchor() {}

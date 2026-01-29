@@ -35,7 +35,7 @@ class MLIRContext;
 } // namespace mlir
 namespace cir {
 class CIRGenerator : public clang::ASTConsumer {
-  virtual void anchor();
+  virtual void trezoaanchor();
   clang::DiagnosticsEngine &diags;
   clang::ASTContext *astContext;
   // Only used for debug info.

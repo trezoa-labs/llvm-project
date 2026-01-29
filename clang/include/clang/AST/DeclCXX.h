@@ -95,7 +95,7 @@ class AccessSpecDecl : public Decl {
 
   AccessSpecDecl(EmptyShell Empty) : Decl(AccessSpec, Empty) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   /// The location of the access specifier.
@@ -1965,7 +1965,7 @@ public:
 /// second line, and implicit deduction guide templates synthesized from
 /// the constructors of \c A.
 class CXXDeductionGuideDecl : public FunctionDecl {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   // Represents the relationship between this deduction guide and the
@@ -2115,7 +2115,7 @@ public:
 /// In the terminology of the C++ Standard, these are the (static and
 /// non-static) member functions, whether virtual or not.
 class CXXMethodDecl : public FunctionDecl {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   CXXMethodDecl(Kind DK, ASTContext &C, CXXRecordDecl *RD,
@@ -2606,7 +2606,7 @@ class CXXConstructorDecl final
                      InheritedConstructor Inherited,
                      Expr *TrailingRequiresClause);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   size_t numTrailingObjects(OverloadToken<InheritedConstructor>) const {
     return CXXConstructorDeclBits.IsInheritingConstructor;
@@ -2873,7 +2873,7 @@ class CXXDestructorDecl : public CXXMethodDecl {
     setImplicit(isImplicitlyDeclared);
   }
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   static CXXDestructorDecl *
@@ -2932,7 +2932,7 @@ class CXXConversionDecl : public CXXMethodDecl {
                       SC_None, UsesFPIntrin, isInline, ConstexprKind,
                       EndLocation, TrailingRequiresClause),
         ExplicitSpec(ES) {}
-  void anchor() override;
+  void trezoaanchor() override;
 
   ExplicitSpecifier ExplicitSpec;
 
@@ -2994,7 +2994,7 @@ enum class LinkageSpecLanguageIDs { C = 1, CXX = 2 };
 ///   extern "C" void foo();
 /// \endcode
 class LinkageSpecDecl : public Decl, public DeclContext {
-  virtual void anchor();
+  virtual void trezoaanchor();
   // This class stores some data in DeclContext::LinkageSpecDeclBits to save
   // some space. Use the provided accessors to access it.
 
@@ -3109,7 +3109,7 @@ class UsingDirectiveDecl : public NamedDecl {
     return DeclarationName::getUsingDirectiveName();
   }
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -3205,7 +3205,7 @@ class NamespaceAliasDecl : public NamedDecl,
         NamespaceLoc(NamespaceLoc), IdentLoc(IdentLoc),
         QualifierLoc(QualifierLoc), Namespace(Namespace) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   using redeclarable_base = Redeclarable<NamespaceAliasDecl>;
 
@@ -3301,7 +3301,7 @@ class LifetimeExtendedTemporaryDecl final
 
   mutable APValue *Value = nullptr;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   LifetimeExtendedTemporaryDecl(Expr *Temp, ValueDecl *EDecl, unsigned Mangling)
       : Decl(Decl::LifetimeExtendedTemporary, EDecl->getDeclContext(),
@@ -3389,7 +3389,7 @@ class UsingShadowDecl : public NamedDecl, public Redeclarable<UsingShadowDecl> {
   /// shadow declaration contained in the aforementioned using declaration.
   NamedDecl *UsingOrNextShadow = nullptr;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   using redeclarable_base = Redeclarable<UsingShadowDecl>;
 
@@ -3489,7 +3489,7 @@ protected:
       : NamedDecl(DK, DC, L, N), FirstUsingShadow(nullptr, false) {}
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   /// A bool flag for use by a derived type
@@ -3591,7 +3591,7 @@ class UsingDecl : public BaseUsingDecl, public Mergeable<UsingDecl> {
     setShadowFlag(HasTypenameKeyword);
   }
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -3699,7 +3699,7 @@ class ConstructorUsingShadowDecl final : public UsingShadowDecl {
   ConstructorUsingShadowDecl(ASTContext &C, EmptyShell Empty)
       : UsingShadowDecl(ConstructorUsingShadow, C, Empty), IsVirtual(false) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -3785,7 +3785,7 @@ class UsingEnumDecl : public BaseUsingDecl, public Mergeable<UsingEnumDecl> {
       : BaseUsingDecl(UsingEnum, DC, NL, DN), UsingLocation(UL), EnumLocation(EL),
         EnumType(EnumType){}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -3873,7 +3873,7 @@ class UsingPackDecl final
                             getTrailingObjects<NamedDecl *>());
   }
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -3945,7 +3945,7 @@ class UnresolvedUsingValueDecl : public ValueDecl,
         UsingLocation(UsingLoc), EllipsisLoc(EllipsisLoc),
         QualifierLoc(QualifierLoc), DNLoc(NameInfo.getInfo()) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -4041,7 +4041,7 @@ class UnresolvedUsingTypenameDecl
       TypenameLocation(TypenameLoc), EllipsisLoc(EllipsisLoc),
       QualifierLoc(QualifierLoc) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   /// Returns the source location of the 'using' keyword.
@@ -4103,7 +4103,7 @@ class UnresolvedUsingIfExistsDecl final : public NamedDecl {
   UnresolvedUsingIfExistsDecl(DeclContext *DC, SourceLocation Loc,
                               DeclarationName Name);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   static UnresolvedUsingIfExistsDecl *Create(ASTContext &Ctx, DeclContext *DC,
@@ -4129,7 +4129,7 @@ class StaticAssertDecl : public Decl {
         AssertExprAndFailed(AssertExpr, Failed), Message(Message),
         RParenLoc(RParenLoc) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   friend class ASTDeclReader;
@@ -4178,7 +4178,7 @@ class BindingDecl : public ValueDecl {
   BindingDecl(DeclContext *DC, SourceLocation IdLoc, IdentifierInfo *Id)
       : ValueDecl(Decl::Binding, DC, IdLoc, Id, QualType()) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -4242,7 +4242,7 @@ class DecompositionDecl final
       B->setDecomposedDecl(this);
   }
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -4303,7 +4303,7 @@ class MSPropertyDecl : public DeclaratorDecl {
       : DeclaratorDecl(MSProperty, DC, L, N, T, TInfo, StartL),
         GetterId(Getter), SetterId(Setter) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 public:
   friend class ASTDeclReader;
 
@@ -4360,7 +4360,7 @@ private:
   /// cached.
   mutable APValue APVal;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   MSGuidDecl(DeclContext *DC, QualType T, Parts P);
 
@@ -4410,7 +4410,7 @@ class UnnamedGlobalConstantDecl : public ValueDecl,
   // The constant value of this global.
   APValue Value;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   UnnamedGlobalConstantDecl(const ASTContext &C, DeclContext *DC, QualType T,
                             const APValue &Val);

@@ -48,7 +48,7 @@ class Matcher {
   // the last stage of a match.
   std::unique_ptr<Matcher> Next;
   size_t Size = 0; // Size in bytes of matcher and all its children (if any).
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   enum KindTy {
@@ -1081,7 +1081,7 @@ private:
 
 /// EmitNodeMatcher - This signals a successful match and generates a node.
 class EmitNodeMatcher : public EmitNodeMatcherCommon {
-  void anchor() override;
+  void trezoaanchor() override;
   unsigned FirstResultSlot;
 
 public:
@@ -1101,7 +1101,7 @@ public:
 };
 
 class MorphNodeToMatcher : public EmitNodeMatcherCommon {
-  void anchor() override;
+  void trezoaanchor() override;
   const PatternToMatch &Pattern;
 
 public:

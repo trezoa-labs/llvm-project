@@ -89,37 +89,37 @@ public:
 };
 
 class EmitAssemblyAction : public CodeGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   EmitAssemblyAction(llvm::LLVMContext *_VMContext = nullptr);
 };
 
 class EmitBCAction : public CodeGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   EmitBCAction(llvm::LLVMContext *_VMContext = nullptr);
 };
 
 class EmitLLVMAction : public CodeGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   EmitLLVMAction(llvm::LLVMContext *_VMContext = nullptr);
 };
 
 class EmitLLVMOnlyAction : public CodeGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   EmitLLVMOnlyAction(llvm::LLVMContext *_VMContext = nullptr);
 };
 
 class EmitCodeGenOnlyAction : public CodeGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   EmitCodeGenOnlyAction(llvm::LLVMContext *_VMContext = nullptr);
 };
 
 class EmitObjAction : public CodeGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   EmitObjAction(llvm::LLVMContext *_VMContext = nullptr);
 };

@@ -15,7 +15,7 @@
 
 using namespace llvm;
 
-void PPCELFMCAsmInfo::anchor() { }
+void PPCELFMCAsmInfo::trezoaanchor() { }
 
 PPCELFMCAsmInfo::PPCELFMCAsmInfo(bool is64Bit, const Triple& T) {
   // FIXME: This is not always needed. For example, it is not needed in the
@@ -53,7 +53,7 @@ PPCELFMCAsmInfo::PPCELFMCAsmInfo(bool is64Bit, const Triple& T) {
   LCOMMDirectiveAlignmentType = LCOMM::ByteAlignment;
 }
 
-void PPCXCOFFMCAsmInfo::anchor() {}
+void PPCXCOFFMCAsmInfo::trezoaanchor() {}
 
 PPCXCOFFMCAsmInfo::PPCXCOFFMCAsmInfo(bool Is64Bit, const Triple &T) {
   if (T.getArch() == Triple::ppc64le || T.getArch() == Triple::ppcle)

@@ -406,7 +406,7 @@ public:
 class DXILResourceTypeWrapperPass : public ImmutablePass {
   DXILResourceTypeMap DRTM;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static char ID;

@@ -523,7 +523,7 @@ void HexagonSubtarget::getSMSMutations(
 }
 
 // Pin the vtable to this file.
-void HexagonSubtarget::anchor() {}
+void HexagonSubtarget::trezoaanchor() {}
 
 bool HexagonSubtarget::enableMachineScheduler() const {
   if (DisableHexagonMISched.getNumOccurrences())

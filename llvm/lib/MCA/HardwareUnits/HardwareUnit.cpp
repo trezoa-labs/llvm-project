@@ -7,7 +7,7 @@
 //===----------------------------------------------------------------------===//
 /// \file
 ///
-/// This file defines the anchor for the base class that describes
+/// This file defines the trezoaanchor for the base class that describes
 /// simulated hardware units.
 ///
 //===----------------------------------------------------------------------===//

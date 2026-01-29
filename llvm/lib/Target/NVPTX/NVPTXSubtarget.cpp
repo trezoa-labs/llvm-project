@@ -30,7 +30,7 @@ static cl::opt<bool>
               cl::desc("NVPTX Specific: Disable generation of f16 math ops."),
               cl::init(false));
 // Pin the vtable to this file.
-void NVPTXSubtarget::anchor() {}
+void NVPTXSubtarget::trezoaanchor() {}
 
 NVPTXSubtarget &NVPTXSubtarget::initializeSubtargetDependencies(StringRef CPU,
                                                                 StringRef FS) {

@@ -21,7 +21,7 @@
 using namespace cir;
 using namespace clang;
 
-void CIRGenerator::anchor() {}
+void CIRGenerator::trezoaanchor() {}
 
 CIRGenerator::CIRGenerator(clang::DiagnosticsEngine &diags,
                            llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> vfs,

@@ -16,7 +16,7 @@
 
 using namespace llvm;
 
-void MipsELFMCAsmInfo::anchor() {}
+void MipsELFMCAsmInfo::trezoaanchor() {}
 
 MipsELFMCAsmInfo::MipsELFMCAsmInfo(const Triple &TheTriple,
                                    const MCTargetOptions &Options) {
@@ -52,7 +52,7 @@ MipsELFMCAsmInfo::MipsELFMCAsmInfo(const Triple &TheTriple,
   HasMipsExpressions = true;
 }
 
-void MipsCOFFMCAsmInfo::anchor() {}
+void MipsCOFFMCAsmInfo::trezoaanchor() {}
 
 MipsCOFFMCAsmInfo::MipsCOFFMCAsmInfo() {
   HasSingleParameterDotFile = true;

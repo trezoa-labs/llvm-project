@@ -49,7 +49,7 @@ public:
 };
 
 class EmitCIRAction : public CIRGenAction {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   EmitCIRAction(mlir::MLIRContext *MLIRCtx = nullptr);

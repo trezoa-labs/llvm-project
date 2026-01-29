@@ -30,7 +30,7 @@ using SymbolID = unsigned;
 /// Symbolic value. These values used to capture symbolic execution of
 /// the program.
 class SymExpr : public llvm::FoldingSetNode {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   enum Kind {
@@ -136,7 +136,7 @@ using SymbolRefSmallVectorTy = SmallVector<SymbolRef, 2>;
 /// A symbol representing data which can be stored in a memory location
 /// (region).
 class SymbolData : public SymExpr {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   SymbolData(Kind k, SymbolID sym) : SymExpr(k, sym) { assert(classof(this)); }

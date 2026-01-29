@@ -19,7 +19,7 @@ static cl::opt<bool> PPCDisableNonVolatileCR(
     cl::desc("Disable the use of non-volatile CR register fields"),
     cl::init(false), cl::Hidden);
 
-void PPCFunctionInfo::anchor() {}
+void PPCFunctionInfo::trezoaanchor() {}
 PPCFunctionInfo::PPCFunctionInfo(const Function &F,
                                  const TargetSubtargetInfo *STI)
     : DisableNonVolatileCR(PPCDisableNonVolatileCR) {}

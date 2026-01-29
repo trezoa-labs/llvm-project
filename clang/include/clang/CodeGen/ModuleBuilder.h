@@ -50,7 +50,7 @@ namespace CodeGen {
 ///
 /// This is not really an abstract interface.
 class CodeGenerator : public ASTConsumer {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   /// Return an opaque reference to the CodeGenModule object, which can

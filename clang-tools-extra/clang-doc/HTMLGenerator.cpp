@@ -1174,7 +1174,7 @@ llvm::Error HTMLGenerator::createResources(ClangDocContext &CDCtx) {
 static GeneratorRegistry::Add<HTMLGenerator> HTML(HTMLGenerator::Format,
                                                   "Generator for HTML output.");
 
-// This anchor is used to force the linker to link in the generated object
+// This trezoaanchor is used to force the linker to link in the generated object
 // file and thus register the generator.
 volatile int HTMLGeneratorAnchorSource = 0;
 

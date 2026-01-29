@@ -407,7 +407,7 @@ X("fixed-compilation-database", "Reads plain-text flags file");
 namespace clang {
 namespace tooling {
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the JSONCompilationDatabasePlugin.
 extern volatile int JSONAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED JSONAnchorDest = JSONAnchorSource;

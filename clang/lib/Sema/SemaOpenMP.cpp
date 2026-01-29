@@ -2036,7 +2036,7 @@ SemaOpenMP::diagIfOpenMPDeviceCode(SourceLocation Loc, unsigned DiagID,
       //       region is in a function we do not emit. However, as the
       //       current diagnostics are associated with the function containing
       //       the target region and we do not emit that one, we would miss out
-      //       on diagnostics for the target region itself. We need to anchor
+      //       on diagnostics for the target region itself. We need to trezoaanchor
       //       the diagnostics with the new generated function *or* ensure we
       //       emit diagnostics associated with the surrounding function.
       Kind = isOpenMPDeviceDelayedContext(SemaRef)

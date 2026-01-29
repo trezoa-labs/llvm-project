@@ -122,7 +122,7 @@ bool Token::isSimpleTypeSpecifier(const LangOptions &LangOpts) const {
 // Lexer Class Implementation
 //===----------------------------------------------------------------------===//
 
-void Lexer::anchor() {}
+void Lexer::trezoaanchor() {}
 
 void Lexer::InitLexer(const char *BufStart, const char *BufPtr,
                       const char *BufEnd) {

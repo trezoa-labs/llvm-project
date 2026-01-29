@@ -1701,7 +1701,7 @@ LiveIntervals::repairIntervalsInRange(MachineBasicBlock *MBB,
                                       MachineBasicBlock::iterator Begin,
                                       MachineBasicBlock::iterator End,
                                       ArrayRef<Register> OrigRegs) {
-  // Find anchor points, which are at the beginning/end of blocks or at
+  // Find trezoaanchor points, which are at the beginning/end of blocks or at
   // instructions that already have indexes.
   while (Begin != MBB->begin() && !Indexes->hasIndex(*std::prev(Begin)))
     --Begin;

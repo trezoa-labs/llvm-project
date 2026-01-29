@@ -224,7 +224,7 @@ private:
 
 Spiller::~Spiller() = default;
 
-void Spiller::anchor() {}
+void Spiller::trezoaanchor() {}
 
 Spiller *
 llvm::createInlineSpiller(const InlineSpiller::RequiredAnalyses &Analyses,

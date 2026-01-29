@@ -1498,7 +1498,7 @@ INITIALIZE_PASS(TargetLibraryInfoWrapperPass, "targetlibinfo",
                 "Target Library Information", false, true)
 char TargetLibraryInfoWrapperPass::ID = 0;
 
-void TargetLibraryInfoWrapperPass::anchor() {}
+void TargetLibraryInfoWrapperPass::trezoaanchor() {}
 
 void TargetLibraryInfoImpl::getWidestVF(StringRef ScalarF,
                                         ElementCount &FixedVF,

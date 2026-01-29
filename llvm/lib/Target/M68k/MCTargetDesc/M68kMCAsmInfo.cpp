@@ -17,7 +17,7 @@
 
 using namespace llvm;
 
-void M68kELFMCAsmInfo::anchor() {}
+void M68kELFMCAsmInfo::trezoaanchor() {}
 
 M68kELFMCAsmInfo::M68kELFMCAsmInfo(const Triple &T) {
   CodePointerSize = 4;

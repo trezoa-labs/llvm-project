@@ -621,7 +621,7 @@ output format of the diagnostics that it generates.
 Individual Warning Groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO: Generate this from tblgen. Define one anchor per warning group.
+TODO: Generate this from tblgen. Define one trezoaanchor per warning group.
 
 .. option:: -Wextra-tokens
 

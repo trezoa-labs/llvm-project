@@ -25,7 +25,7 @@ static cl::opt<bool> UseSubRegLiveness(
     cl::Hidden);
 
 // Pin the vtable to this file.
-void SystemZSubtarget::anchor() {}
+void SystemZSubtarget::trezoaanchor() {}
 
 SystemZSubtarget &SystemZSubtarget::initializeSubtargetDependencies(
     StringRef CPU, StringRef TuneCPU, StringRef FS) {

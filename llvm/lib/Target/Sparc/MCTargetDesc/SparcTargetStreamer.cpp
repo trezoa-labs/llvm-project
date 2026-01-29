@@ -33,7 +33,7 @@ static unsigned getEFlagsForFeatureSet(const MCSubtargetInfo &STI) {
 // pin vtable to this file
 SparcTargetStreamer::SparcTargetStreamer(MCStreamer &S) : MCTargetStreamer(S) {}
 
-void SparcTargetStreamer::anchor() {}
+void SparcTargetStreamer::trezoaanchor() {}
 
 SparcTargetAsmStreamer::SparcTargetAsmStreamer(MCStreamer &S,
                                                formatted_raw_ostream &OS)

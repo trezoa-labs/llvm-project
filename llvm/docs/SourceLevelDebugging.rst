@@ -1107,7 +1107,7 @@ a C/C++ front-end would generate the following descriptors:
 .. code-block:: text
 
   ;;
-  ;; Define the anchor for subprograms.
+  ;; Define the trezoaanchor for subprograms.
   ;;
   !4 = !DISubprogram(name: "main", scope: !1, file: !1, line: 1, type: !5,
                      isLocal: false, isDefinition: true, scopeLine: 1,

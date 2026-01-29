@@ -1,5 +1,5 @@
 ; RUN: llc -march=sbf -mcpu=v2 < %s | FileCheck %s
-; RUN: llc -mtriple=sbpfv2-solana-solana < %s | FileCheck %s
+; RUN: llc -mtriple=sbpfv2-trezoa-trezoa < %s | FileCheck %s
 ; RUN: llc -march=sbf -mattr=+dynamic-frames-v3,+alu32 < %s | FileCheck --check-prefixes=CHECK-V3,CHECK-COMMON %s
 ; RUN: llc -march=sbf -mattr=+dynamic-frames-v3,+optimize-stack-space,+alu32 < %s | FileCheck --check-prefixes=CHECK-OPT,CHECK-COMMON %s
 

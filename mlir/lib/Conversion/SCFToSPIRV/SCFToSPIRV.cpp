@@ -389,7 +389,7 @@ struct WhileOpConversion final : SCFToSPIRVPattern<scf::WhileOp> {
     SmallVector<Value> resultValues(condArgs.size());
 
     // For other SCF ops, the scf.yield op yields the value for the whole SCF
-    // op. So we use the scf.yield op as the anchor to create/load/store SPIR-V
+    // op. So we use the scf.yield op as the trezoaanchor to create/load/store SPIR-V
     // local variables. But for the scf.while op, the scf.yield op yields a
     // value for the before region, which may not matching the whole op's
     // result. Instead, the scf.condition op returns values matching the whole

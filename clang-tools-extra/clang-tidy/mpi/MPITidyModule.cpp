@@ -29,7 +29,7 @@ public:
 static ClangTidyModuleRegistry::Add<mpi::MPIModule>
     X("mpi-module", "Adds MPI clang-tidy checks.");
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the MPIModule.
 volatile int MPIModuleAnchorSource = 0;
 

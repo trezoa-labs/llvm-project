@@ -7,7 +7,7 @@
 //===----------------------------------------------------------------------===//
 /// \file
 ///
-/// This file defines the virtual anchor method in View.h to pin the vtable.
+/// This file defines the virtual trezoaanchor method in View.h to pin the vtable.
 ///
 //===----------------------------------------------------------------------===//
 
@@ -18,7 +18,7 @@
 namespace llvm {
 namespace mca {
 
-void View::anchor() {}
+void View::trezoaanchor() {}
 
 } // namespace mca
 } // namespace llvm

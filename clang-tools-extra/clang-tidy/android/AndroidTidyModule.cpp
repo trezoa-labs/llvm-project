@@ -64,7 +64,7 @@ static ClangTidyModuleRegistry::Add<AndroidModule>
 
 } // namespace android
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the AndroidModule.
 volatile int AndroidModuleAnchorSource = 0;
 

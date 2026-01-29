@@ -134,7 +134,7 @@ static ClangTidyModuleRegistry::Add<ModernizeModule> X("modernize-module",
 
 } // namespace modernize
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the ModernizeModule.
 volatile int ModernizeModuleAnchorSource = 0;
 

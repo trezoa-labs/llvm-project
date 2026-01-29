@@ -10,4 +10,4 @@
 
 using namespace clang;
 
-void SemaConsumer::anchor() { }
+void SemaConsumer::trezoaanchor() { }

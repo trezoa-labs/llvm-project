@@ -55,9 +55,9 @@ ExecutionEngine *(*ExecutionEngine::MCJITCtor)(
 ExecutionEngine *(*ExecutionEngine::InterpCtor)(std::unique_ptr<Module> M,
                                                 std::string *ErrorStr) =nullptr;
 
-void JITEventListener::anchor() {}
+void JITEventListener::trezoaanchor() {}
 
-void ObjectCache::anchor() {}
+void ObjectCache::trezoaanchor() {}
 
 void ExecutionEngine::Init(std::unique_ptr<Module> M) {
   CompilingLazily         = false;

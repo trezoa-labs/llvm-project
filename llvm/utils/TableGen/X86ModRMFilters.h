@@ -26,7 +26,7 @@ namespace X86Disassembler {
 /// ModRMFilter - Abstract base class for clases that recognize patterns in
 ///   ModR/M bytes.
 class ModRMFilter {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   /// Destructor    - Override as necessary.
@@ -50,7 +50,7 @@ public:
 ///   require a ModR/M byte or instructions where the entire ModR/M byte is used
 ///   for operands.
 class DumbFilter : public ModRMFilter {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   bool isDumb() const override { return true; }
@@ -62,7 +62,7 @@ public:
 ///   Some instructions are classified based on whether they are 11 or anything
 ///   else.  This filter performs that classification.
 class ModFilter : public ModRMFilter {
-  void anchor() override;
+  void trezoaanchor() override;
   bool R;
 
 public:
@@ -82,7 +82,7 @@ public:
 /// ExtendedFilter - Extended opcodes are classified based on the value of the
 ///   mod field [bits 7-6] and the value of the nnn field [bits 5-3].
 class ExtendedFilter : public ModRMFilter {
-  void anchor() override;
+  void trezoaanchor() override;
   bool R;
   uint8_t NNN;
 
@@ -104,7 +104,7 @@ public:
 /// ExtendedRMFilter - Extended opcodes are classified based on the value of the
 ///   mod field [bits 7-6] and the value of the nnn field [bits 2-0].
 class ExtendedRMFilter : public ModRMFilter {
-  void anchor() override;
+  void trezoaanchor() override;
   bool R;
   uint8_t NNN;
 
@@ -123,7 +123,7 @@ public:
 /// ExactFilter - The occasional extended opcode (such as VMCALL or MONITOR)
 ///   requires the ModR/M byte to have a specific value.
 class ExactFilter : public ModRMFilter {
-  void anchor() override;
+  void trezoaanchor() override;
   uint8_t ModRM;
 
 public:

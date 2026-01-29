@@ -20,7 +20,7 @@ namespace llvm {
 class Triple;
 
 class MipsELFMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit MipsELFMCAsmInfo(const Triple &TheTriple,
@@ -28,7 +28,7 @@ public:
 };
 
 class MipsCOFFMCAsmInfo : public MCAsmInfoGNUCOFF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit MipsCOFFMCAsmInfo();

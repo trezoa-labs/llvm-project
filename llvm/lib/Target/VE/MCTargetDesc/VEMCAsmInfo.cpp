@@ -16,7 +16,7 @@
 
 using namespace llvm;
 
-void VEELFMCAsmInfo::anchor() {}
+void VEELFMCAsmInfo::trezoaanchor() {}
 
 VEELFMCAsmInfo::VEELFMCAsmInfo(const Triple &TheTriple) {
 

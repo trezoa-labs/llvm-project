@@ -725,7 +725,7 @@ void DeadCodeScan::reportDeadCode(const CFGBlock *B,
 
 namespace clang { namespace reachable_code {
 
-void Callback::anchor() { }
+void Callback::trezoaanchor() { }
 
 unsigned ScanReachableFromBlock(const CFGBlock *Start,
                                 llvm::BitVector &Reachable) {

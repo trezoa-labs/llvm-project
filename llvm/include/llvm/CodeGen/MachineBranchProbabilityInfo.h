@@ -78,7 +78,7 @@ public:
 };
 
 class MachineBranchProbabilityInfoWrapperPass : public ImmutablePass {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   MachineBranchProbabilityInfo MBPI;
 

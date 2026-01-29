@@ -96,7 +96,7 @@ namespace {
   }
 } // namespace
 
-void LiveVariables::Observer::anchor() { }
+void LiveVariables::Observer::trezoaanchor() { }
 
 LiveVariables::LivenessValues
 LiveVariablesImpl::merge(LiveVariables::LivenessValues valsA,

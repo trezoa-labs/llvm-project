@@ -25,15 +25,15 @@ define dso_local noundef i32 @non_kernel_function(ptr nocapture noundef readonly
 ; PTX:       {
 ; PTX-NEXT:    .local .align 16 .b8 __local_depot0[16];
 ; PTX-NEXT:    .reg .b64 %SP;
-; PTX-NEXT:    .reg .b64 %SPL;
+; PTX-NEXT:    .reg .b64 %TPL;
 ; PTX-NEXT:    .reg .pred %p<2>;
 ; PTX-NEXT:    .reg .b16 %rs<3>;
 ; PTX-NEXT:    .reg .b32 %r<11>;
 ; PTX-NEXT:    .reg .b64 %rd<9>;
 ; PTX-EMPTY:
 ; PTX-NEXT:  // %bb.0: // %entry
-; PTX-NEXT:    mov.u64 %SPL, __local_depot0;
-; PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; PTX-NEXT:    mov.u64 %TPL, __local_depot0;
+; PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; PTX-NEXT:    ld.param.u8 %rs1, [non_kernel_function_param_1];
 ; PTX-NEXT:    and.b16 %rs2, %rs1, 1;
 ; PTX-NEXT:    setp.eq.b16 %p1, %rs2, 1;

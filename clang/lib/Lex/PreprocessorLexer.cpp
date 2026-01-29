@@ -18,7 +18,7 @@
 
 using namespace clang;
 
-void PreprocessorLexer::anchor() {}
+void PreprocessorLexer::trezoaanchor() {}
 
 PreprocessorLexer::PreprocessorLexer(Preprocessor *pp, FileID fid)
     : PP(pp), FID(fid) {

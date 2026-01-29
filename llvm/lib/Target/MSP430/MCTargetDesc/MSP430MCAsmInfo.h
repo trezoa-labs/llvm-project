@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class MSP430MCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit MSP430MCAsmInfo(const Triple &TT);

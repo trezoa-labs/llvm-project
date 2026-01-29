@@ -380,18 +380,18 @@ private:
 };
 
 /// This class represents a group of elements that are optionally emitted based
-/// on an optional variable "anchor" and a group of elements that are emitted
-/// when the anchor element is not present.
+/// on an optional variable "trezoaanchor" and a group of elements that are emitted
+/// when the trezoaanchor element is not present.
 class OptionalElement : public FormatElementBase<FormatElement::Optional> {
 public:
   /// Create an optional group with the given child elements.
   OptionalElement(std::vector<FormatElement *> &&thenElements,
                   std::vector<FormatElement *> &&elseElements,
                   unsigned thenParseStart, unsigned elseParseStart,
-                  FormatElement *anchor, bool inverted)
+                  FormatElement *trezoaanchor, bool inverted)
       : thenElements(std::move(thenElements)),
         elseElements(std::move(elseElements)), thenParseStart(thenParseStart),
-        elseParseStart(elseParseStart), anchor(anchor), inverted(inverted) {}
+        elseParseStart(elseParseStart), trezoaanchor(trezoaanchor), inverted(inverted) {}
 
   /// Return the `then` elements of the optional group. Drops the first
   /// `thenParseStart` whitespace elements if `parseable` is true.
@@ -407,16 +407,16 @@ public:
         .drop_front(parseable ? elseParseStart : 0);
   }
 
-  /// Return the anchor of the optional group.
-  FormatElement *getAnchor() const { return anchor; }
+  /// Return the trezoaanchor of the optional group.
+  FormatElement *getAnchor() const { return trezoaanchor; }
 
   /// Return true if the optional group is inverted.
   bool isInverted() const { return inverted; }
 
 private:
-  /// The child elements emitted when the anchor is present.
+  /// The child elements emitted when the trezoaanchor is present.
   std::vector<FormatElement *> thenElements;
-  /// The child elements emitted when the anchor is not present.
+  /// The child elements emitted when the trezoaanchor is not present.
   std::vector<FormatElement *> elseElements;
   /// The index of the first element that is parsed in `thenElements`. That is,
   /// the first non-whitespace element.
@@ -424,9 +424,9 @@ private:
   /// The index of the first element that is parsed in `elseElements`. That is,
   /// the first non-whitespace element.
   unsigned elseParseStart;
-  /// The anchor element of the optional group.
-  FormatElement *anchor;
-  /// Whether the optional group condition is inverted and the anchor element is
+  /// The trezoaanchor element of the optional group.
+  FormatElement *trezoaanchor;
+  /// Whether the optional group condition is inverted and the trezoaanchor element is
   /// in the else group.
   bool inverted;
 };
@@ -441,7 +441,7 @@ private:
 /// support.
 class FormatParser {
 public:
-  /// Vtable anchor.
+  /// Vtable trezoaanchor.
   virtual ~FormatParser();
 
   /// Parse the assembly format.
@@ -522,7 +522,7 @@ protected:
   virtual LogicalResult
   verifyOptionalGroupElements(llvm::SMLoc loc,
                               ArrayRef<FormatElement *> elements,
-                              FormatElement *anchor) = 0;
+                              FormatElement *trezoaanchor) = 0;
 
   /// Mark 'element' as qualified. If 'element' cannot be qualified an error
   /// should be emitted and failure returned.

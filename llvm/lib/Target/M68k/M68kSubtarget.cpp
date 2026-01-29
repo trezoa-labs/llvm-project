@@ -46,7 +46,7 @@ static StringRef selectM68kCPU(Triple TT, StringRef CPU) {
   return CPU;
 }
 
-void M68kSubtarget::anchor() {}
+void M68kSubtarget::trezoaanchor() {}
 
 M68kSubtarget::M68kSubtarget(const Triple &TT, StringRef CPU, StringRef FS,
                              const M68kTargetMachine &TM)

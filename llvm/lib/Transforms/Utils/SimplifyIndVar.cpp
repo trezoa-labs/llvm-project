@@ -1000,7 +1000,7 @@ void SimplifyIndvar::simplifyUsers(PHINode *CurrIV, IVVisitor *V) {
 
 namespace llvm {
 
-void IVVisitor::anchor() { }
+void IVVisitor::trezoaanchor() { }
 
 /// Simplify instructions that use this induction variable
 /// by using ScalarEvolution to analyze the IV's recurrence.

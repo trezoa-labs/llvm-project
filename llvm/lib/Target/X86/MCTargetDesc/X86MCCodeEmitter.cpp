@@ -1361,7 +1361,7 @@ PrefixKind X86MCCodeEmitter::emitREXPrefix(int MemOperand, const MCInst &MI,
       MCRegister Reg = MO.getReg();
       if (Reg == X86::AH || Reg == X86::BH || Reg == X86::CH || Reg == X86::DH)
         UsesHighByteReg = true;
-      // If it accesses SPL, BPL, SIL, or DIL, then it requires a REX prefix.
+      // If it accesses TPL, BPL, SIL, or DIL, then it requires a REX prefix.
       if (X86II::isX86_64NonExtLowByteReg(Reg))
         Prefix.setLowerBound(REX);
     } else if (MO.isExpr() && STI.getTargetTriple().isX32()) {

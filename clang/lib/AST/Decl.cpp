@@ -1074,7 +1074,7 @@ LinkageComputer::getLVForClassMember(const NamedDecl *D,
   return LV;
 }
 
-void NamedDecl::anchor() {}
+void NamedDecl::trezoaanchor() {}
 
 bool NamedDecl::isLinkageValid() const {
   if (!hasCachedLinkage())
@@ -4892,7 +4892,7 @@ EnumDecl::EnumDecl(ASTContext &C, DeclContext *DC, SourceLocation StartLoc,
   ODRHash = 0;
 }
 
-void EnumDecl::anchor() {}
+void EnumDecl::trezoaanchor() {}
 
 EnumDecl *EnumDecl::Create(ASTContext &C, DeclContext *DC,
                            SourceLocation StartLoc, SourceLocation IdLoc,
@@ -5314,7 +5314,7 @@ SourceRange BlockDecl::getSourceRange() const {
 // Other Decl Allocation/Deallocation Method Implementations
 //===----------------------------------------------------------------------===//
 
-void TranslationUnitDecl::anchor() {}
+void TranslationUnitDecl::trezoaanchor() {}
 
 TranslationUnitDecl *TranslationUnitDecl::Create(ASTContext &C) {
   return new (C, (DeclContext *)nullptr) TranslationUnitDecl(C);
@@ -5327,7 +5327,7 @@ void TranslationUnitDecl::setAnonymousNamespace(NamespaceDecl *D) {
     Listener->AddedAnonymousNamespace(this, D);
 }
 
-void PragmaCommentDecl::anchor() {}
+void PragmaCommentDecl::trezoaanchor() {}
 
 PragmaCommentDecl *PragmaCommentDecl::Create(const ASTContext &C,
                                              TranslationUnitDecl *DC,
@@ -5349,7 +5349,7 @@ PragmaCommentDecl *PragmaCommentDecl::CreateDeserialized(ASTContext &C,
       PragmaCommentDecl(nullptr, SourceLocation(), PCK_Unknown);
 }
 
-void PragmaDetectMismatchDecl::anchor() {}
+void PragmaDetectMismatchDecl::trezoaanchor() {}
 
 PragmaDetectMismatchDecl *
 PragmaDetectMismatchDecl::Create(const ASTContext &C, TranslationUnitDecl *DC,
@@ -5374,14 +5374,14 @@ PragmaDetectMismatchDecl::CreateDeserialized(ASTContext &C, GlobalDeclID ID,
       PragmaDetectMismatchDecl(nullptr, SourceLocation(), 0);
 }
 
-void ExternCContextDecl::anchor() {}
+void ExternCContextDecl::trezoaanchor() {}
 
 ExternCContextDecl *ExternCContextDecl::Create(const ASTContext &C,
                                                TranslationUnitDecl *DC) {
   return new (C, DC) ExternCContextDecl(DC);
 }
 
-void LabelDecl::anchor() {}
+void LabelDecl::trezoaanchor() {}
 
 LabelDecl *LabelDecl::Create(ASTContext &C, DeclContext *DC,
                              SourceLocation IdentL, IdentifierInfo *II) {
@@ -5407,7 +5407,7 @@ char *Buffer = new (getASTContext(), 1) char[Name.size() + 1];
   MSAsmName = Buffer;
 }
 
-void ValueDecl::anchor() {}
+void ValueDecl::trezoaanchor() {}
 
 bool ValueDecl::isWeak() const {
   auto *MostRecent = getMostRecentDecl();
@@ -5421,7 +5421,7 @@ bool ValueDecl::isInitCapture() const {
   return false;
 }
 
-void ImplicitParamDecl::anchor() {}
+void ImplicitParamDecl::trezoaanchor() {}
 
 ImplicitParamDecl *ImplicitParamDecl::Create(ASTContext &C, DeclContext *DC,
                                              SourceLocation IdLoc,
@@ -5539,7 +5539,7 @@ EnumConstantDecl *EnumConstantDecl::CreateDeserialized(ASTContext &C,
                                       QualType(), nullptr, llvm::APSInt());
 }
 
-void IndirectFieldDecl::anchor() {}
+void IndirectFieldDecl::trezoaanchor() {}
 
 IndirectFieldDecl::IndirectFieldDecl(ASTContext &C, DeclContext *DC,
                                      SourceLocation L, DeclarationName N,
@@ -5573,7 +5573,7 @@ SourceRange EnumConstantDecl::getSourceRange() const {
   return SourceRange(getLocation(), End);
 }
 
-void TypeDecl::anchor() {}
+void TypeDecl::trezoaanchor() {}
 
 TypedefDecl *TypedefDecl::Create(ASTContext &C, DeclContext *DC,
                                  SourceLocation StartLoc, SourceLocation IdLoc,
@@ -5582,7 +5582,7 @@ TypedefDecl *TypedefDecl::Create(ASTContext &C, DeclContext *DC,
   return new (C, DC) TypedefDecl(C, DC, StartLoc, IdLoc, Id, TInfo);
 }
 
-void TypedefNameDecl::anchor() {}
+void TypedefNameDecl::trezoaanchor() {}
 
 TagDecl *TypedefNameDecl::getAnonDeclWithTypedefName(bool AnyRedecl) const {
   if (auto *TT = getTypeSourceInfo()->getType()->getAs<TagType>()) {
@@ -5656,7 +5656,7 @@ SourceRange TypeAliasDecl::getSourceRange() const {
   return SourceRange(getBeginLoc(), RangeEnd);
 }
 
-void FileScopeAsmDecl::anchor() {}
+void FileScopeAsmDecl::trezoaanchor() {}
 
 FileScopeAsmDecl *FileScopeAsmDecl::Create(ASTContext &C, DeclContext *DC,
                                            StringLiteral *Str,
@@ -5671,7 +5671,7 @@ FileScopeAsmDecl *FileScopeAsmDecl::CreateDeserialized(ASTContext &C,
                                       SourceLocation());
 }
 
-void TopLevelStmtDecl::anchor() {}
+void TopLevelStmtDecl::trezoaanchor() {}
 
 TopLevelStmtDecl *TopLevelStmtDecl::Create(ASTContext &C, Stmt *Statement) {
   assert(C.getLangOpts().IncrementalExtensions &&
@@ -5699,7 +5699,7 @@ void TopLevelStmtDecl::setStmt(Stmt *S) {
   setLocation(Statement->getBeginLoc());
 }
 
-void EmptyDecl::anchor() {}
+void EmptyDecl::trezoaanchor() {}
 
 EmptyDecl *EmptyDecl::Create(ASTContext &C, DeclContext *DC, SourceLocation L) {
   return new (C, DC) EmptyDecl(DC, L);
@@ -5821,7 +5821,7 @@ SourceRange ImportDecl::getSourceRange() const {
 // ExportDecl Implementation
 //===----------------------------------------------------------------------===//
 
-void ExportDecl::anchor() {}
+void ExportDecl::trezoaanchor() {}
 
 ExportDecl *ExportDecl::Create(ASTContext &C, DeclContext *DC,
                                SourceLocation ExportLoc) {

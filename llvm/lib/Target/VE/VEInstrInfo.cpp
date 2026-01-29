@@ -32,7 +32,7 @@ using namespace llvm;
 #include "VEGenInstrInfo.inc"
 
 // Pin the vtable to this file.
-void VEInstrInfo::anchor() {}
+void VEInstrInfo::trezoaanchor() {}
 
 VEInstrInfo::VEInstrInfo(VESubtarget &ST)
     : VEGenInstrInfo(VE::ADJCALLSTACKDOWN, VE::ADJCALLSTACKUP), RI() {}

@@ -47,7 +47,7 @@ using namespace ento;
 // Basic SVal creation.
 //===----------------------------------------------------------------------===//
 
-void SValBuilder::anchor() {}
+void SValBuilder::trezoaanchor() {}
 
 SValBuilder::SValBuilder(llvm::BumpPtrAllocator &alloc, ASTContext &context,
                          ProgramStateManager &stateMgr)

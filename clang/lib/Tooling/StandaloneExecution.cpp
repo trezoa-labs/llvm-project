@@ -84,7 +84,7 @@ static ToolExecutorPluginRegistry::Add<StandaloneToolExecutorPlugin>
     X("standalone", "Runs FrontendActions on a set of files provided "
                     "via positional arguments.");
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the plugin.
 volatile int StandaloneToolExecutorAnchorSource = 0;
 

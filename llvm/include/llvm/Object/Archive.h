@@ -154,7 +154,7 @@ public:
 };
 
 class Archive : public Binary {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   class Child {

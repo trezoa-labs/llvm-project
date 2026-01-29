@@ -4,7 +4,7 @@
 class A {
 public:
   A();
-  virtual void anchor();
+  virtual void trezoaanchor();
   int f();
   int g();
 

@@ -751,51 +751,51 @@ TEST(TripleTest, ParsedIDs) {
   EXPECT_EQ(Triple::Linux, T.getOS());
   EXPECT_EQ(Triple::MuslSF, T.getEnvironment());
 
-  T = Triple("sbf-solana-solana");
+  T = Triple("sbf-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
-  T = Triple("sbpf-solana-solana");
+  T = Triple("sbpf-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
-  T = Triple("sbpfv0-solana-solana");
+  T = Triple("sbpfv0-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
   EXPECT_EQ(Triple::SBFSubArch_v0, T.getSubArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
-  T = Triple("sbpfv1-solana-solana");
+  T = Triple("sbpfv1-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
   EXPECT_EQ(Triple::SBFSubArch_v1, T.getSubArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
-  T = Triple("sbpfv2-solana-solana");
+  T = Triple("sbpfv2-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
   EXPECT_EQ(Triple::SBFSubArch_v2, T.getSubArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
-  T = Triple("sbpfv3-solana-solana");
+  T = Triple("sbpfv3-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
   EXPECT_EQ(Triple::SBFSubArch_v3, T.getSubArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
-  T = Triple("sbpfv4-solana-solana");
+  T = Triple("sbpfv4-trezoa-trezoa");
   EXPECT_EQ(Triple::sbf, T.getArch());
   EXPECT_EQ(Triple::SBFSubArch_v4, T.getSubArch());
-  EXPECT_EQ(Triple::Solana, T.getVendor());
-  EXPECT_EQ(Triple::SolanaOS, T.getOS());
+  EXPECT_EQ(Triple::Trezoa, T.getVendor());
+  EXPECT_EQ(Triple::TrezoaOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
   T = Triple("sbf-unknown-unknown");
@@ -1641,7 +1641,7 @@ TEST(TripleTest, Normalization) {
   }
   for (int Vendor = FirstVendorType; Vendor <= Triple::LastVendorType;
        ++Vendor) {
-    if (Vendor == Triple::Solana)
+    if (Vendor == Triple::Trezoa)
       continue;
     StringRef C[] = {InitialC[0], InitialC[1], InitialC[2], InitialC[3]};
     C[1] = Triple::getVendorTypeName(Triple::VendorType(Vendor));
@@ -1657,7 +1657,7 @@ TEST(TripleTest, Normalization) {
     } while (std::next_permutation(std::begin(J), std::end(J)));
   }
   for (int OS = FirstOSType; OS <= Triple::LastOSType; ++OS) {
-    if (OS == Triple::Win32 || OS == Triple::SolanaOS)
+    if (OS == Triple::Win32 || OS == Triple::TrezoaOS)
       continue;
     StringRef C[] = {InitialC[0], InitialC[1], InitialC[2], InitialC[3]};
     C[2] = Triple::getOSTypeName(Triple::OSType(OS));

@@ -104,13 +104,13 @@ define dso_local i32 @foo() {
 ; CHECK-PTX:       {
 ; CHECK-PTX-NEXT:    .local .align 8 .b8 __local_depot1[40];
 ; CHECK-PTX-NEXT:    .reg .b64 %SP;
-; CHECK-PTX-NEXT:    .reg .b64 %SPL;
+; CHECK-PTX-NEXT:    .reg .b64 %TPL;
 ; CHECK-PTX-NEXT:    .reg .b32 %r<4>;
 ; CHECK-PTX-NEXT:    .reg .b64 %rd<5>;
 ; CHECK-PTX-EMPTY:
 ; CHECK-PTX-NEXT:  // %bb.0: // %entry
-; CHECK-PTX-NEXT:    mov.u64 %SPL, __local_depot1;
-; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-PTX-NEXT:    mov.u64 %TPL, __local_depot1;
+; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-PTX-NEXT:    mov.b64 %rd1, 4294967297;
 ; CHECK-PTX-NEXT:    st.u64 [%SP], %rd1;
 ; CHECK-PTX-NEXT:    mov.b32 %r1, 1;
@@ -150,14 +150,14 @@ define dso_local i32 @variadics2(i32 noundef %first, ...) {
 ; CHECK-PTX:       {
 ; CHECK-PTX-NEXT:    .local .align 2 .b8 __local_depot2[4];
 ; CHECK-PTX-NEXT:    .reg .b64 %SP;
-; CHECK-PTX-NEXT:    .reg .b64 %SPL;
+; CHECK-PTX-NEXT:    .reg .b64 %TPL;
 ; CHECK-PTX-NEXT:    .reg .b16 %rs<6>;
 ; CHECK-PTX-NEXT:    .reg .b32 %r<7>;
 ; CHECK-PTX-NEXT:    .reg .b64 %rd<7>;
 ; CHECK-PTX-EMPTY:
 ; CHECK-PTX-NEXT:  // %bb.0: // %entry
-; CHECK-PTX-NEXT:    mov.u64 %SPL, __local_depot2;
-; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-PTX-NEXT:    mov.u64 %TPL, __local_depot2;
+; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-PTX-NEXT:    ld.param.u32 %r1, [variadics2_param_0];
 ; CHECK-PTX-NEXT:    ld.param.u64 %rd1, [variadics2_param_1];
 ; CHECK-PTX-NEXT:    add.s64 %rd2, %rd1, 7;
@@ -212,14 +212,14 @@ define dso_local i32 @bar() {
 ; CHECK-PTX:       {
 ; CHECK-PTX-NEXT:    .local .align 8 .b8 __local_depot3[24];
 ; CHECK-PTX-NEXT:    .reg .b64 %SP;
-; CHECK-PTX-NEXT:    .reg .b64 %SPL;
+; CHECK-PTX-NEXT:    .reg .b64 %TPL;
 ; CHECK-PTX-NEXT:    .reg .b16 %rs<10>;
 ; CHECK-PTX-NEXT:    .reg .b32 %r<4>;
 ; CHECK-PTX-NEXT:    .reg .b64 %rd<7>;
 ; CHECK-PTX-EMPTY:
 ; CHECK-PTX-NEXT:  // %bb.0: // %entry
-; CHECK-PTX-NEXT:    mov.u64 %SPL, __local_depot3;
-; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-PTX-NEXT:    mov.u64 %TPL, __local_depot3;
+; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-PTX-NEXT:    mov.u64 %rd1, __const_$_bar_$_s1;
 ; CHECK-PTX-NEXT:    add.s64 %rd2, %rd1, 7;
 ; CHECK-PTX-NEXT:    ld.global.nc.u8 %rs1, [%rd2];
@@ -308,13 +308,13 @@ define dso_local i32 @baz() {
 ; CHECK-PTX:       {
 ; CHECK-PTX-NEXT:    .local .align 16 .b8 __local_depot5[16];
 ; CHECK-PTX-NEXT:    .reg .b64 %SP;
-; CHECK-PTX-NEXT:    .reg .b64 %SPL;
+; CHECK-PTX-NEXT:    .reg .b64 %TPL;
 ; CHECK-PTX-NEXT:    .reg .b32 %r<4>;
 ; CHECK-PTX-NEXT:    .reg .b64 %rd<2>;
 ; CHECK-PTX-EMPTY:
 ; CHECK-PTX-NEXT:  // %bb.0: // %entry
-; CHECK-PTX-NEXT:    mov.u64 %SPL, __local_depot5;
-; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-PTX-NEXT:    mov.u64 %TestnetPL, __local_depot5;
+; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-PTX-NEXT:    mov.b32 %r1, 1;
 ; CHECK-PTX-NEXT:    st.v4.u32 [%SP], {%r1, %r1, %r1, %r1};
 ; CHECK-PTX-NEXT:    add.u64 %rd1, %SP, 0;
@@ -382,13 +382,13 @@ define dso_local void @qux() {
 ; CHECK-PTX:       {
 ; CHECK-PTX-NEXT:    .local .align 8 .b8 __local_depot7[24];
 ; CHECK-PTX-NEXT:    .reg .b64 %SP;
-; CHECK-PTX-NEXT:    .reg .b64 %SPL;
+; CHECK-PTX-NEXT:    .reg .b64 %TPL;
 ; CHECK-PTX-NEXT:    .reg .b32 %r<3>;
 ; CHECK-PTX-NEXT:    .reg .b64 %rd<7>;
 ; CHECK-PTX-EMPTY:
 ; CHECK-PTX-NEXT:  // %bb.0: // %entry
-; CHECK-PTX-NEXT:    mov.u64 %SPL, __local_depot7;
-; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-PTX-NEXT:    mov.u64 %TPL, __local_depot7;
+; CHECK-PTX-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-PTX-NEXT:    ld.global.nc.u64 %rd1, [__const_$_qux_$_s];
 ; CHECK-PTX-NEXT:    st.u64 [%SP], %rd1;
 ; CHECK-PTX-NEXT:    mov.u64 %rd2, __const_$_qux_$_s;

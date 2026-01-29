@@ -78,7 +78,7 @@ struct PreambleBounds {
 class Lexer : public PreprocessorLexer {
   friend class Preprocessor;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   //===--------------------------------------------------------------------===//
   // Constant configuration values for this lexer.

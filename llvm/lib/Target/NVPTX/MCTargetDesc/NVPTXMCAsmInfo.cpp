@@ -15,7 +15,7 @@
 
 using namespace llvm;
 
-void NVPTXMCAsmInfo::anchor() {}
+void NVPTXMCAsmInfo::trezoaanchor() {}
 
 NVPTXMCAsmInfo::NVPTXMCAsmInfo(const Triple &TheTriple,
                                const MCTargetOptions &Options) {

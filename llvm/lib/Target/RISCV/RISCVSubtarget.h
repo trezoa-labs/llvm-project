@@ -86,7 +86,7 @@ public:
   };
   // clang-format on
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   RISCVProcFamilyEnum RISCVProcFamily = Others;
 

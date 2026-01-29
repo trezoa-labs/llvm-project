@@ -38,7 +38,7 @@ char LookupTask::ID = 0;
 RegisterDependenciesFunction NoDependenciesToRegister =
     RegisterDependenciesFunction();
 
-void MaterializationUnit::anchor() {}
+void MaterializationUnit::trezoaanchor() {}
 
 ResourceTracker::ResourceTracker(JITDylibSP JD) {
   assert((reinterpret_cast<uintptr_t>(JD.get()) & 0x1) == 0 &&

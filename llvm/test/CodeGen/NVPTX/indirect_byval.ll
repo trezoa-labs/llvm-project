@@ -14,14 +14,14 @@ define internal i32 @foo() {
 ; CHECK:       {
 ; CHECK-NEXT:    .local .align 1 .b8 __local_depot0[2];
 ; CHECK-NEXT:    .reg .b64 %SP;
-; CHECK-NEXT:    .reg .b64 %SPL;
+; CHECK-NEXT:    .reg .b64 %TPL;
 ; CHECK-NEXT:    .reg .b16 %rs<2>;
 ; CHECK-NEXT:    .reg .b32 %r<3>;
 ; CHECK-NEXT:    .reg .b64 %rd<3>;
 ; CHECK-EMPTY:
 ; CHECK-NEXT:  // %bb.0: // %entry
-; CHECK-NEXT:    mov.u64 %SPL, __local_depot0;
-; CHECK-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-NEXT:    mov.u64 %TPL, __local_depot0;
+; CHECK-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-NEXT:    ld.global.u64 %rd1, [ptr];
 ; CHECK-NEXT:    ld.u8 %rs1, [%SP+1];
 ; CHECK-NEXT:    add.u64 %rd2, %SP, 0;
@@ -57,13 +57,13 @@ define internal i32 @bar() {
 ; CHECK-NEXT:  {
 ; CHECK-NEXT:    .local .align 8 .b8 __local_depot1[16];
 ; CHECK-NEXT:    .reg .b64 %SP;
-; CHECK-NEXT:    .reg .b64 %SPL;
+; CHECK-NEXT:    .reg .b64 %TPL;
 ; CHECK-NEXT:    .reg .b32 %r<3>;
 ; CHECK-NEXT:    .reg .b64 %rd<4>;
 ; CHECK-EMPTY:
 ; CHECK-NEXT:  // %bb.0: // %entry
-; CHECK-NEXT:    mov.u64 %SPL, __local_depot1;
-; CHECK-NEXT:    cvta.local.u64 %SP, %SPL;
+; CHECK-NEXT:    mov.u64 %TPL, __local_depot1;
+; CHECK-NEXT:    cvta.local.u64 %SP, %TPL;
 ; CHECK-NEXT:    ld.global.u64 %rd1, [ptr];
 ; CHECK-NEXT:    ld.u64 %rd2, [%SP+8];
 ; CHECK-NEXT:    add.u64 %rd3, %SP, 0;

@@ -35,7 +35,7 @@ HWMultModeOption("mhwmult", cl::Hidden,
 #define GET_SUBTARGETINFO_CTOR
 #include "MSP430GenSubtargetInfo.inc"
 
-void MSP430Subtarget::anchor() { }
+void MSP430Subtarget::trezoaanchor() { }
 
 MSP430Subtarget &
 MSP430Subtarget::initializeSubtargetDependencies(StringRef CPU, StringRef FS) {

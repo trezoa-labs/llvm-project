@@ -1,6 +1,6 @@
-# RUN: llvm-mc %s -triple=sbf-solana-solana --mattr=+alu32,+jmp-32 --show-encoding \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa --mattr=+alu32,+jmp-32 --show-encoding \
 # RUN:     | FileCheck %s --check-prefix=CHECK-ASM-NEW
-# RUN: llvm-mc %s -triple=sbf-solana-solana --mattr=+alu32,+jmp32 -filetype=obj \
+# RUN: llvm-mc %s -triple=sbf-trezoa-trezoa --mattr=+alu32,+jmp32 -filetype=obj \
 # RUN:     | llvm-objdump -d -r - \
 # RUN:     | FileCheck --check-prefix=CHECK-OBJ-NEW %s
 

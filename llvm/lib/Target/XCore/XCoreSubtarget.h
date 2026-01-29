@@ -29,7 +29,7 @@ namespace llvm {
 class StringRef;
 
 class XCoreSubtarget : public XCoreGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
   XCoreInstrInfo InstrInfo;
   XCoreFrameLowering FrameLowering;
   XCoreTargetLowering TLInfo;

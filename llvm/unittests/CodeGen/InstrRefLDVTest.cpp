@@ -596,7 +596,7 @@ TEST_F(InstrRefLDVTest, MTransferDefs) {
   // These stack regs should not be tracked either. Nor the (fake) subregs.
   EXPECT_FALSE(MTracker->isRegisterTracked(getRegByName("ESP")));
   EXPECT_FALSE(MTracker->isRegisterTracked(getRegByName("SP")));
-  EXPECT_FALSE(MTracker->isRegisterTracked(getRegByName("SPL")));
+  EXPECT_FALSE(MTracker->isRegisterTracked(getRegByName("TPL")));
   EXPECT_FALSE(MTracker->isRegisterTracked(getRegByName("SPH")));
   EXPECT_FALSE(MTracker->isRegisterTracked(getRegByName("HSP")));
 

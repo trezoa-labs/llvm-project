@@ -16,7 +16,7 @@ namespace llvm {
 extern cl::opt<cl::boolOrDefault> UseLEB128Directives;
 }
 
-void MCAsmInfoXCOFF::anchor() {}
+void MCAsmInfoXCOFF::trezoaanchor() {}
 
 MCAsmInfoXCOFF::MCAsmInfoXCOFF() {
   IsAIX = true;

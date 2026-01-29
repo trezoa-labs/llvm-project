@@ -9,7 +9,7 @@
 // This simple pass removes any identical and redundant immediate or address
 // loads to the same register. The immediate loads removed can originally be
 // the result of rematerialization, while the addresses are redundant frame
-// addressing anchor points created during Frame Indices elimination.
+// addressing trezoaanchor points created during Frame Indices elimination.
 //
 //===----------------------------------------------------------------------===//
 

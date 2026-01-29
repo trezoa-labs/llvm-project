@@ -55,7 +55,7 @@ using namespace clang;
 // Decl Allocation/Deallocation Method Implementations
 //===----------------------------------------------------------------------===//
 
-void AccessSpecDecl::anchor() {}
+void AccessSpecDecl::trezoaanchor() {}
 
 AccessSpecDecl *AccessSpecDecl::CreateDeserialized(ASTContext &C,
                                                    GlobalDeclID ID) {
@@ -2258,7 +2258,7 @@ bool CXXRecordDecl::isEffectivelyFinal() const {
   return false;
 }
 
-void CXXDeductionGuideDecl::anchor() {}
+void CXXDeductionGuideDecl::trezoaanchor() {}
 
 bool ExplicitSpecifier::isEquivalent(const ExplicitSpecifier Other) const {
   if ((getKind() != Other.getKind() ||
@@ -2320,7 +2320,7 @@ RequiresExprBodyDecl::CreateDeserialized(ASTContext &C, GlobalDeclID ID) {
   return new (C, ID) RequiresExprBodyDecl(C, nullptr, SourceLocation());
 }
 
-void CXXMethodDecl::anchor() {}
+void CXXMethodDecl::trezoaanchor() {}
 
 bool CXXMethodDecl::isStatic() const {
   const CXXMethodDecl *MD = getCanonicalDecl();
@@ -2835,7 +2835,7 @@ CXXConstructorDecl::CXXConstructorDecl(
   setExplicitSpecifier(ES);
 }
 
-void CXXConstructorDecl::anchor() {}
+void CXXConstructorDecl::trezoaanchor() {}
 
 CXXConstructorDecl *CXXConstructorDecl::CreateDeserialized(ASTContext &C,
                                                            GlobalDeclID ID,
@@ -2982,7 +2982,7 @@ bool CXXConstructorDecl::isSpecializationCopyingObject() const {
   return true;
 }
 
-void CXXDestructorDecl::anchor() {}
+void CXXDestructorDecl::trezoaanchor() {}
 
 CXXDestructorDecl *CXXDestructorDecl::CreateDeserialized(ASTContext &C,
                                                          GlobalDeclID ID) {
@@ -3036,7 +3036,7 @@ bool CXXDestructorDecl::isCalledByDelete(const FunctionDecl *OpDel) const {
   return isVirtual();
 }
 
-void CXXConversionDecl::anchor() {}
+void CXXConversionDecl::trezoaanchor() {}
 
 CXXConversionDecl *CXXConversionDecl::CreateDeserialized(ASTContext &C,
                                                          GlobalDeclID ID) {
@@ -3074,7 +3074,7 @@ LinkageSpecDecl::LinkageSpecDecl(DeclContext *DC, SourceLocation ExternLoc,
   LinkageSpecDeclBits.HasBraces = HasBraces;
 }
 
-void LinkageSpecDecl::anchor() {}
+void LinkageSpecDecl::trezoaanchor() {}
 
 LinkageSpecDecl *LinkageSpecDecl::Create(ASTContext &C, DeclContext *DC,
                                          SourceLocation ExternLoc,
@@ -3091,7 +3091,7 @@ LinkageSpecDecl *LinkageSpecDecl::CreateDeserialized(ASTContext &C,
                       LinkageSpecLanguageIDs::C, false);
 }
 
-void UsingDirectiveDecl::anchor() {}
+void UsingDirectiveDecl::trezoaanchor() {}
 
 UsingDirectiveDecl *UsingDirectiveDecl::Create(ASTContext &C, DeclContext *DC,
                                                SourceLocation L,
@@ -3157,7 +3157,7 @@ NamespaceDecl *NamespaceDecl::getMostRecentDeclImpl() {
   return getMostRecentDecl();
 }
 
-void NamespaceAliasDecl::anchor() {}
+void NamespaceAliasDecl::trezoaanchor() {}
 
 NamespaceAliasDecl *NamespaceAliasDecl::getNextRedeclarationImpl() {
   return getNextRedeclaration();
@@ -3193,7 +3193,7 @@ NamespaceAliasDecl *NamespaceAliasDecl::CreateDeserialized(ASTContext &C,
                                         SourceLocation(), nullptr);
 }
 
-void LifetimeExtendedTemporaryDecl::anchor() {}
+void LifetimeExtendedTemporaryDecl::trezoaanchor() {}
 
 /// Retrieve the storage duration for the materialized temporary.
 StorageDuration LifetimeExtendedTemporaryDecl::getStorageDuration() const {
@@ -3223,7 +3223,7 @@ APValue *LifetimeExtendedTemporaryDecl::getOrCreateValue(bool MayCreate) const {
   return Value;
 }
 
-void UsingShadowDecl::anchor() {}
+void UsingShadowDecl::trezoaanchor() {}
 
 UsingShadowDecl::UsingShadowDecl(Kind K, ASTContext &C, DeclContext *DC,
                                  SourceLocation Loc, DeclarationName Name,
@@ -3254,7 +3254,7 @@ BaseUsingDecl *UsingShadowDecl::getIntroducer() const {
   return cast<BaseUsingDecl>(Shadow->UsingOrNextShadow);
 }
 
-void ConstructorUsingShadowDecl::anchor() {}
+void ConstructorUsingShadowDecl::trezoaanchor() {}
 
 ConstructorUsingShadowDecl *
 ConstructorUsingShadowDecl::Create(ASTContext &C, DeclContext *DC,
@@ -3273,7 +3273,7 @@ CXXRecordDecl *ConstructorUsingShadowDecl::getNominatedBaseClass() const {
   return getIntroducer()->getQualifier()->getAsRecordDecl();
 }
 
-void BaseUsingDecl::anchor() {}
+void BaseUsingDecl::trezoaanchor() {}
 
 void BaseUsingDecl::addShadowDecl(UsingShadowDecl *S) {
   assert(!llvm::is_contained(shadows(), S) && "declaration already in set");
@@ -3304,7 +3304,7 @@ void BaseUsingDecl::removeShadowDecl(UsingShadowDecl *S) {
   S->UsingOrNextShadow = this;
 }
 
-void UsingDecl::anchor() {}
+void UsingDecl::trezoaanchor() {}
 
 UsingDecl *UsingDecl::Create(ASTContext &C, DeclContext *DC, SourceLocation UL,
                              NestedNameSpecifierLoc QualifierLoc,
@@ -3325,7 +3325,7 @@ SourceRange UsingDecl::getSourceRange() const {
   return SourceRange(Begin, getNameInfo().getEndLoc());
 }
 
-void UsingEnumDecl::anchor() {}
+void UsingEnumDecl::trezoaanchor() {}
 
 UsingEnumDecl *UsingEnumDecl::Create(ASTContext &C, DeclContext *DC,
                                      SourceLocation UL,
@@ -3348,7 +3348,7 @@ SourceRange UsingEnumDecl::getSourceRange() const {
   return SourceRange(UsingLocation, EnumType->getTypeLoc().getEndLoc());
 }
 
-void UsingPackDecl::anchor() {}
+void UsingPackDecl::trezoaanchor() {}
 
 UsingPackDecl *UsingPackDecl::Create(ASTContext &C, DeclContext *DC,
                                      NamedDecl *InstantiatedFrom,
@@ -3368,7 +3368,7 @@ UsingPackDecl *UsingPackDecl::CreateDeserialized(ASTContext &C, GlobalDeclID ID,
   return Result;
 }
 
-void UnresolvedUsingValueDecl::anchor() {}
+void UnresolvedUsingValueDecl::trezoaanchor() {}
 
 UnresolvedUsingValueDecl *
 UnresolvedUsingValueDecl::Create(ASTContext &C, DeclContext *DC,
@@ -3396,7 +3396,7 @@ SourceRange UnresolvedUsingValueDecl::getSourceRange() const {
   return SourceRange(Begin, getNameInfo().getEndLoc());
 }
 
-void UnresolvedUsingTypenameDecl::anchor() {}
+void UnresolvedUsingTypenameDecl::trezoaanchor() {}
 
 UnresolvedUsingTypenameDecl *
 UnresolvedUsingTypenameDecl::Create(ASTContext &C, DeclContext *DC,
@@ -3437,9 +3437,9 @@ UnresolvedUsingIfExistsDecl::UnresolvedUsingIfExistsDecl(DeclContext *DC,
                                                          DeclarationName Name)
     : NamedDecl(Decl::UnresolvedUsingIfExists, DC, Loc, Name) {}
 
-void UnresolvedUsingIfExistsDecl::anchor() {}
+void UnresolvedUsingIfExistsDecl::trezoaanchor() {}
 
-void StaticAssertDecl::anchor() {}
+void StaticAssertDecl::trezoaanchor() {}
 
 StaticAssertDecl *StaticAssertDecl::Create(ASTContext &C, DeclContext *DC,
                                            SourceLocation StaticAssertLoc,
@@ -3466,7 +3466,7 @@ VarDecl *ValueDecl::getPotentiallyDecomposedVarDecl() {
   return nullptr;
 }
 
-void BindingDecl::anchor() {}
+void BindingDecl::trezoaanchor() {}
 
 BindingDecl *BindingDecl::Create(ASTContext &C, DeclContext *DC,
                                  SourceLocation IdLoc, IdentifierInfo *Id) {
@@ -3490,7 +3490,7 @@ VarDecl *BindingDecl::getHoldingVar() const {
   return VD;
 }
 
-void DecompositionDecl::anchor() {}
+void DecompositionDecl::trezoaanchor() {}
 
 DecompositionDecl *DecompositionDecl::Create(ASTContext &C, DeclContext *DC,
                                              SourceLocation StartLoc,
@@ -3531,7 +3531,7 @@ void DecompositionDecl::printName(llvm::raw_ostream &OS,
   OS << ']';
 }
 
-void MSPropertyDecl::anchor() {}
+void MSPropertyDecl::trezoaanchor() {}
 
 MSPropertyDecl *MSPropertyDecl::Create(ASTContext &C, DeclContext *DC,
                                        SourceLocation L, DeclarationName N,
@@ -3549,7 +3549,7 @@ MSPropertyDecl *MSPropertyDecl::CreateDeserialized(ASTContext &C,
                                     SourceLocation(), nullptr, nullptr);
 }
 
-void MSGuidDecl::anchor() {}
+void MSGuidDecl::trezoaanchor() {}
 
 MSGuidDecl::MSGuidDecl(DeclContext *DC, QualType T, Parts P)
     : ValueDecl(Decl::MSGuid, DC, SourceLocation(), DeclarationName(), T),
@@ -3647,7 +3647,7 @@ APValue &MSGuidDecl::getAsAPValue() const {
   return APVal;
 }
 
-void UnnamedGlobalConstantDecl::anchor() {}
+void UnnamedGlobalConstantDecl::trezoaanchor() {}
 
 UnnamedGlobalConstantDecl::UnnamedGlobalConstantDecl(const ASTContext &C,
                                                      DeclContext *DC,

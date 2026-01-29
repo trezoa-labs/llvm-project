@@ -1,6 +1,6 @@
-# RUN: llvm-mc --disassemble %s -triple=sbf-solana-solana -mattr=+mem-encoding,+pqr-instr \
+# RUN: llvm-mc --disassemble %s -triple=sbf-trezoa-trezoa -mattr=+mem-encoding,+pqr-instr \
 # RUN:                          | FileCheck %s --check-prefix=CHECK-NEW
-# RUN: llvm-mc --disassemble %s -triple=sbf-solana-solana -mattr=+alu32,+mem-encoding,+pqr-instr \
+# RUN: llvm-mc --disassemble %s -triple=sbf-trezoa-trezoa -mattr=+alu32,+mem-encoding,+pqr-instr \
 # RUN:                          | FileCheck %s --check-prefix=CHECK32-NEW
 
 

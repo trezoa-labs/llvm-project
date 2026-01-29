@@ -678,4 +678,4 @@ LinkingSymbolResolver::findSymbol(const std::string &Name) {
   return ClientResolver->findSymbol(Name);
 }
 
-void LinkingSymbolResolver::anchor() {}
+void LinkingSymbolResolver::trezoaanchor() {}

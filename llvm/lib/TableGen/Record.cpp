@@ -374,7 +374,7 @@ const RecTy *llvm::resolveTypes(const RecTy *T1, const RecTy *T2) {
 //    Initializer implementations
 //===----------------------------------------------------------------------===//
 
-void Init::anchor() {}
+void Init::trezoaanchor() {}
 
 #if !defined(NDEBUG) || defined(LLVM_ENABLE_DUMP)
 LLVM_DUMP_METHOD void Init::dump() const { return print(errs()); }

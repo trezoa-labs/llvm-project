@@ -33,7 +33,7 @@ namespace clang {
 /// system calls, which is used by precompiled and pretokenized headers to
 /// improve performance.
 class FileSystemStatCache {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   virtual ~FileSystemStatCache() = default;

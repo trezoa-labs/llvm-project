@@ -16,7 +16,7 @@
 namespace clang {
 namespace clangd {
 
-// An anchor describes where to insert code into a decl sequence.
+// An trezoaanchor describes where to insert code into a decl sequence.
 //
 // It allows inserting above or below a block of decls matching some criterion.
 // For example, "insert after existing constructors".

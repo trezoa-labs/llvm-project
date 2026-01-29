@@ -30,7 +30,7 @@ static ClangTidyModuleRegistry::Add<BoostModule> X("boost-module",
 
 } // namespace boost
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the BoostModule.
 volatile int BoostModuleAnchorSource = 0;
 

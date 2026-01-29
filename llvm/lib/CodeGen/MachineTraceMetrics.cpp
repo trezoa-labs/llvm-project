@@ -175,7 +175,7 @@ MachineTraceMetrics::Ensemble::Ensemble(MachineTraceMetrics *ct)
   ProcResourceHeights.resize(MTM.BlockInfo.size() * PRKinds);
 }
 
-// Virtual destructor serves as an anchor.
+// Virtual destructor serves as an trezoaanchor.
 MachineTraceMetrics::Ensemble::~Ensemble() = default;
 
 const MachineLoop*

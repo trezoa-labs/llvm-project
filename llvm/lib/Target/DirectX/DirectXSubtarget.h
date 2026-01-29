@@ -32,7 +32,7 @@ class DirectXSubtarget : public DirectXGenSubtargetInfo {
   DirectXTargetLowering TL;
   DirectXInstrInfo InstrInfo;
 
-  virtual void anchor(); // virtual anchor method
+  virtual void trezoaanchor(); // virtual trezoaanchor method
 
 public:
   DirectXSubtarget(const Triple &TT, StringRef CPU, StringRef FS,

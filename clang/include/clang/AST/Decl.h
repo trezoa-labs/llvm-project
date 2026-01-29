@@ -104,7 +104,7 @@ class TranslationUnitDecl : public Decl,
 
   explicit TranslationUnitDecl(ASTContext &ctx);
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   using redecl_range = redeclarable_base::redecl_range;
@@ -154,7 +154,7 @@ class PragmaCommentDecl final
                     PragmaMSCommentKind CommentKind)
       : Decl(PragmaComment, TU, CommentLoc), CommentKind(CommentKind) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static PragmaCommentDecl *Create(const ASTContext &C, TranslationUnitDecl *DC,
@@ -188,7 +188,7 @@ class PragmaDetectMismatchDecl final
                            size_t ValueStart)
       : Decl(PragmaDetectMismatch, TU, Loc), ValueStart(ValueStart) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static PragmaDetectMismatchDecl *Create(const ASTContext &C,
@@ -228,7 +228,7 @@ class ExternCContextDecl : public Decl, public DeclContext {
     : Decl(ExternCContext, TU, SourceLocation()),
       DeclContext(ExternCContext) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static ExternCContextDecl *Create(const ASTContext &C,
@@ -256,7 +256,7 @@ class NamedDecl : public Decl {
   /// constructor, Objective-C selector, etc.)
   DeclarationName Name;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 private:
   NamedDecl *getUnderlyingDeclImpl() LLVM_READONLY;
@@ -514,7 +514,7 @@ class LabelDecl : public NamedDecl {
             LabelStmt *S, SourceLocation StartL)
       : NamedDecl(Label, DC, IdentL, II), TheStmt(S), LocStart(StartL) {}
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   static LabelDecl *Create(ASTContext &C, DeclContext *DC,
@@ -671,7 +671,7 @@ class VarDecl;
 class ValueDecl : public NamedDecl {
   QualType DeclType;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   ValueDecl(Kind DK, DeclContext *DC, SourceLocation L,
@@ -1682,7 +1682,7 @@ enum class ImplicitParamKind {
 };
 
 class ImplicitParamDecl : public VarDecl {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   /// Create implicit parameter.
@@ -3347,7 +3347,7 @@ class IndirectFieldDecl : public ValueDecl,
                     DeclarationName N, QualType T,
                     MutableArrayRef<NamedDecl *> CH);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   friend class ASTDeclReader;
@@ -3401,7 +3401,7 @@ class TypeDecl : public NamedDecl {
   /// The start of the source range for this declaration.
   SourceLocation LocStart;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   TypeDecl(Kind DK, DeclContext *DC, SourceLocation L, const IdentifierInfo *Id,
@@ -3443,7 +3443,7 @@ class TypedefNameDecl : public TypeDecl, public Redeclarable<TypedefNameDecl> {
       llvm::PointerUnion<TypeSourceInfo *, ModedTInfo *>, 2>
       MaybeModedTInfo;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   TypedefNameDecl(Kind DK, ASTContext &C, DeclContext *DC,
@@ -3905,7 +3905,7 @@ class EnumDecl : public TagDecl {
            SourceLocation IdLoc, IdentifierInfo *Id, EnumDecl *PrevDecl,
            bool Scoped, bool ScopedUsingClassTag, bool Fixed);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
   void setInstantiationOfMemberEnum(ASTContext &C, EnumDecl *ED,
                                     TemplateSpecializationKind TSK);
@@ -4434,7 +4434,7 @@ class FileScopeAsmDecl : public Decl {
                    SourceLocation StartL, SourceLocation EndL)
     : Decl(FileScopeAsm, DC, StartL), AsmString(asmstring), RParenLoc(EndL) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static FileScopeAsmDecl *Create(ASTContext &C, DeclContext *DC,
@@ -4473,7 +4473,7 @@ class TopLevelStmtDecl : public Decl, public DeclContext {
   TopLevelStmtDecl(DeclContext *DC, SourceLocation L, Stmt *S)
       : Decl(TopLevelStmt, DC, L), DeclContext(TopLevelStmt), Statement(S) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static TopLevelStmtDecl *Create(ASTContext &C, Stmt *Statement);
@@ -4969,7 +4969,7 @@ public:
 ///   export void foo();
 /// \endcode
 class ExportDecl final : public Decl, public DeclContext {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 private:
   friend class ASTDeclReader;
@@ -5018,7 +5018,7 @@ public:
 class EmptyDecl : public Decl {
   EmptyDecl(DeclContext *DC, SourceLocation L) : Decl(Empty, DC, L) {}
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static EmptyDecl *Create(ASTContext &C, DeclContext *DC,

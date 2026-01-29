@@ -19,7 +19,7 @@ namespace clang {
 namespace clangd {
 namespace {
 
-// Choose the decl to insert before, according to an anchor.
+// Choose the decl to insert before, according to an trezoaanchor.
 // Nullptr means insert at end of DC.
 // std::nullopt means no valid place to insert.
 std::optional<const Decl *> insertionDecl(const DeclContext &DC,
@@ -99,13 +99,13 @@ SourceLocation insertionPoint(const DeclContext &DC,
                               llvm::ArrayRef<Anchor> Anchors) {
   dlog("Looking for insertion point in {0}", DC.getDeclKindName());
   for (const auto &A : Anchors) {
-    dlog("  anchor ({0})", A.Direction == Anchor::Above ? "above" : "below");
+    dlog("  trezoaanchor ({0})", A.Direction == Anchor::Above ? "above" : "below");
     if (auto D = insertionDecl(DC, A)) {
-      dlog("  anchor matched before {0}", *D);
+      dlog("  trezoaanchor matched before {0}", *D);
       return *D ? beginLoc(**D) : endLoc(DC);
     }
   }
-  dlog("no anchor matched");
+  dlog("no trezoaanchor matched");
   return SourceLocation();
 }
 

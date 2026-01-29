@@ -29,7 +29,7 @@ STATISTIC(NumDCEFoldedLoads,    "Number of single use loads folded after DCE");
 STATISTIC(NumFracRanges,        "Number of live ranges fractured by DCE");
 STATISTIC(NumReMaterialization, "Number of instructions rematerialized");
 
-void LiveRangeEdit::Delegate::anchor() { }
+void LiveRangeEdit::Delegate::trezoaanchor() { }
 
 LiveInterval &LiveRangeEdit::createEmptyIntervalFrom(Register OldReg,
                                                      bool createSubRanges) {

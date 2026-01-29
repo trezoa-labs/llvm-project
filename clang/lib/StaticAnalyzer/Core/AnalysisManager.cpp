@@ -11,7 +11,7 @@
 using namespace clang;
 using namespace ento;
 
-void AnalysisManager::anchor() { }
+void AnalysisManager::trezoaanchor() { }
 
 AnalysisManager::AnalysisManager(ASTContext &ASTCtx, Preprocessor &PP,
                                  const PathDiagnosticConsumers &PDC,

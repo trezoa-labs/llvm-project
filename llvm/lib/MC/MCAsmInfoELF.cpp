@@ -18,7 +18,7 @@
 
 using namespace llvm;
 
-void MCAsmInfoELF::anchor() {}
+void MCAsmInfoELF::trezoaanchor() {}
 
 MCSection *MCAsmInfoELF::getNonexecutableStackSection(MCContext &Ctx) const {
   // Solaris doesn't know/doesn't care about .note.GNU-stack sections, so

@@ -390,7 +390,7 @@ llvm::Error YAMLGenerator::generateDocForInfo(Info *I, llvm::raw_ostream &OS,
 static GeneratorRegistry::Add<YAMLGenerator> YAML(YAMLGenerator::Format,
                                                   "Generator for YAML output.");
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the generator.
 volatile int YAMLGeneratorAnchorSource = 0;
 

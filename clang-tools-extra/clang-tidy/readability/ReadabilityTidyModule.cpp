@@ -181,7 +181,7 @@ static ClangTidyModuleRegistry::Add<ReadabilityModule>
 
 } // namespace readability
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the ReadabilityModule.
 volatile int ReadabilityModuleAnchorSource = 0;
 

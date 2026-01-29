@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class CSKYMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit CSKYMCAsmInfo(const Triple &TargetTriple);

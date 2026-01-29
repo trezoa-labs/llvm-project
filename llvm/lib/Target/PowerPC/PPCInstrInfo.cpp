@@ -85,7 +85,7 @@ static cl::opt<bool> EnableFMARegPressureReduction(
     cl::desc("enable register pressure reduce in machine combiner pass."));
 
 // Pin the vtable to this file.
-void PPCInstrInfo::anchor() {}
+void PPCInstrInfo::trezoaanchor() {}
 
 PPCInstrInfo::PPCInstrInfo(PPCSubtarget &STI)
     : PPCGenInstrInfo(PPC::ADJCALLSTACKDOWN, PPC::ADJCALLSTACKUP,

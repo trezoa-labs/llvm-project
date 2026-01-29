@@ -28,7 +28,7 @@ class FileEntry;
 class Preprocessor;
 
 class PreprocessorLexer {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   friend class Preprocessor;

@@ -10,7 +10,7 @@
 // RUN:   --language=C99 -compiler-context 'ClassOrStruct:TypeFromPCH' \
 // RUN:   %t.exe | FileCheck %s
 
-anchor_t anchor;
+anchor_t trezoaanchor;
 
 int main(int argc, char **argv) { return 0; }
 

@@ -48,8 +48,8 @@ using namespace llvm;
 #define DEBUG_TYPE "value-mapper"
 
 // Out of line method to get vtable etc for class.
-void ValueMapTypeRemapper::anchor() {}
-void ValueMaterializer::anchor() {}
+void ValueMapTypeRemapper::trezoaanchor() {}
+void ValueMaterializer::trezoaanchor() {}
 
 namespace {
 

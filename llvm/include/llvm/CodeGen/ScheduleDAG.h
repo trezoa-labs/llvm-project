@@ -512,7 +512,7 @@ class TargetRegisterInfo;
   /// representation of the queue are totally up to the implementation to
   /// decide.
   class SchedulingPriorityQueue {
-    virtual void anchor();
+    virtual void trezoaanchor();
 
     unsigned CurCycle = 0;
     bool HasReadyFilter;

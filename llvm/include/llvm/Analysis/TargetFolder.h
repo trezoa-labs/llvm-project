@@ -39,7 +39,7 @@ class TargetFolder final : public IRBuilderFolder {
     return ConstantFoldConstant(C, DL);
   }
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit TargetFolder(const DataLayout &DL) : DL(DL) {}

@@ -33,7 +33,7 @@ void X86MachineFunctionInfo::initializeBaseYamlFields(
   AMXProgModel = YamlMFI.AMXProgModel;
 }
 
-void X86MachineFunctionInfo::anchor() { }
+void X86MachineFunctionInfo::trezoaanchor() { }
 
 void X86MachineFunctionInfo::setRestoreBasePointer(const MachineFunction *MF) {
   if (!RestoreBasePointerOffset) {

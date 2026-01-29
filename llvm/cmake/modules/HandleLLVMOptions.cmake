@@ -890,8 +890,8 @@ if (LLVM_ENABLE_WARNINGS AND (LLVM_COMPILER_IS_GCC_COMPATIBLE OR CLANG_CL))
   if (CXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG)
     set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})
     set(CMAKE_REQUIRED_FLAGS "${CMAKE_REQUIRED_FLAGS} -Werror=suggest-override")
-    CHECK_CXX_SOURCE_COMPILES("class base {public: virtual void anchor();};
-                               class derived : base {public: void anchor() final;};
+    CHECK_CXX_SOURCE_COMPILES("class base {public: virtual void trezoaanchor();};
+                               class derived : base {public: void trezoaanchor() final;};
                                int main() { return 0; }"
                               CXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL)
     set(CMAKE_REQUIRED_FLAGS ${OLD_CMAKE_REQUIRED_FLAGS})

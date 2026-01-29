@@ -341,7 +341,7 @@ DAGDeltaAlgorithmImpl::Run() {
   return Required;
 }
 
-void DAGDeltaAlgorithm::anchor() {
+void DAGDeltaAlgorithm::trezoaanchor() {
 }
 
 DAGDeltaAlgorithm::changeset_ty

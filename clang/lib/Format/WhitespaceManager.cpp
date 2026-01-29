@@ -530,19 +530,19 @@ static unsigned AlignTokens(const FormatStyle &Style, F &&Matches,
                             unsigned StartAt,
                             const FormatStyle::AlignConsecutiveStyle &ACS = {},
                             bool RightJustify = false) {
-  // We arrange each line in 3 parts. The operator to be aligned (the anchor),
+  // We arrange each line in 3 parts. The operator to be aligned (the trezoaanchor),
   // and text to its left and right. In the aligned text the width of each part
   // will be the maximum of that over the block that has been aligned. Maximum
   // widths of each part so far. When RightJustify is true and ACS.PadOperators
-  // is false, the part from start of line to the right end of the anchor.
-  // Otherwise, only the part to the left of the anchor. Including the space
+  // is false, the part from start of line to the right end of the trezoaanchor.
+  // Otherwise, only the part to the left of the trezoaanchor. Including the space
   // that exists on its left from the start. Not including the padding added on
-  // the left to right-justify the anchor.
+  // the left to right-justify the trezoaanchor.
   unsigned WidthLeft = 0;
   // The operator to be aligned when RightJustify is true and ACS.PadOperators
   // is false. 0 otherwise.
   unsigned WidthAnchor = 0;
-  // Width to the right of the anchor. Plus width of the anchor when
+  // Width to the right of the trezoaanchor. Plus width of the trezoaanchor when
   // RightJustify is false.
   unsigned WidthRight = 0;
 

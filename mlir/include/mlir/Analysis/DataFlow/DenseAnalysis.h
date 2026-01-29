@@ -89,15 +89,15 @@ protected:
                                            const AbstractDenseLattice &before,
                                            AbstractDenseLattice *after) = 0;
 
-  /// Get the dense lattice on the given lattice anchor.
-  virtual AbstractDenseLattice *getLattice(LatticeAnchor anchor) = 0;
+  /// Get the dense lattice on the given lattice trezoaanchor.
+  virtual AbstractDenseLattice *getLattice(LatticeAnchor trezoaanchor) = 0;
 
-  /// Get the dense lattice on the given lattice anchor and add dependent as its
-  /// dependency. That is, every time the lattice after anchor is updated, the
+  /// Get the dense lattice on the given lattice trezoaanchor and add dependent as its
+  /// dependency. That is, every time the lattice after trezoaanchor is updated, the
   /// dependent program point must be visited, and the newly triggered visit
   /// might update the lattice on dependent.
   const AbstractDenseLattice *getLatticeFor(ProgramPoint *dependent,
-                                            LatticeAnchor anchor);
+                                            LatticeAnchor trezoaanchor);
 
   /// Set the dense lattice at control flow entry point and propagate an update
   /// if it changed.
@@ -247,9 +247,9 @@ public:
   }
 
 protected:
-  /// Get the dense lattice on this lattice anchor.
-  LatticeT *getLattice(LatticeAnchor anchor) override {
-    return getOrCreate<LatticeT>(anchor);
+  /// Get the dense lattice on this lattice trezoaanchor.
+  LatticeT *getLattice(LatticeAnchor trezoaanchor) override {
+    return getOrCreate<LatticeT>(trezoaanchor);
   }
 
   /// Set the dense lattice at control flow entry point and propagate an update
@@ -327,17 +327,17 @@ protected:
                                            const AbstractDenseLattice &after,
                                            AbstractDenseLattice *before) = 0;
 
-  /// Get the dense lattice before the execution of the lattice anchor. That is,
+  /// Get the dense lattice before the execution of the lattice trezoaanchor. That is,
   /// before the execution of the given operation or after the execution of the
   /// block.
-  virtual AbstractDenseLattice *getLattice(LatticeAnchor anchor) = 0;
+  virtual AbstractDenseLattice *getLattice(LatticeAnchor trezoaanchor) = 0;
 
-  /// Get the dense lattice on the given lattice anchor and add dependent as its
-  /// dependency. That is, every time the lattice after anchor is updated, the
+  /// Get the dense lattice on the given lattice trezoaanchor and add dependent as its
+  /// dependency. That is, every time the lattice after trezoaanchor is updated, the
   /// dependent program point must be visited, and the newly triggered visit
   /// might update the lattice before dependent.
   const AbstractDenseLattice *getLatticeFor(ProgramPoint *dependent,
-                                            LatticeAnchor anchor);
+                                            LatticeAnchor trezoaanchor);
 
   /// Set the dense lattice before at the control flow exit point and propagate
   /// the update if it changed.
@@ -497,9 +497,9 @@ public:
   }
 
 protected:
-  /// Get the dense lattice at the given lattice anchor.
-  LatticeT *getLattice(LatticeAnchor anchor) override {
-    return getOrCreate<LatticeT>(anchor);
+  /// Get the dense lattice at the given lattice trezoaanchor.
+  LatticeT *getLattice(LatticeAnchor trezoaanchor) override {
+    return getOrCreate<LatticeT>(trezoaanchor);
   }
 
   /// Set the dense lattice at control flow exit point (after the terminator)

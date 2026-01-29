@@ -61,7 +61,7 @@ BitVector AVRRegisterInfo::getReservedRegs(const MachineFunction &MF) const {
   Reserved.set(AVR::R1R0);
 
   // Reserve the stack pointer.
-  Reserved.set(AVR::SPL);
+  Reserved.set(AVR::TPL);
   Reserved.set(AVR::SPH);
   Reserved.set(AVR::SP);
 

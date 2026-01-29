@@ -30,7 +30,7 @@ public:
       : DWARFUnit(Context, Section, Header, DA, RS, LocSection, SS, SOS, AOS,
                   LS, LE, IsDWO, UnitVector) {}
 
-  /// VTable anchor.
+  /// VTable trezoaanchor.
   ~DWARFCompileUnit() override;
   /// Dump this compile unit to \p OS.
   void dump(raw_ostream &OS, DIDumpOptions DumpOpts) override;

@@ -50,7 +50,7 @@ public:
   };
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   ASTContext &Context;
   DiagnosticsEngine &Diags;

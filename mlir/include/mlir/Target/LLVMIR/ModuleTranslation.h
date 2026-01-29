@@ -243,7 +243,7 @@ public:
 
   private:
     const TypeID typeID;
-    virtual void anchor();
+    virtual void trezoaanchor();
   };
 
   /// Concrete CRTP base class for ModuleTranslation stack frames. When

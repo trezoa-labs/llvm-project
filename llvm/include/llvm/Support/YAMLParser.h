@@ -117,7 +117,7 @@ private:
 
 /// Abstract base class for all Nodes.
 class Node {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   enum NodeKind {
@@ -150,7 +150,7 @@ public:
 
   void operator delete(void *) noexcept = delete;
 
-  /// Get the value of the anchor attached to this node. If it does not
+  /// Get the value of the trezoaanchor attached to this node. If it does not
   ///        have one, getAnchor().size() will be 0.
   StringRef getAnchor() const { return Anchor; }
 
@@ -195,7 +195,7 @@ private:
 /// Example:
 ///   !!null null
 class NullNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   NullNode(std::unique_ptr<Document> &D)
@@ -210,7 +210,7 @@ public:
 /// Example:
 ///   Adena
 class ScalarNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   ScalarNode(std::unique_ptr<Document> &D, StringRef Anchor, StringRef Tag,
@@ -258,7 +258,7 @@ private:
 ///     Hello
 ///     World
 class BlockScalarNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   BlockScalarNode(std::unique_ptr<Document> &D, StringRef Anchor, StringRef Tag,
@@ -288,7 +288,7 @@ private:
 /// Example:
 ///   Section: .text
 class KeyValueNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   KeyValueNode(std::unique_ptr<Document> &D)
@@ -417,7 +417,7 @@ template <class CollectionType> void skip(CollectionType &C) {
 ///   Name: _main
 ///   Scope: Global
 class MappingNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   enum MappingType {
@@ -465,7 +465,7 @@ private:
 ///   - Hello
 ///   - World
 class SequenceNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   enum SequenceType {
@@ -512,12 +512,12 @@ private:
   Node *CurrentEntry = nullptr;
 };
 
-/// Represents an alias to a Node with an anchor.
+/// Represents an alias to a Node with an trezoaanchor.
 ///
 /// Example:
 ///   *AnchorName
 class AliasNode final : public Node {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   AliasNode(std::unique_ptr<Document> &D, StringRef Val)

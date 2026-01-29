@@ -174,7 +174,7 @@ The following are a few of the utilities provided by the `SymbolTable`:
 *   `SymbolTable::lookupNearestSymbolFrom`
 
     -   Lookup the definition of a symbol in the nearest symbol table from some
-        anchor operation.
+        trezoaanchor operation.
 
 ## Symbol Visibility
 

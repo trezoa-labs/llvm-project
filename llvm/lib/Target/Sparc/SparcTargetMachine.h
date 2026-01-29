@@ -50,7 +50,7 @@ public:
 /// Sparc 32-bit target machine
 ///
 class SparcV8TargetMachine : public SparcTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   SparcV8TargetMachine(const Target &T, const Triple &TT, StringRef CPU,
@@ -63,7 +63,7 @@ public:
 /// Sparc 64-bit target machine
 ///
 class SparcV9TargetMachine : public SparcTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   SparcV9TargetMachine(const Target &T, const Triple &TT, StringRef CPU,
@@ -74,7 +74,7 @@ public:
 };
 
 class SparcelTargetMachine : public SparcTargetMachine {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   SparcelTargetMachine(const Target &T, const Triple &TT, StringRef CPU,

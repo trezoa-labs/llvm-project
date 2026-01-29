@@ -120,7 +120,7 @@ CodeGen/SystemZ/and-04.ll has several examples of this.
 
 Out-of-range displacements are usually handled by loading the full
 address into a register.  In many cases it would be better to create
-an anchor point instead.  E.g. for:
+an trezoaanchor point instead.  E.g. for:
 
 define void @f4a(i128 *%aptr, i64 %base) {
   %addr = add i64 %base, 524288

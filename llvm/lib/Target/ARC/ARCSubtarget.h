@@ -29,7 +29,7 @@ class StringRef;
 class TargetMachine;
 
 class ARCSubtarget : public ARCGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
   ARCInstrInfo InstrInfo;
   ARCFrameLowering FrameLowering;
   ARCTargetLowering TLInfo;

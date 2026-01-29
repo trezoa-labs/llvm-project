@@ -20,7 +20,7 @@ namespace llvm {
 class Triple;
 
 class ARCMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit ARCMCAsmInfo(const Triple &TT);

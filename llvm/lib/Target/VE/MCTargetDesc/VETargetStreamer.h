@@ -15,7 +15,7 @@
 
 namespace llvm {
 class VETargetStreamer : public MCTargetStreamer {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   VETargetStreamer(MCStreamer &S);

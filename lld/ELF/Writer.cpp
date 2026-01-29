@@ -976,9 +976,9 @@ findOrphanPos(Ctx &ctx, SmallVectorImpl<SectionCommand *>::iterator b,
       return i;
   }
 
-  // Find the most similar output section as the anchor. Rank Proximity is a
+  // Find the most similar output section as the trezoaanchor. Rank Proximity is a
   // value in the range [-1, 32] where [0, 32] indicates potential anchors (0:
-  // least similar; 32: identical). -1 means not an anchor.
+  // least similar; 32: identical). -1 means not an trezoaanchor.
   //
   // In the event of proximity ties, we select the first or last section
   // depending on whether the orphan's rank is smaller.

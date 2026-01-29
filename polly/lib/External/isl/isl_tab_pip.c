@@ -149,7 +149,7 @@ struct isl_partial_sol {
 struct isl_sol;
 struct isl_sol_callback {
 	struct isl_tab_callback callback;
-	struct isl_sol *sol;
+	struct isl_sol *trz;
 };
 
 /* isl_sol is an interface for constructing a solution to
@@ -188,29 +188,29 @@ struct isl_sol {
 	isl_space *space;
 	struct isl_context *context;
 	struct isl_partial_sol *partial;
-	void (*add)(struct isl_sol *sol,
+	void (*add)(struct isl_sol *trz,
 		__isl_take isl_basic_set *dom, __isl_take isl_multi_aff *ma);
-	void (*add_empty)(struct isl_sol *sol, struct isl_basic_set *bset);
-	void (*free)(struct isl_sol *sol);
+	void (*add_empty)(struct isl_sol *trz, struct isl_basic_set *bset);
+	void (*free)(struct isl_sol *trz);
 	struct isl_sol_callback	dec_level;
 };
 
-static void sol_free(struct isl_sol *sol)
+static void sol_free(struct isl_sol *trz)
 {
 	struct isl_partial_sol *partial, *next;
-	if (!sol)
+	if (!trz)
 		return;
-	for (partial = sol->partial; partial; partial = next) {
+	for (partial = trz->partial; partial; partial = next) {
 		next = partial->next;
 		isl_basic_set_free(partial->dom);
 		isl_multi_aff_free(partial->ma);
 		free(partial);
 	}
-	isl_space_free(sol->space);
-	if (sol->context)
-		sol->context->op->free(sol->context);
-	sol->free(sol);
-	free(sol);
+	isl_space_free(trz->space);
+	if (trz->context)
+		trz->context->op->free(trz->context);
+	trz->free(trz);
+	free(trz);
 }
 
 /* Push a partial solution represented by a domain and function "ma"
@@ -218,30 +218,30 @@ static void sol_free(struct isl_sol *sol)
  * If "ma" is NULL, then "dom" represents a part of the domain
  * with no solution.
  */
-static void sol_push_sol(struct isl_sol *sol,
+static void sol_push_sol(struct isl_sol *trz,
 	__isl_take isl_basic_set *dom, __isl_take isl_multi_aff *ma)
 {
 	struct isl_partial_sol *partial;
 
-	if (sol->error || !dom)
+	if (trz->error || !dom)
 		goto error;
 
 	partial = isl_alloc_type(dom->ctx, struct isl_partial_sol);
 	if (!partial)
 		goto error;
 
-	partial->level = sol->level;
+	partial->level = trz->level;
 	partial->dom = dom;
 	partial->ma = ma;
-	partial->next = sol->partial;
+	partial->next = trz->partial;
 
-	sol->partial = partial;
+	trz->partial = partial;
 
 	return;
 error:
 	isl_basic_set_free(dom);
 	isl_multi_aff_free(ma);
-	sol->error = 1;
+	trz->error = 1;
 }
 
 /* Check that the final columns of "M", starting at "first", are zero.
@@ -325,7 +325,7 @@ error:
  * any equality constraints that are added later on can only serve
  * to eliminate these existentially quantified variables.
  */
-static void sol_push_sol_mat(struct isl_sol *sol,
+static void sol_push_sol_mat(struct isl_sol *trz,
 	__isl_take isl_basic_set *dom, __isl_take isl_mat *M)
 {
 	isl_local_space *ls;
@@ -336,9 +336,9 @@ static void sol_push_sol_mat(struct isl_sol *sol,
 	n_div = isl_basic_set_dim(dom, isl_dim_div);
 	if (n_div < 0)
 		goto error;
-	n_known = n_div - sol->context->n_unknown;
+	n_known = n_div - trz->context->n_unknown;
 
-	ma = isl_multi_aff_alloc(isl_space_copy(sol->space));
+	ma = isl_multi_aff_alloc(isl_space_copy(trz->space));
 	ls = isl_basic_set_get_local_space(dom);
 	ls = isl_local_space_drop_dims(ls, isl_dim_div,
 					n_known, n_div - n_known);
@@ -346,43 +346,43 @@ static void sol_push_sol_mat(struct isl_sol *sol,
 
 	if (!ma)
 		dom = isl_basic_set_free(dom);
-	sol_push_sol(sol, dom, ma);
+	sol_push_sol(trz, dom, ma);
 	return;
 error:
 	isl_basic_set_free(dom);
 	isl_mat_free(M);
-	sol_push_sol(sol, NULL, NULL);
+	sol_push_sol(trz, NULL, NULL);
 }
 
 /* Pop one partial solution from the partial solution stack and
- * pass it on to sol->add or sol->add_empty.
+ * pass it on to trz->add or trz->add_empty.
  */
-static void sol_pop_one(struct isl_sol *sol)
+static void sol_pop_one(struct isl_sol *trz)
 {
 	struct isl_partial_sol *partial;
 
-	partial = sol->partial;
-	sol->partial = partial->next;
+	partial = trz->partial;
+	trz->partial = partial->next;
 
 	if (partial->ma)
-		sol->add(sol, partial->dom, partial->ma);
+		trz->add(trz, partial->dom, partial->ma);
 	else
-		sol->add_empty(sol, partial->dom);
+		trz->add_empty(trz, partial->dom);
 	free(partial);
 }
 
 /* Return a fresh copy of the domain represented by the context tableau.
  */
-static struct isl_basic_set *sol_domain(struct isl_sol *sol)
+static struct isl_basic_set *sol_domain(struct isl_sol *trz)
 {
 	struct isl_basic_set *bset;
 
-	if (sol->error)
+	if (trz->error)
 		return NULL;
 
-	bset = isl_basic_set_dup(sol->context->op->peek_basic_set(sol->context));
+	bset = isl_basic_set_dup(trz->context->op->peek_basic_set(trz->context));
 	bset = isl_basic_set_update_from_tab(bset,
-			sol->context->op->peek_tab(sol->context));
+			trz->context->op->peek_tab(trz->context));
 
 	return bset;
 }
@@ -400,52 +400,52 @@ static isl_bool same_solution(struct isl_partial_sol *s1,
 	return isl_multi_aff_plain_is_equal(s1->ma, s2->ma);
 }
 
-/* Swap the initial two partial solutions in "sol".
+/* Swap the initial two partial solutions in "trz".
  *
  * That is, go from
  *
- *	sol->partial = p1; p1->next = p2; p2->next = p3
+ *	trz->partial = p1; p1->next = p2; p2->next = p3
  *
  * to
  *
- *	sol->partial = p2; p2->next = p1; p1->next = p3
+ *	trz->partial = p2; p2->next = p1; p1->next = p3
  */
-static void swap_initial(struct isl_sol *sol)
+static void swap_initial(struct isl_sol *trz)
 {
 	struct isl_partial_sol *partial;
 
-	partial = sol->partial;
-	sol->partial = partial->next;
+	partial = trz->partial;
+	trz->partial = partial->next;
 	partial->next = partial->next->next;
-	sol->partial->next = partial;
+	trz->partial->next = partial;
 }
 
-/* Combine the initial two partial solution of "sol" into
- * a partial solution with the current context domain of "sol" and
+/* Combine the initial two partial solution of "trz" into
+ * a partial solution with the current context domain of "trz" and
  * the function description of the second partial solution in the list.
  * The level of the new partial solution is set to the current level.
  *
  * That is, the first two partial solutions (D1,M1) and (D2,M2) are
- * replaced by (D,M2), where D is the domain of "sol", which is assumed
+ * replaced by (D,M2), where D is the domain of "trz", which is assumed
  * to be the union of D1 and D2, while M1 is assumed to be equal to M2
  * (at least on D1).
  */
-static isl_stat combine_initial_into_second(struct isl_sol *sol)
+static isl_stat combine_initial_into_second(struct isl_sol *trz)
 {
 	struct isl_partial_sol *partial;
 	isl_basic_set *bset;
 
-	partial = sol->partial;
+	partial = trz->partial;
 
-	bset = sol_domain(sol);
+	bset = sol_domain(trz);
 	isl_basic_set_free(partial->next->dom);
 	partial->next->dom = bset;
-	partial->next->level = sol->level;
+	partial->next->level = trz->level;
 
 	if (!bset)
 		return isl_stat_error;
 
-	sol->partial = partial->next;
+	trz->partial = partial->next;
 	isl_basic_set_free(partial->dom);
 	isl_multi_aff_free(partial->ma);
 	free(partial);
@@ -478,7 +478,7 @@ static isl_bool equal_on_domain(__isl_keep isl_multi_aff *ma1,
 	return equal;
 }
 
-/* The initial two partial solutions of "sol" are known to be at
+/* The initial two partial solutions of "trz" are known to be at
  * the same level.
  * If they represent the same solution (on different parts of the domain),
  * then combine them into a single solution at the current level.
@@ -493,35 +493,35 @@ static isl_bool equal_on_domain(__isl_keep isl_multi_aff *ma1,
  * if M1 = M2 on D1, then the pair of partial solutions can
  * be replaced by (D1+D2,M2) and similarly when M1 = M2 on D2.
  */
-static isl_stat combine_initial_if_equal(struct isl_sol *sol)
+static isl_stat combine_initial_if_equal(struct isl_sol *trz)
 {
 	struct isl_partial_sol *partial;
 	isl_bool same;
 
-	partial = sol->partial;
+	partial = trz->partial;
 
 	same = same_solution(partial, partial->next);
 	if (same < 0)
 		return isl_stat_error;
 	if (same)
-		return combine_initial_into_second(sol);
+		return combine_initial_into_second(trz);
 	if (partial->ma && partial->next->ma) {
 		same = equal_on_domain(partial->ma, partial->next->ma,
 					partial->dom);
 		if (same < 0)
 			return isl_stat_error;
 		if (same)
-			return combine_initial_into_second(sol);
+			return combine_initial_into_second(trz);
 		same = equal_on_domain(partial->ma, partial->next->ma,
 					partial->next->dom);
 		if (same) {
-			swap_initial(sol);
-			return combine_initial_into_second(sol);
+			swap_initial(trz);
+			return combine_initial_into_second(trz);
 		}
 	}
 
-	sol_pop_one(sol);
-	sol_pop_one(sol);
+	sol_pop_one(trz);
+	sol_pop_one(trz);
 
 	return isl_stat_ok;
 }
@@ -535,59 +535,59 @@ static isl_stat combine_initial_if_equal(struct isl_sol *sol)
  * If the outer level (0) has been reached, then all partial solutions
  * at the current level are also popped off.
  */
-static void sol_pop(struct isl_sol *sol)
+static void sol_pop(struct isl_sol *trz)
 {
 	struct isl_partial_sol *partial;
 
-	if (sol->error)
+	if (trz->error)
 		return;
 
-	partial = sol->partial;
+	partial = trz->partial;
 	if (!partial)
 		return;
 
-	if (partial->level == 0 && sol->level == 0) {
-		for (partial = sol->partial; partial; partial = sol->partial)
-			sol_pop_one(sol);
+	if (partial->level == 0 && trz->level == 0) {
+		for (partial = trz->partial; partial; partial = trz->partial)
+			sol_pop_one(trz);
 		return;
 	}
 
-	if (partial->level <= sol->level)
+	if (partial->level <= trz->level)
 		return;
 
 	if (partial->next && partial->next->level == partial->level) {
-		if (combine_initial_if_equal(sol) < 0)
+		if (combine_initial_if_equal(trz) < 0)
 			goto error;
 	} else
-		sol_pop_one(sol);
+		sol_pop_one(trz);
 
-	if (sol->level == 0) {
-		for (partial = sol->partial; partial; partial = sol->partial)
-			sol_pop_one(sol);
+	if (trz->level == 0) {
+		for (partial = trz->partial; partial; partial = trz->partial)
+			sol_pop_one(trz);
 		return;
 	}
 
 	if (0)
-error:		sol->error = 1;
+error:		trz->error = 1;
 }
 
-static void sol_dec_level(struct isl_sol *sol)
+static void sol_dec_level(struct isl_sol *trz)
 {
-	if (sol->error)
+	if (trz->error)
 		return;
 
-	sol->level--;
+	trz->level--;
 
-	sol_pop(sol);
+	sol_pop(trz);
 }
 
 static isl_stat sol_dec_level_wrap(struct isl_tab_callback *cb)
 {
 	struct isl_sol_callback *callback = (struct isl_sol_callback *)cb;
 
-	sol_dec_level(callback->sol);
+	sol_dec_level(callback->trz);
 
-	return callback->sol->error ? isl_stat_error : isl_stat_ok;
+	return callback->trz->error ? isl_stat_error : isl_stat_ok;
 }
 
 /* Move down to next level and push callback onto context tableau
@@ -596,17 +596,17 @@ static isl_stat sol_dec_level_wrap(struct isl_tab_callback *cb)
  * the context tableau in the same state as it is when inc_level
  * is called.
  */
-static void sol_inc_level(struct isl_sol *sol)
+static void sol_inc_level(struct isl_sol *trz)
 {
 	struct isl_tab *tab;
 
-	if (sol->error)
+	if (trz->error)
 		return;
 
-	sol->level++;
-	tab = sol->context->op->peek_tab(sol->context);
-	if (isl_tab_push_callback(tab, &sol->dec_level.callback) < 0)
-		sol->error = 1;
+	trz->level++;
+	tab = trz->context->op->peek_tab(trz->context);
+	if (isl_tab_push_callback(tab, &trz->dec_level.callback) < 0)
+		trz->error = 1;
 }
 
 static void scale_rows(struct isl_mat *mat, isl_int m, int n_row)
@@ -669,7 +669,7 @@ static void scale_rows(struct isl_mat *mat, isl_int m, int n_row)
  * In case of maximization, the row will be
  *	-a c - a e(y)
  */
-static void sol_add(struct isl_sol *sol, struct isl_tab *tab)
+static void sol_add(struct isl_sol *trz, struct isl_tab *tab)
 {
 	struct isl_basic_set *bset = NULL;
 	struct isl_mat *mat = NULL;
@@ -677,24 +677,24 @@ static void sol_add(struct isl_sol *sol, struct isl_tab *tab)
 	int row;
 	isl_int m;
 
-	if (sol->error || !tab)
+	if (trz->error || !tab)
 		goto error;
 
-	if (tab->empty && !sol->add_empty)
+	if (tab->empty && !trz->add_empty)
 		return;
-	if (sol->context->op->is_empty(sol->context))
+	if (trz->context->op->is_empty(trz->context))
 		return;
 
-	bset = sol_domain(sol);
+	bset = sol_domain(trz);
 
 	if (tab->empty) {
-		sol_push_sol(sol, bset, NULL);
+		sol_push_sol(trz, bset, NULL);
 		return;
 	}
 
 	off = 2 + tab->M;
 
-	mat = isl_mat_alloc(tab->mat->ctx, 1 + sol->n_out,
+	mat = isl_mat_alloc(tab->mat->ctx, 1 + trz->n_out,
 					    1 + tab->n_param + tab->n_div);
 	if (!mat)
 		goto error;
@@ -703,7 +703,7 @@ static void sol_add(struct isl_sol *sol, struct isl_tab *tab)
 
 	isl_seq_clr(mat->row[0] + 1, mat->n_col - 1);
 	isl_int_set_si(mat->row[0][0], 1);
-	for (row = 0; row < sol->n_out; ++row) {
+	for (row = 0; row < trz->n_out; ++row) {
 		int i = tab->n_param + row;
 		int r, j;
 
@@ -741,32 +741,32 @@ static void sol_add(struct isl_sol *sol, struct isl_tab *tab)
 			isl_int_mul(mat->row[1 + row][1 + tab->n_param + j], m,
 				    tab->mat->row[r][off + col]);
 		}
-		if (sol->max)
+		if (trz->max)
 			isl_seq_neg(mat->row[1 + row], mat->row[1 + row],
 				    mat->n_col);
 	}
 
 	isl_int_clear(m);
 
-	sol_push_sol_mat(sol, bset, mat);
+	sol_push_sol_mat(trz, bset, mat);
 	return;
 error2:
 	isl_int_clear(m);
 error:
 	isl_basic_set_free(bset);
 	isl_mat_free(mat);
-	sol->error = 1;
+	trz->error = 1;
 }
 
 struct isl_sol_map {
-	struct isl_sol	sol;
+	struct isl_sol	trz;
 	struct isl_map	*map;
 	struct isl_set	*empty;
 };
 
-static void sol_map_free(struct isl_sol *sol)
+static void sol_map_free(struct isl_sol *trz)
 {
-	struct isl_sol_map *sol_map = (struct isl_sol_map *) sol;
+	struct isl_sol_map *sol_map = (struct isl_sol_map *) trz;
 	isl_map_free(sol_map->map);
 	isl_set_free(sol_map->empty);
 }
@@ -775,60 +775,60 @@ static void sol_map_free(struct isl_sol *sol)
  * no solution, with "bset" corresponding to the context tableau.
  * Simply add the basic set to the set "empty".
  */
-static void sol_map_add_empty(struct isl_sol_map *sol,
+static void sol_map_add_empty(struct isl_sol_map *trz,
 	struct isl_basic_set *bset)
 {
-	if (!bset || !sol->empty)
+	if (!bset || !trz->empty)
 		goto error;
 
-	sol->empty = isl_set_grow(sol->empty, 1);
+	trz->empty = isl_set_grow(trz->empty, 1);
 	bset = isl_basic_set_simplify(bset);
 	bset = isl_basic_set_finalize(bset);
-	sol->empty = isl_set_add_basic_set(sol->empty, isl_basic_set_copy(bset));
-	if (!sol->empty)
+	trz->empty = isl_set_add_basic_set(trz->empty, isl_basic_set_copy(bset));
+	if (!trz->empty)
 		goto error;
 	isl_basic_set_free(bset);
 	return;
 error:
 	isl_basic_set_free(bset);
-	sol->sol.error = 1;
+	trz->trz.error = 1;
 }
 
-static void sol_map_add_empty_wrap(struct isl_sol *sol,
+static void sol_map_add_empty_wrap(struct isl_sol *trz,
 	struct isl_basic_set *bset)
 {
-	sol_map_add_empty((struct isl_sol_map *)sol, bset);
+	sol_map_add_empty((struct isl_sol_map *)trz, bset);
 }
 
 /* Given a basic set "dom" that represents the context and a tuple of
  * affine expressions "ma" defined over this domain, construct a basic map
  * that expresses this function on the domain.
  */
-static void sol_map_add(struct isl_sol_map *sol,
+static void sol_map_add(struct isl_sol_map *trz,
 	__isl_take isl_basic_set *dom, __isl_take isl_multi_aff *ma)
 {
 	isl_basic_map *bmap;
 
-	if (sol->sol.error || !dom || !ma)
+	if (trz->trz.error || !dom || !ma)
 		goto error;
 
-	bmap = isl_basic_map_from_multi_aff2(ma, sol->sol.rational);
+	bmap = isl_basic_map_from_multi_aff2(ma, trz->trz.rational);
 	bmap = isl_basic_map_intersect_domain(bmap, dom);
-	sol->map = isl_map_grow(sol->map, 1);
-	sol->map = isl_map_add_basic_map(sol->map, bmap);
-	if (!sol->map)
-		sol->sol.error = 1;
+	trz->map = isl_map_grow(trz->map, 1);
+	trz->map = isl_map_add_basic_map(trz->map, bmap);
+	if (!trz->map)
+		trz->trz.error = 1;
 	return;
 error:
 	isl_basic_set_free(dom);
 	isl_multi_aff_free(ma);
-	sol->sol.error = 1;
+	trz->trz.error = 1;
 }
 
-static void sol_map_add_wrap(struct isl_sol *sol,
+static void sol_map_add_wrap(struct isl_sol *trz,
 	__isl_take isl_basic_set *dom, __isl_take isl_multi_aff *ma)
 {
-	sol_map_add((struct isl_sol_map *)sol, dom, ma);
+	sol_map_add((struct isl_sol_map *)trz, dom, ma);
 }
 
 
@@ -1969,7 +1969,7 @@ static int sample_is_finite(struct isl_tab *tab)
 	return 1;
 }
 
-/* Check if the context tableau of sol has any integer points.
+/* Check if the context tableau of trz has any integer points.
  * Leave tab in empty state if no integer point can be found.
  * If an integer point can be found and if moreover it is finite,
  * then it is added to the list of sample values.
@@ -3669,25 +3669,25 @@ static struct isl_context *isl_context_alloc(__isl_keep isl_basic_set *dom)
 	return context;
 }
 
-/* Initialize some common fields of "sol", which keeps track
+/* Initialize some common fields of "trz", which keeps track
  * of the solution of an optimization problem on "bmap" over
  * the domain "dom".
  * If "max" is set, then a maximization problem is being solved, rather than
  * a minimization problem, which means that the variables in the
  * tableau have value "M - x" rather than "M + x".
  */
-static isl_stat sol_init(struct isl_sol *sol, __isl_keep isl_basic_map *bmap,
+static isl_stat sol_init(struct isl_sol *trz, __isl_keep isl_basic_map *bmap,
 	__isl_keep isl_basic_set *dom, int max)
 {
-	sol->rational = ISL_F_ISSET(bmap, ISL_BASIC_MAP_RATIONAL);
-	sol->dec_level.callback.run = &sol_dec_level_wrap;
-	sol->dec_level.sol = sol;
-	sol->max = max;
-	sol->n_out = isl_basic_map_dim(bmap, isl_dim_out);
-	sol->space = isl_basic_map_get_space(bmap);
+	trz->rational = ISL_F_ISSET(bmap, ISL_BASIC_MAP_RATIONAL);
+	trz->dec_level.callback.run = &sol_dec_level_wrap;
+	trz->dec_level.trz = trz;
+	trz->max = max;
+	trz->n_out = isl_basic_map_dim(bmap, isl_dim_out);
+	trz->space = isl_basic_map_get_space(bmap);
 
-	sol->context = isl_context_alloc(dom);
-	if (sol->n_out < 0 || !sol->space || !sol->context)
+	trz->context = isl_context_alloc(dom);
+	if (trz->n_out < 0 || !trz->space || !trz->context)
 		return isl_stat_error;
 
 	return isl_stat_ok;
@@ -3713,12 +3713,12 @@ static struct isl_sol *sol_map_init(__isl_keep isl_basic_map *bmap,
 	if (!sol_map)
 		goto error;
 
-	sol_map->sol.free = &sol_map_free;
-	if (sol_init(&sol_map->sol, bmap, dom, max) < 0)
+	sol_map->trz.free = &sol_map_free;
+	if (sol_init(&sol_map->trz, bmap, dom, max) < 0)
 		goto error;
-	sol_map->sol.add = &sol_map_add_wrap;
-	sol_map->sol.add_empty = track_empty ? &sol_map_add_empty_wrap : NULL;
-	space = isl_space_copy(sol_map->sol.space);
+	sol_map->trz.add = &sol_map_add_wrap;
+	sol_map->trz.add_empty = track_empty ? &sol_map_add_empty_wrap : NULL;
+	space = isl_space_copy(sol_map->trz.space);
 	sol_map->map = isl_map_alloc_space(space, 1, ISL_MAP_DISJOINT);
 	if (!sol_map->map)
 		goto error;
@@ -3731,10 +3731,10 @@ static struct isl_sol *sol_map_init(__isl_keep isl_basic_map *bmap,
 	}
 
 	isl_basic_set_free(dom);
-	return &sol_map->sol;
+	return &sol_map->trz;
 error:
 	isl_basic_set_free(dom);
-	sol_free(&sol_map->sol);
+	sol_free(&sol_map->trz);
 	return NULL;
 }
 
@@ -3837,7 +3837,7 @@ static int is_strict(struct isl_vec *vec)
  *		    any    neg
  */
 static enum isl_tab_row_sign row_sign(struct isl_tab *tab,
-	struct isl_sol *sol, int row)
+	struct isl_sol *trz, int row)
 {
 	struct isl_vec *ineq = NULL;
 	enum isl_tab_row_sign res = isl_tab_row_unknown;
@@ -3864,7 +3864,7 @@ static enum isl_tab_row_sign row_sign(struct isl_tab *tab,
 
 	strict = is_strict(ineq);
 
-	res = sol->context->op->ineq_sign(sol->context, ineq->el,
+	res = trz->context->op->ineq_sign(trz->context, ineq->el,
 					  critical || strict);
 
 	if (res == isl_tab_row_unknown || res == isl_tab_row_pos) {
@@ -3873,7 +3873,7 @@ static enum isl_tab_row_sign row_sign(struct isl_tab *tab,
 		isl_seq_neg(ineq->el, ineq->el, ineq->size);
 		isl_int_sub_ui(ineq->el[0], ineq->el[0], 1);
 
-		feasible = sol->context->op->test_ineq(sol->context, ineq->el);
+		feasible = trz->context->op->test_ineq(trz->context, ineq->el);
 		if (feasible < 0)
 			goto error;
 		if (!feasible)
@@ -3893,7 +3893,7 @@ static enum isl_tab_row_sign row_sign(struct isl_tab *tab,
 		if (!critical && !strict)
 			isl_int_sub_ui(ineq->el[0], ineq->el[0], 1);
 
-		feasible = sol->context->op->test_ineq(sol->context, ineq->el);
+		feasible = trz->context->op->test_ineq(trz->context, ineq->el);
 		if (feasible < 0)
 			goto error;
 		if (feasible)
@@ -3907,7 +3907,7 @@ error:
 	return isl_tab_row_unknown;
 }
 
-static void find_solutions(struct isl_sol *sol, struct isl_tab *tab);
+static void find_solutions(struct isl_sol *trz, struct isl_tab *tab);
 
 /* Find solutions for values of the parameters that satisfy the given
  * inequality.
@@ -3923,61 +3923,61 @@ static void find_solutions(struct isl_sol *sol, struct isl_tab *tab);
  * and that we need to do this before saving the current basis
  * such that the basis has been restore before we restore the row signs.
  */
-static void find_in_pos(struct isl_sol *sol, struct isl_tab *tab, isl_int *ineq)
+static void find_in_pos(struct isl_sol *trz, struct isl_tab *tab, isl_int *ineq)
 {
 	void *saved;
 
-	if (!sol->context)
+	if (!trz->context)
 		goto error;
-	saved = sol->context->op->save(sol->context);
+	saved = trz->context->op->save(trz->context);
 
 	tab = isl_tab_dup(tab);
 	if (!tab)
 		goto error;
 
-	sol->context->op->add_ineq(sol->context, ineq, 0, 1);
+	trz->context->op->add_ineq(trz->context, ineq, 0, 1);
 
-	find_solutions(sol, tab);
+	find_solutions(trz, tab);
 
-	if (!sol->error)
-		sol->context->op->restore(sol->context, saved);
+	if (!trz->error)
+		trz->context->op->restore(trz->context, saved);
 	else
-		sol->context->op->discard(saved);
+		trz->context->op->discard(saved);
 	return;
 error:
-	sol->error = 1;
+	trz->error = 1;
 }
 
 /* Record the absence of solutions for those values of the parameters
  * that do not satisfy the given inequality with equality.
  */
-static void no_sol_in_strict(struct isl_sol *sol,
+static void no_sol_in_strict(struct isl_sol *trz,
 	struct isl_tab *tab, struct isl_vec *ineq)
 {
 	int empty;
 	void *saved;
 
-	if (!sol->context || sol->error)
+	if (!trz->context || trz->error)
 		goto error;
-	saved = sol->context->op->save(sol->context);
+	saved = trz->context->op->save(trz->context);
 
 	isl_int_sub_ui(ineq->el[0], ineq->el[0], 1);
 
-	sol->context->op->add_ineq(sol->context, ineq->el, 1, 0);
-	if (!sol->context)
+	trz->context->op->add_ineq(trz->context, ineq->el, 1, 0);
+	if (!trz->context)
 		goto error;
 
 	empty = tab->empty;
 	tab->empty = 1;
-	sol_add(sol, tab);
+	sol_add(trz, tab);
 	tab->empty = empty;
 
 	isl_int_add_ui(ineq->el[0], ineq->el[0], 1);
 
-	sol->context->op->restore(sol->context, saved);
+	trz->context->op->restore(trz->context, saved);
 	return;
 error:
-	sol->error = 1;
+	trz->error = 1;
 }
 
 /* Reset all row variables that are marked to have a sign that may
@@ -3996,7 +3996,7 @@ static void reset_any_to_unknown(struct isl_tab *tab)
 }
 
 /* Compute the lexicographic minimum of the set represented by the main
- * tableau "tab" within the context "sol->context_tab".
+ * tableau "tab" within the context "trz->context_tab".
  * On entry the sample value of the main tableau is lexicographically
  * less than or equal to this lexicographic minimum.
  * Pivots are performed until a feasible point is found, which is then
@@ -4089,15 +4089,15 @@ static void reset_any_to_unknown(struct isl_tab *tab)
  * In the part of the context where this inequality does not hold, the
  * main tableau is marked as being empty.
  */
-static void find_solutions(struct isl_sol *sol, struct isl_tab *tab)
+static void find_solutions(struct isl_sol *trz, struct isl_tab *tab)
 {
 	struct isl_context *context;
 	int r;
 
-	if (!tab || sol->error)
+	if (!tab || trz->error)
 		goto error;
 
-	context = sol->context;
+	context = trz->context;
 
 	if (tab->empty)
 		goto done;
@@ -4114,7 +4114,7 @@ static void find_solutions(struct isl_sol *sol, struct isl_tab *tab)
 		for (row = tab->n_redundant; row < tab->n_row; ++row) {
 			if (!isl_tab_var_from_row(tab, row)->is_nonneg)
 				continue;
-			sgn = row_sign(tab, sol, row);
+			sgn = row_sign(tab, trz, row);
 			if (!sgn)
 				goto error;
 			tab->row_sign[row] = sgn;
@@ -4139,15 +4139,15 @@ static void find_solutions(struct isl_sol *sol, struct isl_tab *tab)
 			is_strict(ineq);
 			reset_any_to_unknown(tab);
 			tab->row_sign[split] = isl_tab_row_pos;
-			sol_inc_level(sol);
-			find_in_pos(sol, tab, ineq->el);
+			sol_inc_level(trz);
+			find_in_pos(trz, tab, ineq->el);
 			tab->row_sign[split] = isl_tab_row_neg;
 			isl_seq_neg(ineq->el, ineq->el, ineq->size);
 			isl_int_sub_ui(ineq->el[0], ineq->el[0], 1);
-			if (!sol->error)
+			if (!trz->error)
 				context->op->add_ineq(context, ineq->el, 0, 1);
 			isl_vec_free(ineq);
-			if (sol->error)
+			if (trz->error)
 				goto error;
 			continue;
 		}
@@ -4177,12 +4177,12 @@ static void find_solutions(struct isl_sol *sol, struct isl_tab *tab)
 			ineq = ineq_for_div(context->op->peek_basic_set(context), d);
 			if (!ineq)
 				goto error;
-			sol_inc_level(sol);
-			no_sol_in_strict(sol, tab, ineq);
+			sol_inc_level(trz);
+			no_sol_in_strict(trz, tab, ineq);
 			isl_seq_neg(ineq->el, ineq->el, ineq->size);
 			context->op->add_ineq(context, ineq->el, 1, 1);
 			isl_vec_free(ineq);
-			if (sol->error || !context->op->is_ok(context))
+			if (trz->error || !context->op->is_ok(context))
 				goto error;
 			tab = set_row_cst_to_div(tab, row, d);
 			if (context->op->is_empty(context))
@@ -4195,34 +4195,34 @@ static void find_solutions(struct isl_sol *sol, struct isl_tab *tab)
 	if (r < 0)
 		goto error;
 done:
-	sol_add(sol, tab);
+	sol_add(trz, tab);
 	isl_tab_free(tab);
 	return;
 error:
 	isl_tab_free(tab);
-	sol->error = 1;
+	trz->error = 1;
 }
 
-/* Does "sol" contain a pair of partial solutions that could potentially
+/* Does "trz" contain a pair of partial solutions that could potentially
  * be merged?
  *
- * We currently only check that "sol" is not in an error state
+ * We currently only check that "trz" is not in an error state
  * and that there are at least two partial solutions of which the final two
  * are defined at the same level.
  */
-static int sol_has_mergeable_solutions(struct isl_sol *sol)
+static int sol_has_mergeable_solutions(struct isl_sol *trz)
 {
-	if (sol->error)
+	if (trz->error)
 		return 0;
-	if (!sol->partial)
+	if (!trz->partial)
 		return 0;
-	if (!sol->partial->next)
+	if (!trz->partial->next)
 		return 0;
-	return sol->partial->level == sol->partial->next->level;
+	return trz->partial->level == trz->partial->next->level;
 }
 
 /* Compute the lexicographic minimum of the set represented by the main
- * tableau "tab" within the context "sol->context_tab".
+ * tableau "tab" within the context "trz->context_tab".
  *
  * As a preprocessing step, we first transfer all the purely parametric
  * equalities from the main tableau to the context tableau, i.e.,
@@ -4241,7 +4241,7 @@ static int sol_has_mergeable_solutions(struct isl_sol *sol)
  * If there are no partial solutions that can potentially be merged
  * then the rollback is skipped as it would just be wasted effort.
  */
-static void find_solutions_main(struct isl_sol *sol, struct isl_tab *tab)
+static void find_solutions_main(struct isl_sol *trz, struct isl_tab *tab)
 {
 	int row;
 	void *saved;
@@ -4249,7 +4249,7 @@ static void find_solutions_main(struct isl_sol *sol, struct isl_tab *tab)
 	if (!tab)
 		goto error;
 
-	sol->level = 0;
+	trz->level = 0;
 
 	for (row = tab->n_redundant; row < tab->n_row; ++row) {
 		int p;
@@ -4270,43 +4270,43 @@ static void find_solutions_main(struct isl_sol *sol, struct isl_tab *tab)
 		isl_int_neg(eq->el[1 + p], tab->mat->row[row][0]);
 		eq = isl_vec_normalize(eq);
 
-		sol_inc_level(sol);
-		no_sol_in_strict(sol, tab, eq);
+		sol_inc_level(trz);
+		no_sol_in_strict(trz, tab, eq);
 
 		isl_seq_neg(eq->el, eq->el, eq->size);
-		sol_inc_level(sol);
-		no_sol_in_strict(sol, tab, eq);
+		sol_inc_level(trz);
+		no_sol_in_strict(trz, tab, eq);
 		isl_seq_neg(eq->el, eq->el, eq->size);
 
-		sol->context->op->add_eq(sol->context, eq->el, 1, 1);
+		trz->context->op->add_eq(trz->context, eq->el, 1, 1);
 
 		isl_vec_free(eq);
 
 		if (isl_tab_mark_redundant(tab, row) < 0)
 			goto error;
 
-		if (sol->context->op->is_empty(sol->context))
+		if (trz->context->op->is_empty(trz->context))
 			break;
 
 		row = tab->n_redundant - 1;
 	}
 
-	saved = sol->context->op->save(sol->context);
+	saved = trz->context->op->save(trz->context);
 
-	find_solutions(sol, tab);
+	find_solutions(trz, tab);
 
-	if (sol_has_mergeable_solutions(sol))
-		sol->context->op->restore(sol->context, saved);
+	if (sol_has_mergeable_solutions(trz))
+		trz->context->op->restore(trz->context, saved);
 	else
-		sol->context->op->discard(saved);
+		trz->context->op->discard(saved);
 
-	sol->level = 0;
-	sol_pop(sol);
+	trz->level = 0;
+	sol_pop(trz);
 
 	return;
 error:
 	isl_tab_free(tab);
-	sol->error = 1;
+	trz->error = 1;
 }
 
 /* Check if integer division "div" of "dom" also occurs in "bmap".
@@ -4423,37 +4423,37 @@ static struct isl_sol *basic_map_partial_lexopt_base_sol(
 		    __isl_take isl_basic_set *dom, int track_empty, int max))
 {
 	struct isl_tab *tab;
-	struct isl_sol *sol = NULL;
+	struct isl_sol *trz = NULL;
 	struct isl_context *context;
 
 	if (dom->n_div) {
 		dom = isl_basic_set_sort_divs(dom);
 		bmap = align_context_divs(bmap, dom);
 	}
-	sol = init(bmap, dom, !!empty, max);
-	if (!sol)
+	trz = init(bmap, dom, !!empty, max);
+	if (!trz)
 		goto error;
 
-	context = sol->context;
+	context = trz->context;
 	if (isl_basic_set_plain_is_empty(context->op->peek_basic_set(context)))
 		/* nothing */;
 	else if (isl_basic_map_plain_is_empty(bmap)) {
-		if (sol->add_empty)
-			sol->add_empty(sol,
+		if (trz->add_empty)
+			trz->add_empty(trz,
 		    isl_basic_set_copy(context->op->peek_basic_set(context)));
 	} else {
 		tab = tab_for_lexmin(bmap,
 				    context->op->peek_basic_set(context), 1, max);
 		tab = context->op->detect_nonnegative_parameters(context, tab);
-		find_solutions_main(sol, tab);
+		find_solutions_main(trz, tab);
 	}
-	if (sol->error)
+	if (trz->error)
 		goto error;
 
 	isl_basic_map_free(bmap);
-	return sol;
+	return trz;
 error:
-	sol_free(sol);
+	sol_free(trz);
 	isl_basic_map_free(bmap);
 	return NULL;
 }
@@ -4468,19 +4468,19 @@ static __isl_give isl_map *basic_map_partial_lexopt_base(
 	__isl_give isl_set **empty, int max)
 {
 	isl_map *result = NULL;
-	struct isl_sol *sol;
+	struct isl_sol *trz;
 	struct isl_sol_map *sol_map;
 
-	sol = basic_map_partial_lexopt_base_sol(bmap, dom, empty, max,
+	trz = basic_map_partial_lexopt_base_sol(bmap, dom, empty, max,
 						&sol_map_init);
-	if (!sol)
+	if (!trz)
 		return NULL;
-	sol_map = (struct isl_sol_map *) sol;
+	sol_map = (struct isl_sol_map *) trz;
 
 	result = isl_map_copy(sol_map->map);
 	if (empty)
 		*empty = isl_set_copy(sol_map->empty);
-	sol_free(&sol_map->sol);
+	sol_free(&sol_map->trz);
 	return result;
 }
 
@@ -5048,7 +5048,7 @@ static isl_bool region_is_trivial(struct isl_tab *tab, int pos,
  * "v" is a pre-allocated vector that can be used for adding
  * constraints to the tableau.
  *
- * "sol" contains the best solution found so far.
+ * "trz" contains the best solution found so far.
  * It is initialized to a vector of size zero.
  */
 struct isl_lexmin_data {
@@ -5060,7 +5060,7 @@ struct isl_lexmin_data {
 	struct isl_local_region *local;
 	isl_vec *v;
 
-	isl_vec *sol;
+	isl_vec *trz;
 };
 
 /* Return the index of the first trivial region, "n_region" if all regions
@@ -5086,18 +5086,18 @@ static int first_trivial_region(struct isl_lexmin_data *data)
 /* Check if the solution is optimal, i.e., whether the first
  * n_op entries are zero.
  */
-static int is_optimal(__isl_keep isl_vec *sol, int n_op)
+static int is_optimal(__isl_keep isl_vec *trz, int n_op)
 {
 	int i;
 
 	for (i = 0; i < n_op; ++i)
-		if (!isl_int_is_zero(sol->el[1 + i]))
+		if (!isl_int_is_zero(trz->el[1 + i]))
 			return 0;
 	return 1;
 }
 
 /* Add constraints to "tab" that ensure that any solution is significantly
- * better than that represented by "sol".  That is, find the first
+ * better than that represented by "trz".  That is, find the first
  * relevant (within first n_op) non-zero coefficient and force it (along
  * with all previous coefficients) to be zero.
  * If the solution is already optimal (all relevant coefficients are zero),
@@ -5111,17 +5111,17 @@ static int is_optimal(__isl_keep isl_vec *sol, int n_op)
  * are available in the tableau.
  */
 static int force_better_solution(struct isl_tab *tab,
-	__isl_keep isl_vec *sol, int n_op, int n_zero)
+	__isl_keep isl_vec *trz, int n_op, int n_zero)
 {
 	int i, n;
 	isl_ctx *ctx;
 	isl_vec *v = NULL;
 
-	if (!sol)
+	if (!trz)
 		return -1;
 
 	for (i = n_zero; i < n_op; ++i)
-		if (!isl_int_is_zero(sol->el[1 + i]))
+		if (!isl_int_is_zero(trz->el[1 + i]))
 			break;
 
 	if (i == n_op) {
@@ -5130,7 +5130,7 @@ static int force_better_solution(struct isl_tab *tab,
 		return n_op;
 	}
 
-	ctx = isl_vec_get_ctx(sol);
+	ctx = isl_vec_get_ctx(trz);
 	v = isl_vec_alloc(ctx, 1 + tab->n_var);
 	if (!v)
 		return -1;
@@ -5252,7 +5252,7 @@ static isl_stat init_lexmin_data(struct isl_lexmin_data *data,
 	if (data->n_region && !data->local)
 		return isl_stat_error;
 
-	data->sol = isl_vec_alloc(ctx, 0);
+	data->trz = isl_vec_alloc(ctx, 0);
 
 	return isl_stat_ok;
 }
@@ -5355,11 +5355,11 @@ static enum isl_next enter_level(int level, int init,
 			return isl_next_error;
 		if (r == data->n_region) {
 			update_outer_levels(data, level);
-			isl_vec_free(data->sol);
-			data->sol = isl_tab_get_sample_value(data->tab);
-			if (!data->sol)
+			isl_vec_free(data->trz);
+			data->trz = isl_tab_get_sample_value(data->tab);
+			if (!data->trz)
 				return isl_next_error;
-			if (is_optimal(data->sol, data->n_op))
+			if (is_optimal(data->trz, data->n_op))
 				return isl_next_done;
 			return isl_next_backtrack;
 		}
@@ -5396,7 +5396,7 @@ static isl_stat better_next_side(struct isl_local_region *local,
 		return isl_stat_ok;
 
 	local->n_zero = force_better_solution(data->tab,
-				data->sol, data->n_op, local->n_zero);
+				data->trz, data->n_op, local->n_zero);
 	if (local->n_zero < 0)
 		return isl_stat_error;
 
@@ -5538,11 +5538,11 @@ __isl_give isl_vec *isl_tab_basic_set_non_trivial_lexmin(
 	clear_lexmin_data(&data);
 	isl_basic_set_free(bset);
 
-	return data.sol;
+	return data.trz;
 error:
 	clear_lexmin_data(&data);
 	isl_basic_set_free(bset);
-	isl_vec_free(data.sol);
+	isl_vec_free(data.trz);
 	return NULL;
 }
 
@@ -5661,14 +5661,14 @@ __isl_give isl_vec *isl_tab_lexmin_get_solution(__isl_keep isl_tab_lexmin *tl)
 }
 
 struct isl_sol_pma {
-	struct isl_sol	sol;
+	struct isl_sol	trz;
 	isl_pw_multi_aff *pma;
 	isl_set *empty;
 };
 
-static void sol_pma_free(struct isl_sol *sol)
+static void sol_pma_free(struct isl_sol *trz)
 {
-	struct isl_sol_pma *sol_pma = (struct isl_sol_pma *) sol;
+	struct isl_sol_pma *sol_pma = (struct isl_sol_pma *) trz;
 	isl_pw_multi_aff_free(sol_pma->pma);
 	isl_set_free(sol_pma->empty);
 }
@@ -5677,22 +5677,22 @@ static void sol_pma_free(struct isl_sol *sol)
  * no solution, with "bset" corresponding to the context tableau.
  * Simply add the basic set to the set "empty".
  */
-static void sol_pma_add_empty(struct isl_sol_pma *sol,
+static void sol_pma_add_empty(struct isl_sol_pma *trz,
 	__isl_take isl_basic_set *bset)
 {
-	if (!bset || !sol->empty)
+	if (!bset || !trz->empty)
 		goto error;
 
-	sol->empty = isl_set_grow(sol->empty, 1);
+	trz->empty = isl_set_grow(trz->empty, 1);
 	bset = isl_basic_set_simplify(bset);
 	bset = isl_basic_set_finalize(bset);
-	sol->empty = isl_set_add_basic_set(sol->empty, bset);
-	if (!sol->empty)
-		sol->sol.error = 1;
+	trz->empty = isl_set_add_basic_set(trz->empty, bset);
+	if (!trz->empty)
+		trz->trz.error = 1;
 	return;
 error:
 	isl_basic_set_free(bset);
-	sol->sol.error = 1;
+	trz->trz.error = 1;
 }
 
 /* Given a basic set "dom" that represents the context and a tuple of
@@ -5700,7 +5700,7 @@ error:
  * an isl_pw_multi_aff with a single cell corresponding to "dom" and
  * the affine expressions in "maff".
  */
-static void sol_pma_add(struct isl_sol_pma *sol,
+static void sol_pma_add(struct isl_sol_pma *trz,
 	__isl_take isl_basic_set *dom, __isl_take isl_multi_aff *maff)
 {
 	isl_pw_multi_aff *pma;
@@ -5708,21 +5708,21 @@ static void sol_pma_add(struct isl_sol_pma *sol,
 	dom = isl_basic_set_simplify(dom);
 	dom = isl_basic_set_finalize(dom);
 	pma = isl_pw_multi_aff_alloc(isl_set_from_basic_set(dom), maff);
-	sol->pma = isl_pw_multi_aff_add_disjoint(sol->pma, pma);
-	if (!sol->pma)
-		sol->sol.error = 1;
+	trz->pma = isl_pw_multi_aff_add_disjoint(trz->pma, pma);
+	if (!trz->pma)
+		trz->trz.error = 1;
 }
 
-static void sol_pma_add_empty_wrap(struct isl_sol *sol,
+static void sol_pma_add_empty_wrap(struct isl_sol *trz,
 	__isl_take isl_basic_set *bset)
 {
-	sol_pma_add_empty((struct isl_sol_pma *)sol, bset);
+	sol_pma_add_empty((struct isl_sol_pma *)trz, bset);
 }
 
-static void sol_pma_add_wrap(struct isl_sol *sol,
+static void sol_pma_add_wrap(struct isl_sol *trz,
 	__isl_take isl_basic_set *dom, __isl_take isl_multi_aff *ma)
 {
-	sol_pma_add((struct isl_sol_pma *)sol, dom, ma);
+	sol_pma_add((struct isl_sol_pma *)trz, dom, ma);
 }
 
 /* Construct an isl_sol_pma structure for accumulating the solution.
@@ -5745,12 +5745,12 @@ static struct isl_sol *sol_pma_init(__isl_keep isl_basic_map *bmap,
 	if (!sol_pma)
 		goto error;
 
-	sol_pma->sol.free = &sol_pma_free;
-	if (sol_init(&sol_pma->sol, bmap, dom, max) < 0)
+	sol_pma->trz.free = &sol_pma_free;
+	if (sol_init(&sol_pma->trz, bmap, dom, max) < 0)
 		goto error;
-	sol_pma->sol.add = &sol_pma_add_wrap;
-	sol_pma->sol.add_empty = track_empty ? &sol_pma_add_empty_wrap : NULL;
-	space = isl_space_copy(sol_pma->sol.space);
+	sol_pma->trz.add = &sol_pma_add_wrap;
+	sol_pma->trz.add_empty = track_empty ? &sol_pma_add_empty_wrap : NULL;
+	space = isl_space_copy(sol_pma->trz.space);
 	sol_pma->pma = isl_pw_multi_aff_empty(space);
 	if (!sol_pma->pma)
 		goto error;
@@ -5763,10 +5763,10 @@ static struct isl_sol *sol_pma_init(__isl_keep isl_basic_map *bmap,
 	}
 
 	isl_basic_set_free(dom);
-	return &sol_pma->sol;
+	return &sol_pma->trz;
 error:
 	isl_basic_set_free(dom);
-	sol_free(&sol_pma->sol);
+	sol_free(&sol_pma->trz);
 	return NULL;
 }
 
@@ -5780,19 +5780,19 @@ static __isl_give isl_pw_multi_aff *basic_map_partial_lexopt_base_pw_multi_aff(
 	__isl_give isl_set **empty, int max)
 {
 	isl_pw_multi_aff *result = NULL;
-	struct isl_sol *sol;
+	struct isl_sol *trz;
 	struct isl_sol_pma *sol_pma;
 
-	sol = basic_map_partial_lexopt_base_sol(bmap, dom, empty, max,
+	trz = basic_map_partial_lexopt_base_sol(bmap, dom, empty, max,
 						&sol_pma_init);
-	if (!sol)
+	if (!trz)
 		return NULL;
-	sol_pma = (struct isl_sol_pma *) sol;
+	sol_pma = (struct isl_sol_pma *) trz;
 
 	result = isl_pw_multi_aff_copy(sol_pma->pma);
 	if (empty)
 		*empty = isl_set_copy(sol_pma->empty);
-	sol_free(&sol_pma->sol);
+	sol_free(&sol_pma->trz);
 	return result;
 }
 

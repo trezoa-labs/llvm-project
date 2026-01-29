@@ -127,7 +127,7 @@ PathDiagnostic::PathDiagnostic(
   assert(AnalysisEntryPoint);
 }
 
-void PathDiagnosticConsumer::anchor() {}
+void PathDiagnosticConsumer::trezoaanchor() {}
 
 PathDiagnosticConsumer::~PathDiagnosticConsumer() {
   // Delete the contents of the FoldingSet if it isn't empty already.

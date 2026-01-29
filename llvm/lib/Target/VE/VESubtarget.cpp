@@ -21,7 +21,7 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_CTOR
 #include "VEGenSubtargetInfo.inc"
 
-void VESubtarget::anchor() {}
+void VESubtarget::trezoaanchor() {}
 
 VESubtarget &VESubtarget::initializeSubtargetDependencies(StringRef CPU,
                                                           StringRef FS) {

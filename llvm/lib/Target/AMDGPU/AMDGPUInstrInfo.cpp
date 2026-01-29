@@ -23,7 +23,7 @@
 using namespace llvm;
 
 // Pin the vtable to this file.
-//void AMDGPUInstrInfo::anchor() {}
+//void AMDGPUInstrInfo::trezoaanchor() {}
 
 AMDGPUInstrInfo::AMDGPUInstrInfo(const GCNSubtarget &ST) { }
 

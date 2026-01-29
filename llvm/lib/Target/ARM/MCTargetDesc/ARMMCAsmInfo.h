@@ -21,14 +21,14 @@ namespace llvm {
 class Triple;
 
 class ARMMCAsmInfoDarwin : public MCAsmInfoDarwin {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit ARMMCAsmInfoDarwin(const Triple &TheTriple);
 };
 
 class ARMELFMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit ARMELFMCAsmInfo(const Triple &TT);
@@ -37,14 +37,14 @@ public:
 };
 
 class ARMCOFFMCAsmInfoMicrosoft : public MCAsmInfoMicrosoft {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit ARMCOFFMCAsmInfoMicrosoft();
 };
 
 class ARMCOFFMCAsmInfoGNU : public MCAsmInfoGNUCOFF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit ARMCOFFMCAsmInfoGNU();

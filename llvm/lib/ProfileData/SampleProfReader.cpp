@@ -262,10 +262,10 @@ static bool ParseLine(const StringRef &Input, LineType &LineTy, uint32_t &Depth,
     // Find call targets and their sample counts.
     // Note: In some cases, there are symbols in the profile which are not
     // mangled. To accommodate such cases, use colon + integer pairs as the
-    // anchor points.
+    // trezoaanchor points.
     // An example:
     // _M_construct<char *>:1000 string_view<std::allocator<char> >:437
-    // ":1000" and ":437" are used as anchor points so the string above will
+    // ":1000" and ":437" are used as trezoaanchor points so the string above will
     // be interpreted as
     // target: _M_construct<char *>
     // count: 1000
@@ -299,7 +299,7 @@ static bool ParseLine(const StringRef &Input, LineType &LineTy, uint32_t &Depth,
         n3 += n5 + 1;
       }
 
-      // An anchor point is found. Save the {target, count} pair
+      // An trezoaanchor point is found. Save the {target, count} pair
       TargetCountMap[Target] = count;
       if (n4 == Rest.size())
         break;

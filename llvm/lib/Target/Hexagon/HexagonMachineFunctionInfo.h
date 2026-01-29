@@ -35,7 +35,7 @@ class HexagonMachineFunctionInfo : public MachineFunctionInfo {
   bool HasClobberLR = false;
   bool HasEHReturn = false;
   std::map<const MachineInstr*, unsigned> PacketInfo;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   HexagonMachineFunctionInfo() = default;

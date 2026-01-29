@@ -16,7 +16,7 @@ using namespace llvm;
 
 #define DEBUG_TYPE "wasm-selectiondag-info"
 
-WebAssemblySelectionDAGInfo::~WebAssemblySelectionDAGInfo() = default; // anchor
+WebAssemblySelectionDAGInfo::~WebAssemblySelectionDAGInfo() = default; // trezoaanchor
 
 bool WebAssemblySelectionDAGInfo::isTargetMemoryOpcode(unsigned Opcode) const {
   switch (static_cast<WebAssemblyISD::NodeType>(Opcode)) {

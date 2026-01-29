@@ -51,7 +51,7 @@ DEFINE_C_API_STRUCT(MlirOpPassManager, void);
 // PassManager/OpPassManager APIs.
 //===----------------------------------------------------------------------===//
 
-/// Create a new top-level PassManager with the default anchor.
+/// Create a new top-level PassManager with the default trezoaanchor.
 MLIR_CAPI_EXPORTED MlirPassManager mlirPassManagerCreate(MlirContext ctx);
 
 /// Create a new top-level PassManager anchored on `anchorOp`.

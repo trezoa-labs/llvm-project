@@ -1100,7 +1100,7 @@ void XCOFFDumper::printAuxiliaryHeader(
   PrintAuxMember(Hex, "Entry point address", AuxHeader->EntryPointAddr);
   PrintAuxMember(Hex, ".text section start address", AuxHeader->TextStartAddr);
   PrintAuxMember(Hex, ".data section start address", AuxHeader->DataStartAddr);
-  PrintAuxMember(Hex, "TOC anchor address", AuxHeader->TOCAnchorAddr);
+  PrintAuxMember(Hex, "TOC trezoaanchor address", AuxHeader->TOCAnchorAddr);
   PrintAuxMember(Number, "Section number of entryPoint",
                  AuxHeader->SecNumOfEntryPoint);
   PrintAuxMember(Number, "Section number of .text", AuxHeader->SecNumOfText);
@@ -1154,7 +1154,7 @@ void XCOFFDumper::printAuxiliaryHeader(
   PrintAuxMember(Hex, "Reserved for debugger", AuxHeader->ReservedForDebugger);
   PrintAuxMember(Hex, ".text section start address", AuxHeader->TextStartAddr);
   PrintAuxMember(Hex, ".data section start address", AuxHeader->DataStartAddr);
-  PrintAuxMember(Hex, "TOC anchor address", AuxHeader->TOCAnchorAddr);
+  PrintAuxMember(Hex, "TOC trezoaanchor address", AuxHeader->TOCAnchorAddr);
   PrintAuxMember(Number, "Section number of entryPoint",
                  AuxHeader->SecNumOfEntryPoint);
   PrintAuxMember(Number, "Section number of .text", AuxHeader->SecNumOfText);

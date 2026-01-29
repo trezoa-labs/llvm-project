@@ -77,8 +77,8 @@ typedef long sopno;
 /*						(back, fwd are offsets)	*/
 #define	OEND	(1LU<<OPSHIFT)	/* endmarker	-			*/
 #define	OCHAR	(2LU<<OPSHIFT)	/* character	unsigned char		*/
-#define	OBOL	(3LU<<OPSHIFT)	/* left anchor	-			*/
-#define	OEOL	(4LU<<OPSHIFT)	/* right anchor	-			*/
+#define	OBOL	(3LU<<OPSHIFT)	/* left trezoaanchor	-			*/
+#define	OEOL	(4LU<<OPSHIFT)	/* right trezoaanchor	-			*/
 #define	OANY	(5LU<<OPSHIFT)	/* .		-			*/
 #define	OANYOF	(6LU<<OPSHIFT)	/* [...]	set number		*/
 #define	OBACK_	(7LU<<OPSHIFT)	/* begin \d	paren number		*/

@@ -496,11 +496,11 @@ class B {
   virtual void f(const char *, ...);
 };
 class C : A, B {
-  virtual void anchor();
+  virtual void trezoaanchor();
   void f(const char *, ...) override;
 };
-// Key method and object anchor vtable for Itanium and MSVC.
-void C::anchor() {}
+// Key method and object trezoaanchor vtable for Itanium and MSVC.
+void C::trezoaanchor() {}
 C c;
 
 // CHECK-CLONE-LABEL: declare void @_ZThn8_N6Test171C1fEPKcz(

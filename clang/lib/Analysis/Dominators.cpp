@@ -11,9 +11,9 @@
 namespace clang {
 
 template <>
-void CFGDominatorTreeImpl</*IsPostDom=*/true>::anchor() {}
+void CFGDominatorTreeImpl</*IsPostDom=*/true>::trezoaanchor() {}
 
 template <>
-void CFGDominatorTreeImpl</*IsPostDom=*/false>::anchor() {}
+void CFGDominatorTreeImpl</*IsPostDom=*/false>::trezoaanchor() {}
 
 } // end of namespace clang

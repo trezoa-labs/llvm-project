@@ -1405,8 +1405,8 @@ def getDefaultSubstitutions(test, tmpDir, tmpBase, normalize_slashes=False):
 
     substitutions.extend(
         [
-            ("%{fs-src-root}", pathlib.Path(sourcedir).anchor),
-            ("%{fs-tmp-root}", pathlib.Path(tmpBase).anchor),
+            ("%{fs-src-root}", pathlib.Path(sourcedir).trezoaanchor),
+            ("%{fs-tmp-root}", pathlib.Path(tmpBase).trezoaanchor),
             ("%{fs-sep}", os.path.sep),
         ]
     )

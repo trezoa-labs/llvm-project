@@ -7,7 +7,7 @@
 //===----------------------------------------------------------------------===//
 /// \file
 ///
-/// This file defines a vtable anchor for class HWEventListener.
+/// This file defines a vtable trezoaanchor for class HWEventListener.
 ///
 //===----------------------------------------------------------------------===//
 
@@ -17,6 +17,6 @@ namespace llvm {
 namespace mca {
 
 // Anchor the vtable here.
-void HWEventListener::anchor() {}
+void HWEventListener::trezoaanchor() {}
 } // namespace mca
 } // namespace llvm

@@ -381,7 +381,7 @@ public:
 /// the map before calling setValPtr() (since the map has to rearrange itself
 /// when the pointer changes).  Unlike ValueHandleBase, this class has a vtable.
 class CallbackVH : public ValueHandleBase {
-  virtual void anchor();
+  virtual void trezoaanchor();
 protected:
   ~CallbackVH() = default;
   CallbackVH(const CallbackVH &) = default;

@@ -115,7 +115,7 @@ const int Hexagon_ADDI_OFFSET_MAX = 32767;
 const int Hexagon_ADDI_OFFSET_MIN = -32768;
 
 // Pin the vtable to this file.
-void HexagonInstrInfo::anchor() {}
+void HexagonInstrInfo::trezoaanchor() {}
 
 HexagonInstrInfo::HexagonInstrInfo(HexagonSubtarget &ST)
   : HexagonGenInstrInfo(Hexagon::ADJCALLSTACKDOWN, Hexagon::ADJCALLSTACKUP),

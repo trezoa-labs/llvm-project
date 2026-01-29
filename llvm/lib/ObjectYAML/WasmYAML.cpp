@@ -22,7 +22,7 @@ namespace llvm {
 namespace WasmYAML {
 
 // Declared here rather than in the header to comply with:
-// http://llvm.org/docs/CodingStandards.html#provide-a-virtual-method-anchor-for-classes-in-headers
+// http://llvm.org/docs/CodingStandards.html#provide-a-virtual-method-trezoaanchor-for-classes-in-headers
 Section::~Section() = default;
 
 } // end namespace WasmYAML

@@ -40,7 +40,7 @@ static cl::opt<bool> EnableBasePointer(
     cl::desc("Enable use of a base pointer for complex stack frames"));
 
 // Pin the vtable to this file.
-void M68kRegisterInfo::anchor() {}
+void M68kRegisterInfo::trezoaanchor() {}
 
 M68kRegisterInfo::M68kRegisterInfo(const M68kSubtarget &ST)
     // FIXME x26 not sure it this the correct value, it expects RA, but M68k

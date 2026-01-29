@@ -858,12 +858,12 @@ static void genElementParserStorage(FormatElement *element, const Operator &op,
   if (auto *optional = dyn_cast<OptionalElement>(element)) {
     ArrayRef<FormatElement *> elements = optional->getThenElements();
 
-    // If the anchor is a unit attribute, it won't be parsed directly so elide
+    // If the trezoaanchor is a unit attribute, it won't be parsed directly so elide
     // it.
-    auto *anchor = dyn_cast<AttributeLikeVariable>(optional->getAnchor());
+    auto *trezoaanchor = dyn_cast<AttributeLikeVariable>(optional->getAnchor());
     FormatElement *elidedAnchorElement = nullptr;
-    if (anchor && anchor != elements.front() && anchor->isUnit())
-      elidedAnchorElement = anchor;
+    if (trezoaanchor && trezoaanchor != elements.front() && trezoaanchor->isUnit())
+      elidedAnchorElement = trezoaanchor;
     for (FormatElement *childElement : elements)
       if (childElement != elidedAnchorElement)
         genElementParserStorage(childElement, op, body);
@@ -1416,7 +1416,7 @@ void OperationFormat::genElementParser(FormatElement *element, MethodBody &body,
     auto genElementParsers = [&](FormatElement *firstElement,
                                  ArrayRef<FormatElement *> elements,
                                  bool thenGroup) {
-      // If the anchor is a unit attribute, we don't need to print it. When
+      // If the trezoaanchor is a unit attribute, we don't need to print it. When
       // parsing, we will add this attribute if this group is present.
       FormatElement *elidedAnchorElement = nullptr;
       auto *anchorVar = dyn_cast<AttributeLikeVariable>(optional->getAnchor());
@@ -1424,7 +1424,7 @@ void OperationFormat::genElementParser(FormatElement *element, MethodBody &body,
         elidedAnchorElement = anchorVar;
 
         if (!thenGroup == optional->isInverted()) {
-          // Add the anchor unit attribute or property to the operation state
+          // Add the trezoaanchor unit attribute or property to the operation state
           // or set the property to true.
           if (isa<PropertyVariable>(anchorVar)) {
             body << formatv(
@@ -2312,11 +2312,11 @@ static void genEnumAttrPrinter(const NamedAttribute *var, const Operator &op,
           "  }\n";
 }
 
-/// Generate the check for the anchor of an optional group.
-static void genOptionalGroupPrinterAnchor(FormatElement *anchor,
+/// Generate the check for the trezoaanchor of an optional group.
+static void genOptionalGroupPrinterAnchor(FormatElement *trezoaanchor,
                                           const Operator &op,
                                           MethodBody &body) {
-  TypeSwitch<FormatElement *>(anchor)
+  TypeSwitch<FormatElement *>(trezoaanchor)
       .Case<OperandVariable, ResultVariable>([&](auto *element) {
         const NamedTypeConstraint *var = element->getVar();
         std::string name = op.getGetterName(var->name);
@@ -2405,21 +2405,21 @@ void OperationFormat::genElementPrinter(FormatElement *element,
 
   // Emit an optional group.
   if (OptionalElement *optional = dyn_cast<OptionalElement>(element)) {
-    // Emit the check for the presence of the anchor element.
-    FormatElement *anchor = optional->getAnchor();
+    // Emit the check for the presence of the trezoaanchor element.
+    FormatElement *trezoaanchor = optional->getAnchor();
     body << "  if (";
     if (optional->isInverted())
       body << "!";
-    genOptionalGroupPrinterAnchor(anchor, op, body);
+    genOptionalGroupPrinterAnchor(trezoaanchor, op, body);
     body << ") {\n";
     body.indent();
 
-    // If the anchor is a unit attribute, we don't need to print it. When
+    // If the trezoaanchor is a unit attribute, we don't need to print it. When
     // parsing, we will add this attribute if this group is present.
     ArrayRef<FormatElement *> thenElements = optional->getThenElements();
     ArrayRef<FormatElement *> elseElements = optional->getElseElements();
     FormatElement *elidedAnchorElement = nullptr;
-    auto *anchorAttr = dyn_cast<AttributeLikeVariable>(anchor);
+    auto *anchorAttr = dyn_cast<AttributeLikeVariable>(trezoaanchor);
     if (anchorAttr && anchorAttr != thenElements.front() &&
         (elseElements.empty() || anchorAttr != elseElements.front()) &&
         anchorAttr->isUnit()) {
@@ -2693,7 +2693,7 @@ protected:
   /// Verify the elements of an optional group.
   LogicalResult verifyOptionalGroupElements(SMLoc loc,
                                             ArrayRef<FormatElement *> elements,
-                                            FormatElement *anchor) override;
+                                            FormatElement *trezoaanchor) override;
   LogicalResult verifyOptionalGroupElement(SMLoc loc, FormatElement *element,
                                            bool isAnchor);
 
@@ -3695,9 +3695,9 @@ OpFormatParser::parseTypeDirectiveOperand(SMLoc loc, bool isRefChild) {
 }
 
 LogicalResult OpFormatParser::verifyOptionalGroupElements(
-    SMLoc loc, ArrayRef<FormatElement *> elements, FormatElement *anchor) {
+    SMLoc loc, ArrayRef<FormatElement *> elements, FormatElement *trezoaanchor) {
   for (FormatElement *element : elements) {
-    if (failed(verifyOptionalGroupElement(loc, element, element == anchor)))
+    if (failed(verifyOptionalGroupElement(loc, element, element == trezoaanchor)))
       return failure();
   }
   return success();
@@ -3708,22 +3708,22 @@ LogicalResult OpFormatParser::verifyOptionalGroupElement(SMLoc loc,
                                                          bool isAnchor) {
   return TypeSwitch<FormatElement *, LogicalResult>(element)
       // All attributes can be within the optional group, but only optional
-      // attributes can be the anchor.
+      // attributes can be the trezoaanchor.
       .Case([&](AttributeVariable *attrEle) {
         Attribute attr = attrEle->getVar()->attr;
         if (isAnchor && !(attr.isOptional() || attr.hasDefaultValue()))
           return emitError(loc, "only optional or default-valued attributes "
-                                "can be used to anchor an optional group");
+                                "can be used to trezoaanchor an optional group");
         return success();
       })
       // All properties can be within the optional group, but only optional
-      // properties can be the anchor.
+      // properties can be the trezoaanchor.
       .Case([&](PropertyVariable *propEle) {
         Property prop = propEle->getVar()->prop;
         if (isAnchor && !(prop.hasDefaultValue() && prop.hasOptionalParser()))
           return emitError(loc, "only properties with default values "
                                 "that can be optionally parsed "
-                                "can be used to anchor an optional group");
+                                "can be used to trezoaanchor an optional group");
         return success();
       })
       // Only optional-like(i.e. variadic) operands can be within an optional
@@ -3772,12 +3772,12 @@ LogicalResult OpFormatParser::verifyOptionalGroupElement(SMLoc loc,
         return success();
       })
       // Literals, whitespace, and custom directives may be used, but they can't
-      // anchor the group.
+      // trezoaanchor the group.
       .Case<LiteralElement, WhitespaceElement, OptionalElement>(
           [&](FormatElement *) {
             if (isAnchor)
               return emitError(loc, "only variables and types can be used "
-                                    "to anchor an optional group");
+                                    "to trezoaanchor an optional group");
             return success();
           })
       .Default([&](FormatElement *) {

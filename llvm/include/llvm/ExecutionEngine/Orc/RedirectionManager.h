@@ -36,7 +36,7 @@ public:
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// Base class for managing redirectable symbols in which a call

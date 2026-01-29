@@ -61,20 +61,20 @@ namespace Test4 {
 namespace Test5 {
   struct A {
     virtual void f() = 0;
-    virtual void anchor();
+    virtual void trezoaanchor();
   };
 
-  void A::anchor() {
+  void A::trezoaanchor() {
   }
 }
 
 namespace Test6 {
   struct A {
     virtual void f() = delete;
-    virtual void anchor();
+    virtual void trezoaanchor();
   };
 
-  void A::anchor() {
+  void A::trezoaanchor() {
   }
 }
 

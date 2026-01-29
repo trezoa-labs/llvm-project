@@ -2,7 +2,7 @@
 # RUN: llvm-mca -mtriple=x86_64-unknown-unknown -mcpu=x86-64 -scheduler-stats -dispatch-stats -iterations=100 -timeline -timeline-max-iterations=1 < %s | FileCheck %s
 
 # LLVM-MCA-BEGIN
-movb (%rax), %spl
+movb (%rax), %tpl
 movb (%rcx), %bpl
 movb (%rdx), %sil
 movb (%rbx), %dil
@@ -64,7 +64,7 @@ movaps (%rbx), %xmm3
 # CHECK-NEXT: [6]: HasSideEffects (U)
 
 # CHECK:      [1]    [2]    [3]    [4]    [5]    [6]    Instructions:
-# CHECK-NEXT:  1      5     0.50    *                   movb	(%rax), %spl
+# CHECK-NEXT:  1      5     0.50    *                   movb	(%rax), %tpl
 # CHECK-NEXT:  1      5     0.50    *                   movb	(%rcx), %bpl
 # CHECK-NEXT:  1      5     0.50    *                   movb	(%rdx), %sil
 # CHECK-NEXT:  1      5     0.50    *                   movb	(%rbx), %dil
@@ -114,7 +114,7 @@ movaps (%rbx), %xmm3
 
 # CHECK:      Resource pressure by instruction:
 # CHECK-NEXT: [0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:
-# CHECK-NEXT:  -      -      -      -      -      -      -     1.00   movb	(%rax), %spl
+# CHECK-NEXT:  -      -      -      -      -      -      -     1.00   movb	(%rax), %tpl
 # CHECK-NEXT:  -      -      -      -      -      -     1.00    -     movb	(%rcx), %bpl
 # CHECK-NEXT:  -      -      -      -      -      -      -     1.00   movb	(%rdx), %sil
 # CHECK-NEXT:  -      -      -      -      -      -     1.00    -     movb	(%rbx), %dil
@@ -122,7 +122,7 @@ movaps (%rbx), %xmm3
 # CHECK:      Timeline view:
 # CHECK-NEXT: Index     012345678
 
-# CHECK:      [0,0]     DeeeeeER.   movb	(%rax), %spl
+# CHECK:      [0,0]     DeeeeeER.   movb	(%rax), %tpl
 # CHECK-NEXT: [0,1]     DeeeeeER.   movb	(%rcx), %bpl
 # CHECK-NEXT: [0,2]     D=eeeeeER   movb	(%rdx), %sil
 # CHECK-NEXT: [0,3]     D=eeeeeER   movb	(%rbx), %dil
@@ -134,7 +134,7 @@ movaps (%rbx), %xmm3
 # CHECK-NEXT: [3]: Average time elapsed from WB until retire stage
 
 # CHECK:            [0]    [1]    [2]    [3]
-# CHECK-NEXT: 0.     1     1.0    1.0    0.0       movb	(%rax), %spl
+# CHECK-NEXT: 0.     1     1.0    1.0    0.0       movb	(%rax), %tpl
 # CHECK-NEXT: 1.     1     1.0    1.0    0.0       movb	(%rcx), %bpl
 # CHECK-NEXT: 2.     1     2.0    2.0    0.0       movb	(%rdx), %sil
 # CHECK-NEXT: 3.     1     2.0    2.0    0.0       movb	(%rbx), %dil

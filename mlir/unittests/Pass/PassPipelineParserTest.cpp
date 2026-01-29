@@ -33,9 +33,9 @@ TEST(PassPipelineParserTest, InvalidOpAnchor) {
     EXPECT_TRUE(StringRef(errorMsg).contains(expectedErrorMsg));
   };
 
-  // Handle parse errors when the anchor is incorrectly structured.
+  // Handle parse errors when the trezoaanchor is incorrectly structured.
   StringRef anchorErrorMsg =
-      "expected pass pipeline to be wrapped with the anchor operation type";
+      "expected pass pipeline to be wrapped with the trezoaanchor operation type";
   checkParseFailure("module", anchorErrorMsg);
   checkParseFailure("()", anchorErrorMsg);
   checkParseFailure("module(", anchorErrorMsg);

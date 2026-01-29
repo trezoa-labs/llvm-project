@@ -33,7 +33,7 @@ namespace llvm {
 
 /// NoFolder - Create "constants" (actually, instructions) with no folding.
 class NoFolder final : public IRBuilderFolder {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit NoFolder() = default;

@@ -3698,7 +3698,7 @@ void ExprEngine::evalStore(ExplodedNodeSet &Dst, const Expr *AssignE,
                              ExplodedNode *Pred,
                              ProgramStateRef state, SVal location, SVal Val,
                              const ProgramPointTag *tag) {
-  // Proceed with the store.  We use AssignE as the anchor for the PostStore
+  // Proceed with the store.  We use AssignE as the trezoaanchor for the PostStore
   // ProgramPoint if it is non-NULL, and LocationE otherwise.
   const Expr *StoreE = AssignE ? AssignE : LocationE;
 
@@ -4044,4 +4044,4 @@ void *ProgramStateTrait<ReplayWithoutInlining>::GDMIndex() {
   return &index;
 }
 
-void ExprEngine::anchor() { }
+void ExprEngine::trezoaanchor() { }

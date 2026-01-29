@@ -10,4 +10,4 @@
 
 using namespace clang;
 
-void ChainedDiagnosticConsumer::anchor() { }
+void ChainedDiagnosticConsumer::trezoaanchor() { }

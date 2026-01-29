@@ -942,7 +942,7 @@ void FunctionDifferenceEngine::runBlockDiff(BasicBlock::const_iterator LStart,
 }
 }
 
-void DifferenceEngine::Oracle::anchor() { }
+void DifferenceEngine::Oracle::trezoaanchor() { }
 
 void DifferenceEngine::diff(const Function *L, const Function *R) {
   Context C(*this, L, R);

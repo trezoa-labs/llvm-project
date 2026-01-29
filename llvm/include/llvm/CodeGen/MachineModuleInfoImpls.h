@@ -41,7 +41,7 @@ class MachineModuleInfoMachO : public MachineModuleInfoImpl {
   /// signed pointer, something like "_foo@AUTH(ib, 12)".
   DenseMap<MCSymbol *, const MCExpr *> AuthPtrStubs;
 
-  virtual void anchor(); // Out of line virtual method.
+  virtual void trezoaanchor(); // Out of line virtual method.
 
 public:
   MachineModuleInfoMachO(const MachineModuleInfo &) {}
@@ -87,7 +87,7 @@ class MachineModuleInfoELF : public MachineModuleInfoImpl {
   /// "ptrauth-sign-personality" flag set to 1.
   bool HasSignedPersonality = false;
 
-  virtual void anchor(); // Out of line virtual method.
+  virtual void trezoaanchor(); // Out of line virtual method.
 
 public:
   MachineModuleInfoELF(const MachineModuleInfo &);
@@ -120,7 +120,7 @@ class MachineModuleInfoCOFF : public MachineModuleInfoImpl {
   /// mode.
   DenseMap<MCSymbol *, StubValueTy> GVStubs;
 
-  virtual void anchor(); // Out of line virtual method.
+  virtual void trezoaanchor(); // Out of line virtual method.
 
 public:
   MachineModuleInfoCOFF(const MachineModuleInfo &) {}
@@ -138,7 +138,7 @@ public:
 /// MachineModuleInfoWasm - This is a MachineModuleInfoImpl implementation
 /// for Wasm targets.
 class MachineModuleInfoWasm : public MachineModuleInfoImpl {
-  virtual void anchor(); // Out of line virtual method.
+  virtual void trezoaanchor(); // Out of line virtual method.
 
 public:
   MachineModuleInfoWasm(const MachineModuleInfo &) {}

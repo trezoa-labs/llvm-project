@@ -23,7 +23,7 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_CTOR
 #include "SparcGenSubtargetInfo.inc"
 
-void SparcSubtarget::anchor() { }
+void SparcSubtarget::trezoaanchor() { }
 
 SparcSubtarget &SparcSubtarget::initializeSubtargetDependencies(
     StringRef CPU, StringRef TuneCPU, StringRef FS) {

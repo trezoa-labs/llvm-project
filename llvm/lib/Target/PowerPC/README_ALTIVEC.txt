@@ -167,7 +167,7 @@ LBB1_2: ; entry
 
 CodeGen/PowerPC/vec_constants.ll has an and operation that should be
 codegen'd to andc.  The issue is that the 'all ones' build vector is
-SelectNodeTo'd a VSPLTISB instruction node before the and/xor is selected
+SelectNodeTo'd a VTPLTISB instruction node before the and/xor is selected
 which prevents the vnot pattern from matching.
 
 

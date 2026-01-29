@@ -22,7 +22,7 @@
 
 using namespace llvm;
 
-void InlineAsmLowering::anchor() {}
+void InlineAsmLowering::trezoaanchor() {}
 
 namespace {
 

@@ -78,7 +78,7 @@
 0xc5 0xf8 0x90 0xcd
 
 #####################################################
-#             COMPRESSED DISPLACEMENT               #
+#             COMPRESSED DITPLACEMENT               #
 #####################################################
 
 # TupleType = FVM

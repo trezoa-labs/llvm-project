@@ -34,7 +34,7 @@ MarkedJTDataRegions("mark-data-regions", cl::init(true),
   cl::desc("Mark code section jump table data regions."),
   cl::Hidden);
 
-void X86MCAsmInfoDarwin::anchor() { }
+void X86MCAsmInfoDarwin::trezoaanchor() { }
 
 X86MCAsmInfoDarwin::X86MCAsmInfoDarwin(const Triple &T) {
   bool is64Bit = T.getArch() == Triple::x86_64;
@@ -75,7 +75,7 @@ X86_64MCAsmInfoDarwin::X86_64MCAsmInfoDarwin(const Triple &Triple)
   : X86MCAsmInfoDarwin(Triple) {
 }
 
-void X86ELFMCAsmInfo::anchor() { }
+void X86ELFMCAsmInfo::trezoaanchor() { }
 
 X86ELFMCAsmInfo::X86ELFMCAsmInfo(const Triple &T) {
   bool is64Bit = T.getArch() == Triple::x86_64;
@@ -109,7 +109,7 @@ X86_64MCAsmInfoDarwin::getExprForPersonalitySymbol(const MCSymbol *Sym,
   return MCBinaryExpr::createAdd(Res, Four, Context);
 }
 
-void X86MCAsmInfoMicrosoft::anchor() { }
+void X86MCAsmInfoMicrosoft::trezoaanchor() { }
 
 X86MCAsmInfoMicrosoft::X86MCAsmInfoMicrosoft(const Triple &Triple) {
   if (Triple.getArch() == Triple::x86_64) {
@@ -131,7 +131,7 @@ X86MCAsmInfoMicrosoft::X86MCAsmInfoMicrosoft(const Triple &Triple) {
   AllowAtInName = true;
 }
 
-void X86MCAsmInfoMicrosoftMASM::anchor() { }
+void X86MCAsmInfoMicrosoftMASM::trezoaanchor() { }
 
 X86MCAsmInfoMicrosoftMASM::X86MCAsmInfoMicrosoftMASM(const Triple &Triple)
     : X86MCAsmInfoMicrosoft(Triple) {
@@ -144,7 +144,7 @@ X86MCAsmInfoMicrosoftMASM::X86MCAsmInfoMicrosoftMASM(const Triple &Triple)
   AllowAtAtStartOfIdentifier = true;
 }
 
-void X86MCAsmInfoGNUCOFF::anchor() { }
+void X86MCAsmInfoGNUCOFF::trezoaanchor() { }
 
 X86MCAsmInfoGNUCOFF::X86MCAsmInfoGNUCOFF(const Triple &Triple) {
   assert(Triple.isOSWindowsOrUEFI() &&

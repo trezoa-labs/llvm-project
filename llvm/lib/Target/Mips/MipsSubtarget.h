@@ -35,7 +35,7 @@ class StringRef;
 class MipsTargetMachine;
 
 class MipsSubtarget : public MipsGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   enum MipsArchEnum {
     MipsDefault,

@@ -1908,7 +1908,7 @@ public:
   virtual void run(Expected<AsyncLookupResult> LR) = 0;
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// Create a lookup continuation from a function object.

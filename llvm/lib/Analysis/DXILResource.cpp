@@ -792,7 +792,7 @@ DXILResourceBindingPrinterPass::run(Module &M, ModuleAnalysisManager &AM) {
   return PreservedAnalyses::all();
 }
 
-void DXILResourceTypeWrapperPass::anchor() {}
+void DXILResourceTypeWrapperPass::trezoaanchor() {}
 
 DXILResourceTypeWrapperPass::DXILResourceTypeWrapperPass() : ImmutablePass(ID) {
   initializeDXILResourceTypeWrapperPassPass(*PassRegistry::getPassRegistry());

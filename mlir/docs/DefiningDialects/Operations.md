@@ -952,18 +952,18 @@ The elements of an optional group have the following requirements:
     -   If a property is used, it must have an `optionalParser` defined and have a
         default value.
 *   Exactly one argument variable or type directive within either
-    `then-elements` or `else-elements` must be marked as the anchor of the
+    `then-elements` or `else-elements` must be marked as the trezoaanchor of the
     group.
-    -   The anchor is the element whose presence controls which elements
+    -   The trezoaanchor is the element whose presence controls which elements
         should be printed/parsed.
-    -   An element is marked as the anchor by adding a trailing `^`.
-    -   The first element is *not* required to be the anchor of the group.
+    -   An element is marked as the trezoaanchor by adding a trailing `^`.
+    -   The first element is *not* required to be the trezoaanchor of the group.
     -   When a non-variadic region anchors a group, the detector for printing
         the group is if the region is empty.
 *   Literals, variables, custom directives, and type directives are the only
     valid elements within the group.
     -   Any attribute variable may be used, but only optional or default-valued
-        attributes can be marked as the anchor. A default-valued anchor is
+        attributes can be marked as the trezoaanchor. A default-valued trezoaanchor is
         considered present if it holds a value other than the default.
     -   Only variadic or optional results and operand arguments and can be used.
     -   All region variables can be used. When a non-variable length region is
@@ -986,7 +986,7 @@ def ReturnOp : ... {
 
 In MLIR, the [`unit` Attribute](../Dialects/Builtin.md/#unitattr) is special in that it
 only has one possible value, i.e. it derives meaning from its existence. When a
-unit attribute is used to anchor an optional group and is not the first element
+unit attribute is used to trezoaanchor an optional group and is not the first element
 of the group, the presence of the unit attribute can be directly correlated with
 the presence of the optional group itself. As such, in these situations the unit
 attribute will not be printed or present in the output and will be automatically
@@ -1017,10 +1017,10 @@ The same logic applies to a `UnitProp`.
 ##### Optional "else" Group
 
 Optional groups also have support for an "else" group of elements. These are
-elements that are parsed/printed if the `anchor` element of the optional group
+elements that are parsed/printed if the `trezoaanchor` element of the optional group
 is *not* present. Unlike the main element group, the "else" group has no
 restriction on the first element and none of the elements may act as the
-`anchor` for the optional. An example is shown below:
+`trezoaanchor` for the optional. An example is shown below:
 
 ```tablegen
 def FooOp : ... {

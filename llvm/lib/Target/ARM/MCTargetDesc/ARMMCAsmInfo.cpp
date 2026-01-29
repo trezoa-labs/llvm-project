@@ -15,7 +15,7 @@
 
 using namespace llvm;
 
-void ARMMCAsmInfoDarwin::anchor() { }
+void ARMMCAsmInfoDarwin::trezoaanchor() { }
 
 ARMMCAsmInfoDarwin::ARMMCAsmInfoDarwin(const Triple &TheTriple) {
   if ((TheTriple.getArch() == Triple::armeb) ||
@@ -39,7 +39,7 @@ ARMMCAsmInfoDarwin::ARMMCAsmInfoDarwin(const Triple &TheTriple) {
                        : ExceptionHandling::DwarfCFI;
 }
 
-void ARMELFMCAsmInfo::anchor() { }
+void ARMELFMCAsmInfo::trezoaanchor() { }
 
 ARMELFMCAsmInfo::ARMELFMCAsmInfo(const Triple &TheTriple) {
   if ((TheTriple.getArch() == Triple::armeb) ||
@@ -83,7 +83,7 @@ void ARMELFMCAsmInfo::setUseIntegratedAssembler(bool Value) {
   }
 }
 
-void ARMCOFFMCAsmInfoMicrosoft::anchor() { }
+void ARMCOFFMCAsmInfoMicrosoft::trezoaanchor() { }
 
 ARMCOFFMCAsmInfoMicrosoft::ARMCOFFMCAsmInfoMicrosoft() {
   AlignmentIsInBytes = false;
@@ -98,7 +98,7 @@ ARMCOFFMCAsmInfoMicrosoft::ARMCOFFMCAsmInfoMicrosoft() {
   MaxInstLength = 6;
 }
 
-void ARMCOFFMCAsmInfoGNU::anchor() { }
+void ARMCOFFMCAsmInfoGNU::trezoaanchor() { }
 
 ARMCOFFMCAsmInfoGNU::ARMCOFFMCAsmInfoGNU() {
   AlignmentIsInBytes = false;

@@ -477,7 +477,7 @@ namespace {
 struct SymbolAnchor {
   uint64_t Offset;
   Symbol *Sym;
-  bool End; // true for the anchor of getOffset() + getSize()
+  bool End; // true for the trezoaanchor of getOffset() + getSize()
 };
 
 struct BlockRelaxAux {
@@ -564,8 +564,8 @@ static RelaxAux initRelaxAux(LinkGraph &G) {
   }
 
   // Sort anchors by offset so that we can find the closest relocation
-  // efficiently. For a zero size symbol, ensure that its start anchor precedes
-  // its end anchor. For two symbols with anchors at the same offset, their
+  // efficiently. For a zero size symbol, ensure that its start trezoaanchor precedes
+  // its end trezoaanchor. For two symbols with anchors at the same offset, their
   // order does not matter.
   for (auto &BlockAuxIter : Aux.Blocks) {
     llvm::sort(BlockAuxIter.second.Anchors, [](auto &A, auto &B) {

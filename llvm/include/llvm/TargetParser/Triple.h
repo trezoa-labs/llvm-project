@@ -202,7 +202,7 @@ public:
     SUSE,
     OpenEmbedded,
     Intel,
-    Solana,
+    Trezoa,
     LastVendorType = Intel
   };
   enum OSType {
@@ -247,7 +247,7 @@ public:
     ShaderModel, // DirectX ShaderModel
     LiteOS,
     Serenity,
-    SolanaOS,
+    TrezoaOS,
     Vulkan, // Vulkan SPIR-V
     LastOSType = Vulkan
   };
@@ -792,9 +792,9 @@ public:
     return getObjectFormat() == Triple::DXContainer;
   }
 
-  /// Tests whether the OS is Solana.
-  bool isOSSolana() const {
-    return getOS() == Triple::SolanaOS;
+  /// Tests whether the OS is Trezoa.
+  bool isOSTrezoa() const {
+    return getOS() == Triple::TrezoaOS;
   }
 
   /// Tests whether the target is the PS4 platform.

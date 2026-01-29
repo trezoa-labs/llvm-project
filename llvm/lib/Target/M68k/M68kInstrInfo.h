@@ -235,7 +235,7 @@ static inline bool IsSETCC(unsigned SETCC) {
 } // namespace M68k
 
 class M68kInstrInfo : public M68kGenInstrInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   const M68kSubtarget &Subtarget;

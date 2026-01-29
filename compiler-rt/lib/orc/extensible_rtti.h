@@ -88,7 +88,7 @@ public:
   static bool classof(const RTTIRoot *R) { return R->isA<RTTIRoot>(); }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   static char ID;
 };

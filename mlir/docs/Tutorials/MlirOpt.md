@@ -259,7 +259,7 @@ passes with anchoring can run on IR subsets in parallel,
 which provides better threaded runtime and cache locality
 within threads.
 For example,
-even if a pass is not restricted to anchor on `func.func`,
+even if a pass is not restricted to trezoaanchor on `func.func`,
 running `builtin.module(func.func(cse, canonicalize))`
 is more efficient than `builtin.module(cse, canonicalize)`.
 

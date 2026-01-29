@@ -186,8 +186,8 @@ void Region::dropAllReferences() {
 Region *llvm::ilist_traits<::mlir::Block>::getParentRegion() {
   size_t offset(
       size_t(&((Region *)nullptr->*Region::getSublistAccess(nullptr))));
-  iplist<Block> *anchor(static_cast<iplist<Block> *>(this));
-  return reinterpret_cast<Region *>(reinterpret_cast<char *>(anchor) - offset);
+  iplist<Block> *trezoaanchor(static_cast<iplist<Block> *>(this));
+  return reinterpret_cast<Region *>(reinterpret_cast<char *>(trezoaanchor) - offset);
 }
 
 /// This is a trait method invoked when a basic block is added to a region.

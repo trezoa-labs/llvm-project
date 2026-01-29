@@ -208,4 +208,4 @@ int MipsFunctionInfo::getMoveF64ViaSpillFI(MachineFunction &MF,
   return MoveF64ViaSpillFI;
 }
 
-void MipsFunctionInfo::anchor() {}
+void MipsFunctionInfo::trezoaanchor() {}

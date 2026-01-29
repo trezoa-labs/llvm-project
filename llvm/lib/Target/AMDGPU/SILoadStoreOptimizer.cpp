@@ -2191,7 +2191,7 @@ bool SILoadStoreOptimizer::promoteConstantOffsetToImm(
                     << printReg(MAddr.Base.LoReg, TRI)
                     << "} Offset: " << MAddr.Offset << "\n\n";);
 
-  // Step2: Traverse through MI's basic block and find an anchor(that has the
+  // Step2: Traverse through MI's basic block and find an trezoaanchor(that has the
   // same base-registers) with the highest 13bit distance from MI's offset.
   // E.g. (64bit loads)
   // bb:
@@ -2204,7 +2204,7 @@ bool SILoadStoreOptimizer::promoteConstantOffsetToImm(
   // Starting from the first load, the optimization will try to find a new base
   // from which (&a + 4096) has 13 bit distance. Both &a + 6144 and &a + 8192
   // has 13bit distance from &a + 4096. The heuristic considers &a + 8192
-  // as the new-base(anchor) because of the maximum distance which can
+  // as the new-base(trezoaanchor) because of the maximum distance which can
   // accommodate more intermediate bases presumably.
   //
   // Step3: move (&a + 8192) above load1. Compute and promote offsets from
@@ -2230,7 +2230,7 @@ bool SILoadStoreOptimizer::promoteConstantOffsetToImm(
 
   for ( ; MBBI != E; ++MBBI) {
     MachineInstr &MINext = *MBBI;
-    // TODO: Support finding an anchor(with same base) from store addresses or
+    // TODO: Support finding an trezoaanchor(with same base) from store addresses or
     // any other load addresses where the opcodes are different.
     if (MINext.getOpcode() != MI.getOpcode() ||
         TII->getNamedOperand(MINext, AMDGPU::OpName::offset)->getImm())
@@ -2272,7 +2272,7 @@ bool SILoadStoreOptimizer::promoteConstantOffsetToImm(
     LLVM_DEBUG(dbgs() << "  Anchor-Offset from BASE: "
                <<  AnchorAddr.Offset << "\n\n");
 
-    // Instead of moving up, just re-compute anchor-instruction's base address.
+    // Instead of moving up, just re-compute trezoaanchor-instruction's base address.
     Register Base = computeBase(MI, AnchorAddr);
 
     updateBaseAndOffset(MI, Base, MAddr.Offset - AnchorAddr.Offset);

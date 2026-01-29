@@ -22,7 +22,7 @@ namespace clang {
 namespace targets {
 
 class LLVM_LIBRARY_VISIBILITY BPFTargetInfo : public TargetInfo {
-  bool HasSolanaFeature = false;
+  bool HasTrezoaFeature = false;
   bool HasAlu32 = false;
 
 public:
@@ -36,23 +36,23 @@ public:
     Int64Type = SignedLong;
     RegParmMax = 5;
     if (Triple.getArch() == llvm::Triple::sbf) {
-      HasSolanaFeature = true;
+      HasTrezoaFeature = true;
     } else {
       for (auto& it : Opts.FeaturesAsWritten) {
-        if (it == "+solana") {
-          HasSolanaFeature = true;
+        if (it == "+trezoa") {
+          HasTrezoaFeature = true;
           break;
         }
       }
     }
     if (Triple.getArch() == llvm::Triple::bpfeb) {
-      if (HasSolanaFeature) {
+      if (HasTrezoaFeature) {
         resetDataLayout("E-m:e-p:64:64-i64:64-n32:64-S128");
       } else {
         resetDataLayout("E-m:e-p:64:64-i64:64-i128:128-n32:64-S128");
       }
     } else {
-      if (HasSolanaFeature) {
+      if (HasTrezoaFeature) {
         resetDataLayout("e-m:e-p:64:64-i64:64-n32:64-S128");
       } else {
         resetDataLayout("e-m:e-p:64:64-i64:64-i128:128-n32:64-S128");
@@ -135,7 +135,7 @@ public:
     return std::make_pair(32, 32);
   }
 
-  bool hasBitIntType() const override { return HasSolanaFeature; }
+  bool hasBitIntType() const override { return HasTrezoaFeature; }
 };
 } // namespace targets
 } // namespace clang

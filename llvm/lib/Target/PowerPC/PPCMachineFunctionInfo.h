@@ -34,10 +34,10 @@ public:
   };
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// FramePointerSaveIndex - Frame index of where the old frame pointer is
-  /// stored.  Also used as an anchor for instructions that need to be altered
+  /// stored.  Also used as an trezoaanchor for instructions that need to be altered
   /// when using frame pointers (dyna_add, dyna_sub.)
   int FramePointerSaveIndex = 0;
 

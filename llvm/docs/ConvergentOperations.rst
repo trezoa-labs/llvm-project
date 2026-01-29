@@ -345,8 +345,8 @@ operations within the sequence. (If a subset of the convergent operations in the
 sequence have additional, non-uniform control dependencies, then this is not
 possible. However, the code may still require that the sets of threads are
 logically consistent with the conditions of those control dependencies.) In this
-case, :ref:`llvm.experimental.convergence.anchor
-<llvm.experimental.convergence.anchor>` can be used to express the desired
+case, :ref:`llvm.experimental.convergence.trezoaanchor
+<llvm.experimental.convergence.trezoaanchor>` can be used to express the desired
 semantics.
 
 The following example function could be part of a hypothetical "append buffer"
@@ -369,9 +369,9 @@ its individual position in the buffer:
 
   define i32 @reserveSpaceInBuffer() {    ; NOTE: _not_ a convergent function!
   entry:
-    %anchor = call token @llvm.experimental.convergence.anchor()
+    %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
 
-    %ballot = call i64 @subgroupBallot(i1 true) [ "convergencectrl"(token %anchor) ]
+    %ballot = call i64 @subgroupBallot(i1 true) [ "convergencectrl"(token %trezoaanchor) ]
     %numThreads.p = call i64 @llvm.ctpop.i64(i64 %ballot)
     %numThreads = trunc i64 %numThreads.p to i32
 
@@ -393,7 +393,7 @@ its individual position in the buffer:
 
   end:
     %baseOffset.2 = phi i32 [ undef, %entry ], [ %baseOffset.1, %then ]
-    %baseOffset = call i32 @subgroupBroadcastFirst(i32 %baseOffset.2) [ "convergencectrl"(token %anchor) ]
+    %baseOffset = call i32 @subgroupBroadcastFirst(i32 %baseOffset.2) [ "convergencectrl"(token %trezoaanchor) ]
     %offset = add i32 %baseOffset, %relativeThreadIdx
     ret i32 %offset
   }
@@ -402,7 +402,7 @@ The key here is that the function really doesn't care which set of threads it
 is being called with. It takes whatever set of threads it can get. What the
 implementation of the function cares about is that the initial
 ``@subgroupBallot`` -- which is used to retrieve the bitmask of threads that
-executed the anchor together -- executes with the same set of threads as the
+executed the trezoaanchor together -- executes with the same set of threads as the
 final ``@subgroupBroadcastFirst``. Nothing else is required for correctness as
 far as convergence is concerned.
 
@@ -415,10 +415,10 @@ However, this does not break the overall contract that ``@reserveSpaceInBuffer``
 has with its caller -- which makes sense: the order of outputs is
 non-deterministic anyway because of the atomic operation that is involved.
 
-If the function is inlined, the use of the anchor intrinsic similarly indicates
+If the function is inlined, the use of the trezoaanchor intrinsic similarly indicates
 that certain transforms which are usually forbidden by the presence of
 convergent operations are in fact allowed, as long as they don't break up the
-region of code that is controlled by the anchor.
+region of code that is controlled by the trezoaanchor.
 
 .. _convergence_high-level_break:
 
@@ -629,7 +629,7 @@ bundle. For example:
   }
 
   void main() {
-    %outer = call token @llvm.experimental.convergence.anchor()
+    %outer = call token @llvm.experimental.convergence.trezoaanchor()
     for (...) {
       %inner = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %outer) ]
       callee() [ "convergencectrl"(token %inner) ]
@@ -639,7 +639,7 @@ bundle. For example:
   // After inlining:
 
   void main() {
-    %outer = call token @llvm.experimental.convergence.anchor()
+    %outer = call token @llvm.experimental.convergence.trezoaanchor()
     for (...) {
       %inner = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %outer) ]
       convergent_operation(...) [ "convergencectrl"(token %inner) ]
@@ -692,14 +692,14 @@ convergent operation in the same basic block.
      meaning of a loop iteration in terms of convergence. For now, we disallow
      this situation since its practical application is very rare.
 
-.. _llvm.experimental.convergence.anchor:
+.. _llvm.experimental.convergence.trezoaanchor:
 
-``llvm.experimental.convergence.anchor``
+``llvm.experimental.convergence.trezoaanchor``
 ----------------------------------------
 
 .. code-block:: llvm
 
-  token @llvm.experimental.convergence.anchor() convergent readnone
+  token @llvm.experimental.convergence.trezoaanchor() convergent readnone
 
 This intrinsic produces an initial convergence token that is independent from
 any "outer scope". The set of threads executing converged dynamic instances of
@@ -759,8 +759,8 @@ originate from a call to the :ref:`llvm.experimental.convergence.entry
 <llvm.experimental.convergence.entry>` intrinsic. This preserves the possibility
 that the group of threads that converge on reaching ``X`` is the same group that
 originally started executing the program in convergence. In comparison, the
-:ref:`llvm.experimental.convergence.anchor
-<llvm.experimental.convergence.anchor>` intrinsic captures an
+:ref:`llvm.experimental.convergence.trezoaanchor
+<llvm.experimental.convergence.trezoaanchor>` intrinsic captures an
 implementation-defined group of threads, which is insufficient to support the
 above property.
 
@@ -904,8 +904,8 @@ Controlled Maximal Convergence
 The :ref:`converged-with relation <convergence-definition>` over dynamic
 instances of each controlled convergent operation is completely defined by the
 semantics of convergence tokens. But the implementation-defined convergence at a
-call to :ref:`llvm.experimental.convergence.anchor
-<llvm.experimental.convergence.anchor>` also depends on the cycle hierarchy
+call to :ref:`llvm.experimental.convergence.trezoaanchor
+<llvm.experimental.convergence.trezoaanchor>` also depends on the cycle hierarchy
 chosen if it occurs inside an irreducible cycle.
 
 When the token defined by a convergent operation ``D`` is used at another
@@ -993,10 +993,10 @@ pseudocode:
 
   ; WARNING: Example of incorrect convergence control!
 
-  %anchor = call token @llvm.experimental.convergence.anchor()
+  %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
   for (;;) {
     ...
-    call void @convergent.op() [ "convergencectrl"(token %anchor) ]
+    call void @convergent.op() [ "convergencectrl"(token %trezoaanchor) ]
     ...
   }
 
@@ -1005,7 +1005,7 @@ This code is forbidden by the first static rule about cycles.
 A first formal argument why we have to do this is that the dynamic rule for
 deciding whether two threads execute converged dynamic instances of
 ``@convergent.op`` leads to a logical contradiction in this code.
-Assume two threads execute converged dynamic instances of the anchor
+Assume two threads execute converged dynamic instances of the trezoaanchor
 followed by two iterations of the loop. Thread 1 executes dynamic instances
 I1 and I2 of ``@convergent.op``, thread 2 executes dynamic instances J1 and J2.
 Using all the rules, we can deduce:
@@ -1015,7 +1015,7 @@ Using all the rules, we can deduce:
 2. ``I1 == J1`` by the first dynamic rule about controlled convergent
    operations: both threads execute the same static instruction while using
    a convergence token value produced by converged dynamic instances of an
-   instruction (the anchor).
+   instruction (the trezoaanchor).
 
 3. ``I1 == J2`` by the same argument. Also, ``I2 == J1`` and ``I2 == J2``.
 
@@ -1034,16 +1034,16 @@ establishes a relationship between loop iterations across threads.
 
 .. code-block:: llvm
 
-  %anchor = call token @llvm.experimental.convergence.anchor()
+  %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
   for (;;) {
-    %loop = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %anchor) ]
+    %loop = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %trezoaanchor) ]
     ...
     call void @convergent.op() [ "convergencectrl"(token %loop) ]
     ...
   }
 
 In the same scenario of two threads executing converged dynamic instances of the
-anchor and then two iterations of the loop, the dynamic rule about loop heart
+trezoaanchor and then two iterations of the loop, the dynamic rule about loop heart
 intrinsics implies that both threads execute the converged dynamic instances of
 the loop heart intrinsic in their respective first iterations and then again in
 their respective second iterations of the loop.
@@ -1064,23 +1064,23 @@ Consider the following loop, again with incorrect convergence control:
   ; WARNING: Example of incorrect convergence control!
 
   ; (A)
-  %anchor = call token @llvm.experimental.convergence.anchor()
+  %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
   for (;;) {
     ; (B)
     if (condition1) {
       ; (C)
-      call void @convergent.op.1() [ "convergencectrl"(token %anchor) ]
+      call void @convergent.op.1() [ "convergencectrl"(token %trezoaanchor) ]
     }
     ; (D)
     if (condition2) {
       ; (E)
-      call void @convergent.op.2() [ "convergencectrl"(token %anchor) ]
+      call void @convergent.op.2() [ "convergencectrl"(token %trezoaanchor) ]
     }
     ; (F)
   }
   ; (G)
 
-Assume two threads execute converged dynamic instances of the anchor followed
+Assume two threads execute converged dynamic instances of the trezoaanchor followed
 by this sequence of basic blocks:
 
 .. code-block:: text
@@ -1100,10 +1100,10 @@ as:
 .. code-block:: llvm
 
   ; (A)
-  %anchor = call token @llvm.experimental.convergence.anchor()
+  %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
   for (;;) {
     ; (B)
-    %loop = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %anchor) ]
+    %loop = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %trezoaanchor) ]
     if (condition1) {
       ; (C)
       call void @convergent.op.1() [ "convergencectrl"(token %loop) ]
@@ -1137,23 +1137,23 @@ Then we have:
 4. Similarly, ``@op.2(1) != @op.2(2)``.
 
 However, loop heart intrinsics could be inserted differently, at the cost
-of also inserting a free-standing anchor:
+of also inserting a free-standing trezoaanchor:
 
 .. code-block:: llvm
 
   ; (A)
-  %anchor = call token @llvm.experimental.convergence.anchor()
+  %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
   for (;;) {
     ; (B)
     if (condition1) {
       ; (C)
-      %loop = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %anchor) ]
+      %loop = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %trezoaanchor) ]
       call void @convergent.op.1() [ "convergencectrl"(token %loop) ]
     }
     ; (D)
     if (condition2) {
       ; (E)
-      %free = call token @llvm.experimental.convergence.anchor()
+      %free = call token @llvm.experimental.convergence.trezoaanchor()
       call void @convergent.op.2() [ "convergencectrl"(token %free) ]
     }
     ; (F)
@@ -1172,7 +1172,7 @@ let ``@op.k(i)`` be as before. Then:
    referring to ``%loop(i)``, and ``%loop(1) == %loop(2)``.
 
 3. Whether ``@op.2(1) == @op.2(2)`` is implementation-defined because of the
-   use of the ``%free`` anchor intrinsic.
+   use of the ``%free`` trezoaanchor intrinsic.
 
    In practice, they almost certainly have to be non-converged dynamic
    instances. Consider that if an implementation strictly follows the order of
@@ -1198,29 +1198,29 @@ This type of convergence control seems relatively unlikely to appear in real
 programs. Its possibility is simply a logical consequence of the model.
 
 An equivalent issue arises if the convergent operations are replaced by nested
-loops with loop heart intrinsics that directly refer to ``%anchor``, hence
+loops with loop heart intrinsics that directly refer to ``%trezoaanchor``, hence
 the variants of the static rules about cycles that apply to them:
 
 .. code-block:: llvm
 
   ; WARNING: Example of incorrect convergence control!
 
-  %anchor = call token @llvm.experimental.convergence.anchor()
+  %trezoaanchor = call token @llvm.experimental.convergence.trezoaanchor()
   for (;;) {
     if (condition1) {
       for (;;) {
-        %loop1 = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %anchor) ]
+        %loop1 = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %trezoaanchor) ]
       }
     }
     if (condition2) {
       for (;;) {
-        %loop2 = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %anchor) ]
+        %loop2 = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %trezoaanchor) ]
       }
     }
   }
 
 There is a cycle (closed walk in the CFG) that goes through both loop heart
-intrinsics using ``%anchor`` but not through the definition of ``%anchor``,
+intrinsics using ``%trezoaanchor`` but not through the definition of ``%trezoaanchor``,
 so this code is invalid.
 
 
@@ -1258,12 +1258,12 @@ used. We illustrate the reasoning with some examples.
 
 First, an arbitrary loop that contains convergent operations *can* be unrolled
 in all of these ways, even with "tail", if all convergent operations refer back
-to an anchor inside the loop. For example (in pseudo-code):
+to an trezoaanchor inside the loop. For example (in pseudo-code):
 
 .. code-block:: llvm
 
   while (counter > 0) {
-    %tok = call token @llvm.experimental.convergence.anchor()
+    %tok = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
     counter--;
   }
@@ -1273,14 +1273,14 @@ This can be unrolled to:
 .. code-block:: llvm
 
   while (counter >= 2) {
-    %tok = call token @llvm.experimental.convergence.anchor()
+    %tok = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
-    %tok = call token @llvm.experimental.convergence.anchor()
+    %tok = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
     counter -= 2;
   }
   while (counter > 0) {
-    %tok = call token @llvm.experimental.convergence.anchor()
+    %tok = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
     counter--;
   }
@@ -1292,7 +1292,7 @@ operation in their respective final iterations together because the
 underlying implementation is likely to try to group as many threads together
 as possible for the execution of the "tail".
 
-This change is allowed because the anchor intrinsic has implementation-defined
+This change is allowed because the trezoaanchor intrinsic has implementation-defined
 convergence behavior and the loop unrolling transform is considered to be part
 of the implementation. Another way of reasoning is that while the *likely*
 behavior of the code has changed, the *guarantees* about its behavior have
@@ -1308,7 +1308,7 @@ be introduced. Consider:
 .. code-block:: llvm
 
   ; (A)
-  %outer = call token @llvm.experimental.convergence.anchor()
+  %outer = call token @llvm.experimental.convergence.trezoaanchor()
   while (counter > 0) {
     %inner = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %outer) ]
     ; (B)
@@ -1318,7 +1318,7 @@ be introduced. Consider:
   ; (C)
 
 To understand why unrolling is forbidden, consider two threads that execute
-converged dynamic instances of the anchor and then proceed with 3 and 4 loop
+converged dynamic instances of the trezoaanchor and then proceed with 3 and 4 loop
 iterations, respectively:
 
 .. code-block:: text
@@ -1343,7 +1343,7 @@ remainder as follows:
 .. code-block:: llvm
 
   ; (A)
-  %outer = call token @llvm.experimental.convergence.anchor()
+  %outer = call token @llvm.experimental.convergence.trezoaanchor()
   while (counter >= 2) {
     %inner = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %outer) ]
     ; (B)
@@ -1397,7 +1397,7 @@ as follows:
 
 .. code-block:: llvm
 
-  %outer = call token @llvm.experimental.convergence.anchor()
+  %outer = call token @llvm.experimental.convergence.trezoaanchor()
   while (counter > 0) {
     %inner = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %outer) ]
     call void @convergent.operation() [ "convergencectrl"(token %inner) ]
@@ -1487,19 +1487,19 @@ produces an undefined value or poison as result when ``%id`` is "out of range",
 then speculating is okay.
 
 Even though
-:ref:`llvm.experimental.convergence.anchor <llvm.experimental.convergence.anchor>`
+:ref:`llvm.experimental.convergence.trezoaanchor <llvm.experimental.convergence.trezoaanchor>`
 is marked as ``convergent``, it can be sunk in some cases. For example, in
 pseudo-code:
 
 .. code-block:: llvm
 
-  %tok = call token @llvm.experimental.convergence.anchor()
+  %tok = call token @llvm.experimental.convergence.trezoaanchor()
   if (condition) {
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
   }
 
-Assuming that ``%tok`` is only used inside the conditional block, the anchor can
-be sunk. The rationale is two-fold. First, the anchor has implementation-defined
+Assuming that ``%tok`` is only used inside the conditional block, the trezoaanchor can
+be sunk. The rationale is two-fold. First, the trezoaanchor has implementation-defined
 behavior, and the sinking is part of the implementation. Second, already in the
 original program, the set of threads that communicates in the
 ``@convergent.operation`` is automatically subset to the threads for which
@@ -1510,10 +1510,10 @@ Anchors can be hoisted in acyclic control flow. For example:
 .. code-block:: llvm
 
   if (condition) {
-    %tok1 = call token @llvm.experimental.convergence.anchor()
+    %tok1 = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok1) ]
   } else {
-    %tok2 = call token @llvm.experimental.convergence.anchor()
+    %tok2 = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok2) ]
   }
 
@@ -1521,7 +1521,7 @@ The anchors can be hoisted, resulting in:
 
 .. code-block:: llvm
 
-  %tok = call token @llvm.experimental.convergence.anchor()
+  %tok = call token @llvm.experimental.convergence.trezoaanchor()
   if (condition) {
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
   } else {
@@ -1537,37 +1537,37 @@ Hoisting and sinking anchors out of and into loops is forbidden. For example:
 .. code-block:: llvm
 
   for (;;) {
-    %tok = call token @llvm.experimental.convergence.anchor()
+    %tok = call token @llvm.experimental.convergence.trezoaanchor()
     call void @convergent.operation() [ "convergencectrl"(token %tok) ]
   }
 
-Hoisting the anchor would make the program invalid according to the static
+Hoisting the trezoaanchor would make the program invalid according to the static
 validity rules. Conversely:
 
 .. code-block:: llvm
 
-  %outer = call token @llvm.experimental.convergence.anchor()
+  %outer = call token @llvm.experimental.convergence.trezoaanchor()
   while (counter > 0) {
     %inner = call token @llvm.experimental.convergence.loop() [ "convergencectrl"(token %outer) ]
     call void @convergent.operation() [ "convergencectrl"(token %inner) ]
     counter--;
   }
 
-The program would stay valid if the anchor was sunk into the loop, but its
-behavior could end up being different. If the anchor is inside the loop, then
-each loop iteration has a new dynamic instance of the anchor, and the set of
-threads participating in those dynamic instances of the anchor could be
+The program would stay valid if the trezoaanchor was sunk into the loop, but its
+behavior could end up being different. If the trezoaanchor is inside the loop, then
+each loop iteration has a new dynamic instance of the trezoaanchor, and the set of
+threads participating in those dynamic instances of the trezoaanchor could be
 different in arbitrary implementation-defined ways. Via the dynamic rules about
 dynamic instances of convergent operations, this then implies that the set of
 threads executing ``@convergent.operation`` could be different in each loop
 iteration in arbitrary implementation-defined ways.
 
-Convergent operations can be sunk together with their anchor. Again in
+Convergent operations can be sunk together with their trezoaanchor. Again in
 pseudo-code:
 
 .. code-block:: llvm
 
-  %tok = call token @llvm.experimental.convergence.anchor()
+  %tok = call token @llvm.experimental.convergence.trezoaanchor()
   %a = call T @pure.convergent.operation(...) [ "convergencectrl"(token %tok) ]
   %b = call T @pure.convergent.operation(...) [ "convergencectrl"(token %tok) ]
   if (condition) {
@@ -1580,13 +1580,13 @@ block, all can be sunk together:
 .. code-block:: llvm
 
   if (condition) {
-    %tok = call token @llvm.experimental.convergence.anchor()
+    %tok = call token @llvm.experimental.convergence.trezoaanchor()
     %a = call T @pure.convergent.operation(...) [ "convergencectrl"(token %tok) ]
     %b = call T @pure.convergent.operation(...) [ "convergencectrl"(token %tok) ]
     use(%a, %b)
   }
 
-The rationale is that the anchor intrinsic has implementation-defined behavior,
+The rationale is that the trezoaanchor intrinsic has implementation-defined behavior,
 and the sinking transform is considered to be part of the implementation:
 the sinking will restrict the set of communicating threads to those for which
 ``condition`` is true, but that could have happened in the original program

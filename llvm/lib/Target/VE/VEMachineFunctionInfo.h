@@ -17,7 +17,7 @@
 namespace llvm {
 
 class VEMachineFunctionInfo : public MachineFunctionInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 private:
   Register GlobalBaseReg;

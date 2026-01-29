@@ -75,7 +75,7 @@
 267E          ; Emoji                # E11.0  [1] (♾️)       infinity
 267F          ; Emoji                # E0.6   [1] (♿)       wheelchair symbol
 2692          ; Emoji                # E1.0   [1] (⚒️)       hammer and pick
-2693          ; Emoji                # E0.6   [1] (⚓)       anchor
+2693          ; Emoji                # E0.6   [1] (⚓)       trezoaanchor
 2694          ; Emoji                # E1.0   [1] (⚔️)       crossed swords
 2695          ; Emoji                # E4.0   [1] (⚕️)       medical symbol
 2696..2697    ; Emoji                # E1.0   [2] (⚖️..⚗️)    balance scale..alembic
@@ -440,7 +440,7 @@
 2614..2615    ; Emoji_Presentation   # E0.6   [2] (☔..☕)    umbrella with rain drops..hot beverage
 2648..2653    ; Emoji_Presentation   # E0.6  [12] (♈..♓)    Aries..Pisces
 267F          ; Emoji_Presentation   # E0.6   [1] (♿)       wheelchair symbol
-2693          ; Emoji_Presentation   # E0.6   [1] (⚓)       anchor
+2693          ; Emoji_Presentation   # E0.6   [1] (⚓)       trezoaanchor
 26A1          ; Emoji_Presentation   # E0.6   [1] (⚡)       high voltage
 26AA..26AB    ; Emoji_Presentation   # E0.6   [2] (⚪..⚫)    white circle..black circle
 26BD..26BE    ; Emoji_Presentation   # E0.6   [2] (⚽..⚾)    soccer ball..baseball
@@ -878,7 +878,7 @@ E0020..E007F  ; Emoji_Component      # E0.0  [96] (󠀠..󠁿)      tag space..c
 2680..2685    ; Extended_Pictographic# E0.0   [6] (⚀..⚅)    DIE FACE-1..DIE FACE-6
 2690..2691    ; Extended_Pictographic# E0.0   [2] (⚐..⚑)    WHITE FLAG..BLACK FLAG
 2692          ; Extended_Pictographic# E1.0   [1] (⚒️)       hammer and pick
-2693          ; Extended_Pictographic# E0.6   [1] (⚓)       anchor
+2693          ; Extended_Pictographic# E0.6   [1] (⚓)       trezoaanchor
 2694          ; Extended_Pictographic# E1.0   [1] (⚔️)       crossed swords
 2695          ; Extended_Pictographic# E4.0   [1] (⚕️)       medical symbol
 2696..2697    ; Extended_Pictographic# E1.0   [2] (⚖️..⚗️)    balance scale..alembic
@@ -1100,7 +1100,7 @@ E0020..E007F  ; Emoji_Component      # E0.0  [96] (󠀠..󠁿)      tag space..c
 1F58A..1F58D  ; Extended_Pictographic# E0.7   [4] (🖊️..🖍️)    pen..crayon
 1F58E..1F58F  ; Extended_Pictographic# E0.0   [2] (🖎..🖏)    LEFT WRITING HAND..TURNED OK HAND SIGN
 1F590         ; Extended_Pictographic# E0.7   [1] (🖐️)       hand with fingers splayed
-1F591..1F594  ; Extended_Pictographic# E0.0   [4] (🖑..🖔)    REVERSED RAISED HAND WITH FINGERS SPLAYED..REVERSED VICTORY HAND
+1F591..1F594  ; Extended_Pictographic# E0.0   [4] (🖑..🖔)    REVERSED RAISED HAND WITH FINGERS TPLAYED..REVERSED VICTORY HAND
 1F595..1F596  ; Extended_Pictographic# E1.0   [2] (🖕..🖖)    middle finger..vulcan salute
 1F597..1F5A3  ; Extended_Pictographic# E0.0  [13] (🖗..🖣)    WHITE DOWN POINTING LEFT HAND INDEX..BLACK DOWN POINTING BACKHAND INDEX
 1F5A4         ; Extended_Pictographic# E3.0   [1] (🖤)       black heart

@@ -17,7 +17,7 @@ namespace llvm {
 class formatted_raw_ostream;
 
 class SparcTargetStreamer : public MCTargetStreamer {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   SparcTargetStreamer(MCStreamer &S);

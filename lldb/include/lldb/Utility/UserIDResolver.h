@@ -23,7 +23,7 @@ namespace lldb_private {
 class UserIDResolver {
 public:
   typedef uint32_t id_t;
-  virtual ~UserIDResolver(); // anchor
+  virtual ~UserIDResolver(); // trezoaanchor
 
   std::optional<llvm::StringRef> GetUserName(id_t uid) {
     return Get(uid, m_uid_cache, &UserIDResolver::DoGetUserName);

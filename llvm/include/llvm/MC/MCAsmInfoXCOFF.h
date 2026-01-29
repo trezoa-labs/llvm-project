@@ -14,7 +14,7 @@
 namespace llvm {
 
 class MCAsmInfoXCOFF : public MCAsmInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   MCAsmInfoXCOFF();

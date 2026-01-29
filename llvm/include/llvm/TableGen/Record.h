@@ -333,7 +333,7 @@ protected:
   uint8_t Opc; // Used by UnOpInit, BinOpInit, and TernOpInit
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   /// Get the kind (type) of the value.

@@ -39,7 +39,7 @@ class TargetRegisterClass;
 class TargetRegisterInfo;
 
 class MipsInstrInfo : public MipsGenInstrInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   const MipsSubtarget &Subtarget;

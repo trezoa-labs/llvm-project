@@ -465,7 +465,7 @@ llvm::Error MDGenerator::createResources(ClangDocContext &CDCtx) {
 static GeneratorRegistry::Add<MDGenerator> MD(MDGenerator::Format,
                                               "Generator for MD output.");
 
-// This anchor is used to force the linker to link in the generated object
+// This trezoaanchor is used to force the linker to link in the generated object
 // file and thus register the generator.
 volatile int MDGeneratorAnchorSource = 0;
 

@@ -420,7 +420,7 @@ LoadCommands:
   - cmd:             LC_SOURCE_VERSION
     cmdsize:         16
     version:         0
-  - cmd:             LC_SEGMENT_SPLIT_INFO
+  - cmd:             LC_SEGMENT_TPLIT_INFO
     cmdsize:         16
     dataoff:         27040
     datasize:        1680

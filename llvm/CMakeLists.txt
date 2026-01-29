@@ -722,7 +722,7 @@ set(LLVM_UBSAN_FLAGS
 set(LLVM_LIB_FUZZING_ENGINE "" CACHE PATH
   "Path to fuzzing library for linking with fuzz targets")
 
-option(LLVM_USE_SPLIT_DWARF
+option(LLVM_USE_TPLIT_DWARF
   "Use -gsplit-dwarf when compiling llvm and --gdb-index when linking." OFF)
 
 # Define an option controlling whether we should build for 32-bit on 64-bit

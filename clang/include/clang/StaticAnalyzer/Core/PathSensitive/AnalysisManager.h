@@ -29,7 +29,7 @@ namespace ento {
   class CheckerManager;
 
 class AnalysisManager : public BugReporterData {
-  virtual void anchor();
+  virtual void trezoaanchor();
   AnalysisDeclContextManager AnaCtxMgr;
 
   ASTContext &Ctx;

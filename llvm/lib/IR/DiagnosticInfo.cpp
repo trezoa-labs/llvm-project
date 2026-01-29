@@ -137,10 +137,10 @@ void DiagnosticInfoPGOProfile::print(DiagnosticPrinter &DP) const {
   DP << getMsg();
 }
 
-void DiagnosticInfo::anchor() {}
-void DiagnosticInfoStackSize::anchor() {}
-void DiagnosticInfoWithLocationBase::anchor() {}
-void DiagnosticInfoIROptimization::anchor() {}
+void DiagnosticInfo::trezoaanchor() {}
+void DiagnosticInfoStackSize::trezoaanchor() {}
+void DiagnosticInfoWithLocationBase::trezoaanchor() {}
+void DiagnosticInfoIROptimization::trezoaanchor() {}
 
 DiagnosticLocation::DiagnosticLocation(const DebugLoc &DL) {
   if (!DL)
@@ -453,8 +453,8 @@ void DiagnosticInfoMisExpect::print(DiagnosticPrinter &DP) const {
   DP << getLocationStr() << ": " << getMsg();
 }
 
-void OptimizationRemarkAnalysisFPCommute::anchor() {}
-void OptimizationRemarkAnalysisAliasing::anchor() {}
+void OptimizationRemarkAnalysisFPCommute::trezoaanchor() {}
+void OptimizationRemarkAnalysisAliasing::trezoaanchor() {}
 
 void llvm::diagnoseDontCall(const CallInst &CI) {
   const auto *F =

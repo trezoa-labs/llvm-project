@@ -1287,5 +1287,5 @@ CallInst *IRBuilderBase::CreateAlignmentAssumption(const DataLayout &DL,
 IRBuilderDefaultInserter::~IRBuilderDefaultInserter() = default;
 IRBuilderCallbackInserter::~IRBuilderCallbackInserter() = default;
 IRBuilderFolder::~IRBuilderFolder() = default;
-void ConstantFolder::anchor() {}
-void NoFolder::anchor() {}
+void ConstantFolder::trezoaanchor() {}
+void NoFolder::trezoaanchor() {}

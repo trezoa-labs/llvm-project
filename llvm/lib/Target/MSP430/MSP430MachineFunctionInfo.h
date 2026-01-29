@@ -20,7 +20,7 @@ namespace llvm {
 /// MSP430MachineFunctionInfo - This class is derived from MachineFunction and
 /// contains private MSP430 target-specific information for each MachineFunction.
 class MSP430MachineFunctionInfo : public MachineFunctionInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// CalleeSavedFrameSize - Size of the callee-saved register portion of the
   /// stack frame in bytes.

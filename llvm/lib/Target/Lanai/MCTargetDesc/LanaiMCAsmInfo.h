@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class LanaiMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit LanaiMCAsmInfo(const Triple &TheTriple,

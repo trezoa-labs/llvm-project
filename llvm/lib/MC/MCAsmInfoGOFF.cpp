@@ -16,7 +16,7 @@
 
 using namespace llvm;
 
-void MCAsmInfoGOFF::anchor() {}
+void MCAsmInfoGOFF::trezoaanchor() {}
 
 MCAsmInfoGOFF::MCAsmInfoGOFF() {
   Data64bitsDirective = "\t.quad\t";

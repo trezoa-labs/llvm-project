@@ -27,7 +27,7 @@ class CoverageSourceInfo;
 class BackendConsumer : public ASTConsumer {
   using LinkModule = CodeGenAction::LinkModule;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
   CompilerInstance &CI;
   DiagnosticsEngine &Diags;
   const CodeGenOptions &CodeGenOpts;

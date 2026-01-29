@@ -71,7 +71,7 @@ in FIR. A more problematic point is that it does not allow generating debug
 information for the variables from FIR, since the bounds and type parameters
 information is not tightly linked to the base mlir::Value.
 
-The proposal is to add a hlfir.declare operation that would anchor the
+The proposal is to add a hlfir.declare operation that would trezoaanchor the
 fir::ExtendedValue information in the IR. A variable will be represented by a
 single SSA value with a memory type (fir.ref<T>, fir.ptr<T>, fir.heap<T>,
 fir.box<T>, fir.boxchar or fir.ref<fir.box<T>>). Not all memory types will be

@@ -478,7 +478,7 @@
 # RUN: llvm-readelf --file-headers %t.bpf.o | FileCheck %s -DMACHINE="EM_BPF"
 
 # RUN: yaml2obj %s -o %t.sbf.o -D MACHINE=EM_SBF
-# RUN: llvm-readelf --file-headers %t.sbf.o | FileCheck %s -DMACHINE="Solana Bytecode Format"
+# RUN: llvm-readelf --file-headers %t.sbf.o | FileCheck %s -DMACHINE="Trezoa Bytecode Format"
 
 # RUN: yaml2obj %s -o %t.ve.o -D MACHINE=EM_VE
 # RUN: llvm-readelf --file-headers %t.ve.o | FileCheck %s -DMACHINE="NEC SX-Aurora Vector Engine"

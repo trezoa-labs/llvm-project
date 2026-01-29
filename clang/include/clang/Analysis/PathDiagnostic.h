@@ -124,7 +124,7 @@ public:
   };
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   PathDiagnosticConsumer() = default;

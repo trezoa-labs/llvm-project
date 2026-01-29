@@ -36,7 +36,7 @@ namespace llvm {
 /// for more information on the properties which the predicate function itself
 /// should satisfy.
 class DAGDeltaAlgorithm {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   using change_ty = unsigned;

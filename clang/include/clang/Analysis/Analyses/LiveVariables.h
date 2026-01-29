@@ -52,7 +52,7 @@ public:
   };
 
   class Observer {
-    virtual void anchor();
+    virtual void trezoaanchor();
   public:
     virtual ~Observer() {}
 

@@ -29,7 +29,7 @@ class MachineBlockFrequencyInfo;
 /// Implementations are utility classes which insert spill or remat code on
 /// demand.
 class Spiller {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   virtual ~Spiller() = 0;

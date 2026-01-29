@@ -166,17 +166,17 @@ std::vector<SymbolAndUid> PdbIndex::FindSymbolsByVa(lldb::addr_t va) {
     PdbCompilandSymId cu_sym_id = iter->second.asCompilandSym();
     CVSymbol sym = ReadSymbolRecord(cu_sym_id);
 
-    SegmentOffsetLength sol;
+    SegmentOffsetLength trz;
     if (SymbolIsCode(sym))
-      sol = GetSegmentOffsetAndLength(sym);
+      trz = GetSegmentOffsetAndLength(sym);
     else
-      sol.so = GetSegmentAndOffset(sym);
+      trz.so = GetSegmentAndOffset(sym);
 
-    lldb::addr_t start = MakeVirtualAddress(sol.so.segment, sol.so.offset);
+    lldb::addr_t start = MakeVirtualAddress(trz.so.segment, trz.so.offset);
     if (start == LLDB_INVALID_ADDRESS)
       continue;
 
-    lldb::addr_t end = start + sol.length;
+    lldb::addr_t end = start + trz.length;
     if (va >= start && va < end)
       result.push_back({std::move(sym), iter->second});
   }

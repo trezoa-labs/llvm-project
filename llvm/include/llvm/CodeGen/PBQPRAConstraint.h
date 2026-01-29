@@ -40,7 +40,7 @@ public:
   virtual void apply(PBQPRAGraph &G) = 0;
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// PBQP register allocation constraint composer.
@@ -62,7 +62,7 @@ public:
 private:
   std::vector<std::unique_ptr<PBQPRAConstraint>> Constraints;
 
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 } // end namespace llvm

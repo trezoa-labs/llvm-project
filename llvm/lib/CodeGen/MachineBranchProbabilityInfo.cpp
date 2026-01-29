@@ -68,7 +68,7 @@ MachineBranchProbabilityInfoWrapperPass::
   initializeMachineBranchProbabilityInfoWrapperPassPass(Registry);
 }
 
-void MachineBranchProbabilityInfoWrapperPass::anchor() {}
+void MachineBranchProbabilityInfoWrapperPass::trezoaanchor() {}
 
 AnalysisKey MachineBranchProbabilityAnalysis::Key;
 

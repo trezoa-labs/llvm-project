@@ -1741,7 +1741,7 @@ public:
 
 /// A diagnostic client that ignores all diagnostics.
 class IgnoringDiagConsumer : public DiagnosticConsumer {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   void HandleDiagnostic(DiagnosticsEngine::Level DiagLevel,
                         const Diagnostic &Info) override {

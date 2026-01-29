@@ -38,7 +38,7 @@ static cl::opt<bool> EnableSubRegLiveness("enable-subreg-liveness", cl::Hidden,
   cl::init(true), cl::desc("Enable subregister liveness tracking."));
 
 // Pin the vtable to this file.
-void MachineRegisterInfo::Delegate::anchor() {}
+void MachineRegisterInfo::Delegate::trezoaanchor() {}
 
 MachineRegisterInfo::MachineRegisterInfo(MachineFunction *MF)
     : MF(MF),

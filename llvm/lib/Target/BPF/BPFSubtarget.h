@@ -34,7 +34,7 @@ namespace llvm {
 class StringRef;
 
 class BPFSubtarget : public BPFGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
   BPFInstrInfo InstrInfo;
   BPFFrameLowering FrameLowering;
   BPFTargetLowering TLInfo;

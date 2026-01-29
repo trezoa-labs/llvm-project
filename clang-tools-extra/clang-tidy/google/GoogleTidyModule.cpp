@@ -98,7 +98,7 @@ static ClangTidyModuleRegistry::Add<GoogleModule> X("google-module",
 
 }  // namespace google
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the GoogleModule.
 volatile int GoogleModuleAnchorSource = 0;
 

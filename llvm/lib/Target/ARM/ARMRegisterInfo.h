@@ -18,7 +18,7 @@
 namespace llvm {
 
 struct ARMRegisterInfo : public ARMBaseRegisterInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   ARMRegisterInfo();
 };

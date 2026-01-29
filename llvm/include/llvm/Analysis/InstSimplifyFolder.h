@@ -36,7 +36,7 @@ class InstSimplifyFolder final : public IRBuilderFolder {
   TargetFolder ConstFolder;
   SimplifyQuery SQ;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   explicit InstSimplifyFolder(const DataLayout &DL) : ConstFolder(DL), SQ(DL) {}

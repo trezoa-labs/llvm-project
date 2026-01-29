@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class HexagonMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit HexagonMCAsmInfo(const Triple &TT);

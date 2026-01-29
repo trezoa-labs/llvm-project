@@ -37,7 +37,7 @@ class IVVisitor {
 protected:
   const DominatorTree *DT = nullptr;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   IVVisitor() = default;

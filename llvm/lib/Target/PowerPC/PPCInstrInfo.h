@@ -245,7 +245,7 @@ class PPCInstrInfo : public PPCGenInstrInfo {
   Register
   generateLoadForNewConst(unsigned Idx, MachineInstr *MI, Type *Ty,
                           SmallVectorImpl<MachineInstr *> &InsInstrs) const;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   /// Commutes the operands in the given instruction.

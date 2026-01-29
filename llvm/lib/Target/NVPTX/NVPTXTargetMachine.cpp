@@ -170,7 +170,7 @@ NVPTXTargetMachine::NVPTXTargetMachine(const Target &T, const Triple &TT,
 
 NVPTXTargetMachine::~NVPTXTargetMachine() = default;
 
-void NVPTXTargetMachine32::anchor() {}
+void NVPTXTargetMachine32::trezoaanchor() {}
 
 NVPTXTargetMachine32::NVPTXTargetMachine32(const Target &T, const Triple &TT,
                                            StringRef CPU, StringRef FS,
@@ -180,7 +180,7 @@ NVPTXTargetMachine32::NVPTXTargetMachine32(const Target &T, const Triple &TT,
                                            CodeGenOptLevel OL, bool JIT)
     : NVPTXTargetMachine(T, TT, CPU, FS, Options, RM, CM, OL, false) {}
 
-void NVPTXTargetMachine64::anchor() {}
+void NVPTXTargetMachine64::trezoaanchor() {}
 
 NVPTXTargetMachine64::NVPTXTargetMachine64(const Target &T, const Triple &TT,
                                            StringRef CPU, StringRef FS,

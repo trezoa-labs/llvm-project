@@ -41,7 +41,7 @@ static cl::opt<bool>
     Disable_StoreImm("disable-storeimm", cl::Hidden, cl::init(false),
                      cl::desc("Disable BPF_ST (immediate store) insn"));
 
-void BPFSubtarget::anchor() {}
+void BPFSubtarget::trezoaanchor() {}
 
 BPFSubtarget &BPFSubtarget::initializeSubtargetDependencies(StringRef CPU,
                                                             StringRef FS) {

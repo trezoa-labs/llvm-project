@@ -45,7 +45,7 @@ public:
   virtual void run() = 0;
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 /// Base class for generic tasks.
@@ -99,7 +99,7 @@ public:
   static char ID;
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 /// Abstract base for classes that dispatch ORC Tasks.

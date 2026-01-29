@@ -181,11 +181,11 @@ entry:
 }
 
 
-attributes #0 = { mustprogress nofree norecurse nosync nounwind willreturn memory(none) "frame-pointer"="all" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-features"="+solana" }
+attributes #0 = { mustprogress nofree norecurse nosync nounwind willreturn memory(none) "frame-pointer"="all" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-features"="+trezoa" }
 
 !llvm.module.flags = !{!0, !1}
 !llvm.ident = !{!2}
 
 !0 = !{i32 1, !"wchar_size", i32 4}
 !1 = !{i32 7, !"frame-pointer", i32 2}
-!2 = !{!"clang version 16.0.5 (https://github.com/anza-xyz/llvm-project.git abdbb6e4ef63f7b5b4ee40d2770ed0fca909c2dc)"}
+!2 = !{!"clang version 16.0.5 (https://github.com/trezoa-xyz/llvm-project.git abdbb6e4ef63f7b5b4ee40d2770ed0fca909c2dc)"}

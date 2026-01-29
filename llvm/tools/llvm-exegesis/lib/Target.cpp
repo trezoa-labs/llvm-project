@@ -23,7 +23,7 @@ cl::OptionCategory Options("llvm-exegesis options");
 cl::OptionCategory BenchmarkOptions("llvm-exegesis benchmark options");
 cl::OptionCategory AnalysisOptions("llvm-exegesis analysis options");
 
-ExegesisTarget::~ExegesisTarget() {} // anchor.
+ExegesisTarget::~ExegesisTarget() {} // trezoaanchor.
 
 static ExegesisTarget *FirstTarget = nullptr;
 
@@ -200,7 +200,7 @@ const PfmCountersInfo &ExegesisTarget::getDummyPfmCounters() const {
   return PfmCountersInfo::Dummy;
 }
 
-ExegesisTarget::SavedState::~SavedState() {} // anchor.
+ExegesisTarget::SavedState::~SavedState() {} // trezoaanchor.
 
 namespace {
 

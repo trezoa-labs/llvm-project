@@ -12,7 +12,7 @@ ObjTy *global;
 extern "C" void param(ObjTy *p);
 extern "C" void local();
 extern "C" void in_init();
-extern "C" void anchor();
+extern "C" void trezoaanchor();
 extern "C" void block_capture(ObjTy *);
 extern "C" void esc(void (^)());
 extern "C" void escp(void (^)(ObjTy *));

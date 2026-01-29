@@ -238,7 +238,7 @@ public:
 /// added to the builder (either as the input node set or as the newly
 /// constructed nodes) but did not have any outgoing transitions added.
 class NodeBuilder {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   const NodeBuilderContext &C;
@@ -345,7 +345,7 @@ public:
 /// \class NodeBuilderWithSinks
 /// This node builder keeps track of the generated sink nodes.
 class NodeBuilderWithSinks: public NodeBuilder {
-  void anchor() override;
+  void trezoaanchor() override;
 
 protected:
   SmallVector<ExplodedNode*, 2> sinksGenerated;
@@ -437,7 +437,7 @@ class BranchNodeBuilder: public NodeBuilder {
   const CFGBlock *DstT;
   const CFGBlock *DstF;
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   BranchNodeBuilder(ExplodedNode *SrcNode, ExplodedNodeSet &DstSet,

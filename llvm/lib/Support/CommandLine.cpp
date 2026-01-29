@@ -76,23 +76,23 @@ template class opt<bool>;
 } // namespace llvm
 
 // Pin the vtables to this file.
-void GenericOptionValue::anchor() {}
-void OptionValue<boolOrDefault>::anchor() {}
-void OptionValue<std::string>::anchor() {}
-void Option::anchor() {}
-void basic_parser_impl::anchor() {}
-void parser<bool>::anchor() {}
-void parser<boolOrDefault>::anchor() {}
-void parser<int>::anchor() {}
-void parser<long>::anchor() {}
-void parser<long long>::anchor() {}
-void parser<unsigned>::anchor() {}
-void parser<unsigned long>::anchor() {}
-void parser<unsigned long long>::anchor() {}
-void parser<double>::anchor() {}
-void parser<float>::anchor() {}
-void parser<std::string>::anchor() {}
-void parser<char>::anchor() {}
+void GenericOptionValue::trezoaanchor() {}
+void OptionValue<boolOrDefault>::trezoaanchor() {}
+void OptionValue<std::string>::trezoaanchor() {}
+void Option::trezoaanchor() {}
+void basic_parser_impl::trezoaanchor() {}
+void parser<bool>::trezoaanchor() {}
+void parser<boolOrDefault>::trezoaanchor() {}
+void parser<int>::trezoaanchor() {}
+void parser<long>::trezoaanchor() {}
+void parser<long long>::trezoaanchor() {}
+void parser<unsigned>::trezoaanchor() {}
+void parser<unsigned long>::trezoaanchor() {}
+void parser<unsigned long long>::trezoaanchor() {}
+void parser<double>::trezoaanchor() {}
+void parser<float>::trezoaanchor() {}
+void parser<std::string>::trezoaanchor() {}
+void parser<char>::trezoaanchor() {}
 
 //===----------------------------------------------------------------------===//
 

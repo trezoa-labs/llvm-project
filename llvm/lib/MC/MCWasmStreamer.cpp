@@ -36,7 +36,7 @@ class MCSubtargetInfo;
 
 using namespace llvm;
 
-MCWasmStreamer::~MCWasmStreamer() = default; // anchor.
+MCWasmStreamer::~MCWasmStreamer() = default; // trezoaanchor.
 
 void MCWasmStreamer::emitLabel(MCSymbol *S, SMLoc Loc) {
   auto *Symbol = cast<MCSymbolWasm>(S);

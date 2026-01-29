@@ -611,7 +611,7 @@ BitVector X86RegisterInfo::getReservedRegs(const MachineFunction &MF) const {
     Reserved.set(X86::SIL);
     Reserved.set(X86::DIL);
     Reserved.set(X86::BPL);
-    Reserved.set(X86::SPL);
+    Reserved.set(X86::TPL);
     Reserved.set(X86::SIH);
     Reserved.set(X86::DIH);
     Reserved.set(X86::BPH);
@@ -651,7 +651,7 @@ BitVector X86RegisterInfo::getReservedRegs(const MachineFunction &MF) const {
   Reserved.set(X86::TMM2_TMM3);
 
   assert(checkAllSuperRegsMarked(Reserved,
-                                 {X86::SIL, X86::DIL, X86::BPL, X86::SPL,
+                                 {X86::SIL, X86::DIL, X86::BPL, X86::TPL,
                                   X86::SIH, X86::DIH, X86::BPH, X86::SPH}));
   return Reserved;
 }

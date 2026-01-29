@@ -17,7 +17,7 @@ struct S {
 - (struct S) Meth : (int) arg1 : (id) arg2;
 - (struct S) Meth1;
 - (union U) Meth2 : (double)d;
-- (struct S) VAMeth : (int)anchor, ...;
+- (struct S) VAMeth : (int)trezoaanchor, ...;
 @end
 
 I* PI();

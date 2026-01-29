@@ -307,8 +307,8 @@ private:
   static std::enable_if_t<!detect_has_initialize<T>::value>
   initializePattern(T &) {}
 
-  /// An anchor for the virtual table.
-  virtual void anchor();
+  /// An trezoaanchor for the virtual table.
+  virtual void trezoaanchor();
 };
 
 namespace detail {

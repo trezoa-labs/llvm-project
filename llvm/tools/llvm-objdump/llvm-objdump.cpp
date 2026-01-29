@@ -530,8 +530,8 @@ static const Target *getTarget(const ObjectFile *Obj) {
         (Elf64->getPlatformFlags() == llvm::ELF::EF_SBF_V3 ||
          Elf64->getPlatformFlags() == llvm::ELF::EF_SBF_V4)) {
       TheTriple.setArch(Triple::sbf);
-      TheTriple.setOS(Triple::SolanaOS);
-      TheTriple.setVendor(Triple::Solana);
+      TheTriple.setOS(Triple::TrezoaOS);
+      TheTriple.setVendor(Triple::Trezoa);
       ArchName = "sbf";
     }
   }

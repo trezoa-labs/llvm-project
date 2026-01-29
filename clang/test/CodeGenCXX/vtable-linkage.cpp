@@ -53,10 +53,10 @@ template<typename T> E<T>::~E() { }
 // Anchor is the key function
 template<>
 struct E<char> {
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
-void E<char>::anchor() { }
+void E<char>::trezoaanchor() { }
 
 template struct E<short>;
 extern template struct E<int>;

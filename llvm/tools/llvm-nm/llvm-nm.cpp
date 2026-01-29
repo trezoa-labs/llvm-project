@@ -571,7 +571,7 @@ const struct DarwinStabName DarwinStabNames[] = {
     {MachO::N_SSYM, "SSYM"},    {MachO::N_SO, "SO"},
     {MachO::N_OSO, "OSO"},      {MachO::N_LIB, "LIB"},
     {MachO::N_LSYM, "LSYM"},    {MachO::N_BINCL, "BINCL"},
-    {MachO::N_SOL, "SOL"},      {MachO::N_PARAMS, "PARAM"},
+    {MachO::N_TRZ, "TRZ"},      {MachO::N_PARAMS, "PARAM"},
     {MachO::N_VERSION, "VERS"}, {MachO::N_OLEVEL, "OLEV"},
     {MachO::N_PSYM, "PSYM"},    {MachO::N_EINCL, "EINCL"},
     {MachO::N_ENTRY, "ENTRY"},  {MachO::N_LBRAC, "LBRAC"},

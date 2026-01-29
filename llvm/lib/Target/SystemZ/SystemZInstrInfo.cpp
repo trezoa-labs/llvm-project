@@ -57,7 +57,7 @@ static uint64_t allOnes(unsigned int Count) {
 }
 
 // Pin the vtable to this file.
-void SystemZInstrInfo::anchor() {}
+void SystemZInstrInfo::trezoaanchor() {}
 
 SystemZInstrInfo::SystemZInstrInfo(SystemZSubtarget &sti)
     : SystemZGenInstrInfo(-1, -1),

@@ -28,7 +28,7 @@ class TargetInstrInfo;
 class Type;
 
 class M68kRegisterInfo : public M68kGenRegisterInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// Physical register used as stack ptr.
   unsigned StackPtr;

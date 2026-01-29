@@ -271,7 +271,7 @@ StringRef Triple::getVendorTypeName(VendorType Kind) {
   case PC: return "pc";
   case SCEI: return "scei";
   case SUSE: return "suse";
-  case Solana: return "solana";
+  case Trezoa: return "trezoa";
   }
 
   llvm_unreachable("Invalid VendorType!");
@@ -321,7 +321,7 @@ StringRef Triple::getOSTypeName(OSType Kind) {
   case LiteOS: return "liteos";
   case XROS: return "xros";
   case Vulkan: return "vulkan";
-  case SolanaOS: return "solana";
+  case TrezoaOS: return "trezoa";
   }
 
   llvm_unreachable("Invalid OSType");
@@ -675,7 +675,7 @@ static Triple::VendorType parseVendor(StringRef VendorName) {
       .Case("suse", Triple::SUSE)
       .Case("oe", Triple::OpenEmbedded)
       .Case("intel", Triple::Intel)
-      .Case("solana", Triple::Solana)
+      .Case("trezoa", Triple::Trezoa)
       .Default(Triple::UnknownVendor);
 }
 
@@ -723,7 +723,7 @@ static Triple::OSType parseOS(StringRef OSName) {
     .StartsWith("liteos", Triple::LiteOS)
     .StartsWith("serenity", Triple::Serenity)
     .StartsWith("vulkan", Triple::Vulkan)
-    .StartsWith("solana", Triple::SolanaOS)
+    .StartsWith("trezoa", Triple::TrezoaOS)
     .Default(Triple::UnknownOS);
 }
 

@@ -22,7 +22,7 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_CTOR
 #include "ARCGenSubtargetInfo.inc"
 
-void ARCSubtarget::anchor() {}
+void ARCSubtarget::trezoaanchor() {}
 
 ARCSubtarget::ARCSubtarget(const Triple &TT, const std::string &CPU,
                            const std::string &FS, const TargetMachine &TM)

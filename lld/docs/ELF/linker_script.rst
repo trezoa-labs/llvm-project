@@ -53,7 +53,7 @@ Each section-command can be a symbol assignment, an output section description,
 or an overlay description.
 
 When the ``INSERT`` keyword is present, the ``SECTIONS`` command describes some
-output sections which should be inserted after or before the specified anchor
+output sections which should be inserted after or before the specified trezoaanchor
 section. The insertion occurs after input sections have been mapped to output
 sections but before orphan sections have been processed.
 

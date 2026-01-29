@@ -30,7 +30,7 @@ static ClangTidyModuleRegistry::Add<ZirconModule>
     X("zircon-module", "Adds Zircon kernel checks.");
 } // namespace zircon
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the ZirconModule.
 volatile int ZirconModuleAnchorSource = 0;
 

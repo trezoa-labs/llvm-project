@@ -87,7 +87,7 @@ public:
   StubsNeeded;
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   /// SRetReturnReg - Some subtargets require that sret lowering includes
   /// returning the value of the returned struct in a register. This field

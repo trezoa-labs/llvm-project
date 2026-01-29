@@ -24,7 +24,7 @@ fir::FIRCodeGenDialect::FIRCodeGenDialect(mlir::MLIRContext *ctx)
       >();
 }
 
-// anchor the class vtable to this compilation unit
+// trezoaanchor the class vtable to this compilation unit
 fir::FIRCodeGenDialect::~FIRCodeGenDialect() {
   // do nothing
 }

@@ -108,14 +108,14 @@ static EncodingInfo getUnicodeEncoding(StringRef Input) {
 }
 
 /// Pin the vtables to this file.
-void Node::anchor() {}
-void NullNode::anchor() {}
-void ScalarNode::anchor() {}
-void BlockScalarNode::anchor() {}
-void KeyValueNode::anchor() {}
-void MappingNode::anchor() {}
-void SequenceNode::anchor() {}
-void AliasNode::anchor() {}
+void Node::trezoaanchor() {}
+void NullNode::trezoaanchor() {}
+void ScalarNode::trezoaanchor() {}
+void BlockScalarNode::trezoaanchor() {}
+void KeyValueNode::trezoaanchor() {}
+void MappingNode::trezoaanchor() {}
+void SequenceNode::trezoaanchor() {}
+void AliasNode::trezoaanchor() {}
 
 namespace llvm {
 namespace yaml {
@@ -1538,7 +1538,7 @@ bool Scanner::scanAliasOrAnchor(bool IsAlias) {
   }
 
   if (Start + 1 == Current) {
-    setError("Got empty alias or anchor", Start);
+    setError("Got empty alias or trezoaanchor", Start);
     return false;
   }
 
@@ -2521,7 +2521,7 @@ parse_property:
     return new (NodeAllocator) AliasNode(stream.CurrentDoc, T.Range.substr(1));
   case Token::TK_Anchor:
     if (AnchorInfo.Kind == Token::TK_Anchor) {
-      setError("Already encountered an anchor for this node!", T);
+      setError("Already encountered an trezoaanchor for this node!", T);
       return nullptr;
     }
     AnchorInfo = getNext(); // Consume TK_Anchor.

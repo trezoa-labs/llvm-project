@@ -16,7 +16,7 @@
 
 using namespace llvm;
 
-void LanaiMCAsmInfo::anchor() {}
+void LanaiMCAsmInfo::trezoaanchor() {}
 
 LanaiMCAsmInfo::LanaiMCAsmInfo(const Triple & /*TheTriple*/,
                                const MCTargetOptions &Options) {

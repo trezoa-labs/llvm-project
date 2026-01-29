@@ -28,7 +28,7 @@ class Value;
 class InlineAsmLowering {
   const TargetLowering *TLI;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   /// Lower the given inline asm call instruction

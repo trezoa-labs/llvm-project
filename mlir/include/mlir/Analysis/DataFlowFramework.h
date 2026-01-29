@@ -155,33 +155,33 @@ inline raw_ostream &operator<<(raw_ostream &os, ProgramPoint point) {
 // GenericLatticeAnchor
 //===----------------------------------------------------------------------===//
 
-/// Abstract class for generic lattice anchor. In classical data-flow analysis,
-/// lattice anchor represent positions in a program to which lattice elements
+/// Abstract class for generic lattice trezoaanchor. In classical data-flow analysis,
+/// lattice trezoaanchor represent positions in a program to which lattice elements
 /// are attached. In sparse data-flow analysis, these can be SSA values, and in
 /// dense data-flow analysis, these are the program points before and after
 /// every operation.
 ///
-/// Lattice anchor are implemented using MLIR's storage uniquer framework and
+/// Lattice trezoaanchor are implemented using MLIR's storage uniquer framework and
 /// type ID system to provide RTTI.
 class GenericLatticeAnchor : public StorageUniquer::BaseStorage {
 public:
   virtual ~GenericLatticeAnchor();
 
-  /// Get the abstract lattice anchor's type identifier.
+  /// Get the abstract lattice trezoaanchor's type identifier.
   TypeID getTypeID() const { return typeID; }
 
-  /// Get a derived source location for the lattice anchor.
+  /// Get a derived source location for the lattice trezoaanchor.
   virtual Location getLoc() const = 0;
 
-  /// Print the lattice anchor.
+  /// Print the lattice trezoaanchor.
   virtual void print(raw_ostream &os) const = 0;
 
 protected:
-  /// Create an abstract lattice anchor with type identifier.
+  /// Create an abstract lattice trezoaanchor with type identifier.
   explicit GenericLatticeAnchor(TypeID typeID) : typeID(typeID) {}
 
 private:
-  /// The type identifier of the lattice anchor.
+  /// The type identifier of the lattice trezoaanchor.
   TypeID typeID;
 };
 
@@ -189,11 +189,11 @@ private:
 // GenericLatticeAnchorBase
 //===----------------------------------------------------------------------===//
 
-/// Base class for generic lattice anchor based on a concrete lattice anchor
+/// Base class for generic lattice trezoaanchor based on a concrete lattice trezoaanchor
 /// type and a content key. This class defines the common methods required for
 /// operability with the storage uniquer framework.
 ///
-/// The provided key type uniquely identifies the concrete lattice anchor
+/// The provided key type uniquely identifies the concrete lattice trezoaanchor
 /// instance and are the data members of the class.
 template <typename ConcreteT, typename Value>
 class GenericLatticeAnchorBase : public GenericLatticeAnchor {
@@ -204,21 +204,21 @@ public:
   /// Alias for the base class.
   using Base = GenericLatticeAnchorBase<ConcreteT, Value>;
 
-  /// Construct an instance of the lattice anchor using the provided value and
+  /// Construct an instance of the lattice trezoaanchor using the provided value and
   /// the type ID of the concrete type.
   template <typename ValueT>
   explicit GenericLatticeAnchorBase(ValueT &&value)
       : GenericLatticeAnchor(TypeID::get<ConcreteT>()),
         value(std::forward<ValueT>(value)) {}
 
-  /// Get a uniqued instance of this lattice anchor class with the given
+  /// Get a uniqued instance of this lattice trezoaanchor class with the given
   /// arguments.
   template <typename... Args>
   static ConcreteT *get(StorageUniquer &uniquer, Args &&...args) {
     return uniquer.get<ConcreteT>(/*initFn=*/{}, std::forward<Args>(args)...);
   }
 
-  /// Allocate space for a lattice anchor and construct it in-place.
+  /// Allocate space for a lattice trezoaanchor and construct it in-place.
   template <typename ValueT>
   static ConcreteT *construct(StorageUniquer::StorageAllocator &alloc,
                               ValueT &&value) {
@@ -234,11 +234,11 @@ public:
     return point->getTypeID() == TypeID::get<ConcreteT>();
   }
 
-  /// Get the contents of the lattice anchor.
+  /// Get the contents of the lattice trezoaanchor.
   const Value &getValue() const { return value; }
 
 private:
-  /// The lattice anchor value.
+  /// The lattice trezoaanchor value.
   Value value;
 };
 
@@ -246,7 +246,7 @@ private:
 // LatticeAnchor
 //===----------------------------------------------------------------------===//
 
-/// Fundamental IR components are supported as first-class lattice anchor.
+/// Fundamental IR components are supported as first-class lattice trezoaanchor.
 struct LatticeAnchor
     : public PointerUnion<GenericLatticeAnchor *, ProgramPoint *, Value> {
   using ParentTy = PointerUnion<GenericLatticeAnchor *, ProgramPoint *, Value>;
@@ -255,10 +255,10 @@ struct LatticeAnchor
   /// Allow implicit conversion from the parent type.
   LatticeAnchor(ParentTy point = nullptr) : ParentTy(point) {}
 
-  /// Print the lattice anchor.
+  /// Print the lattice trezoaanchor.
   void print(raw_ostream &os) const;
 
-  /// Get the source location of the lattice anchor.
+  /// Get the source location of the lattice trezoaanchor.
   Location getLoc() const;
 };
 
@@ -297,8 +297,8 @@ private:
 
 /// The general data-flow analysis solver. This class is responsible for
 /// orchestrating child data-flow analyses, running the fixed-point iteration
-/// algorithm, managing analysis state and lattice anchor memory, and tracking
-/// dependencies between analyses, lattice anchor, and analysis states.
+/// algorithm, managing analysis state and lattice trezoaanchor memory, and tracking
+/// dependencies between analyses, lattice trezoaanchor, and analysis states.
 ///
 /// Steps to run a data-flow analysis:
 ///
@@ -328,11 +328,11 @@ public:
   /// operation and run the analysis until fixpoint.
   LogicalResult initializeAndRun(Operation *top);
 
-  /// Lookup an analysis state for the given lattice anchor. Returns null if one
+  /// Lookup an analysis state for the given lattice trezoaanchor. Returns null if one
   /// does not exist.
   template <typename StateT, typename AnchorT>
-  const StateT *lookupState(AnchorT anchor) const {
-    const auto &mapIt = analysisStates.find(LatticeAnchor(anchor));
+  const StateT *lookupState(AnchorT trezoaanchor) const {
+    const auto &mapIt = analysisStates.find(LatticeAnchor(trezoaanchor));
     if (mapIt == analysisStates.end())
       return nullptr;
     auto it = mapIt->second.find(TypeID::get<StateT>());
@@ -341,17 +341,17 @@ public:
     return static_cast<const StateT *>(it->second.get());
   }
 
-  /// Erase any analysis state associated with the given lattice anchor.
+  /// Erase any analysis state associated with the given lattice trezoaanchor.
   template <typename AnchorT>
-  void eraseState(AnchorT anchor) {
-    LatticeAnchor la(anchor);
-    analysisStates.erase(LatticeAnchor(anchor));
+  void eraseState(AnchorT trezoaanchor) {
+    LatticeAnchor la(trezoaanchor);
+    analysisStates.erase(LatticeAnchor(trezoaanchor));
   }
 
   // Erase all analysis states
   void eraseAllStates() { analysisStates.clear(); }
 
-  /// Get a uniqued lattice anchor instance. If one is not present, it is
+  /// Get a uniqued lattice trezoaanchor instance. If one is not present, it is
   /// created with the provided arguments.
   template <typename AnchorT, typename... Args>
   AnchorT *getLatticeAnchor(Args &&...args) {
@@ -394,10 +394,10 @@ public:
   /// Push a work item onto the worklist.
   void enqueue(WorkItem item) { worklist.push(std::move(item)); }
 
-  /// Get the state associated with the given lattice anchor. If it does not
+  /// Get the state associated with the given lattice trezoaanchor. If it does not
   /// exist, create an uninitialized state.
   template <typename StateT, typename AnchorT>
-  StateT *getOrCreateState(AnchorT anchor);
+  StateT *getOrCreateState(AnchorT trezoaanchor);
 
   /// Propagate an update to an analysis state if it changed by pushing
   /// dependent work items to the back of the queue.
@@ -448,7 +448,7 @@ private:
 /// This class places no restrictions on the semantics of analysis states beyond
 /// these requirements.
 ///
-/// 1. Querying the state of a lattice anchor prior to visiting that anchor
+/// 1. Querying the state of a lattice trezoaanchor prior to visiting that trezoaanchor
 ///    results in uninitialized state. Analyses must be aware of unintialized
 ///    states.
 /// 2. Analysis states can reach fixpoints, where subsequent updates will never
@@ -459,19 +459,19 @@ class AnalysisState {
 public:
   virtual ~AnalysisState();
 
-  /// Create the analysis state on the given lattice anchor.
-  AnalysisState(LatticeAnchor anchor) : anchor(anchor) {}
+  /// Create the analysis state on the given lattice trezoaanchor.
+  AnalysisState(LatticeAnchor trezoaanchor) : trezoaanchor(trezoaanchor) {}
 
-  /// Returns the lattice anchor this state is located at.
-  LatticeAnchor getAnchor() const { return anchor; }
+  /// Returns the lattice trezoaanchor this state is located at.
+  LatticeAnchor getAnchor() const { return trezoaanchor; }
 
   /// Print the contents of the analysis state.
   virtual void print(raw_ostream &os) const = 0;
   LLVM_DUMP_METHOD void dump() const;
 
-  /// Add a dependency to this analysis state on a lattice anchor and an
+  /// Add a dependency to this analysis state on a lattice trezoaanchor and an
   /// analysis. If this state is updated, the analysis will be invoked on the
-  /// given lattice anchor again (in onUpdate()).
+  /// given lattice trezoaanchor again (in onUpdate()).
   void addDependency(ProgramPoint *point, DataFlowAnalysis *analysis);
 
 protected:
@@ -484,8 +484,8 @@ protected:
       solver->enqueue(item);
   }
 
-  /// The lattice anchor to which the state belongs.
-  LatticeAnchor anchor;
+  /// The lattice trezoaanchor to which the state belongs.
+  LatticeAnchor trezoaanchor;
 
 #if LLVM_ENABLE_ABI_BREAKING_CHECKS
   /// When compiling with debugging, keep a name for the analysis state.
@@ -494,8 +494,8 @@ protected:
 
 private:
   /// The dependency relations originating from this analysis state. An entry
-  /// `state -> (analysis, anchor)` is created when `analysis` queries `state`
-  /// when updating `anchor`.
+  /// `state -> (analysis, trezoaanchor)` is created when `analysis` queries `state`
+  /// when updating `trezoaanchor`.
   ///
   /// When this state is updated, all dependent child analysis invocations are
   /// pushed to the back of the queue. Use a `SetVector` to keep the analysis
@@ -565,39 +565,39 @@ public:
   virtual LogicalResult visit(ProgramPoint *point) = 0;
 
 protected:
-  /// Create a dependency between the given analysis state and lattice anchor
+  /// Create a dependency between the given analysis state and lattice trezoaanchor
   /// on this analysis.
   void addDependency(AnalysisState *state, ProgramPoint *point);
 
   /// Propagate an update to a state if it changed.
   void propagateIfChanged(AnalysisState *state, ChangeResult changed);
 
-  /// Register a custom lattice anchor class.
+  /// Register a custom lattice trezoaanchor class.
   template <typename AnchorT>
   void registerAnchorKind() {
     solver.uniquer.registerParametricStorageType<AnchorT>();
   }
 
-  /// Get or create a custom lattice anchor.
+  /// Get or create a custom lattice trezoaanchor.
   template <typename AnchorT, typename... Args>
   AnchorT *getLatticeAnchor(Args &&...args) {
     return solver.getLatticeAnchor<AnchorT>(std::forward<Args>(args)...);
   }
 
-  /// Get the analysis state associated with the lattice anchor. The returned
+  /// Get the analysis state associated with the lattice trezoaanchor. The returned
   /// state is expected to be "write-only", and any updates need to be
   /// propagated by `propagateIfChanged`.
   template <typename StateT, typename AnchorT>
-  StateT *getOrCreate(AnchorT anchor) {
-    return solver.getOrCreateState<StateT>(anchor);
+  StateT *getOrCreate(AnchorT trezoaanchor) {
+    return solver.getOrCreateState<StateT>(trezoaanchor);
   }
 
   /// Get a read-only analysis state for the given point and create a dependency
   /// on `dependent`. If the return state is updated elsewhere, this analysis is
   /// re-invoked on the dependent.
   template <typename StateT, typename AnchorT>
-  const StateT *getOrCreateFor(ProgramPoint *dependent, AnchorT anchor) {
-    StateT *state = getOrCreate<StateT>(anchor);
+  const StateT *getOrCreateFor(ProgramPoint *dependent, AnchorT trezoaanchor) {
+    StateT *state = getOrCreate<StateT>(trezoaanchor);
     addDependency(state, dependent);
     return state;
   }
@@ -645,11 +645,11 @@ AnalysisT *DataFlowSolver::load(Args &&...args) {
 }
 
 template <typename StateT, typename AnchorT>
-StateT *DataFlowSolver::getOrCreateState(AnchorT anchor) {
+StateT *DataFlowSolver::getOrCreateState(AnchorT trezoaanchor) {
   std::unique_ptr<AnalysisState> &state =
-      analysisStates[LatticeAnchor(anchor)][TypeID::get<StateT>()];
+      analysisStates[LatticeAnchor(trezoaanchor)][TypeID::get<StateT>()];
   if (!state) {
-    state = std::unique_ptr<StateT>(new StateT(anchor));
+    state = std::unique_ptr<StateT>(new StateT(trezoaanchor));
 #if LLVM_ENABLE_ABI_BREAKING_CHECKS
     state->debugName = llvm::getTypeName<StateT>();
 #endif // LLVM_ENABLE_ABI_BREAKING_CHECKS
@@ -662,8 +662,8 @@ inline raw_ostream &operator<<(raw_ostream &os, const AnalysisState &state) {
   return os;
 }
 
-inline raw_ostream &operator<<(raw_ostream &os, LatticeAnchor anchor) {
-  anchor.print(os);
+inline raw_ostream &operator<<(raw_ostream &os, LatticeAnchor trezoaanchor) {
+  trezoaanchor.print(os);
   return os;
 }
 

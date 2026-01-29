@@ -3430,7 +3430,7 @@ Generic_GCC::TranslateArgs(const llvm::opt::DerivedArgList &Args, StringRef,
   return nullptr;
 }
 
-void Generic_ELF::anchor() {}
+void Generic_ELF::trezoaanchor() {}
 
 void Generic_ELF::addClangTargetOptions(const ArgList &DriverArgs,
                                         ArgStringList &CC1Args,

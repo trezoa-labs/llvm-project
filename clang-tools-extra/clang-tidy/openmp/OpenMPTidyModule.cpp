@@ -32,7 +32,7 @@ static ClangTidyModuleRegistry::Add<OpenMPModule>
 
 } // namespace openmp
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the OpenMPModule.
 volatile int OpenMPModuleAnchorSource = 0;
 

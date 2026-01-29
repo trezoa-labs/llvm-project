@@ -82,7 +82,7 @@ public:
     getSectionLoadAddress(const object::SectionRef &Sec) const override;
 
   protected:
-    virtual void anchor();
+    virtual void trezoaanchor();
 
     RuntimeDyldImpl &RTDyld;
     ObjSectionToIDMap ObjSecToIDMap;
@@ -183,7 +183,7 @@ public:
                                     const object::ObjectFile &Obj) {}
 
   private:
-    virtual void anchor();
+    virtual void trezoaanchor();
 
     bool FinalizationLocked = false;
   };

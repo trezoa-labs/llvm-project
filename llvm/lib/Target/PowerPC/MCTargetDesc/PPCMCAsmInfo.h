@@ -20,14 +20,14 @@ namespace llvm {
 class Triple;
 
 class PPCELFMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit PPCELFMCAsmInfo(bool is64Bit, const Triple &);
 };
 
 class PPCXCOFFMCAsmInfo : public MCAsmInfoXCOFF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit PPCXCOFFMCAsmInfo(bool is64Bit, const Triple &);

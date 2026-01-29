@@ -116,7 +116,7 @@ MachOUniversalBinary::ObjectForArch::getAsArchive() const {
   return Archive::create(ObjBuffer);
 }
 
-void MachOUniversalBinary::anchor() { }
+void MachOUniversalBinary::trezoaanchor() { }
 
 Expected<std::unique_ptr<MachOUniversalBinary>>
 MachOUniversalBinary::create(MemoryBufferRef Source) {

@@ -22,7 +22,7 @@
 #include "llvm/Target/TargetMachine.h"
 using namespace llvm;
 
-WebAssemblyFunctionInfo::~WebAssemblyFunctionInfo() = default; // anchor.
+WebAssemblyFunctionInfo::~WebAssemblyFunctionInfo() = default; // trezoaanchor.
 
 MachineFunctionInfo *WebAssemblyFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

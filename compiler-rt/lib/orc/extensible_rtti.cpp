@@ -19,6 +19,6 @@
 namespace orc_rt {
 
 char RTTIRoot::ID = 0;
-void RTTIRoot::anchor() {}
+void RTTIRoot::trezoaanchor() {}
 
 } // namespace orc_rt

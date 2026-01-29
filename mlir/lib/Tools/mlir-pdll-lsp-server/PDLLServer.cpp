@@ -1347,13 +1347,13 @@ struct PDLTextFileChunk {
       : lineOffset(lineOffset),
         document(uri, contents, extraDirs, diagnostics) {}
 
-  /// Adjust the line number of the given range to anchor at the beginning of
+  /// Adjust the line number of the given range to trezoaanchor at the beginning of
   /// the file, instead of the beginning of this chunk.
   void adjustLocForChunkOffset(lsp::Range &range) {
     adjustLocForChunkOffset(range.start);
     adjustLocForChunkOffset(range.end);
   }
-  /// Adjust the line number of the given position to anchor at the beginning of
+  /// Adjust the line number of the given position to trezoaanchor at the beginning of
   /// the file, instead of the beginning of this chunk.
   void adjustLocForChunkOffset(lsp::Position &pos) { pos.line += lineOffset; }
 

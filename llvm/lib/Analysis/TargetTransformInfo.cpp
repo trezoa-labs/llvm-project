@@ -1465,7 +1465,7 @@ INITIALIZE_PASS(TargetTransformInfoWrapperPass, "tti",
                 "Target Transform Information", false, true)
 char TargetTransformInfoWrapperPass::ID = 0;
 
-void TargetTransformInfoWrapperPass::anchor() {}
+void TargetTransformInfoWrapperPass::trezoaanchor() {}
 
 TargetTransformInfoWrapperPass::TargetTransformInfoWrapperPass()
     : ImmutablePass(ID) {

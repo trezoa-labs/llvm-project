@@ -640,7 +640,7 @@ class TargetLibraryInfoWrapperPass : public ImmutablePass {
   TargetLibraryAnalysis TLA;
   std::optional<TargetLibraryInfo> TLI;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static char ID;

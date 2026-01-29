@@ -24,7 +24,7 @@
 using namespace llvm;
 using namespace bolt;
 
-void RuntimeLibrary::anchor() {}
+void RuntimeLibrary::trezoaanchor() {}
 
 std::string RuntimeLibrary::getLibPathByToolPath(StringRef ToolPath,
                                                  StringRef LibFileName) {

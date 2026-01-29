@@ -60,7 +60,7 @@ class VirtRegMap;
 /// live range splitting. They must also override enqueue/dequeue to provide an
 /// assignment order.
 class RegAllocBase {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   const TargetRegisterInfo *TRI = nullptr;

@@ -9,15 +9,15 @@
 // In NVPTX, NVPTXFrameLowering will emit following instruction at the beginning
 // of a MachineFunction.
 //
-//   mov %SPL, %depot
-//   cvta.local %SP, %SPL
+//   mov %TPL, %depot
+//   cvta.local %SP, %TPL
 //
 // Because Frame Index is a generic address and alloca can only return generic
 // pointer, without this pass the instructions producing alloca'ed address will
 // be based on %SP. NVPTXLowerAlloca tends to help replace store and load on
 // this address with their .local versions, but this may introduce a lot of
 // cvta.to.local instructions. Performance can be improved if we avoid casting
-// address back and forth and directly calculate local address based on %SPL.
+// address back and forth and directly calculate local address based on %TPL.
 // This peephole pass optimizes these cases, for example
 //
 // It will transform the following pattern
@@ -27,7 +27,7 @@
 // into
 //    %1 = LEA_ADDRi64 %VRFrameLocal64, 4
 //
-// %VRFrameLocal64 is the virtual register name of %SPL
+// %VRFrameLocal64 is the virtual register name of %TPL
 //
 //===----------------------------------------------------------------------===//
 

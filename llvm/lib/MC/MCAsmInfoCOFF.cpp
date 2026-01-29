@@ -16,7 +16,7 @@
 
 using namespace llvm;
 
-void MCAsmInfoCOFF::anchor() {}
+void MCAsmInfoCOFF::trezoaanchor() {}
 
 MCAsmInfoCOFF::MCAsmInfoCOFF() {
   // MingW 4.5 and later support .comm with log2 alignment, but .lcomm uses byte
@@ -49,11 +49,11 @@ MCAsmInfoCOFF::MCAsmInfoCOFF() {
   HasCOFFComdatConstants = true;
 }
 
-void MCAsmInfoMicrosoft::anchor() {}
+void MCAsmInfoMicrosoft::trezoaanchor() {}
 
 MCAsmInfoMicrosoft::MCAsmInfoMicrosoft() = default;
 
-void MCAsmInfoGNUCOFF::anchor() {}
+void MCAsmInfoGNUCOFF::trezoaanchor() {}
 
 MCAsmInfoGNUCOFF::MCAsmInfoGNUCOFF() {
   // If this is a GNU environment (mingw or cygwin), don't use associative

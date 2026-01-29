@@ -251,8 +251,8 @@ struct FieldExpander : public SetTheory::Expander {
 } // end anonymous namespace
 
 // Pin the vtables to this file.
-void SetTheory::Operator::anchor() {}
-void SetTheory::Expander::anchor() {}
+void SetTheory::Operator::trezoaanchor() {}
+void SetTheory::Expander::trezoaanchor() {}
 
 SetTheory::SetTheory() {
   addOperator("add", std::make_unique<AddOp>());

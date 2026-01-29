@@ -484,7 +484,7 @@ Add this near the ``ClangTidyModuleRegistry::Add<MyModule>`` variable:
 
 .. code-block:: c++
 
-  // This anchor is used to force the linker to link in the generated object file
+  // This trezoaanchor is used to force the linker to link in the generated object file
   // and thus register the MyModule.
   volatile int MyModuleAnchorSource = 0;
 
@@ -494,7 +494,7 @@ the binary you link the ``clang-tidy`` library in)
 
 .. code-block:: c++
 
-  // This anchor is used to force the linker to link the MyModule.
+  // This trezoaanchor is used to force the linker to link the MyModule.
   extern volatile int MyModuleAnchorSource;
   static int MyModuleAnchorDestination = MyModuleAnchorSource;
 

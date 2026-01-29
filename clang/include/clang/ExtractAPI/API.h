@@ -429,7 +429,7 @@ struct GlobalFunctionRecord : APIRecord {
   static bool classofKind(RecordKind K) { return K == RK_GlobalFunction; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct GlobalFunctionTemplateRecord : GlobalFunctionRecord {
@@ -510,7 +510,7 @@ struct GlobalVariableRecord : APIRecord, RecordContext {
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct GlobalVariableTemplateRecord : GlobalVariableRecord {
@@ -596,7 +596,7 @@ struct EnumConstantRecord : APIRecord {
   static bool classofKind(RecordKind K) { return K == RK_EnumConstant; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct TagRecord : APIRecord, RecordContext {
@@ -660,7 +660,7 @@ struct EnumRecord : TagRecord {
   static bool classofKind(RecordKind K) { return K == RK_Enum; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with struct or union fields fields.
@@ -740,7 +740,7 @@ struct StructFieldRecord : RecordFieldRecord {
   static bool classofKind(RecordKind K) { return K == RK_StructField; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct StructRecord : RecordRecord {
@@ -759,7 +759,7 @@ struct StructRecord : RecordRecord {
   static bool classofKind(RecordKind K) { return K == RK_Struct; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct UnionFieldRecord : RecordFieldRecord {
@@ -777,7 +777,7 @@ struct UnionFieldRecord : RecordFieldRecord {
   static bool classofKind(RecordKind K) { return K == RK_UnionField; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct UnionRecord : RecordRecord {
@@ -796,7 +796,7 @@ struct UnionRecord : RecordRecord {
   static bool classofKind(RecordKind K) { return K == RK_Union; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct CXXFieldRecord : APIRecord, RecordContext {
@@ -829,7 +829,7 @@ struct CXXFieldRecord : APIRecord, RecordContext {
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct CXXFieldTemplateRecord : CXXFieldRecord {
@@ -889,7 +889,7 @@ struct CXXConstructorRecord : CXXMethodRecord {
   static bool classofKind(RecordKind K) { return K == RK_CXXConstructorMethod; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct CXXDestructorRecord : CXXMethodRecord {
@@ -910,7 +910,7 @@ struct CXXDestructorRecord : CXXMethodRecord {
   static bool classofKind(RecordKind K) { return K == RK_CXXDestructorMethod; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct CXXStaticMethodRecord : CXXMethodRecord {
@@ -931,7 +931,7 @@ struct CXXStaticMethodRecord : CXXMethodRecord {
   static bool classofKind(RecordKind K) { return K == RK_CXXStaticMethod; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct CXXInstanceMethodRecord : CXXMethodRecord {
@@ -953,7 +953,7 @@ struct CXXInstanceMethodRecord : CXXMethodRecord {
   static bool classofKind(RecordKind K) { return K == RK_CXXInstanceMethod; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct CXXMethodTemplateRecord : CXXMethodRecord {
@@ -1049,7 +1049,7 @@ struct ObjCInstancePropertyRecord : ObjCPropertyRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCInstanceProperty; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct ObjCClassPropertyRecord : ObjCPropertyRecord {
@@ -1072,7 +1072,7 @@ struct ObjCClassPropertyRecord : ObjCPropertyRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCClassProperty; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with Objective-C instance variables.
@@ -1094,7 +1094,7 @@ struct ObjCInstanceVariableRecord : APIRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCIvar; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with Objective-C methods.
@@ -1134,7 +1134,7 @@ struct ObjCInstanceMethodRecord : ObjCMethodRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCInstanceMethod; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct ObjCClassMethodRecord : ObjCMethodRecord {
@@ -1154,7 +1154,7 @@ struct ObjCClassMethodRecord : ObjCMethodRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCClassMethod; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct StaticFieldRecord : CXXFieldRecord {
@@ -1218,7 +1218,7 @@ struct CXXClassRecord : RecordRecord {
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 struct ClassTemplateRecord : CXXClassRecord {
@@ -1329,7 +1329,7 @@ struct ObjCCategoryRecord : ObjCContainerRecord {
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with Objective-C interfaces/classes.
@@ -1353,7 +1353,7 @@ struct ObjCInterfaceRecord : ObjCContainerRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCInterface; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with Objective-C protocols.
@@ -1374,7 +1374,7 @@ struct ObjCProtocolRecord : ObjCContainerRecord {
   static bool classofKind(RecordKind K) { return K == RK_ObjCProtocol; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with macro definitions.
@@ -1393,7 +1393,7 @@ struct MacroDefinitionRecord : APIRecord {
   static bool classofKind(RecordKind K) { return K == RK_MacroDefinition; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// This holds information associated with typedefs.
@@ -1420,7 +1420,7 @@ struct TypedefRecord : APIRecord {
   static bool classofKind(RecordKind K) { return K == RK_Typedef; }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 /// APISet holds the set of API records collected from given inputs.

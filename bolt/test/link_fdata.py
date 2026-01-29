@@ -4,7 +4,7 @@
 This script reads the input from stdin, extracts all lines starting with
 "# FDATA: " (or a given prefix instead of "FDATA"), parses the directives,
 replaces symbol names ("#name#") with either symbol values or with offsets from
-respective anchor symbols, and prints the resulting file to stdout.
+respective trezoaanchor symbols, and prints the resulting file to stdout.
 """
 
 import argparse
@@ -47,7 +47,7 @@ replace_pat = re.compile(r"#(?P<symname>[^#]+)#")
 
 # Read input and construct the representation of fdata expressions
 # as (src_tuple, dst_tuple, mispred_count, exec_count) tuples, where src and dst
-# are represented as (is_sym, anchor, offset) tuples
+# are represented as (is_sym, trezoaanchor, offset) tuples
 exprs = []
 with open(args.input, "r") as f:
     for line in f.readlines():
@@ -96,22 +96,22 @@ for symline in nm_output.splitlines():
     symbols[symname] = symval
 
 
-def evaluate_symbol(issym, anchor, offsym):
+def evaluate_symbol(issym, trezoaanchor, offsym):
     sym_match = replace_pat.match(offsym)
     if not sym_match:
         # No need to evaluate symbol value, return as is
-        return f"{issym} {anchor} {offsym}"
+        return f"{issym} {trezoaanchor} {offsym}"
     symname = sym_match.group("symname")
     assert symname in symbols, f"ERROR: symbol {symname} is not defined in binary"
     # Evaluate to an absolute offset if issym is false
     if issym == "0":
-        return f"{issym} {anchor} {symbols[symname]}"
-    # Evaluate symbol against its anchor if issym is true
-    assert anchor in symbols, f"ERROR: symbol {anchor} is not defined in binary"
-    anchor_value = int(symbols[anchor], 16)
+        return f"{issym} {trezoaanchor} {symbols[symname]}"
+    # Evaluate symbol against its trezoaanchor if issym is true
+    assert trezoaanchor in symbols, f"ERROR: symbol {trezoaanchor} is not defined in binary"
+    anchor_value = int(symbols[trezoaanchor], 16)
     symbol_value = int(symbols[symname], 16)
     sym_offset = symbol_value - anchor_value
-    return f'{issym} {anchor} {format(sym_offset, "x")}'
+    return f'{issym} {trezoaanchor} {format(sym_offset, "x")}'
 
 
 def replace_symbol(matchobj):
@@ -137,8 +137,8 @@ with open(args.output, "w", newline="\n") as f:
                 file=f,
             )
         elif etype == "NOLBR":
-            issym, anchor, offsym, count = expr
-            print(evaluate_symbol(issym, anchor, offsym), count, file=f)
+            issym, trezoaanchor, offsym, count = expr
+            print(evaluate_symbol(issym, trezoaanchor, offsym), count, file=f)
         elif etype == "PREAGG":
             # Replace all symbols enclosed in ##
             print(expr[0], re.sub(replace_pat, replace_symbol, expr[1]), file=f)

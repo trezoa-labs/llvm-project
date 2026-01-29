@@ -76,7 +76,7 @@ private:
 };
 } // namespace clang::tidy
 
-// This anchor is used to force the linker to link in the generated object file
+// This trezoaanchor is used to force the linker to link in the generated object file
 // and thus register the clang-tidy plugin.
 volatile int ClangTidyPluginAnchorSource = 0;
 

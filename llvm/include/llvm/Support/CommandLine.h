@@ -262,7 +262,7 @@ class Option {
   }
 
   // Out of line virtual function to provide home for the class.
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   uint16_t NumOccurrences; // The number of times specified
   // Occurrences, HiddenFlag, and Formatting are all enum types but to avoid
@@ -539,7 +539,7 @@ protected:
   ~GenericOptionValue() = default;
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 };
 
 template <class DataType> struct OptionValue;
@@ -650,7 +650,7 @@ struct OptionValue<cl::boolOrDefault> final
   }
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 template <>
@@ -667,7 +667,7 @@ struct OptionValue<std::string> final : OptionValueCopy<std::string> {
   }
 
 private:
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //===----------------------------------------------------------------------===//
@@ -919,7 +919,7 @@ public:
   virtual StringRef getValueName() const { return "value"; }
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 protected:
   // A helper for basic_parser::printOptionDiff.
@@ -961,7 +961,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -986,7 +986,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1007,7 +1007,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1028,7 +1028,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1049,7 +1049,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1070,7 +1070,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1092,7 +1092,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1115,7 +1115,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1136,7 +1136,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1157,7 +1157,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1181,7 +1181,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------
@@ -1205,7 +1205,7 @@ public:
                        size_t GlobalWidth) const;
 
   // An out-of-line virtual method to provide a 'home' for this class.
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 //--------------------------------------------------

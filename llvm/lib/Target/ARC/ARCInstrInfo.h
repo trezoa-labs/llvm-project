@@ -25,7 +25,7 @@ class ARCSubtarget;
 
 class ARCInstrInfo : public ARCGenInstrInfo {
   const ARCRegisterInfo RI;
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   ARCInstrInfo(const ARCSubtarget &);

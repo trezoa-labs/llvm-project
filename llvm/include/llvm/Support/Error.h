@@ -81,7 +81,7 @@ public:
   }
 
 private:
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   static char ID;
 };
@@ -1179,7 +1179,7 @@ private:
 class ECError : public ErrorInfo<ECError> {
   friend Error errorCodeToError(std::error_code);
 
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   void setErrorCode(std::error_code EC) { this->EC = EC; }

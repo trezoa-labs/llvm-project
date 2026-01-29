@@ -47,7 +47,7 @@ static cl::opt<bool> StressSchedOpt(
   cl::desc("Stress test instruction scheduling"));
 #endif
 
-void SchedulingPriorityQueue::anchor() {}
+void SchedulingPriorityQueue::trezoaanchor() {}
 
 ScheduleDAG::ScheduleDAG(MachineFunction &mf)
     : TM(mf.getTarget()), TII(mf.getSubtarget().getInstrInfo()),

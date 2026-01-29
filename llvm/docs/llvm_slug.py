@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# LLVM documentation anchor slug formatting
+# LLVM documentation trezoaanchor slug formatting
 
 # Some of our markdown documentation numbers section titles
-# This helpers is used by myst to remove that numbering from the anchor links.
+# This helpers is used by myst to remove that numbering from the trezoaanchor links.
 
 from docutils.nodes import make_id
 

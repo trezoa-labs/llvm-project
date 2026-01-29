@@ -34,7 +34,7 @@ namespace llvm {
 class StringRef;
 
 class SBFSubtarget : public SBFGenSubtargetInfo {
-  virtual void anchor();
+  virtual void trezoaanchor();
   SBFInstrInfo InstrInfo;
   SBFFrameLowering FrameLowering;
   SBFTargetLowering TLInfo;

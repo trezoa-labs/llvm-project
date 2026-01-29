@@ -243,7 +243,7 @@ void testParseErrorCapture(void) {
   MlirStringRef invalidPipeline = mlirStringRefCreateFromCString("invalid");
 
   // CHECK: mlirParsePassPipeline:
-  // CHECK: expected pass pipeline to be wrapped with the anchor operation type
+  // CHECK: expected pass pipeline to be wrapped with the trezoaanchor operation type
   fprintf(stderr, "mlirParsePassPipeline:\n");
   if (mlirLogicalResultIsSuccess(
           mlirParsePassPipeline(opm, invalidPipeline, printToStderr, NULL)))

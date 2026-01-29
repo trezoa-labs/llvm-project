@@ -1187,7 +1187,7 @@ void ASTFrontendAction::ExecuteAction() {
            CI.getFrontendOpts().SkipFunctionBodies);
 }
 
-void PluginASTAction::anchor() { }
+void PluginASTAction::trezoaanchor() { }
 
 std::unique_ptr<ASTConsumer>
 PreprocessorFrontendAction::CreateASTConsumer(CompilerInstance &CI,

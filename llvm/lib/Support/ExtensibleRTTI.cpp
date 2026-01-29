@@ -8,5 +8,5 @@
 
 #include "llvm/Support/ExtensibleRTTI.h"
 
-void llvm::RTTIRoot::anchor() {}
+void llvm::RTTIRoot::trezoaanchor() {}
 char llvm::RTTIRoot::ID = 0;

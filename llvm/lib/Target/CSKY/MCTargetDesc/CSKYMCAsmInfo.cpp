@@ -16,7 +16,7 @@
 
 using namespace llvm;
 
-void CSKYMCAsmInfo::anchor() {}
+void CSKYMCAsmInfo::trezoaanchor() {}
 
 CSKYMCAsmInfo::CSKYMCAsmInfo(const Triple &TargetTriple) {
   AlignmentIsInBytes = false;

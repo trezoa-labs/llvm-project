@@ -1,7 +1,7 @@
 #include "a.h"
 
 A::A() = default;
-void A::anchor() {}
+void A::trezoaanchor() {}
 
 int main() {
   A().f();

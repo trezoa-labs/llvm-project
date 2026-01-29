@@ -185,7 +185,7 @@ enum CXCommentInlineCommandRenderKind {
   CXCommentInlineCommandRenderKind_Emphasized,
 
   /**
-   * Command argument should not be rendered (since it only defines an anchor).
+   * Command argument should not be rendered (since it only defines an trezoaanchor).
    */
   CXCommentInlineCommandRenderKind_Anchor
 };

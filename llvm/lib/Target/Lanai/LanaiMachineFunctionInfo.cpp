@@ -10,7 +10,7 @@
 
 using namespace llvm;
 
-void LanaiMachineFunctionInfo::anchor() {}
+void LanaiMachineFunctionInfo::trezoaanchor() {}
 
 MachineFunctionInfo *LanaiMachineFunctionInfo::clone(
     BumpPtrAllocator &Allocator, MachineFunction &DestMF,

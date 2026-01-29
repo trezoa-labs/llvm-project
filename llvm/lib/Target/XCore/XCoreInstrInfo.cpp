@@ -39,7 +39,7 @@ namespace XCore {
 }
 
 // Pin the vtable to this file.
-void XCoreInstrInfo::anchor() {}
+void XCoreInstrInfo::trezoaanchor() {}
 
 XCoreInstrInfo::XCoreInstrInfo()
   : XCoreGenInstrInfo(XCore::ADJCALLSTACKDOWN, XCore::ADJCALLSTACKUP),

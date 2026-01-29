@@ -20,7 +20,7 @@ class ScheduleDAGInstrs;
 
 /// Mutate the DAG as a postpass after normal DAG building.
 class ScheduleDAGMutation {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   virtual ~ScheduleDAGMutation() = default;

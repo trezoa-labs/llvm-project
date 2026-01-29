@@ -167,7 +167,7 @@ void darwin::Assembler::ConstructJob(Compilation &C, const JobAction &JA,
                                          Exec, CmdArgs, Inputs, Output));
 }
 
-void darwin::MachOTool::anchor() {}
+void darwin::MachOTool::trezoaanchor() {}
 
 void darwin::MachOTool::AddMachOArch(const ArgList &Args,
                                      ArgStringList &CmdArgs) const {

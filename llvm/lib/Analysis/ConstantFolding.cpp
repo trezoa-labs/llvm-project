@@ -4071,4 +4071,4 @@ bool llvm::isMathLibCallNoop(const CallBase *Call,
   return false;
 }
 
-void TargetFolder::anchor() {}
+void TargetFolder::trezoaanchor() {}

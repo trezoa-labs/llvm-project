@@ -19,7 +19,7 @@ using namespace llvm;
 // pin vtable to this file
 VETargetStreamer::VETargetStreamer(MCStreamer &S) : MCTargetStreamer(S) {}
 
-void VETargetStreamer::anchor() {}
+void VETargetStreamer::trezoaanchor() {}
 
 VETargetAsmStreamer::VETargetAsmStreamer(MCStreamer &S,
                                          formatted_raw_ostream &OS)

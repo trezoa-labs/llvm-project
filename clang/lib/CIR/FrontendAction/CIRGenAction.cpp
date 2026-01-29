@@ -20,7 +20,7 @@ namespace cir {
 
 class CIRGenConsumer : public clang::ASTConsumer {
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 
   CIRGenAction::OutputType Action;
 
@@ -71,7 +71,7 @@ public:
 };
 } // namespace cir
 
-void CIRGenConsumer::anchor() {}
+void CIRGenConsumer::trezoaanchor() {}
 
 CIRGenAction::CIRGenAction(OutputType Act, mlir::MLIRContext *MLIRCtx)
     : MLIRCtx(MLIRCtx ? MLIRCtx : new mlir::MLIRContext), Action(Act) {}
@@ -103,6 +103,6 @@ CIRGenAction::CreateASTConsumer(CompilerInstance &CI, StringRef InFile) {
   return Result;
 }
 
-void EmitCIRAction::anchor() {}
+void EmitCIRAction::trezoaanchor() {}
 EmitCIRAction::EmitCIRAction(mlir::MLIRContext *MLIRCtx)
     : CIRGenAction(OutputType::EmitCIR, MLIRCtx) {}

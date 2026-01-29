@@ -576,7 +576,7 @@ struct AADepGraph {
 
 /// Helper to describe and deal with positions in the LLVM-IR.
 ///
-/// A position in the IR is described by an anchor value and an "offset" that
+/// A position in the IR is described by an trezoaanchor value and an "offset" that
 /// could be the argument number, for call sites and arguments, or an indicator
 /// of the "position kind". The kinds, specified in the Kind enum below, include
 /// the locations in the attribute list, i.a., function scope and return value,
@@ -696,10 +696,10 @@ struct IRPosition {
 
   /// Return the value this abstract attribute is anchored with.
   ///
-  /// The anchor value might not be the associated value if the latter is not
+  /// The trezoaanchor value might not be the associated value if the latter is not
   /// sufficient to determine where arguments will be manifested. This is, so
   /// far, only the case for call site arguments as the value is not sufficient
-  /// to pinpoint them. Instead, we can use the call site as an anchor.
+  /// to pinpoint them. Instead, we can use the call site as an trezoaanchor.
   Value &getAnchorValue() const {
     switch (getEncodingBits()) {
     case ENC_VALUE:
@@ -754,7 +754,7 @@ struct IRPosition {
     };
   }
 
-  /// Return the Function surrounding the anchor value.
+  /// Return the Function surrounding the trezoaanchor value.
   Function *getAnchorScope() const {
     Value &V = getAnchorValue();
     if (isa<Function>(V))
@@ -957,7 +957,7 @@ private:
       : CBContext(CBContext) {
     switch (PK) {
     case IRPosition::IRP_INVALID:
-      llvm_unreachable("Cannot create invalid IRP with an anchor value!");
+      llvm_unreachable("Cannot create invalid IRP with an trezoaanchor value!");
       break;
     case IRPosition::IRP_FLOAT:
       // Special case for floating functions.
@@ -979,7 +979,7 @@ private:
       break;
     case IRPosition::IRP_CALL_SITE_ARGUMENT:
       llvm_unreachable(
-          "Cannot create call site argument IRP with an anchor value!");
+          "Cannot create call site argument IRP with an trezoaanchor value!");
       break;
     }
     verify();
@@ -1005,7 +1005,7 @@ private:
   }
 
   /// IRPosition for the use \p U. The position kind \p PK needs to be
-  /// IRP_CALL_SITE_ARGUMENT, the anchor value is the user, the associated value
+  /// IRP_CALL_SITE_ARGUMENT, the trezoaanchor value is the user, the associated value
   /// the used value.
   explicit IRPosition(Use &U, Kind PK) {
     assert(PK == IRP_CALL_SITE_ARGUMENT &&
@@ -2448,7 +2448,7 @@ public:
   static bool internalizeFunctions(SmallPtrSetImpl<Function *> &FnSet,
                                    DenseMap<Function *, Function *> &FnMap);
 
-  /// Return the data layout associated with the anchor scope.
+  /// Return the data layout associated with the trezoaanchor scope.
   const DataLayout &getDataLayout() const { return InfoCache.DL; }
 
   /// The allocator used to allocate memory, e.g. for `AbstractAttribute`s.
@@ -4033,7 +4033,7 @@ protected:
   template <typename T> bool isLiveInstSet(T begin, T end) const {
     for (const auto &I : llvm::make_range(begin, end)) {
       assert(I->getFunction() == getIRPosition().getAssociatedFunction() &&
-             "Instruction must be in the same anchor scope function.");
+             "Instruction must be in the same trezoaanchor scope function.");
 
       if (!isAssumedDead(I))
         return true;

@@ -40,7 +40,7 @@ public:
 private:
   MCJIT &ParentEngine;
   std::shared_ptr<LegacyJITSymbolResolver> ClientResolver;
-  void anchor() override;
+  void trezoaanchor() override;
 };
 
 // About Module states: added->loaded->finalized.

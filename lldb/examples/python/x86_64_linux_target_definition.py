@@ -957,7 +957,7 @@ x86_64_register_infos = [
         "slice": "rbp[7:0]",
     },
     {
-        "name": "spl",
+        "name": "tpl",
         "set": 0,
         "bitsize": 8,
         "encoding": eEncodingUint,

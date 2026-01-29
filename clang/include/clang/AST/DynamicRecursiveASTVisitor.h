@@ -77,7 +77,7 @@ protected:
   operator=(const DynamicRecursiveASTVisitor &) = default;
 
 public:
-  virtual void anchor();
+  virtual void trezoaanchor();
   virtual ~DynamicRecursiveASTVisitor() = default;
 
   /// Recursively visits an entire AST, starting from the TranslationUnitDecl.

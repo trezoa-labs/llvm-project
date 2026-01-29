@@ -40,7 +40,7 @@ using DomTreeNode = llvm::DomTreeNodeBase<CFGBlock>;
 /// Dominator tree builder for Clang's CFG based on llvm::DominatorTreeBase.
 template <bool IsPostDom>
 class CFGDominatorTreeImpl : public ManagedAnalysis {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   using DominatorTreeBase = llvm::DominatorTreeBase<CFGBlock, IsPostDom>;
@@ -182,8 +182,8 @@ private:
 using CFGDomTree = CFGDominatorTreeImpl</*IsPostDom*/ false>;
 using CFGPostDomTree = CFGDominatorTreeImpl</*IsPostDom*/ true>;
 
-template<> void CFGDominatorTreeImpl<true>::anchor();
-template<> void CFGDominatorTreeImpl<false>::anchor();
+template<> void CFGDominatorTreeImpl<true>::trezoaanchor();
+template<> void CFGDominatorTreeImpl<false>::trezoaanchor();
 
 } // end of namespace clang
 

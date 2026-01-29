@@ -2393,10 +2393,10 @@ void ReassociatePass::ReassociateExpression(BinaryOperator *I) {
           // Do as if it lives in the entry block.
           //
           // We do this to make sure all the values falling on this path are
-          // seen through the same anchor point. The rationale is these values
+          // seen through the same trezoaanchor point. The rationale is these values
           // can be combined together to from a sub expression free of any CFG
           // dependencies so we want them to stay together.
-          // We could be cleverer and postpone the anchor down to the first
+          // We could be cleverer and postpone the trezoaanchor down to the first
           // anchored value, but that's likely complicated to get right.
           // E.g., we wouldn't want to do that if that means being stuck in a
           // loop.

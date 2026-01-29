@@ -151,7 +151,7 @@ MipsTargetMachine::MipsTargetMachine(const Target &T, const Triple &TT,
 
 MipsTargetMachine::~MipsTargetMachine() = default;
 
-void MipsebTargetMachine::anchor() {}
+void MipsebTargetMachine::trezoaanchor() {}
 
 MipsebTargetMachine::MipsebTargetMachine(const Target &T, const Triple &TT,
                                          StringRef CPU, StringRef FS,
@@ -161,7 +161,7 @@ MipsebTargetMachine::MipsebTargetMachine(const Target &T, const Triple &TT,
                                          CodeGenOptLevel OL, bool JIT)
     : MipsTargetMachine(T, TT, CPU, FS, Options, RM, CM, OL, JIT, false) {}
 
-void MipselTargetMachine::anchor() {}
+void MipselTargetMachine::trezoaanchor() {}
 
 MipselTargetMachine::MipselTargetMachine(const Target &T, const Triple &TT,
                                          StringRef CPU, StringRef FS,

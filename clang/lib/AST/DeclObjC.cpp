@@ -71,7 +71,7 @@ ObjCContainerDecl::ObjCContainerDecl(Kind DK, DeclContext *DC,
   setAtStartLoc(atStartLoc);
 }
 
-void ObjCContainerDecl::anchor() {}
+void ObjCContainerDecl::trezoaanchor() {}
 
 /// getIvarDecl - This method looks up an ivar in this ContextDecl.
 ///
@@ -315,7 +315,7 @@ ObjCPropertyDecl *ObjCContainerDecl::FindPropertyDeclaration(
   return nullptr;
 }
 
-void ObjCInterfaceDecl::anchor() {}
+void ObjCInterfaceDecl::trezoaanchor() {}
 
 ObjCTypeParamList *ObjCInterfaceDecl::getTypeParamList() const {
   // If this particular declaration has a type parameter list, return it.
@@ -1466,7 +1466,7 @@ ObjCMethodDecl::findPropertyDecl(bool CheckOverrides) const {
 // ObjCTypeParamDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCTypeParamDecl::anchor() {}
+void ObjCTypeParamDecl::trezoaanchor() {}
 
 ObjCTypeParamDecl *ObjCTypeParamDecl::Create(ASTContext &ctx, DeclContext *dc,
                                              ObjCTypeParamVariance variance,
@@ -1826,7 +1826,7 @@ bool ObjCInterfaceDecl::ClassImplementsProtocol(ObjCProtocolDecl *lProto,
 // ObjCIvarDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCIvarDecl::anchor() {}
+void ObjCIvarDecl::trezoaanchor() {}
 
 ObjCIvarDecl *ObjCIvarDecl::Create(ASTContext &C, ObjCContainerDecl *DC,
                                    SourceLocation StartLoc,
@@ -1903,7 +1903,7 @@ QualType ObjCIvarDecl::getUsageType(QualType objectType) const {
 // ObjCAtDefsFieldDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCAtDefsFieldDecl::anchor() {}
+void ObjCAtDefsFieldDecl::trezoaanchor() {}
 
 ObjCAtDefsFieldDecl
 *ObjCAtDefsFieldDecl::Create(ASTContext &C, DeclContext *DC,
@@ -1923,7 +1923,7 @@ ObjCAtDefsFieldDecl *ObjCAtDefsFieldDecl::CreateDeserialized(ASTContext &C,
 // ObjCProtocolDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCProtocolDecl::anchor() {}
+void ObjCProtocolDecl::trezoaanchor() {}
 
 ObjCProtocolDecl::ObjCProtocolDecl(ASTContext &C, DeclContext *DC,
                                    IdentifierInfo *Id, SourceLocation nameLoc,
@@ -2110,7 +2110,7 @@ void ObjCProtocolDecl::setHasODRHash(bool HasHash) {
 // ObjCCategoryDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCCategoryDecl::anchor() {}
+void ObjCCategoryDecl::trezoaanchor() {}
 
 ObjCCategoryDecl::ObjCCategoryDecl(
     DeclContext *DC, SourceLocation AtLoc, SourceLocation ClassNameLoc,
@@ -2175,7 +2175,7 @@ void ObjCCategoryDecl::setTypeParamList(ObjCTypeParamList *TPL) {
 // ObjCCategoryImplDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCCategoryImplDecl::anchor() {}
+void ObjCCategoryImplDecl::trezoaanchor() {}
 
 ObjCCategoryImplDecl *ObjCCategoryImplDecl::Create(
     ASTContext &C, DeclContext *DC, const IdentifierInfo *Id,
@@ -2201,7 +2201,7 @@ ObjCCategoryDecl *ObjCCategoryImplDecl::getCategoryDecl() const {
   return nullptr;
 }
 
-void ObjCImplDecl::anchor() {}
+void ObjCImplDecl::trezoaanchor() {}
 
 void ObjCImplDecl::addPropertyImplementation(ObjCPropertyImplDecl *property) {
   // FIXME: The context should be correct before we get here.
@@ -2276,7 +2276,7 @@ raw_ostream &clang::operator<<(raw_ostream &OS,
 // ObjCImplementationDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCImplementationDecl::anchor() {}
+void ObjCImplementationDecl::trezoaanchor() {}
 
 ObjCImplementationDecl *
 ObjCImplementationDecl::Create(ASTContext &C, DeclContext *DC,
@@ -2327,7 +2327,7 @@ raw_ostream &clang::operator<<(raw_ostream &OS,
 // ObjCCompatibleAliasDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCCompatibleAliasDecl::anchor() {}
+void ObjCCompatibleAliasDecl::trezoaanchor() {}
 
 ObjCCompatibleAliasDecl *
 ObjCCompatibleAliasDecl::Create(ASTContext &C, DeclContext *DC,
@@ -2347,7 +2347,7 @@ ObjCCompatibleAliasDecl::CreateDeserialized(ASTContext &C, GlobalDeclID ID) {
 // ObjCPropertyDecl
 //===----------------------------------------------------------------------===//
 
-void ObjCPropertyDecl::anchor() {}
+void ObjCPropertyDecl::trezoaanchor() {}
 
 ObjCPropertyDecl *
 ObjCPropertyDecl::Create(ASTContext &C, DeclContext *DC, SourceLocation L,

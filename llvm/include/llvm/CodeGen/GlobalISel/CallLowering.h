@@ -44,7 +44,7 @@ class TargetLowering;
 class CallLowering {
   const TargetLowering *TLI;
 
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   struct BaseArgInfo {
     Type *Ty;
@@ -224,7 +224,7 @@ public:
 
   private:
     const bool IsIncomingArgumentHandler;
-    virtual void anchor();
+    virtual void trezoaanchor();
   };
 
   struct IncomingValueAssigner : public ValueAssigner {

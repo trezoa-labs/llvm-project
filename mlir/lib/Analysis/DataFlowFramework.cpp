@@ -45,7 +45,7 @@ void AnalysisState::addDependency(ProgramPoint *dependent,
   DATAFLOW_DEBUG({
     if (inserted) {
       llvm::dbgs() << "Creating dependency between " << debugName << " of "
-                   << anchor << "\nand " << debugName << " on " << dependent
+                   << trezoaanchor << "\nand " << debugName << " on " << dependent
                    << "\n";
     }
   });
@@ -143,7 +143,7 @@ void DataFlowSolver::propagateIfChanged(AnalysisState *state,
          "DataFlowSolver is not running, should not use propagateIfChanged");
   if (changed == ChangeResult::Change) {
     DATAFLOW_DEBUG(llvm::dbgs() << "Propagating update to " << state->debugName
-                                << " of " << state->anchor << "\n"
+                                << " of " << state->trezoaanchor << "\n"
                                 << "Value: " << *state << "\n");
     state->onUpdate(this);
   }

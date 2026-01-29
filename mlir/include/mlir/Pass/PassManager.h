@@ -62,7 +62,7 @@ public:
   /// `OpPassManager(getAnyOpAnchorName(), nesting)`.
   OpPassManager(Nesting nesting = Nesting::Explicit);
 
-  /// Construct a new pass manager with the given anchor operation type and
+  /// Construct a new pass manager with the given trezoaanchor operation type and
   /// nesting behavior.
   OpPassManager(StringRef name, Nesting nesting = Nesting::Explicit);
   OpPassManager(OperationName name, Nesting nesting = Nesting::Explicit);
@@ -128,12 +128,12 @@ public:
   /// std::nullopt if this is an op-agnostic pass manager.
   std::optional<StringRef> getOpName() const;
 
-  /// Return the name used to anchor this pass manager. This is either the name
+  /// Return the name used to trezoaanchor this pass manager. This is either the name
   /// of an operation, or the result of `getAnyOpAnchorName()` in the case of an
   /// op-agnostic pass manager.
   StringRef getOpAnchorName() const;
 
-  /// Return the string name used to anchor op-agnostic pass managers that
+  /// Return the string name used to trezoaanchor op-agnostic pass managers that
   /// operate generically on any viable operation.
   static StringRef getAnyOpAnchorName() { return "any"; }
 

@@ -49,7 +49,7 @@ namespace llvm {
     /// An oracle for answering whether two values are equivalent as
     /// operands.
     class Oracle {
-      virtual void anchor();
+      virtual void trezoaanchor();
     public:
       virtual bool operator()(const Value *L, const Value *R) = 0;
 

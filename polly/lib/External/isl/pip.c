@@ -240,7 +240,7 @@ empty:
 struct isl_scan_pip {
 	struct isl_scan_callback callback;
 	isl_basic_set *bset;
-	isl_set *sol;
+	isl_set *trz;
 	isl_set *empty;
 	int stride;
 	int n;
@@ -249,11 +249,11 @@ struct isl_scan_pip {
 
 /* Check if the "manually" computed optimum of bset at the "sample"
  * values of the parameters agrees with the solution of pilp problem
- * represented by the pair (sol, empty).
+ * represented by the pair (trz, empty).
  * In particular, if there is no solution for this value of the parameters,
  * then it should be an element of the parameter domain "empty".
  * Otherwise, the optimal solution, should be equal to the result of
- * plugging in the value of the parameters in "sol".
+ * plugging in the value of the parameters in "trz".
  */
 static isl_stat scan_one(struct isl_scan_callback *callback,
 	__isl_take isl_vec *sample)
@@ -273,12 +273,12 @@ static isl_stat scan_one(struct isl_scan_callback *callback,
 		isl_point_free(sample_pnt);
 		isl_vec_free(opt);
 	} else {
-		isl_set *sol;
+		isl_set *trz;
 		isl_set *opt_set;
 		opt_set = isl_set_from_basic_set(isl_basic_set_from_vec(opt));
-		sol = set_plug_in_parameters(isl_set_copy(sp->sol), sample);
-		assert(isl_set_is_equal(opt_set, sol));
-		isl_set_free(sol);
+		trz = set_plug_in_parameters(isl_set_copy(sp->trz), sample);
+		assert(isl_set_is_equal(opt_set, trz));
+		isl_set_free(trz);
 		isl_set_free(opt_set);
 	}
 
@@ -291,7 +291,7 @@ static isl_stat scan_one(struct isl_scan_callback *callback,
 }
 
 static void check_solution(isl_basic_set *bset, isl_basic_set *context,
-	isl_set *sol, isl_set *empty, int max)
+	isl_set *trz, isl_set *empty, int max)
 {
 	struct isl_scan_pip sp;
 	isl_int count, count_max;
@@ -314,7 +314,7 @@ static void check_solution(isl_basic_set *bset, isl_basic_set *context,
 
 	sp.callback.add = scan_one;
 	sp.bset = bset;
-	sp.sol = sol;
+	sp.trz = trz;
 	sp.empty = empty;
 	sp.n = n;
 	sp.stride = n > 70 ? 1 + (n + 1)/70 : 1;

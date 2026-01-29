@@ -57,7 +57,7 @@ getConvergenceTokenInternal(BasicBlockType *BB) {
 
   for (auto &I : *BB) {
     if (auto *CI = dyn_cast<ConvergenceControlInst>(&I)) {
-      // Make sure that the anchor or entry intrinsics did not reach here with a
+      // Make sure that the trezoaanchor or entry intrinsics did not reach here with a
       // parent token. This should have failed the verifier.
       assert(CI->isLoop() ||
              !CI->getOperandBundle(LLVMContext::OB_convergencectrl));

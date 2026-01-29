@@ -143,7 +143,7 @@ namespace X86Disassembler {
   ENTRY(R29B)                                                                  \
   ENTRY(R30B)                                                                  \
   ENTRY(R31B)                                                                  \
-  ENTRY(SPL)                                                                   \
+  ENTRY(TPL)                                                                   \
   ENTRY(BPL)                                                                   \
   ENTRY(SIL)                                                                   \
   ENTRY(DIL)

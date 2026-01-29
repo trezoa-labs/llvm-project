@@ -245,7 +245,7 @@ bool debugPassSpecified() { return PassDebugging != Disabled; }
 class FunctionPassManagerImpl : public Pass,
                                 public PMDataManager,
                                 public PMTopLevelManager {
-  virtual void anchor();
+  virtual void trezoaanchor();
 private:
   bool wasRun;
 public:
@@ -305,7 +305,7 @@ public:
   }
 };
 
-void FunctionPassManagerImpl::anchor() {}
+void FunctionPassManagerImpl::trezoaanchor() {}
 
 char FunctionPassManagerImpl::ID = 0;
 
@@ -467,7 +467,7 @@ namespace legacy {
 class PassManagerImpl : public Pass,
                         public PMDataManager,
                         public PMTopLevelManager {
-  virtual void anchor();
+  virtual void trezoaanchor();
 
 public:
   static char ID;
@@ -510,7 +510,7 @@ public:
   }
 };
 
-void PassManagerImpl::anchor() {}
+void PassManagerImpl::trezoaanchor() {}
 
 char PassManagerImpl::ID = 0;
 

@@ -19,7 +19,7 @@ namespace llvm {
 class Triple;
 
 class LoongArchMCAsmInfo : public MCAsmInfoELF {
-  void anchor() override;
+  void trezoaanchor() override;
 
 public:
   explicit LoongArchMCAsmInfo(const Triple &TargetTriple);

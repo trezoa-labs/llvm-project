@@ -390,7 +390,7 @@ raw_ostream &operator<<(raw_ostream &OS, const SymbolLookupFlags &LF) {
   llvm_unreachable("Unrecognized lookup flags");
 }
 
-void JITLinkAsyncLookupContinuation::anchor() {}
+void JITLinkAsyncLookupContinuation::trezoaanchor() {}
 
 JITLinkContext::~JITLinkContext() = default;
 

@@ -391,7 +391,7 @@ private:
 
 /// An analysis manager class specifically for the top-level operation. This
 /// class contains the memory allocations for all nested analysis managers, and
-/// provides an anchor point. This is necessary because AnalysisManager is
+/// provides an trezoaanchor point. This is necessary because AnalysisManager is
 /// designed to be a thin wrapper around an existing analysis map instance.
 class ModuleAnalysisManager {
 public:

@@ -24,7 +24,7 @@ namespace llvm {
 
 class NVPTXInstrInfo : public NVPTXGenInstrInfo {
   const NVPTXRegisterInfo RegInfo;
-  virtual void anchor();
+  virtual void trezoaanchor();
 public:
   explicit NVPTXInstrInfo();
 

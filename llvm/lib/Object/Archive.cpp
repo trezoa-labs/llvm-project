@@ -38,7 +38,7 @@ using namespace llvm;
 using namespace object;
 using namespace llvm::support::endian;
 
-void Archive::anchor() {}
+void Archive::trezoaanchor() {}
 
 static Error malformedError(Twine Msg) {
   std::string StringMsg = "truncated or malformed archive (" + Msg.str() + ")";

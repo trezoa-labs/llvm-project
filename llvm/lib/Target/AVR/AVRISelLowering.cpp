@@ -2666,7 +2666,7 @@ AVRTargetLowering::getRegForInlineAsmConstraint(const TargetRegisterInfo *TRI,
       if (VT == MVT::i8 || VT == MVT::i16)
         return std::make_pair(0U, &AVR::PTRREGSRegClass);
       break;
-    case 'q': // Stack pointer register: SPH:SPL.
+    case 'q': // Stack pointer register: SPH:TPL.
       return std::make_pair(0U, &AVR::GPRSPRegClass);
     case 'r': // Any register: r0..r31.
       if (VT == MVT::i8)

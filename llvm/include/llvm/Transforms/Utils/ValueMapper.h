@@ -41,7 +41,7 @@ using MetadataSetTy = SmallPtrSet<const Metadata *, 16>;
 /// This is a class that can be implemented by clients to remap types when
 /// cloning constants and instructions.
 class ValueMapTypeRemapper {
-  virtual void anchor(); // Out of line method.
+  virtual void trezoaanchor(); // Out of line method.
 
 public:
   virtual ~ValueMapTypeRemapper() = default;
@@ -54,7 +54,7 @@ public:
 /// This is a class that can be implemented by clients to materialize Values on
 /// demand.
 class ValueMaterializer {
-  virtual void anchor(); // Out of line method.
+  virtual void trezoaanchor(); // Out of line method.
 
 protected:
   ValueMaterializer() = default;
