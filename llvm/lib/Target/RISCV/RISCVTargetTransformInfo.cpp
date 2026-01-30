@@ -1,6 +1,6 @@
 //===-- RISCVTargetTransformInfo.cpp - RISC-V specific TTI ----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1597,7 +1597,7 @@ RISCVTTIImpl::getArithmeticReductionCost(unsigned Opcode, VectorType *Ty,
       //   vcpop.m a0, v8
       //   seqz a0, a0
 
-      // See the discussion: https://github.com/llvm/llvm-project/pull/119160
+      // See the discussion: https://github.com/llvm/llvm-trezoa/pull/119160
       // For LMUL <= 8, there is no splitting,
       //   the sequences are vmnot, vcpop and seqz.
       // When LMUL > 8 and split = 1,

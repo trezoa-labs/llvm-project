@@ -58,12 +58,12 @@ intended to be used to create clause definitions that can be then attached to
 multiple `OpenMP_Op` definitions, resulting in the latter inheriting by default
 all properties defined by clauses attached, similarly to the trait mechanism.
 This mechanism is implemented in
-[OpenMPOpBase.td](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPOpBase.td).
+[OpenMPOpBase.td](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPOpBase.td).
 
 ### Adding a Clause
 
 OpenMP clause definitions are located in
-[OpenMPClauses.td](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPClauses.td).
+[OpenMPClauses.td](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPClauses.td).
 For each clause, an `OpenMP_Clause` subclass and a definition based on it must
 be created. The subclass must take a `bit` template argument for each of the
 properties it can populate on associated `OpenMP_Op`s. These must be forwarded
@@ -118,7 +118,7 @@ def OpenMP_ExampleClause : OpenMP_ExampleClauseSkip<>;
 ### Adding an Operation
 
 Operations in the OpenMP dialect, located in
-[OpenMPOps.td](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPOps.td),
+[OpenMPOps.td](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPOps.td),
 can be defined like any other regular operation by just specifying a `mnemonic`
 and optional list of `traits` when inheriting from `OpenMP_Op`, and then
 defining the expected `description`, `arguments`, etc. properties inside of its
@@ -232,7 +232,7 @@ tablegen errors.
 
 For this reason, the `-verify-openmp-ops` tablegen pseudo-backend was created.
 It runs before any other tablegen backends are triggered for the
-[OpenMPOps.td](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPOps.td)
+[OpenMPOps.td](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPOps.td)
 file and warns any time a property defined for a clause is not found in the
 corresponding operation, except if it is explicitly skipped as described
 [above](#overriding-clause-inherited-properties). This way, in case of a later
@@ -259,7 +259,7 @@ the desired arguments to create a new operation.
 
 Ad-hoc operand structures available for use within the ODS definition of custom
 operation builders might be defined in
-[OpenMPClauseOperands.h](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPClauseOperands.h).
+[OpenMPClauseOperands.h](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/OpenMP/OpenMPClauseOperands.h).
 However, this is generally not needed for clause-based operation definitions.
 The `-gen-openmp-clause-ops` tablegen backend, triggered when building the 'omp'
 dialect, will automatically produce structures in the following way:

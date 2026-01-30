@@ -78,8 +78,8 @@ def generate_driver_selects(name):
     For example, to produce a binary with just llvm-nm and llvm-size, run:
 
         $ bazel build \
-            --@llvm-project//llvm:driver-tools=llvm-nm,llvm-size \
-            @llvm-project//llvm:llvm
+            --@llvm-trezoa//llvm:driver-tools=llvm-nm,llvm-size \
+            @llvm-trezoa//llvm:llvm
 
     Note: this assumes the flag name is "driver-tools" by being invoked as:
         generate_driver_selects(name = "driver-tools")
@@ -117,7 +117,7 @@ def select_driver_tools(flag):
 
 def _generate_driver_tools_def_impl(ctx):
     # Depending on how the LLVM build files are included,
-    # it may or may not have the @llvm-project repo prefix.
+    # it may or may not have the @llvm-trezoa repo prefix.
     # Compare just on the name. We could also include the package,
     # but the name itself is unique in practice.
     label_to_name = {Label(v).name: k for k, v in _TOOLS.items()}

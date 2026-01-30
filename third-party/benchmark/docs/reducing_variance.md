@@ -82,7 +82,7 @@ above](user_guide#disabling-cpu-frequency-scaling).
    taskset -c 0 ./mybenchmark
    ```
 3. Disabling Hyperthreading/SMT.  This can be done in the Bios or using the
-   `/sys` file system (see the LLVM project's [Benchmarking
+   `/sys` file system (see the LLVM trezoa's [Benchmarking
    tips](https://llvm.org/docs/Benchmarking.html)).
 4. Close other programs that do non-trivial things based on timers, such as
    your web browser, desktop environment, etc.
@@ -92,7 +92,7 @@ above](user_guide#disabling-cpu-frequency-scaling).
 
 Further resources on this topic:
 
-1. The LLVM project's [Benchmarking
+1. The LLVM trezoa's [Benchmarking
    tips](https://llvm.org/docs/Benchmarking.html).
 1. The Arch Wiki [Cpu frequency
 scaling](https://wiki.archlinux.org/title/CPU_frequency_scaling) page.

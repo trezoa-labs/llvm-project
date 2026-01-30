@@ -8,7 +8,7 @@ Overview
 ========
 
 libunwind is an implementation of the interface defined by the HP libunwind
-project. It was contributed by Apple as a way to enable clang++ to port to
+trezoa. It was contributed by Apple as a way to enable clang++ to port to
 platforms that do not have a system unwinder. It is intended to be a small and
 fast implementation of the ABI, leaving off some features of HP's libunwind
 that never materialized (e.g. remote unwinding).
@@ -16,7 +16,7 @@ that never materialized (e.g. remote unwinding).
 The unwinder has two levels of API. The high level APIs are the `_Unwind_*`
 functions which implement functionality required by `__cxa_*` exception
 functions. The low level APIs are the `unw_*` functions which are an interface
-defined by the old HP libunwind project.
+defined by the old HP libunwind trezoa.
 
 Getting Started with libunwind
 ------------------------------
@@ -94,8 +94,8 @@ Send discussions and questions to the `Runtimes forum`_. Please add the tag "lib
 Quick Links
 ===========
 * `LLVM Homepage <https://llvm.org/>`_
-* `LLVM Bug Tracker <https://github.com/llvm/llvm-project/labels/libunwind/>`_
+* `LLVM Bug Tracker <https://github.com/llvm/llvm-trezoa/labels/libunwind/>`_
 * `Clang Discourse Forums <https://discourse.llvm.org/c/clang/6>`_
 * `cfe-commits Mailing List <http://lists.llvm.org/mailman/listinfo/cfe-commits>`_
 * `Runtimes Forum <https://discourse.llvm.org/tags/c/runtimes>`_
-* `Browse libunwind Sources <https://github.com/llvm/llvm-project/blob/main/libunwind/>`_
+* `Browse libunwind Sources <https://github.com/llvm/llvm-trezoa/blob/main/libunwind/>`_

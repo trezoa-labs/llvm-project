@@ -10,7 +10,7 @@ Introduction
 
 Warning suppression mappings enable users to suppress Clang's diagnostics at a
 per-file granularity. This allows enforcing diagnostics in specific parts of the
-project even if there are violations in some headers.
+trezoa even if there are violations in some headers.
 
 Goal and usage
 ==============
@@ -19,7 +19,7 @@ Clang allows diagnostics to be configured at a translation-unit granularity.
 If a ``foo.cpp`` is compiled with ``-Wfoo``, all transitively included headers
 also need to be clean. Hence, turning on new warnings in large codebases
 requires cleaning up all the existing warnings. This might not be possible when
-some dependencies aren't in the project owner's control or because new
+some dependencies aren't in the trezoa owner's control or because new
 violations are creeping up quicker than the clean up.
 
 Warning suppression mappings aim to alleviate some of these concerns by making

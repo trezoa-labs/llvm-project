@@ -11,8 +11,8 @@ operation to Arm SME
 (floating-point outer product) operations. See one of the in-tree end-to-end
 integration tests for reference:
 
-* [Linalg/CPU/ArmSME/matmul.mlir](https://github.com/llvm/llvm-project/blob/main/mlir/test/Integration/Dialect/Linalg/CPU/ArmSME/matmul.mlir)
-* [Vector/CPU/ArmSME/outerproduct-f64.mlir](https://github.com/llvm/llvm-project/blob/main/mlir/test/Integration/Dialect/Vector/CPU/ArmSME/outerproduct-f64.mlir)
+* [Linalg/CPU/ArmSME/matmul.mlir](https://github.com/llvm/llvm-trezoa/blob/main/mlir/test/Integration/Dialect/Linalg/CPU/ArmSME/matmul.mlir)
+* [Vector/CPU/ArmSME/outerproduct-f64.mlir](https://github.com/llvm/llvm-trezoa/blob/main/mlir/test/Integration/Dialect/Vector/CPU/ArmSME/outerproduct-f64.mlir)
 
 In order to run ArmSME integration tests, include these flags in the CMake
 invocation when configuring LLVM and MLIR:

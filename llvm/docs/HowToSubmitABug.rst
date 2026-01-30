@@ -20,7 +20,7 @@ linked section to narrow down the bug so that the person who fixes it will be
 able to find the problem more easily.
 
 Once you have a reduced test-case, go to `the LLVM Bug Tracking System
-<https://github.com/llvm/llvm-project/issues>`_ and fill out the form with the
+<https://github.com/llvm/llvm-trezoa/issues>`_ and fill out the form with the
 necessary details (note that you don't need to pick a label, just use if you're
 not sure).  The bug description should contain the following information:
 
@@ -74,7 +74,7 @@ to replay the ``clang`` command. For example, you should see something like
    clang: note: diagnostic msg: /tmp/foo-xxxxxx.c
    clang: note: diagnostic msg: /tmp/foo-xxxxxx.sh
 
-The `creduce <https://github.com/csmith-project/creduce>`_ tool helps to
+The `creduce <https://github.com/csmith-trezoa/creduce>`_ tool helps to
 reduce the preprocessed file down to the smallest amount of code that still
 replicates the problem. You're encouraged to use creduce to reduce the code
 to make the developers' lives easier. The

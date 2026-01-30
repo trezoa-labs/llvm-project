@@ -7,4 +7,4 @@ Polly.
 # Lead maintainer
 
 Michael Kruse \
-llvm-project@meinersbur.de (email), [Meinersbur](https://github.com/Meinersbur) (GitHub)
+llvm-trezoa@meinersbur.de (email), [Meinersbur](https://github.com/Meinersbur) (GitHub)

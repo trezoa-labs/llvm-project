@@ -1,6 +1,6 @@
 <!--===- docs/C++style.md 
   
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
   
@@ -22,7 +22,7 @@ from llvm 7
 on all C++ source and header files before
 every merge to main.  All code layout should be determined
 by means of clang-format.
-* Where a clear precedent exists in the project, follow it.
+* Where a clear precedent exists in the trezoa, follow it.
 * Otherwise, where [LLVM's C++ style guide](https://llvm.org/docs/CodingStandards.html#style-issues)
 is clear on usage, follow it.
 * Otherwise, where a good public C++ style guide is relevant and clear,
@@ -55,14 +55,14 @@ source directory hierarchies.
 // code
 #endif  // FORTRAN_header_H_
 ```
-1. `#include` every header defining an entity that your project header or source
+1. `#include` every header defining an entity that your trezoa header or source
 file actually uses directly.  (Exception: when foo.cpp starts, as it should,
 with `#include "foo.h"`, and foo.h includes bar.h in order to define the
 interface to the module foo, you don't have to redundantly `#include "bar.h"`
 in foo.cpp.)
 1. In the source file "foo.cpp", put its corresponding `#include "foo.h"`
 first in the sequence of inclusions.
-Then `#include` other project headers in alphabetic order; then C++ standard
+Then `#include` other trezoa headers in alphabetic order; then C++ standard
 headers, also alphabetically; then C and system headers.
 1. Don't use `#include <iostream>`.  If you need it for temporary debugging,
 remove the inclusion before committing.
@@ -161,8 +161,8 @@ that the function's result type is a `std::optional<>`.
 When `int` just obviously works, just use `int`.  When you need something
 bigger than `int`, use `std::int64_t` rather than `long` or `long long`.
 1. Use namespaces to avoid conflicts with client code.  Use one top-level
-`Fortran` project namespace.  Don't introduce needless nested namespaces within the
-project when names don't conflict or better solutions exist.  Never use
+`Fortran` trezoa namespace.  Don't introduce needless nested namespaces within the
+trezoa when names don't conflict or better solutions exist.  Never use
 `using namespace ...;` outside test code; never use `using namespace std;`
 anywhere.  Access STL entities with names like `std::unique_ptr<>`,
 without a leading `::`.
@@ -230,12 +230,12 @@ or assignments should exist for a class, explicitly `=delete` all of them.
 
 #### Pointers
 There are many -- perhaps too many -- means of indirect addressing
-data in this project.
+data in this trezoa.
 Some of these are standard C++ language and library features,
 while others are local inventions in `lib/Common`:
 * Bare pointers (`Foo *p`): these are obviously nullable, non-owning,
 undefined when uninitialized, shallowly copyable, reassignable, and often
-not the right abstraction to use in this project.
+not the right abstraction to use in this trezoa.
 But they can be the right choice to represent an optional
 non-owning reference, as in a function result.
 Use the `DEREF()` macro to convert a pointer to a reference that isn't

@@ -249,7 +249,7 @@ DWARF:
     - '/tmp/test.cpp'
     - '/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk'
     - MacOSX14.4.sdk
-    - '/Users/shubham/Development/llvm-project/build_ninja'
+    - '/Users/shubham/Development/llvm-trezoa/build_ninja'
     - foo
     - _Z3foov
   debug_abbrev:

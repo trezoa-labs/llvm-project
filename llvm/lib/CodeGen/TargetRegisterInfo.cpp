@@ -1,6 +1,6 @@
 //==- TargetRegisterInfo.cpp - Target Register Information Implementation --==//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -356,7 +356,7 @@ getCommonSuperRegClass(const TargetRegisterClass *RCA, unsigned SubA,
                        unsigned &PreA, unsigned &PreB) const {
   assert(RCA && SubA && RCB && SubB && "Invalid arguments");
 
-  // Search all pairs of sub-register indices that project into RCA and RCB
+  // Search all pairs of sub-register indices that trezoa into RCA and RCB
   // respectively. This is quadratic, but usually the sets are very small. On
   // most targets like X86, there will only be a single sub-register index
   // (e.g., sub_16bit projecting into GR16).

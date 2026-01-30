@@ -372,7 +372,7 @@ class TestTraceDumpInstructions(TraceIntelPTTestCaseBase):
     "module": "a.out",
     "symbol": "main",
     "mnemonic": "movl",
-    "source": "/home/wallace/llvm-sand/external/llvm-project/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
+    "source": "/home/wallace/llvm-sand/external/llvm-trezoa/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
     "line": 10,
     "column": 0
   }
@@ -390,7 +390,7 @@ class TestTraceDumpInstructions(TraceIntelPTTestCaseBase):
     "module": "a.out",
     "symbol": "main",
     "mnemonic": "movl",
-    "source": "/home/wallace/llvm-sand/external/llvm-project/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
+    "source": "/home/wallace/llvm-sand/external/llvm-trezoa/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
     "line": 12,
     "column": 0
   },
@@ -400,7 +400,7 @@ class TestTraceDumpInstructions(TraceIntelPTTestCaseBase):
     "module": "a.out",
     "symbol": "main",
     "mnemonic": "addl",
-    "source": "/home/wallace/llvm-sand/external/llvm-project/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
+    "source": "/home/wallace/llvm-sand/external/llvm-trezoa/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
     "line": 12,
     "column": 0
   },
@@ -410,7 +410,7 @@ class TestTraceDumpInstructions(TraceIntelPTTestCaseBase):
     "module": "a.out",
     "symbol": "main",
     "mnemonic": "movl",
-    "source": "/home/wallace/llvm-sand/external/llvm-project/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
+    "source": "/home/wallace/llvm-sand/external/llvm-trezoa/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
     "line": 12,
     "column": 0
   },
@@ -420,7 +420,7 @@ class TestTraceDumpInstructions(TraceIntelPTTestCaseBase):
     "module": "a.out",
     "symbol": "inline_function()",
     "mnemonic": "movl",
-    "source": "/home/wallace/llvm-sand/external/llvm-project/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
+    "source": "/home/wallace/llvm-sand/external/llvm-trezoa/lldb/test/API/commands/trace/intelpt-trace-multi-file/main.cpp",
     "line": 4,
     "column": 0
   }

@@ -1,6 +1,6 @@
 //===-- Implementation of mktime function ---------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -102,7 +102,7 @@ LLVM_LIBC_FUNCTION(time_t, mktime, (struct tm * tm_out)) {
     }
   }
 
-  // TODO: https://github.com/llvm/llvm-project/issues/121962
+  // TODO: https://github.com/llvm/llvm-trezoa/issues/121962
   // Need to handle timezone and update of tm_isdst.
   int64_t seconds = tm_out->tm_sec +
                     tm_out->tm_min * time_constants::SECONDS_PER_MIN +

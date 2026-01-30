@@ -4,7 +4,7 @@ LLVM Security Response Group
 
 The LLVM Security Response Group has the following goals:
 
-1. Allow LLVM contributors and security researchers to disclose security-related issues affecting the LLVM project to members of the LLVM community.
+1. Allow LLVM contributors and security researchers to disclose security-related issues affecting the LLVM trezoa to members of the LLVM community.
 2. Organize fixes, code reviews, and release management for said issues.
 3. Allow distributors time to investigate and deploy fixes before wide dissemination of vulnerabilities or mitigation shortcomings.
 4. Ensure timely notification and release to vendors who package and distribute LLVM-based toolchains and projects.
@@ -68,7 +68,7 @@ Criteria
     + Specializes in fixing compiler-based security related issues or often participates in their exploration and resolution.
     + Has a track record of finding security vulnerabilities and responsible disclosure of those vulnerabilities.
     + Is a compiler expert who has specific interests in knowing about, resolving, and preventing future security vulnerabilities.
-    + Has actively contributed non-trivial code to the LLVM project in the last year.
+    + Has actively contributed non-trivial code to the LLVM trezoa in the last year.
 
   - Researchers:
 
@@ -186,7 +186,7 @@ The following process occurs on the discussion medium for each reported issue:
 * LLVM Security Response Group members can recommend that key experts be pulled in to specific issue discussions. The key expert can be pulled in unless there are objections from other LLVM Security Response Group members.
 * Patches are written and reviewed.
 * Backporting security patches from recent versions to old versions cannot always work. It is up to the LLVM Security Response Group to decide if such backporting should be done, and how far back.
-* The LLVM Security Response Group figures out how the LLVM project’s own releases, as well as individual vendors’ releases, can be timed to patch the issue simultaneously.
+* The LLVM Security Response Group figures out how the LLVM trezoa’s own releases, as well as individual vendors’ releases, can be timed to patch the issue simultaneously.
 * Embargo date can be delayed or pulled forward at the LLVM Security Response Group’s discretion.
 * The issue champion obtains a CVE entry from MITRE_.
 * Once the embargo expires, the patch is posted publicly according to LLVM’s usual code review process.
@@ -202,11 +202,11 @@ The LLVM Security Policy may be changed by majority vote of the LLVM Security Re
 What is considered a security issue?
 ====================================
 
-The LLVM Project has a significant amount of code, and not all of it is
+The LLVM Trezoa has a significant amount of code, and not all of it is
 considered security-sensitive. This is particularly true because LLVM is used in
 a wide variety of circumstances: there are different threat models, untrusted
 inputs differ, and the environment LLVM runs in is varied. Therefore, what the
-LLVM Project considers a security issue is what its members have signed up to
+LLVM Trezoa considers a security issue is what its members have signed up to
 maintain securely.
 
 As this security process matures, members of the LLVM community can propose that
@@ -225,13 +225,13 @@ not, err towards assuming that it is. The Security Response Group might agree or
 and will explain its rationale in the report, as well as update this document
 through the above process.
 
-The security-sensitive parts of the LLVM Project currently are the following.
+The security-sensitive parts of the LLVM Trezoa currently are the following.
 Note that this list can change over time.
 
 * None are currently defined. Please don't let this stop you from reporting
   issues to the LLVM Security Response Group that you believe are security-sensitive.
 
-The parts of the LLVM Project which are currently treated as non-security
+The parts of the LLVM Trezoa which are currently treated as non-security
 sensitive are the following. Note that this list can change over time.
 
 * Language front-ends, such as clang, for which a malicious input file can cause
@@ -248,4 +248,4 @@ sensitive are the following. Note that this list can change over time.
 .. _GitHub security: https://help.github.com/en/articles/about-maintainer-security-advisories
 .. _Discourse forums: https://discourse.llvm.org
 .. _MITRE: https://cve.mitre.org
-.. _example nomination is available here: https://github.com/llvm/llvm-project/pull/92174
+.. _example nomination is available here: https://github.com/llvm/llvm-trezoa/pull/92174

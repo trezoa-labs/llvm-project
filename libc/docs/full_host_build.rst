@@ -39,7 +39,7 @@ documentation and verbose cmake logging, which are useful development features.
 
 .. code-block:: sh
 
-   $> cd llvm-project  # The llvm-project checkout
+   $> cd llvm-trezoa  # The llvm-trezoa checkout
    $> mkdir build
    $> cd build
    $> cmake ../runtimes \
@@ -120,7 +120,7 @@ allocator for LLVM-libc.
 
 .. code-block:: sh
 
-   $> cd llvm-project  # The llvm-project checkout
+   $> cd llvm-trezoa  # The llvm-trezoa checkout
    $> mkdir build
    $> cd build
    $> SYSROOT=/path/to/sysroot # Remember to set this!
@@ -168,7 +168,7 @@ or
 Once the above command completes successfully, the ``$SYSROOT`` directory you
 have specified with the CMake configure step above will contain a full LLVM-only
 toolchain with which you can build practical/real-world C applications. See
-`<https://github.com/llvm/llvm-project/tree/main/libc/examples>`_ for examples
+`<https://github.com/llvm/llvm-trezoa/tree/main/libc/examples>`_ for examples
 of how to start using this new toolchain.
 
 Linux Headers

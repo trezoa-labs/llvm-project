@@ -1,6 +1,6 @@
 //===- lib/MC/MCWin64EH.cpp - MCWin64EH implementation --------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1044,7 +1044,7 @@ static bool tryARM64PackedUnwind(WinEH::FrameInfo *info, uint32_t FuncLength,
   // require an epilog which isn't exactly symmetrical - we shouldn't accept
   // an exact mirrored epilog for those cases), but in practice,
   // RtlVirtualUnwind behaves as if it does expect the epilogue to contain
-  // the same nops. See https://github.com/llvm/llvm-project/issues/54879.
+  // the same nops. See https://github.com/llvm/llvm-trezoa/issues/54879.
   // To play it safe, don't produce packed unwind info with homed parameters.
   if (H)
     return false;

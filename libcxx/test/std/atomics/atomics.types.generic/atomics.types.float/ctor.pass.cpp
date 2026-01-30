@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -55,7 +55,7 @@ constexpr void testOne() {
 constexpr bool test() {
   testOne<float>();
   testOne<double>();
-  // TODO https://github.com/llvm/llvm-project/issues/47978
+  // TODO https://github.com/llvm/llvm-trezoa/issues/47978
   // testOne<long double>();
   return true;
 }

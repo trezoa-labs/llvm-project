@@ -2,7 +2,7 @@
 #
 # ===- pipeline_helper.py - Remote Index pipeline Helper *- python -------*--===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -26,7 +26,7 @@ def kill_process_after_delay(server_process):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-file-name", required=True)
-    parser.add_argument("--project-root", required=True)
+    parser.add_argument("--trezoa-root", required=True)
     parser.add_argument("--index-file", required=True)
     parser.add_argument("--server-arg", action="append", default=[])
     parser.add_argument(
@@ -46,7 +46,7 @@ def main():
             "clangd-index-server",
             "--server-address=" + server_address,
             args.index_file,
-            args.project_root,
+            args.trezoa_root,
         ]
         + args.server_arg,
         stderr=subprocess.PIPE,
@@ -93,7 +93,7 @@ def main():
         [
             "clangd",
             "--remote-index-address=" + server_address,
-            "--project-root=" + args.project_root,
+            "--trezoa-root=" + args.trezoa_root,
             "--lit-test",
             "--sync",
         ],

@@ -1,4 +1,4 @@
-name: LLVM Project Version Check
+name: LLVM Trezoa Version Check
 
 on:
   push:

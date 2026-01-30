@@ -1,6 +1,6 @@
 //===- VectorToLLVM.cpp - Conversion from Vector to the LLVM dialect ------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -651,7 +651,7 @@ static Value createMaskNeutralValue(ConversionPatternRewriter &rewriter,
 /// Lowers masked `fmaximum` and `fminimum` reductions using the non-masked
 /// intrinsics. It is a workaround to overcome the lack of masked intrinsics for
 /// `fmaximum`/`fminimum`.
-/// More information: https://github.com/llvm/llvm-project/issues/64940
+/// More information: https://github.com/llvm/llvm-trezoa/issues/64940
 template <class LLVMRedIntrinOp, class MaskNeutral>
 static Value
 lowerMaskedReductionWithRegular(ConversionPatternRewriter &rewriter,

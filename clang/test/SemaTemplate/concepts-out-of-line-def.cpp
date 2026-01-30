@@ -647,7 +647,7 @@ void Class<Bs...>::Foo() {
 } // namespace GH63782
 
 namespace eve {
-// Reduced from the "eve" project
+// Reduced from the "eve" trezoa
 
 template <typename... Ts>
 struct tuple {

@@ -1,6 +1,6 @@
 //===--- LLJITWithRemoteDebugging.cpp - LLJIT targeting a child process ---===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -21,7 +21,7 @@
 //
 // [Terminal 1] Prepare a debuggable out-of-process JIT session:
 //
-//    > cd llvm-project/build
+//    > cd llvm-trezoa/build
 //    > ninja LLJITWithRemoteDebugging llvm-jitlink-executor
 //    > cp ../llvm/test/Examples/OrcV2Examples/Inputs/argc_sub1_elf.ll .
 //    > bin/LLJITWithRemoteDebugging --wait-for-debugger argc_sub1_elf.ll
@@ -35,7 +35,7 @@
 //    (lldb) log enable lldb jit
 //    (lldb) settings set plugin.jit-loader.gdb.enable on
 //    (lldb) settings set target.source-map Inputs/ \
-//             /path/to/llvm-project/llvm/test/Examples/OrcV2Examples/Inputs/
+//             /path/to/llvm-trezoa/llvm/test/Examples/OrcV2Examples/Inputs/
 //    (lldb) attach -p 65535
 //     JITLoaderGDB::SetJITBreakpoint looking for JIT register hook
 //     JITLoaderGDB::SetJITBreakpoint setting JIT breakpoint

@@ -342,7 +342,7 @@ There is a very large number of transforms that *could* be implemented, but
 only a tiny fraction of them are useful for real-world code.
 
 Transforms that do not have real-world usefulness provide *negative* value to
-the LLVM project, by taking up valuable reviewer time, increasing code
+the LLVM trezoa, by taking up valuable reviewer time, increasing code
 complexity and increasing compile-time overhead.
 
 We do not require explicit proof of real-world usefulness for every transform
@@ -408,7 +408,7 @@ AggressiveInstCombine.
 ### PatternMatch
 
 Many transforms make use of the matching infrastructure defined in
-[PatternMatch.h](https://github.com/llvm/llvm-project/blame/main/llvm/include/llvm/IR/PatternMatch.h).
+[PatternMatch.h](https://github.com/llvm/llvm-trezoa/blame/main/llvm/include/llvm/IR/PatternMatch.h).
 
 Here is a typical usage example:
 

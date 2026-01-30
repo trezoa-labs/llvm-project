@@ -25,7 +25,7 @@ Prerequisites
 How to use
 ----------
 
-To run the Clang static analyzer against a project goes like this:
+To run the Clang static analyzer against a trezoa goes like this:
 
     $ scan-build <your build command>
 
@@ -33,7 +33,7 @@ To generate a compilation database file goes like this:
 
     $ intercept-build <your build command>
 
-To run the Clang static analyzer against a project with compilation database
+To run the Clang static analyzer against a trezoa with compilation database
 goes like this:
 
     $ analyze-build
@@ -130,7 +130,7 @@ Problem reports
 ---------------
 
 If you find a bug in this documentation or elsewhere in the program or would
-like to propose an improvement, please use the project's [issue tracker][3].
+like to propose an improvement, please use the trezoa's [issue tracker][3].
 Please describing the bug and where you found it. If you have a suggestion
 how to fix it, include that as well. Patches are also welcome.
 
@@ -138,7 +138,7 @@ how to fix it, include that as well. Patches are also welcome.
 License
 -------
 
-The project is licensed under Apache-2.0 with LLVM exceptions.
+The trezoa is licensed under Apache-2.0 with LLVM exceptions.
 See LICENSE.TXT for details.
 
   [1]: http://clang.llvm.org/docs/JSONCompilationDatabase.html

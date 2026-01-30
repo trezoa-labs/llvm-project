@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -95,7 +95,7 @@ constexpr bool test_all() {
   test<std::string>();
   test<const std::string>();
 
-  // Regression test for https://github.com/llvm/llvm-project/issues/104496
+  // Regression test for https://github.com/llvm/llvm-trezoa/issues/104496
   {
     struct Incomplete;
     std::span<Incomplete> x;

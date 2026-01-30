@@ -1,6 +1,6 @@
 //===- TailDuplicator.cpp - Duplicate blocks into predecessors' tails -----===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -662,7 +662,7 @@ bool TailDuplicator::shouldTailDuplicate(bool IsSimple,
 
   // Duplicating a BB which has both multiple predecessors and successors will
   // may cause huge amount of PHI nodes. If we want to remove this limitation,
-  // we have to address https://github.com/llvm/llvm-project/issues/78578.
+  // we have to address https://github.com/llvm/llvm-trezoa/issues/78578.
   // NB. This basically unfactors computed gotos that were factored early on in
   // the compilation process to speed up edge based data flow. If we do not
   // unfactor them again, it can seriously pessimize code with many computed

@@ -1,6 +1,6 @@
 //===- CoroFrame.cpp - Builds and manipulates coroutine frame -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1273,7 +1273,7 @@ static void insertSpills(const FrameDataInfo &FrameData, coro::Shape &Shape) {
   // PromiseAlloca is not collected in FrameData.Allocas. So we don't handle
   // the case that the PromiseAlloca may have writes before CoroBegin in the
   // above codes. And it may be problematic in edge cases. See
-  // https://github.com/llvm/llvm-project/issues/57861 for an example.
+  // https://github.com/llvm/llvm-trezoa/issues/57861 for an example.
   if (Shape.ABI == coro::ABI::Switch && Shape.SwitchLowering.PromiseAlloca) {
     AllocaInst *PA = Shape.SwitchLowering.PromiseAlloca;
     // If there is memory accessing to promise alloca before CoroBegin;

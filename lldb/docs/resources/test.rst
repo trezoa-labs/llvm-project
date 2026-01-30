@@ -97,10 +97,10 @@ implementation is located under ``lldb/packages/Python/lldbsuite``. We have
 several extensions and custom test primitives on top of what's offered by
 `unittest <https://docs.python.org/3/library/unittest.html>`_. Those can be
 found  in
-`lldbtest.py <https://github.com/llvm/llvm-project/blob/main/lldb/packages/Python/lldbsuite/test/lldbtest.py>`_.
+`lldbtest.py <https://github.com/llvm/llvm-trezoa/blob/main/lldb/packages/Python/lldbsuite/test/lldbtest.py>`_.
 
 Below is the directory layout of the `example API test
-<https://github.com/llvm/llvm-project/tree/main/lldb/test/API/sample_test>`_.
+<https://github.com/llvm/llvm-trezoa/tree/main/lldb/test/API/sample_test>`_.
 The test directory will always contain a python file, starting with ``Test``.
 Most of the tests are structured as a binary being debugged, so there will be
 one or more source files and a ``Makefile``.
@@ -125,7 +125,7 @@ Our testing framework also has a bunch of utilities that abstract common
 operations, such as creating targets, setting breakpoints etc. When code is
 shared across tests, we extract it into a utility in ``lldbutil``. It's always
 worth taking a look at  `lldbutil
-<https://github.com/llvm/llvm-project/blob/main/lldb/packages/Python/lldbsuite/test/lldbutil.py>`_
+<https://github.com/llvm/llvm-trezoa/blob/main/lldb/packages/Python/lldbsuite/test/lldbutil.py>`_
 to see if there's a utility to simplify some of the testing boiler plate.
 Because we can't always audit every existing test, this is doubly true when
 looking at an existing test for inspiration.
@@ -166,7 +166,7 @@ Here's an example of a simple ``Makefile`` used by the example test.
   include Makefile.rules
 
 Finding the right variables to set can be tricky. You can always take a look at
-`Makefile.rules <https://github.com/llvm/llvm-project/blob/main/lldb/packages/Python/lldbsuite/test/make/Makefile.rules>`_
+`Makefile.rules <https://github.com/llvm/llvm-trezoa/blob/main/lldb/packages/Python/lldbsuite/test/make/Makefile.rules>`_
 but often it's easier to find an existing ``Makefile`` that does something
 similar to what you want to do.
 
@@ -501,7 +501,7 @@ run as part of a test suite.
 
 ::
 
-   $ ./bin/llvm-lit -sv <llvm-project-root>/lldb/test --filter <test>
+   $ ./bin/llvm-lit -sv <llvm-trezoa-root>/lldb/test --filter <test>
 
 
 Because lit automatically scans a directory for tests, it's also possible to
@@ -509,7 +509,7 @@ pass a subdirectory to run a specific subset of the tests.
 
 ::
 
-   $ ./bin/llvm-lit -sv <llvm-project-root>/lldb/test/Shell/Commands/CommandScriptImmediateOutput
+   $ ./bin/llvm-lit -sv <llvm-trezoa-root>/lldb/test/Shell/Commands/CommandScriptImmediateOutput
 
 
 For the SB API tests it is possible to forward arguments to ``dotest.py`` by
@@ -517,7 +517,7 @@ passing ``--param`` to lit and setting a value for ``dotest-args``.
 
 ::
 
-   $ ./bin/llvm-lit -sv <llvm-project-root>/lldb/test --param dotest-args='-C gcc'
+   $ ./bin/llvm-lit -sv <llvm-trezoa-root>/lldb/test --param dotest-args='-C gcc'
 
 
 Below is an overview of running individual test in the unit and API test suites
@@ -611,7 +611,7 @@ Running tests in QEMU System Emulation Environment
 QEMU can be used to test LLDB in an emulation environment in the absence of
 actual hardware. :doc:`/resources/qemu-testing` describes how to setup an
 emulation environment using QEMU helper scripts found in
-``llvm-project/lldb/scripts/lldb-test-qemu``. These scripts currently
+``llvm-trezoa/lldb/scripts/lldb-test-qemu``. These scripts currently
 work with Arm or AArch64, but support for other architectures can be added easily.
 
 Debugging Test Failures
@@ -642,22 +642,22 @@ then into the LLDB code that backs the operations the test is performing.
 A quick guide to getting started with PTVS is as follows:
 
 #. Install PTVS
-#. Create a Visual Studio Project for the Python code.
-    #. Go to File -> New -> Project -> Python -> From Existing Python Code.
+#. Create a Visual Studio Trezoa for the Python code.
+    #. Go to File -> New -> Trezoa -> Python -> From Existing Python Code.
     #. Choose llvm/tools/lldb as the directory containing the Python code.
     #. When asked where to save the .pyproj file, choose the folder ``llvm/tools/lldb/pyproj``. This is a special folder that is ignored by the ``.gitignore`` file, since it is not checked in.
 #. Set test/dotest.py as the startup file
 #. Make sure there is a Python Environment installed for your distribution. For example, if you installed Python to ``C:\Python35``, PTVS needs to know that this is the interpreter you want to use for running the test suite.
     #. Go to Tools -> Options -> Python Tools -> Environment Options
     #. Click Add Environment, and enter Python 3.5 Debug for the name. Fill out the values correctly.
-#. Configure the project to use this debug interpreter.
-    #. Right click the Project node in Solution Explorer.
+#. Configure the trezoa to use this debug interpreter.
+    #. Right click the Trezoa node in Solution Explorer.
     #. In the General tab, Make sure Python 3.5 Debug is the selected Interpreter.
     #. In Debug/Search Paths, enter the path to your ninja/lib/site-packages directory.
     #. In Debug/Environment Variables, enter ``VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\``.
     #. If you want to enabled mixed mode debugging, check Enable native code debugging (this slows down debugging, so enable it only on an as-needed basis.)
 #. Set the command line for the test suite to run.
-    #. Right click the project in solution explorer and choose the Debug tab.
+    #. Right click the trezoa in solution explorer and choose the Debug tab.
     #. Enter the arguments to dotest.py.
     #. Example command options:
 

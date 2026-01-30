@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -212,7 +212,7 @@ static void test_units() {
 
 template <class CharT>
 static void test_unsigned_types() {
-  // Reported in https://github.com/llvm/llvm-project/issues/96820
+  // Reported in https://github.com/llvm/llvm-trezoa/issues/96820
   using namespace std::literals::chrono_literals;
 
   // C locale

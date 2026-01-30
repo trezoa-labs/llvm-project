@@ -1,6 +1,6 @@
 //===- CastValueChecker - Model implementation of custom RTTIs --*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -55,7 +55,7 @@ public:
   void checkDeadSymbols(SymbolReaper &SR, CheckerContext &C) const;
 
 private:
-  // These are known in the LLVM project. The pairs are in the following form:
+  // These are known in the LLVM trezoa. The pairs are in the following form:
   // {{match-mode, {namespace, call}, argument-count}, {callback, kind}}
   const CallDescriptionMap<std::pair<CastCheck, CallKind>> CDM = {
       {{CDM::SimpleFunc, {"llvm", "cast"}, 1},

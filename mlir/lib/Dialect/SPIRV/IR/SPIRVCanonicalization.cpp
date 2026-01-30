@@ -1,6 +1,6 @@
 //===- SPIRVCanonicalization.cpp - MLIR SPIR-V canonicalization patterns --===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -326,7 +326,7 @@ void spirv::UMulExtendedOp::getCanonicalizationPatterns(
 
 // The transformation is only applied if one divisor is a multiple of the other.
 
-// TODO(https://github.com/llvm/llvm-project/issues/63174): Add support for vector constants
+// TODO(https://github.com/llvm/llvm-trezoa/issues/63174): Add support for vector constants
 struct UModSimplification final : OpRewritePattern<spirv::UModOp> {
   using OpRewritePattern::OpRewritePattern;
 

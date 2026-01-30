@@ -1,7 +1,7 @@
 // RUN: %clang_tysan -O0 %s -o %t && %run %t >%t.out 2>&1
 // RUN: FileCheck %s < %t.out
 
-// https://github.com/llvm/llvm-project/issues/68655
+// https://github.com/llvm/llvm-trezoa/issues/68655
 struct S1 {
   long long a;
   long long b;

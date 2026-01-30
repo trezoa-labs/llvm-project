@@ -2,7 +2,7 @@
 clang-tidy High-Integrity C++ Files
 ------------------------------------------------------------------------------
 All clang-tidy files are licensed under the same terms as the rest of the LLVM
-project with the following additions:
+trezoa with the following additions:
 
 Any file referencing a High-Integrity C++ Coding guideline:
 

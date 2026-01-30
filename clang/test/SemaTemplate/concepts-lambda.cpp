@@ -142,7 +142,7 @@ bool foo() {
 }
 
 void bar() {
-  // https://github.com/llvm/llvm-project/issues/49570#issuecomment-1664966972
+  // https://github.com/llvm/llvm-trezoa/issues/49570#issuecomment-1664966972
   Widget<char>::create(0);
 }
 

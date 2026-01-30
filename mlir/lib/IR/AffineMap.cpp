@@ -1,6 +1,6 @@
 //===- AffineMap.cpp - MLIR Affine Map Classes ----------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -852,7 +852,7 @@ AffineMap mlir::concatAffineMaps(ArrayRef<AffineMap> maps,
   return AffineMap::get(numDims, numSymbols, results, context);
 }
 
-/// Common implementation to project out dimensions or symbols from an affine
+/// Common implementation to trezoa out dimensions or symbols from an affine
 /// map based on the template type.
 /// Additionally, if 'compress' is true, the projected out dimensions or symbols
 /// are also dropped from the resulting map.

@@ -1,6 +1,6 @@
 //===- InstallAPI/HeaderFile.h ----------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -30,7 +30,7 @@ enum class HeaderType {
   Private,
   /// Represents declarations only accessible as implementation details to the
   /// input library.
-  Project,
+  Trezoa,
   /// Unset or unknown type.
   Unknown,
 };
@@ -41,8 +41,8 @@ inline StringRef getName(const HeaderType T) {
     return "Public";
   case HeaderType::Private:
     return "Private";
-  case HeaderType::Project:
-    return "Project";
+  case HeaderType::Trezoa:
+    return "Trezoa";
   case HeaderType::Unknown:
     return "Unknown";
   }
@@ -87,7 +87,7 @@ public:
   bool isUmbrellaHeader() const { return Umbrella; }
 
   bool useIncludeName() const {
-    return Type != HeaderType::Project && !IncludeName.empty();
+    return Type != HeaderType::Trezoa && !IncludeName.empty();
   }
 
   bool operator==(const HeaderFile &Other) const {

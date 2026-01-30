@@ -51,7 +51,7 @@ __attribute__((noinline)) char buggy() {
     char yyy[BUFFER_SIZE] = {};
     // With -hwasan-generate-tags-with-calls=false, stack tags can occasionally
     // be zero, leading to a false negative
-    // (https://github.com/llvm/llvm-project/issues/69221). Work around it by
+    // (https://github.com/llvm/llvm-trezoa/issues/69221). Work around it by
     // using the neighboring variable, which is guaranteed by
     // -hwasan-generate-tags-with-calls=false to have a different (hence
     // non-zero) tag.

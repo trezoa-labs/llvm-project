@@ -1,6 +1,6 @@
 //===- CompilationDatabase.h ------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12,7 +12,7 @@
 //  While C++ refactoring and analysis tools are not compilers, and thus
 //  don't run as part of the build system, they need the exact information
 //  of a build in order to be able to correctly understand the C++ code of
-//  the project. This information is provided via the CompilationDatabase
+//  the trezoa. This information is provided via the CompilationDatabase
 //  interface.
 //
 //  To create a CompilationDatabase from a build directory one can call
@@ -79,11 +79,11 @@ struct CompileCommand {
 /// Interface for compilation databases.
 ///
 /// A compilation database allows the user to retrieve compile command lines
-/// for the files in a project.
+/// for the files in a trezoa.
 ///
 /// Many implementations are enumerable, allowing all command lines to be
 /// retrieved. These can be used to run clang tools over a subset of the files
-/// in a project.
+/// in a trezoa.
 class CompilationDatabase {
 public:
   virtual ~CompilationDatabase();
@@ -121,10 +121,10 @@ public:
   /// compiled.
   ///
   /// This includes compile commands that span multiple source files.
-  /// For example, consider a project with the following compilations:
+  /// For example, consider a trezoa with the following compilations:
   /// $ clang++ -o test a.cc b.cc t.cc
   /// $ clang++ -o production a.cc b.cc -DPRODUCTION
-  /// A compilation database representing the project would return both command
+  /// A compilation database representing the trezoa would return both command
   /// lines for a.cc and b.cc and only the first command line for t.cc.
   virtual std::vector<CompileCommand> getCompileCommands(
       StringRef FilePath) const = 0;

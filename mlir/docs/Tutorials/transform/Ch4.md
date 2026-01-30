@@ -1,7 +1,7 @@
 # Chapter 4: Matching Payload with Transform Operations
 
 **Check the continuously-tested version of MLIR files under
-[mlir/test/Examples/transform/Ch4](https://github.com/llvm/llvm-project/tree/main/mlir/test/Examples/transform/Ch4).**
+[mlir/test/Examples/transform/Ch4](https://github.com/llvm/llvm-trezoa/tree/main/mlir/test/Examples/transform/Ch4).**
 
 Up until now, we were applying transform dialect scripts under the assumption
 that specific payload operations are identified by the caller when the transform

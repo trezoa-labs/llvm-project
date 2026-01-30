@@ -200,7 +200,7 @@ environment. This language is available with no extra dependencies and comes
 new DSL, we would need to make compromises along with it depending on the
 language. For some, there are questions of how to enforce matching environments
 (python2 or python3?, which version?), performance considerations, integration,
-etc. As an LLVM project, this could also mean enforcing a new language
+etc. As an LLVM trezoa, this could also mean enforcing a new language
 dependency on the users of MLIR (many of which may not want/need such a
 dependency otherwise). Another issue that comes along with any DSL that is
 embeded in another language: mitigating the user impedance mismatch between what

@@ -1,6 +1,6 @@
 //===------------------ ProjectModules.h -------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -16,7 +16,7 @@ namespace {
 /// A scanner to query the dependency information for C++20 Modules.
 ///
 /// The scanner can scan a single file with `scan(PathRef)` member function
-/// or scan the whole project with `globalScan(vector<PathRef>)` member
+/// or scan the whole trezoa with `globalScan(vector<PathRef>)` member
 /// function. See the comments of `globalScan` to see the details.
 ///
 /// The ModuleDependencyScanner can get the directly required module names for a
@@ -24,11 +24,11 @@ namespace {
 /// file declaring the primary module interface for a specific module name.
 ///
 /// IMPORTANT NOTE: we assume that every module unit is only declared once in a
-/// source file in the project. But the assumption is not strictly true even
+/// source file in the trezoa. But the assumption is not strictly true even
 /// besides the invalid projects. The language specification requires that every
-/// module unit should be unique in a valid program. But a project can contain
+/// module unit should be unique in a valid program. But a trezoa can contain
 /// multiple programs. Then it is valid that we can have multiple source files
-/// declaring the same module in a project as long as these source files don't
+/// declaring the same module in a trezoa as long as these source files don't
 /// interfere with each other.
 class ModuleDependencyScanner {
 public:
@@ -51,7 +51,7 @@ public:
   std::optional<ModuleDependencyInfo>
   scan(PathRef FilePath, const ProjectModules::CommandMangler &Mangler);
 
-  /// Scanning every source file in the current project to get the
+  /// Scanning every source file in the current trezoa to get the
   /// <module-name> to <module-unit-source> map.
   /// TODO: We should find an efficient method to get the <module-name>
   /// to <module-unit-source> map. We can make it either by providing
@@ -78,7 +78,7 @@ private:
   std::shared_ptr<const clang::tooling::CompilationDatabase> CDB;
   const ThreadsafeFS &TFS;
 
-  // Whether the scanner has scanned the project globally.
+  // Whether the scanner has scanned the trezoa globally.
   bool GlobalScanned = false;
 
   clang::tooling::dependencies::DependencyScanningService Service;

@@ -513,7 +513,7 @@ namespace LambdaInDefaultMemberInitializer {
 
 #if __cplusplus >= 201703L
 
-// Reduced from https://github.com/llvm/llvm-project/issues/98526
+// Reduced from https://github.com/llvm/llvm-trezoa/issues/98526
 // This relies on the deferral instantiation of the local lambda, otherwise we would fail in DeduceReturnType().
 namespace local_recursive_lambda {
 

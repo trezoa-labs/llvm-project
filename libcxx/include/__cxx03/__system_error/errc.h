@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -114,7 +114,7 @@ enum class errc
 // TODO Remove this when the deprecated constants are removed.
 //
 // Note based on the post-review comments in
-// https://github.com/llvm/llvm-project/pull/80542 libc++ no longer deprecates
+// https://github.com/llvm/llvm-trezoa/pull/80542 libc++ no longer deprecates
 // the macros. Since C libraries may start to deprecate these POSIX macros the
 // deprecation warning avoidance is kept.
 #if defined(_LIBCPP_COMPILER_CLANG_BASED)

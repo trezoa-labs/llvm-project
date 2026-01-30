@@ -1,7 +1,7 @@
 // RUN: %clang_tysan -O0 %s -o %t && %run %t >%t.out 2>&1
 // RUN: FileCheck %s < %t.out
 
-// https://github.com/llvm/llvm-project/issues/45282
+// https://github.com/llvm/llvm-trezoa/issues/45282
 
 #include <stdio.h>
 

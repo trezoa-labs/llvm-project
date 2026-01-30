@@ -193,7 +193,7 @@ namespace std_example {
 namespace access_checks {
 namespace in_return_type_requirement {
 
-// https://github.com/llvm/llvm-project/issues/93788
+// https://github.com/llvm/llvm-trezoa/issues/93788
 template <typename From, typename To>
 concept is_assignable = requires(From from, To to) {
   from = to;

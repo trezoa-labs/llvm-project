@@ -48,14 +48,14 @@ set(FLANG_RUNTIME_F128_MATH_LIB "" CACHE STRING
 # Check for a standalone build and configure as appropriate from
 # there.
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  message("Building Flang as a standalone project.")
-  project(Flang)
+  message("Building Flang as a standalone trezoa.")
+  trezoa(Flang)
   set(FLANG_STANDALONE_BUILD ON)
 else()
   set(FLANG_STANDALONE_BUILD OFF)
 endif()
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 
 # MSVC + clang-cl build requires clang_rt.builtin.${target} library

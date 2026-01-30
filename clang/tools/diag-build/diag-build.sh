@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# diag-build: a tool showing enabled warnings in a project.
+# diag-build: a tool showing enabled warnings in a trezoa.
 #
 # diag-build acts as a wrapper for 'diagtool show-enabled', in the same way
 # that scan-build acts as a wrapper for the static analyzer. The common case is

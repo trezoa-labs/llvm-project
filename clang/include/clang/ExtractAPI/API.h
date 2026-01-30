@@ -1,6 +1,6 @@
 //===- ExtractAPI/API.h -----------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -158,7 +158,7 @@ struct SymbolReference {
   StringRef Name;
   StringRef USR;
 
-  /// The source project/module/product of the referred symbol.
+  /// The source trezoa/module/product of the referred symbol.
   StringRef Source;
 
   // A Pointer to the APIRecord for this reference if known

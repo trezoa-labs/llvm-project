@@ -28,7 +28,7 @@ template <class T> struct S {
 
   template <class... U>
   using type9 = decltype([]<True>(U...) {}.template operator()<char>(U()...));
-  // https://github.com/llvm/llvm-project/issues/76674
+  // https://github.com/llvm/llvm-trezoa/issues/76674
   template <class U>
   using type10 = decltype([]<class V> { return V(); }.template operator()<U>());
 
@@ -40,7 +40,7 @@ template <class> using Meow = decltype([]<True> {}.template operator()<int>());
 template <class... U>
 using MeowMeow = decltype([]<True>(U...) {}.template operator()<char>(U()...));
 
-// https://github.com/llvm/llvm-project/issues/70601
+// https://github.com/llvm/llvm-trezoa/issues/70601
 template <class> using U = decltype([]<True> {}.template operator()<int>());
 
 U<int> foo();

@@ -10,8 +10,8 @@ config: {'pre_flight': <function pre_flight at 0x1098541b8>, 'post_flight': <fun
 LLDB build dir: /Volumes/data/lldb/svn/ToT/build/Debug
 LLDB-139
 Path: /Volumes/data/lldb/svn/ToT
-URL: https://johnny@llvm.org/svn/llvm-project/lldb/trunk
-Repository Root: https://johnny@llvm.org/svn/llvm-project
+URL: https://johnny@llvm.org/svn/llvm-trezoa/lldb/trunk
+Repository Root: https://johnny@llvm.org/svn/llvm-trezoa
 Repository UUID: 91177308-0d34-0410-b5e6-96231b3b80d8
 Revision: 154753
 Node Kind: directory

@@ -1,6 +1,6 @@
 //===- ShapedTypeTest.cpp - ShapedType unit tests -------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -161,7 +161,7 @@ TEST(ShapedTypeTest, VectorTypeBuilder) {
 
   {
     // Test for bug from:
-    // https://github.com/llvm/llvm-project/commit/b44b3494f60296db6aca38a14cab061d9b747a0a
+    // https://github.com/llvm/llvm-trezoa/commit/b44b3494f60296db6aca38a14cab061d9b747a0a
     // Constructs a temporary builder, modifies it, copies it to `builder`.
     // This used to lead to a use-after-free. Running under sanitizers will
     // catch any issues.
@@ -172,7 +172,7 @@ TEST(ShapedTypeTest, VectorTypeBuilder) {
 
   {
     // Make builder from scratch (without scalable dims) -- this use to lead to
-    // a use-after-free see: https://github.com/llvm/llvm-project/pull/68969.
+    // a use-after-free see: https://github.com/llvm/llvm-trezoa/pull/68969.
     // Running under sanitizers will catch any issues.
     SmallVector<int64_t> shape{1, 2, 3, 4};
     VectorType::Builder builder(shape, f32);
@@ -181,7 +181,7 @@ TEST(ShapedTypeTest, VectorTypeBuilder) {
 
   {
     // Set vector shape (without scalable dims) -- this use to lead to
-    // a use-after-free see: https://github.com/llvm/llvm-project/pull/68969.
+    // a use-after-free see: https://github.com/llvm/llvm-trezoa/pull/68969.
     // Running under sanitizers will catch any issues.
     VectorType::Builder builder(vectorType);
     SmallVector<int64_t> newShape{2, 2};
@@ -216,7 +216,7 @@ TEST(ShapedTypeTest, RankedTensorTypeBuilder) {
 
   {
     // Test for bug from:
-    // https://github.com/llvm/llvm-project/commit/b44b3494f60296db6aca38a14cab061d9b747a0a
+    // https://github.com/llvm/llvm-trezoa/commit/b44b3494f60296db6aca38a14cab061d9b747a0a
     // Constructs a temporary builder, modifies it, copies it to `builder`.
     // This used to lead to a use-after-free. Running under sanitizers will
     // catch any issues.

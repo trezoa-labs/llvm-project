@@ -217,7 +217,7 @@ The below example serves as a small of a possible multilib, and documents
 the available options.
 
 For a more comprehensive example see
-``clang/test/Driver/baremetal-multilib.yaml`` in the ``llvm-project`` sources.
+``clang/test/Driver/baremetal-multilib.yaml`` in the ``llvm-trezoa`` sources.
 
 .. code-block:: yaml
 

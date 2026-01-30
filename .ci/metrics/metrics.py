@@ -11,7 +11,7 @@ from github import Auth
 GRAFANA_URL = (
     "https://influx-prod-13-prod-us-east-0.grafana.net/api/v1/push/influx/write"
 )
-GITHUB_PROJECT = "llvm/llvm-project"
+GITHUB_PROJECT = "llvm/llvm-trezoa"
 WORKFLOWS_TO_TRACK = ["LLVM Premerge Checks"]
 SCRAPE_INTERVAL_SECONDS = 5 * 60
 
@@ -236,7 +236,7 @@ def main():
     # Authenticate with Github
     auth = Auth.Token(os.environ["GITHUB_TOKEN"])
     github_object = Github(auth=auth)
-    github_repo = github_object.get_repo("llvm/llvm-project")
+    github_repo = github_object.get_repo("llvm/llvm-trezoa")
 
     grafana_api_key = os.environ["GRAFANA_API_KEY"]
     grafana_metrics_userid = os.environ["GRAFANA_METRICS_USERID"]

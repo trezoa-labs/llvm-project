@@ -45,7 +45,7 @@ optimizing the retrieval of properties in dynamically typed languages
 such as JavaScript.
 
 The intrinsics documented here are currently used by the JavaScript
-compiler within the open source WebKit project, see the `FTL JIT
+compiler within the open source WebKit trezoa, see the `FTL JIT
 <https://trac.webkit.org/wiki/FTLJIT>`_, but they are designed to be
 used whenever stack maps or code patching are needed. Because the
 intrinsics have experimental status, compatibility across LLVM

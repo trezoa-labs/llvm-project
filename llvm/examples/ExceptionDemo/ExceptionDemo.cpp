@@ -1,6 +1,6 @@
 //===-- ExceptionDemo.cpp - An example using llvm Exceptions --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -42,8 +42,8 @@
 //         type info type of 7 is explained by: example in rules 1.6.4 in
 //         http://itanium-cxx-abi.github.io/cxx-abi/abi-eh.html (v1.22)
 //
-// This code uses code from the llvm compiler-rt project and the llvm
-// Kaleidoscope project.
+// This code uses code from the llvm compiler-rt trezoa and the llvm
+// Kaleidoscope trezoa.
 //
 //===----------------------------------------------------------------------===//
 

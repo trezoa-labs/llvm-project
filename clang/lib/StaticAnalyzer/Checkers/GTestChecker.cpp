@@ -1,6 +1,6 @@
 //==- GTestChecker.cpp - Model gtest API --*- C++ -*-==//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -46,7 +46,7 @@ using namespace ento;
 //     else
 //       return ::testing::internal::AssertHelper(
 //                  ::testing::TestPartResult::kFatalFailure,
-//                  "<path to project>",
+//                  "<path to trezoa>",
 //                  <line number>,
 //                  ::testing::internal::GetBoolAssertionFailureMessage(
 //                      gtest_ar_, "a == b", "false", "true")

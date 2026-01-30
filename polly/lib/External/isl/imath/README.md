@@ -103,5 +103,5 @@ problems like range errors, running out of memory, and undefined results.
 
 The IMath API also supports operations on arbitrary precision rational numbers.
 The functions for creating and manipulating rational values (type `mpq_t`) are
-defined in `imrat.h`, so that you need only include them in your project if you
+defined in `imrat.h`, so that you need only include them in your trezoa if you
 wish to.

@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -157,7 +157,7 @@ struct MoveOnlyErrorType {
 // tail padding. With this type we can check that `std::expected` handles
 // the case where the "has value" flag is an overlapping subobject correctly.
 //
-// See https://github.com/llvm/llvm-project/issues/68552 for details.
+// See https://github.com/llvm/llvm-trezoa/issues/68552 for details.
 template <int Constant>
 struct TailClobberer {
   constexpr TailClobberer() noexcept {
@@ -201,7 +201,7 @@ static_assert(!std::is_nothrow_move_constructible_v<TailClobbererNonTrivialMove<
 
 // The `CheckForInvalidWrites` class recreates situations where other objects
 // may be placed into a `std::expected`'s tail padding (see
-// https://github.com/llvm/llvm-project/issues/70494). With a template
+// https://github.com/llvm/llvm-trezoa/issues/70494). With a template
 // parameter `WithPaddedExpected` two cases can be tested:
 //
 // 1. The `std::expected<T, E>` itself has padding, because `T`/`E` _don't_

@@ -314,7 +314,7 @@ unsigned int x4 = gridDim.x;
 
 } // namespace Bugzilla_48758
 
-// https://github.com/llvm/llvm-project/issues/61736
+// https://github.com/llvm/llvm-trezoa/issues/61736
 namespace llvm_issue_61736
 {
 

@@ -1,6 +1,6 @@
 //===- PresburgerSpaceTest.cpp - Tests for PresburgerSpace ----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -153,7 +153,7 @@ TEST(PresburgerSpaceTest, convertVarKindLocals) {
   space.setId(VarKind::Range, 0, Identifier(&identifiers[0]));
   space.setId(VarKind::Range, 1, Identifier(&identifiers[1]));
 
-  // Convert Range variables to locals i.e. project them out.
+  // Convert Range variables to locals i.e. trezoa them out.
   space.convertVarKind(VarKind::Range, 0, 2, VarKind::Local, 0);
 
   // Check if the variables were moved.

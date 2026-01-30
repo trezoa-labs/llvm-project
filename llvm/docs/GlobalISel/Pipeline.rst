@@ -131,7 +131,7 @@ testable:
 
 .. image:: testing-unit-level.png
 
-It's possible to create an imaginary target such as in `LegalizerHelperTest.cpp <https://github.com/llvm/llvm-project/blob/93b29d3882baf7df42e4e9bc26b977b00373ef56/llvm/unittests/CodeGen/GlobalISel/LegalizerHelperTest.cpp#L28-L57>`_
+It's possible to create an imaginary target such as in `LegalizerHelperTest.cpp <https://github.com/llvm/llvm-trezoa/blob/93b29d3882baf7df42e4e9bc26b977b00373ef56/llvm/unittests/CodeGen/GlobalISel/LegalizerHelperTest.cpp#L28-L57>`_
 and perform a single step of the algorithm and check the result. The MIR and
 FileCheck directives can be embedded using strings so you still have access to
 the convenience available in llvm-lit.

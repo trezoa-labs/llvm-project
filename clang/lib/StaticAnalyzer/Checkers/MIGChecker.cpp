@@ -1,6 +1,6 @@
 //== MIGChecker.cpp - MIG calling convention checker ------------*- C++ -*--==//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -248,7 +248,7 @@ static bool mayBeSuccess(SVal V, CheckerContext &C) {
 
 void MIGChecker::checkReturnAux(const ReturnStmt *RS, CheckerContext &C) const {
   // It is very unlikely that a MIG callback will be called from anywhere
-  // within the project under analysis and the caller isn't itself a routine
+  // within the trezoa under analysis and the caller isn't itself a routine
   // that follows the MIG calling convention. Therefore we're safe to believe
   // that it's always the top frame that is of interest. There's a slight chance
   // that the user would want to enforce the MIG calling convention upon

@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -91,7 +91,7 @@ constexpr bool test() {
   }
 
   // Make sure iota_view<short, short> works properly. For details,
-  // see https://github.com/llvm/llvm-project/issues/67551.
+  // see https://github.com/llvm/llvm-trezoa/issues/67551.
   {
     static_assert(std::ranges::sized_range<std::ranges::iota_view<short, short>>);
     std::ranges::iota_view<short, short> io(10, 20);

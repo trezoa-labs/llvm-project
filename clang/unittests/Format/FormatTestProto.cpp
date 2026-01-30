@@ -1,6 +1,6 @@
 //===- unittest/Format/FormatTestProto.cpp --------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -62,7 +62,7 @@ TEST_F(FormatTestProto, FormatsMessages) {
                "          another_fiiiiiiiiiiiiiiiiiiiiield = 2;\n"
                "}");
   verifyFormat("message SomeMessage {\n"
-               "  map<string, Project> projects = 1;\n"
+               "  map<string, Trezoa> projects = 1;\n"
                "  optional map<string, int32> size_projects = 2;\n"
                "  map<int, really.really.really.long.qualified.type.nameeee>\n"
                "      projects = 3;\n"
@@ -71,7 +71,7 @@ TEST_F(FormatTestProto, FormatsMessages) {
                "  map<int,\n"
                "      reallyreallyreallyreallyreallyreallyreallylongname>\n"
                "      projects = 5;\n"
-               "  map<int, Project>\n"
+               "  map<int, Trezoa>\n"
                "      longlonglonglonglonglonglonglonglonglongonglon = 6;\n"
                "  map<releleallyreallyreallyreallyreallyreallyreallylongname,\n"
                "      int> projects = 7;\n"

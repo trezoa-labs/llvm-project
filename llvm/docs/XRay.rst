@@ -143,7 +143,7 @@ You may have multiple files loaded through multiple instances of the flag.
 XRay Runtime Library
 --------------------
 
-The XRay Runtime Library is part of the compiler-rt project, which implements
+The XRay Runtime Library is part of the compiler-rt trezoa, which implements
 the runtime components that perform the patching and unpatching of inserted
 instrumentation points. When you use ``clang`` to link your binaries and the
 ``-fxray-instrument`` flag, it will automatically link in the XRay runtime.
@@ -317,7 +317,7 @@ supports the following subcommands:
   convert from binary XRay traces (both basic and FDR mode) to YAML,
   `flame-graph <https://github.com/brendangregg/FlameGraph>`_ friendly text
   formats, as well as `Chrome Trace Viewer (catapult)
-  <https://github.com/catapult-project/catapult>` formats.
+  <https://github.com/catapult-trezoa/catapult>` formats.
 - ``graph``: Generates a DOT graph of the function call relationships between
   functions found in an XRay trace.
 - ``stack``: Reconstructs function call stacks from a timeline of function

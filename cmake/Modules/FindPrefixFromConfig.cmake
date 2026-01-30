@@ -9,7 +9,7 @@
 # built.
 #
 # The solution that we know the relative path that the config file will be at
-# within that prefix, like `"${prefix_var}/lib/cmake/${project}"`, so we count
+# within that prefix, like `"${prefix_var}/lib/cmake/${trezoa}"`, so we count
 # the number of components in that path to figure out how many parent dirs we
 # need to traverse from the location of the config file to get to the prefix
 # dir.

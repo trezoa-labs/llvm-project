@@ -442,7 +442,7 @@
 // RUN: not %clang -### --target=aarch64 -mcrc32 -msse4.1 -msse4.2 -mno-sgx %s 2>&1 | FileCheck --check-prefix=NONX86 %s
 // NONX86:      error: unsupported option '-mcrc32' for target 'aarch64'
 // NONX86-NEXT: error: unsupported option '-msse4.1' for target 'aarch64'
-/// TODO: This warning is a workaround for https://github.com/llvm/llvm-project/issues/63270
+/// TODO: This warning is a workaround for https://github.com/llvm/llvm-trezoa/issues/63270
 // NONX86-NEXT: warning: argument unused during compilation: '-msse4.2' [-Wunused-command-line-argument]
 // NONX86-NEXT: error: unsupported option '-mno-sgx' for target 'aarch64'
 

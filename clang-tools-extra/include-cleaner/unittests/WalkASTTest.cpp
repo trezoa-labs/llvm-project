@@ -1,6 +1,6 @@
 //===--- WalkASTTest.cpp ------------------------------------------- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -172,7 +172,7 @@ TEST(WalkAST, ClassTemplates) {
                        "^Foo<int> x;"),
               ElementsAre(Decl::CXXRecord));
   // FIXME: This is broken due to
-  // https://github.com/llvm/llvm-project/issues/42259.
+  // https://github.com/llvm/llvm-trezoa/issues/42259.
   EXPECT_THAT(testWalk(R"cpp(
     template<typename T> struct $explicit^Foo { Foo(T); };
     template<> struct Foo<int> { Foo(int); };)cpp",

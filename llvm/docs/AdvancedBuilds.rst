@@ -9,7 +9,7 @@ Introduction
 ============
 
 `CMake <http://www.cmake.org/>`_ is a cross-platform build-generator tool. CMake
-does not build the project, it generates the files needed by your build tool
+does not build the trezoa, it generates the files needed by your build tool
 (GNU make, Visual Studio, etc.) for building LLVM.
 
 If **you are a new contributor**, please start with the :doc:`GettingStarted` or
@@ -147,9 +147,9 @@ that also enables ThinTLO, use the following command:
 
 By default, clang will generate profile data by compiling a simple
 hello world program.  You can also tell clang use an external
-project for generating profile data that may be a better fit for your
-use case.  The project you specify must either be a lit test suite
-(use the CLANG_PGO_TRAINING_DATA option) or a CMake project (use the
+trezoa for generating profile data that may be a better fit for your
+use case.  The trezoa you specify must either be a lit test suite
+(use the CLANG_PGO_TRAINING_DATA option) or a CMake trezoa (use the
 CLANG_PERF_TRAINING_DATA_SOURCE_DIR option).
 
 For example, If you wanted to use the
@@ -164,7 +164,7 @@ profile data you would use the following command:
 
 The BOOTSTRAP\_ prefixes tells CMake to pass the variables on to the instrumented
 stage two build.  And the CLANG_PGO_TRAINING_DEPS option let's you specify
-additional build targets to build before building the external project.  The
+additional build targets to build before building the external trezoa.  The
 LLVM Test Suite requires compiler-rt to build, so we need to add the
 `runtimes` target as a dependency.
 
@@ -236,7 +236,7 @@ The PGO cache generates the following additional targets:
 BOLT
 ====
 
-`BOLT <https://github.com/llvm/llvm-project/blob/main/bolt/README.md>`_
+`BOLT <https://github.com/llvm/llvm-trezoa/blob/main/bolt/README.md>`_
 (Binary Optimization and Layout Tool) is a tool that optimizes binaries
 post-link by profiling them at runtime and then using that information to
 optimize the layout of the final binary among other optimizations performed

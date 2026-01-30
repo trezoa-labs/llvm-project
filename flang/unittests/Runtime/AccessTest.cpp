@@ -1,6 +1,6 @@
 //===-- flang/unittests/Runtime/AccessTest.cpp ----------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -53,7 +53,7 @@ static bool exists(const std::string &path) {
 }
 
 // Implementation of std::filesystem::temp_directory_path adapted from libcxx
-// See llvm-project/libcxx/src/filesystem/operations.cpp
+// See llvm-trezoa/libcxx/src/filesystem/operations.cpp
 // Using std::filesystem is inconvenient because the required flags are not
 // consistent accross compilers and CMake doesn't have built in support to
 // determine the correct flags.

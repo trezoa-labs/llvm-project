@@ -1,9 +1,9 @@
-# Cross project tests, for tests that require access to multiple projects across
+# Cross trezoa tests, for tests that require access to multiple projects across
 # LLVM (e.g. clang, lld and lldb).
 # The subset inside debuginfo-tests invoke clang to generate programs with
 # various types of debug info, and then run those programs under a debugger
 # such as GDB or LLDB to verify the results.
-set(LLVM_SUBPROJECT_TITLE "Cross-Project")
+set(LLVM_SUBPROJECT_TITLE "Cross-Trezoa")
 
 find_package(Python3 COMPONENTS Interpreter)
 
@@ -68,7 +68,7 @@ configure_lit_site_cfg(
   ${CMAKE_CURRENT_SOURCE_DIR}/lit.cfg.py
   )
 
-add_lit_testsuite(check-cross-project "Running cross-project tests"
+add_lit_testsuite(check-cross-trezoa "Running cross-trezoa tests"
   ${CMAKE_CURRENT_BINARY_DIR}
   DEPENDS ${CROSS_PROJECT_TEST_DEPS}
   )
@@ -88,13 +88,13 @@ add_lit_testsuite(check-intrinsic-headers "Running intrinsic header tests"
   )
 
 # AMDGPU tests.
-add_lit_testsuite(check-cross-amdgpu "Running AMDGPU cross-project tests"
+add_lit_testsuite(check-cross-amdgpu "Running AMDGPU cross-trezoa tests"
   ${CMAKE_CURRENT_BINARY_DIR}/amdgpu
   EXCLUDE_FROM_CHECK_ALL
   DEPENDS clang
   )
 
-# Add check-cross-project-* targets.
+# Add check-cross-trezoa-* targets.
 add_lit_testsuites(CROSS_PROJECT ${CMAKE_CURRENT_SOURCE_DIR}
   DEPENDS ${CROSS_PROJECT_TEST_DEPS}
   )

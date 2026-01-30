@@ -243,7 +243,7 @@ after its argument range. So, ``after(node("id"))`` is the empty range immediate
 following the AST node bound to ``id``.
 
 For the full collection of ``RangeSelector``\ s, see the header,
-`clang/Tooling/Transformer/RangeSelector.h <https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Tooling/Transformer/RangeSelector.h>`_
+`clang/Tooling/Transformer/RangeSelector.h <https://github.com/llvm/llvm-trezoa/blob/main/clang/include/clang/Tooling/Transformer/RangeSelector.h>`_
 
 Stencils
 ^^^^^^^^
@@ -269,7 +269,7 @@ messages that reference (named) elements of the matched code, like we saw in the
 example of rewriting method calls.
 
 Further details of the ``Stencil`` type are documented in the header file
-`clang/Tooling/Transformer/Stencil.h <https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Tooling/Transformer/Stencil.h>`_.
+`clang/Tooling/Transformer/Stencil.h <https://github.com/llvm/llvm-trezoa/blob/main/clang/include/clang/Tooling/Transformer/Stencil.h>`_.
 
 Edits
 ^^^^^
@@ -288,7 +288,7 @@ in a function declaration with:
 We also provide simpler editing primitives for insertion and deletion:
 ``insertBefore``, ``insertAfter`` and ``remove``. These can all be found in the header
 file
-`clang/Tooling/Transformer/RewriteRule.h <https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Tooling/Transformer/RewriteRule.h>`_.
+`clang/Tooling/Transformer/RewriteRule.h <https://github.com/llvm/llvm-trezoa/blob/main/clang/include/clang/Tooling/Transformer/RewriteRule.h>`_.
 
 We are not limited one edit per match found. Some situations require making
 multiple edits for each match. For example, suppose we wanted to swap two
@@ -319,9 +319,9 @@ That is, an ``EditGenerator`` is function that maps a ``MatchResult`` to a set
 of edits, or fails. This signature supports a very general form of computation
 over match results. Transformer provides a number of functions for working with
 ``EditGenerator``\ s, most notably
-`flatten <https://github.com/llvm/llvm-project/blob/1fabe6e51917bcd7a1242294069c682fe6dffa45/clang/include/clang/Tooling/Transformer/RewriteRule.h#L165-L167>`_
+`flatten <https://github.com/llvm/llvm-trezoa/blob/1fabe6e51917bcd7a1242294069c682fe6dffa45/clang/include/clang/Tooling/Transformer/RewriteRule.h#L165-L167>`_
 ``EditGenerator``\ s, like list flattening. For the full list, see the header file
-`clang/Tooling/Transformer/RewriteRule.h <https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Tooling/Transformer/RewriteRule.h>`_.
+`clang/Tooling/Transformer/RewriteRule.h <https://github.com/llvm/llvm-trezoa/blob/main/clang/include/clang/Tooling/Transformer/RewriteRule.h>`_.
 
 Rules
 ^^^^^
@@ -355,7 +355,7 @@ particular header file. To this end, users can modify rules to specify include
 directives with ``addInclude``.
 
 For additional documentation on these functions, see the header file
-`clang/Tooling/Transformer/RewriteRule.h <https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Tooling/Transformer/RewriteRule.h>`_.
+`clang/Tooling/Transformer/RewriteRule.h <https://github.com/llvm/llvm-trezoa/blob/main/clang/include/clang/Tooling/Transformer/RewriteRule.h>`_.
 
 Using a RewriteRule as a clang-tidy check
 -----------------------------------------
@@ -381,7 +381,7 @@ and/or the clang-tidy configuration, it can be expressed as a function taking
 these as parameters and (optionally) returning a ``RewriteRule``. This would be
 useful, for example, for our method-renaming rule, which is parameterized by the
 original name and the target. For details, see
-`clang-tools-extra/clang-tidy/utils/TransformerClangTidyCheck.h <https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/clang-tidy/utils/TransformerClangTidyCheck.h>`_
+`clang-tools-extra/clang-tidy/utils/TransformerClangTidyCheck.h <https://github.com/llvm/llvm-trezoa/blob/main/clang-tools-extra/clang-tidy/utils/TransformerClangTidyCheck.h>`_
 
 Related Reading
 ---------------

@@ -1,6 +1,6 @@
 //===-- llvm/Instruction.h - Instruction class definition -------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -267,7 +267,7 @@ public:
   void moveBeforePreserving(Instruction *MovePos);
 
 private:
-  /// RemoveDIs project: all other moves implemented with this method,
+  /// RemoveDIs trezoa: all other moves implemented with this method,
   /// centralising debug-info updates into one place.
   void moveBeforeImpl(BasicBlock &BB, InstListType::iterator I, bool Preserve);
 

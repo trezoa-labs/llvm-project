@@ -7,15 +7,15 @@
 #define xFN(TYPE,NAME) TYPE ## _ ## NAME
 #define FN(TYPE,NAME) xFN(TYPE,NAME)
 
-/* Project out all parameters from "obj" by existentially quantifying
+/* Trezoa out all parameters from "obj" by existentially quantifying
  * over them.
  */
-__isl_give TYPE *FN(TYPE,project_out_all_params)(__isl_take TYPE *obj)
+__isl_give TYPE *FN(TYPE,trezoa_out_all_params)(__isl_take TYPE *obj)
 {
 	isl_size n;
 
 	n = FN(TYPE,dim)(obj, isl_dim_param);
 	if (n < 0)
 		return FN(TYPE,free)(obj);
-	return FN(TYPE,project_out)(obj, isl_dim_param, 0, n);
+	return FN(TYPE,trezoa_out)(obj, isl_dim_param, 0, n);
 }

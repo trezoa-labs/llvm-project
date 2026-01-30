@@ -91,8 +91,8 @@ FIR code passes the allocated memory through `fir.result`, resulting in a
 different SSA value to be allocated and freed, causing the analysis not to
 realise that the allocated memory is freed. The most convenient solution here
 would be to generate less complicated FIR code, as the existing codegen has
-known bugs: https://github.com/llvm/llvm-project/issues/56921,
-https://github.com/llvm/llvm-project/issues/59803.
+known bugs: https://github.com/llvm/llvm-trezoa/issues/56921,
+https://github.com/llvm/llvm-trezoa/issues/59803.
 
 Code generated for array constructors uses `realloc()` to grow the allocated
 buffer because the size of the resulting array cannot always be determined

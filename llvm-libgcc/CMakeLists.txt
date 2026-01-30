@@ -1,5 +1,5 @@
 #===============================================================================
-# Setup Project
+# Setup Trezoa
 #===============================================================================
 
 cmake_minimum_required(VERSION 3.20.0)
@@ -7,9 +7,9 @@ set(LLVM_SUBPROJECT_TITLE "LLVM libgcc")
 
 set(LLVM_COMMON_CMAKE_UTILS "${CMAKE_CURRENT_SOURCE_DIR}/../cmake")
 
-# Check if llvm-libgcc is built as a standalone project
+# Check if llvm-libgcc is built as a standalone trezoa
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR OR LLVM_LIBGCC_STANDALONE_BUILD)
-  project(llvm-libgcc LANGUAGES C CXX ASM)
+  trezoa(llvm-libgcc LANGUAGES C CXX ASM)
   set(COMPILER_RT_STANDALONE_BUILD ON)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
   set(LLVM_LIBGCC_COMPILER_RT_BINARY_DIR "compiler-rt")

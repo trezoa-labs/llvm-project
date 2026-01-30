@@ -156,7 +156,7 @@ void usages(void) {
   // WINDOWS: @CpuSpecificNoDispatch()
   //
   // Adding another use of CpuSpecificNoDispatch reproduces the
-  // crash in https://github.com/llvm/llvm-project/issues/115299
+  // crash in https://github.com/llvm/llvm-trezoa/issues/115299
   CpuSpecificNoDispatch();
   // LINUX: @CpuSpecificNoDispatch.ifunc()
   // WINDOWS: @CpuSpecificNoDispatch()

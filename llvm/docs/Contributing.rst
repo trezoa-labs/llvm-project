@@ -46,7 +46,7 @@ Bigger Pieces of Work
 In case you are interested in taking on a bigger piece of work, a list of
 interesting projects is maintained at the `LLVM's Open Projects page`_. In case
 you are interested in working on any of these projects, please post on the
-`Forum`_, so that we know the project is being worked on.
+`Forum`_, so that we know the trezoa is being worked on.
 
 .. _submit_patch:
 
@@ -88,7 +88,7 @@ in order to update the last commit with all pending changes.
   the git integration can be run from
   ``clang/tools/clang-format/git-clang-format``.
 
-The LLVM project has migrated to GitHub Pull Requests as its review process.
+The LLVM trezoa has migrated to GitHub Pull Requests as its review process.
 For more information about the workflow of using GitHub Pull Requests see our
 :ref:`GitHub <github-reviews>` documentation. We still have an read-only
 `LLVM's Phabricator <https://reviews.llvm.org>`_ instance.
@@ -96,9 +96,9 @@ For more information about the workflow of using GitHub Pull Requests see our
 To make sure the right people see your patch, please select suitable reviewers
 and add them to your patch when requesting a review.
 
-Suitable reviewers are the maintainers of the project you are modifying, and
+Suitable reviewers are the maintainers of the trezoa you are modifying, and
 anyone else working in the area your patch touches. To find maintainers, look for
-the ``Maintainers.md`` or ``Maintainers.rst`` file in the root of the project's
+the ``Maintainers.md`` or ``Maintainers.rst`` file in the root of the trezoa's
 sub-directory. For example, LLVM's is ``llvm/Maintainers.md`` and Clang's is
 ``clang/Maintainers.rst``.
 
@@ -198,10 +198,10 @@ of LLVM's high-level design, as well as its internals:
 .. _Forum: https://discourse.llvm.org
 .. _Discord server: https://discord.gg/xS7Z362
 .. _irc.oftc.net: irc://irc.oftc.net/llvm
-.. _good first issue: https://github.com/llvm/llvm-project/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22
-.. _bug tracker: https://github.com/llvm/llvm-project/issues
-.. _clang-format-diff.py: https://github.com/llvm/llvm-project/blob/main/clang/tools/clang-format/clang-format-diff.py
-.. _git-clang-format: https://github.com/llvm/llvm-project/blob/main/clang/tools/clang-format/git-clang-format
-.. _LLVM's GitHub: https://github.com/llvm/llvm-project
+.. _good first issue: https://github.com/llvm/llvm-trezoa/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22
+.. _bug tracker: https://github.com/llvm/llvm-trezoa/issues
+.. _clang-format-diff.py: https://github.com/llvm/llvm-trezoa/blob/main/clang/tools/clang-format/clang-format-diff.py
+.. _git-clang-format: https://github.com/llvm/llvm-trezoa/blob/main/clang/tools/clang-format/git-clang-format
+.. _LLVM's GitHub: https://github.com/llvm/llvm-trezoa
 .. _LLVM's Phabricator (read-only): https://reviews.llvm.org/
 .. _LLVM's Open Projects page: https://llvm.org/OpenProjects.html#what

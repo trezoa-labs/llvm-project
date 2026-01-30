@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 #pragma omp begin declare variant match(device = {kind(gpu)})
-// Extension provided by the 'libc' project.
+// Extension provided by the 'libc' trezoa.
 unsigned long long __llvm_omp_host_call(void *fn, void *args, size_t size);
 #pragma omp declare target to(__llvm_omp_host_call) device_type(nohost)
 #pragma omp end declare variant

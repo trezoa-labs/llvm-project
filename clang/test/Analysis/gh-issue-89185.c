@@ -2,7 +2,7 @@
 
 void clang_analyzer_warnIfReached(void);
 
-// https://github.com/llvm/llvm-project/issues/89185
+// https://github.com/llvm/llvm-trezoa/issues/89185
 void binding_to_label_loc() {
   char *b = &&MyLabel; // expected-note {{'b' initialized here}}
 MyLabel:

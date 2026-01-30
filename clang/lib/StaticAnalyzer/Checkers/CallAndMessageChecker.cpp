@@ -1,6 +1,6 @@
 //===--- CallAndMessageChecker.cpp ------------------------------*- C++ -*--==//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -54,7 +54,7 @@ public:
   // underlaying modeling engine.
   // The reason behind having *checker options* rather then actual *checkers*
   // here is that CallAndMessage is among the oldest checkers out there, and can
-  // be responsible for the majority of the reports on any given project. This
+  // be responsible for the majority of the reports on any given trezoa. This
   // is obviously not ideal, but changing checker name has the consequence of
   // changing the issue hashes associated with the reports, and databases
   // relying on this (CodeChecker, for instance) would suffer greatly.

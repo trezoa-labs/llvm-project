@@ -9,7 +9,7 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
   NO_POLICY_SCOPE)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  project(bolt)
+  trezoa(bolt)
   set(BOLT_BUILT_STANDALONE TRUE)
 endif()
 
@@ -111,7 +111,7 @@ if (LLVM_INCLUDE_TESTS)
   set(BOLT_LLD_PRESENT OFF)
 
   if ("clang" IN_LIST LLVM_ENABLE_PROJECTS AND BOLT_CLANG_EXE)
-    message(WARNING "BOLT_CLANG_EXE is set and clang project is enabled. \
+    message(WARNING "BOLT_CLANG_EXE is set and clang trezoa is enabled. \
           BOLT_CLANG_EXE will be used for BOLT tests.")
   endif()
   if ("clang" IN_LIST LLVM_ENABLE_PROJECTS OR BOLT_CLANG_EXE)
@@ -119,7 +119,7 @@ if (LLVM_INCLUDE_TESTS)
   endif()
 
   if ("lld" IN_LIST LLVM_ENABLE_PROJECTS AND BOLT_LLD_EXE)
-    message(WARNING "BOLT_LLD_EXE is set and lld project is enabled. \
+    message(WARNING "BOLT_LLD_EXE is set and lld trezoa is enabled. \
           BOLT_LLD_EXE will be used for BOLT tests.")
   endif()
   if ("lld" IN_LIST LLVM_ENABLE_PROJECTS OR BOLT_LLD_EXE)

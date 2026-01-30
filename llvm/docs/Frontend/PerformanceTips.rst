@@ -29,7 +29,7 @@ Studying Clang's CodeGen directory can also be a good source of ideas.  Note
 that Clang and LLVM are explicitly version locked so you'll need to make sure
 you're using a Clang built from the same git revision or release as the LLVM
 library you're using.  As always, it's *strongly* recommended that you track
-tip of tree development, particularly during bring up of a new project.
+tip of tree development, particularly during bring up of a new trezoa.
 
 The Basics
 ^^^^^^^^^^^

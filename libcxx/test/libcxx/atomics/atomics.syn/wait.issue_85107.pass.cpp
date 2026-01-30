@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -15,7 +15,7 @@
 
 // XFAIL: availability-synchronization_library-missing
 
-// This is a regression test for https://github.com/llvm/llvm-project/issues/85107, which describes
+// This is a regression test for https://github.com/llvm/llvm-trezoa/issues/85107, which describes
 // how we were using UL_COMPARE_AND_WAIT instead of UL_COMPARE_AND_WAIT64 in the implementation of
 // atomic::wait, leading to potential infinite hangs.
 
@@ -36,7 +36,7 @@ int main(int, char**) {
       }
     });
 
-    // https://github.com/llvm/llvm-project/issues/85107
+    // https://github.com/llvm/llvm-trezoa/issues/85107
     // [libc++] atomic_wait uses UL_COMPARE_AND_WAIT when it should use UL_COMPARE_AND_WAIT64 on Darwin
     constexpr std::__cxx_contention_t old_val = 0;
     constexpr std::__cxx_contention_t new_val = old_val + (1ll << 32);

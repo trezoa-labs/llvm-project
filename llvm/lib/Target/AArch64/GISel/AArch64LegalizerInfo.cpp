@@ -1,6 +1,6 @@
 //===- AArch64LegalizerInfo.cpp ----------------------------------*- C++ -*-==//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -447,7 +447,7 @@ AArch64LegalizerInfo::AArch64LegalizerInfo(const AArch64Subtarget &ST)
           // SVE vscale x 128 bit base sizes
           // TODO: Add nxv2p0. Consider bitcastIf.
           //       See #92130
-          // https://github.com/llvm/llvm-project/pull/92130#discussion_r1616888461
+          // https://github.com/llvm/llvm-trezoa/pull/92130#discussion_r1616888461
           {nxv16s8, p0, nxv16s8, 8},
           {nxv8s16, p0, nxv8s16, 8},
           {nxv4s32, p0, nxv4s32, 8},

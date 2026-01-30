@@ -57,7 +57,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfDarwin
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @skipIfAsan  # Times out under asan
     @skipIf(oslist=["linux"], archs=["arm", "aarch64"])  # Randomly fails on buildbot
@@ -88,7 +88,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfDarwin
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @skipIfAsan  # Times out under asan
     @skipIf(oslist=["linux"], archs=["arm", "aarch64"])  # Randomly fails on buildbot
@@ -108,7 +108,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfWindows
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @add_test_categories(["llgs"])
     @skipIfAsan  # Times out under asan
@@ -128,7 +128,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfWindows
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @add_test_categories(["llgs"])
     @skipIfAsan  # Times out under asan
@@ -145,7 +145,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfWindows
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @add_test_categories(["llgs"])
     @skipIf(oslist=["linux"], archs=["arm", "aarch64"])  # Randomly fails on buildbot
@@ -161,7 +161,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfWindows
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @add_test_categories(["llgs"])
     @skipIfAsan  # Times out under asan
@@ -182,7 +182,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfWindows
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @add_test_categories(["llgs"])
     @skipIfAsan  # Times out under asan
@@ -202,7 +202,7 @@ class TestSignal(gdbremote_testcase.GdbRemoteTestCaseBase):
     @skipIfWindows
     @expectedFailureNetBSD
     @expectedFailureAll(
-        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56086"
+        oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56086"
     )
     @add_test_categories(["llgs"])
     @skipIfAsan  # Times out under asan

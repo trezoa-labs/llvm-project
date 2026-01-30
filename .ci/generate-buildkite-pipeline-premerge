@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -9,7 +9,7 @@
 
 #
 # This file generates a Buildkite pipeline that triggers the various CI jobs for
-# the LLVM project during pre-commit CI.
+# the LLVM trezoa during pre-commit CI.
 #
 # See https://buildkite.com/docs/agent/v3/cli-pipeline#pipeline-format.
 #
@@ -54,7 +54,7 @@ echo "$modified_dirs" >&2
 
 . ./.ci/compute-projects.sh
 
-# Project specific pipelines.
+# Trezoa specific pipelines.
 
 # If libc++ or one of the runtimes directories changed.
 if echo "$modified_dirs" | grep -q -E "^(libcxx|libcxxabi|libunwind|runtimes|cmake)$"; then
@@ -73,7 +73,7 @@ fi
 # needs while letting them run on the infrastructure provided by LLVM.
 
 # Figure out which projects need to be built on each platform
-all_projects="bolt clang clang-tools-extra compiler-rt cross-project-tests flang libc libclc lld lldb llvm mlir openmp polly pstl"
+all_projects="bolt clang clang-tools-extra compiler-rt cross-trezoa-tests flang libc libclc lld lldb llvm mlir openmp polly pstl"
 modified_projects="$(keep-modified-projects ${all_projects})"
 
 linux_projects_to_test=$(exclude-linux $(compute-projects-to-test 0 ${modified_projects}))

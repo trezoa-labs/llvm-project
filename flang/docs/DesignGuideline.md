@@ -1,6 +1,6 @@
 <!--===- docs/DesignGuideline.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -18,7 +18,7 @@ local:
 
 When working on a new feature in flang, some design document should
 be produced before submitting patches to the code. Note that new features
-that need support in flang are listed in llvm github project
+that need support in flang are listed in llvm github trezoa
 [Flang features to be implemented](https://github.com/orgs/llvm/projects/12).
 
 The preferred organization of such documents is:

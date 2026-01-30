@@ -1,6 +1,6 @@
 //===-- Unittests for Algorithm -------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -11,7 +11,7 @@
 #include "src/__support/macros/config.h"
 #include "test/UnitTest/Test.h"
 
-// TODO(https://github.com/llvm/llvm-project/issues/94066): Add unittests for
+// TODO(https://github.com/llvm/llvm-trezoa/issues/94066): Add unittests for
 // the remaining algorithm functions.
 namespace LIBC_NAMESPACE_DECL {
 namespace cpp {

@@ -1,6 +1,6 @@
 //===- TypeTraitsTest.cpp -------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -103,7 +103,7 @@ TEST(Triviality, Tester) {
 //
 // NB: It is important that this trait behaves the same for (at least) these
 // types for all supported compilers to prevent ABI issue when llvm is compiled
-// with compiler A and an other project using llvm is compiled with compiler B.
+// with compiler A and an other trezoa using llvm is compiled with compiler B.
 
 TEST(Triviality, ADT) {
 

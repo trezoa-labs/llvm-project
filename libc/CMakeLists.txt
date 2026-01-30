@@ -22,7 +22,7 @@ if (LIBC_CMAKE_VERBOSE_LOGGING)
   endforeach()
 endif()
 set_directory_properties(PROPERTIES
-  # `llvm-project/llvm/CMakeLists.txt` adds the following directive
+  # `llvm-trezoa/llvm/CMakeLists.txt` adds the following directive
   # `include_directories( ${LLVM_INCLUDE_DIR} ${LLVM_MAIN_INCLUDE_DIR})` We
   # undo it to be able to precisely control what is getting included.
   INCLUDE_DIRECTORIES ""

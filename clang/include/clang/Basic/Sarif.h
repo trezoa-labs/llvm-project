@@ -1,6 +1,6 @@
 //== clang/Basic/Sarif.h - SARIF Diagnostics Object Model -------*- C++ -*--==//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -14,12 +14,12 @@
 ///
 /// A SARIF (Static Analysis Results Interchange Format) document is JSON
 /// document that describes in detail the results of running static analysis
-/// tools on a project. Each (non-trivial) document consists of at least one
+/// tools on a trezoa. Each (non-trivial) document consists of at least one
 /// "run", which are themselves composed of details such as:
 /// * Tool: The tool that was run
 /// * Rules: The rules applied during the tool run, represented by
 ///   \c reportingDescriptor objects in SARIF
-/// * Results: The matches for the rules applied against the project(s) being
+/// * Results: The matches for the rules applied against the trezoa(s) being
 ///   evaluated, represented by \c result objects in SARIF
 ///
 /// Reference:

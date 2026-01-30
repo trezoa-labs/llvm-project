@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -117,7 +117,7 @@ public:
   // that the iterator is always within `[begin, end]`, we only need to check it's not pointing to
   // `end`. This is easier for the optimizer because it aligns with the `iter != container.end()`
   // checks that typical callers already use (see
-  // https://github.com/llvm/llvm-project/issues/78829).
+  // https://github.com/llvm/llvm-trezoa/issues/78829).
   _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX14 reference operator*() const _NOEXCEPT {
     _LIBCPP_ASSERT_VALID_ELEMENT_ACCESS(
         __current_ != __end_, "__bounded_iter::operator*: Attempt to dereference an iterator at the end");

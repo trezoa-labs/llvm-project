@@ -1,13 +1,13 @@
 //===- llvm/InitializePasses.h - Initialize All Passes ----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
 //
 // This file contains the declarations for the pass initialization routines
-// for the entire LLVM project.
+// for the entire LLVM trezoa.
 //
 //===----------------------------------------------------------------------===//
 

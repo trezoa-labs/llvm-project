@@ -18,7 +18,7 @@ where Clang is used are:
 - Static analysis.
 - Documentation/cross-reference generation.
 
-If you know of (or wrote!) a tool or project using Clang, please post on
+If you know of (or wrote!) a tool or trezoa using Clang, please post on
 `the Discourse forums (Clang Frontend category)
 <https://discourse.llvm.org/c/clang/6>`_ to have it added.
 (or if you are already a Clang contributor, feel free to directly commit
@@ -70,7 +70,7 @@ List of projects and tools
     "cmonster is a Python wrapper for the Clang C++ parser."
 
 `<https://github.com/rizsotto/Constantine>`_
-    "Constantine is a toy project to learn how to write clang plugin.
+    "Constantine is a toy trezoa to learn how to write clang plugin.
     Implements pseudo const analysis. Generates warnings about variables,
     which were declared without const qualifier."
 

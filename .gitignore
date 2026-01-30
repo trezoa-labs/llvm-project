@@ -49,7 +49,7 @@ autoconf/autom4te.cache
 /compile_commands.json
 # Visual Studio built-in CMake configuration
 /CMakeSettings.json
-# CLion project configuration
+# CLion trezoa configuration
 /.idea
 /cmake-build*
 
@@ -66,7 +66,7 @@ pythonenv*
 # clangd index. (".clangd" is a config file now, thus trailing slash)
 .clangd/
 .cache
-# static analyzer regression testing project files
+# static analyzer regression testing trezoa files
 /clang/utils/analyzer/projects/*/CachedSource
 /clang/utils/analyzer/projects/*/PatchedSource
 /clang/utils/analyzer/projects/*/ScanBuildResults

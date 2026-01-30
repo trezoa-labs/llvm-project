@@ -95,7 +95,7 @@ overwrite data that is still needed later in the program.
 
 To simplify this problem, One-Shot Bufferize was designed to take advantage of
 *destination-passing style* (DPS). In MLIR, DPS op should implement the
-[`DestinationStyleOpInterface`](https://github.com/llvm/llvm-project/blob/792d437b56adfb3416daf8105942d4899fb82763/mlir/include/mlir/Interfaces/DestinationStyleOpInterface.td).
+[`DestinationStyleOpInterface`](https://github.com/llvm/llvm-trezoa/blob/792d437b56adfb3416daf8105942d4899fb82763/mlir/include/mlir/Interfaces/DestinationStyleOpInterface.td).
 DPS exists in itself independently of bufferization and is tied to SSA
 semantics: many ops are "updating" a part of their input SSA variables. For
 example the LLVM instruction
@@ -274,9 +274,9 @@ One-Shot Bufferize can be configured to bufferize only ops from a set of
 dialects with `dialect-filter`.
 
 One-Shot Bufferize can also be called programmatically with
-[`bufferization::runOneShotBufferize`](https://github.com/llvm/llvm-project/blob/ae2764e835a26bad9774803eca0a6530df2a3e2d/mlir/include/mlir/Dialect/Bufferization/Transforms/OneShotAnalysis.h#L167).
+[`bufferization::runOneShotBufferize`](https://github.com/llvm/llvm-trezoa/blob/ae2764e835a26bad9774803eca0a6530df2a3e2d/mlir/include/mlir/Dialect/Bufferization/Transforms/OneShotAnalysis.h#L167).
 Alternatively,
-[`bufferization::bufferizeOp`](https://github.com/llvm/llvm-project/blob/ae2764e835a26bad9774803eca0a6530df2a3e2d/mlir/include/mlir/Dialect/Bufferization/Transforms/Bufferize.h#L78)
+[`bufferization::bufferizeOp`](https://github.com/llvm/llvm-trezoa/blob/ae2764e835a26bad9774803eca0a6530df2a3e2d/mlir/include/mlir/Dialect/Bufferization/Transforms/Bufferize.h#L78)
 skips the analysis and inserts a copy on every buffer write.
 
 By default, function boundaries are not bufferized. This is because there are

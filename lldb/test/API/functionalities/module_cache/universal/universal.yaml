@@ -252,7 +252,7 @@ Slices:
         - __mh_execute_header
         - _main
         - dyld_stub_binder
-        - '/Users/gclayton/Documents/src/lldb/clean/llvm-project/lldb/test/API/functionalities/module_cache/universal/'
+        - '/Users/gclayton/Documents/src/lldb/clean/llvm-trezoa/lldb/test/API/functionalities/module_cache/universal/'
         - main.c
         - '/Users/gclayton/Documents/src/lldb/clean/Debug/lldb-test-build.noindex/functionalities/module_cache/universal/TestModuleCacheUniversal.test/testit.x86_64.o'
         - _main
@@ -509,7 +509,7 @@ Slices:
         - __mh_execute_header
         - _main
         - dyld_stub_binder
-        - '/Users/gclayton/Documents/src/lldb/clean/llvm-project/lldb/test/API/functionalities/module_cache/universal/'
+        - '/Users/gclayton/Documents/src/lldb/clean/llvm-trezoa/lldb/test/API/functionalities/module_cache/universal/'
         - main.c
         - '/Users/gclayton/Documents/src/lldb/clean/Debug/lldb-test-build.noindex/functionalities/module_cache/universal/TestModuleCacheUniversal.test/testit.arm64.o'
         - _main

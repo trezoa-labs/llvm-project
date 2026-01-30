@@ -36,7 +36,7 @@ There are no backward or forward version compatiblity guarantees for the raw pro
 format. That is, compilers and tools `require`_ a specific raw profile version
 to parse the profiles.
 
-.. _`require`: https://github.com/llvm/llvm-project/blob/bffdde8b8e5d9a76a47949cd0f574f3ce656e181/llvm/lib/ProfileData/InstrProfReader.cpp#L551-L558
+.. _`require`: https://github.com/llvm/llvm-trezoa/blob/bffdde8b8e5d9a76a47949cd0f574f3ce656e181/llvm/lib/ProfileData/InstrProfReader.cpp#L551-L558
 
 To feed profiles back into compilers for an optimized build (e.g., via
 ``-fprofile-use`` for IR instrumentation), a raw profile must to be converted into
@@ -161,7 +161,7 @@ Header
   Records the number of value kinds. Macro `VALUE_PROF_KIND`_ defines the value
   kinds with a description of the kind.
 
-.. _`VALUE_PROF_KIND`: https://github.com/llvm/llvm-project/blob/7e405eb722e40c79b7726201d0f76b5dab34ba0f/compiler-rt/include/profile/InstrProfData.inc#L184-L186
+.. _`VALUE_PROF_KIND`: https://github.com/llvm/llvm-trezoa/blob/7e405eb722e40c79b7726201d0f76b5dab34ba0f/compiler-rt/include/profile/InstrProfData.inc#L184-L186
 
 Payload Sections
 ------------------
@@ -183,7 +183,7 @@ The in-memory representation of the metadata is `__llvm_profile_data`_.
 Some fields are used to reference data from other sections in the profile.
 The fields are documented as follows:
 
-.. _`__llvm_profile_data`: https://github.com/llvm/llvm-project/blob/7c3b67d2038cfb48a80299089f6a1308eee1df7f/compiler-rt/include/profile/InstrProfData.inc#L65-L95
+.. _`__llvm_profile_data`: https://github.com/llvm/llvm-trezoa/blob/7c3b67d2038cfb48a80299089f6a1308eee1df7f/compiler-rt/include/profile/InstrProfData.inc#L65-L95
 
 ``NameRef``
   The MD5 of the function's PGO name. PGO name has the format
@@ -197,7 +197,7 @@ The fields are documented as follows:
   A checksum of the function's IR, taking control flow graph and instrumented
   value sites into accounts. See `computeCFGHash`_ for details.
 
-.. _`computeCFGHash`: https://github.com/llvm/llvm-project/blob/7c3b67d2038cfb48a80299089f6a1308eee1df7f/llvm/lib/Transforms/Instrumentation/PGOInstrumentation.cpp#L616-L685
+.. _`computeCFGHash`: https://github.com/llvm/llvm-trezoa/blob/7c3b67d2038cfb48a80299089f6a1308eee1df7f/llvm/lib/Transforms/Instrumentation/PGOInstrumentation.cpp#L616-L685
 
 .. _`CounterPtr`:
 
@@ -207,7 +207,7 @@ The fields are documented as follows:
   instrumented binary size compared with snapshotting the address of symbols directly.
   See `commit a1532ed`_ for further information.
 
-.. _`commit a1532ed`: https://github.com/llvm/llvm-project/commit/a1532ed27582038e2d9588108ba0fe8237f01844
+.. _`commit a1532ed`: https://github.com/llvm/llvm-trezoa/commit/a1532ed27582038e2d9588108ba0fe8237f01844
 
   .. note::
     ``CounterPtr`` might represent a different value for non-IRPGO use case. For
@@ -311,7 +311,7 @@ In the graph,
 Each time the reader advances to the next data record, it `updates`_ ``CounterDelta``
 to minus the size of one ``ProfileData``.
 
-.. _`updates`: https://github.com/llvm/llvm-project/blob/17ff25a58ee4f29816d932fdb75f0d305718069f/llvm/include/llvm/ProfileData/InstrProfReader.h#L439-L444
+.. _`updates`: https://github.com/llvm/llvm-trezoa/blob/17ff25a58ee4f29816d932fdb75f0d305718069f/llvm/include/llvm/ProfileData/InstrProfReader.h#L439-L444
 
 For the counter corresponding to the first data record, the byte offset
 relative to the start of the counter section is calculated as ``CounterPtr1 - CounterDeltaInitVal``.
@@ -384,7 +384,7 @@ respective profile data, such that a raw profile reader `advances`_ the pointer 
 profile data and the pointer to value profile records simutaneously [5]_ to find
 value profiles for a per function, per `FuncHash`_ profile data.
 
-.. _`advances`: https://github.com/llvm/llvm-project/blob/7e15fa9161eda7497a5d6abf0d951a1d12d86550/llvm/include/llvm/ProfileData/InstrProfReader.h#L456-L457
+.. _`advances`: https://github.com/llvm/llvm-trezoa/blob/7e15fa9161eda7497a5d6abf0d951a1d12d86550/llvm/include/llvm/ProfileData/InstrProfReader.h#L456-L457
 
 Indexed Profile Format
 ===========================
@@ -454,7 +454,7 @@ uninteresting ones.
   shouldn't be deleted from struct definition; the field order shouldn't be
   modified. New fields should be appended.
 
-.. _`Header struct`: https://github.com/llvm/llvm-project/blob/1a2960bab6381f2b288328e2371829b460ac020c/llvm/include/llvm/ProfileData/InstrProf.h#L1053-L1080
+.. _`Header struct`: https://github.com/llvm/llvm-trezoa/blob/1a2960bab6381f2b288328e2371829b460ac020c/llvm/include/llvm/ProfileData/InstrProf.h#L1053-L1080
 
 
 Payload Sections
@@ -477,7 +477,7 @@ instance). The profile data for them are organized as a sequence of key-value
 pair where the key is `FuncHash`_, and the value is profiled information (represented
 by `InstrProfRecord`_) for the function.
 
-.. _`InstrProfRecord`: https://github.com/llvm/llvm-project/blob/7e405eb722e40c79b7726201d0f76b5dab34ba0f/llvm/include/llvm/ProfileData/InstrProf.h#L693
+.. _`InstrProfRecord`: https://github.com/llvm/llvm-trezoa/blob/7e405eb722e40c79b7726201d0f76b5dab34ba0f/llvm/include/llvm/ProfileData/InstrProf.h#L693
 
 MemProf Profile data
 ^^^^^^^^^^^^^^^^^^^^^^

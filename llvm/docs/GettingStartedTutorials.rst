@@ -40,4 +40,4 @@ For those new to the LLVM system.
 
 :doc:`MyFirstTypoFix`
    This tutorial will guide you through the process of making a change to
-   LLVM, and contributing it back to the LLVM project.
+   LLVM, and contributing it back to the LLVM trezoa.

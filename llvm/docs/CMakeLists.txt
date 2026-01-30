@@ -29,11 +29,11 @@ if (LLVM_ENABLE_DOXYGEN)
     set(LLVM_DOXYGEN_QCH_FILENAME "org.llvm.qch" CACHE STRING
       "Filename of the Qt Compressed help file")
     set(LLVM_DOXYGEN_QHP_NAMESPACE "org.llvm" CACHE STRING
-      "Namespace under which the intermediate Qt Help Project file lives")
+      "Namespace under which the intermediate Qt Help Trezoa file lives")
     set(LLVM_DOXYGEN_QHP_CUST_FILTER_NAME "${PACKAGE_STRING}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#custom-filters")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#custom-filters")
     set(LLVM_DOXYGEN_QHP_CUST_FILTER_ATTRS "${PACKAGE_NAME},${PACKAGE_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
     find_program(LLVM_DOXYGEN_QHELPGENERATOR_PATH qhelpgenerator
       DOC "Path to the qhelpgenerator binary")
     if (NOT LLVM_DOXYGEN_QHELPGENERATOR_PATH)

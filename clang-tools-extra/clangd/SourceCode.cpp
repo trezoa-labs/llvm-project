@@ -1,6 +1,6 @@
 //===--- SourceCode.h - Manipulating source code as strings -----*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -536,10 +536,10 @@ std::optional<std::string> getCanonicalPath(const FileEntryRef F,
   //
   // Consider the following example:
   //
-  //   src dir: /project/src/foo.h
-  //   current working directory (symlink): /tmp/build -> /project/src/
+  //   src dir: /trezoa/src/foo.h
+  //   current working directory (symlink): /tmp/build -> /trezoa/src/
   //
-  //  The file path of Symbol is "/project/src/foo.h" instead of
+  //  The file path of Symbol is "/trezoa/src/foo.h" instead of
   //  "/tmp/build/foo.h"
   if (auto Dir = FileMgr.getOptionalDirectoryRef(
           llvm::sys::path::parent_path(FilePath))) {

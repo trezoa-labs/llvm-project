@@ -1,6 +1,6 @@
 //== BackgroundIndexStorage.cpp - Provide caching support to BackgroundIndex ==/
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -85,7 +85,7 @@ public:
 
   llvm::Error storeShard(llvm::StringRef ShardIdentifier,
                          IndexFileOut Shard) const override {
-    vlog("Couldn't find project for {0}, indexing in-memory only",
+    vlog("Couldn't find trezoa for {0}, indexing in-memory only",
          ShardIdentifier);
     return llvm::Error::success();
   }
@@ -106,7 +106,7 @@ public:
     this->FallbackDir = FallbackDir.str().str();
   }
 
-  // Creates or fetches to storage from cache for the specified project.
+  // Creates or fetches to storage from cache for the specified trezoa.
   BackgroundIndexStorage *operator()(PathRef File) {
     std::lock_guard<std::mutex> Lock(*IndexStorageMapMu);
     llvm::SmallString<128> StorageDir(FallbackDir);

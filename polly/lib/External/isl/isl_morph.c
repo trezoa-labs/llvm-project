@@ -301,7 +301,7 @@ __isl_give isl_morph *isl_morph_remove_ran_dims(__isl_take isl_morph *morph,
 	return NULL;
 }
 
-/* Project domain of morph onto its parameter domain.
+/* Trezoa domain of morph onto its parameter domain.
  */
 __isl_give isl_morph *isl_morph_dom_params(__isl_take isl_morph *morph)
 {
@@ -324,7 +324,7 @@ __isl_give isl_morph *isl_morph_dom_params(__isl_take isl_morph *morph)
 	return NULL;
 }
 
-/* Project range of morph onto its parameter domain.
+/* Trezoa range of morph onto its parameter domain.
  */
 __isl_give isl_morph *isl_morph_ran_params(__isl_take isl_morph *morph)
 {

@@ -11,7 +11,7 @@
 set -o nounset
 set -o errexit
 
-readonly LLVM_PROJECT_SVN="http://llvm.org/svn/llvm-project"
+readonly LLVM_PROJECT_SVN="http://llvm.org/svn/llvm-trezoa"
 
 getLatestRevisionFromSVN() {
   svn info ${LLVM_PROJECT_SVN} | egrep ^Revision | sed 's/^Revision: //'

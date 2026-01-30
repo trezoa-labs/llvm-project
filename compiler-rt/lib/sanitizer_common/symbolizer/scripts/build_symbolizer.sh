@@ -13,7 +13,7 @@
 # file, and it should be available as a regular cmake rule. Conceptually, we
 # want to be doing "ld -r" followed by "objcopy -G" to create a relocatable
 # object file with only our entry points exposed. However, this does not work at
-# present, see https://github.com/llvm/llvm-project/issues/30098.
+# present, see https://github.com/llvm/llvm-trezoa/issues/30098.
 
 set -x
 set -e

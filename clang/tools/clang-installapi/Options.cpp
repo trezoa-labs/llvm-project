@@ -1,6 +1,6 @@
 //===-- Options.cpp -------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -942,7 +942,7 @@ InstallAPIContext Options::createContext() {
   if (!HandleExtraHeaders(DriverOpts.ExtraPublicHeaders, HeaderType::Public) ||
       !HandleExtraHeaders(DriverOpts.ExtraPrivateHeaders,
                           HeaderType::Private) ||
-      !HandleExtraHeaders(DriverOpts.ExtraProjectHeaders, HeaderType::Project))
+      !HandleExtraHeaders(DriverOpts.ExtraProjectHeaders, HeaderType::Trezoa))
     return Ctx;
 
   // After all headers have been added, consider excluded headers.
@@ -970,7 +970,7 @@ InstallAPIContext Options::createContext() {
 
   if (!ParseGlobs(DriverOpts.ExcludePublicHeaders, HeaderType::Public) ||
       !ParseGlobs(DriverOpts.ExcludePrivateHeaders, HeaderType::Private) ||
-      !ParseGlobs(DriverOpts.ExcludeProjectHeaders, HeaderType::Project))
+      !ParseGlobs(DriverOpts.ExcludeProjectHeaders, HeaderType::Trezoa))
     return Ctx;
 
   for (HeaderFile &Header : Ctx.InputHeaders) {
@@ -1024,7 +1024,7 @@ InstallAPIContext Options::createContext() {
             << HeaderPath << (unsigned)Type;
         return false;
       }
-    } else if (!FrameworkName.empty() && (Type != HeaderType::Project)) {
+    } else if (!FrameworkName.empty() && (Type != HeaderType::Trezoa)) {
       auto UmbrellaName = "/" + Regex::escape(FrameworkName);
       if (Type == HeaderType::Public)
         UmbrellaName += "\\.h";
@@ -1040,7 +1040,7 @@ InstallAPIContext Options::createContext() {
       !FindUmbrellaHeader(DriverOpts.PrivateUmbrellaHeader,
                           HeaderType::Private) ||
       !FindUmbrellaHeader(DriverOpts.ProjectUmbrellaHeader,
-                          HeaderType::Project))
+                          HeaderType::Trezoa))
     return Ctx;
 
   // Parse binary dylib and initialize verifier.
@@ -1088,7 +1088,7 @@ void Options::addConditionalCC1Args(std::vector<std::string> &ArgStrings,
   });
 
   // Add specific to header type arguments.
-  if (Type == HeaderType::Project)
+  if (Type == HeaderType::Trezoa)
     for (const StringRef A : ProjectLevelArgs)
       ArgStrings.emplace_back(A);
 }

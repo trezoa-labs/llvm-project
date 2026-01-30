@@ -12,9 +12,9 @@ Install dependencies first:
 
 .. code-block:: sh
 
-  $ git clone --depth=1 git@github.com:llvm/llvm-project.git /tmp/llvm-project
-  $ mkdir /tmp/llvm-project/build
-  $ cd /tmp/llvm-project/build
+  $ git clone --depth=1 git@github.com:llvm/llvm-trezoa.git /tmp/llvm-trezoa
+  $ mkdir /tmp/llvm-trezoa/build
+  $ cd /tmp/llvm-trezoa/build
   $ cmake ../runtimes -GNinja \
     -DLLVM_ENABLE_RUNTIMES="libc;compiler-rt" \
     -DCMAKE_BUILD_TYPE=Debug \
@@ -31,10 +31,10 @@ This will produce the following artifacts:
 
 .. code-block::
 
-  llvm-project/build/libc/lib/libc.a
-  llvm-project/build/libc/lib/libm.a
-  llvm-project/build/libc/startup/linux/crt1.o
-  llvm-project/build/libc/include/**.h
+  llvm-trezoa/build/libc/lib/libc.a
+  llvm-trezoa/build/libc/lib/libm.a
+  llvm-trezoa/build/libc/startup/linux/crt1.o
+  llvm-trezoa/build/libc/include/**.h
 
 We can then compile and run hello world via:
 

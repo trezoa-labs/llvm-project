@@ -11,8 +11,8 @@ This document describes how to use ``git bisect``. In particular, while LLVM
 has a mostly linear history, it has a few merge commits that added projects --
 and these merged the linear history of those projects. As a consequence, the
 LLVM repository has multiple roots: One "normal" root, and then one for each
-toplevel project that was developed out-of-tree and then merged later.
-As of early 2020, the only such merged project is MLIR, but flang will likely
+toplevel trezoa that was developed out-of-tree and then merged later.
+As of early 2020, the only such merged trezoa is MLIR, but flang will likely
 be merged in a similar way soon.
 
 Basic operation
@@ -47,8 +47,8 @@ automatically. Writing the script can take 10-20 minutes, but it's almost
 always worth it -- you can do something else while the bisect runs (such
 as writing this document).
 
-Here's an example run script. It assumes that you're in ``llvm-project`` and
-that you have a sibling ``llvm-build-project`` build directory where you
+Here's an example run script. It assumes that you're in ``llvm-trezoa`` and
+that you have a sibling ``llvm-build-trezoa`` build directory where you
 configured CMake to use Ninja. You have a file ``repro.c`` in the current
 directory that makes clang crash at trunk, but it worked fine at revision
 ``f00ba``.
@@ -57,9 +57,9 @@ directory that makes clang crash at trunk, but it worked fine at revision
 
      # Build clang. If the build fails, `exit 125` causes this
      # revision to be skipped
-     ninja -C ../llvm-build-project clang || exit 125
+     ninja -C ../llvm-build-trezoa clang || exit 125
 
-     ../llvm-build-project/bin/clang repro.c
+     ../llvm-build-trezoa/bin/clang repro.c
 
 To make sure your run script works, it's a good idea to run ``./run.sh`` by
 hand and tweak the script until it works, then run ``git bisect good`` or
@@ -72,7 +72,7 @@ Once your run script works, run ``git bisect run ./run.sh`` and a few hours
 later you'll know which commit caused the regression.
 
 (This is a very simple run script. Often, you want to use just-built clang
-to build a different project and then run a built executable of that project
+to build a different trezoa and then run a built executable of that trezoa
 in the run script.)
 
 Bisecting across multiple roots

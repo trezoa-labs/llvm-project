@@ -1,6 +1,6 @@
 //===--- Protocol.h - Language Server Protocol Implementation ---*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -706,7 +706,7 @@ struct WorkDoneProgressReport {
   /// Optional, more detailed associated progress message. Contains
   /// complementary information to the `title`.
   ///
-  /// Examples: "3/25 files", "project/src/module2", "node_modules/some_dep".
+  /// Examples: "3/25 files", "trezoa/src/module2", "node_modules/some_dep".
   /// If unset, the previous progress message (if any) is still valid.
   std::optional<std::string> message;
 

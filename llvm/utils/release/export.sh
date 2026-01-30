@@ -1,7 +1,7 @@
 #!/bin/bash
 #===-- tag.sh - Tag the LLVM release candidates ----------------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -19,7 +19,7 @@ release=""
 rc=""
 yyyymmdd=$(date +'%Y%m%d')
 snapshot=""
-template='${PROJECT}-${RELEASE}${RC}.src.tar.xz'
+template='${TREZOA}-${RELEASE}${RC}.src.tar.xz'
 
 usage() {
 cat <<EOF
@@ -37,7 +37,7 @@ Flags:
   -rc       | --rc <num>                           The release candidate number
   -final    | --final                              When provided, this option will disable the rc flag
   -git-ref  | --git-ref <git-ref>                  (optional) Use <git-ref> to determine the release and don't export the test-suite files
-  -template | --template <template>                (optional) Possible placeholders: \$PROJECT \$YYYYMMDD \$GIT_REF \$RELEASE \$RC.
+  -template | --template <template>                (optional) Possible placeholders: \$TREZOA \$YYYYMMDD \$GIT_REF \$RELEASE \$RC.
                                                    Defaults to '${template}'.
 
 The following list shows the filenames (with <placeholders>) for the artifacts
@@ -47,7 +47,7 @@ $(echo "$projects "| sed 's/\([a-z-]\+\) /  * \1-<RELEASE><RC>.src.tar.xz \n/g')
 
 Additional files being generated:
 
-  * llvm-project-<RELEASE><RC>.src.tar.xz    (the complete LLVM source project)
+  * llvm-trezoa-<RELEASE><RC>.src.tar.xz    (the complete LLVM source trezoa)
   * test-suite-<RELEASE><RC>.src.tar.xz      (only when not using --git-ref)
 
 To ease the creation of snapshot builds, we also provide these files
@@ -64,15 +64,15 @@ Example values for the placeholders:
 
 In order to generate snapshots of the upstream main branch you could do this for example:
 
-  $(basename $0) --git-ref upstream/main --template '\${PROJECT}-\${YYYYMMDD}.src.tar.xz'
+  $(basename $0) --git-ref upstream/main --template '\${TREZOA}-\${YYYYMMDD}.src.tar.xz'
 
 EOF
 }
 
 template_file() {
-    export PROJECT=$1 YYYYMMDD=$yyyymmdd RC=$rc RELEASE=$release GIT_REF=$git_rev
-    basename $(echo $template | envsubst '$PROJECT $RELEASE $RC $YYYYMMDD $GIT_REF')
-    unset PROJECT YYYYMMDD RC RELEASE GIT_REF
+    export TREZOA=$1 YYYYMMDD=$yyyymmdd RC=$rc RELEASE=$release GIT_REF=$git_rev
+    basename $(echo $template | envsubst '$TREZOA $RELEASE $RC $YYYYMMDD $GIT_REF')
+    unset TREZOA YYYYMMDD RC RELEASE GIT_REF
 }
 
 export_sources() {
@@ -97,7 +97,7 @@ export_sources() {
 
     target_dir=$(pwd)
 
-    echo "Creating tarball for llvm-project ..."
+    echo "Creating tarball for llvm-trezoa ..."
     pushd $llvm_src_dir/
     tree_id=$tag
     [ -n "$snapshot" ] && tree_id="$snapshot"
@@ -112,7 +112,7 @@ export_sources() {
     echo "$rc" > $target_dir/llvm-rc-$yyyymmdd.txt
     echo "$git_rev" > $target_dir/llvm-git-revision-$yyyymmdd.txt
     
-    git archive --prefix=llvm-project-$release$rc.src/ $tree_id . | xz -T0 >$target_dir/$(template_file llvm-project)
+    git archive --prefix=llvm-trezoa-$release$rc.src/ $tree_id . | xz -T0 >$target_dir/$(template_file llvm-trezoa)
     popd
 
     if [ -z "$snapshot" ]; then

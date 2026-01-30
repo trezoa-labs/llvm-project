@@ -16,7 +16,7 @@
 LLVM/OpenMP Design & Overview
 =============================
 
-OpenMP impacts various parts of the LLVM project, from the frontends (`Clang
+OpenMP impacts various parts of the LLVM trezoa, from the frontends (`Clang
 <https://clang.llvm.org/docs/OpenMPSupport.html>`_ and Flang), through
 middle-end :ref:`optimizations <llvm_openmp_optimizations>`, up to the
 multitude of available :ref:`OpenMP runtimes <openmp_runtimes>`.

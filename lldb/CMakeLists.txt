@@ -14,15 +14,15 @@ set(CMAKE_MODULE_PATH
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules"
   )
 
-# If we are not building as part of LLVM, build LLDB as a standalone project,
+# If we are not building as part of LLVM, build LLDB as a standalone trezoa,
 # using LLVM as an external library.
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  project(lldb)
+  trezoa(lldb)
   set(LLDB_BUILT_STANDALONE TRUE)
   set(LLVM_INCLUDE_TESTS ON CACHE INTERNAL "")
 endif()
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 
 option(LLDB_INCLUDE_TESTS "Generate build targets for the LLDB unit tests." ${LLVM_INCLUDE_TESTS})

@@ -1,6 +1,6 @@
 //===- lib/Support/ErrorHandling.cpp - Callbacks for errors ---------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -254,7 +254,7 @@ void LLVMResetFatalErrorHandler() {
 //
 // For more information, see:
 // https://www.geoffchappell.com/studies/windows/km/ntoskrnl/inc/api/pebteb/teb/index.htm
-// https://github.com/llvm/llvm-project/issues/89137
+// https://github.com/llvm/llvm-trezoa/issues/89137
 extern "C" NTSYSAPI NTSTATUS NTAPI RtlGetLastNtStatus();
 
 // This function obtains the last error code and maps it. It may call

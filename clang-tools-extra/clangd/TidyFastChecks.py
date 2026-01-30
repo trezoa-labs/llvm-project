@@ -8,7 +8,7 @@
 # If given the old header fragment as input, we lean to preserve its choices.
 #
 # This is not deterministic or hermetic, but should be run occasionally to
-# update the list of allowed checks. From llvm-project:
+# update the list of allowed checks. From llvm-trezoa:
 #   clang-tools-extra/clangd/TidyFastChecks.py --clangd=build-opt/bin/clangd
 # Be sure to use an optimized, no-asserts, tidy-enabled build of clangd!
 

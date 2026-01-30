@@ -1306,7 +1306,7 @@ __isl_give UNION *FN(UNION,drop_dims)( __isl_take UNION *u,
 
 	if (type != isl_dim_param)
 		isl_die(FN(UNION,get_ctx)(u), isl_error_invalid,
-			"can only project out parameters",
+			"can only trezoa out parameters",
 			return FN(UNION,free)(u));
 
 	space = FN(UNION,get_space)(u);

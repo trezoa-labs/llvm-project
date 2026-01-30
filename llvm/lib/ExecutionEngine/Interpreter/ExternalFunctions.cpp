@@ -1,6 +1,6 @@
 //===-- ExternalFunctions.cpp - Implement External Functions --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -345,7 +345,7 @@ static GenericValue lle_X_abort(FunctionType *FT, ArrayRef<GenericValue> Args) {
 }
 
 // Silence warnings about sprintf. (See also
-// https://github.com/llvm/llvm-project/issues/58086)
+// https://github.com/llvm/llvm-trezoa/issues/58086)
 #if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

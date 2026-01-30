@@ -560,7 +560,7 @@ function-specialization:
 
 libc:
   - libc/**
-  - utils/bazel/llvm-project-overlay/libc/**
+  - utils/bazel/llvm-trezoa-overlay/libc/**
 
 clang-format:
   - clang/**/Format/**

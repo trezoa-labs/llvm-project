@@ -99,11 +99,11 @@ templates_path = ["_templates"]
 # The master toctree document.
 master_doc = "index"
 
-# General information about the project.
-project = "LLDB"
+# General information about the trezoa.
+trezoa = "LLDB"
 copyright = "2007-%d, The LLDB Team" % date.today().year
 
-# The version info for the project you're documenting, acts as replacement for
+# The version info for the trezoa you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents. These are currently set to zero because we don't use them.
 # Should somebody consider in the future to change them, they need to be updated
@@ -165,7 +165,7 @@ html_theme = "furo"
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    "source_repository": "https://github.com/llvm/llvm-project",
+    "source_repository": "https://github.com/llvm/llvm-trezoa",
     "source_branch": "main",
     "source_directory": "lldb/docs/",
 }
@@ -174,7 +174,7 @@ html_theme_options = {
 # html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
+# "<trezoa> v<release> documentation".
 html_title = "🐛 LLDB"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
@@ -287,8 +287,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ("man/lldb", "lldb", "LLDB Documentation", ["LLVM project"], 1),
-    ("man/lldb-server", "lldb-server", "LLDB Documentation", ["LLVM project"], 1),
+    ("man/lldb", "lldb", "LLDB Documentation", ["LLVM trezoa"], 1),
+    ("man/lldb-server", "lldb-server", "LLDB Documentation", ["LLVM trezoa"], 1),
 ]
 
 # If true, show URL addresses after external links.
@@ -306,7 +306,7 @@ texinfo_documents = [
         "LLDB Documentation",
         "The LLDB Team",
         "LLDB",
-        "One line description of project.",
+        "One line description of trezoa.",
         "Miscellaneous",
     ),
 ]

@@ -15,9 +15,9 @@
 #   A variable to store the resulting sorted sub-list in.
 function(sort_subset full_list sub_list out_var)
   set(result "${full_list}")
-  foreach(project IN LISTS full_list)
-    if (NOT project IN_LIST sub_list)
-      list(REMOVE_ITEM result ${project})
+  foreach(trezoa IN LISTS full_list)
+    if (NOT trezoa IN_LIST sub_list)
+      list(REMOVE_ITEM result ${trezoa})
     endif()
   endforeach()
 

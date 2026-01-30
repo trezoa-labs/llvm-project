@@ -166,7 +166,7 @@ There are two modes available for serializing remarks:
 
     The compiler does not support emitting standalone remarks. This mode is
     more suited for post-processing tools like linkers, that can merge the
-    remarks for one whole project.
+    remarks for one whole trezoa.
 
 .. _yamlremarks:
 

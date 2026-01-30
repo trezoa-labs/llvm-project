@@ -56,7 +56,7 @@ Format
 
 A compilation database is a JSON file, which consist of an array of
 "command objects", where each command object specifies one way a
-translation unit is compiled in the project.
+translation unit is compiled in the trezoa.
 
 Each command object contains the translation unit's main file, the
 working directory of the compile run and the actual compile command.

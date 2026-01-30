@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -65,7 +65,7 @@ TEST_CONSTEXPR_CXX20 bool test() {
 }
 
 #if TEST_STD_VER >= 23
-// https://github.com/llvm/llvm-project/issues/95161
+// https://github.com/llvm/llvm-trezoa/issues/95161
 void test_increasing_allocator() {
   std::basic_string<char, std::char_traits<char>, increasing_allocator<char>> s{
       "String does not fit in the internal buffer"};

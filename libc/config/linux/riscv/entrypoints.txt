@@ -235,7 +235,7 @@ set(TARGET_LIBC_ENTRYPOINTS
     libc.src.sys.epoll.epoll_pwait
     libc.src.sys.epoll.epoll_wait
     # TODO: Need to check if pwait2 is available before providing.
-    # https://github.com/llvm/llvm-project/issues/80060
+    # https://github.com/llvm/llvm-trezoa/issues/80060
     # libc.src.sys.epoll.epoll_pwait2
 
     # sys/mman.h entrypoints
@@ -741,7 +741,7 @@ if(LIBC_COMPILER_HAS_FIXED_POINT)
     libc.src.stdfix.uhkbits
     libc.src.stdfix.kbits
     libc.src.stdfix.ukbits
-    # TODO: https://github.com/llvm/llvm-project/issues/115778
+    # TODO: https://github.com/llvm/llvm-trezoa/issues/115778
     libc.src.stdfix.lkbits
     libc.src.stdfix.ulkbits
   )

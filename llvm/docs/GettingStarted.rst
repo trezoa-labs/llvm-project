@@ -8,9 +8,9 @@ Getting Started with the LLVM System
 Overview
 ========
 
-Welcome to the LLVM project!
+Welcome to the LLVM trezoa!
 
-The LLVM project has multiple components. The core of the project is
+The LLVM trezoa has multiple components. The core of the trezoa is
 itself called "LLVM". This contains all of the tools, libraries, and header
 files needed to process intermediate representations and converts it into
 object files.  Tools include an assembler, disassembler, bitcode analyzer, and
@@ -31,16 +31,16 @@ Getting the Source Code and Building LLVM
 
 #. Check out LLVM (including subprojects like Clang):
 
-   * ``git clone https://github.com/llvm/llvm-project.git``
+   * ``git clone https://github.com/llvm/llvm-trezoa.git``
    * Or, on windows:
 
      ``git clone --config core.autocrlf=false
-     https://github.com/llvm/llvm-project.git``
+     https://github.com/llvm/llvm-trezoa.git``
    * To save storage and speed-up the checkout time, you may want to do a
      `shallow clone <https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt>`_.
-     For example, to get the latest revision of the LLVM project, use
+     For example, to get the latest revision of the LLVM trezoa, use
 
-     ``git clone --depth 1 https://github.com/llvm/llvm-project.git``
+     ``git clone --depth 1 https://github.com/llvm/llvm-trezoa.git``
 
    * You are likely not interested in the user branches in the repo (used for
      stacked pull-requests and reverts), you can filter them from your
@@ -53,7 +53,7 @@ Getting the Source Code and Building LLVM
 
 #. Configure and build LLVM and Clang:
 
-   * ``cd llvm-project``
+   * ``cd llvm-trezoa``
    * ``cmake -S llvm -B build -G <generator> [options]``
 
      Some common build system generators are:
@@ -73,7 +73,7 @@ Getting the Source Code and Building LLVM
 
      * ``-DLLVM_ENABLE_PROJECTS='...'`` --- semicolon-separated list of the LLVM
        subprojects you'd like to additionally build. Can include any of: clang,
-       clang-tools-extra, lldb, lld, polly, or cross-project-tests.
+       clang-tools-extra, lldb, lld, polly, or cross-trezoa-tests.
 
        For example, to build LLVM, Clang, and LLD, use
        ``-DLLVM_ENABLE_PROJECTS="clang;lld"``.
@@ -110,7 +110,7 @@ Getting the Source Code and Building LLVM
        regression tests to ensure everything is in working order.
 
      * CMake will generate build targets for each tool and library, and most
-       LLVM sub-projects generate their own ``check-<project>`` target.
+       LLVM sub-projects generate their own ``check-<trezoa>`` target.
 
      * Running a serial build will be **slow**.  To improve speed, try running a
        parallel build. That's done by default in Ninja; for ``make``, use the
@@ -138,14 +138,14 @@ layout of the source code tree.
 Stand-alone Builds
 ------------------
 
-Stand-alone builds allow you to build a sub-project against a pre-built
+Stand-alone builds allow you to build a sub-trezoa against a pre-built
 version of the clang or llvm libraries that is already present on your
 system.
 
-You can use the source code from a standard checkout of the llvm-project
+You can use the source code from a standard checkout of the llvm-trezoa
 (as described above) to do stand-alone builds, but you may also build
 from a :ref:`sparse checkout<workflow-multicheckout-nocommit>` or from the
-tarballs available on the `releases <https://github.com/llvm/llvm-project/releases/>`_
+tarballs available on the `releases <https://github.com/llvm/llvm-trezoa/releases/>`_
 page.
 
 For stand-alone builds, you must have an llvm install that is configured
@@ -155,18 +155,18 @@ like this:
 
 .. code-block:: console
 
-  cmake -G Ninja -S path/to/llvm-project/llvm -B $builddir \
+  cmake -G Ninja -S path/to/llvm-trezoa/llvm -B $builddir \
         -DLLVM_INSTALL_UTILS=ON \
         -DCMAKE_INSTALL_PREFIX=/path/to/llvm/install/prefix \
         < other options >
 
   ninja -C $builddir install
 
-Once llvm is installed, to configure a project for a stand-alone build, invoke CMake like this:
+Once llvm is installed, to configure a trezoa for a stand-alone build, invoke CMake like this:
 
 .. code-block:: console
 
-  cmake -G Ninja -S path/to/llvm-project/$subproj \
+  cmake -G Ninja -S path/to/llvm-trezoa/$subproj \
         -B $buildir_subproj \
         -DLLVM_EXTERNAL_LIT=/path/to/lit \
         -DLLVM_ROOT=/path/to/llvm/install/prefix
@@ -181,14 +181,14 @@ Notice that:
   ``/usr/lib64``, then you should pass ``-DLLVM_ROOT=/usr/``.
 * Both the ``LLVM_ROOT`` and ``LLVM_EXTERNAL_LIT`` options are
   required to do stand-alone builds for all sub-projects.  Additional
-  required options for each sub-project can be found in the table
+  required options for each sub-trezoa can be found in the table
   below.
 
 The ``check-$subproj`` and ``install`` build targets are supported for the
 sub-projects listed in the table below.
 
 ============ ======================== ======================
-Sub-Project  Required Sub-Directories Required CMake Options
+Sub-Trezoa  Required Sub-Directories Required CMake Options
 ============ ======================== ======================
 llvm         llvm, cmake, third-party LLVM_INSTALL_UTILS=ON
 clang        clang, cmake             CLANG_INCLUDE_TESTS=ON (Required for check-clang only)
@@ -204,7 +204,7 @@ Example for building stand-alone `clang`:
    build_llvm=`pwd`/build-llvm
    build_clang=`pwd`/build-clang
    installprefix=`pwd`/install
-   llvm=`pwd`/llvm-project
+   llvm=`pwd`/llvm-trezoa
    mkdir -p $build_llvm
    mkdir -p $installprefix
 
@@ -301,7 +301,7 @@ Package                                                     Version      Notes
 `python <http://www.python.org/>`_                          >=3.8        Automated test suite\ :sup:`1`
 `zlib <http://zlib.net>`_                                   >=1.2.3.4    Compression library\ :sup:`2`
 `GNU Make <http://savannah.gnu.org/projects/make>`_         3.79, 3.79.1 Makefile/build processor\ :sup:`3`
-`PyYAML <https://pypi.org/project/PyYAML/>`_                >=5.1        Header generator\ :sup:`4`
+`PyYAML <https://pypi.org/trezoa/PyYAML/>`_                >=5.1        Header generator\ :sup:`4`
 =========================================================== ============ ==========================================
 
 .. note::
@@ -867,7 +867,7 @@ share code among the `tools`_.
 Contains bindings for the LLVM compiler infrastructure to allow
 programs written in languages other than C or C++ to take advantage of the LLVM
 infrastructure.
-LLVM project provides language bindings for OCaml and Python.
+LLVM trezoa provides language bindings for OCaml and Python.
 
 ``llvm/projects``
 -----------------
@@ -1132,7 +1132,7 @@ following options with cmake:
    Set this equal to the target you wish to build. You may wish to set this to
    only your host architecture. For example ``X86`` if you are using an Intel or
    AMD machine. You will find a full list of targets within the
-   `llvm-project/llvm/lib/Target <https://github.com/llvm/llvm-project/tree/main/llvm/lib/Target>`_
+   `llvm-trezoa/llvm/lib/Target <https://github.com/llvm/llvm-trezoa/tree/main/llvm/lib/Target>`_
    directory.
 
  * ``-DLLVM_OPTIMIZED_TABLEGEN``
@@ -1145,7 +1145,7 @@ following options with cmake:
  * ``-DLLVM_ENABLE_PROJECTS``
 
    Set this equal to the projects you wish to compile (e.g. ``clang``, ``lld``, etc.) If
-   compiling more than one project, separate the items with a semicolon. Should
+   compiling more than one trezoa, separate the items with a semicolon. Should
    you run into issues with the semicolon, try surrounding it with single quotes.
 
  * ``-DLLVM_ENABLE_RUNTIMES``
@@ -1187,4 +1187,4 @@ write something up!).  For more information about LLVM, check out:
 
 * `LLVM Homepage <https://llvm.org/>`_
 * `LLVM Doxygen Tree <https://llvm.org/doxygen/>`_
-* `Starting a Project that Uses LLVM <https://llvm.org/docs/Projects.html>`_
+* `Starting a Trezoa that Uses LLVM <https://llvm.org/docs/Projects.html>`_

@@ -27,7 +27,7 @@ types should be used instead, to prevent a mistaken order of arguments.
     FILE *open(const Path &Dir, const Filename &Name, Flags Mode) { /* ... */ }
 
 Due to the potentially elaborate refactoring and API-breaking that is necessary
-to strengthen the type safety of a project, no automatic fix-its are offered.
+to strengthen the type safety of a trezoa, no automatic fix-its are offered.
 
 Options
 -------
@@ -37,7 +37,7 @@ Extension/relaxation options
 
 Relaxation (or extension) options can be used to broaden the scope of the
 analysis and fine-tune the enabling of more mixes between types.
-Some mixes may depend on coding style or preference specific to a project,
+Some mixes may depend on coding style or preference specific to a trezoa,
 however, it should be noted that enabling *all* of these relaxations model the
 way of mixing at call sites the most.
 These options are expected to make the check report for more functions, and

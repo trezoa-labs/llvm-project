@@ -1,6 +1,6 @@
 //===-- AMDGPUISelLowering.h - AMDGPU Lowering Interface --------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -282,7 +282,7 @@ public:
 
   // FIXME: Turn off MergeConsecutiveStores() before Instruction Selection for
   // AMDGPU.  Commit r319036,
-  // (https://github.com/llvm/llvm-project/commit/db77e57ea86d941a4262ef60261692f4cb6893e6)
+  // (https://github.com/llvm/llvm-trezoa/commit/db77e57ea86d941a4262ef60261692f4cb6893e6)
   // turned on MergeConsecutiveStores() before Instruction Selection for all
   // targets.  Enough AMDGPU compiles go into an infinite loop (
   // MergeConsecutiveStores() merges two stores; LegalizeStoreOps() un-merges;

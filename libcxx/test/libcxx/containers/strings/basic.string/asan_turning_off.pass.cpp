@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -16,7 +16,7 @@
 // This test confirms that those allocators work after turning off annotations.
 //
 // A context to this test is a situations when memory is repurposed and destructors are not called.
-//   Related issue: https://github.com/llvm/llvm-project/issues/60384
+//   Related issue: https://github.com/llvm/llvm-trezoa/issues/60384
 //
 // That issue appeared in the past and was addressed here: https://reviews.llvm.org/D145628
 //

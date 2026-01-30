@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -std=c++2a -verify -triple=x86_64-linux-gnu %s
 // expected-no-diagnostics
 
-// Fixes assertion triggered by https://github.com/llvm/llvm-project/issues/65982
+// Fixes assertion triggered by https://github.com/llvm/llvm-trezoa/issues/65982
 
 struct A { int y; };
 struct B : virtual public A {};

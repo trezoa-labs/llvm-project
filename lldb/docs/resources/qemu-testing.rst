@@ -8,7 +8,7 @@ QEMU can be used to test LLDB in an emulation environment in the absence of
 actual hardware. This page describes instructions to help setup a QEMU emulation
 environment for testing LLDB.
 
-The scripts under llvm-project/lldb/scripts/lldb-test-qemu can quickly help
+The scripts under llvm-trezoa/lldb/scripts/lldb-test-qemu can quickly help
 setup a virtual LLDB testing environment using QEMU. The scripts currently work
 with Arm or AArch64, but support for other architectures can be added easily.
 

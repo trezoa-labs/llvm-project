@@ -8,7 +8,7 @@
 #if USER_FUNCTION
 // On Windows, flags configured through the user-defined function `__asan_default_options`
 // are suspected to not always be honored according to GitHub bug:
-// https://github.com/llvm/llvm-project/issues/117925
+// https://github.com/llvm/llvm-trezoa/issues/117925
 // This test ensures we do not regress on `allocator_may_return_null` specifically.
 extern "C" __declspec(dllexport) extern const char *__asan_default_options() {
   return "allocator_may_return_null=1";

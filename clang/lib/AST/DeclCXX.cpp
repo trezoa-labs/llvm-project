@@ -1,6 +1,6 @@
 //===- DeclCXX.cpp - C++ Declaration AST Node Implementation --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1498,7 +1498,7 @@ void CXXRecordDecl::addedEligibleSpecialMemberFunction(const CXXMethodDecl *MD,
                                                        unsigned SMKind) {
   // FIXME: We shouldn't change DeclaredNonTrivialSpecialMembers if `MD` is
   // a function template, but this needs CWG attention before we break ABI.
-  // See https://github.com/llvm/llvm-project/issues/59206
+  // See https://github.com/llvm/llvm-trezoa/issues/59206
 
   if (const auto *DD = dyn_cast<CXXDestructorDecl>(MD)) {
     if (DD->isUserProvided())
@@ -1681,7 +1681,7 @@ static NamedDecl* getLambdaCallOperatorHelper(const CXXRecordDecl &RD) {
   // to this module.
   //
   // TODO: We need to fix this properly (see
-  // https://github.com/llvm/llvm-project/issues/90154).
+  // https://github.com/llvm/llvm-trezoa/issues/90154).
   Module *M = RD.getOwningModule();
   for (Decl *D : Calls.front()->redecls()) {
     auto *MD = cast<NamedDecl>(D);

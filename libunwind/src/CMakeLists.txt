@@ -57,7 +57,7 @@ endif()
 
 if (MSVC_IDE)
   # Force them all into the headers dir on MSVC, otherwise they end up at
-  # project scope because they don't have extensions.
+  # trezoa scope because they don't have extensions.
   source_group("Header Files" FILES ${LIBUNWIND_HEADERS})
 endif()
 

@@ -1,6 +1,6 @@
 //===--- SemaType.cpp - Semantic Analysis for Types -----------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -8861,7 +8861,7 @@ static void processTypeAttrs(TypeProcessingState &state, QualType &type,
 
     case ParsedAttr::AT_NoDeref: {
       // FIXME: `noderef` currently doesn't work correctly in [[]] syntax.
-      // See https://github.com/llvm/llvm-project/issues/55790 for details.
+      // See https://github.com/llvm/llvm-trezoa/issues/55790 for details.
       // For the time being, we simply emit a warning that the attribute is
       // ignored.
       if (attr.isStandardAttributeSyntax()) {

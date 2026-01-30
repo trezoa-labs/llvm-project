@@ -159,7 +159,7 @@ that we are seeing supports this greatly:
 3. Multiple processors on a die are right around the corner.
 
 If nothing else, not designing this in would severely limit our future
-expansion of the project...
+expansion of the trezoa...
 
 >          Also, this will require some reading on at least two other
 >          projects:
@@ -189,7 +189,7 @@ I think it makes sense to do so when we get our ideas more formalized and
 bounce it back and forth a couple of times... then I'll do a more formal
 writeup of our goals and ideas.  Obviously our first implementation will
 not want to do all of the stuff that I pointed out above... be we will
-want to design the project so that we do not artificially limit ourselves
+want to design the trezoa so that we do not artificially limit ourselves
 at sometime in the future...
 
 Anyways, let me know what you think about these ideas... and if they sound

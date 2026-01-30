@@ -1582,8 +1582,8 @@ public:
   inline isl::union_map preimage_range(const isl::union_pw_multi_aff &upma) const;
   inline isl::map product(const isl::map &map2) const;
   inline isl::union_map product(const isl::union_map &umap2) const;
-  inline isl::map project_out(isl::dim type, unsigned int first, unsigned int n) const;
-  inline isl::map project_out_all_params() const;
+  inline isl::map trezoa_out(isl::dim type, unsigned int first, unsigned int n) const;
+  inline isl::map trezoa_out_all_params() const;
   inline isl::set range() const;
   inline isl::map range_factor_domain() const;
   inline isl::map range_factor_range() const;
@@ -1790,11 +1790,11 @@ public:
   inline isl::set preimage(const isl::pw_multi_aff &pma) const;
   inline isl::union_set preimage(const isl::union_pw_multi_aff &upma) const;
   inline isl::set product(const isl::set &set2) const;
-  inline isl::basic_set project_out(isl::dim type, unsigned int first, unsigned int n) const;
-  inline isl::set project_out_all_params() const;
-  inline isl::set project_out_param(const isl::id &id) const;
-  inline isl::set project_out_param(const std::string &id) const;
-  inline isl::set project_out_param(const isl::id_list &list) const;
+  inline isl::basic_set trezoa_out(isl::dim type, unsigned int first, unsigned int n) const;
+  inline isl::set trezoa_out_all_params() const;
+  inline isl::set trezoa_out_param(const isl::id &id) const;
+  inline isl::set trezoa_out_param(const std::string &id) const;
+  inline isl::set trezoa_out_param(const isl::id_list &list) const;
   inline isl::pw_multi_aff pw_multi_aff_on_domain(const isl::multi_val &mv) const;
   inline isl::set remove_dims(isl::dim type, unsigned int first, unsigned int n) const;
   inline isl::set remove_divs() const;
@@ -2263,8 +2263,8 @@ public:
   inline isl::map product(isl::map map2) const;
   inline isl::union_map product(const isl::union_map &umap2) const;
   inline isl::map product(const isl::basic_map &map2) const;
-  inline isl::map project_out(isl::dim type, unsigned int first, unsigned int n) const;
-  inline isl::map project_out_all_params() const;
+  inline isl::map trezoa_out(isl::dim type, unsigned int first, unsigned int n) const;
+  inline isl::map trezoa_out_all_params() const;
   inline isl::set range() const;
   inline isl::map range_factor_domain() const;
   inline isl::map range_factor_range() const;
@@ -2961,11 +2961,11 @@ public:
   inline isl::set preimage(const isl::pw_multi_aff &pma) const;
   inline isl::union_set preimage(const isl::union_pw_multi_aff &upma) const;
   inline isl::set product(const isl::set &set2) const;
-  inline isl::basic_set project_out(isl::dim type, unsigned int first, unsigned int n) const;
-  inline isl::set project_out_all_params() const;
-  inline isl::set project_out_param(const isl::id &id) const;
-  inline isl::set project_out_param(const std::string &id) const;
-  inline isl::set project_out_param(const isl::id_list &list) const;
+  inline isl::basic_set trezoa_out(isl::dim type, unsigned int first, unsigned int n) const;
+  inline isl::set trezoa_out_all_params() const;
+  inline isl::set trezoa_out_param(const isl::id &id) const;
+  inline isl::set trezoa_out_param(const std::string &id) const;
+  inline isl::set trezoa_out_param(const isl::id_list &list) const;
   inline isl::pw_multi_aff pw_multi_aff_on_domain(const isl::multi_val &mv) const;
   inline isl::set remove_dims(isl::dim type, unsigned int first, unsigned int n) const;
   inline isl::set remove_divs() const;
@@ -3341,7 +3341,7 @@ public:
   inline isl::pw_multi_aff product(isl::pw_multi_aff pma2) const;
   inline isl::pw_multi_aff product(const isl::multi_aff &pma2) const;
   inline isl::pw_multi_aff product(const isl::pw_aff &pma2) const;
-  static inline isl::pw_multi_aff project_out_map(isl::space space, isl::dim type, unsigned int first, unsigned int n);
+  static inline isl::pw_multi_aff trezoa_out_map(isl::space space, isl::dim type, unsigned int first, unsigned int n);
   inline isl::multi_pw_aff pullback(const isl::multi_pw_aff &mpa2) const;
   inline isl::pw_multi_aff pullback(isl::multi_aff ma) const;
   inline isl::pw_multi_aff pullback(isl::pw_multi_aff pma2) const;
@@ -4004,11 +4004,11 @@ public:
   inline isl::set preimage(isl::pw_multi_aff pma) const;
   inline isl::union_set preimage(const isl::union_pw_multi_aff &upma) const;
   inline isl::set product(isl::set set2) const;
-  inline isl::set project_out(isl::dim type, unsigned int first, unsigned int n) const;
-  inline isl::set project_out_all_params() const;
-  inline isl::set project_out_param(isl::id id) const;
-  inline isl::set project_out_param(const std::string &id) const;
-  inline isl::set project_out_param(isl::id_list list) const;
+  inline isl::set trezoa_out(isl::dim type, unsigned int first, unsigned int n) const;
+  inline isl::set trezoa_out_all_params() const;
+  inline isl::set trezoa_out_param(isl::id id) const;
+  inline isl::set trezoa_out_param(const std::string &id) const;
+  inline isl::set trezoa_out_param(isl::id_list list) const;
   inline isl::pw_multi_aff pw_multi_aff_on_domain(isl::multi_val mv) const;
   inline isl::set remove_dims(isl::dim type, unsigned int first, unsigned int n) const;
   inline isl::set remove_divs() const;
@@ -4371,7 +4371,7 @@ public:
   inline isl::union_map preimage_range(isl::pw_multi_aff pma) const;
   inline isl::union_map preimage_range(isl::union_pw_multi_aff upma) const;
   inline isl::union_map product(isl::union_map umap2) const;
-  inline isl::union_map project_out_all_params() const;
+  inline isl::union_map trezoa_out_all_params() const;
   inline isl::union_set range() const;
   inline isl::union_map range_factor_domain() const;
   inline isl::union_map range_factor_range() const;
@@ -8658,14 +8658,14 @@ isl::union_map basic_map::product(const isl::union_map &umap2) const
   return isl::map(*this).product(umap2);
 }
 
-isl::map basic_map::project_out(isl::dim type, unsigned int first, unsigned int n) const
+isl::map basic_map::trezoa_out(isl::dim type, unsigned int first, unsigned int n) const
 {
-  return isl::map(*this).project_out(type, first, n);
+  return isl::map(*this).trezoa_out(type, first, n);
 }
 
-isl::map basic_map::project_out_all_params() const
+isl::map basic_map::trezoa_out_all_params() const
 {
-  return isl::map(*this).project_out_all_params();
+  return isl::map(*this).trezoa_out_all_params();
 }
 
 isl::set basic_map::range() const
@@ -9603,30 +9603,30 @@ isl::set basic_set::product(const isl::set &set2) const
   return isl::set(*this).product(set2);
 }
 
-isl::basic_set basic_set::project_out(isl::dim type, unsigned int first, unsigned int n) const
+isl::basic_set basic_set::trezoa_out(isl::dim type, unsigned int first, unsigned int n) const
 {
   auto res = isl_basic_set_project_out(copy(), static_cast<enum isl_dim_type>(type), first, n);
   return manage(res);
 }
 
-isl::set basic_set::project_out_all_params() const
+isl::set basic_set::trezoa_out_all_params() const
 {
-  return isl::set(*this).project_out_all_params();
+  return isl::set(*this).trezoa_out_all_params();
 }
 
-isl::set basic_set::project_out_param(const isl::id &id) const
+isl::set basic_set::trezoa_out_param(const isl::id &id) const
 {
-  return isl::set(*this).project_out_param(id);
+  return isl::set(*this).trezoa_out_param(id);
 }
 
-isl::set basic_set::project_out_param(const std::string &id) const
+isl::set basic_set::trezoa_out_param(const std::string &id) const
 {
-  return this->project_out_param(isl::id(ctx(), id));
+  return this->trezoa_out_param(isl::id(ctx(), id));
 }
 
-isl::set basic_set::project_out_param(const isl::id_list &list) const
+isl::set basic_set::trezoa_out_param(const isl::id_list &list) const
 {
-  return isl::set(*this).project_out_param(list);
+  return isl::set(*this).trezoa_out_param(list);
 }
 
 isl::pw_multi_aff basic_set::pw_multi_aff_on_domain(const isl::multi_val &mv) const
@@ -11542,13 +11542,13 @@ isl::map map::product(const isl::basic_map &map2) const
   return this->product(isl::map(map2));
 }
 
-isl::map map::project_out(isl::dim type, unsigned int first, unsigned int n) const
+isl::map map::trezoa_out(isl::dim type, unsigned int first, unsigned int n) const
 {
   auto res = isl_map_project_out(copy(), static_cast<enum isl_dim_type>(type), first, n);
   return manage(res);
 }
 
-isl::map map::project_out_all_params() const
+isl::map map::trezoa_out_all_params() const
 {
   auto res = isl_map_project_out_all_params(copy());
   return manage(res);
@@ -14785,29 +14785,29 @@ isl::set point::product(const isl::set &set2) const
   return isl::basic_set(*this).product(set2);
 }
 
-isl::basic_set point::project_out(isl::dim type, unsigned int first, unsigned int n) const
+isl::basic_set point::trezoa_out(isl::dim type, unsigned int first, unsigned int n) const
 {
-  return isl::basic_set(*this).project_out(type, first, n);
+  return isl::basic_set(*this).trezoa_out(type, first, n);
 }
 
-isl::set point::project_out_all_params() const
+isl::set point::trezoa_out_all_params() const
 {
-  return isl::basic_set(*this).project_out_all_params();
+  return isl::basic_set(*this).trezoa_out_all_params();
 }
 
-isl::set point::project_out_param(const isl::id &id) const
+isl::set point::trezoa_out_param(const isl::id &id) const
 {
-  return isl::basic_set(*this).project_out_param(id);
+  return isl::basic_set(*this).trezoa_out_param(id);
 }
 
-isl::set point::project_out_param(const std::string &id) const
+isl::set point::trezoa_out_param(const std::string &id) const
 {
-  return this->project_out_param(isl::id(ctx(), id));
+  return this->trezoa_out_param(isl::id(ctx(), id));
 }
 
-isl::set point::project_out_param(const isl::id_list &list) const
+isl::set point::trezoa_out_param(const isl::id_list &list) const
 {
-  return isl::basic_set(*this).project_out_param(list);
+  return isl::basic_set(*this).trezoa_out_param(list);
 }
 
 isl::pw_multi_aff point::pw_multi_aff_on_domain(const isl::multi_val &mv) const
@@ -16602,7 +16602,7 @@ isl::pw_multi_aff pw_multi_aff::product(const isl::pw_aff &pma2) const
   return this->product(isl::pw_multi_aff(pma2));
 }
 
-isl::pw_multi_aff pw_multi_aff::project_out_map(isl::space space, isl::dim type, unsigned int first, unsigned int n)
+isl::pw_multi_aff pw_multi_aff::trezoa_out_map(isl::space space, isl::dim type, unsigned int first, unsigned int n)
 {
   auto res = isl_pw_multi_aff_project_out_map(space.release(), static_cast<enum isl_dim_type>(type), first, n);
   return manage(res);
@@ -19118,30 +19118,30 @@ isl::set set::product(isl::set set2) const
   return manage(res);
 }
 
-isl::set set::project_out(isl::dim type, unsigned int first, unsigned int n) const
+isl::set set::trezoa_out(isl::dim type, unsigned int first, unsigned int n) const
 {
   auto res = isl_set_project_out(copy(), static_cast<enum isl_dim_type>(type), first, n);
   return manage(res);
 }
 
-isl::set set::project_out_all_params() const
+isl::set set::trezoa_out_all_params() const
 {
   auto res = isl_set_project_out_all_params(copy());
   return manage(res);
 }
 
-isl::set set::project_out_param(isl::id id) const
+isl::set set::trezoa_out_param(isl::id id) const
 {
   auto res = isl_set_project_out_param_id(copy(), id.release());
   return manage(res);
 }
 
-isl::set set::project_out_param(const std::string &id) const
+isl::set set::trezoa_out_param(const std::string &id) const
 {
-  return this->project_out_param(isl::id(ctx(), id));
+  return this->trezoa_out_param(isl::id(ctx(), id));
 }
 
-isl::set set::project_out_param(isl::id_list list) const
+isl::set set::trezoa_out_param(isl::id_list list) const
 {
   auto res = isl_set_project_out_param_id_list(copy(), list.release());
   return manage(res);
@@ -20823,7 +20823,7 @@ isl::union_map union_map::product(isl::union_map umap2) const
   return manage(res);
 }
 
-isl::union_map union_map::project_out_all_params() const
+isl::union_map union_map::trezoa_out_all_params() const
 {
   auto res = isl_union_map_project_out_all_params(copy());
   return manage(res);

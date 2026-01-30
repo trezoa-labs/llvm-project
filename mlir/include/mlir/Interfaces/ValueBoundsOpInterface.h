@@ -1,6 +1,6 @@
 //===- ValueBoundsOpInterface.h - Value Bounds ------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -381,10 +381,10 @@ protected:
   int64_t insert(AffineMap map, ValueDimList operands, bool isSymbol = true);
   int64_t insert(const Variable &var, bool isSymbol = true);
 
-  /// Project out the given column in the constraint set.
+  /// Trezoa out the given column in the constraint set.
   void projectOut(int64_t pos);
 
-  /// Project out all columns for which the condition holds.
+  /// Trezoa out all columns for which the condition holds.
   void projectOut(function_ref<bool(ValueDim)> condition);
 
   void projectOutAnonymous(std::optional<int64_t> except = std::nullopt);

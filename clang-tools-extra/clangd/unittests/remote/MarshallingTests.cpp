@@ -1,6 +1,6 @@
 //===--- MarshallingTests.cpp ------------------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -91,11 +91,11 @@ TEST(RemoteMarshallingTest, URITranslation) {
   llvm::BumpPtrAllocator Arena;
   llvm::UniqueStringSaver Strings(Arena);
   Marshaller ProtobufMarshaller(
-      testPath("remote/machine/projects/llvm-project/"),
-      testPath("home/my-projects/llvm-project/"));
+      testPath("remote/machine/projects/llvm-trezoa/"),
+      testPath("home/my-projects/llvm-trezoa/"));
   clangd::Ref Original;
   Original.Location.FileURI =
-      testPathURI("remote/machine/projects/llvm-project/clang-tools-extra/"
+      testPathURI("remote/machine/projects/llvm-trezoa/clang-tools-extra/"
                   "clangd/unittests/remote/MarshallingTests.cpp",
                   Strings);
   auto Serialized = ProtobufMarshaller.toProtobuf(Original);
@@ -105,7 +105,7 @@ TEST(RemoteMarshallingTest, URITranslation) {
   auto Deserialized = ProtobufMarshaller.fromProtobuf(*Serialized);
   ASSERT_TRUE(bool(Deserialized));
   EXPECT_STREQ(Deserialized->Location.FileURI,
-               testPathURI("home/my-projects/llvm-project/clang-tools-extra/"
+               testPathURI("home/my-projects/llvm-trezoa/clang-tools-extra/"
                            "clangd/unittests/remote/MarshallingTests.cpp",
                            Strings));
 
@@ -124,7 +124,7 @@ TEST(RemoteMarshallingTest, URITranslation) {
 
   // Can not use URIs with scheme different from "file".
   auto UnittestURI =
-      URI::create(testPath("project/lib/HelloWorld.cpp"), "unittest");
+      URI::create(testPath("trezoa/lib/HelloWorld.cpp"), "unittest");
   ASSERT_TRUE(bool(UnittestURI));
   WithInvalidURI.Location.FileURI =
       Strings.save(UnittestURI->toString()).begin();
@@ -149,7 +149,7 @@ TEST(RemoteMarshallingTest, SymbolSerialization) {
   clangd::Symbol Sym = createSymbol("home/", Strings);
   Marshaller ProtobufMarshaller(testPath("home/"), testPath("home/"));
 
-  // Check that symbols are exactly the same if the path to indexed project is
+  // Check that symbols are exactly the same if the path to indexed trezoa is
   // the same on indexing machine and the client.
   auto Serialized = ProtobufMarshaller.toProtobuf(Sym);
   ASSERT_TRUE(bool(Serialized));
@@ -221,11 +221,11 @@ TEST(RemoteMarshallingTest, RefSerialization) {
   Location.End.setLine(3213);
   Location.End.setColumn(541);
   Location.FileURI = testPathURI(
-      "llvm-project/llvm/clang-tools-extra/clangd/Protocol.h", Strings);
+      "llvm-trezoa/llvm/clang-tools-extra/clangd/Protocol.h", Strings);
   Ref.Location = Location;
 
-  Marshaller ProtobufMarshaller(testPath("llvm-project/"),
-                                testPath("llvm-project/"));
+  Marshaller ProtobufMarshaller(testPath("llvm-trezoa/"),
+                                testPath("llvm-trezoa/"));
 
   auto Serialized = ProtobufMarshaller.toProtobuf(Ref);
   ASSERT_TRUE(bool(Serialized));
@@ -243,7 +243,7 @@ TEST(RemoteMarshallingTest, IncludeHeaderURIs) {
   clangd::Symbol::IncludeHeaderWithReferences Header;
   // Add only valid headers.
   Header.IncludeHeader =
-      Strings.save(URI::createFile(testPath("project/Header.h")).toString());
+      Strings.save(URI::createFile(testPath("trezoa/Header.h")).toString());
   Header.References = 21;
   Sym.IncludeHeaders.push_back(Header);
   Header.IncludeHeader = Strings.save("<iostream>");
@@ -265,7 +265,7 @@ TEST(RemoteMarshallingTest, IncludeHeaderURIs) {
   EXPECT_EQ(toYAML(Sym), toYAML(*Deserialized));
 
   // This is an absolute path to a header: can not be transmitted over the wire.
-  Header.IncludeHeader = Strings.save(testPath("project/include/Common.h"));
+  Header.IncludeHeader = Strings.save(testPath("trezoa/include/Common.h"));
   Header.References = 42;
   Sym.IncludeHeaders.push_back(Header);
   Serialized = ProtobufMarshaller.toProtobuf(Sym);
@@ -417,7 +417,7 @@ TEST(RemoteMarshallingTest, RelationsSerializion) {
 
 TEST(RemoteMarshallingTest, RelativePathToURITranslation) {
   Marshaller ProtobufMarshaller(/*RemoteIndexRoot=*/"",
-                                /*LocalIndexRoot=*/testPath("home/project/"));
+                                /*LocalIndexRoot=*/testPath("home/trezoa/"));
   auto URIString = ProtobufMarshaller.relativePathToURI("lib/File.cpp");
   ASSERT_TRUE(bool(URIString));
   // RelativePath can not be absolute.
@@ -433,17 +433,17 @@ TEST(RemoteMarshallingTest, RelativePathToURITranslation) {
 TEST(RemoteMarshallingTest, URIToRelativePathTranslation) {
   llvm::BumpPtrAllocator Arena;
   llvm::UniqueStringSaver Strings(Arena);
-  Marshaller ProtobufMarshaller(/*RemoteIndexRoot=*/testPath("remote/project/"),
+  Marshaller ProtobufMarshaller(/*RemoteIndexRoot=*/testPath("remote/trezoa/"),
                                 /*LocalIndexRoot=*/"");
   auto RelativePath = ProtobufMarshaller.uriToRelativePath(
-      testPathURI("remote/project/lib/File.cpp", Strings));
+      testPathURI("remote/trezoa/lib/File.cpp", Strings));
   ASSERT_TRUE(bool(RelativePath));
   // RemoteIndexRoot has to be a prefix of the file path.
   Marshaller WrongMarshaller(
-      /*RemoteIndexRoot=*/testPath("remote/other/project/"),
+      /*RemoteIndexRoot=*/testPath("remote/other/trezoa/"),
       /*LocalIndexRoot=*/"");
   RelativePath = WrongMarshaller.uriToRelativePath(
-      testPathURI("remote/project/lib/File.cpp", Strings));
+      testPathURI("remote/trezoa/lib/File.cpp", Strings));
   EXPECT_FALSE(bool(RelativePath));
   llvm::consumeError(RelativePath.takeError());
 }

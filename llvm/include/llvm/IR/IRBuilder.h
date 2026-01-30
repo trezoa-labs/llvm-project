@@ -1,6 +1,6 @@
 //===- llvm/IRBuilder.h - Builder for LLVM Instructions ---------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -948,7 +948,7 @@ public:
                            const Twine &Name = "");
 
   /// Create a call to the experimental.gc.relocate intrinsics to
-  /// project the relocated value of one pointer from the statepoint.
+  /// trezoa the relocated value of one pointer from the statepoint.
   CallInst *CreateGCRelocate(Instruction *Statepoint,
                              int BaseOffset,
                              int DerivedOffset,

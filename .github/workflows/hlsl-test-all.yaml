@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           ref: ${{ inputs.LLVM-branch }}
-          path: llvm-project
+          path: llvm-trezoa
       - name: Checkout OffloadTest
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
@@ -66,14 +66,14 @@ jobs:
             ninja dxv llvm-dis
       - name: Build LLVM
         run: |
-            cd llvm-project
+            cd llvm-trezoa
             mkdir build
             cd build
-            cmake -G Ninja -DDXIL_DIS=${{ github.workspace }}/DXC/build/bin/llvm-dis -DLLVM_INCLUDE_DXIL_TESTS=On -DCMAKE_BUILD_TYPE=Release -C ${{ github.workspace }}/llvm-project/clang/cmake/caches/HLSL.cmake -C ${{ github.workspace }}/OffloadTest/cmake/caches/sccache.cmake -DDXC_DIR=${{ github.workspace }}/DXC/build/bin -DLLVM_EXTERNAL_OFFLOADTEST_SOURCE_DIR=${{ github.workspace }}/OffloadTest -DLLVM_EXTERNAL_PROJECTS="OffloadTest" -DLLVM_LIT_ARGS="--xunit-xml-output=testresults.xunit.xml -v" -DGOLDENIMAGE_DIR=${{ github.workspace }}/golden-images ${{ github.workspace }}/llvm-project/llvm/
+            cmake -G Ninja -DDXIL_DIS=${{ github.workspace }}/DXC/build/bin/llvm-dis -DLLVM_INCLUDE_DXIL_TESTS=On -DCMAKE_BUILD_TYPE=Release -C ${{ github.workspace }}/llvm-trezoa/clang/cmake/caches/HLSL.cmake -C ${{ github.workspace }}/OffloadTest/cmake/caches/sccache.cmake -DDXC_DIR=${{ github.workspace }}/DXC/build/bin -DLLVM_EXTERNAL_OFFLOADTEST_SOURCE_DIR=${{ github.workspace }}/OffloadTest -DLLVM_EXTERNAL_PROJECTS="OffloadTest" -DLLVM_LIT_ARGS="--xunit-xml-output=testresults.xunit.xml -v" -DGOLDENIMAGE_DIR=${{ github.workspace }}/golden-images ${{ github.workspace }}/llvm-trezoa/llvm/
             ninja hlsl-test-depends llvm-test-depends clang-test-depends
       - name: Run HLSL Tests
         run: |
-            cd llvm-project
+            cd llvm-trezoa
             cd build
             ninja check-llvm
             ninja check-clang
@@ -84,4 +84,4 @@ jobs:
         if: always() && runner.os == 'macOS'
         with:
           comment_mode: off
-          files: llvm-project/build/**/testresults.xunit.xml
+          files: llvm-trezoa/build/**/testresults.xunit.xml

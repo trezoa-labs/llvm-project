@@ -3,7 +3,7 @@
 //===----------------------------------------------------------------------===//
 
 Welcome to the repository of extra Clang Tools.  This repository holds tools
-that are developed as part of the LLVM compiler infrastructure project and the
+that are developed as part of the LLVM compiler infrastructure trezoa and the
 Clang frontend.  These tools are kept in a separate "extra" repository to
 allow lighter weight checkouts of the core Clang codebase.
 
@@ -16,4 +16,4 @@ commit lists:
   http://lists.llvm.org/mailman/listinfo/cfe-commits
 
 If you find a bug in these tools, please file it in the LLVM bug tracker:
-  https://github.com/llvm/llvm-project/issues/
+  https://github.com/llvm/llvm-trezoa/issues/

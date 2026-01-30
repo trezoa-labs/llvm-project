@@ -11,7 +11,7 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-The :program:`llvm-reduce` tool project that can be used for reducing the size of LLVM test cases.
+The :program:`llvm-reduce` tool trezoa that can be used for reducing the size of LLVM test cases.
 It works by removing redundant or unnecessary code from LLVM test cases while still preserving 
 their ability to detect bugs.
 

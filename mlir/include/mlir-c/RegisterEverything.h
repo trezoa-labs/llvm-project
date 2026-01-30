@@ -1,6 +1,6 @@
 //===-- mlir-c/RegisterEverything.h - Register all MLIR entities --*- C -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM
 // Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
@@ -10,7 +10,7 @@
 // and passes. Downstream projects typically will not want to use this unless
 // if they don't care about binary size or build bloat and just wish access
 // to the entire set of upstream facilities. For those that do care, they
-// should use registration functions specific to their project.
+// should use registration functions specific to their trezoa.
 //===----------------------------------------------------------------------===//
 
 #ifndef MLIR_C_REGISTER_EVERYTHING_H

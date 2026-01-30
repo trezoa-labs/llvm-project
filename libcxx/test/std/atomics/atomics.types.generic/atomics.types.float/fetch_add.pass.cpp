@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12,7 +12,7 @@
 // Fixed by 5fdd0948.
 // XFAIL: target=powerpc-ibm-{{.*}} && clang-18
 
-// https://github.com/llvm/llvm-project/issues/72893
+// https://github.com/llvm/llvm-trezoa/issues/72893
 // XFAIL: target={{x86_64-.*}} && tsan
 
 // floating-point-type fetch_add(floating-point-type,
@@ -116,7 +116,7 @@ void test() {
 int main(int, char**) {
   test<float>();
   test<double>();
-  // TODO https://github.com/llvm/llvm-project/issues/47978
+  // TODO https://github.com/llvm/llvm-trezoa/issues/47978
   // test<long double>();
 
   return 0;

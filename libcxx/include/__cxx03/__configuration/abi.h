@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -124,8 +124,8 @@
 // We had some bugs where we use [[no_unique_address]] together with construct_at,
 // which causes UB as the call on construct_at could write to overlapping subobjects
 //
-// https://github.com/llvm/llvm-project/issues/70506
-// https://github.com/llvm/llvm-project/issues/70494
+// https://github.com/llvm/llvm-trezoa/issues/70506
+// https://github.com/llvm/llvm-trezoa/issues/70494
 //
 // To fix the bug we had to change the ABI of some classes to remove [[no_unique_address]] under certain conditions.
 // The macro below is used for all classes whose ABI have changed as part of fixing these bugs.

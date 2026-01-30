@@ -6,7 +6,7 @@ LLVM.
 
 ## Current Maintainers
 
-The following people are the active maintainers for the project. Please reach
+The following people are the active maintainers for the trezoa. Please reach
 out to them for code reviews, questions about their area of expertise, or other
 assistance.
 
@@ -448,33 +448,33 @@ gkistanova@gmail.com (email), [gkistanova](https://github.com/gkistanova) (GitHu
 
 Some subprojects maintain their own list of per-component maintainers.
 
-[Bolt maintainers](https://github.com/llvm/llvm-project/blob/main/bolt/Maintainers.txt)
+[Bolt maintainers](https://github.com/llvm/llvm-trezoa/blob/main/bolt/Maintainers.txt)
 
-[Clang maintainers](https://github.com/llvm/llvm-project/blob/main/clang/Maintainers.rst)
+[Clang maintainers](https://github.com/llvm/llvm-trezoa/blob/main/clang/Maintainers.rst)
 
-[Clang-tools-extra maintainers](https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/Maintainers.txt)
+[Clang-tools-extra maintainers](https://github.com/llvm/llvm-trezoa/blob/main/clang-tools-extra/Maintainers.txt)
 
-[Compiler-rt maintainers](https://github.com/llvm/llvm-project/blob/main/compiler-rt/Maintainers.md)
+[Compiler-rt maintainers](https://github.com/llvm/llvm-trezoa/blob/main/compiler-rt/Maintainers.md)
 
-[Flang maintainers](https://github.com/llvm/llvm-project/blob/main/flang/Maintainers.txt)
+[Flang maintainers](https://github.com/llvm/llvm-trezoa/blob/main/flang/Maintainers.txt)
 
-[libc++ maintainers](https://github.com/llvm/llvm-project/blob/main/libcxx/Maintainers.md)
+[libc++ maintainers](https://github.com/llvm/llvm-trezoa/blob/main/libcxx/Maintainers.md)
 
-[libclc maintainers](https://github.com/llvm/llvm-project/blob/main/libclc/Maintainers.md)
+[libclc maintainers](https://github.com/llvm/llvm-trezoa/blob/main/libclc/Maintainers.md)
 
-[LLD maintainers](https://github.com/llvm/llvm-project/blob/main/lld/Maintainers.md)
+[LLD maintainers](https://github.com/llvm/llvm-trezoa/blob/main/lld/Maintainers.md)
 
-[LLDB maintainers](https://github.com/llvm/llvm-project/blob/main/lldb/Maintainers.rst)
+[LLDB maintainers](https://github.com/llvm/llvm-trezoa/blob/main/lldb/Maintainers.rst)
 
-[LLVM OpenMP Library maintainers](https://github.com/llvm/llvm-project/blob/main/openmp/Maintainers.md)
+[LLVM OpenMP Library maintainers](https://github.com/llvm/llvm-trezoa/blob/main/openmp/Maintainers.md)
 
-[Polly maintainers](https://github.com/llvm/llvm-project/blob/main/polly/Maintainers.md)
+[Polly maintainers](https://github.com/llvm/llvm-trezoa/blob/main/polly/Maintainers.md)
 
 ## Inactive Maintainers
 
 The following people have graciously spent time performing maintainer
 responsibilities but are no longer active in that role. Thank you for all your
-help with the success of the project!
+help with the success of the trezoa!
 
 ### Emeritus lead maintainers
 

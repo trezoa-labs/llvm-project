@@ -19,7 +19,7 @@ typing and data formatting.
 ## Add the Language to the LanguageType enum
 
 The `LanguageType` enum
-(see [lldb-enumerations.h](https://github.com/llvm/llvm-project/blob/main/lldb/include/lldb/lldb-enumerations.h))
+(see [lldb-enumerations.h](https://github.com/llvm/llvm-trezoa/blob/main/lldb/include/lldb/lldb-enumerations.h))
 contains a list of every language known to LLDB. It is the one place where
 support for a language must live that will need to merge cleanly with upstream
 LLDB if you are developing your language support in a separate branch. When
@@ -28,8 +28,8 @@ enumeration entry to `LanguageType`.
 
 ## Add a TypeSystem for the Language
 
-Both [Module](https://github.com/llvm/llvm-project/blob/main/lldb/include/lldb/Core/Module.h)
-and [Target](https://github.com/llvm/llvm-project/blob/main/lldb/include/lldb/Target/Target.h)
+Both [Module](https://github.com/llvm/llvm-trezoa/blob/main/lldb/include/lldb/Core/Module.h)
+and [Target](https://github.com/llvm/llvm-trezoa/blob/main/lldb/include/lldb/Target/Target.h)
 support the retrieval of a `TypeSystem` instance via `GetTypeSystemForLanguage()`.
 For `Module`, this method is directly on the `Module` instance. For `Target`,
 this is retrieved indirectly via the `TypeSystemMap` for the `Target` instance.
@@ -53,14 +53,14 @@ fine.
 
 Your `TypeSystem` will need an approach for creating types based on a set of
 `Module`s. If your type info is going to come from DWARF info, you will want to
-subclass [DWARFASTParser](https://github.com/llvm/llvm-project/blob/main/lldb/source/Plugins/SymbolFile/DWARF/DWARFASTParser.h).
+subclass [DWARFASTParser](https://github.com/llvm/llvm-trezoa/blob/main/lldb/source/Plugins/SymbolFile/DWARF/DWARFASTParser.h).
 
 
 ## Add Expression Evaluation Support
 
 Expression Evaluation support is enabled by implementing the relevant methods on
 a `TypeSystem`-derived class. Search for `Expression` in the
-[TypeSystem header](https://github.com/llvm/llvm-project/blob/main/lldb/include/lldb/Symbol/TypeSystem.h)
+[TypeSystem header](https://github.com/llvm/llvm-trezoa/blob/main/lldb/include/lldb/Symbol/TypeSystem.h)
 to find the methods to implement.
 
 ## Type Completion

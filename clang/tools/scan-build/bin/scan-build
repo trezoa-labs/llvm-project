@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -1229,15 +1229,15 @@ OPTIONS:
 
    Do not run static analyzer against files found in this
    directory (You can specify this option multiple times).
-   Could be useful when project contains 3rd party libraries.
+   Could be useful when trezoa contains 3rd party libraries.
 
  --use-cc [compiler path]
  --use-cc=[compiler path]
 
-   scan-build analyzes a project by interposing a "fake compiler", which
+   scan-build analyzes a trezoa by interposing a "fake compiler", which
    executes a real compiler for compilation and the static analyzer for analysis.
    Because of the current implementation of interposition, scan-build does not
-   know what compiler your project normally uses.  Instead, it simply overrides
+   know what compiler your trezoa normally uses.  Instead, it simply overrides
    the CC environment variable, and guesses your default compiler.
 
    In the future, this interposition mechanism to be improved, but if you need
@@ -1285,7 +1285,7 @@ ADVANCED OPTIONS:
 
  -stats
 
-   Generates visitation statistics for the project being analyzed.
+   Generates visitation statistics for the trezoa being analyzed.
 
  -maxloop <loop count>
 
@@ -1446,7 +1446,7 @@ EXAMPLE
 
 The above example causes analysis reports to be deposited into a subdirectory
 of "/tmp/myhtmldir" and to run "make" with the "-j4" option. A different
-subdirectory is created each time scan-build analyzes a project. The analyzer
+subdirectory is created each time scan-build analyzes a trezoa. The analyzer
 should support most parallel builds, but not distributed builds.
 
 ENDTEXT

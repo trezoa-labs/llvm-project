@@ -116,7 +116,7 @@ struct S {};
 //
 
 // OK, this rule does not apply to macros:
-// https://github.com/llvm/llvm-project/issues/64130#issuecomment-1655751676
+// https://github.com/llvm/llvm-trezoa/issues/64130#issuecomment-1655751676
 #define _macro(m) int m = 0
 
 namespace _ns {
@@ -172,7 +172,7 @@ int _;
 // CHECK-FIXES: {{^}}int _;{{$}}
 
 // This should not trigger a warning
-// https://github.com/llvm/llvm-project/issues/52895
+// https://github.com/llvm/llvm-trezoa/issues/52895
 #define _5_kmph_rpm 459
 
 // these should pass

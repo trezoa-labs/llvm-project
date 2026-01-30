@@ -1,6 +1,6 @@
 //===- DXILTranslateMetadata.cpp - Pass to emit DXIL metadata -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -192,7 +192,7 @@ getEntryPropAsMetadata(const EntryProperties &EP, uint64_t EntryShaderFlags,
 
   if (EP.Entry != nullptr) {
     // FIXME: support more props.
-    // See https://github.com/llvm/llvm-project/issues/57948.
+    // See https://github.com/llvm/llvm-trezoa/issues/57948.
     // Add shader kind for lib entries.
     if (ShaderProfile == Triple::EnvironmentType::Library &&
         EP.ShaderStage != Triple::EnvironmentType::Library)
@@ -351,7 +351,7 @@ static void translateMetadata(Module &M, DXILBindingMap &DBM,
   auto *ResourceMD =
       (NamedResourceMD != nullptr) ? NamedResourceMD->getOperand(0) : nullptr;
   // FIXME: Add support to construct Signatures
-  // See https://github.com/llvm/llvm-project/issues/57928
+  // See https://github.com/llvm/llvm-trezoa/issues/57928
   MDTuple *Signatures = nullptr;
 
   if (MMDI.ShaderProfile == Triple::EnvironmentType::Library) {

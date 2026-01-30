@@ -193,8 +193,8 @@ with a revision marker, like so:
   within` ``extern "BCPL"`` blocks.
 
 For now, it is sensible to version this document by the releases of its sole
-implementation (and its host project), clang.  "LLVM X.Y" refers to an
-open-source release of clang from the LLVM project.  "Apple X.Y" refers to an
+implementation (and its host trezoa), clang.  "LLVM X.Y" refers to an
+open-source release of clang from the LLVM trezoa.  "Apple X.Y" refers to an
 Apple-provided release of the Apple LLVM Compiler.  Other organizations that
 prepare their own, separately-versioned clang releases and wish to maintain
 similar information in this document should send requests to cfe-dev.

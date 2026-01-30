@@ -11,7 +11,7 @@ echo "builder/installer; some steps will require sudo privileges."
 
 readonly INSTALL_ROOT="${INSTALL_ROOT:-/usr/local/crosstool}"
 # Both $USER and root *must* have read/write access to this dir.
-readonly SCRATCH_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/llvm-project.XXXXXX")
+readonly SCRATCH_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/llvm-trezoa.XXXXXX")
 readonly SRC_ROOT="${SCRATCH_ROOT}/src"
 readonly OBJ_ROOT="${SCRATCH_ROOT}/obj"
 
@@ -33,7 +33,7 @@ readonly CROSS_TARGET_LD="${CODE_SOURCERY_BIN}/${CROSS_TARGET}-ld"
 
 readonly SYSROOT="${CODE_SOURCERY_ROOT}/${CROSS_TARGET}/libc"
 
-readonly LLVM_PKG_PATH="${LLVM_PKG_PATH:-${HOME}/llvm-project/snapshots}"
+readonly LLVM_PKG_PATH="${LLVM_PKG_PATH:-${HOME}/llvm-trezoa/snapshots}"
 
 # Latest SVN revisions known to be working in this configuration.
 readonly LLVM_DEFAULT_REV="74530"

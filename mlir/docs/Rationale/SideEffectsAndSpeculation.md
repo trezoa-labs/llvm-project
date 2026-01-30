@@ -62,10 +62,10 @@ simultaneously not overburdening simple passes that only need a coarse grained
 MLIR has two op interfaces to represent these implicit behaviors:
 
 1. The
-   [`MemoryEffectsOpInterface` op interface](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Interfaces/SideEffectInterfaces.td#L26)
+   [`MemoryEffectsOpInterface` op interface](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Interfaces/SideEffectInterfaces.td#L26)
    is used to track memory effects.
 1. The
-   [`ConditionallySpeculatable` op interface](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Interfaces/SideEffectInterfaces.td#L105)
+   [`ConditionallySpeculatable` op interface](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Interfaces/SideEffectInterfaces.td#L105)
    is used to track undefined behavior and infinite loops.
 
 Both of these are op interfaces which means operations can dynamically

@@ -1,6 +1,6 @@
 //===- VectorToSCF.cpp - Convert vector to SCF dialect ----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -722,7 +722,7 @@ struct DecomposePrintOpConversion : public VectorToSCFPattern<vector::PrintOp> {
     if (auto intTy = dyn_cast<IntegerType>(vectorType.getElementType())) {
       // Oddly sized integers are (somewhat) buggy on a lot of backends, so to
       // avoid issues extend them to a more standard size.
-      // https://github.com/llvm/llvm-project/issues/30613
+      // https://github.com/llvm/llvm-trezoa/issues/30613
       auto width = intTy.getWidth();
       auto legalWidth = llvm::NextPowerOf2(std::max(8u, width) - 1);
       auto legalIntTy = IntegerType::get(rewriter.getContext(), legalWidth,

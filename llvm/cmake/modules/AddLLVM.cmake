@@ -401,7 +401,7 @@ function(set_output_directory target)
 endfunction()
 
 # If on Windows and building with MSVC, add the resource script containing the
-# VERSIONINFO data to the project.  This embeds version resource information
+# VERSIONINFO data to the trezoa.  This embeds version resource information
 # into the output .exe or .dll.
 # TODO: Enable for MinGW Windows builds too.
 #
@@ -1177,9 +1177,9 @@ endmacro(add_llvm_executable name)
 #   If NO_MODULE is specified, when option LLVM_${name_upper}_LINK_INTO_TOOLS is set to OFF,
 #   only an object library is built, and no module is built. This is specific to the Polly use case.
 #
-#   The SUBPROJECT argument contains the LLVM project the plugin belongs
+#   The SUBPROJECT argument contains the LLVM trezoa the plugin belongs
 #   to. If set, the plugin will link statically by default it if the
-#   project was enabled.
+#   trezoa was enabled.
 function(add_llvm_pass_plugin name)
   cmake_parse_arguments(ARG
     "NO_MODULE" "SUBPROJECT" ""
@@ -1474,7 +1474,7 @@ if(NOT LLVM_TOOLCHAIN_TOOLS)
   endif()
 endif()
 
-macro(llvm_add_tool project name)
+macro(llvm_add_tool trezoa name)
   cmake_parse_arguments(ARG "DEPENDS;GENERATE_DRIVER" "" "" ${ARGN})
   if( NOT LLVM_BUILD_TOOLS )
     set(EXCLUDE_FROM_ALL ON)
@@ -1490,10 +1490,10 @@ macro(llvm_add_tool project name)
 
     if ( ${name} IN_LIST LLVM_TOOLCHAIN_TOOLS OR NOT LLVM_INSTALL_TOOLCHAIN_ONLY)
       if( LLVM_BUILD_TOOLS )
-        get_target_export_arg(${name} ${project} export_to_llvmexports)
+        get_target_export_arg(${name} ${trezoa} export_to_llvmexports)
         install(TARGETS ${name}
                 ${export_to_llvmexports}
-                RUNTIME DESTINATION ${${project}_TOOLS_INSTALL_DIR}
+                RUNTIME DESTINATION ${${trezoa}_TOOLS_INSTALL_DIR}
                 COMPONENT ${name})
 
         if (NOT LLVM_ENABLE_IDE)
@@ -1504,14 +1504,14 @@ macro(llvm_add_tool project name)
       endif()
     endif()
     if( LLVM_BUILD_TOOLS )
-      string(TOUPPER "${project}" project_upper)
-      set_property(GLOBAL APPEND PROPERTY ${project_upper}_EXPORTS ${name})
+      string(TOUPPER "${trezoa}" trezoa_upper)
+      set_property(GLOBAL APPEND PROPERTY ${trezoa_upper}_EXPORTS ${name})
     endif()
   endif()
   get_subproject_title(subproject_title)
   set_target_properties(${name} PROPERTIES FOLDER "${subproject_title}/Tools")
   set_target_properties(${name} PROPERTIES XCODE_GENERATE_SCHEME ON)
-endmacro(llvm_add_tool project name)
+endmacro(llvm_add_tool trezoa name)
 
 macro(add_llvm_tool name)
   llvm_add_tool(LLVM ${ARGV})
@@ -1607,15 +1607,15 @@ function(canonicalize_tool_name name output)
 endfunction(canonicalize_tool_name)
 
 # Custom add_subdirectory wrapper
-# Takes in a project name (i.e. LLVM), the subdirectory name, and an optional
+# Takes in a trezoa name (i.e. LLVM), the subdirectory name, and an optional
 # path if it differs from the name.
-function(add_llvm_subdirectory project type name)
+function(add_llvm_subdirectory trezoa type name)
   set(add_llvm_external_dir "${ARGN}")
   if("${add_llvm_external_dir}" STREQUAL "")
     set(add_llvm_external_dir ${name})
   endif()
   canonicalize_tool_name(${name} nameUPPER)
-  set(canonical_full_name ${project}_${type}_${nameUPPER})
+  set(canonical_full_name ${trezoa}_${type}_${nameUPPER})
   get_property(already_processed GLOBAL PROPERTY ${canonical_full_name}_PROCESSED)
   if(already_processed)
     return()
@@ -1625,8 +1625,8 @@ function(add_llvm_subdirectory project type name)
   if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${add_llvm_external_dir}/CMakeLists.txt)
     # Treat it as in-tree subproject.
     option(${canonical_full_name}_BUILD
-           "Whether to build ${name} as part of ${project}" On)
-    mark_as_advanced(${project}_${type}_${name}_BUILD)
+           "Whether to build ${name} as part of ${trezoa}" On)
+    mark_as_advanced(${trezoa}_${type}_${name}_BUILD)
     if(${canonical_full_name}_BUILD)
       add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${add_llvm_external_dir} ${add_llvm_external_dir})
     endif()
@@ -1654,9 +1654,9 @@ function(add_llvm_subdirectory project type name)
   endif()
 endfunction()
 
-# Add external project that may want to be built as part of llvm such as Clang,
+# Add external trezoa that may want to be built as part of llvm such as Clang,
 # lld, and Polly. This adds two options. One for the source directory of the
-# project, which defaults to ${CMAKE_CURRENT_SOURCE_DIR}/${name}. Another to
+# trezoa, which defaults to ${CMAKE_CURRENT_SOURCE_DIR}/${name}. Another to
 # enable or disable building it with everything else.
 # Additional parameter can be specified as the name of directory.
 macro(add_llvm_external_project name)
@@ -1684,14 +1684,14 @@ function(get_project_name_from_src_var var output)
   endif()
 endfunction()
 
-function(create_subdirectory_options project type)
+function(create_subdirectory_options trezoa type)
   file(GLOB sub-dirs "${CMAKE_CURRENT_SOURCE_DIR}/*")
   foreach(dir ${sub-dirs})
     if(IS_DIRECTORY "${dir}" AND EXISTS "${dir}/CMakeLists.txt")
       canonicalize_tool_name(${dir} name)
-      option(${project}_${type}_${name}_BUILD
-           "Whether to build ${name} as part of ${project}" On)
-      mark_as_advanced(${project}_${type}_${name}_BUILD)
+      option(${trezoa}_${type}_${name}_BUILD
+           "Whether to build ${name} as part of ${trezoa}" On)
+      mark_as_advanced(${trezoa}_${type}_${name}_BUILD)
     endif()
   endforeach()
 endfunction(create_subdirectory_options)
@@ -1700,7 +1700,7 @@ function(create_llvm_tool_options)
   create_subdirectory_options(LLVM TOOL)
 endfunction(create_llvm_tool_options)
 
-function(llvm_add_implicit_projects project)
+function(llvm_add_implicit_projects trezoa)
   set(list_of_implicit_subdirs "")
   file(GLOB sub-dirs "${CMAKE_CURRENT_SOURCE_DIR}/*")
   foreach(dir ${sub-dirs})
@@ -1712,7 +1712,7 @@ function(llvm_add_implicit_projects project)
       if("${name}" STREQUAL "LLVM_DRIVER")
         continue()
       endif()
-      if (${project}_TOOL_${name}_BUILD)
+      if (${trezoa}_TOOL_${name}_BUILD)
         get_filename_component(fn "${dir}" NAME)
         list(APPEND list_of_implicit_subdirs "${fn}")
       endif()
@@ -1720,7 +1720,7 @@ function(llvm_add_implicit_projects project)
   endforeach()
 
   foreach(external_proj ${list_of_implicit_subdirs})
-    add_llvm_subdirectory(${project} TOOL "${external_proj}" ${ARGN})
+    add_llvm_subdirectory(${trezoa} TOOL "${external_proj}" ${ARGN})
   endforeach()
 endfunction(llvm_add_implicit_projects)
 
@@ -2172,7 +2172,7 @@ function(add_lit_testsuite target comment)
     )
 endfunction()
 
-function(add_lit_testsuites project directory)
+function(add_lit_testsuites trezoa directory)
   if (NOT LLVM_ENABLE_IDE)
     cmake_parse_arguments(ARG "EXCLUDE_FROM_CHECK_ALL" "FOLDER" "PARAMS;DEPENDS;ARGS" ${ARGN})
 
@@ -2199,7 +2199,7 @@ function(add_lit_testsuites project directory)
       if (name_slash)
         string(REPLACE "/" "-" name_slash ${name_slash})
         string(REPLACE "\\" "-" name_dashes ${name_slash})
-        string(TOLOWER "${project}${name_dashes}" name_var)
+        string(TOLOWER "${trezoa}${name_dashes}" name_var)
         add_lit_target("check-${name_var}" "Running lit suite ${lit_suite}"
           ${lit_suite}
           ${EXCLUDE_FROM_CHECK_ALL}
@@ -2251,7 +2251,7 @@ function(llvm_install_library_symlink name dest type)
 
 endfunction()
 
-function(llvm_install_symlink project name dest)
+function(llvm_install_symlink trezoa name dest)
   get_property(LLVM_DRIVER_TOOLS GLOBAL PROPERTY LLVM_DRIVER_TOOLS)
   if(LLVM_TOOL_LLVM_DRIVER_BUILD
      AND ${dest} IN_LIST LLVM_DRIVER_TOOLS
@@ -2289,7 +2289,7 @@ function(llvm_install_symlink project name dest)
     set(LLVM_LINK_OR_COPY copy)
   endif()
 
-  set(output_dir "${${project}_TOOLS_INSTALL_DIR}")
+  set(output_dir "${${trezoa}_TOOLS_INSTALL_DIR}")
 
   install(SCRIPT ${INSTALL_SYMLINK}
           CODE "install_symlink(\"${full_name}\" \"${full_dest}\" \"${output_dir}\" \"${LLVM_LINK_OR_COPY}\")"
@@ -2303,7 +2303,7 @@ function(llvm_install_symlink project name dest)
   endif()
 endfunction()
 
-function(llvm_add_tool_symlink project link_name target)
+function(llvm_add_tool_symlink trezoa link_name target)
   cmake_parse_arguments(ARG "ALWAYS_GENERATE" "OUTPUT_DIR" "" ${ARGN})
 
   get_property(LLVM_DRIVER_TOOLS GLOBAL PROPERTY LLVM_DRIVER_TOOLS)
@@ -2389,7 +2389,7 @@ function(llvm_add_tool_symlink project link_name target)
     endif()
 
     if ((TOOL_IS_TOOLCHAIN OR NOT LLVM_INSTALL_TOOLCHAIN_ONLY) AND LLVM_BUILD_TOOLS)
-      llvm_install_symlink("${project}" ${link_name} ${target})
+      llvm_install_symlink("${trezoa}" ${link_name} ${target})
     endif()
   endif()
 endfunction()

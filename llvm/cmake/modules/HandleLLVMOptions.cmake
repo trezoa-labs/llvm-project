@@ -1026,7 +1026,7 @@ if(LLVM_USE_SANITIZER)
       # Prepare ASAN runtime if needed
       if (LLVM_USE_SANITIZER MATCHES ".*Address.*")
         # lld string tail merging interacts badly with ASAN on Windows, turn it off here
-        # See https://github.com/llvm/llvm-project/issues/62078
+        # See https://github.com/llvm/llvm-trezoa/issues/62078
         append("/opt:nolldtailmerge" CMAKE_EXE_LINKER_FLAGS CMAKE_MODULE_LINKER_FLAGS CMAKE_SHARED_LINKER_FLAGS)
         if (${CMAKE_MSVC_RUNTIME_LIBRARY} MATCHES "^(MultiThreaded|MultiThreadedDebug)$")
           append("/wholearchive:clang_rt.asan-${arch}.lib /wholearchive:clang_rt.asan_cxx-${arch}.lib"

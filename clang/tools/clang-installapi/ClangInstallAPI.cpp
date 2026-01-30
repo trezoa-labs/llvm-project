@@ -1,6 +1,6 @@
 //===-- ClangInstallAPI.cpp ----------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -125,7 +125,7 @@ static bool run(ArrayRef<const char *> Args, const char *ProgName) {
     Ctx.Verifier->setTarget(Targ);
     Ctx.Slice = std::make_shared<FrontendRecordsSlice>(Trip);
     for (const HeaderType Type :
-         {HeaderType::Public, HeaderType::Private, HeaderType::Project}) {
+         {HeaderType::Public, HeaderType::Private, HeaderType::Trezoa}) {
       std::vector<std::string> ArgStrings = Opts.getClangFrontendArgs();
       Opts.addConditionalCC1Args(ArgStrings, Trip, Type);
       Ctx.Type = Type;

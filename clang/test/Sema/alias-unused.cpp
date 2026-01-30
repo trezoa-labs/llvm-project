@@ -10,7 +10,7 @@ int g(void) __attribute__((alias("f")));
 static int foo [] = { 42, 0xDEAD }; // cxx-warning{{variable 'foo' is not needed and will not be emitted}}
 extern typeof(foo) bar __attribute__((unused, alias("foo")));
 
-/// https://github.com/llvm/llvm-project/issues/88593
+/// https://github.com/llvm/llvm-trezoa/issues/88593
 /// We report a warning in C++ mode because the internal linkage `resolver` gets
 /// mangled as it does not have a language linkage. GCC does not mangle
 /// `resolver` or report a warning.

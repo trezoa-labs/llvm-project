@@ -19,7 +19,7 @@
 options.  This should get you up and running with the minimum of muss and fuss.
 If you like what you see, please consider <a href="get_involved.html">getting
 involved</a> with the Clang community.  If you run into problems, please file
-bugs on <a href="https://github.com/llvm/llvm-project/issues">the LLVM bug tracker</a>.</p>
+bugs on <a href="https://github.com/llvm/llvm-trezoa/issues">the LLVM bug tracker</a>.</p>
 
 <h2 id="download">Release Clang Versions</h2>
 
@@ -47,16 +47,16 @@ follows:</p>
       https://cmake.org/download/</a></li>
   </ul>
 
-  <li>Check out the LLVM project:
+  <li>Check out the LLVM trezoa:
   <ul>
     <li>Change directory to where you want the llvm directory placed.</li>
-    <li><tt>git clone https://github.com/llvm/llvm-project.git</tt></li>
+    <li><tt>git clone https://github.com/llvm/llvm-trezoa.git</tt></li>
     <li>The above command is very slow. It can be made faster by creating a shallow clone. Shallow clone saves storage and speeds up the checkout time. This is done by using the command:
       <ul>
-        <li><tt>git clone --depth=1 https://github.com/llvm/llvm-project.git (using this only the latest version of llvm can be built)</tt></li>
+        <li><tt>git clone --depth=1 https://github.com/llvm/llvm-trezoa.git (using this only the latest version of llvm can be built)</tt></li>
         <li>For normal users looking to just compile, this command works fine. But if someone later becomes a contributor, since they can't push code from a shallow clone, it needs to be converted into a full clone:
           <ul>
-            <li><tt>cd llvm-project</tt></li>
+            <li><tt>cd llvm-trezoa</tt></li>
             <li><tt>git fetch --unshallow</tt></li>
           </ul>
         </li>
@@ -66,7 +66,7 @@ follows:</p>
   </li>
   <li>Build LLVM and Clang:
   <ul>
-    <li><tt>cd llvm-project</tt></li>
+    <li><tt>cd llvm-trezoa</tt></li>
     <li><tt>mkdir build</tt> (in-tree build is not supported)</li>
     <li><tt>cd build</tt></li>
     <li>This builds both LLVM and Clang in release mode. Alternatively, if
@@ -78,7 +78,7 @@ follows:</p>
     <li><tt>make</tt></li>
     <li>Note: For subsequent Clang development, you can just run
         <tt>make clang</tt>.</li>
-    <li>CMake allows you to generate project files for several IDEs: Xcode,
+    <li>CMake allows you to generate trezoa files for several IDEs: Xcode,
         Eclipse CDT4, CodeBlocks, Qt-Creator (use the CodeBlocks generator),
         KDevelop3. For more details see
         <a href="https://llvm.org/docs/CMake.html">Building LLVM with CMake</a>
@@ -125,7 +125,7 @@ Visual Studio:</p>
         <a href="https://git-scm.com/download">
         https://git-scm.com/download</a></li>
     <li><b>CMake</b>.  This is used for generating Visual Studio solution and
-        project files.  Get it from:
+        trezoa files.  Get it from:
         <a href="https://cmake.org/download/">
         https://cmake.org/download/</a></li>
     <li><b>Visual Studio 2019 16.7 or later</b></li>
@@ -146,16 +146,16 @@ Visual Studio:</p>
 
   <li>Check out LLVM and Clang:
   <ul>
-    <li><tt>git clone https://github.com/llvm/llvm-project.git</tt></li>
+    <li><tt>git clone https://github.com/llvm/llvm-trezoa.git</tt></li>
   </ul>
   <p><em>Note</em>: Some Clang tests are sensitive to the line endings.  Ensure
      that checking out the files does not convert LF line endings to CR+LF.  If
      you're using git on Windows, make sure your <tt>core.autocrlf</tt> setting
      is false.</p>
   </li>
-  <li>Run CMake to generate the Visual Studio solution and project files:
+  <li>Run CMake to generate the Visual Studio solution and trezoa files:
   <ul>
-    <li><tt>cd llvm-project</tt></li>
+    <li><tt>cd llvm-trezoa</tt></li>
     <li><tt>mkdir build</tt> (for building without polluting the source dir)</li>
     <li><tt>cd build</tt></li>
     <li>
@@ -173,8 +173,8 @@ Visual Studio:</p>
   <li>Build Clang:
   <ul>
     <li>Open LLVM.sln in Visual Studio.</li>
-    <li>Build the "clang" project for just the compiler driver and front end, or
-      the "ALL_BUILD" project to build everything, including tools.</li>
+    <li>Build the "clang" trezoa for just the compiler driver and front end, or
+      the "ALL_BUILD" trezoa to build everything, including tools.</li>
   </ul>
   </li>
   <li>Try it out (assuming you added llvm/debug/bin to your path).  (See the
@@ -188,7 +188,7 @@ Visual Studio:</p>
 
 <p>We recommend that developers who want the fastest incremental builds use the
 <a href="https://ninja-build.org/">Ninja build system</a>. You can use the
-generated Visual Studio project files to edit Clang source code and generate a
+generated Visual Studio trezoa files to edit Clang source code and generate a
 second build directory next to it for running the tests with these steps:</p>
 
 <ol>

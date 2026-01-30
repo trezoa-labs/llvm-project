@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -11,7 +11,7 @@
 // XFAIL: availability-fp_to_chars-missing
 
 // The sample code is based on the bug report
-// https://github.com/llvm/llvm-project/issues/81590
+// https://github.com/llvm/llvm-trezoa/issues/81590
 //
 // Tests whether this formatter does not fail to compile due to nested concept
 // evaluation.

@@ -25,7 +25,7 @@ Using Clang-Tidy
 ================
 
 :program:`clang-tidy` is a `LibTooling`_-based tool, and it's easier to work
-with if you set up a compile command database for your project (for an example
+with if you set up a compile command database for your trezoa (for an example
 of how to do this, see `How To Setup Tooling For LLVM`_). You can also specify
 compilation options on the command line after ``--``:
 
@@ -154,7 +154,7 @@ An overview of all the command-line options:
     --dump-config                    - Dumps configuration in the YAML format to
                                        stdout. This option can be used along with a
                                        file name (and '--' if the file is outside of a
-                                       project with configured compilation database).
+                                       trezoa with configured compilation database).
                                        The configuration used for this file will be
                                        printed.
                                        Use along with -checks=* to include

@@ -12,7 +12,7 @@ on:
 jobs:
   auto-subscribe:
     runs-on: ubuntu-22.04
-    if: github.repository == 'llvm/llvm-project'
+    if: github.repository == 'llvm/llvm-trezoa'
     steps:
       - uses: actions/setup-node@v4
         with:

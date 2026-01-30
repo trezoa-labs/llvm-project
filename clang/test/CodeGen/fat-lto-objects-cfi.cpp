@@ -17,7 +17,7 @@
 
 // CHECK-NOT: @llvm.type.test
 
-// The code below is a reduced case from https://github.com/llvm/llvm-project/issues/112053
+// The code below is a reduced case from https://github.com/llvm/llvm-trezoa/issues/112053
 #define __PRINTFLIKE(__fmt, __varargs) __attribute__((__format__(__printf__, __fmt, __varargs)))
 typedef void func(void* arg, const char* fmt, ...) __PRINTFLIKE(2, 3);
 typedef __SIZE_TYPE__ size_t;

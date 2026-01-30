@@ -1,6 +1,6 @@
 //===--- ConfigFragment.h - Unit of user-specified configuration -*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -8,7 +8,7 @@
 //
 // Various clangd features have configurable behaviour (or can be disabled).
 // The configuration system allows users to control this:
-//  - in a user config file, a project config file, via LSP, or via flags
+//  - in a user config file, a trezoa config file, via LSP, or via flags
 //  - specifying different settings for different files
 //
 // This file defines the config::Fragment structure which models one piece of
@@ -106,7 +106,7 @@ struct Fragment {
   /// e.g. `PathMatch: [foo/.*, bar/.*]` matches files in either directory.
   ///
   /// Conditions based on a file's path use the following form:
-  /// - if the fragment came from a project directory, the path is relative
+  /// - if the fragment came from a trezoa directory, the path is relative
   /// - if the fragment is global (e.g. user config), the path is absolute
   /// - paths always use forward-slashes (UNIX-style)
   /// If no file is being processed, these conditions will not match.
@@ -177,7 +177,7 @@ struct Fragment {
   /// clangd's indexes provide information about symbols that isn't available
   /// to clang's parser, such as incoming references.
   struct IndexBlock {
-    /// Whether files are built in the background to produce a project index.
+    /// Whether files are built in the background to produce a trezoa index.
     /// This is checked for translation units only, not headers they include.
     /// Legal values are "Build" or "Skip".
     std::optional<Located<std::string>> Background;
@@ -308,7 +308,7 @@ struct Fragment {
     /// AngledHeaders), system headers use <> and non-system headers use "".
     /// These can match any suffix of the header file in question.
     /// Matching is performed against the header text, not its absolute path
-    /// within the project.
+    /// within the trezoa.
     std::vector<Located<std::string>> QuotedHeaders;
     /// List of regexes for headers that should always be included with a
     /// <>-style include. By default, and in case of a conflict with
@@ -316,7 +316,7 @@ struct Fragment {
     /// AngledHeaders), system headers use <> and non-system headers use "".
     /// These can match any suffix of the header file in question.
     /// Matching is performed against the header text, not its absolute path
-    /// within the project.
+    /// within the trezoa.
     std::vector<Located<std::string>> AngledHeaders;
   };
   StyleBlock Style;

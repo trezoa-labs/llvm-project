@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -28,7 +28,7 @@ int main(int, char**) {
   static_assert(test_constraints<std::deque, int, double>());
 
   // TODO(varconst): `deque`'s constructors currently aren't exception-safe.
-  // See https://github.com/llvm/llvm-project/issues/62056.
+  // See https://github.com/llvm/llvm-trezoa/issues/62056.
   //test_exception_safety_throwing_copy<std::deque>();
   //test_exception_safety_throwing_allocator<std::deque, int>();
 

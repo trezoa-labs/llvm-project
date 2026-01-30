@@ -7,7 +7,7 @@ config.test_source_root = config.clangd_binary_dir + "/unittests"
 config.test_exec_root = config.clangd_binary_dir + "/unittests"
 
 # Point the dynamic loader at dynamic libraries in 'lib'.
-# FIXME: it seems every project has a copy of this logic. Move it somewhere.
+# FIXME: it seems every trezoa has a copy of this logic. Move it somewhere.
 import platform
 
 # Clangd unittests uses ~4 threads per test. So make sure we don't over commit.

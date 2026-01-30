@@ -1,6 +1,6 @@
 //===--- RefactoringAction.h - Clang refactoring library ------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -31,7 +31,7 @@ namespace tooling {
 /// that uses very different rules, for example:
 ///   - local vs global: a refactoring operation like
 ///     "add missing switch cases" can be applied to one switch when it's
-///     selected in an editor, or to all switches in a project when an enum
+///     selected in an editor, or to all switches in a trezoa when an enum
 ///     constant is added to an enum.
 ///   - tool vs editor: some refactoring operation can be initiated in the
 ///     editor when a declaration is selected, or in a tool when the name of

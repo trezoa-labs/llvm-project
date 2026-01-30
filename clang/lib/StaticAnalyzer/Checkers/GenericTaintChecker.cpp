@@ -1,6 +1,6 @@
 //== GenericTaintChecker.cpp ----------------------------------- -*- C++ -*--=//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -707,7 +707,7 @@ void GenericTaintChecker::initTaintRules(CheckerContext &C) const {
       {{CDM::CLibrary, {"wcsdup"}}, TR::Prop({{0}}, {{ReturnValueIndex}})},
 
       // strlen, wcslen, strnlen and alike intentionally don't propagate taint.
-      // See the details here: https://github.com/llvm/llvm-project/pull/66086
+      // See the details here: https://github.com/llvm/llvm-trezoa/pull/66086
 
       {{CDM::CLibrary, {"strtol"}}, TR::Prop({{0}}, {{1, ReturnValueIndex}})},
       {{CDM::CLibrary, {"strtoll"}}, TR::Prop({{0}}, {{1, ReturnValueIndex}})},

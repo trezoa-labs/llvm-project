@@ -1,6 +1,6 @@
 ################################################################################
 # Python modules
-# MLIR's Python modules are both directly used by the core project and are
+# MLIR's Python modules are both directly used by the core trezoa and are
 # available for use and embedding into external projects (in their own
 # namespace and with their own deps). In order to facilitate this, python
 # artifacts are split between declarations, which make a subset of
@@ -109,7 +109,7 @@ endfunction()
 #   ADD_TO_PARENT: Same as for declare_mlir_python_sources.
 #   SOURCES: C++ sources making up the module.
 #   PRIVATE_LINK_LIBS: List of libraries to link in privately to the module
-#     regardless of how it is included in the project (generally should be
+#     regardless of how it is included in the trezoa (generally should be
 #     static libraries that can be included with hidden visibility).
 #   EMBED_CAPI_LINK_LIBS: Dependent CAPI libraries that this extension depends
 #     on. These will be collected for all extensions and put into an
@@ -192,7 +192,7 @@ function(_mlir_python_install_sources name source_root_dir destination)
 endfunction()
 
 # Function: add_mlir_python_modules
-# Adds python modules to a project, building them from a list of declared
+# Adds python modules to a trezoa, building them from a list of declared
 # source groupings (see declare_mlir_python_sources and
 # declare_mlir_python_extension). One of these must be called for each
 # packaging root in use.
@@ -675,7 +675,7 @@ function(add_mlir_python_extension libname extname)
         AND (LLVM_COMPILER_IS_GCC_COMPATIBLE OR CLANG_CL))
       # Avoid some warnings from upstream nanobind.
       # If a superproject set MLIR_DISABLE_CONFIGURE_PYTHON_DEV_PACKAGES, let
-      # the super project handle compile options as it wishes.
+      # the super trezoa handle compile options as it wishes.
       set(nanobind_target "nanobind-static")
       if (NOT TARGET ${nanobind_target})
         # Get correct nanobind target name: nanobind-static-ft or something else

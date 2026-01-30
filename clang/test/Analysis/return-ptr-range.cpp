@@ -123,6 +123,6 @@ template <typename T> T&& move(T &&) noexcept;
 char buf[2];
 
 void top() {
-  // see https://github.com/llvm/llvm-project/issues/55347
+  // see https://github.com/llvm/llvm-trezoa/issues/55347
   (void)std::move(*(buf + 3)); // no-crash
 }

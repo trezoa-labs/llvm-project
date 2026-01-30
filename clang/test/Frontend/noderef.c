@@ -225,7 +225,7 @@ int test(void) {
 // FIXME: Currently, [[]] syntax does not work for the `noderef` atribute.
 // For the time being, test that we consistently diagnose the attribute as
 // ignored.
-// For details see https://github.com/llvm/llvm-project/issues/55790
+// For details see https://github.com/llvm/llvm-trezoa/issues/55790
 void test_standard_syntax() {
   [[clang::noderef]] int i; // expected-warning {{'noderef' attribute ignored}}
 

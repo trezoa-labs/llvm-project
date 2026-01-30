@@ -1,6 +1,6 @@
 //===----- CGHLSLRuntime.cpp - Interface to HLSL Runtimes -----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -136,7 +136,7 @@ void CGHLSLRuntime::addConstant(VarDecl *D, Buffer &CB) {
       DI->EmitGlobalVariable(cast<GlobalVariable>(GV), D);
 
   // FIXME: support packoffset.
-  // See https://github.com/llvm/llvm-project/issues/57914.
+  // See https://github.com/llvm/llvm-trezoa/issues/57914.
   uint32_t Offset = 0;
   bool HasUserOffset = false;
 
@@ -298,7 +298,7 @@ void CGHLSLRuntime::annotateHLSLResource(const VarDecl *D, GlobalVariable *GV) {
       // enable progress on structured buffers with user defined types this
       // resource annotations code does not handle and it crashes.
       // This whole function is going to be removed as soon as cbuffers are
-      // converted to target types (llvm/llvm-project #114126).
+      // converted to target types (llvm/llvm-trezoa #114126).
       return;
 
     bool IsROV = AttrResType->getAttrs().IsROV;
@@ -419,12 +419,12 @@ void CGHLSLRuntime::emitEntryFunction(const FunctionDecl *FD,
   }
 
   // FIXME: support struct parameters where semantics are on members.
-  // See: https://github.com/llvm/llvm-project/issues/57874
+  // See: https://github.com/llvm/llvm-trezoa/issues/57874
   unsigned SRetOffset = 0;
   for (const auto &Param : Fn->args()) {
     if (Param.hasStructRetAttr()) {
       // FIXME: support output.
-      // See: https://github.com/llvm/llvm-project/issues/57874
+      // See: https://github.com/llvm/llvm-trezoa/issues/57874
       SRetOffset = 1;
       Args.emplace_back(PoisonValue::get(Param.getType()));
       continue;
@@ -436,7 +436,7 @@ void CGHLSLRuntime::emitEntryFunction(const FunctionDecl *FD,
   CallInst *CI = B.CreateCall(FunctionCallee(Fn), Args, OB);
   CI->setCallingConv(Fn->getCallingConv());
   // FIXME: Handle codegen for return type semantics.
-  // See: https://github.com/llvm/llvm-project/issues/57875
+  // See: https://github.com/llvm/llvm-trezoa/issues/57875
   B.CreateRetVoid();
 }
 

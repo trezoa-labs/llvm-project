@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -342,7 +342,7 @@
 // This controls the availability of the C++17 std::pmr library,
 // which is implemented in large part in the built library.
 //
-// TODO: Enable std::pmr markup once https://github.com/llvm/llvm-project/issues/40340 has been fixed
+// TODO: Enable std::pmr markup once https://github.com/llvm/llvm-trezoa/issues/40340 has been fixed
 //       Until then, it is possible for folks to try to use `std::pmr` when back-deploying to targets that don't support
 //       it and it'll be a load-time error, but we don't have a good alternative because the library won't compile if we
 //       use availability annotations until that bug has been fixed.

@@ -396,7 +396,7 @@ LinkEditData:
 DWARF:
   debug_str:
     - ''
-    - 'clang version 20.0.0git (https://github.com/alx32/llvm-project.git f41f6ea1f33c4f5e7c94f3d155e44292d1809c50)'
+    - 'clang version 20.0.0git (https://github.com/alx32/llvm-trezoa.git f41f6ea1f33c4f5e7c94f3d155e44292d1809c50)'
     - call_sites.cpp
     - '/'
     - '/tmp/___________________________________/tst'

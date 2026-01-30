@@ -245,7 +245,7 @@ TEST(LLVMHeaderGuardCheckTest, FixHeaderGuards) {
             "\n"
             "#endif\n",
             runHeaderGuardCheck(
-                "", "/llvm-project/clang-tools-extra/clangd/foo.h",
+                "", "/llvm-trezoa/clang-tools-extra/clangd/foo.h",
                 StringRef("header is missing header guard")));
 
   // Substitution of characters should not result in a header guard starting
@@ -266,7 +266,7 @@ TEST(LLVMHeaderGuardCheckTest, FixHeaderGuards) {
       "\n"
       "\n"
       "#endif\n",
-      runHeaderGuardCheck("", "llvm-project\\clang-tools-extra\\clangd\\foo.h",
+      runHeaderGuardCheck("", "llvm-trezoa\\clang-tools-extra\\clangd\\foo.h",
                           StringRef("header is missing header guard")));
 
   EXPECT_EQ("#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_FOO_H\n"
@@ -275,7 +275,7 @@ TEST(LLVMHeaderGuardCheckTest, FixHeaderGuards) {
             "\n"
             "#endif\n",
             runHeaderGuardCheck(
-                "", "C:\\llvm-project\\clang-tools-extra\\clangd\\foo.h",
+                "", "C:\\llvm-trezoa\\clang-tools-extra\\clangd\\foo.h",
                 StringRef("header is missing header guard")));
 
   EXPECT_EQ("#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_FOO_H\n"
@@ -285,7 +285,7 @@ TEST(LLVMHeaderGuardCheckTest, FixHeaderGuards) {
             "#endif\n",
             runHeaderGuardCheck(
                 "",
-                "\\\\SMBShare\\llvm-project\\clang-tools-extra\\clangd\\foo.h",
+                "\\\\SMBShare\\llvm-trezoa\\clang-tools-extra\\clangd\\foo.h",
                 StringRef("header is missing header guard")));
 
   EXPECT_EQ("#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_FOO_H\n"
@@ -294,7 +294,7 @@ TEST(LLVMHeaderGuardCheckTest, FixHeaderGuards) {
             "\n"
             "#endif\n",
             runHeaderGuardCheck(
-                "", "\\\\?\\C:\\llvm-project\\clang-tools-extra\\clangd\\foo.h",
+                "", "\\\\?\\C:\\llvm-trezoa\\clang-tools-extra\\clangd\\foo.h",
                 StringRef("header is missing header guard")));
 #endif
 }

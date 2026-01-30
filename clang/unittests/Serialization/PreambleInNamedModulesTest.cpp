@@ -1,6 +1,6 @@
 //===- unittests/Serialization/PreambleInNamedModulesTest.cpp -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -55,7 +55,7 @@ public:
 };
 
 // Testing that the use of Preamble in named modules can work basically.
-// See https://github.com/llvm/llvm-project/issues/80570
+// See https://github.com/llvm/llvm-trezoa/issues/80570
 TEST_F(PreambleInNamedModulesTest, BasicTest) {
   addFile("foo.h", R"cpp(
 enum class E {

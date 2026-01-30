@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -20,7 +20,7 @@
 // TODO(LLVM 22): Remove '0-1' from 'expected-error-re@*:* 0-1 {{union member {{.*}} has reference type {{.*}}}}'
 // and remove 'expected-warning-re@*:* 0-1 {{union member {{.*}} has reference type {{.*}}, which is a Microsoft extension}}'
 // and remove 'expected-error-re@*:* 0-1 {{call to deleted constructor of {{.*}}}}'
-// once LLVM 22 releases. See See https://github.com/llvm/llvm-project/issues/104885.
+// once LLVM 22 releases. See See https://github.com/llvm/llvm-trezoa/issues/104885.
 
 // Test the mandates
 

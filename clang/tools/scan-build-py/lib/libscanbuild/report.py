@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """ This module is responsible to generate 'index.html' for the report.
@@ -334,7 +334,7 @@ def read_bugs(output_dir, html):
     # type: (str, bool) -> Generator[Dict[str, Any], None, None]
     """Generate a unique sequence of bugs from given output directory.
 
-    Duplicates can be in a project if the same module was compiled multiple
+    Duplicates can be in a trezoa if the same module was compiled multiple
     times with different compiler options. These would be better to show in
     the final report (cover) only once."""
 

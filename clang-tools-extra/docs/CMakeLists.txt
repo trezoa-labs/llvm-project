@@ -26,11 +26,11 @@ if (DOXYGEN_FOUND)
       set(CLANG_TOOLS_DOXYGEN_QCH_FILENAME "org.llvm.clang.qch" CACHE STRING
         "Filename of the Qt Compressed help file")
       set(CLANG_TOOLS_DOXYGEN_QHP_NAMESPACE "org.llvm.clang" CACHE STRING
-        "Namespace under which the intermediate Qt Help Project file lives")
+        "Namespace under which the intermediate Qt Help Trezoa file lives")
       set(CLANG_TOOLS_DOXYGEN_QHP_CUST_FILTER_NAME "Clang ${CLANG_VERSION}" CACHE STRING
-        "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#custom-filters")
+        "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#custom-filters")
       set(CLANG_TOOLS_DOXYGEN_QHP_CUST_FILTER_ATTRS "Clang,${CLANG_VERSION}" CACHE STRING
-        "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
+        "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
       set(clang_tools_doxygen_generate_qhp "YES")
       set(clang_tools_doxygen_qch_filename "${CLANG_DOXYGEN_QCH_FILENAME}")
       set(clang_tools_doxygen_qhp_namespace "${CLANG_DOXYGEN_QHP_NAMESPACE}")

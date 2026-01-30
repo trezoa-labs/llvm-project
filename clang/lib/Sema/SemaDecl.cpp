@@ -1,6 +1,6 @@
 //===--- SemaDecl.cpp - Semantic Analysis for Declarations ----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1684,7 +1684,7 @@ bool Sema::CheckRedeclarationExported(NamedDecl *New, NamedDecl *Old) {
   // and the New declaration are attached to global module.
   // It should be fine to allow the export since it doesn't change
   // the linkage of declarations. See
-  // https://github.com/llvm/llvm-project/issues/98583 for details.
+  // https://github.com/llvm/llvm-trezoa/issues/98583 for details.
   if (!Old->isInNamedModule() && New->getOwningModule() &&
       New->getOwningModule()->isImplicitGlobalModule())
     return false;
@@ -18891,7 +18891,7 @@ static bool AreSpecialMemberFunctionsSameKind(ASTContext &Context,
                                               CXXMethodDecl *M2,
                                               CXXSpecialMemberKind CSM) {
   // We don't want to compare templates to non-templates: See
-  // https://github.com/llvm/llvm-project/issues/59206
+  // https://github.com/llvm/llvm-trezoa/issues/59206
   if (CSM == CXXSpecialMemberKind::DefaultConstructor)
     return bool(M1->getDescribedFunctionTemplate()) ==
            bool(M2->getDescribedFunctionTemplate());

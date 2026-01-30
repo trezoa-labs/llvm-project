@@ -2,7 +2,7 @@
 #
 # ======- github-automation - LLVM GitHub Automation Routines--*- python -*--==#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -26,12 +26,12 @@ Hi!
 This issue may be a good introductory issue for people new to working on LLVM. If you would like to work on this issue, your first steps are:
 
 1. Check that no other contributor has already been assigned to this issue. If you believe that no one is actually working on it despite an assignment, ping the person. After one week without a response, the assignee may be changed.
-1. In the comments of this issue, request for it to be assigned to you, or just create a [pull request](https://github.com/llvm/llvm-project/pulls) after following the steps below. [Mention](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) this issue in the description of the pull request.
+1. In the comments of this issue, request for it to be assigned to you, or just create a [pull request](https://github.com/llvm/llvm-trezoa/pulls) after following the steps below. [Mention](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) this issue in the description of the pull request.
 1. Fix the issue locally.
 1. [Run the test suite](https://llvm.org/docs/TestingGuide.html#unit-and-regression-tests) locally. Remember that the subdirectories under `test/` create fine-grained testing targets, so you can e.g. use `make check-clang-ast` to only run Clang's AST tests.
 1. Create a Git commit.
 1. Run [`git clang-format HEAD~1`](https://clang.llvm.org/docs/ClangFormat.html#git-integration) to format your changes.
-1. Open a [pull request](https://github.com/llvm/llvm-project/pulls) to the [upstream repository](https://github.com/llvm/llvm-project) on GitHub. Detailed instructions can be found [in GitHub's documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). [Mention](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) this issue in the description of the pull request.
+1. Open a [pull request](https://github.com/llvm/llvm-trezoa/pulls) to the [upstream repository](https://github.com/llvm/llvm-trezoa) on GitHub. Detailed instructions can be found [in GitHub's documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). [Mention](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue) this issue in the description of the pull request.
 
 If you have any further questions about this issue, don't hesitate to ask via a comment in the thread below.
 """
@@ -224,7 +224,7 @@ class PRGreeter:
 
         comment = f"""\
 {PRGreeter.COMMENT_TAG}
-Thank you for submitting a Pull Request (PR) to the LLVM Project!
+Thank you for submitting a Pull Request (PR) to the LLVM Trezoa!
 
 This PR will be automatically labeled and the relevant teams will be notified.
 
@@ -274,7 +274,7 @@ class PRBuildbotInformation:
         # after the long URLs are rendered.
         comment = f"""\
 {PRBuildbotInformation.COMMENT_TAG}
-@{self.author} Congratulations on having your first Pull Request (PR) merged into the LLVM Project!
+@{self.author} Congratulations on having your first Pull Request (PR) merged into the LLVM Trezoa!
 
 Your changes will be combined with recent changes from other authors, then tested by our [build bots](https://lab.llvm.org/buildbot/). If there is a problem with a build, you may receive a report in an email or a comment on this PR.
 
@@ -306,9 +306,9 @@ def extract_commit_hash(arg: str):
     Extract the commit hash from the argument passed to /action github
     comment actions. We currently only support passing the commit hash
     directly or use the github URL, such as
-    https://github.com/llvm/llvm-project/commit/2832d7941f4207f1fcf813b27cf08cecc3086959
+    https://github.com/llvm/llvm-trezoa/commit/2832d7941f4207f1fcf813b27cf08cecc3086959
     """
-    github_prefix = "https://github.com/llvm/llvm-project/commit/"
+    github_prefix = "https://github.com/llvm/llvm-trezoa/commit/"
     if arg.startswith(github_prefix):
         return arg[len(github_prefix) :]
     return arg
@@ -454,7 +454,7 @@ class ReleaseWorkflow:
         action_url = self.action_url
         if action_url:
             message += action_url + "\n\n"
-        message += "Please manually backport the fix and push it to your github fork.  Once this is done, please create a [pull request](https://github.com/llvm/llvm-project/compare)"
+        message += "Please manually backport the fix and push it to your github fork.  Once this is done, please create a [pull request](https://github.com/llvm/llvm-trezoa/compare)"
         issue = self.issue
         comment = issue.create_comment(message)
         issue.add_to_labels(self.CHERRY_PICK_FAILED_LABEL)
@@ -660,8 +660,8 @@ parser.add_argument(
 parser.add_argument(
     "--repo",
     type=str,
-    default=os.getenv("GITHUB_REPOSITORY", "llvm/llvm-project"),
-    help="The GitHub repository that we are working with in the form of <owner>/<repo> (e.g. llvm/llvm-project)",
+    default=os.getenv("GITHUB_REPOSITORY", "llvm/llvm-trezoa"),
+    help="The GitHub repository that we are working with in the form of <owner>/<repo> (e.g. llvm/llvm-trezoa)",
 )
 subparsers = parser.add_subparsers(dest="command")
 
@@ -682,10 +682,10 @@ pr_buildbot_information_parser.add_argument("--author", type=str, required=True)
 
 release_workflow_parser = subparsers.add_parser("release-workflow")
 release_workflow_parser.add_argument(
-    "--llvm-project-dir",
+    "--llvm-trezoa-dir",
     type=str,
     default=".",
-    help="directory containing the llvm-project checkout",
+    help="directory containing the llvm-trezoa checkout",
 )
 release_workflow_parser.add_argument(
     "--issue-number", type=int, required=True, help="The issue number to update"
@@ -698,8 +698,8 @@ release_workflow_parser.add_argument(
 release_workflow_parser.add_argument(
     "--branch-repo",
     type=str,
-    default="llvmbot/llvm-project",
-    help="The name of the repo where new branches will be pushed (e.g. llvm/llvm-project)",
+    default="llvmbot/llvm-trezoa",
+    help="The name of the repo where new branches will be pushed (e.g. llvm/llvm-trezoa)",
 )
 release_workflow_parser.add_argument(
     "sub_command",

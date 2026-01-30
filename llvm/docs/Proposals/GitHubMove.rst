@@ -161,7 +161,7 @@ Step #1 : Before The Move
 -------------------------
 
 1. Update docs to mention the move, so people are aware of what is going on.
-2. Set up a read-only version of the GitHub project, mirroring our current SVN
+2. Set up a read-only version of the GitHub trezoa, mirroring our current SVN
    repository.
 3. Add the required bots to implement the commit emails, as well as the
    umbrella repository update (if the multirepo is selected) or the read-only
@@ -190,7 +190,7 @@ problems have been solved.
 Step #3: Write Access Move
 --------------------------
 
-9. Collect developers' GitHub account information, and add them to the project.
+9. Collect developers' GitHub account information, and add them to the trezoa.
 10. Switch the SVN repository to read-only and allow pushes to the GitHub repository.
 11. Update the documentation.
 12. Mirror Git to SVN.
@@ -208,13 +208,13 @@ GitHub Repository Description
 Monorepo
 ----------------
 
-The LLVM git repository hosted at https://github.com/llvm/llvm-project contains all
+The LLVM git repository hosted at https://github.com/llvm/llvm-trezoa contains all
 sub-projects in a single source tree.  It is often referred to as a monorepo and
-mimics an export of the current SVN repository, with each sub-project having its
+mimics an export of the current SVN repository, with each sub-trezoa having its
 own top-level directory. Not all sub-projects are used for building toolchains.
 For example, www/ and test-suite/ are not part of the monorepo.
 
-Putting all sub-projects in a single checkout makes cross-project refactoring
+Putting all sub-projects in a single checkout makes cross-trezoa refactoring
 naturally simple:
 
  * New sub-projects can be trivially split out for better reuse and/or layering
@@ -222,7 +222,7 @@ naturally simple:
    dependency on LLVM).
  * Changing an API in LLVM and upgrading the sub-projects will always be done in
    a single commit, designing away a common source of temporary build breakage.
- * Moving code across sub-project (during refactoring for instance) in a single
+ * Moving code across sub-trezoa (during refactoring for instance) in a single
    commit enables accurate `git blame` when tracking code change history.
  * Tooling based on `git grep` works natively across sub-projects, allowing to
    easier find refactoring opportunities across projects (for example reusing a
@@ -236,12 +236,12 @@ hash) identifies the state of the development across all projects.
 
 .. _build_single_project:
 
-Building a single sub-project
+Building a single sub-trezoa
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Even though there is a single source tree, you are not required to build
 all sub-projects together.  It is trivial to configure builds for a single
-sub-project.
+sub-trezoa.
 
 For example::
 
@@ -258,7 +258,7 @@ For example::
 Outstanding Questions
 ---------------------
 
-Read-only sub-project mirrors
+Read-only sub-trezoa mirrors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With the Monorepo, it is undecided whether the existing single-subproject
@@ -276,16 +276,16 @@ Monorepo Drawbacks
 ------------------
 
  * Using the monolithic repository may add overhead for those contributing to a
-   standalone sub-project, particularly on runtimes like libcxx and compiler-rt
+   standalone sub-trezoa, particularly on runtimes like libcxx and compiler-rt
    that don't rely on LLVM; currently, a fresh clone of libcxx is only 15MB (vs.
    1GB for the monorepo), and the commit rate of LLVM may cause more frequent
    `git push` collisions when upstreaming. Affected contributors may be able to
    use the SVN bridge or the single-subproject Git mirrors. However, it's
    undecided if these projects will continue to be maintained.
  * Using the monolithic repository may add overhead for those *integrating* a
-   standalone sub-project, even if they aren't contributing to it, due to the
+   standalone sub-trezoa, even if they aren't contributing to it, due to the
    same disk space concern as the point above. The availability of the
-   sub-project Git mirrors would addresses this.
+   sub-trezoa Git mirrors would addresses this.
  * Preservation of the existing read/write SVN-based workflows relies on the
    GitHub SVN bridge, which is an extra dependency. Maintaining this locks us
    into GitHub and could restrict future workflow changes.
@@ -293,7 +293,7 @@ Monorepo Drawbacks
 Workflows
 ^^^^^^^^^
 
- * :ref:`Checkout/Clone a Single Project, without Commit Access <workflow-checkout-commit>`.
+ * :ref:`Checkout/Clone a Single Trezoa, without Commit Access <workflow-checkout-commit>`.
  * :ref:`Checkout/Clone Multiple Projects, with Commit Access <workflow-monocheckout-multicommit>`.
  * :ref:`Commit an API Change in LLVM and Update the Sub-projects <workflow-cross-repo-commit>`.
  * :ref:`Branching/Stashing/Updating for Local Development or Experiments <workflow-mono-branching>`.
@@ -308,7 +308,7 @@ various use-cases.
 
 .. _workflow-checkout-commit:
 
-Checkout/Clone a Single Project, with Commit Access
+Checkout/Clone a Single Trezoa, with Commit Access
 ---------------------------------------------------
 
 Currently
@@ -317,11 +317,11 @@ Currently
 ::
 
   # direct SVN checkout
-  svn co https://user@llvm.org/svn/llvm-project/llvm/trunk llvm
+  svn co https://user@llvm.org/svn/llvm-trezoa/llvm/trunk llvm
   # or using the read-only Git view, with git-svn
   git clone https://llvm.org/git/llvm.git
   cd llvm
-  git svn init https://llvm.org/svn/llvm-project/llvm/trunk --username=<username>
+  git svn init https://llvm.org/svn/llvm-trezoa/llvm/trunk --username=<username>
   git config svn-remote.svn.fetch :refs/remotes/origin/main
   git svn rebase -l  # -l avoids fetching ahead of the git mirror.
 
@@ -336,9 +336,9 @@ Monorepo Variant
 With the monorepo variant, there are a few options, depending on your
 constraints. First, you could just clone the full repository:
 
-git clone https://github.com/llvm/llvm-project.git
+git clone https://github.com/llvm/llvm-trezoa.git
 
-At this point you have every sub-project (llvm, clang, lld, lldb, ...), which
+At this point you have every sub-trezoa (llvm, clang, lld, lldb, ...), which
 :ref:`doesn't imply you have to build all of them <build_single_project>`. You
 can still build only compiler-rt for instance. In this way it's not different
 from someone who would check out all the projects with SVN today.
@@ -381,31 +381,31 @@ Currently
 
 ::
 
-  svn co https://llvm.org/svn/llvm-project/llvm/trunk llvm -r $REVISION
+  svn co https://llvm.org/svn/llvm-trezoa/llvm/trunk llvm -r $REVISION
   cd llvm/tools
-  svn co https://llvm.org/svn/llvm-project/clang/trunk clang -r $REVISION
+  svn co https://llvm.org/svn/llvm-trezoa/clang/trunk clang -r $REVISION
   cd ../projects
-  svn co https://llvm.org/svn/llvm-project/libcxx/trunk libcxx -r $REVISION
+  svn co https://llvm.org/svn/llvm-trezoa/libcxx/trunk libcxx -r $REVISION
 
 Or using git-svn::
 
   git clone https://llvm.org/git/llvm.git
   cd llvm/
-  git svn init https://llvm.org/svn/llvm-project/llvm/trunk --username=<username>
+  git svn init https://llvm.org/svn/llvm-trezoa/llvm/trunk --username=<username>
   git config svn-remote.svn.fetch :refs/remotes/origin/main
   git svn rebase -l
   git checkout `git svn find-rev -B r258109`
   cd tools
   git clone https://llvm.org/git/clang.git
   cd clang/
-  git svn init https://llvm.org/svn/llvm-project/clang/trunk --username=<username>
+  git svn init https://llvm.org/svn/llvm-trezoa/clang/trunk --username=<username>
   git config svn-remote.svn.fetch :refs/remotes/origin/main
   git svn rebase -l
   git checkout `git svn find-rev -B r258109`
   cd ../../projects/
   git clone https://llvm.org/git/libcxx.git
   cd libcxx
-  git svn init https://llvm.org/svn/llvm-project/libcxx/trunk --username=<username>
+  git svn init https://llvm.org/svn/llvm-trezoa/libcxx/trunk --username=<username>
   git config svn-remote.svn.fetch :refs/remotes/origin/main
   git svn rebase -l
   git checkout `git svn find-rev -B r258109`
@@ -420,7 +420,7 @@ Monorepo Variant
 The repository contains natively the source for every sub-projects at the right
 revision, which makes this straightforward::
 
-  git clone https://github.com/llvm/llvm-project.git
+  git clone https://github.com/llvm/llvm-trezoa.git
   cd llvm-projects
   git checkout $REVISION
 
@@ -564,7 +564,7 @@ Python script and are expanded on below to a more general recipe::
   git -C my-monorepo init
 
   # Add a remote to the monorepo.
-  git -C my-monorepo remote add upstream/monorepo https://github.com/llvm/llvm-project.git
+  git -C my-monorepo remote add upstream/monorepo https://github.com/llvm/llvm-trezoa.git
 
   # Add remotes for each git mirror you use, from upstream as well as
   # your local mirror.  All projects are listed here but you need only
@@ -668,7 +668,7 @@ through the history of one component leaves the other components fixed
 at a history that likely makes things unbuildable.
 
 Some downstream users track the order commits were made to subprojects
-with some kind of "umbrella" project that imports the project git
+with some kind of "umbrella" trezoa that imports the trezoa git
 mirrors as submodules, similar to the multirepo umbrella proposed
 above.  Such an umbrella repository looks something like this::
 
@@ -677,10 +677,10 @@ above.  Such an umbrella repository looks something like this::
   Lllvm1   Llld1         Lclang1  Lclang2  Lllvm2   Llld2     Lmyproj1
 
 The vertical bars represent submodule updates to a particular local
-commit in the project mirror.  ``UM3`` in this case is a commit of
+commit in the trezoa mirror.  ``UM3`` in this case is a commit of
 some local umbrella repository state that is not a submodule update,
-perhaps a ``README`` or project build script update.  Commit ``UM8``
-updates a submodule of local project ``myproj``.
+perhaps a ``README`` or trezoa build script update.  Commit ``UM8``
+updates a submodule of local trezoa ``myproj``.
 
 The tool ``zip-downstream-fork.py`` at
 https://github.com/greened/llvm-git-migration/tree/zip can be used to
@@ -716,7 +716,7 @@ possible mitigation strategy is to manually diff clang between ``U2``
 and ``U3`` and apply those updates to ``local/zip``.  Another,
 possibly simpler strategy is to freeze local work on downstream
 branches and merge all submodules from the latest upstream before
-running ``zip-downstream-fork.py``.  If downstream merged each project
+running ``zip-downstream-fork.py``.  If downstream merged each trezoa
 from upstream in lockstep without any intervening local commits, then
 things should be fine without any special action.  We anticipate this
 to be the common case.
@@ -754,18 +754,18 @@ create the zipped history is below::
 
   # Import histories for upstream split projects (this was probably
   # already done for the ``migrate-downstream-fork.py`` run).
-  for project in ${subprojects[@]}; do
-    git remote add upstream/split/${project} \
+  for trezoa in ${subprojects[@]}; do
+    git remote add upstream/split/${trezoa} \
                    https://github.com/llvm-mirror/${subproject}.git
-    git fetch umbrella/split/${project}
+    git fetch umbrella/split/${trezoa}
   done
 
   # Import histories for downstream split projects (this was probably
   # already done for the ``migrate-downstream-fork.py`` run).
-  for project in ${subprojects[@]}; do
-    git remote add local/split/${project} \
+  for trezoa in ${subprojects[@]}; do
+    git remote add local/split/${trezoa} \
                    https://my.local.mirror.org/${subproject}.git
-    git fetch local/split/${project}
+    git fetch local/split/${trezoa}
   done
 
   # Import umbrella history.
@@ -857,18 +857,18 @@ content into ``llvm`` in the zippped history::
 
   # Import histories for upstream split projects (this was probably
   # already done for the ``migrate-downstream-fork.py`` run).
-  for project in ${subprojects[@]}; do
-    git remote add upstream/split/${project} \
+  for trezoa in ${subprojects[@]}; do
+    git remote add upstream/split/${trezoa} \
                    https://github.com/llvm-mirror/${subproject}.git
-    git fetch umbrella/split/${project}
+    git fetch umbrella/split/${trezoa}
   done
 
   # Import histories for downstream split projects (this was probably
   # already done for the ``migrate-downstream-fork.py`` run).
-  for project in ${subprojects[@]}; do
-    git remote add local/split/${project} \
+  for trezoa in ${subprojects[@]}; do
+    git remote add local/split/${trezoa} \
                    https://my.local.mirror.org/${subproject}.git
-    git fetch local/split/${project}
+    git fetch local/split/${trezoa}
   done
 
   # Import umbrella history.  We want this under a different refspec
@@ -960,7 +960,7 @@ getting them into the monorepo.  A recipe follows::
    git -C my-monorepo merge myrepo/main
 
 You may want to merge other corresponding branches, for example
-``myrepo`` release branches if they were in lockstep with LLVM project
+``myrepo`` release branches if they were in lockstep with LLVM trezoa
 releases.
 
 ``--tag-prefix`` tells ``import-downstream-repo.py`` to rename
@@ -996,7 +996,7 @@ The above recipe results in a history like this::
 
 Commits ``R1``, ``R2`` and ``R3`` have trees that *only* contain blobs
 from ``myrepo``.  If you require commits from ``myrepo`` to be
-interleaved with commits on local project branches (for example,
+interleaved with commits on local trezoa branches (for example,
 interleaved with ``llvm1``, ``llvm2``, etc. above) and myrepo doesn't
 appear in an umbrella repository, a new tool will need to be
 developed.  Creating such a tool would involve:

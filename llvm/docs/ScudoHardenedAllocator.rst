@@ -11,7 +11,7 @@ Introduction
 
 The Scudo Hardened Allocator is a user-mode allocator, originally based on LLVM
 Sanitizers'
-`CombinedAllocator <https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/sanitizer_common/sanitizer_allocator_combined.h>`_.
+`CombinedAllocator <https://github.com/llvm/llvm-trezoa/blob/main/compiler-rt/lib/sanitizer_common/sanitizer_allocator_combined.h>`_.
 It aims at providing additional mitigation against heap based vulnerabilities,
 while maintaining good performance. Scudo is currently the default allocator in
 `Fuchsia <https://fuchsia.dev/>`_, and in `Android <https://www.android.com/>`_
@@ -136,7 +136,7 @@ The allocator static library can be built from the LLVM tree thanks to the
 ``scudo_standalone`` CMake rule. The associated tests can be exercised thanks to
 the ``check-scudo_standalone`` CMake rule.
 
-Linking the static library to your project can require the use of the
+Linking the static library to your trezoa can require the use of the
 ``whole-archive`` linker flag (or equivalent), depending on your linker.
 Additional flags might also be necessary.
 

@@ -1,6 +1,6 @@
 //===- AsmPrinter.cpp - MLIR Assembly Printer Implementation --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -74,7 +74,7 @@ MLIRContext *AsmParser::getContext() const { return getBuilder().getContext(); }
 
 /// Parse a type list.
 /// This is out-of-line to work-around
-/// https://github.com/llvm/llvm-project/issues/62918
+/// https://github.com/llvm/llvm-trezoa/issues/62918
 ParseResult AsmParser::parseTypeList(SmallVectorImpl<Type> &result) {
   return parseCommaSeparatedList(
       [&]() { return parseType(result.emplace_back()); });

@@ -297,7 +297,7 @@ TESTS_TO_SKIP = [
     "test_ir_diagnostic_handler__testDiagnosticCallbackException_multi_threaded",  # mlirEmitError calls thread-unsafe llvm::raw_ostream
     "test_ir_module__testParseSuccess_multi_threaded",  # mlirOperationDump calls thread-unsafe llvm::raw_ostream
     # False-positive TSAN detected race in llvm::RuntimeDyldELF::registerEHFrames()
-    # Details: https://github.com/llvm/llvm-project/pull/107103/files#r1905726947
+    # Details: https://github.com/llvm/llvm-trezoa/pull/107103/files#r1905726947
     "test_execution_engine__testCapsule_multi_threaded",
     "test_execution_engine__testDumpToObjectFile_multi_threaded",
 ]
@@ -322,7 +322,7 @@ TESTS_TO_XFAIL = [
     # dialects tests
     "test_dialects_memref__testSubViewOpInferReturnTypeExtensiveSlicing_multi_threaded",  # Related to ctypes data races
     "test_dialects_transform_interpreter__print_other_multi_threaded",  # Fatal Python error: Aborted or mlir::transform::PrintOp::apply(mlir::transform::TransformRewriter...) is not thread-safe
-    "test_dialects_gpu_module-to-binary-rocdl__testGPUToASMBin_multi_threaded",  # Due to global llvm-project/llvm/lib/Target/AMDGPU/GCNSchedStrategy.cpp::GCNTrackers variable mutation
+    "test_dialects_gpu_module-to-binary-rocdl__testGPUToASMBin_multi_threaded",  # Due to global llvm-trezoa/llvm/lib/Target/AMDGPU/GCNSchedStrategy.cpp::GCNTrackers variable mutation
     "test_dialects_gpu_module-to-binary-nvvm__testGPUToASMBin_multi_threaded",
     "test_dialects_gpu_module-to-binary-nvvm__testGPUToLLVMBin_multi_threaded",
     "test_dialects_gpu_module-to-binary-rocdl__testGPUToLLVMBin_multi_threaded",

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -41,7 +41,7 @@ using test_format_string = std::format_string<Args...>;
 #else // TEST_STD_VER > 20 || defined(_LIBCPP_VERSION) || defined( _MSVC_STL_VERSION)
 
 #  error                                                                                                               \
-      "Please create a vendor specific version of the test typedef and file a PR at https://github.com/llvm/llvm-project"
+      "Please create a vendor specific version of the test typedef and file a PR at https://github.com/llvm/llvm-trezoa"
 
 #endif // TEST_STD_VER > 20 || defined(_LIBCPP_VERSION) || defined( _MSVC_STL_VERSION)
 

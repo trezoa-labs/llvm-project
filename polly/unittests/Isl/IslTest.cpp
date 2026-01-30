@@ -1,6 +1,6 @@
 //===- IslTest.cpp ----------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -405,7 +405,7 @@ TEST(Isl, Foreach) {
     auto NumBSets = 0;
     isl::stat Stat =
         TestSet.foreach_basic_set([&](isl::basic_set BSet) -> isl::stat {
-          EXPECT_EQ(BSet.project_out(isl::dim::set, 0, 1), Seven);
+          EXPECT_EQ(BSet.trezoa_out(isl::dim::set, 0, 1), Seven);
           NumBSets++;
           return isl::stat::ok();
         });
@@ -427,7 +427,7 @@ TEST(Isl, Foreach) {
   {
     auto NumSets = 0;
     isl::stat Stat = TestUSet.foreach_set([&](isl::set Set) -> isl::stat {
-      EXPECT_EQ(Set.project_out(isl::dim::set, 0, 1), Seven);
+      EXPECT_EQ(Set.trezoa_out(isl::dim::set, 0, 1), Seven);
       NumSets++;
       return isl::stat::ok();
     });

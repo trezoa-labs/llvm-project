@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -125,7 +125,7 @@ template <class _Tp, size_t _Np>
 _LIBCPP_NODISCARD _LIBCPP_HIDE_FROM_ABI size_t __find_first_set(__simd_vector<_Tp, _Np> __vec) noexcept {
   using __mask_vec = __simd_vector<bool, _Np>;
 
-  // This has MSan disabled du to https://github.com/llvm/llvm-project/issues/85876
+  // This has MSan disabled du to https://github.com/llvm/llvm-trezoa/issues/85876
   auto __impl = [&]<class _MaskT>(_MaskT) _LIBCPP_NO_SANITIZE("memory") noexcept {
 #  if defined(_LIBCPP_BIG_ENDIAN)
     return std::min<size_t>(

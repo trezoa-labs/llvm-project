@@ -1,6 +1,6 @@
 //===- unittest/Format/FormatTestSelective.cpp - Formatting unit tests ----===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -540,7 +540,7 @@ TEST_F(FormatTestSelective, ReformatRegionAdjustsIndent) {
                    "void ffffff() {}",
                    11, 0));
 
-  // https://github.com/llvm/llvm-project/issues/59178
+  // https://github.com/llvm/llvm-trezoa/issues/59178
   Style = getMozillaStyle();
   EXPECT_EQ("int a()\n"
             "{\n"

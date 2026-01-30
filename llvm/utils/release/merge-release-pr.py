@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ===-- merge-release-pr.py  ------------------------------------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -33,7 +33,7 @@ class PRMerger:
         self.args = args
 
     def run_gh(self, gh_cmd: str, args: List[str]) -> str:
-        cmd = ["gh", gh_cmd, "-Rllvm/llvm-project"] + args
+        cmd = ["gh", gh_cmd, "-Rllvm/llvm-trezoa"] + args
         p = subprocess.run(cmd, capture_output=True)
         if p.returncode != 0:
             print(p.stderr)
@@ -109,8 +109,8 @@ class PRMerger:
     def _normalize_pr(self, parg: str):
         if parg.isdigit():
             return parg
-        elif parg.startswith("https://github.com/llvm/llvm-project/pull"):
-            # try to parse the following url https://github.com/llvm/llvm-project/pull/114089
+        elif parg.startswith("https://github.com/llvm/llvm-trezoa/pull"):
+            # try to parse the following url https://github.com/llvm/llvm-trezoa/pull/114089
             i = parg[parg.rfind("/") + 1 :]
             if not i.isdigit():
                 raise RuntimeError(f"{i} is not a number, malformatted input.")
@@ -148,8 +148,8 @@ class PRMerger:
         self.source_url = f"https://github.com/{sowner}/{srepo}"
         self.source_branch = self.prdata["headRefName"]
 
-        if srepo != "llvm-project":
-            print("The target repo is NOT llvm-project, check the PR!")
+        if srepo != "llvm-trezoa":
+            print("The target repo is NOT llvm-trezoa, check the PR!")
             sys.exit(1)
 
         if sowner == "llvm":

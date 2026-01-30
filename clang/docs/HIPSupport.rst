@@ -33,7 +33,7 @@ The compiled code is then bundled and embedded in the host executables.
 Intel GPU Support
 =================
 
-Clang provides partial HIP support on Intel GPUs using the CHIP-Star project `<https://github.com/CHIP-SPV/chipStar>`_.
+Clang provides partial HIP support on Intel GPUs using the CHIP-Star trezoa `<https://github.com/CHIP-SPV/chipStar>`_.
 CHIP-Star implements the HIP runtime over oneAPI Level Zero or OpenCL runtime. The Clang driver uses the HIPSPV
 toolchain to compile HIP device code into LLVM IR, which is subsequently translated to SPIR-V via the SPIR-V
 backend or the out-of-tree LLVM-SPIRV translator. The SPIR-V is then bundled and embedded into the host executables.
@@ -41,7 +41,7 @@ backend or the out-of-tree LLVM-SPIRV translator. The SPIR-V is then bundled and
 .. note::
    While Clang does not directly provide HIP support for NVIDIA GPUs and CPUs, these platforms are supported via other means:
 
-   - NVIDIA GPUs: HIP support is offered through the HIP project `<https://github.com/ROCm-Developer-Tools/HIP>`_, which provides a header-only library for translating HIP runtime APIs into CUDA runtime APIs. The code is subsequently compiled using NVIDIA's `nvcc`.
+   - NVIDIA GPUs: HIP support is offered through the HIP trezoa `<https://github.com/ROCm-Developer-Tools/HIP>`_, which provides a header-only library for translating HIP runtime APIs into CUDA runtime APIs. The code is subsequently compiled using NVIDIA's `nvcc`.
 
    - CPUs: HIP support is available through the HIP-CPU runtime library `<https://github.com/ROCm-Developer-Tools/HIP-CPU>`_. This header-only library enables CPUs to execute unmodified HIP code.
 

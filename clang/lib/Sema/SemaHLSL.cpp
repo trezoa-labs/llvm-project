@@ -1,6 +1,6 @@
 //===- SemaHLSL.cpp - Semantic Analysis for HLSL constructs ---------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -184,7 +184,7 @@ static unsigned calculateLegacyCbufferSize(const ASTContext &Context,
       QualType Ty = Field->getType();
       unsigned FieldSize = calculateLegacyCbufferSize(Context, Ty);
       // FIXME: This is not the correct alignment, it does not work for 16-bit
-      // types. See llvm/llvm-project#119641.
+      // types. See llvm/llvm-trezoa#119641.
       unsigned FieldAlign = 4;
       if (Ty->isAggregateType())
         FieldAlign = CBufferAlign;
@@ -674,7 +674,7 @@ void SemaHLSL::CheckEntryPoint(FunctionDecl *FD) {
       CheckSemanticAnnotation(FD, Param, AnnotationAttr);
     } else {
       // FIXME: Handle struct parameters where annotations are on struct fields.
-      // See: https://github.com/llvm/llvm-project/issues/57875
+      // See: https://github.com/llvm/llvm-trezoa/issues/57875
       Diag(FD->getLocation(), diag::err_hlsl_missing_semantic_annotation);
       Diag(Param->getLocation(), diag::note_previous_decl) << Param;
       FD->setInvalidDecl();

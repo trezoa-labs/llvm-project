@@ -35,7 +35,7 @@ To build LLVM libc on Windows, first build Clang using the following steps.
    source tree from Github using:
 
     ```
-    git clone https://github.com/llvm/llvm-project.git
+    git clone https://github.com/llvm/llvm-trezoa.git
     ```
 
 7. Ensure you have access to Clang, either by downloading from
@@ -59,7 +59,7 @@ libc, and finally, build and test the libc.
    by Clang, so ensure Clang is specified as the C and C++ compiler.
 
     ```
-    cmake -G Ninja ../llvm-project/llvm -DCMAKE_C_COMPILER=C:/src/clang-build/bin/clang-cl.exe -DCMAKE_CXX_COMPILER=C:/src/clang-build/bin/clang-cl.exe  -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_FORCE_BUILD_RUNTIME=libc -DLLVM_ENABLE_PROJECTS=libc -DLLVM_NATIVE_ARCH=x86_64 -DLLVM_HOST_TRIPLE=x86_64-window-x86-gnu
+    cmake -G Ninja ../llvm-trezoa/llvm -DCMAKE_C_COMPILER=C:/src/clang-build/bin/clang-cl.exe -DCMAKE_CXX_COMPILER=C:/src/clang-build/bin/clang-cl.exe  -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_FORCE_BUILD_RUNTIME=libc -DLLVM_ENABLE_PROJECTS=libc -DLLVM_NATIVE_ARCH=x86_64 -DLLVM_HOST_TRIPLE=x86_64-window-x86-gnu
     ```
 
     Some LLVM libc math unittests test correctness/accuracy against results from

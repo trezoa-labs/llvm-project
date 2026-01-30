@@ -12,7 +12,7 @@ Clang.
 
 Active Maintainers
 ==================
-The following people are the active maintainers for the project. Please reach
+The following people are the active maintainers for the trezoa. Please reach
 out to them for code reviews, questions about their area of expertise, or other
 assistance.
 
@@ -355,7 +355,7 @@ Inactive Maintainers
 ====================
 The following people have graciously spent time performing maintainership
 responsibilities but are no longer active in that role. Thank you for all your
-help with the success of the project!
+help with the success of the trezoa!
 
 Emeritus Lead Maintainers
 -------------------------

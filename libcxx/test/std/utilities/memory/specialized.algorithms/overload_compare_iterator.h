@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -19,7 +19,7 @@
 // An iterator type that overloads operator== and operator!= without any constraints, which
 // can trip up some algorithms if we compare iterators against types that we're not allowed to.
 //
-// See https://github.com/llvm/llvm-project/issues/69334 for details.
+// See https://github.com/llvm/llvm-trezoa/issues/69334 for details.
 template <class Iterator>
 struct overload_compare_iterator {
   static_assert(

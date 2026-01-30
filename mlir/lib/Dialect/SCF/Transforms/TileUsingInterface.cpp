@@ -1,6 +1,6 @@
 //===- Tiling.cpp - Implementation of tiling using TilingInterface -------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1314,7 +1314,7 @@ FailureOr<SmallVector<Operation *>> mlir::scf::yieldReplacementForFusedProducer(
       // called after new init operand(s) has already been appended. It will
       // take more refactoring to make sure the init operands are added
       // consistently in the future. For more details, please refer to:
-      // https://github.com/llvm/llvm-project/pull/93144#discussion_r1643760814
+      // https://github.com/llvm/llvm-trezoa/pull/93144#discussion_r1643760814
       return failure();
     }
 

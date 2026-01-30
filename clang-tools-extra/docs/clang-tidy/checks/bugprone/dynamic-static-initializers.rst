@@ -8,7 +8,7 @@ in header files.
 
 This can pose problems in certain multithreaded contexts. For example,
 when disabling compiler generated synchronization instructions for
-static variables initialized at runtime (e.g. by ``-fno-threadsafe-statics``), even if a particular project
+static variables initialized at runtime (e.g. by ``-fno-threadsafe-statics``), even if a particular trezoa
 takes the necessary precautions to prevent race conditions during
 initialization by providing their own synchronization, header files included from other projects may
 not. Therefore, such a check is helpful for ensuring that disabling

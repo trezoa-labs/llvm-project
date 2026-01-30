@@ -1,6 +1,6 @@
 //===- SetTest.cpp - Tests for PresburgerSet ------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -502,7 +502,7 @@ TEST(SetTest, divisionNonDivLocals) {
   // (1/3, 0, 0), (2/3, 0, 0), (2/3, 0, 1000), and (1000, 1000, 1000).
   //
   // The only integer point in this is at (1000, 1000, 1000).
-  // We project this to the xy plane.
+  // We trezoa this to the xy plane.
   IntegerPolyhedron tetrahedron = parseIntegerPolyhedronAndMakeLocals(
       "(x, y, z) : (y >= 0, z - y >= 0, 3000*x - 2998*y "
       "- 1000 - z >= 0, -1500*x + 1499*y + 1000 >= 0)",

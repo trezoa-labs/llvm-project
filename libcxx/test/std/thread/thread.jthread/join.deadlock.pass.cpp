@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -10,7 +10,7 @@
 // it would dead lock the test
 // UNSUPPORTED: windows
 
-// TSAN bug: https://github.com/llvm/llvm-project/issues/66537
+// TSAN bug: https://github.com/llvm/llvm-trezoa/issues/66537
 // UNSUPPORTED: tsan
 
 // UNSUPPORTED: no-threads

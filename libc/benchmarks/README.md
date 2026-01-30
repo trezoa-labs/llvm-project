@@ -11,7 +11,7 @@ It relies on:
 ### Setup
 
 ```shell
-cd llvm-project
+cd llvm-trezoa
 cmake -B/tmp/build -Sllvm -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;libc' -DCMAKE_BUILD_TYPE=Release -DLIBC_INCLUDE_BENCHMARKS=Yes -G Ninja
 ninja -C /tmp/build libc.src.string.<mem_function>_benchmark
 ```

@@ -34,7 +34,7 @@ DX Container data structures are encoded little-endian in the binary file.
 The LLVM versions of all data structures described and/or referenced in this
 file are defined in
 `llvm/include/llvm/BinaryFormat/DXContainer.h
-<https://github.com/llvm/llvm-project/blob/main/llvm/include/llvm/BinaryFormat/DXContainer.h>`_.
+<https://github.com/llvm/llvm-trezoa/blob/main/llvm/include/llvm/BinaryFormat/DXContainer.h>`_.
 Some pseudo code is provided in blocks below to ease understanding of this
 document, but reading it with the header available will provide the most
 clarity.
@@ -173,7 +173,7 @@ encoded here are from the beginning of the ``ProgramSignatureHeader`` not the
 beginning of the string table.
 
 The ``ProgramSignatureElement`` contains several enumeration fields which are
-defined in `llvm/include/llvm/BinaryFormat/DXContainerConstants.def <https://github.com/llvm/llvm-project/blob/main/llvm/include/llvm/BinaryFormat/DXContainerConstants.def>`_.
+defined in `llvm/include/llvm/BinaryFormat/DXContainerConstants.def <https://github.com/llvm/llvm-trezoa/blob/main/llvm/include/llvm/BinaryFormat/DXContainerConstants.def>`_.
 These fields encode the D3D system value, the type of data and its precision
 requirements.
 
@@ -399,4 +399,4 @@ SFI0 Part
 
 The SFI0 part encodes a 64-bit unsigned integer bitmask of the feature flags.
 This denotes which optional features the shader requires. The flag values are
-defined in `llvm/include/llvm/BinaryFormat/DXContainerConstants.def <https://github.com/llvm/llvm-project/blob/main/llvm/include/llvm/BinaryFormat/DXContainerConstants.def>`_.
+defined in `llvm/include/llvm/BinaryFormat/DXContainerConstants.def <https://github.com/llvm/llvm-trezoa/blob/main/llvm/include/llvm/BinaryFormat/DXContainerConstants.def>`_.

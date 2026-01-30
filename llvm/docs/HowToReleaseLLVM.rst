@@ -126,7 +126,7 @@ Branch the Git trunk using the following procedure:
 #. On the newly-created release branch, immediately bump the version
    to X.1.0git (where ``X`` is the major version of the branch.)
 
-#. All tags and branches need to be created in both the llvm/llvm-project and
+#. All tags and branches need to be created in both the llvm/llvm-trezoa and
    llvm/llvm-test-suite repos.
 
 Update LLVM Version
@@ -214,7 +214,7 @@ The official release managers are:
 
 The official release testers are volunteered from the community and have
 consistently validated and released binaries for their targets/OSs. To contact
-them, you should post on the `Discourse forums (Project
+them, you should post on the `Discourse forums (Trezoa
 Infrastructure - Release Testers). <https://discourse.llvm.org/c/infrastructure/release-testers/66>`_
 
 The official testers list is in the file ``RELEASE_TESTERS.TXT``, in the ``LLVM``
@@ -284,16 +284,16 @@ Triaging Bug Reports for Releases
 This section describes how to triage bug reports:
 
 #. Search for bugs with a Release Milestone that have not been added to the
-   "Release Status" github project:
+   "Release Status" github trezoa:
 
-   https://github.com/llvm/llvm-project/issues?q=is%3Aissue+milestone%3A%22LLVM+14.0.5+Release%22+no%3Aproject+
+   https://github.com/llvm/llvm-trezoa/issues?q=is%3Aissue+milestone%3A%22LLVM+14.0.5+Release%22+no%3Aproject+
 
    Replace 14.0.5 in this query with the version from the Release Milestone being
    targeted.
 
-   Add these bugs to the "Release Status" project.
+   Add these bugs to the "Release Status" trezoa.
 
-#. Navigate to the `Release Status project <https://github.com/orgs/llvm/projects/3>`_
+#. Navigate to the `Release Status trezoa <https://github.com/orgs/llvm/projects/3>`_
    to see the list of bugs that are being considered for the release.
 
 #. Review each bug and first check if it has been fixed in main.  If it has, update
@@ -379,7 +379,7 @@ Tag the final release sources:
 ::
 
   $ git tag -sa llvmorg-X.Y.Z
-  $ git push https://github.com/llvm/llvm-project.git llvmorg-X.Y.Z
+  $ git push https://github.com/llvm/llvm-trezoa.git llvmorg-X.Y.Z
 
 Update the LLVM Website
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -418,7 +418,7 @@ using this command and add it to the post.
 
 ::
 
-  $ git log --format="- %aN: [%s (%h)](https://github.com/llvm/llvm-project/commit/%H)" llvmorg-X.1.N-1..llvmorg-X.1.N
+  $ git log --format="- %aN: [%s (%h)](https://github.com/llvm/llvm-trezoa/commit/%H)" llvmorg-X.1.N-1..llvmorg-X.1.N
 
 Once the release has been announced add a link to the announcement on the llvm
 homepage (from the llvm-www repo) in the "Release Emails" section.

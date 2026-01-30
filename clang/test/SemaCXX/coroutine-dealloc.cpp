@@ -26,7 +26,7 @@ task f() {
   co_return 43;
 }
 
-// From https://github.com/llvm/llvm-project/issues/60545
+// From https://github.com/llvm/llvm-trezoa/issues/60545
 struct generator {
     struct promise_type {
         generator get_return_object();

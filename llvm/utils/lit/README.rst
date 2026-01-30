@@ -31,7 +31,7 @@ Source
 ======
 
 The *lit* source is available as part of LLVM, in the LLVM source repository:
-https://github.com/llvm/llvm-project/tree/main/llvm/utils/lit
+https://github.com/llvm/llvm-trezoa/tree/main/llvm/utils/lit
 
 
 Contributing to lit
@@ -39,7 +39,7 @@ Contributing to lit
 
 Please browse the issues labeled *tools:llvm-lit* in LLVM's issue tracker for
 ideas on what to work on:
-https://github.com/llvm/llvm-project/labels/tools%3Allvm-lit
+https://github.com/llvm/llvm-trezoa/labels/tools%3Allvm-lit
 
 Before submitting patches, run the test suite to ensure nothing has regressed::
 

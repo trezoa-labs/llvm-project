@@ -2,23 +2,23 @@ include(AddLLVM)
 include(LLVMExternalProjectUtils)
 
 
-function(llvm_create_cross_target project_name target_name toolchain buildtype)
+function(llvm_create_cross_target trezoa_name target_name toolchain buildtype)
 
-  if(NOT DEFINED ${project_name}_${target_name}_BUILD)
-    set(${project_name}_${target_name}_BUILD
+  if(NOT DEFINED ${trezoa_name}_${target_name}_BUILD)
+    set(${trezoa_name}_${target_name}_BUILD
       "${CMAKE_CURRENT_BINARY_DIR}/${target_name}")
-    set(${project_name}_${target_name}_BUILD
-      ${${project_name}_${target_name}_BUILD} PARENT_SCOPE)
-    message(STATUS "Setting native build dir to " ${${project_name}_${target_name}_BUILD})
-  endif(NOT DEFINED ${project_name}_${target_name}_BUILD)
+    set(${trezoa_name}_${target_name}_BUILD
+      ${${trezoa_name}_${target_name}_BUILD} PARENT_SCOPE)
+    message(STATUS "Setting native build dir to " ${${trezoa_name}_${target_name}_BUILD})
+  endif(NOT DEFINED ${trezoa_name}_${target_name}_BUILD)
 
-  if(NOT DEFINED ${project_name}_${target_name}_STAMP)
-    set(${project_name}_${target_name}_STAMP
+  if(NOT DEFINED ${trezoa_name}_${target_name}_STAMP)
+    set(${trezoa_name}_${target_name}_STAMP
       "${CMAKE_CURRENT_BINARY_DIR}/${target_name}-stamps")
-    set(${project_name}_${target_name}_STAMP
-      ${${project_name}_${target_name}_STAMP} PARENT_SCOPE)
-    message(STATUS "Setting native stamp dir to " ${${project_name}_${target_name}_STAMP})
-  endif(NOT DEFINED ${project_name}_${target_name}_STAMP)
+    set(${trezoa_name}_${target_name}_STAMP
+      ${${trezoa_name}_${target_name}_STAMP} PARENT_SCOPE)
+    message(STATUS "Setting native stamp dir to " ${${trezoa_name}_${target_name}_STAMP})
+  endif(NOT DEFINED ${trezoa_name}_${target_name}_STAMP)
 
   if (EXISTS ${LLVM_MAIN_SRC_DIR}/cmake/platforms/${toolchain}.cmake)
     set(CROSS_TOOLCHAIN_FLAGS_INIT
@@ -32,9 +32,9 @@ function(llvm_create_cross_target project_name target_name toolchain buildtype)
   set(CROSS_TOOLCHAIN_FLAGS_${target_name} ${CROSS_TOOLCHAIN_FLAGS_INIT}
     CACHE STRING "Toolchain configuration for ${target_name}")
 
-  # project specific version of the flags up above
-  set(CROSS_TOOLCHAIN_FLAGS_${project_name}_${target_name} ""
-    CACHE STRING "Toolchain configuration for ${project_name}_${target_name}")
+  # trezoa specific version of the flags up above
+  set(CROSS_TOOLCHAIN_FLAGS_${trezoa_name}_${target_name} ""
+    CACHE STRING "Toolchain configuration for ${trezoa_name}_${target_name}")
 
   if (buildtype)
     set(build_type_flags "-DCMAKE_BUILD_TYPE=${buildtype}")
@@ -47,14 +47,14 @@ function(llvm_create_cross_target project_name target_name toolchain buildtype)
     set(external_clang_dir "-DLLVM_EXTERNAL_CLANG_SOURCE_DIR=${LLVM_EXTERNAL_CLANG_SOURCE_DIR}")
   endif()
 
-  add_custom_command(OUTPUT ${${project_name}_${target_name}_BUILD}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${${project_name}_${target_name}_BUILD}
-    COMMENT "Creating ${${project_name}_${target_name}_BUILD}...")
+  add_custom_command(OUTPUT ${${trezoa_name}_${target_name}_BUILD}
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${${trezoa_name}_${target_name}_BUILD}
+    COMMENT "Creating ${${trezoa_name}_${target_name}_BUILD}...")
 
-  add_custom_target(CREATE_${project_name}_${target_name}
-    DEPENDS ${${project_name}_${target_name}_BUILD})
+  add_custom_target(CREATE_${trezoa_name}_${target_name}
+    DEPENDS ${${trezoa_name}_${target_name}_BUILD})
   get_subproject_title(subproject_title)
-  set_target_properties(CREATE_${project_name}_${target_name} PROPERTIES FOLDER "${subproject_title}/Native")
+  set_target_properties(CREATE_${trezoa_name}_${target_name} PROPERTIES FOLDER "${subproject_title}/Native")
 
   # Escape semicolons in the targets list so that cmake doesn't expand
   # them to spaces.
@@ -71,8 +71,8 @@ function(llvm_create_cross_target project_name target_name toolchain buildtype)
          "${LLVM_ENABLE_RUNTIMES}")
 
   set(external_project_source_dirs)
-  foreach(project ${LLVM_EXTERNAL_PROJECTS})
-    canonicalize_tool_name(${project} name)
+  foreach(trezoa ${LLVM_EXTERNAL_PROJECTS})
+    canonicalize_tool_name(${trezoa} name)
     list(APPEND external_project_source_dirs
          "-DLLVM_EXTERNAL_${name}_SOURCE_DIR=${LLVM_EXTERNAL_${name}_SOURCE_DIR}")
   endforeach()
@@ -81,13 +81,13 @@ function(llvm_create_cross_target project_name target_name toolchain buildtype)
     set(libc_flags -DLLVM_LIBC_GPU_BUILD=ON)
   endif()
 
-  add_custom_command(OUTPUT ${${project_name}_${target_name}_BUILD}/CMakeCache.txt
+  add_custom_command(OUTPUT ${${trezoa_name}_${target_name}_BUILD}/CMakeCache.txt
     COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}"
         -DCMAKE_MAKE_PROGRAM="${CMAKE_MAKE_PROGRAM}"
         -DCMAKE_C_COMPILER_LAUNCHER="${CMAKE_C_COMPILER_LAUNCHER}"
         -DCMAKE_CXX_COMPILER_LAUNCHER="${CMAKE_CXX_COMPILER_LAUNCHER}"
         ${CROSS_TOOLCHAIN_FLAGS_${target_name}} ${CMAKE_CURRENT_SOURCE_DIR}
-        ${CROSS_TOOLCHAIN_FLAGS_${project_name}_${target_name}}
+        ${CROSS_TOOLCHAIN_FLAGS_${trezoa_name}_${target_name}}
         -DLLVM_TARGET_IS_CROSSCOMPILE_HOST=TRUE
         -DLLVM_TARGETS_TO_BUILD="${targets_to_build_arg}"
         -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${experimental_targets_to_build_arg}"
@@ -102,14 +102,14 @@ function(llvm_create_cross_target project_name target_name toolchain buildtype)
         -DLLVM_INCLUDE_TESTS=OFF
         ${build_type_flags} ${linker_flag} ${external_clang_dir} ${libc_flags}
         ${ARGN}
-    WORKING_DIRECTORY ${${project_name}_${target_name}_BUILD}
-    DEPENDS CREATE_${project_name}_${target_name}
-    COMMENT "Configuring ${target_name} ${project_name}...")
+    WORKING_DIRECTORY ${${trezoa_name}_${target_name}_BUILD}
+    DEPENDS CREATE_${trezoa_name}_${target_name}
+    COMMENT "Configuring ${target_name} ${trezoa_name}...")
 
-  add_custom_target(CONFIGURE_${project_name}_${target_name}
-    DEPENDS ${${project_name}_${target_name}_BUILD}/CMakeCache.txt)
+  add_custom_target(CONFIGURE_${trezoa_name}_${target_name}
+    DEPENDS ${${trezoa_name}_${target_name}_BUILD}/CMakeCache.txt)
   get_subproject_title(subproject_title)
-  set_target_properties(CONFIGURE_${project_name}_${target_name} PROPERTIES FOLDER "${subproject_title}/Native")
+  set_target_properties(CONFIGURE_${trezoa_name}_${target_name} PROPERTIES FOLDER "${subproject_title}/Native")
 
 endfunction()
 

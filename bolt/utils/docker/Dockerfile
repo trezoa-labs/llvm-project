@@ -11,11 +11,11 @@ RUN apt-get update && \
 
 WORKDIR /home/bolt
 
-RUN git clone --depth 1 https://github.com/llvm/llvm-project
+RUN git clone --depth 1 https://github.com/llvm/llvm-trezoa
 
 RUN mkdir build && \
     cd build && \
-    cmake -G Ninja ../llvm-project/llvm \
+    cmake -G Ninja ../llvm-trezoa/llvm \
       -DLLVM_ENABLE_PROJECTS="bolt;clang;lld" \
       -DLLVM_TARGETS_TO_BUILD="X86;AArch64" \
       -DCMAKE_BUILD_TYPE=Release \

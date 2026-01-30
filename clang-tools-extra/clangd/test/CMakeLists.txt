@@ -37,8 +37,8 @@ file(
 )
 
 add_lit_testsuite(check-clangd "Running the Clangd regression tests"
-  # clangd doesn't put unittest configs in test/unit like every other project.
+  # clangd doesn't put unittest configs in test/unit like every other trezoa.
   # Because of that, this needs to pass two folders here, while every other
-  # project only needs to pass CMAKE_CURRENT_BINARY_DIR.
+  # trezoa only needs to pass CMAKE_CURRENT_BINARY_DIR.
   ${CMAKE_CURRENT_BINARY_DIR}/../unittests;${CMAKE_CURRENT_BINARY_DIR}
   DEPENDS ${CLANGD_TEST_DEPS})

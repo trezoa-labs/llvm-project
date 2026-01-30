@@ -45,7 +45,7 @@ static __isl_give TYPE *FN(TYPE,merge_param)(__isl_take TYPE *obj, int i,
  * to the initial input dimensions of "obj",
  * if any of those identifiers appear as parameters
  * in "obj", then equate those parameters with the corresponding
- * input dimensions and project out the parameters.
+ * input dimensions and trezoa out the parameters.
  * The result therefore has no such parameters.
  */
 static __isl_give TYPE *FN(TYPE,equate_initial_params)(__isl_take TYPE *obj,
@@ -77,7 +77,7 @@ static __isl_give TYPE *FN(TYPE,equate_initial_params)(__isl_take TYPE *obj,
 /* Given a tuple of identifiers "tuple" in a space that corresponds
  * to the domain of "obj", if any of those identifiers appear as parameters
  * in "obj", then equate those parameters with the corresponding
- * input dimensions and project out the parameters.
+ * input dimensions and trezoa out the parameters.
  * The result therefore has no such parameters.
  */
 static __isl_give TYPE *FN(TYPE,equate_domain_params)(__isl_take TYPE *obj,
@@ -123,7 +123,7 @@ __isl_give TYPE *FN(TYPE,bind_domain)(__isl_take TYPE *obj,
  * to the domain of the wrapped relation in the domain of "obj",
  * if any of those identifiers appear as parameters
  * in "obj", then equate those parameters with the corresponding
- * input dimensions and project out the parameters.
+ * input dimensions and trezoa out the parameters.
  * The result therefore has no such parameters.
  */
 static __isl_give TYPE *FN(TYPE,equate_domain_wrapped_domain_params)(

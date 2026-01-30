@@ -34,7 +34,7 @@ Once built, the binaries for the fuzzers will exist in the ``bin`` directory of 
 Continuous integration
 ----------------------
 
-Currently, there are plans to integrate the LLDB fuzzers into the `OSS Fuzz <https://github.com/google/oss-fuzz>`_ project for continuous integration.
+Currently, there are plans to integrate the LLDB fuzzers into the `OSS Fuzz <https://github.com/google/oss-fuzz>`_ trezoa for continuous integration.
 
 Running the fuzzers
 -------------------

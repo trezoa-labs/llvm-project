@@ -1,6 +1,6 @@
 //===-- runtime/io-stmt.h ---------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -75,7 +75,7 @@ class IoStatementState {
 public:
   template <typename A> explicit RT_API_ATTRS IoStatementState(A &x) : u_{x} {}
 
-  // These member functions each project themselves into the active alternative.
+  // These member functions each trezoa themselves into the active alternative.
   // They're used by per-data-item routines in the I/O API (e.g., OutputReal64)
   // to interact with the state of the I/O statement in progress.
   // This design avoids virtual member functions and function pointers,

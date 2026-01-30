@@ -15,7 +15,7 @@ syntax and should not be considered a canonical reference to modern MLIR.
 
 ## Introduction
 
-This document discusses general goals of the project, introduces context and the
+This document discusses general goals of the trezoa, introduces context and the
 two alternatives, then talks about the tradeoffs of these designs. Written by
 Chris Lattner.
 
@@ -329,7 +329,7 @@ sometimes exponential time complexity. We expect that most machine learning
 workloads will be hyper-rectangular, and thus it should be easy to specialize in
 important cases. That said, the traditional polyhedral representation makes it
 very easy to introduce complicated and expensive schedules, and provides no way
-to understand and project a cost model for using them. All downstream clients of
+to understand and trezoa a cost model for using them. All downstream clients of
 the IR need to be prepared to handle the full generality of IR that may come to
 them.
 

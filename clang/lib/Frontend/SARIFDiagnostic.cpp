@@ -1,6 +1,6 @@
 //===--------- SARIFDiagnostic.cpp - SARIF Diagnostic Formatting ----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -35,7 +35,7 @@ SARIFDiagnostic::SARIFDiagnostic(raw_ostream &OS, const LangOptions &LangOpts,
                                  SarifDocumentWriter *Writer)
     : DiagnosticRenderer(LangOpts, DiagOpts), Writer(Writer) {}
 
-// FIXME(llvm-project/issues/57323): Refactor Diagnostic classes.
+// FIXME(llvm-trezoa/issues/57323): Refactor Diagnostic classes.
 void SARIFDiagnostic::emitDiagnosticMessage(
     FullSourceLoc Loc, PresumedLoc PLoc, DiagnosticsEngine::Level Level,
     StringRef Message, ArrayRef<clang::CharSourceRange> Ranges,
@@ -72,7 +72,7 @@ SarifResult SARIFDiagnostic::addLocationToResult(
     if (FID.isValid()) {
       if (OptionalFileEntryRef FE = Loc.getFileEntryRef()) {
         emitFilename(FE->getName(), Loc.getManager());
-        // FIXME(llvm-project/issues/57366): File-only locations
+        // FIXME(llvm-trezoa/issues/57366): File-only locations
       }
     }
     return Result;
@@ -126,7 +126,7 @@ SarifResult SARIFDiagnostic::addLocationToResult(
                            : PLoc.getColumn();
   SourceLocation DiagLoc = SM.translateLineCol(FID, PLoc.getLine(), ColNo);
 
-  // FIXME(llvm-project/issues/57366): Properly process #line directives.
+  // FIXME(llvm-trezoa/issues/57366): Properly process #line directives.
   Locations.push_back(
       CharSourceRange{SourceRange{DiagLoc, DiagLoc}, /* ITR = */ false});
 

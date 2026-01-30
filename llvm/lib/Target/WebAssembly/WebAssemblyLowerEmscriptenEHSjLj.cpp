@@ -1,6 +1,6 @@
 //=== WebAssemblyLowerEmscriptenEHSjLj.cpp - Lower exceptions for Emscripten =//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1213,7 +1213,7 @@ bool WebAssemblyLowerEmscriptenEHSjLj::runEHOnFunction(Function &F) {
     for (unsigned I = 0, E = LPI->getNumClauses(); I < E; ++I) {
       Constant *Clause = LPI->getClause(I);
       // TODO Handle filters (= exception specifications).
-      // https://github.com/llvm/llvm-project/issues/49740
+      // https://github.com/llvm/llvm-trezoa/issues/49740
       if (LPI->isCatch(I))
         FMCArgs.push_back(Clause);
     }

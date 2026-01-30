@@ -159,7 +159,7 @@ if __name__ == "__main__":
         "-s",
         "--source-root",
         default=None,
-        help="LLVM source root (/path/llvm-project). Defaults to the llvm-project the script is located in.",
+        help="LLVM source root (/path/llvm-trezoa). Defaults to the llvm-trezoa the script is located in.",
     )
 
     args = parser.parse_args()
@@ -174,7 +174,7 @@ if __name__ == "__main__":
     # since it's a prerelease
     version = packaging.version.parse(verstr)
 
-    # Find llvm-project root
+    # Find llvm-trezoa root
     source_root = Path(__file__).resolve().parents[3]
 
     if args.source_root:

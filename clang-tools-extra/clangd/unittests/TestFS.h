@@ -1,6 +1,6 @@
 //===-- TestFS.h ------------------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -53,7 +53,7 @@ public:
 class MockCompilationDatabase : public GlobalCompilationDatabase {
 public:
   /// If \p Directory is not empty, use that as the Directory field of the
-  /// CompileCommand, and as project SourceRoot.
+  /// CompileCommand, and as trezoa SourceRoot.
   ///
   /// If \p RelPathPrefix is not empty, use that as a prefix in front of the
   /// source file name, instead of using an absolute path.

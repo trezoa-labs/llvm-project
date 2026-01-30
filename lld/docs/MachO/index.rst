@@ -1,7 +1,7 @@
 Mach-O LLD Port
 ===============
 
-LLD is a linker from the LLVM project that is a drop-in replacement
+LLD is a linker from the LLVM trezoa that is a drop-in replacement
 for system linkers and runs much faster than them. It also provides
 features that are useful for toolchain developers. This document
 will describe the Mach-O port.
@@ -19,7 +19,7 @@ Features
 Download
 --------
 
-LLD is available as a pre-built binary by going to the `latest release <https://github.com/llvm/llvm-project/releases>`_,
+LLD is available as a pre-built binary by going to the `latest release <https://github.com/llvm/llvm-trezoa/releases>`_,
 downloading the appropriate bundle (``clang+llvm-<version>-<your architecture>-<your platform>.tar.xz``),
 decompressing it, and locating the binary at ``bin/ld64.lld``. Note
 that if ``ld64.lld`` is moved out of ``bin``, it must still be accompanied
@@ -34,10 +34,10 @@ build that tree. You need ``cmake`` and of course a C++ compiler.
 
 .. code-block:: console
 
-  $ git clone https://github.com/llvm/llvm-project llvm-project
+  $ git clone https://github.com/llvm/llvm-trezoa llvm-trezoa
   $ mkdir build
   $ cd build
-  $ cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS='lld' ../llvm-project/llvm
+  $ cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS='lld' ../llvm-trezoa/llvm
   $ ninja check-lld-macho
 
 Then you can find output binary at ``build/bin/ld64.lld``. Note

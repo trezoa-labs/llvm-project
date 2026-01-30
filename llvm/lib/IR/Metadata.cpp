@@ -1,6 +1,6 @@
 //===- Metadata.cpp - Implement Metadata classes --------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -450,7 +450,7 @@ void ReplaceableMetadataImpl::resolveAllUses(bool ResolveUsers) {
   }
 }
 
-// Special handing of DIArgList is required in the RemoveDIs project, see
+// Special handing of DIArgList is required in the RemoveDIs trezoa, see
 // commentry in DIArgList::handleChangedOperand for details. Hidden behind
 // conditional compilation to avoid a compile time regression.
 ReplaceableMetadataImpl *ReplaceableMetadataImpl::getOrCreate(Metadata &MD) {

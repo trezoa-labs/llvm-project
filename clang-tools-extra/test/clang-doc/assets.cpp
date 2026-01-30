@@ -10,7 +10,7 @@
 // INDEX-NEXT: <link rel="stylesheet" href="test.css"/>
 // INDEX-NEXT: <script src="index_json.js"></script>
 // INDEX-NEXT: <script src="test.js"></script>
-// INDEX-NEXT: <header id="project-title"></header>
+// INDEX-NEXT: <header id="trezoa-title"></header>
 // INDEX-NEXT: <main>
 // INDEX-NEXT:   <div id="sidebar-left" path="" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left" style="flex: 0 100%;"></div>
 // INDEX-NEXT: </main>

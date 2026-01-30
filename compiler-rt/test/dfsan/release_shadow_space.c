@@ -25,7 +25,7 @@ size_t get_rss_kb() {
     int64_t rss;
     // DFSan's sscanf is broken and doesn't check for ordinary characters in
     // the format string, hence we use strstr as a secondary check
-    // (https://github.com/llvm/llvm-project/issues/94769).
+    // (https://github.com/llvm/llvm-trezoa/issues/94769).
     if ((sscanf(buf, "Rss: %ld kB", &rss) == 1) &&
         (strstr(buf, "Rss: ") != NULL))
       ret += rss;

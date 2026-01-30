@@ -1,5 +1,5 @@
 // RUN: %clang_cc1 -triple i686-linux-gnu -emit-llvm %s -o - | FileCheck %s
-// https://github.com/llvm/llvm-project/issues/54845
+// https://github.com/llvm/llvm-trezoa/issues/54845
 
 void *operator new(unsigned int, void *);
 

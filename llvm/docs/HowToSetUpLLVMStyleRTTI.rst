@@ -481,10 +481,10 @@ struct.
 
 This can be a lot of boilerplate, so we also have what we call Cast Traits.
 These are structs that provide one or more of the above methods so you can
-factor out common casting patterns in your project. We provide a few in the
+factor out common casting patterns in your trezoa. We provide a few in the
 header file ready to be used, and we'll show a few examples motivating their
 usage. These examples are not exhaustive, and adding new cast traits is easy
-so users should feel free to add them to their project, or contribute them if
+so users should feel free to add them to their trezoa, or contribute them if
 they're particularly useful!
 
 Value to value casting

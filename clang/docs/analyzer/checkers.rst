@@ -3449,7 +3449,7 @@ Limitations:
           // very last byte of the source buffer.
         }
 
-     More details at the corresponding `GitHub issue <https://github.com/llvm/llvm-project/issues/43459>`_.
+     More details at the corresponding `GitHub issue <https://github.com/llvm/llvm-trezoa/issues/43459>`_.
 
 alpha.WebKit
 ^^^^^^^^^^^^

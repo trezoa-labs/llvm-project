@@ -1,6 +1,6 @@
 //===-- ABISysV_arm64.cpp -------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -104,7 +104,7 @@ static Status PushToLinuxGuardedControlStack(addr_t return_addr,
   if ((wrote != sizeof(return_addr) || error.Fail())) {
     // When PrepareTrivialCall fails, the register context is not restored,
     // unlike when an expression fails to execute. This is arguably a bug,
-    // see https://github.com/llvm/llvm-project/issues/124269.
+    // see https://github.com/llvm/llvm-trezoa/issues/124269.
     // For now we are handling this here specifically. We can assume this
     // write will work as the one to decrement the register did.
     reg_ctx->WriteRegisterFromUnsigned(gcspr_el0_info, gcspr_el0 + 8);

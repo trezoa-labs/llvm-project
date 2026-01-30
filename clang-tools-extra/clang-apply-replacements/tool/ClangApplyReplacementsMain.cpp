@@ -1,6 +1,6 @@
 //===-- ClangApplyReplacementsMain.cpp - Main file for the tool -----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -56,7 +56,7 @@ static cl::opt<bool> DoFormat(
 // FIXME: Consider making the default behaviour for finding a style
 // configuration file to start the search anew for every file being changed to
 // handle situations where the style is different for different parts of a
-// project.
+// trezoa.
 
 static cl::opt<std::string> FormatStyleConfig(
     "style-config",

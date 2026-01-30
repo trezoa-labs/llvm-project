@@ -1,6 +1,6 @@
 //===- Preprocessor.h - C Language Family Preprocessor ----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1512,7 +1512,7 @@ public:
 
   /// Get the predefines for this processor.
   /// Used by some third-party tools to inspect and add predefines (see
-  /// https://github.com/llvm/llvm-project/issues/57483).
+  /// https://github.com/llvm/llvm-trezoa/issues/57483).
   const std::string &getPredefines() const { return Predefines; }
 
   /// Set the predefines for this Preprocessor.

@@ -1,6 +1,6 @@
 //===-- SymbolFileDWARF.cpp -----------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2016,7 +2016,7 @@ void SymbolFileDWARF::UpdateExternalModuleListIfNeeded() {
       GetObjectFile()->GetModule()->ReportWarning(
           "Unable to locate module needed for external types.\n"
           "Debugging will be degraded due to missing types. Rebuilding the "
-          "project will regenerate the needed module files.");
+          "trezoa will regenerate the needed module files.");
       continue;
     }
 
@@ -2038,7 +2038,7 @@ void SymbolFileDWARF::UpdateExternalModuleListIfNeeded() {
       GetObjectFile()->GetModule()->ReportWarning(
           "Module {0} is out-of-date (hash mismatch).\n"
           "Type information from this module may be incomplete or inconsistent "
-          "with the rest of the program. Rebuilding the project will "
+          "with the rest of the program. Rebuilding the trezoa will "
           "regenerate the needed module files.",
           dwo_module_spec.GetFileSpec().GetPath());
     }

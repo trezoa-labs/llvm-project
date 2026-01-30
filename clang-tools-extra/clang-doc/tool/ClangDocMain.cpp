@@ -1,6 +1,6 @@
 //===-- ClangDocMain.cpp - ClangDoc -----------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -54,7 +54,7 @@ static llvm::cl::extrahelp CommonHelp(CommonOptionsParser::HelpMessage);
 static llvm::cl::OptionCategory ClangDocCategory("clang-doc options");
 
 static llvm::cl::opt<std::string>
-    ProjectName("project-name", llvm::cl::desc("Name of project."),
+    ProjectName("trezoa-name", llvm::cl::desc("Name of trezoa."),
                 llvm::cl::cat(ClangDocCategory));
 
 static llvm::cl::opt<bool> IgnoreMappingFailures(
@@ -232,7 +232,7 @@ Example usage for files without flags (default):
 
   $ clang-doc File1.cpp File2.cpp ... FileN.cpp
 
-Example usage for a project using a compile commands database:
+Example usage for a trezoa using a compile commands database:
 
   $ clang-doc --executor=all-TUs compile_commands.json
 )";

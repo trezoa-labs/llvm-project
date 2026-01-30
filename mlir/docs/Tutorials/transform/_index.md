@@ -14,7 +14,7 @@ demonstration of three use scenarios:
 - Defining new Transform dialect operations and adapting existing transformation
   code to work with the Transform dialect infrastructure.
 - Setting up and using the Transform dialect infrastructure in a downstream
-  out-of-tree project with custom dialects, transformations and passes.
+  out-of-tree trezoa with custom dialects, transformations and passes.
 
 After following the tutorial, one will be able to apply the Transform dialect in
 their work and extend it when necessary. Basic familiarity with MLIR is a

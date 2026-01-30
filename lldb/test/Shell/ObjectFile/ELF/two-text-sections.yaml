@@ -6,7 +6,7 @@
 #   meanings are satisfactory. ... **An object file may have more than
 #   one section with the same name.**
 #
-# (See https://github.com/llvm/llvm-project/issues/88001)
+# (See https://github.com/llvm/llvm-trezoa/issues/88001)
 
 # RUN: yaml2obj %s -o %t
 # RUN: lldb-test symbols %t | FileCheck %s

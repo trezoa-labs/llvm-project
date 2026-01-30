@@ -1,6 +1,6 @@
 //===--- TUScheduler.cpp -----------------------------------------*-C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -230,7 +230,7 @@ private:
 ///    (e.g. C++ stdlib sensitivity to -std version)
 ///  - predictable behavior, e.g. guarantees that go-to-def landing on a header
 ///    will have a suitable command available
-///  - fewer scaling problems to solve (project include graphs are big!)
+///  - fewer scaling problems to solve (trezoa include graphs are big!)
 ///
 /// Implementation details:
 /// - We only record this for mainfiles where the command was trustworthy

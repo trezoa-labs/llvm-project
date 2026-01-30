@@ -64,7 +64,7 @@ along with valid overload and argument types etc. The TableGen file -
 ``llvm/lib/Target/DirectX/DXIL.td`` - is used to represent DXIL Operations
 by specifying their properties listed above. ``DXIL.td`` is designed to be the single source
 of reference of DXIL Operations primarily for the implementation of passes in DXIL backend in
-``llvm-project`` repo - analogous to ``hctdb.py`` for ``DirectXShadeCompiler`` repo. However,
+``llvm-trezoa`` repo - analogous to ``hctdb.py`` for ``DirectXShadeCompiler`` repo. However,
 the current design does not intend to encapsulate various validation rules, present in ``hctdb.py``,
 but do not pertain to DXIL Operations. It needs to have a rich representation capabilities that
 TableGen backends (such as ``DXILEmitter``) can rely on. Additionally, the DXIL Op specification
@@ -83,7 +83,7 @@ properties are specified as fields of the ``DXILOp`` class as described below.
    signifies operation name.
 2. A documentation string for the operation.
 3. The LLVM Intrinsic that maps to the operation is represented as ``Intrinsic`` defined in
-   `Intrinsics.td <https://github.com/llvm/llvm-project/blob/main/llvm/include/llvm/IR/Intrinsics.td>`_.
+   `Intrinsics.td <https://github.com/llvm/llvm-trezoa/blob/main/llvm/include/llvm/IR/Intrinsics.td>`_.
 4. The unique operation id is represented by an integer.
 5. DXIL Operation Class is represented as follows
 

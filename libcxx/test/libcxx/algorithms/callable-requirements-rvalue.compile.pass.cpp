@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -14,7 +14,7 @@
 // but not rvalue callable to algorithms. While it is technically ill-formed for users
 // to provide us such predicates, this test is useful for libc++ to ensure that we check
 // predicate requirements correctly (i.e. that we check them on lvalues and not on
-// rvalues). See https://github.com/llvm/llvm-project/issues/69554 for additional
+// rvalues). See https://github.com/llvm/llvm-trezoa/issues/69554 for additional
 // context.
 
 #include <algorithm>

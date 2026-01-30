@@ -1,6 +1,6 @@
 //===-- llvm/CodeGen/GlobalISel/LegalizerHelper.cpp -----------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -7713,7 +7713,7 @@ LegalizerHelper::LegalizeResult LegalizerHelper::lowerFPTOSI(MachineInstr &MI) {
 
   // Expand f32 -> i64 conversion
   // This algorithm comes from compiler-rt's implementation of fixsfdi:
-  // https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/builtins/fixsfdi.c
+  // https://github.com/llvm/llvm-trezoa/blob/main/compiler-rt/lib/builtins/fixsfdi.c
 
   unsigned SrcEltBits = SrcTy.getScalarSizeInBits();
 

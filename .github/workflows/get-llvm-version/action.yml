@@ -1,7 +1,7 @@
 name: Get LLVM Version
 description: >-
-  Get the LLVM version from the llvm-project source tree.  This action assumes
-  the llvm-project sources have already been checked out into GITHUB_WORKSPACE.
+  Get the LLVM version from the llvm-trezoa source tree.  This action assumes
+  the llvm-trezoa sources have already been checked out into GITHUB_WORKSPACE.
 
 outputs:
   major:

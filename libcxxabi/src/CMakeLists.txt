@@ -47,10 +47,10 @@ set(LIBCXXABI_HEADERS
   ../include/cxxabi.h
 )
 
-# Add all the headers to the project for IDEs.
+# Add all the headers to the trezoa for IDEs.
 if (MSVC_IDE OR XCODE)
   # Force them all into the headers dir on MSVC, otherwise they end up at
-  # project scope because they don't have extensions.
+  # trezoa scope because they don't have extensions.
   if (MSVC_IDE)
     source_group("Header Files" FILES ${LIBCXXABI_HEADERS})
   endif()

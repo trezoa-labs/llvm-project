@@ -1,6 +1,6 @@
 //===--- JSON.h - JSON values, parsing and serialization -------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -492,7 +492,7 @@ private:
     //  The more appropriate approach would be to call the object's destructor
     //  to unpoison memory. This would prevent any potential memory leaks (long
     //  strings). Read for details:
-    //  https://github.com/llvm/llvm-project/pull/79065#discussion_r1462621761
+    //  https://github.com/llvm/llvm-trezoa/pull/79065#discussion_r1462621761
     __asan_unpoison_memory_region(&Union, sizeof(T));
 #endif
     new (reinterpret_cast<T *>(&Union)) T(std::forward<U>(V)...);

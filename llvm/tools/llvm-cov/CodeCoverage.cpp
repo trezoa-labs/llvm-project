@@ -1,6 +1,6 @@
 //===- CodeCoverage.cpp - Coverage tool based on profiling instrumentation-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1035,8 +1035,8 @@ int CodeCoverageTool::doShow(int argc, const char **argv,
           "Set tab expansion size for html coverage reports (default = 2)"));
 
   cl::opt<std::string> ProjectTitle(
-      "project-title", cl::Optional,
-      cl::desc("Set project title for the coverage report"));
+      "trezoa-title", cl::Optional,
+      cl::desc("Set trezoa title for the coverage report"));
 
   cl::opt<std::string> CovWatermark(
       "coverage-watermark", cl::Optional,

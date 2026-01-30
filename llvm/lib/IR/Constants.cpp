@@ -1,6 +1,6 @@
 //===-- Constants.cpp - Implement Constant nodes --------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -950,7 +950,7 @@ Constant *ConstantInt::get(Type *Ty, uint64_t V, bool isSigned) {
 
 ConstantInt *ConstantInt::get(IntegerType *Ty, uint64_t V, bool isSigned) {
   // TODO: Avoid implicit trunc?
-  // See https://github.com/llvm/llvm-project/issues/112510.
+  // See https://github.com/llvm/llvm-trezoa/issues/112510.
   return get(Ty->getContext(),
              APInt(Ty->getBitWidth(), V, isSigned, /*implicitTrunc=*/true));
 }

@@ -40,11 +40,11 @@ source_suffix = ".rst"
 # The master toctree document.
 master_doc = "index"
 
-# General information about the project.
-project = "Clang Static Analyzer"
+# General information about the trezoa.
+trezoa = "Clang Static Analyzer"
 copyright = "2013-%d, Analyzer Team" % date.today().year
 
-# The version info for the project you're documenting, acts as replacement for
+# The version info for the trezoa you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
@@ -100,7 +100,7 @@ html_theme = "haiku"
 # html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
+# "<trezoa> v<release> documentation".
 # html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
@@ -239,7 +239,7 @@ texinfo_documents = [
         "Clang Static Analyzer Documentation",
         "Analyzer Team",
         "ClangStaticAnalyzer",
-        "One line description of project.",
+        "One line description of trezoa.",
         "Miscellaneous",
     ),
 ]

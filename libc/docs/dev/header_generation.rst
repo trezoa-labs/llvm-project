@@ -38,7 +38,7 @@ command line.
 
 To add through the command line:
 
-1. Make sure you are in the llvm-project directory.
+1. Make sure you are in the llvm-trezoa directory.
 
 2. Enter in the command line:
 
@@ -90,7 +90,7 @@ Common Errors
 
    .. code-block:: none
 
-      "/llvm-project/libc/utils/hdrgen/yaml_to_classes.py", line 67, in yaml_to_classes function_data["return_type"]
+      "/llvm-trezoa/libc/utils/hdrgen/yaml_to_classes.py", line 67, in yaml_to_classes function_data["return_type"]
 
    If you receive this error or any error pertaining to
    ``function_data[function_specific_component]`` while building the headers
@@ -106,11 +106,11 @@ Common Errors
    .. code-block:: none
 
      CMake Error at:
-     /llvm-project/libc/cmake/modules/LLVMLibCHeaderRules.cmake:86 (message):
+     /llvm-trezoa/libc/cmake/modules/LLVMLibCHeaderRules.cmake:86 (message):
      'add_gen_hdr2' rule requires GEN_HDR to be specified.
      Call Stack (most recent call first):
-     /llvm-project/libc/include/CMakeLists.txt:22 (add_gen_header2)
-     /llvm-project/libc/include/CMakeLists.txt:62 (add_header_macro)
+     /llvm-trezoa/libc/include/CMakeLists.txt:22 (add_gen_header2)
+     /llvm-trezoa/libc/include/CMakeLists.txt:62 (add_header_macro)
 
    If you receive this error, there is a missing YAML file, h_def file, or
    header name within the ``libc/include/CMakeLists.txt``. The last line in the
@@ -148,7 +148,7 @@ Common Errors
 
    .. code-block:: none
 
-     File "/llvm-project/libc/utils/hdrgen/header.py", line 60, in __str__ for
+     File "/llvm-trezoa/libc/utils/hdrgen/header.py", line 60, in __str__ for
      function in self.functions: AttributeError: 'HeaderFile' object has no
      attribute 'functions'
 
@@ -164,11 +164,11 @@ Common Errors
 
    .. code-block:: none
 
-     /llvm-project/build/projects/libc/include/sched.h:20:25: error: unknown type
+     /llvm-trezoa/build/projects/libc/include/sched.h:20:25: error: unknown type
      name 'size_t'; did you mean 'time_t'?
      20 | int_sched_getcpucount(size_t, const cpu_set_t*) __NOEXCEPT
       |           ^
-     /llvm-project/build/projects/libc/include/llvm-libc-types/time_t.h:15:24:
+     /llvm-trezoa/build/projects/libc/include/llvm-libc-types/time_t.h:15:24:
      note: 'time_t' declared here
      15 | typedef __INT64_TYPE__ time_t;
      |                    ^

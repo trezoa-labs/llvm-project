@@ -17,9 +17,9 @@ if(POLICY CMP0128)
   cmake_policy(SET CMP0128 NEW)
 endif()
 
-# Check if compiler-rt is built as a standalone project.
+# Check if compiler-rt is built as a standalone trezoa.
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR OR COMPILER_RT_STANDALONE_BUILD)
-  project(CompilerRT C CXX ASM)
+  trezoa(CompilerRT C CXX ASM)
   set(COMPILER_RT_STANDALONE_BUILD TRUE)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
@@ -538,7 +538,7 @@ append_list_if(MINGW -fms-extensions SANITIZER_COMMON_CFLAGS)
 #
 # Note that this type of issue was discovered with lsan, but can apply to other
 # sanitizers.
-# Disable PowerPC because of https://github.com/llvm/llvm-project/issues/84654.
+# Disable PowerPC because of https://github.com/llvm/llvm-trezoa/issues/84654.
 if(NOT "${COMPILER_RT_DEFAULT_TARGET_ARCH}" MATCHES "powerpc")
   append_list_if(COMPILER_RT_HAS_TRIVIAL_AUTO_INIT -ftrivial-auto-var-init=pattern SANITIZER_COMMON_CFLAGS)
 endif()
@@ -767,7 +767,7 @@ if (CMAKE_LINKER MATCHES "link.exe$")
   # Ideally, we would pass this flag only for the libraries that need
   # it, but CMake doesn't seem to have a way to set linker flags for
   # individual static libraries, so we enable the suppression flag for
-  # the whole compiler-rt project.
+  # the whole compiler-rt trezoa.
   set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} ${CMAKE_CXX_LINKER_WRAPPER_FLAG}/IGNORE:4221")
 endif()
 

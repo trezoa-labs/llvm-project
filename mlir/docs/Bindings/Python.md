@@ -127,7 +127,7 @@ registration, etc.
 
 ### Loader
 
-LLVM/MLIR is a non-trivial python-native project that is likely to co-exist with
+LLVM/MLIR is a non-trivial python-native trezoa that is likely to co-exist with
 other non-trivial native extensions. As such, the native extension (i.e. the
 `.so`/`.pyd`/`.dylib`) is exported as a notionally private top-level symbol
 (`_mlir`), while a small set of Python code is provided in
@@ -1118,11 +1118,11 @@ description.
 It is sufficient to create a new `.td` file that includes the original ODS
 definition and use it as source for the `mlir-tblgen` call.
 Such `.td` files reside in
-[`python/mlir/dialects/`](https://github.com/llvm/llvm-project/tree/main/mlir/python/mlir/dialects).
+[`python/mlir/dialects/`](https://github.com/llvm/llvm-trezoa/tree/main/mlir/python/mlir/dialects).
 The results of `mlir-tblgen` are expected to produce a file named
 `_<dialect-namespace>_ops_gen.py` by convention. The generated operation classes
 can be extended as described above. MLIR provides [CMake
-functions](https://github.com/llvm/llvm-project/blob/main/mlir/cmake/modules/AddMLIRPython.cmake)
+functions](https://github.com/llvm/llvm-trezoa/blob/main/mlir/cmake/modules/AddMLIRPython.cmake)
 to automate the production of such files. Finally, a
 `python/mlir/dialects/<dialect-namespace>.py` or a
 `python/mlir/dialects/<dialect-namespace>/__init__.py` file must be created and
@@ -1137,9 +1137,9 @@ Dialect attributes and types are provided in Python as subclasses of the
 attributes and types must connect to the relevant C APIs for building and
 inspection, which must be provided first. Bindings for `Attribute` and `Type`
 subclasses can be defined using
-[`include/mlir/Bindings/Python/PybindAdaptors.h`](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Bindings/Python/PybindAdaptors.h)
+[`include/mlir/Bindings/Python/PybindAdaptors.h`](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Bindings/Python/PybindAdaptors.h)
 or
-[`include/mlir/Bindings/Python/NanobindAdaptors.h`](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Bindings/Python/NanobindAdaptors.h)
+[`include/mlir/Bindings/Python/NanobindAdaptors.h`](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Bindings/Python/NanobindAdaptors.h)
 utilities that mimic pybind11/nanobind API for defining functions and
 properties. These bindings are to be included in a separate module. The
 utilities also provide automatic casting between C API handles `MlirAttribute`
@@ -1151,7 +1151,7 @@ The attribute and type bindings for a dialect can be located in
 `lib/Bindings/Python/Dialect<Name>.cpp` and should be compiled into a separate
 “Python extension” library placed in `python/mlir/_mlir_libs` that will be
 loaded by Python at runtime. MLIR provides [CMake
-functions](https://github.com/llvm/llvm-project/blob/main/mlir/cmake/modules/AddMLIRPython.cmake)
+functions](https://github.com/llvm/llvm-trezoa/blob/main/mlir/cmake/modules/AddMLIRPython.cmake)
 to automate the production of such libraries. This library should be `import`ed
 from the main dialect file, i.e. `python/mlir/dialects/<dialect-namespace>.py`
 or `python/mlir/dialects/<dialect-namespace>/__init__.py`, to ensure the types
@@ -1181,9 +1181,9 @@ make the passes available along with the dialect.
 Dialect functionality other than IR objects or passes, such as helper functions,
 can be exposed to Python similarly to attributes and types. C API is expected to
 exist for this functionality, which can then be wrapped using pybind11 and
-[`include/mlir/Bindings/Python/PybindAdaptors.h`](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Bindings/Python/PybindAdaptors.h),
+[`include/mlir/Bindings/Python/PybindAdaptors.h`](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Bindings/Python/PybindAdaptors.h),
 or nanobind and
-[`include/mlir/Bindings/Python/NanobindAdaptors.h`](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Bindings/Python/NanobindAdaptors.h)
+[`include/mlir/Bindings/Python/NanobindAdaptors.h`](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Bindings/Python/NanobindAdaptors.h)
 utilities to connect to the rest of Python API. The bindings can be located in a
 separate module or in the same module as attributes and types, and
 loaded along with the dialect.

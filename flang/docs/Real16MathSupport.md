@@ -1,6 +1,6 @@
 <!--===- docs/Real16MathSupport.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -17,7 +17,7 @@ to GCC `libquadmath` library. A Flang driver built with this option
 will automatically link `FortranFloat128Math` and `libquadmath` libraries
 to any Fortran program. This implies that `libquadmath` library
 has to be available in the standard library paths, so that linker
-can find it. The `libquadmath` library installation into Flang project
+can find it. The `libquadmath` library installation into Flang trezoa
 distribution is not automatic in CMake currently.
 
 Testing shows that `libquadmath` versions before GCC-9.3.0 have

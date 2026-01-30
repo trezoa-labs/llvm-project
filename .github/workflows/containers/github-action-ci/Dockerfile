@@ -16,13 +16,13 @@ RUN apt-get update && \
     curl \
     zlib1g-dev
 
-RUN curl -O -L https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-$LLVM_VERSION.tar.gz && tar -xf llvmorg-$LLVM_VERSION.tar.gz
+RUN curl -O -L https://github.com/llvm/llvm-trezoa/archive/refs/tags/llvmorg-$LLVM_VERSION.tar.gz && tar -xf llvmorg-$LLVM_VERSION.tar.gz
 
-WORKDIR /llvm-project-llvmorg-$LLVM_VERSION
+WORKDIR /llvm-trezoa-llvmorg-$LLVM_VERSION
 
 # Patch to enable better PGO profile data.
 # TODO: Remove this for llvm 20
-ADD https://github.com/llvm/llvm-project/commit/738250989ce516f02f809bdfde474a039c77e81f.patch .
+ADD https://github.com/llvm/llvm-trezoa/commit/738250989ce516f02f809bdfde474a039c77e81f.patch .
 
 RUN patch -p1 < 738250989ce516f02f809bdfde474a039c77e81f.patch
 
@@ -68,7 +68,7 @@ RUN apt-get update && \
     file \
     tzdata
 
-# Install sccache as it is needed by most of the project test workflows and
+# Install sccache as it is needed by most of the trezoa test workflows and
 # cannot be installed by the ccache action when executing as a non-root user.
 # TODO(boomanaiden154): This should be switched to being installed with apt
 # once we bump to Ubuntu 24.04.

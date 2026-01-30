@@ -1,6 +1,6 @@
 //===- llvm/IR/Metadata.h - Metadata definitions ----------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -598,7 +598,7 @@ public:
 ///
 /// The API in this namespace supports the transition.  \a MDInt doesn't exist
 /// yet, and even once it does, changing each metadata schema to use it is its
-/// own mini-project.  In the meantime this API prevents us from introducing
+/// own mini-trezoa.  In the meantime this API prevents us from introducing
 /// complex and bug-prone control flow that will disappear in the end.  In
 /// particular, the above code looks like this:
 ///

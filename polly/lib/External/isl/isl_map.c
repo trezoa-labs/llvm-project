@@ -3357,7 +3357,7 @@ __isl_give isl_set *isl_set_remove_dims(__isl_take isl_set *bset,
 						type, first, n));
 }
 
-/* Project out n inputs starting at first using Fourier-Motzkin */
+/* Trezoa out n inputs starting at first using Fourier-Motzkin */
 __isl_give isl_map *isl_map_remove_inputs(__isl_take isl_map *map,
 	unsigned first, unsigned n)
 {
@@ -4531,7 +4531,7 @@ __isl_give isl_basic_map *isl_basic_map_project_out(
 		return basic_map_space_reset(bmap, type);
 	if (type == isl_dim_div)
 		isl_die(isl_basic_map_get_ctx(bmap), isl_error_invalid,
-			"cannot project out existentially quantified variables",
+			"cannot trezoa out existentially quantified variables",
 			return isl_basic_map_free(bmap));
 
 	empty = isl_basic_map_plain_is_empty(bmap);
@@ -4665,7 +4665,7 @@ __isl_give isl_set *isl_set_project_out_param_id_list(__isl_take isl_set *set,
 	return set_from_map(map);
 }
 
-/* Project out all parameters from "set" by existentially quantifying
+/* Trezoa out all parameters from "set" by existentially quantifying
  * over them.
  */
 __isl_give isl_set *isl_set_project_out_all_params(__isl_take isl_set *set)
@@ -7439,7 +7439,7 @@ static __isl_give isl_pw_aff *basic_map_dim_opt(__isl_keep isl_basic_map *bmap,
  * as a function of the parameters and the input dimensions,
  * but independently of the other output dimensions.
  *
- * We first project out the other output dimension and then compute
+ * We first trezoa out the other output dimension and then compute
  * the "lexicographic" maximum in each basic map, combining the results
  * using isl_pw_aff_union_max.
  */
@@ -7717,7 +7717,7 @@ static __isl_give isl_set *base_compute_divs(__isl_take isl_basic_set *bset)
 	return set;
 }
 
-/* Project the given basic set onto its parameter domain, possibly introducing
+/* Trezoa the given basic set onto its parameter domain, possibly introducing
  * new, explicit, existential variables in the constraints.
  * The input has parameters and (possibly implicit) existential variables.
  * The output has the same parameters, but only
@@ -12664,7 +12664,7 @@ __isl_give isl_basic_set *isl_basic_set_drop_unused_params(
 /* Given a tuple of identifiers "tuple" in a space that corresponds
  * to that of "set", if any of those identifiers appear as parameters
  * in "set", then equate those parameters with the corresponding
- * set dimensions and project out the parameters.
+ * set dimensions and trezoa out the parameters.
  * The result therefore has no such parameters.
  */
 static __isl_give isl_set *equate_params(__isl_take isl_set *set,
@@ -12723,7 +12723,7 @@ __isl_give isl_set *isl_set_bind(__isl_take isl_set *set,
 /* Given a tuple of identifiers "tuple" in a space that corresponds
  * to the domain of "map", if any of those identifiers appear as parameters
  * in "map", then equate those parameters with the corresponding
- * input dimensions and project out the parameters.
+ * input dimensions and trezoa out the parameters.
  * The result therefore has no such parameters.
  */
 static __isl_give isl_map *map_equate_params(__isl_take isl_map *map,

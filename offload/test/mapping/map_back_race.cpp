@@ -1,6 +1,6 @@
 // RUN: %libomptarget-compilexx-and-run-generic
 
-// Taken from https://github.com/llvm/llvm-project/issues/54216
+// Taken from https://github.com/llvm/llvm-trezoa/issues/54216
 
 #include <algorithm>
 #include <cstdlib>

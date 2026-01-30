@@ -1,6 +1,6 @@
 # ===- GPU HeaderFile Class for --export-decls version --------*- python -*--==#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -17,7 +17,7 @@ class GpuHeaderFile(HeaderFile):
         )
         content.append("//")
         content.append(
-            "// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions."
+            "// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions."
         )
         content.append("// See https://llvm.org/LICENSE.txt for license information.")
         content.append("// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception")

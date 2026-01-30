@@ -39,7 +39,7 @@ Requirements
     to support `_Fract` and `_Accum` types in C or C++.
 
 -   This compiler support is checked at the beginning of
-    `libc/include/llvm-libc-macros/stdfix-macros.h <https://github.com/llvm/llvm-project/tree/main/libc/include/llvm-libc-macros/stdfix-macros.h>`_.
+    `libc/include/llvm-libc-macros/stdfix-macros.h <https://github.com/llvm/llvm-trezoa/tree/main/libc/include/llvm-libc-macros/stdfix-macros.h>`_.
 
 
 
@@ -50,7 +50,7 @@ Predefined Macros
     compiler support the fixed-point types.
 
 -   Other predefined precision macros specified in section 7.18a.3 are defined
-    in `libc/include/llvm-libc-macros/stdfix-macros.h <https://github.com/llvm/llvm-project/tree/main/libc/include/llvm-libc-macros/stdfix-macros.h>`_
+    in `libc/include/llvm-libc-macros/stdfix-macros.h <https://github.com/llvm/llvm-trezoa/tree/main/libc/include/llvm-libc-macros/stdfix-macros.h>`_
     using the default configuration of `typical desktop processor` in section
     A.3.
 

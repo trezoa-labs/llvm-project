@@ -1,6 +1,6 @@
 //===------------------ ProjectModules.h -------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -19,7 +19,7 @@
 namespace clang {
 namespace clangd {
 
-/// An interface to query the modules information in the project.
+/// An interface to query the modules information in the trezoa.
 /// Users should get instances of `ProjectModules` from
 /// `GlobalCompilationDatabase::getProjectModules(PathRef)`.
 ///
@@ -29,9 +29,9 @@ namespace clangd {
 ///   the corresponding source file.
 ///
 /// Note that there can be multiple source files declaring the same module
-/// in a valid project. Although the language specification requires that
+/// in a valid trezoa. Although the language specification requires that
 /// every module unit's name must be unique in valid program, there can be
-/// multiple program in a project. And it is technically valid if these program
+/// multiple program in a trezoa. And it is technically valid if these program
 /// doesn't interfere with each other.
 ///
 /// A module name should be in the format:

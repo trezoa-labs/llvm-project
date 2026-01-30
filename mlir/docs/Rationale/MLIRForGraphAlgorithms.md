@@ -348,7 +348,7 @@ points MLIR:
     which provides efficient hash tables and other
     [memory efficient data structures that the STL does not](http://llvm.org/docs/ProgrammersManual.html#picking-the-right-data-structure-for-a-task).
     There have been discussions about splitting this set of libraries out to its
-    own subproject in LLVM that the LLVM IR project depends on. This would be
+    own subproject in LLVM that the LLVM IR trezoa depends on. This would be
     great for MLIR as well as other LLVM subprojects.
 1.  TensorFlow and many other frameworks already use LLVM - if so, MLIR would
     not be pulling in an additional dependency at all.

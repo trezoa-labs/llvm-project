@@ -1,6 +1,6 @@
 # Clangd remote index
 
-Clangd uses a global index for project-wide code completion, navigation and
+Clangd uses a global index for trezoa-wide code completion, navigation and
 other features.  For large projects, building this can take many hours and
 keeping it loaded uses a lot of memory.
 
@@ -57,4 +57,4 @@ flag will inform build system that you chose this option &mdash;
 ## Running
 
 You can run `clangd-index-server` and connect `clangd` instance to it using
-`--remote-index-address` and `--project-root` flags.
+`--remote-index-address` and `--trezoa-root` flags.

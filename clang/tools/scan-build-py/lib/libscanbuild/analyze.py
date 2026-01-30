@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """ This module implements the 'scan-build' command API.
@@ -108,7 +108,7 @@ def analyze_build():
 def need_analyzer(args):
     """Check the intent of the build command.
 
-    When static analyzer run against project configure step, it should be
+    When static analyzer run against trezoa configure step, it should be
     silent and no need to run the analyzer or generate report.
 
     To run `scan-build` against the configure step might be necessary,

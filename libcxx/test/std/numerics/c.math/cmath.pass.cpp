@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1214,7 +1214,7 @@ void test_hypot()
     assert(std::hypot(1,4,8) == 9);
 
     // Check for undue over-/underflows of intermediate results.
-    // See discussion at https://github.com/llvm/llvm-project/issues/92782.
+    // See discussion at https://github.com/llvm/llvm-trezoa/issues/92782.
     types::for_each(types::floating_point_types(), TestHypot3());
 #endif
 }

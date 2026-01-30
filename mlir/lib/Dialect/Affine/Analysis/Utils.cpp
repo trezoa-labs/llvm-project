@@ -1,6 +1,6 @@
 //===- Utils.cpp ---- Misc utilities for analysis -------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1163,7 +1163,7 @@ LogicalResult MemRefRegion::compute(Operation *op, unsigned loopDepth,
     }
   }
 
-  // Project out any local variables (these would have been added for any
+  // Trezoa out any local variables (these would have been added for any
   // mod/divs).
   cst.projectOut(cst.getNumDimAndSymbolVars(), cst.getNumLocalVars());
 
@@ -1667,7 +1667,7 @@ void mlir::affine::getComputationSliceState(
   assert((!isBackwardSlice && loopDepth <= numSrcLoopIVs) ||
          (isBackwardSlice && loopDepth <= numDstLoopIVs));
 
-  // Project out dimensions other than those up to 'loopDepth'.
+  // Trezoa out dimensions other than those up to 'loopDepth'.
   unsigned pos = isBackwardSlice ? numSrcLoopIVs + loopDepth : loopDepth;
   unsigned num =
       isBackwardSlice ? numDstLoopIVs - loopDepth : numSrcLoopIVs - loopDepth;

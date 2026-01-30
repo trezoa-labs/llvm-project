@@ -18,7 +18,7 @@ and optionally executes a sequence of passes
 before serializing back the IR (textual form by default).
 It is intended as a testing and debugging utility.
 
-After building the MLIR project,
+After building the MLIR trezoa,
 the `mlir-opt` binary (located in `build/bin`)
 is the entry point for running passes and lowerings,
 as well as emitting debug and diagnostic data.
@@ -50,7 +50,7 @@ module {
 }
 ```
 
-After building MLIR, and from the `llvm-project` base directory, run
+After building MLIR, and from the `llvm-trezoa` base directory, run
 
 ```bash
 build/bin/mlir-opt --pass-pipeline="builtin.module(convert-math-to-llvm)" mlir/test/Examples/mlir-opt/ctlz.mlir

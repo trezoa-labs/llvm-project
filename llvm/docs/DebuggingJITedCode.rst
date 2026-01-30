@@ -98,11 +98,11 @@ code via ``lli`` inside LLDB:
 
 .. code-block:: bash
 
-   > export BINPATH=/workspaces/llvm-project/build/bin
+   > export BINPATH=/workspaces/llvm-trezoa/build/bin
    > $BINPATH/clang -g -S -emit-llvm --target=x86_64-unknown-unknown-elf showdebug.c
    > lldb $BINPATH/lli
-   (lldb) target create "/workspaces/llvm-project/build/bin/lli"
-   Current executable set to '/workspaces/llvm-project/build/bin/lli' (x86_64).
+   (lldb) target create "/workspaces/llvm-trezoa/build/bin/lli"
+   Current executable set to '/workspaces/llvm-trezoa/build/bin/lli' (x86_64).
    (lldb) settings set plugin.jit-loader.gdb.enable on
    (lldb) b compute_factorial
    Breakpoint 1: no locations (pending).

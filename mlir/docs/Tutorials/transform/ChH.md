@@ -6,7 +6,7 @@ structured ops.
 
 Note that the IR below is pseudo-code with types removed for brevity. It may
 also get out of sync with the current syntax. Always refer to the source code in
-[mlir/examples/transform/ChH](https://github.com/llvm/llvm-project/tree/main/mlir/test/Examples/transform/ChH)
+[mlir/examples/transform/ChH](https://github.com/llvm/llvm-trezoa/tree/main/mlir/test/Examples/transform/ChH)
 as the source of truth.
 
 ## Channeled Convolution
@@ -703,4 +703,4 @@ aggressive address computation and load placement optimization.
 
 The final transformation strategy is checked into the repository at
 [mlir/examples/transform/ChH/full.mlir](
-https://github.com/llvm/llvm-project/tree/main/mlir/test/Examples/transform/ChH/full.mlir).
+https://github.com/llvm/llvm-trezoa/tree/main/mlir/test/Examples/transform/ChH/full.mlir).

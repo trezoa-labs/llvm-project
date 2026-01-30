@@ -97,7 +97,7 @@ Compilers end up with a lot of peephole optimizers for various things, e.g. the
 GCC
 ["combine" routines](https://github.com/gcc-mirror/gcc/blob/master/gcc/combine.c)
 (which try to merge two machine instructions into a single one), the LLVM
-[Inst Combine](https://github.com/llvm/llvm-project/tree/main/llvm/lib/Transforms/InstCombine)
+[Inst Combine](https://github.com/llvm/llvm-trezoa/tree/main/llvm/lib/Transforms/InstCombine)
 [pass](https://llvm.org/docs/Passes.html#instcombine-combine-redundant-instructions),
 LLVM's
 [DAG Combiner](https://github.com/llvm-mirror/llvm/blob/master/lib/CodeGen/SelectionDAG/DAGCombiner.cpp),
@@ -105,7 +105,7 @@ the Swift compiler's
 [SIL Combiner](https://github.com/apple/swift/tree/main/lib/SILOptimizer/SILCombiner),
 etc. These generally match one or more operations and produce zero or more
 operations as a result. The LLVM
-[Legalization](https://github.com/llvm/llvm-project/tree/main/llvm/lib/CodeGen/SelectionDAG)
+[Legalization](https://github.com/llvm/llvm-trezoa/tree/main/llvm/lib/CodeGen/SelectionDAG)
 infrastructure has a different outer loop but otherwise works the same way.
 
 These passes have a lot of diversity, but also have a unifying structure: they
@@ -146,7 +146,7 @@ example:
     redundancies.
 *   The IR being matched often has identities (e.g. when matching commutative
     operators) and the C++ code has to handle it manually - take a look at
-    [the full code](https://github.com/llvm/llvm-project/blob/c0b5000bd848303320c03f80fbf84d71e74518c9/llvm/lib/Transforms/InstCombine/InstCombineAddSub.cpp#L767)
+    [the full code](https://github.com/llvm/llvm-trezoa/blob/c0b5000bd848303320c03f80fbf84d71e74518c9/llvm/lib/Transforms/InstCombine/InstCombineAddSub.cpp#L767)
     for `checkForNegativeOperand` that defines the second pattern).
 *   The matching code compiles slowly, both because it generates tons of code
     and because the templates instantiate slowly.
@@ -160,7 +160,7 @@ example:
 
 In addition to structured "combiners" like these, there are lots of ad-hoc
 systems like the
-[LLVM Machine code peephole optimizer](http://llvm.org/viewvc/llvm-project/llvm/trunk/lib/CodeGen/PeepholeOptimizer.cpp?view=markup)
+[LLVM Machine code peephole optimizer](http://llvm.org/viewvc/llvm-trezoa/llvm/trunk/lib/CodeGen/PeepholeOptimizer.cpp?view=markup)
 which are related.
 
 ### LLVM's DAG-to-DAG Instruction Selection Infrastructure
@@ -184,7 +184,7 @@ def : Pat<(or GR64:$src, (not (add GR64:$src, 1))),
 This example defines a matcher for the
 ["blci" instruction](https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets#TBM_\(Trailing_Bit_Manipulation\))
 in the
-[X86 target description](https://github.com/llvm/llvm-project/blob/main/llvm/lib/Target/X86/X86InstrInfo.td),
+[X86 target description](https://github.com/llvm/llvm-trezoa/blob/main/llvm/lib/Target/X86/X86InstrInfo.td),
 there are many others in that file (look for `Pat<>` patterns, since they aren't
 entangled in details of the compiler like assembler/disassembler generation
 logic).

@@ -757,7 +757,7 @@ over time. The output looks like this.
 
 .. code-block:: text
 
-  DETAILED RECORDS for file llvm-project\llvm\lib\target\arc\arc.td
+  DETAILED RECORDS for file llvm-trezoa\llvm\lib\target\arc\arc.td
 
   -------------------- Global Variables (5) --------------------
 

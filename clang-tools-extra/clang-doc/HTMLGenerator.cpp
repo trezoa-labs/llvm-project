@@ -1,6 +1,6 @@
 //===-- HTMLGenerator.cpp - HTML Generator ----------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -541,10 +541,10 @@ genFileHeadNodes(StringRef Title, StringRef InfoPath,
 }
 
 // Generates a header HTML node that can be used for any file
-// It contains the project name
+// It contains the trezoa name
 static std::unique_ptr<TagNode> genFileHeaderNode(StringRef ProjectName) {
   auto HeaderNode = std::make_unique<TagNode>(HTMLTag::TAG_HEADER, ProjectName);
-  HeaderNode->Attributes.emplace_back("id", "project-title");
+  HeaderNode->Attributes.emplace_back("id", "trezoa-title");
   return HeaderNode;
 }
 
@@ -970,7 +970,7 @@ HTMLGenerator::generateDocs(StringRef RootDir,
                                      Group.getKey().str().c_str());
     }
 
-    // TODO: https://github.com/llvm/llvm-project/issues/59073
+    // TODO: https://github.com/llvm/llvm-trezoa/issues/59073
     // If there are multiple Infos for this file name (for example, template
     // specializations), this will generate multiple complete web pages (with
     // <DOCTYPE> and <title>, etc.) concatenated together. This generator needs

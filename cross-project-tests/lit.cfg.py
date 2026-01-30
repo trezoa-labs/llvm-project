@@ -13,7 +13,7 @@ from lit.llvm.subst import ToolSubst
 # Configuration file for the 'lit' test runner.
 
 # name: The name of this test suite.
-config.name = "cross-project-tests"
+config.name = "cross-trezoa-tests"
 
 # testFormat: The test format to use to interpret tests.
 config.test_format = lit.formats.ShTest(not llvm_config.use_lit_shell)
@@ -210,7 +210,7 @@ if can_target_host():
 else:
     print(
         "Host triple {} not supported. Skipping dexter tests in the "
-        "debuginfo-tests project.".format(config.host_triple)
+        "debuginfo-tests trezoa.".format(config.host_triple)
     )
 
 tool_dirs = [config.llvm_tools_dir]
@@ -268,7 +268,7 @@ def get_clang_default_dwarf_version_string(triple):
     return match.group(1)
 
 
-# Some cross-project-tests use gdb, but not all versions of gdb are compatible
+# Some cross-trezoa-tests use gdb, but not all versions of gdb are compatible
 # with clang's dwarf. Add feature `gdb-clang-incompatibility` to signal that
 # there's an incompatibility between clang's default dwarf version for this
 # platform and the installed gdb version.

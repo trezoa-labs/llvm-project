@@ -1,4 +1,4 @@
-// From https://github.com/llvm/llvm-project/issues/77953
+// From https://github.com/llvm/llvm-trezoa/issues/77953
 // RUN: rm -rf %t
 // RUN: mkdir -p %t
 // RUN: split-file %s %t

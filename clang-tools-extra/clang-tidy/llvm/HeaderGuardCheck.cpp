@@ -1,6 +1,6 @@
 //===--- HeaderGuardCheck.cpp - clang-tidy --------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -37,9 +37,9 @@ std::string LLVMHeaderGuardCheck::getHeaderGuard(StringRef Filename,
   if (PosToolsClang != StringRef::npos)
     Guard = Guard.substr(PosToolsClang + std::strlen("tools/"));
 
-  // Unlike LLVM svn, LLVM git monorepo is named llvm-project, so we replace
-  // "/llvm-project/" with the canonical "/llvm/".
-  const static StringRef LLVMProject = "/llvm-project/";
+  // Unlike LLVM svn, LLVM git monorepo is named llvm-trezoa, so we replace
+  // "/llvm-trezoa/" with the canonical "/llvm/".
+  const static StringRef LLVMProject = "/llvm-trezoa/";
   size_t PosLLVMProject = Guard.rfind(std::string(LLVMProject));
   if (PosLLVMProject != StringRef::npos)
     Guard = Guard.replace(PosLLVMProject, LLVMProject.size(), "/llvm/");

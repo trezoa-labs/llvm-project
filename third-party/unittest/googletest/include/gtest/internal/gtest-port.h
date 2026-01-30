@@ -143,7 +143,7 @@
 //   GTEST_OS_ZOS      - z/OS
 //
 // Among the platforms, Cygwin, Linux, Mac OS X, and Windows have the
-// most stable support.  Since core members of the Google Test project
+// most stable support.  Since core members of the Google Test trezoa
 // don't have access to other platforms, support for them may be less
 // stable.  If you notice any problems on your platform, please notify
 // googletestframework@googlegroups.com (patches for fixing them are
@@ -864,7 +864,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #define GTEST_NO_TAIL_CALL_
 #endif
 
-// _LIBCPP_VERSION is defined by the libc++ library from the LLVM project.
+// _LIBCPP_VERSION is defined by the libc++ library from the LLVM trezoa.
 #if !defined(GTEST_HAS_CXXABI_H_)
 #if defined(__GLIBCXX__) || (defined(_LIBCPP_VERSION) && !defined(_MSC_VER))
 #define GTEST_HAS_CXXABI_H_ 1
@@ -2088,7 +2088,7 @@ inline int ChDir(const char* dir) { return chdir(dir); }
 #endif
 inline FILE* FOpen(const char* path, const char* mode) {
 // FIXME: This doesn't work when building with rpmalloc, see
-// https://github.com/llvm/llvm-project/pull/65823#issuecomment-1739820534
+// https://github.com/llvm/llvm-trezoa/pull/65823#issuecomment-1739820534
 // so hacking it out for now.
 #if defined(GTEST_OS_WINDOWS) && !defined(GTEST_OS_WINDOWS_MINGW) && 0
   struct wchar_codecvt : public std::codecvt<wchar_t, char, std::mbstate_t> {};

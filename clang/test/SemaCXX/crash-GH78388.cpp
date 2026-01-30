@@ -6,7 +6,7 @@
 // RUN: %clang_cc1 -verify -std=c++23 %s
 // RUN: %clang_cc1 -verify -std=c++2c %s
 
-// https://github.com/llvm/llvm-project/issues/78388
+// https://github.com/llvm/llvm-trezoa/issues/78388
 
 typedef mbstate_t; // expected-error 0+ {{}} expected-note 0+ {{}}
   template < typename , typename , typename >

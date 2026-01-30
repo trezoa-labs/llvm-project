@@ -18,7 +18,7 @@ Quickstart
    ```bash
    % python3 -m venv .venv
    % . .venv/bin/activate
-   % pip install git+https://github.com/llvm/llvm-project.git#subdirectory=llvm/utils/lit
+   % pip install git+https://github.com/llvm/llvm-trezoa.git#subdirectory=llvm/utils/lit
    % lit --version
    lit 20.0.0dev
    ```
@@ -349,7 +349,7 @@ Example usage:
 LNT is a set of client and server tools for continuously monitoring
 performance. You can find more information at
 [https://llvm.org/docs/lnt](https://llvm.org/docs/lnt). The official LNT instance
-of the LLVM project is hosted at [http://lnt.llvm.org](http://lnt.llvm.org).
+of the LLVM trezoa is hosted at [http://lnt.llvm.org](http://lnt.llvm.org).
 
 
 External Suites

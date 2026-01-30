@@ -1,6 +1,6 @@
 //===- RealtimeSanitizer.cpp - RealtimeSanitizer instrumentation *- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -9,7 +9,7 @@
 // This file is a part of the RealtimeSanitizer, an LLVM transformation for
 // detecting and reporting realtime safety violations.
 //
-// See also: llvm-project/compiler-rt/lib/rtsan/
+// See also: llvm-trezoa/compiler-rt/lib/rtsan/
 //
 //===----------------------------------------------------------------------===//
 

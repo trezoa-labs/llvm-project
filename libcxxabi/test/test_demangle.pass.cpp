@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -30024,7 +30024,7 @@ const char* cases[][2] = {
     // See https://github.com/itanium-cxx-abi/cxx-abi/issues/165.
     {"_ZN1C1fIiEEvDTtlNS_UlT_TL0__E_EEE", "void C::f<int>(decltype(C::'lambda'(int, auto){}))"},
 
-    // See https://github.com/llvm/llvm-project/issues/108009.
+    // See https://github.com/llvm/llvm-trezoa/issues/108009.
     {"_ZN3FooIiE6methodIb3BarEEvT0_IT_ES3_IiE", "void Foo<int>::method<bool, Bar>(Bar<bool>, Bar<int>)"},
 
     // C++20 class type non-type template parameters:

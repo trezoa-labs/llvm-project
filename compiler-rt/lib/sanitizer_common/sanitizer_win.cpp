@@ -1,6 +1,6 @@
 //===-- sanitizer_win.cpp -------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1237,7 +1237,7 @@ u32 GetNumberOfCPUs() {
 }
 
 #if SANITIZER_WIN_TRACE
-// TODO(mcgov): Rename this project-wide to PlatformLogInit
+// TODO(mcgov): Rename this trezoa-wide to PlatformLogInit
 void AndroidLogInit(void) {
   HRESULT hr = TraceLoggingRegister(g_asan_provider);
   if (!SUCCEEDED(hr))

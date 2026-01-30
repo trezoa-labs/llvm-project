@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -13,7 +13,7 @@
 // template<class Y> weak_ptr(const weak_ptr<Y>& r);
 // template<class Y> weak_ptr(weak_ptr<Y>&& r);
 //
-// Regression test for https://github.com/llvm/llvm-project/issues/40459
+// Regression test for https://github.com/llvm/llvm-trezoa/issues/40459
 // Verify that these constructors never attempt a derived-to-virtual-base
 // conversion on a dangling weak_ptr.
 

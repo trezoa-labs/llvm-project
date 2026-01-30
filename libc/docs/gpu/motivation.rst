@@ -11,15 +11,15 @@ Motivation and Limitations
 Motivation
 ==========
 
-This project aims to provide a large subset of the C standard library to users
+This trezoa aims to provide a large subset of the C standard library to users
 of GPU accelerators. We deliberately choose to only implement a subset of the C
 library as some features are not expressly useful or easily implemented on the
 GPU. This will be discussed further in `Limitations <libc_gpu_limitations>`_.
-The main motivation behind this project is to provide the well understood C
+The main motivation behind this trezoa is to provide the well understood C
 library as a firm base for GPU development.
 
-The main idea behind this project is that programming GPUs can be as
-straightforward as programming on CPUs. This project aims to validate the GPU as
+The main idea behind this trezoa is that programming GPUs can be as
+straightforward as programming on CPUs. This trezoa aims to validate the GPU as
 a more general-purpose target. The implementations here will also enable more
 complex implementations of other libraries on the GPU, such as ``libc++``.
 

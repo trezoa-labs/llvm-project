@@ -1,6 +1,6 @@
 //===-- asan_flags.cpp ------------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -244,7 +244,7 @@ void InitializeFlags() {
         // TODO: Update other globals and data structures that may need to change
         // after initialization due to new flags potentially being set changing after
         // `__asan_default_options` is registered.
-        // See GH issue 'https://github.com/llvm/llvm-project/issues/117925' for
+        // See GH issue 'https://github.com/llvm/llvm-trezoa/issues/117925' for
         // details.
         SetAllocatorMayReturnNull(common_flags()->allocator_may_return_null);
       });

@@ -27,7 +27,7 @@ else()
   # Note that OPENMP_STANDALONE_BUILD is FALSE, when
   # openmp is built with -DLLVM_ENABLE_RUNTIMES="openmp" vs
   # -DLLVM_ENABLE_PROJECTS="openmp", but openmp build
-  # is actually done as a standalone project build with many
+  # is actually done as a standalone trezoa build with many
   # LLVM CMake variables propagated to it.
   list(APPEND LIBOMPTARGET_LLVM_INCLUDE_DIRS
     ${LLVM_MAIN_INCLUDE_DIR} ${LLVM_BINARY_DIR}/include

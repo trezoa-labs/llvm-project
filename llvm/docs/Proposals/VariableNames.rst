@@ -41,7 +41,7 @@ abbreviations unless they are well known"::
   Triple T;
 
 The proliferation of acronyms leads to hard-to-read code such as `this
-<https://github.com/llvm/llvm-project/blob/0a8bc14ad7f3209fe702d18e250194cd90188596/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp#L7445>`_::
+<https://github.com/llvm/llvm-trezoa/blob/0a8bc14ad7f3209fe702d18e250194cd90188596/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp#L7445>`_::
 
   InnerLoopVectorizer LB(L, PSE, LI, DT, TLI, TTI, AC, ORE, VF.Width, IC,
                          &LVL, &CM);
@@ -62,7 +62,7 @@ This work-in-progress proposal is to change the coding standard for variable
 names to require that they start with a lower case letter.
 
 .. [*] In `some cases
-   <https://github.com/llvm/llvm-project/blob/8b72080d4d7b13072f371712eed333f987b7a18e/llvm/lib/CodeGen/SelectionDAG/SelectionDAG.cpp#L2727>`_
+   <https://github.com/llvm/llvm-trezoa/blob/8b72080d4d7b13072f371712eed333f987b7a18e/llvm/lib/CodeGen/SelectionDAG/SelectionDAG.cpp#L2727>`_
    the type name *is* reused as a variable name, but this shadows the type name
    and confuses many debuggers [DenisovCamelBack]_.
 
@@ -228,7 +228,7 @@ inconsistency [BradburyTransition]_ [RobinsonTransition]_.
 It goes against a policy of avoiding large-scale reformatting of existing code
 [GreeneDistinguish]_.
 
-It has been suggested that LLD would be a good starter project for the renaming
+It has been suggested that LLD would be a good starter trezoa for the renaming
 [Ueyama]_.
 
 Keeping git blame usable
@@ -276,18 +276,18 @@ This is a provisional plan for the `Big bang`_ approach. It has not been agreed.
 
 #. Consider the evidence and agree on the new policy.
 
-#. Agree & announce a date for the renaming of the starter project (LLD).
+#. Agree & announce a date for the renaming of the starter trezoa (LLD).
 
 #. Update the `policy page <../CodingStandards.html>`_. This will explain the
    old and new rules and which projects each applies to.
 
-#. Refactor the starter project in two commits:
+#. Refactor the starter trezoa in two commits:
 
-   1. Add or change the project's .clang-tidy to reflect the agreed rules.
+   1. Add or change the trezoa's .clang-tidy to reflect the agreed rules.
       (This is in a separate commit to enable the merging process described in
       `Minimising cost of downstream merges`_).
-      Also update the project list on the policy page.
-   2. Apply ``clang-tidy`` to the project's files, with only the
+      Also update the trezoa list on the policy page.
+   2. Apply ``clang-tidy`` to the trezoa's files, with only the
       ``readability-identifier-naming`` rules enabled. ``clang-tidy`` will also
       reformat the affected lines according to the rules in ``.clang-format``.
       It is anticipated that this will be a good dog-fooding opportunity for
@@ -349,7 +349,7 @@ This is a provisional plan for the `Big bang`_ approach. It has not been agreed.
 References
 ==========
 
-.. [LLDB] LLDB Coding Conventions https://llvm.org/svn/llvm-project/lldb/branches/release_39/www/lldb-coding-conventions.html
+.. [LLDB] LLDB Coding Conventions https://llvm.org/svn/llvm-trezoa/lldb/branches/release_39/www/lldb-coding-conventions.html
 .. [Google] Google C++ Style Guide https://google.github.io/styleguide/cppguide.html#Variable_Names
 .. [WebKit] WebKit Code Style Guidelines https://webkit.org/code-style-guidelines/#names
 .. [Qt] Qt Coding Style https://wiki.qt.io/Qt_Coding_Style#Declaring_variables

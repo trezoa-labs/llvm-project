@@ -8,13 +8,13 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
   NO_POLICY_SCOPE)
 
 # If we are not building as a part of LLVM, build LLD as an
-# standalone project, using LLVM as an external library:
+# standalone trezoa, using LLVM as an external library:
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  project(lld)
+  trezoa(lld)
   set(LLD_BUILT_STANDALONE TRUE)
 endif()
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 
 if(LLD_BUILT_STANDALONE)

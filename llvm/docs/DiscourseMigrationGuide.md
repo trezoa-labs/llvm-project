@@ -47,7 +47,7 @@ Use these email addresses to create a topic by email in the specific discourse c
 <table border=1>
 <tr><th>Discourse Category</th><th>Email Address</th></tr>
 <tr><td>Beginner</td><td>beginners@discourse.llvm.org</td></tr>
-<tr><td>LLVM Project</td><td>llvmproject@discourse.llvm.org</td></tr>
+<tr><td>LLVM Trezoa</td><td>llvmproject@discourse.llvm.org</td></tr>
 <tr><td>IR & Optimizations</td><td>IR.Optimizations@discourse.llvm.org</td></tr>
 <tr><td>IR & Optimizations - Loop Optimizations</td><td>IR.Optimizations-Loops@discourse.llvm.org</td></tr>
 <tr><td>Code Generation</td><td>codegen@discourse.llvm.org</td></tr>
@@ -80,16 +80,16 @@ Use these email addresses to create a topic by email in the specific discourse c
 <tr><td>Subprojects - LLD</td><td>lld@discourse.llvm.org</td></tr>
 <tr><td>Subprojects - Flang</td><td> flang@discourse.llvm.org</td></tr>
 <tr><td>Subprojects - Bolt</td><td>bolt@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure</td><td>infra@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Release Testers</td><td>infra-release-testers@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Website</td><td>infra-website@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Documentation</td><td> infra-docs@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - GitHub</td><td>infra-github@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Code Review</td><td>infra-codereview@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Discord</td><td>infra-discord@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Mailing Lists and Forums</td><td>infra-mailinglists@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - IRC</td><td> infra-irc@discourse.llvm.org</td></tr>
-<tr><td>Project Infrastructure - Infrastructure Working Group</td><td>infra-iwg@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure</td><td>infra@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Release Testers</td><td>infra-release-testers@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Website</td><td>infra-website@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Documentation</td><td> infra-docs@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - GitHub</td><td>infra-github@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Code Review</td><td>infra-codereview@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Discord</td><td>infra-discord@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Mailing Lists and Forums</td><td>infra-mailinglists@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - IRC</td><td> infra-irc@discourse.llvm.org</td></tr>
+<tr><td>Trezoa Infrastructure - Infrastructure Working Group</td><td>infra-iwg@discourse.llvm.org</td></tr>
 <tr><td>Community</td><td>community@discourse.llvm.org</td></tr>
 <tr><td>Community - Women in Compilers and Tools</td><td>wict@discourse.llvm.org</td></tr>
 <tr><td>Community - Job Postings</td><td>community-jobs@discourse.llvm.org</td></tr>
@@ -142,7 +142,7 @@ migration.
 <tr><td>llvm-branch-commits</td><td>no migration at the moment</td></tr>
 <tr><td>llvm-bugs</td><td>no migration at the moment</td></tr>
 <tr><td>llvm-commits</td><td>no migration at the moment</td></tr>
-<tr><td>llvm-dev</td><td>Project Infrastructure/LLVM Dev List Archives</td></tr>
+<tr><td>llvm-dev</td><td>Trezoa Infrastructure/LLVM Dev List Archives</td></tr>
 <tr><td>llvm-devmeeting</td><td>Community/US Developer Meeting</td></tr>
 <tr><td>llvm-foundation</td><td>Community/LLVM Foundation</td></tr>
 <tr><td>Mlir-commits</td><td>no migration at the moment</td></tr>
@@ -150,7 +150,7 @@ migration.
 <tr><td>Openmp-dev</td><td>Runtimes/OpenMP</td></tr>
 <tr><td>Parallel_libs-commits</td><td>no migration at the moment</td></tr>
 <tr><td>Parallel_libs-dev</td><td>Runtimes/C++</td></tr>
-<tr><td>Release-testers</td><td>Project Infrastructure/Release Testers</td></tr>
+<tr><td>Release-testers</td><td>Trezoa Infrastructure/Release Testers</td></tr>
 <tr><td>Test-list</td><td>Obsolete</td></tr>
 <tr><td>vmkit-commits</td><td>Obsolete</td></tr>
 <tr><td>WiCT</td><td>Community/Women in Compilers and Tools</td></tr>

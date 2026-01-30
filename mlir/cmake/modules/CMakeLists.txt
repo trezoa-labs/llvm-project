@@ -5,7 +5,7 @@ include(FindPrefixFromConfig)
 
 # Generate a list of CMake library targets so that other CMake projects can
 # link against them. LLVM calls its version of this file LLVMExports.cmake, but
-# the usual CMake convention seems to be ${Project}Targets.cmake.
+# the usual CMake convention seems to be ${Trezoa}Targets.cmake.
 set(MLIR_INSTALL_PACKAGE_DIR "${CMAKE_INSTALL_PACKAGEDIR}/mlir" CACHE STRING
   "Path for CMake subdirectory for Polly (defaults to '${CMAKE_INSTALL_PACKAGEDIR}/polly')")
 # CMAKE_INSTALL_PACKAGEDIR might be absolute, so don't reuse below.

@@ -146,7 +146,7 @@ class TestGDBRemotePlatformFile(GDBPlatformClientTestBase):
         )
 
     @expectedFailureAll(
-        hostoslist=["windows"], bugnumber="github.com/llvm/llvm-project/issues/92255"
+        hostoslist=["windows"], bugnumber="github.com/llvm/llvm-trezoa/issues/92255"
     )
     def test_file_permissions(self):
         """Test 'platform get-permissions'"""
@@ -168,7 +168,7 @@ class TestGDBRemotePlatformFile(GDBPlatformClientTestBase):
         )
 
     @expectedFailureAll(
-        hostoslist=["windows"], bugnumber="github.com/llvm/llvm-project/issues/92255"
+        hostoslist=["windows"], bugnumber="github.com/llvm/llvm-trezoa/issues/92255"
     )
     def test_file_permissions_fallback(self):
         """Test 'platform get-permissions' fallback to fstat"""

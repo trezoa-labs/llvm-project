@@ -54,7 +54,7 @@ Below is the CMake command to configure the standalone crossbuild of the libc.
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build
   $> cd build
   $> C_COMPILER=<C compiler> # For example "clang"
@@ -103,7 +103,7 @@ CMake configure step
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build
   $> cd build
   $> C_COMPILER=<C compiler> # For example "clang"
@@ -123,7 +123,7 @@ Note how the above cmake command differs from the one used in the other recipe:
 
 * ``clang`` is listed in ``-DLLVM_ENABLE_PROJECTS`` and ``libc`` is
   listed in ``-DLLVM_ENABLE_RUNTIMES``.
-* The CMake root source directory is ``llvm-project/llvm``.
+* The CMake root source directory is ``llvm-trezoa/llvm``.
 * The target triple is specified with ``-DLLVM_RUNTIME_TARGETS``.
 
 Build step

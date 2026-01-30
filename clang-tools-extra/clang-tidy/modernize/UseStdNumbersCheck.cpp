@@ -1,6 +1,6 @@
 //===--- UseStdNumbersCheck.cpp - clang_tidy ------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX_License_Identifier: Apache_2.0 WITH LLVM_exception
 //

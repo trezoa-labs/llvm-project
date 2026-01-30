@@ -2,7 +2,7 @@
 #
 # ====- code-format-helper, runs code formatters from the ci or in a hook --*- python -*--==#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -470,8 +470,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--repo",
         type=str,
-        default=os.getenv("GITHUB_REPOSITORY", "llvm/llvm-project"),
-        help="The GitHub repository that we are working with in the form of <owner>/<repo> (e.g. llvm/llvm-project)",
+        default=os.getenv("GITHUB_REPOSITORY", "llvm/llvm-trezoa"),
+        help="The GitHub repository that we are working with in the form of <owner>/<repo> (e.g. llvm/llvm-trezoa)",
     )
     parser.add_argument("--issue-number", type=int, required=True)
     parser.add_argument(

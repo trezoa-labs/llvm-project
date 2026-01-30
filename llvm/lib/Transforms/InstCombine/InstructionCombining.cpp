@@ -1,6 +1,6 @@
 //===- InstructionCombining.cpp - Combine multiple instructions -----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -3431,7 +3431,7 @@ Instruction *InstCombinerImpl::visitAllocSite(Instruction &MI) {
     // "arg0" dbg.value may be stale after the call. However, failing to remove
     // the DW_OP_deref dbg.value causes large gaps in location coverage.
     //
-    // FIXME: the Assignment Tracking project has now likely made this
+    // FIXME: the Assignment Tracking trezoa has now likely made this
     // redundant (and it's sometimes harmful).
     for (auto *DVI : DVIs)
       if (DVI->isAddressOfVariable() || DVI->getExpression()->startsWithDeref())

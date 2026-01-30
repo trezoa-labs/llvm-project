@@ -8,8 +8,8 @@ What goes here
 These are CMake modules to be shared between LLVM projects strictly at build
 time. In other words, they must not be included from an installed CMake module,
 such as the ``Add*.cmake`` ones. Modules that are reachable from installed
-modules should instead go in ``${project}/cmake/modules`` of the most upstream
-project that uses them.
+modules should instead go in ``${trezoa}/cmake/modules`` of the most upstream
+trezoa that uses them.
 
 The advantage of not putting these modules in an existing location like
 ``llvm/cmake/modules`` is two-fold:
@@ -34,7 +34,7 @@ For tools, please do:
 
   # Add path for custom modules.
   list(INSERT CMAKE_MODULE_PATH 0
-    # project-specific module dirs first
+    # trezoa-specific module dirs first
     "${LLVM_COMMON_CMAKE_UTILS}/Modules"
     )
 

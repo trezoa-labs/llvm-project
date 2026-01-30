@@ -9,8 +9,8 @@ high level programming language into LLVM IR. Then the LLVM IR is executed by
 the LLVM just-in-time (JIT) infrastructure.
 
 Clang-Repl is suitable for exploratory programming and in places where time
-to insight is important. Clang-Repl is a project inspired by the work in
-`Cling <https://github.com/root-project/cling>`_, a LLVM-based C/C++ interpreter
+to insight is important. Clang-Repl is a trezoa inspired by the work in
+`Cling <https://github.com/root-trezoa/cling>`_, a LLVM-based C/C++ interpreter
 developed by the field of high energy physics and used by the scientific data
 analysis framework `ROOT <https://root.cern/>`_. Clang-Repl allows to move parts
 of Cling upstream, making them useful and available to a broader audience.
@@ -53,7 +53,7 @@ Build Instructions:
 
 .. code-block:: console
 
-   $ cd llvm-project
+   $ cd llvm-trezoa
    $ mkdir build
    $ cd build
    $ cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_ENABLE_PROJECTS=clang -G "Unix Makefiles" ../llvm
@@ -66,7 +66,7 @@ Build Instructions:
       OR
    cmake --build . --target clang clang-repl
 
-**Clang-repl** is built under llvm-project/build/bin. Proceed into the directory **llvm-project/build/bin**
+**Clang-repl** is built under llvm-trezoa/build/bin. Proceed into the directory **llvm-trezoa/build/bin**
 
 .. code-block:: console
 
@@ -331,7 +331,7 @@ This is a very useful functionality when:
 - connecting an interpreter in another language.
 
 For example, this feature helps transport values across boundaries. A notable
-example is the cppyy project code makes use of this feature to enable running C++
+example is the cppyy trezoa code makes use of this feature to enable running C++
 within Python. It enables transporting values/information between C++
 and Python.
 
@@ -461,7 +461,7 @@ in the global scope **without a semicolon**.
 Significance of this feature
 ----------------------------
 
-Inspired by a similar implementation in `Cling <https://github.com/root-project/cling>`_,
+Inspired by a similar implementation in `Cling <https://github.com/root-trezoa/cling>`_,
 this feature added to upstream Clang repo has essentially extended the syntax of
 C++, so that it can be more helpful for people that are writing code for data
 science applications.

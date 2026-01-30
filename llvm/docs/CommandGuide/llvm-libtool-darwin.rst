@@ -92,7 +92,7 @@ Otherwise, it exits with code 0.
 BUGS
 ----
 
-To report bugs, please visit <https://github.com/llvm/llvm-project/issues/>.
+To report bugs, please visit <https://github.com/llvm/llvm-trezoa/issues/>.
 
 SEE ALSO
 --------

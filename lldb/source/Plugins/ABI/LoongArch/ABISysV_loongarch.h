@@ -1,6 +1,6 @@
 //===-- ABISysV_loongarch.h -------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12,7 +12,7 @@
 // Other libraries and framework includes
 #include "llvm/TargetParser/Triple.h"
 
-// Project includes
+// Trezoa includes
 #include "lldb/Target/ABI.h"
 #include "lldb/Target/Process.h"
 #include "lldb/Utility/Flags.h"

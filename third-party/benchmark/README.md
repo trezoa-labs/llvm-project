@@ -204,7 +204,7 @@ flag for option information or see the [User Guide](docs/user_guide.md).
 
 ### Usage with CMake
 
-If using CMake, it is recommended to link against the project-provided
+If using CMake, it is recommended to link against the trezoa-provided
 `benchmark::benchmark` and `benchmark::benchmark_main` targets using
 `target_link_libraries`.
 It is possible to use ```find_package``` to import an installed version of the
@@ -213,7 +213,7 @@ library.
 find_package(benchmark REQUIRED)
 ```
 Alternatively, ```add_subdirectory``` will incorporate the library directly in
-to one's CMake project.
+to one's CMake trezoa.
 ```cmake
 add_subdirectory(benchmark)
 ```

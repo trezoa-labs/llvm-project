@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -139,7 +139,7 @@ concept __doesnt_need_empty_state =
 // we're not considered "nested" inside the movable-box anymore, and since we're not nested within it, [basic.life]/1.5
 // says that we essentially just reused the storage of the movable-box for a completely unrelated object and ended the
 // movable-box's lifetime.
-// https://github.com/llvm/llvm-project/issues/70494#issuecomment-1845646490
+// https://github.com/llvm/llvm-trezoa/issues/70494#issuecomment-1845646490
 //
 // Hence, when the _Tp doesn't have an assignment operator, we can't risk making it a potentially-overlapping
 // subobject because of the above, and we don't use [[no_unique_address]] in that case.

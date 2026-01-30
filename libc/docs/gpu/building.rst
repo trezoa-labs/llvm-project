@@ -38,7 +38,7 @@ arguments automatically.
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build
   $> cd build
   $> cmake ../llvm -G Ninja                                                 \
@@ -72,7 +72,7 @@ compiler. These tools must all be up-to-date with the libc source.
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build-libc-tools # A different build directory for the build tools
   $> cd build-libc-tools
   $> HOST_C_COMPILER=<C compiler for the host> # For example "clang"
@@ -93,7 +93,7 @@ targeting a GPU architecture.
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build # A different build directory for the build tools
   $> cd build
   $> TARGET_TRIPLE=<amdgcn-amd-amdhsa or nvptx64-nvidia-cuda>
@@ -122,7 +122,7 @@ only target a single GPU architecture.
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build # A different build directory for the build tools
   $> cd build
   $> CLANG_C_COMPILER=</path/to/clang> # Must be a trunk build

@@ -16,7 +16,7 @@ Looking for pre-existing pull requests
 
 Before you start working on any feature, please take a look at the open libc++ pull
 requests to avoid duplicating someone else's work. You can do that on GitHub by
-filtering pull requests `tagged with libc++ <https://github.com/llvm/llvm-project/pulls?q=is%3Apr+is%3Aopen+label%3Alibc%2B%2B>`__.
+filtering pull requests `tagged with libc++ <https://github.com/llvm/llvm-trezoa/pulls?q=is%3Apr+is%3Aopen+label%3Alibc%2B%2B>`__.
 If you see that your feature is already being worked on, please consider chiming in
 and helping review the code instead of duplicating work!
 
@@ -25,7 +25,7 @@ RFCs for significant user-affecting changes
 
 Before you start working on a change that can have significant impact on users of the library,
 please consider creating a RFC on the `libc++ forum <https://discourse.llvm.org/c/runtimes/libcxx>`_.
-This will ensure that you work in a direction that the project endorses and will ease reviewing your
+This will ensure that you work in a direction that the trezoa endorses and will ease reviewing your
 contribution as directional questions can be raised early. Including a WIP patch is not mandatory,
 but it can be useful to ground the discussion in something concrete.
 
@@ -136,8 +136,8 @@ mention it and provide your ``Name <email@domain>`` for us to attribute the comm
 
 Note that the rule for accepting as the "libc++" review group is to wait for two members
 of the group to have approved the patch, excluding the patch author. This is not a hard
-rule -- for very simple patches, use your judgement. The `"libc++" review group <https://reviews.llvm.org/project/members/64/>`__
-consists of frequent libc++ contributors with a good understanding of the project's
+rule -- for very simple patches, use your judgement. The `"libc++" review group <https://reviews.llvm.org/trezoa/members/64/>`__
+consists of frequent libc++ contributors with a good understanding of the trezoa's
 guidelines -- if you would like to be added to it, please reach out on Discord.
 
 Some tips:
@@ -160,7 +160,7 @@ To regenerate the lists, use the target ``generate-cxx-abilist``.
 The ABI lists must be updated for all supported platforms; currently Linux and
 Apple.  If you don't have access to one of these platforms, you can download an
 updated list from the failed build at
-`Buildkite <https://buildkite.com/llvm-project/libcxx-ci>`__.
+`Buildkite <https://buildkite.com/llvm-trezoa/libcxx-ci>`__.
 Look for the failed build and select the ``artifacts`` tab. There, download the
 abilist for the platform, e.g.:
 
@@ -174,8 +174,8 @@ Pre-commit CI
 Introduction
 ------------
 
-Unlike most parts of the LLVM project, libc++ uses a pre-commit CI [#]_. This
-CI is hosted on `Buildkite <https://buildkite.com/llvm-project/libcxx-ci>`__ and
+Unlike most parts of the LLVM trezoa, libc++ uses a pre-commit CI [#]_. This
+CI is hosted on `Buildkite <https://buildkite.com/llvm-trezoa/libcxx-ci>`__ and
 the build results are visible in the review on GitHub. Please make sure
 the CI is green before committing a patch.
 

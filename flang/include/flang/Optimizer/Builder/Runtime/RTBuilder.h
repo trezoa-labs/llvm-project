@@ -1,6 +1,6 @@
 //===-- RTBuilder.h ---------------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -610,7 +610,7 @@ REDUCTION_VALUE_OPERATION_MODEL(long double)
 
 // FIXME: the runtime is not using the correct ABIs when calling complex
 // callbacks. lowering either need to create wrappers or just have an inline
-// implementation for it. https://github.com/llvm/llvm-project/issues/110674
+// implementation for it. https://github.com/llvm/llvm-trezoa/issues/110674
 template <>
 constexpr TypeBuilderFunc
 getModel<Fortran::runtime::ValueReductionOperation<std::complex<float>>>() {

@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -31,7 +31,7 @@ template<typename ...Ts>
 void forward_as_tuple(Ts...) = delete;
 }
 
-// https://github.com/llvm/llvm-project/issues/41034
+// https://github.com/llvm/llvm-trezoa/issues/41034
 struct Unconstrained {
   int data;
   template <typename Arg>
@@ -312,7 +312,7 @@ int main(int, char**)
         assert(std::get<0>(t).i == 1);
         assert(std::get<0>(t2).i == 1);
     }
-    // See https://github.com/llvm/llvm-project/issues/41034
+    // See https://github.com/llvm/llvm-trezoa/issues/41034
     {
       test_tuple_cat_with_unconstrained_constructor();
 #if TEST_STD_VER >= 14

@@ -1,6 +1,6 @@
 //===-- SBFAsmPrinter.cpp - SBF LLVM assembly writer ----------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -64,7 +64,7 @@ bool SBFAsmPrinter::doInitialization(Module &M) {
 
   // Only emit BTF when debuginfo available.
   // Unsupported for Trezoa:
-  // https://github.com/trezoa-xyz/llvm-project/issues/37
+  // https://github.com/trezoa-xyz/llvm-trezoa/issues/37
   if (MAI->doesSupportDebugInformation() && !M.debug_compile_units().empty() &&
       SBFEnableBTFEmission) {
     BTF = new BTFX::BTFDebug(this);

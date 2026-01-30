@@ -1,6 +1,6 @@
 //===- DXContainerGlobals.cpp - DXContainer global generator pass ---------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -135,7 +135,7 @@ GlobalVariable *DXContainerGlobals::buildSignature(Module &M, Signature &Sig,
 void DXContainerGlobals::addSignature(Module &M,
                                       SmallVector<GlobalValue *> &Globals) {
   // FIXME: support graphics shader.
-  //  see issue https://github.com/llvm/llvm-project/issues/90504.
+  //  see issue https://github.com/llvm/llvm-trezoa/issues/90504.
 
   Signature InputSig;
   Globals.emplace_back(buildSignature(M, InputSig, "dx.isg1", "ISG1"));
@@ -191,7 +191,7 @@ void DXContainerGlobals::addResourcesForPSV(Module &M, PSVRuntimeInfo &PSV) {
     BindInfo.Kind =
         static_cast<dxbc::PSV::ResourceKind>(TypeInfo.getResourceKind());
     // TODO: Add support for dxbc::PSV::ResourceFlag::UsedByAtomic64, tracking
-    // with https://github.com/llvm/llvm-project/issues/104392
+    // with https://github.com/llvm/llvm-trezoa/issues/104392
     BindInfo.Flags.Flags = 0u;
 
     PSV.Resources.emplace_back(BindInfo);
@@ -219,7 +219,7 @@ void DXContainerGlobals::addPipelineStateValidationInfo(
   //
   // TODO: Lots more stuff to do here!
   //
-  // See issue https://github.com/llvm/llvm-project/issues/96674.
+  // See issue https://github.com/llvm/llvm-trezoa/issues/96674.
   switch (MMI.ShaderProfile) {
   case Triple::Compute:
     PSV.BaseData.NumThreadsX = MMI.EntryPropertyVec[0].NumThreadsX;

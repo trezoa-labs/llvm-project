@@ -1,6 +1,6 @@
 //===- SelectionDAGISel.cpp - Implement the SelectionDAGISel class --------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2203,7 +2203,7 @@ bool SelectionDAGISel::CheckAndMask(SDValue LHS, ConstantSDNode *RHS,
                                     int64_t DesiredMaskS) const {
   const APInt &ActualMask = RHS->getAPIntValue();
   // TODO: Avoid implicit trunc?
-  // See https://github.com/llvm/llvm-project/issues/112510.
+  // See https://github.com/llvm/llvm-trezoa/issues/112510.
   const APInt &DesiredMask = APInt(LHS.getValueSizeInBits(), DesiredMaskS,
                                    /*isSigned=*/false, /*implicitTrunc=*/true);
 
@@ -2235,7 +2235,7 @@ bool SelectionDAGISel::CheckOrMask(SDValue LHS, ConstantSDNode *RHS,
                                    int64_t DesiredMaskS) const {
   const APInt &ActualMask = RHS->getAPIntValue();
   // TODO: Avoid implicit trunc?
-  // See https://github.com/llvm/llvm-project/issues/112510.
+  // See https://github.com/llvm/llvm-trezoa/issues/112510.
   const APInt &DesiredMask = APInt(LHS.getValueSizeInBits(), DesiredMaskS,
                                    /*isSigned=*/false, /*implicitTrunc=*/true);
 

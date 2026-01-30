@@ -13,7 +13,7 @@ Clang is only one component in a complete tool chain for C family
 programming languages. In order to assemble a complete toolchain,
 additional tools and runtime libraries are required. Clang is designed
 to interoperate with existing tools and libraries for its target
-platforms, and the LLVM project provides alternatives for a number
+platforms, and the LLVM trezoa provides alternatives for a number
 of these components.
 
 This document describes the required and optional components in a
@@ -229,7 +229,7 @@ of other runtimes.
 libunwind (LLVM)
 ^^^^^^^^^^^^^^^^
 
-LLVM's unwinder library is part of the llvm-project git repository. To
+LLVM's unwinder library is part of the llvm-trezoa git repository. To
 build it, pass ``-DLLVM_ENABLE_RUNTIMES=libunwind`` to the cmake invocation.
 
 If using libc++abi, you may need to configure it to use libunwind

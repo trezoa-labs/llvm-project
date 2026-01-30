@@ -27,7 +27,7 @@ __attribute__((noinline)) void OOB() {
   int y[4];
   // With -hwasan-generate-tags-with-calls=false, stack tags can occasionally
   // be zero, leading to a false negative
-  // (https://github.com/llvm/llvm-project/issues/69221). Work around it by
+  // (https://github.com/llvm/llvm-trezoa/issues/69221). Work around it by
   // using the neighboring variable, which is guaranteed by
   // -hwasan-generate-tags-with-calls=false to have a different (hence
   // non-zero) tag.

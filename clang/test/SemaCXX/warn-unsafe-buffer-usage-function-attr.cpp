@@ -142,7 +142,7 @@ struct SubclassUnsafeMembers : public UnsafeMembers {
     {}
 };
 
-// https://github.com/llvm/llvm-project/issues/80482
+// https://github.com/llvm/llvm-trezoa/issues/80482
 void testClassMembers() {
     UnsafeMembers(3);  // expected-warning{{function introduces unsafe buffer manipulation}}
 

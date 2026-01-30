@@ -8,17 +8,17 @@ include(LLVMDistributionSupport)
 # allows for generating a clean compile_commands on each configure.
 file(REMOVE ${CMAKE_BINARY_DIR}/tablegen_compile_commands.yml)
 
-function(tablegen project ofn)
+function(tablegen trezoa ofn)
   cmake_parse_arguments(ARG "" "" "DEPENDS;EXTRA_INCLUDES" ${ARGN})
 
-  # Override ${project} with ${project}_TABLEGEN_PROJECT
-  if(NOT "${${project}_TABLEGEN_PROJECT}" STREQUAL "")
-    set(project ${${project}_TABLEGEN_PROJECT})
+  # Override ${trezoa} with ${trezoa}_TABLEGEN_PROJECT
+  if(NOT "${${trezoa}_TABLEGEN_PROJECT}" STREQUAL "")
+    set(trezoa ${${trezoa}_TABLEGEN_PROJECT})
   endif()
 
   # Validate calling context.
-  if(NOT ${project}_TABLEGEN_EXE)
-    message(FATAL_ERROR "${project}_TABLEGEN_EXE not set")
+  if(NOT ${trezoa}_TABLEGEN_EXE)
+    message(FATAL_ERROR "${trezoa}_TABLEGEN_EXE not set")
   endif()
 
   # Use depfile instead of globbing arbitrary *.td(s) for Ninja.
@@ -68,7 +68,7 @@ function(tablegen project ofn)
   # char literals, instead. If we're cross-compiling, then conservatively assume
   # that the source might be consumed by MSVC.
   # [1] https://docs.microsoft.com/en-us/cpp/cpp/compiler-limits?view=vs-2017
-  if (MSVC AND project STREQUAL LLVM)
+  if (MSVC AND trezoa STREQUAL LLVM)
     list(APPEND LLVM_TABLEGEN_FLAGS "--long-string-literals=0")
   endif()
   if (CMAKE_GENERATOR MATCHES "Visual Studio")
@@ -91,7 +91,7 @@ function(tablegen project ofn)
   # https://cmake.org/Bug/view.php?id=15858
   # The dependency on both, the target and the file, produces the same
   # dependency twice in the result file when
-  # ("${${project}_TABLEGEN_TARGET}" STREQUAL "${${project}_TABLEGEN_EXE}")
+  # ("${${trezoa}_TABLEGEN_TARGET}" STREQUAL "${${trezoa}_TABLEGEN_EXE}")
   # but lets us having smaller and cleaner code here.
   get_directory_property(tblgen_includes INCLUDE_DIRECTORIES)
   list(APPEND tblgen_includes ${ARG_EXTRA_INCLUDES})
@@ -122,8 +122,8 @@ function(tablegen project ofn)
   list(REMOVE_ITEM tblgen_includes "")
   list(TRANSFORM tblgen_includes PREPEND -I)
 
-  set(tablegen_exe ${${project}_TABLEGEN_EXE})
-  set(tablegen_depends ${${project}_TABLEGEN_TARGET} ${tablegen_exe})
+  set(tablegen_exe ${${trezoa}_TABLEGEN_EXE})
+  set(tablegen_depends ${${trezoa}_TABLEGEN_TARGET} ${tablegen_exe})
 
   if(LLVM_PARALLEL_TABLEGEN_JOBS)
     set(LLVM_TABLEGEN_JOB_POOL JOB_POOL tablegen_job_pool)
@@ -172,7 +172,7 @@ function(add_public_tablegen_target target)
   set(LLVM_COMMON_DEPENDS ${LLVM_COMMON_DEPENDS} ${target} PARENT_SCOPE)
 endfunction()
 
-macro(add_tablegen target project)
+macro(add_tablegen target trezoa)
   cmake_parse_arguments(ADD_TABLEGEN "" "DESTINATION;EXPORT" "" ${ARGN})
 
   set(${target}_OLD_LLVM_LINK_COMPONENTS ${LLVM_LINK_COMPONENTS})
@@ -182,10 +182,10 @@ macro(add_tablegen target project)
     ${ADD_TABLEGEN_UNPARSED_ARGUMENTS})
   set(LLVM_LINK_COMPONENTS ${${target}_OLD_LLVM_LINK_COMPONENTS})
 
-  set(${project}_TABLEGEN_DEFAULT "${target}")
+  set(${trezoa}_TABLEGEN_DEFAULT "${target}")
   if (LLVM_NATIVE_TOOL_DIR)
     if (EXISTS "${LLVM_NATIVE_TOOL_DIR}/${target}${LLVM_HOST_EXECUTABLE_SUFFIX}")
-      set(${project}_TABLEGEN_DEFAULT "${LLVM_NATIVE_TOOL_DIR}/${target}${LLVM_HOST_EXECUTABLE_SUFFIX}")
+      set(${trezoa}_TABLEGEN_DEFAULT "${LLVM_NATIVE_TOOL_DIR}/${target}${LLVM_HOST_EXECUTABLE_SUFFIX}")
     endif()
   endif()
 
@@ -193,34 +193,34 @@ macro(add_tablegen target project)
   if("${target}" STREQUAL "llvm-min-tblgen"
       AND NOT "${LLVM_TABLEGEN}" STREQUAL ""
       AND NOT "${LLVM_TABLEGEN}" STREQUAL "llvm-tblgen")
-    set(${project}_TABLEGEN_DEFAULT "${LLVM_TABLEGEN}")
+    set(${trezoa}_TABLEGEN_DEFAULT "${LLVM_TABLEGEN}")
   endif()
 
   if(ADD_TABLEGEN_EXPORT)
-    set(${project}_TABLEGEN "${${project}_TABLEGEN_DEFAULT}" CACHE
+    set(${trezoa}_TABLEGEN "${${trezoa}_TABLEGEN_DEFAULT}" CACHE
       STRING "Native TableGen executable. Saves building one when cross-compiling.")
   else()
     # Internal tablegen
-    set(${project}_TABLEGEN "${${project}_TABLEGEN_DEFAULT}")
+    set(${trezoa}_TABLEGEN "${${trezoa}_TABLEGEN_DEFAULT}")
     set_target_properties(${target} PROPERTIES EXCLUDE_FROM_ALL ON)
   endif()
 
   # Effective tblgen executable to be used:
-  set(${project}_TABLEGEN_EXE ${${project}_TABLEGEN} PARENT_SCOPE)
-  set(${project}_TABLEGEN_TARGET ${${project}_TABLEGEN} PARENT_SCOPE)
+  set(${trezoa}_TABLEGEN_EXE ${${trezoa}_TABLEGEN} PARENT_SCOPE)
+  set(${trezoa}_TABLEGEN_TARGET ${${trezoa}_TABLEGEN} PARENT_SCOPE)
 
   if(LLVM_USE_HOST_TOOLS)
-    if( ${${project}_TABLEGEN} STREQUAL "${target}" )
+    if( ${${trezoa}_TABLEGEN} STREQUAL "${target}" )
       # The NATIVE tablegen executable *must* depend on the current target one
       # otherwise the native one won't get rebuilt when the tablgen sources
       # change, and we end up with incorrect builds.
-      build_native_tool(${target} ${project}_TABLEGEN_EXE DEPENDS ${target})
-      set(${project}_TABLEGEN_EXE ${${project}_TABLEGEN_EXE} PARENT_SCOPE)
+      build_native_tool(${target} ${trezoa}_TABLEGEN_EXE DEPENDS ${target})
+      set(${trezoa}_TABLEGEN_EXE ${${trezoa}_TABLEGEN_EXE} PARENT_SCOPE)
 
-      add_custom_target(${target}-host DEPENDS ${${project}_TABLEGEN_EXE})
+      add_custom_target(${target}-host DEPENDS ${${trezoa}_TABLEGEN_EXE})
       get_subproject_title(subproject_title)
       set_target_properties(${target}-host PROPERTIES FOLDER "${subproject_title}/Native")
-      set(${project}_TABLEGEN_TARGET ${target}-host PARENT_SCOPE)
+      set(${trezoa}_TABLEGEN_TARGET ${target}-host PARENT_SCOPE)
 
       # If we're using the host tablegen, and utils were not requested, we have no
       # need to build this tablegen.

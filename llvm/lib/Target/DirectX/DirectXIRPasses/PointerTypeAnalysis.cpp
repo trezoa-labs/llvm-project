@@ -1,6 +1,6 @@
 //===- Target/DirectX/PointerTypeAnalisis.cpp - PointerType analysis ------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -123,7 +123,7 @@ static Type *classifyConstantWithOpaquePtr(const Constant *C,
                                            PointerTypeMap &Map) {
   // FIXME: support ConstantPointerNull which could map to more than one
   // TypedPointerType.
-  // See https://github.com/llvm/llvm-project/issues/57942.
+  // See https://github.com/llvm/llvm-trezoa/issues/57942.
   if (isa<ConstantPointerNull>(C))
     return TypedPointerType::get(Type::getInt8Ty(C->getContext()),
                                  C->getType()->getPointerAddressSpace());

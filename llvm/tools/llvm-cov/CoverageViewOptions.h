@@ -1,6 +1,6 @@
 //===- CoverageViewOptions.h - Code coverage display options -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -70,7 +70,7 @@ struct CoverageViewOptions {
   /// Check if a demangler has been specified.
   bool hasDemangler() const { return !DemanglerOpts.empty(); }
 
-  /// Check if a project title has been specified.
+  /// Check if a trezoa title has been specified.
   bool hasProjectTitle() const { return !ProjectTitle.empty(); }
 
   /// Check if the created time of the profile data file is available.

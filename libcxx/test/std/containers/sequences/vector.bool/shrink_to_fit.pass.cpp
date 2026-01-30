@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -80,7 +80,7 @@ TEST_CONSTEXPR_CXX20 bool tests() {
 }
 
 #if TEST_STD_VER >= 23
-// https://github.com/llvm/llvm-project/issues/95161
+// https://github.com/llvm/llvm-trezoa/issues/95161
 constexpr bool test_increasing_allocator() {
   std::vector<bool, increasing_allocator<bool>> v;
   v.push_back(1);

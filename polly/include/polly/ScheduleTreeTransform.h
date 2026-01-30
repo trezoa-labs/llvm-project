@@ -1,6 +1,6 @@
 //===- polly/ScheduleTreeTransform.h ----------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -223,10 +223,10 @@ isl::schedule applyMaxFission(isl::schedule_node BandToFission);
 ///    vector loop.
 /// 2. Constrain the last dimension to get a set, which has exactly VectorWidth
 ///    iterations.
-/// 3. Subtract loop domain from it, project out the vector loop dimension and
+/// 3. Subtract loop domain from it, trezoa out the vector loop dimension and
 ///    get a set that contains prefixes, which do not have exactly VectorWidth
 ///    iterations.
-/// 4. Project out the vector loop dimension of the set that was build on the
+/// 4. Trezoa out the vector loop dimension of the set that was build on the
 ///    first step and subtract the set built on the previous step to get the
 ///    desired set of prefixes.
 ///

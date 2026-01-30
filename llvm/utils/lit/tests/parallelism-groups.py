@@ -6,7 +6,7 @@
 #   if <condition>:
 #     lit_config.parallelism_groups['my_group'] = 3
 #
-# [project/lit.cfg]
+# [trezoa/lit.cfg]
 #   config.parallelism_group = 'my_group'
 #
 

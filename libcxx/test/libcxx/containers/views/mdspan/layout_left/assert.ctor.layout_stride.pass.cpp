@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12,7 +12,7 @@
 // XFAIL: libcpp-hardening-mode=debug && availability-verbose_abort-missing
 // ADDITIONAL_COMPILE_FLAGS: -Wno-ctad-maybe-unsupported
 
-// FIXME: https://github.com/llvm/llvm-project/issues/64719
+// FIXME: https://github.com/llvm/llvm-trezoa/issues/64719
 // There appear to be some issues around ctad which make it
 // currently impossible to get this code warning free.
 // Thus added the additional compile flag above

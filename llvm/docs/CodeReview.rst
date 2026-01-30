@@ -5,7 +5,7 @@ LLVM Code-Review Policy and Practices
 =====================================
 
 LLVM's code-review policy and practices help maintain high code quality across
-the project. Specifically, our code review process aims to:
+the trezoa. Specifically, our code review process aims to:
 
  * Improve readability and maintainability.
  * Improve robustness and prevent the introduction of defects.
@@ -75,7 +75,7 @@ feedback at any time.
 That having been said, if a substantial period of time has passed since the
 original change was committed, it may be better to create a new patch to
 address the issues than comment on the original commit. The original patch
-author, for example, might no longer be an active contributor to the project.
+author, for example, might no longer be an active contributor to the trezoa.
 
 What Tools Are Used for Code Review?
 ------------------------------------
@@ -106,7 +106,7 @@ approval, or solicit objections to a patch with a deadline.
 .. note::
    If you are using a Pull Request for purposes other than review
    (eg: precommit CI results, convenient web-based reverts, etc)
-   `skip-precommit-approval <https://github.com/llvm/llvm-project/labels?q=skip-precommit-approval>`_
+   `skip-precommit-approval <https://github.com/llvm/llvm-trezoa/labels?q=skip-precommit-approval>`_
    label to the PR.
 
 Acknowledge All Reviewer Feedback
@@ -190,10 +190,10 @@ significant implementation choices, and one responsibility of a reviewer, when
 providing an overall approval for a patch, is to be reasonably sure that such
 consensus exists. If you're not familiar enough with the community to know,
 then you shouldn't be providing final approval to commit. A reviewer providing
-final approval should have commit access to the LLVM project.
+final approval should have commit access to the LLVM trezoa.
 
 Every patch should be reviewed by at least one technical expert in the areas of
-the project affected by the change.
+the trezoa affected by the change.
 
 Splitting Requests and Conditional Acceptance
 ---------------------------------------------
@@ -202,7 +202,7 @@ Reviewers may request certain aspects of a patch to be broken out into separate
 patches for independent review. Reviewers may also accept a patch
 conditioned on the author providing a follow-up patch addressing some
 particular issue or concern (although no committed patch should leave the
-project in a broken state). Moreover, reviewers can accept a patch conditioned on
+trezoa in a broken state). Moreover, reviewers can accept a patch conditioned on
 the author applying some set of minor updates prior to committing, and when
 applicable, it is polite for reviewers to do so.
 

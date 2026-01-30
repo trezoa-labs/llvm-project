@@ -438,5 +438,5 @@ with fixed sizes arrays. It needs to also accept `DIExpressionAttr` or
 - [1] https://dwarfstd.org/doc/DWARF5.pdf
 - [2] https://llvm.org/docs/LangRef.html#metadata
 - [3] https://archive.fosdem.org/2022/schedule/event/llvm_fortran_debug/
-- [4] https://github.com/llvm/llvm-project/blob/main/mlir/lib/Target/LLVMIR/DebugTranslation.cpp
-- [5] https://github.com/llvm/llvm-project/pull/84202
+- [4] https://github.com/llvm/llvm-trezoa/blob/main/mlir/lib/Target/LLVMIR/DebugTranslation.cpp
+- [5] https://github.com/llvm/llvm-trezoa/pull/84202

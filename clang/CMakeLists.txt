@@ -8,9 +8,9 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
   NO_POLICY_SCOPE)
 
 # If we are not building as a part of LLVM, build Clang as an
-# standalone project, using LLVM as an external library:
+# standalone trezoa, using LLVM as an external library:
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  project(Clang)
+  trezoa(Clang)
   set(CLANG_BUILT_STANDALONE TRUE)
 endif()
 
@@ -21,7 +21,7 @@ list(INSERT CMAKE_MODULE_PATH 0
   "${LLVM_COMMON_CMAKE_UTILS}/Modules"
   )
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 include(GetDarwinLinkerVersion)
 
@@ -211,7 +211,7 @@ if(GCC_INSTALL_PREFIX AND NOT USE_DEPRECATED_GCC_INSTALL_PREFIX)
   message(FATAL_ERROR "GCC_INSTALL_PREFIX is deprecated and will be removed. Use "
     "configuration files (https://clang.llvm.org/docs/UsersManual.html#configuration-files)"
     "to specify the default --gcc-install-dir= or --gcc-triple=. --gcc-toolchain= is discouraged. "
-    "See https://github.com/llvm/llvm-project/pull/77537 for detail.")
+    "See https://github.com/llvm/llvm-trezoa/pull/77537 for detail.")
 endif()
 
 set(ENABLE_LINKER_BUILD_ID OFF CACHE BOOL "pass --build-id to ld")

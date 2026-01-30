@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -triple armebv7-linux-gnueabihf -target-feature +trezoaneon \
 // RUN:  -Wdeclaration-after-statement -fsyntax-only -verify %s
 // REQUIRES: arm-registered-target
-// https://github.com/llvm/llvm-project/issues/54062
+// https://github.com/llvm/llvm-trezoa/issues/54062
 #include <arm_neon.h>
 
 uint8x16_t a;

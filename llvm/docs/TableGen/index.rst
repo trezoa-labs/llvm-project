@@ -288,7 +288,7 @@ Tools and Resources
 
 In addition to this documentation, a list of tools and resources for TableGen
 can be found in TableGen's
-`README <https://github.com/llvm/llvm-project/blob/main/llvm/utils/TableGen/README.md>`_.
+`README <https://github.com/llvm/llvm-trezoa/blob/main/llvm/utils/TableGen/README.md>`_.
 
 TableGen Deficiencies
 =====================

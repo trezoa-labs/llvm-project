@@ -1,7 +1,7 @@
 
 //===-- Implementation of longjmp -----------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -51,9 +51,9 @@ namespace LIBC_NAMESPACE_DECL {
 
 #else // Thumb2 or ARM
 
-// TODO(https://github.com/llvm/llvm-project/issues/94061): fp registers
+// TODO(https://github.com/llvm/llvm-trezoa/issues/94061): fp registers
 // (d0-d16)
-// TODO(https://github.com/llvm/llvm-project/issues/94062): pac+bti
+// TODO(https://github.com/llvm/llvm-trezoa/issues/94062): pac+bti
 [[gnu::naked]] LLVM_LIBC_FUNCTION(void, longjmp, (jmp_buf buf, int val)) {
   asm(R"(
       # While sp may appear in a register list for ARM mode, it may not for

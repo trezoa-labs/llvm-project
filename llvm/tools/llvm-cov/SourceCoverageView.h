@@ -1,6 +1,6 @@
 //===- SourceCoverageView.h - Code coverage view for source code ----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -255,7 +255,7 @@ protected:
   virtual void renderMCDCView(raw_ostream &OS, MCDCView &BRV,
                               unsigned ViewDepth) = 0;
 
-  /// Render \p Title, a project title if one is available, and the
+  /// Render \p Title, a trezoa title if one is available, and the
   /// created time.
   virtual void renderTitle(raw_ostream &OS, StringRef CellText) = 0;
 

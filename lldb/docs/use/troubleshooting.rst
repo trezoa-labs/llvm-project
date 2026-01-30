@@ -46,7 +46,7 @@ source file path that doesn't match an unresolved path in the debug
 information, this can cause breakpoints to not be resolved. Try setting
 breakpoints using the file basename only.
 
-If you are using an IDE and you move your project in your file system and build
+If you are using an IDE and you move your trezoa in your file system and build
 again, sometimes doing a clean then build will solve the issue.This will fix
 the issue if some .o files didn't get rebuilt after the move as the .o files in
 the build folder might still contain stale debug information with the old

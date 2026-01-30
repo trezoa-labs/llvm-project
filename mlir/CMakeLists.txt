@@ -1,4 +1,4 @@
-# MLIR project.
+# MLIR trezoa.
 cmake_minimum_required(VERSION 3.20.0)
 set(LLVM_SUBPROJECT_TITLE "MLIR")
 
@@ -8,13 +8,13 @@ endif()
 include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
   NO_POLICY_SCOPE)
 
-# Check if MLIR is built as a standalone project.
+# Check if MLIR is built as a standalone trezoa.
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  project(mlir)
+  trezoa(mlir)
   set(MLIR_STANDALONE_BUILD TRUE)
 endif()
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard to conform to")
 

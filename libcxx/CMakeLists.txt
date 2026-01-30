@@ -1,5 +1,5 @@
 #===============================================================================
-# Setup Project
+# Setup Trezoa
 #===============================================================================
 cmake_minimum_required(VERSION 3.20.0)
 set(LLVM_SUBPROJECT_TITLE "libc++")
@@ -369,7 +369,7 @@ endif()
 if (NOT LIBCXX_ENABLE_RTTI AND LIBCXX_ENABLE_EXCEPTIONS)
   message(FATAL_ERROR "Libc++ cannot be built with exceptions enabled but RTTI"
                       " disabled, since that configuration is broken. See"
-                      " https://github.com/llvm/llvm-project/issues/66117"
+                      " https://github.com/llvm/llvm-trezoa/issues/66117"
                       " for details.")
 endif()
 
@@ -644,7 +644,7 @@ target_compile_options(cxx-sanitizer-flags INTERFACE ${SANITIZER_FLAGS})
 # this flag needs to be defined so that the resulting dylib has all ASan functionalities guarded by this flag.
 # If the _LIBCPP_INSTRUMENTED_WITH_ASAN flag is not defined, then parts of the ASan instrumentation code in libc++
 # will not be compiled into it, resulting in false positives.
-# For context, read: https://github.com/llvm/llvm-project/pull/72677#pullrequestreview-1765402800
+# For context, read: https://github.com/llvm/llvm-trezoa/pull/72677#pullrequestreview-1765402800
 string(FIND "${LLVM_USE_SANITIZER}" "Address" building_with_asan)
 if (NOT "${building_with_asan}" STREQUAL "-1")
   config_define(ON _LIBCPP_INSTRUMENTED_WITH_ASAN)

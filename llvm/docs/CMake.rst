@@ -9,7 +9,7 @@ Introduction
 ============
 
 `CMake <http://www.cmake.org/>`_ is a cross-platform build-generator tool. CMake
-does not build the project, it generates the files needed by your build tool
+does not build the trezoa, it generates the files needed by your build tool
 (GNU make, Visual Studio, etc.) for building LLVM.
 
 If **you are a new contributor**, please start with the :doc:`GettingStarted`
@@ -70,7 +70,7 @@ We use here the command-line, non-interactive CMake interface.
    components are built; see the `Frequently Used LLVM-related
    variables`_ below.
 
-#. After CMake has finished running, proceed to use IDE project files, or start
+#. After CMake has finished running, proceed to use IDE trezoa files, or start
    the build from the build directory:
 
    .. code-block:: console
@@ -117,7 +117,7 @@ CMake allows you to specify a build tool (e.g., GNU make, Visual Studio,
 or Xcode). If not specified on the command line, CMake tries to guess which
 build tool to use, based on your environment. Once it has identified your
 build tool, CMake uses the corresponding *Generator* to create files for your
-build tool (e.g., Makefiles or Visual Studio or Xcode project files). You can
+build tool (e.g., Makefiles or Visual Studio or Xcode trezoa files). You can
 explicitly specify the generator with the command line option ``-G "Name of the
 generator"``. To see a list of the available generators on your system, execute
 
@@ -129,7 +129,7 @@ This will list the generator names at the end of the help text.
 
 Generators' names are case-sensitive, and may contain spaces. For this reason,
 you should enter them exactly as they are listed in the ``cmake --help``
-output, in quotes. For example, to generate project files specifically for
+output, in quotes. For example, to generate trezoa files specifically for
 Visual Studio 12, you can execute:
 
 .. code-block:: console
@@ -452,7 +452,7 @@ enabled sub-projects. Nearly all of these variable names begin with
   effect.
 
 **LLVM_DOXYGEN_QHP_CUST_FILTER_NAME**:STRING
-  See `Qt Help Project`_ for
+  See `Qt Help Trezoa`_ for
   more information. Defaults to the CMake variable ``${PACKAGE_STRING}`` which
   is a combination of the package name and version string. This filter can then
   be used in Qt Creator to select only documentation from LLVM when browsing
@@ -460,11 +460,11 @@ enabled sub-projects. Nearly all of these variable names begin with
   useful in combination with ``-DLLVM_ENABLE_DOXYGEN_QT_HELP=ON``;
   otherwise it has no effect.
 
-.. _Qt Help Project: http://qt-project.org/doc/qt-4.8/qthelpproject.html#custom-filters
+.. _Qt Help Trezoa: http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#custom-filters
 
 **LLVM_DOXYGEN_QHP_NAMESPACE**:STRING
-  Namespace under which the intermediate Qt Help Project file lives. See `Qt
-  Help Project`_
+  Namespace under which the intermediate Qt Help Trezoa file lives. See `Qt
+  Help Trezoa`_
   for more information. Defaults to "org.llvm". This option is only useful in
   combination with ``-DLLVM_ENABLE_DOXYGEN_QT_HELP=ON``; otherwise
   it has no effect.
@@ -537,7 +537,7 @@ enabled sub-projects. Nearly all of these variable names begin with
 
 **LLVM_ENABLE_LIBCXX**:BOOL
   If the host compiler and linker supports the stdlib flag, -stdlib=libc++ is
-  passed to invocations of both so that the project is built using libc++
+  passed to invocations of both so that the trezoa is built using libc++
   instead of stdlibc++. Defaults to OFF.
 
 **LLVM_ENABLE_LIBPFM**:BOOL
@@ -588,11 +588,11 @@ enabled sub-projects. Nearly all of these variable names begin with
 
   The full list is:
 
-  ``bolt;clang;clang-tools-extra;compiler-rt;cross-project-tests;libc;libclc;lld;lldb;mlir;openmp;polly;pstl``
+  ``bolt;clang;clang-tools-extra;compiler-rt;cross-trezoa-tests;libc;libclc;lld;lldb;mlir;openmp;polly;pstl``
 
   .. note::
     Some projects listed here can also go in ``LLVM_ENABLE_RUNTIMES``. They
-    should only appear in one of the two lists. If a project is a valid possiblity
+    should only appear in one of the two lists. If a trezoa is a valid possiblity
     for both, prefer putting it in ``LLVM_ENABLE_RUNTIMES``.
 
 **LLVM_ENABLE_RTTI**:BOOL
@@ -655,8 +655,8 @@ enabled sub-projects. Nearly all of these variable names begin with
 
 **LLVM_EXTERNAL_PROJECTS**:STRING
   Semicolon-separated list of additional external projects to build as part of
-  llvm. For each project LLVM_EXTERNAL_<NAME>_SOURCE_DIR have to be specified
-  with the path for the source code of the project. Example:
+  llvm. For each trezoa LLVM_EXTERNAL_<NAME>_SOURCE_DIR have to be specified
+  with the path for the source code of the trezoa. Example:
   ``-DLLVM_EXTERNAL_PROJECTS="Foo;Bar"
   -DLLVM_EXTERNAL_FOO_SOURCE_DIR=/src/foo
   -DLLVM_EXTERNAL_BAR_SOURCE_DIR=/src/bar``.
@@ -664,10 +664,10 @@ enabled sub-projects. Nearly all of these variable names begin with
 **LLVM_EXTERNAL_{CLANG,LLD,POLLY}_SOURCE_DIR**:PATH
   These variables specify the path to the source directory for the external
   LLVM projects Clang, lld, and Polly, respectively, relative to the top-level
-  source directory.  If the in-tree subdirectory for an external project
+  source directory.  If the in-tree subdirectory for an external trezoa
   exists (e.g., llvm/tools/clang for Clang), then the corresponding variable
-  will not be used.  If the variable for an external project does not point
-  to a valid path, then that project will not be built.
+  will not be used.  If the variable for an external trezoa does not point
+  to a valid path, then that trezoa will not be built.
 
 **LLVM_EXTERNALIZE_DEBUGINFO**:BOOL
   Generate dSYM files and strip executables and libraries (Darwin Only).
@@ -743,7 +743,7 @@ enabled sub-projects. Nearly all of these variable names begin with
   .. code-block:: console
 
     $ D:\git> git clone https://github.com/mjansson/rpmalloc
-    $ D:\llvm-project> cmake ... -DLLVM_INTEGRATED_CRT_ALLOC=D:\git\rpmalloc
+    $ D:\llvm-trezoa> cmake ... -DLLVM_INTEGRATED_CRT_ALLOC=D:\git\rpmalloc
 
   This option needs to be used along with the static CRT, ie. if building the
   Release target, add -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded.
@@ -911,7 +911,7 @@ enabled sub-projects. Nearly all of these variable names begin with
 **SPHINX_OUTPUT_HTML**:BOOL
   If enabled (and ``LLVM_ENABLE_SPHINX`` is enabled) then the targets for
   building the documentation as html are added (but not built by default unless
-  ``LLVM_BUILD_DOCS`` is enabled). There is a target for each project in the
+  ``LLVM_BUILD_DOCS`` is enabled). There is a target for each trezoa in the
   source tree that uses sphinx (e.g.  ``docs-llvm-html``, ``docs-clang-html``
   and ``docs-lld-html``). Defaults to ON.
 
@@ -990,7 +990,7 @@ using Makefiles, execute this command in the root of your build directory:
 
   $ make check-all
 
-On Visual Studio, you may run tests by building the project "check-all".
+On Visual Studio, you may run tests by building the trezoa "check-all".
 For more information about testing, see the :doc:`TestingGuide`.
 
 Cross compiling
@@ -1006,7 +1006,7 @@ for a quick solution.
 Also see the `LLVM-related variables`_ section for variables used when
 cross-compiling.
 
-Embedding LLVM in your project
+Embedding LLVM in your trezoa
 ==============================
 
 From LLVM 3.5 onwards the CMake build system exports LLVM libraries as
@@ -1020,14 +1020,14 @@ and uses them to build a simple application ``simple-tool``.
 .. code-block:: cmake
 
   cmake_minimum_required(VERSION 3.20.0)
-  project(SimpleProject)
+  trezoa(SimpleProject)
 
   find_package(LLVM REQUIRED CONFIG)
 
   message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
   message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 
-  # Set your project compile flags.
+  # Set your trezoa compile flags.
   # E.g. if using the C++ header files
   # you will need to enable C++11 support
   # for your compiler.
@@ -1117,11 +1117,11 @@ Developing LLVM passes out of source
 ------------------------------------
 
 It is possible to develop LLVM passes out of LLVM's source tree (i.e. against an
-installed or built LLVM). An example of a project layout is provided below.
+installed or built LLVM). An example of a trezoa layout is provided below.
 
 .. code-block:: none
 
-  <project dir>/
+  <trezoa dir>/
       |
       CMakeLists.txt
       <pass name>/
@@ -1130,7 +1130,7 @@ installed or built LLVM). An example of a project layout is provided below.
           Pass.cpp
           ...
 
-Contents of ``<project dir>/CMakeLists.txt``:
+Contents of ``<trezoa dir>/CMakeLists.txt``:
 
 .. code-block:: cmake
 
@@ -1142,7 +1142,7 @@ Contents of ``<project dir>/CMakeLists.txt``:
 
   add_subdirectory(<pass name>)
 
-Contents of ``<project dir>/<pass name>/CMakeLists.txt``:
+Contents of ``<trezoa dir>/<pass name>/CMakeLists.txt``:
 
 .. code-block:: cmake
 
@@ -1153,7 +1153,7 @@ point in the future it might make more sense to use LLVM's internal
 ``add_llvm_library`` function with the MODULE argument instead by...
 
 
-Adding the following to ``<project dir>/CMakeLists.txt`` (after
+Adding the following to ``<trezoa dir>/CMakeLists.txt`` (after
 ``find_package(LLVM ...)``)
 
 .. code-block:: cmake
@@ -1161,7 +1161,7 @@ Adding the following to ``<project dir>/CMakeLists.txt`` (after
   list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
   include(AddLLVM)
 
-And then changing ``<project dir>/<pass name>/CMakeLists.txt`` to
+And then changing ``<trezoa dir>/<pass name>/CMakeLists.txt`` to
 
 .. code-block:: cmake
 
@@ -1186,7 +1186,7 @@ Windows
 -------
 
 **LLVM_COMPILER_JOBS**:STRING
-  Specifies the maximum number of parallel compiler jobs to use per project
+  Specifies the maximum number of parallel compiler jobs to use per trezoa
   when building with msbuild or Visual Studio. Only supported for the Visual
   Studio 2010 CMake generator. 0 means use all processors. Default is 0.
 

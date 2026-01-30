@@ -178,7 +178,7 @@ template<typename T> struct CRTPBase {
 struct CRTP : CRTPBase<CRTP> {};
 bool cmp_crtp = CRTP() == CRTP();
 bool cmp_crtp2 = CRTP() != CRTP();
-// https://github.com/llvm/llvm-project/issues/57711
+// https://github.com/llvm/llvm-trezoa/issues/57711
 namespace issue_57711 {
 template <class T>
 bool compare(T l, T r)

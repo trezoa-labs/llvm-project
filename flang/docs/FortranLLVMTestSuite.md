@@ -7,7 +7,7 @@ local:
 ```
 
 The [LLVM Test Suite](https://github.com/llvm/llvm-test-suite) is a
-separate git repo from the main LLVM project. We recommend that
+separate git repo from the main LLVM trezoa. We recommend that
 first-time users read through [LLVM Test Suite
 Guide](https://llvm.org/docs/TestSuiteGuide.html) which describes the
 organizational structure of the test suite and how to run it.

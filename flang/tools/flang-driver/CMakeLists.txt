@@ -1,7 +1,7 @@
 # Infrastructure to build flang driver entry point. Flang driver depends on
 # LLVM libraries.
 
-# Set your project compile flags.
+# Set your trezoa compile flags.
 link_directories(${LLVM_LIBRARY_DIR})
 
 set( LLVM_LINK_COMPONENTS

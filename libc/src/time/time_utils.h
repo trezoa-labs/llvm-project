@@ -1,6 +1,6 @@
 //===-- Collection of utils for mktime and friends --------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -88,7 +88,7 @@ LIBC_INLINE struct tm *gmtime_internal(const time_t *timer, struct tm *result) {
 }
 
 // TODO: localtime is not yet implemented and a temporary solution is to
-//       use gmtime, https://github.com/llvm/llvm-project/issues/107597
+//       use gmtime, https://github.com/llvm/llvm-trezoa/issues/107597
 LIBC_INLINE struct tm *localtime(const time_t *t_ptr) {
   static struct tm result;
   return time_utils::gmtime_internal(t_ptr, &result);

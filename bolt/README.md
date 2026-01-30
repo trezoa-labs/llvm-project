@@ -49,10 +49,10 @@ The following instructions are assuming that you are running under Linux.
 Start with cloning LLVM repo:
 
 ```
-> git clone https://github.com/llvm/llvm-project.git
+> git clone https://github.com/llvm/llvm-trezoa.git
 > mkdir build
 > cd build
-> cmake -G Ninja ../llvm-project/llvm -DLLVM_TARGETS_TO_BUILD="X86;AArch64" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_ENABLE_PROJECTS="bolt"
+> cmake -G Ninja ../llvm-trezoa/llvm -DLLVM_TARGETS_TO_BUILD="X86;AArch64" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_ENABLE_PROJECTS="bolt"
 > ninja bolt
 ```
 

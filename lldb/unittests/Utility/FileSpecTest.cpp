@@ -1,6 +1,6 @@
 //===-- FileSpecTest.cpp --------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -511,8 +511,8 @@ TEST(FileSpecTest, TestGetComponents) {
       {"/foo", {"foo"}},
       {"/foo/", {"foo"}},
       {"/foo/bar", {"foo", "bar"}},
-      {"/llvm-project/lldb/unittests/Utility/FileSpecTest.cpp",
-       {"llvm-project", "lldb", "unittests", "Utility", "FileSpecTest.cpp"}},
+      {"/llvm-trezoa/lldb/unittests/Utility/FileSpecTest.cpp",
+       {"llvm-trezoa", "lldb", "unittests", "Utility", "FileSpecTest.cpp"}},
   };
 
   for (const auto &pair : PosixTests) {
@@ -524,8 +524,8 @@ TEST(FileSpecTest, TestGetComponents) {
       {"C:\\", {"C:"}},
       {"C:\\Windows\\", {"C:", "Windows"}},
       {"C:\\Windows\\System32", {"C:", "Windows", "System32"}},
-      {"C:\\llvm-project\\lldb\\unittests\\Utility\\FileSpecTest.cpp",
-       {"C:", "llvm-project", "lldb", "unittests", "Utility",
+      {"C:\\llvm-trezoa\\lldb\\unittests\\Utility\\FileSpecTest.cpp",
+       {"C:", "llvm-trezoa", "lldb", "unittests", "Utility",
         "FileSpecTest.cpp"}},
   };
 

@@ -1,6 +1,6 @@
 //===- bolt/Core/DIEBuilder.cpp -------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -471,7 +471,7 @@ uint32_t DIEBuilder::finalizeDIEs(DWARFUnit &CU, DIE &Die,
   // entry.
   // Skipping entry is not very useful for LLDB. This follows clang where
   // children of forward declaration won't have DW_IDX_parent.
-  // https://github.com/llvm/llvm-project/pull/91808
+  // https://github.com/llvm/llvm-trezoa/pull/91808
 
   // If Parent is nullopt and NumberParentsInChain is not zero, then forward
   // declaration was encountered in this DF traversal. Propagating nullopt for

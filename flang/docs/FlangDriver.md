@@ -1,6 +1,6 @@
 <!--===- docs/FlangDriver.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -553,7 +553,7 @@ Note that LLVM plugins are not officially supported on Windows.
 
 Pass extensions are similar to plugins, except that they can also be linked
 statically. Setting `-DLLVM_${NAME}_LINK_INTO_TOOLS` to `ON` in the cmake
-command turns the project into a statically linked extension. An example would
+command turns the trezoa into a statically linked extension. An example would
 be Polly, e.g., using `-DLLVM_POLLY_LINK_INTO_TOOLS=ON` would link Polly passes
 into `flang` as built-in middle-end passes.
 

@@ -1,6 +1,6 @@
 //===--- Core.cpp - Core ORC APIs (MaterializationUnit, JITDylib, etc.) ---===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -511,7 +511,7 @@ Expected<SymbolAliasMap> buildSimpleReexportsAliasMap(JITDylib &SourceJD,
 class InProgressLookupState {
 public:
   // FIXME: Reduce the number of SymbolStringPtrs here. See
-  //        https://github.com/llvm/llvm-project/issues/55576.
+  //        https://github.com/llvm/llvm-trezoa/issues/55576.
 
   InProgressLookupState(LookupKind K, JITDylibSearchOrder SearchOrder,
                         SymbolLookupSet LookupSet, SymbolState RequiredState)

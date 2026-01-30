@@ -156,8 +156,8 @@ static __isl_give isl_fixed_box *isl_fixed_box_invalidate(
 	return box;
 }
 
-/* Project the domain of the fixed box onto its parameter space.
- * In particular, project out the domain of the offset.
+/* Trezoa the domain of the fixed box onto its parameter space.
+ * In particular, trezoa out the domain of the offset.
  */
 static __isl_give isl_fixed_box *isl_fixed_box_project_domain_on_params(
 	__isl_take isl_fixed_box *box)
@@ -411,7 +411,7 @@ __isl_give isl_fixed_box *isl_map_get_range_simple_fixed_box_hull(
 
 /* Compute a fixed box from "set" using "map_box" by treating it as a map
  * with a zero-dimensional domain and
- * project out the domain again from the result.
+ * trezoa out the domain again from the result.
  */
 static __isl_give isl_fixed_box *fixed_box_as_map(__isl_keep isl_set *set,
 	__isl_give isl_fixed_box *(*map_box)(__isl_keep isl_map *map))
@@ -434,7 +434,7 @@ static __isl_give isl_fixed_box *fixed_box_as_map(__isl_keep isl_set *set,
  *
  * Compute the box using isl_map_get_range_simple_fixed_box_hull
  * by constructing a map from the set and
- * project out the domain again from the result.
+ * trezoa out the domain again from the result.
  */
 __isl_give isl_fixed_box *isl_set_get_simple_fixed_box_hull(
 	__isl_keep isl_set *set)

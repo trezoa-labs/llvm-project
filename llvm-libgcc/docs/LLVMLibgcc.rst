@@ -29,7 +29,7 @@ necessary functions from compiler-rt and libunwind into an archive and shared
 object that advertise themselves as ``libgcc.a``, ``libgcc_eh.a``, and
 ``libgcc_s.so``, so that glibc’s baked calls are diverted to the correct objects
 in memory. Fortunately for us, compiler-rt and libunwind use the same ABI as the
-libgcc family, so the problem is solvable at the llvm-project configuration
+libgcc family, so the problem is solvable at the llvm-trezoa configuration
 level: no program source needs to be edited. Thus, the end result is for a
 distro manager to configure their LLVM build with a flag that indicates they
 want to archive compiler-rt/unwind as libgcc. We achieve this by compiling
@@ -81,7 +81,7 @@ The first build tree is a mostly conventional build tree and gets you a Clang
 build with these compiler-rt symbols exposed.
 
 .. code-block:: bash
-  # Assumes $(PWD) is /path/to/llvm-project
+  # Assumes $(PWD) is /path/to/llvm-trezoa
   $ cmake -GNinja -S llvm -B build-primary                    \
       -DCMAKE_BUILD_TYPE=Release                              \
       -DCMAKE_CROSSCOMPILING=On                               \
@@ -97,7 +97,7 @@ It's very important to notice that neither ``compiler-rt``, nor ``libunwind``,
 are listed in ``LLVM_ENABLE_RUNTIMES``. llvm-libgcc makes these subprojects, and
 adding them to this list will cause you problems due to there being duplicate
 targets. As such, configuring the runtimes build will reject explicitly mentioning
-either project with ``llvm-libgcc``.
+either trezoa with ``llvm-libgcc``.
 
 To avoid issues when building with ``-DLLVM_ENABLE_RUNTIMES=all``, ``llvm-libgcc``
 is not included, and all runtimes targets must be manually listed.
@@ -148,7 +148,7 @@ following command.
 
 .. code-block:: bash
 
-  /path/to/llvm-project
+  /path/to/llvm-trezoa
   $ export ARCH=powerpc64
   $ llvm/tools/llvm-libgcc/generate_version_script.py       \
       --compiler_rt=/path/to/libclang_rt.builtins-${ARCH}.a \
@@ -157,7 +157,7 @@ following command.
       --output=${ARCH}
 
 This will generate a new version script a la
-``/path/to/llvm-project/llvm/tools/llvm-libgcc/gcc_s-${ARCH}.ver``, which we use
+``/path/to/llvm-trezoa/llvm/tools/llvm-libgcc/gcc_s-${ARCH}.ver``, which we use
 in the next section.
 
 .. _Editing ``lib/gcc_s.ver``

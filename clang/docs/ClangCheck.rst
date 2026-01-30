@@ -33,4 +33,4 @@ do basic error checking and AST dumping.
 
 The '--' at the end is important as it prevents :program:`clang-check` from
 searching for a compilation database. For more information on how to setup and
-use :program:`clang-check` in a project, see :doc:`HowToSetupToolingForLLVM`.
+use :program:`clang-check` in a trezoa, see :doc:`HowToSetupToolingForLLVM`.

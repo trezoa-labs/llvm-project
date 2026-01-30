@@ -1,6 +1,6 @@
 //===--- clang-installapi/Options.h - Options -------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -39,7 +39,7 @@ struct DriverOptions {
   /// \brief Path to private umbrella header.
   std::string PrivateUmbrellaHeader;
 
-  /// \brief Path to project umbrella header.
+  /// \brief Path to trezoa umbrella header.
   std::string ProjectUmbrellaHeader;
 
   /// \brief Paths of extra public headers.
@@ -48,7 +48,7 @@ struct DriverOptions {
   /// \brief Paths of extra private headers.
   PathSeq ExtraPrivateHeaders;
 
-  /// \brief Paths of extra project headers.
+  /// \brief Paths of extra trezoa headers.
   PathSeq ExtraProjectHeaders;
 
   /// \brief List of excluded public headers.
@@ -57,7 +57,7 @@ struct DriverOptions {
   /// \brief List of excluded private headers.
   PathSeq ExcludePrivateHeaders;
 
-  /// \brief List of excluded project headers.
+  /// \brief List of excluded trezoa headers.
   PathSeq ExcludeProjectHeaders;
 
   /// \brief Mappings of target triples & tapi targets to build for.

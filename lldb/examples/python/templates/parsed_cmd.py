@@ -100,11 +100,11 @@ return {"values" : ["option1", "option2"], "descriptions" : ["the first option",
 
 The cmdtemplate example currently uses the parsed command infrastructure:
 
-llvm-project/lldb/examples/python/cmdtemplate.py
+llvm-trezoa/lldb/examples/python/cmdtemplate.py
 
 There are also a few example commands in the lldb testsuite at:
 
-llvm-project/lldb/test/API/commands/command/script/add/test_commands.py
+llvm-trezoa/lldb/test/API/commands/command/script/add/test_commands.py
 """
 import inspect
 import lldb

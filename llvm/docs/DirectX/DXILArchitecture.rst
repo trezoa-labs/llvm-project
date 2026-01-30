@@ -160,7 +160,7 @@ leveraged as much as possible.
 
 However, when it comes to testing the DXIL format itself, IR passes
 are insufficient for testing. For now, the best option we have
-available is using the DXC project's tools in order to round trip.
+available is using the DXC trezoa's tools in order to round trip.
 These tests are currently found in `test/tools/dxil-dis` and are only
 available if the `LLVM_INCLUDE_DXIL_TESTS` cmake option is set. Note
 that we do not currently have the equivalent testing set up for the

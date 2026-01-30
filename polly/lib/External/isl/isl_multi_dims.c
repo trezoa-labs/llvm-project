@@ -90,10 +90,10 @@ __isl_give MULTI(BASE) *FN(MULTI(BASE),add_dims)(__isl_take MULTI(BASE) *multi,
 	return FN(MULTI(BASE),insert_dims)(multi, type, pos, n);
 }
 
-/* Project the domain of "multi" onto its parameter space.
+/* Trezoa the domain of "multi" onto its parameter space.
  * "multi" may not involve any of the domain dimensions.
  */
-__isl_give MULTI(BASE) *FN(MULTI(BASE),project_domain_on_params)(
+__isl_give MULTI(BASE) *FN(MULTI(BASE),trezoa_domain_on_params)(
 	__isl_take MULTI(BASE) *multi)
 {
 	isl_size n;

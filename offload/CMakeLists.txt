@@ -6,7 +6,7 @@ set(LLVM_SUBPROJECT_TITLE "liboffload")
 
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
   set(OPENMP_STANDALONE_BUILD TRUE)
-  project(offload C CXX ASM)
+  trezoa(offload C CXX ASM)
 else()
   set(OPENMP_STANDALONE_BUILD FALSE)
 endif()
@@ -126,7 +126,7 @@ else()
   set(LIBOMPTARGET_INTDIR ${LLVM_LIBRARY_OUTPUT_INTDIR})
 endif()
 
-# Get dependencies for the different components of the project.
+# Get dependencies for the different components of the trezoa.
 include(LibomptargetGetDependencies)
 
 # Set up testing infrastructure.

@@ -16,33 +16,33 @@ Implementation Status
 
 * To check date and time functions enabled for Linux:
 
-  - `linux-x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/x86_64/entrypoints.txt>`_
+  - `linux-x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/x86_64/entrypoints.txt>`_
 
-  - `linux-aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/aarch64/entrypoints.txt>`_
+  - `linux-aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/aarch64/entrypoints.txt>`_
 
-  - `linux-aarch32 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/arm/entrypoints.txt>`_
+  - `linux-aarch32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/arm/entrypoints.txt>`_
 
-  - `linux-riscv and linux-riscv32 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/riscv/entrypoints.txt>`_
+  - `linux-riscv and linux-riscv32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/riscv/entrypoints.txt>`_
 
 * To check date and time functions enabled for Windows:
 
-  - `windows-x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/windows/entrypoints.txt>`_
+  - `windows-x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/windows/entrypoints.txt>`_
 
   - windows-aarch64 - to be added
 
 * To check date and time functions enabled for macOS:
 
-  - `darwin-x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/darwin/x86_64/entrypoints.txt>`_
+  - `darwin-x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/darwin/x86_64/entrypoints.txt>`_
 
-  - `darwin-aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/darwin/arm/entrypoints.txt>`_
+  - `darwin-aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/darwin/arm/entrypoints.txt>`_
 
 * To check date and time functions enabled for GPU:
 
-  - `gpu-entrypoints <https://github.com/llvm/llvm-project/tree/main/libc/config/gpu/entrypoints.txt>`_
+  - `gpu-entrypoints <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/gpu/entrypoints.txt>`_
 
 * To check date and time functions enabled for embedded system:
 
-  - `barebone-aarch32 <https://github.com/llvm/llvm-project/tree/main/libc/config/baremetal/arm/entrypoints.txt>`_
+  - `barebone-aarch32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/baremetal/arm/entrypoints.txt>`_
 
   - barebone-riscv32 - to be added
 

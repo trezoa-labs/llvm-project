@@ -2,7 +2,7 @@
 // REQUIRES: x86-registered-target
 // expected-no-diagnostics
 
-// Testcase for https://github.com/llvm/llvm-project/issues/69717
+// Testcase for https://github.com/llvm/llvm-trezoa/issues/69717
 
 #pragma float_control(precise, on, push)
 

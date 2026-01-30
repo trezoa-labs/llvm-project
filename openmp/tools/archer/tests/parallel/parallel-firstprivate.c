@@ -4,7 +4,7 @@
 
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 //
 // See tools/archer/LICENSE.txt for details.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception

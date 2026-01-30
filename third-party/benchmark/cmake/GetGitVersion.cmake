@@ -1,6 +1,6 @@
 # - Returns a version string from Git tags
 #
-# This function inspects the annotated git tags for the project and returns a string
+# This function inspects the annotated git tags for the trezoa and returns a string
 # into a CMake variable
 #
 #  get_git_version(<var>)

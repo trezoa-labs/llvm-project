@@ -41,7 +41,7 @@ subset of the options specified on the command line, see
 :program:`lit` parses options from the environment variable ``LIT_OPTS`` after
 parsing options from the command line.  ``LIT_OPTS`` is primarily useful for
 supplementing or overriding the command-line options supplied to :program:`lit`
-by ``check`` targets defined by a project's build system.
+by ``check`` targets defined by a trezoa's build system.
 
 :program:`lit` can also read options from response files which are specified as
 inputs using the ``@path/to/file.rsp`` syntax. Arguments read from a file must
@@ -545,7 +545,7 @@ executed, two important global variables are predefined:
  containing the test suite, or None.
 
  **root** The root configuration.  This is the top-most :program:`lit` configuration in
- the project.
+ the trezoa.
 
  **pipefail** Normally a test using a shell pipe fails if any of the commands
  on the pipe fail. If this is not desired, setting this variable to false

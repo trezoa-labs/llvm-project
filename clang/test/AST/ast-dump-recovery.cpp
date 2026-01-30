@@ -481,7 +481,7 @@ void RecoveryForStmtCond() {
   for (int i = 0; i < invalid; ++i) {}
 }
 
-// Fix crash issue https://github.com/llvm/llvm-project/issues/112560.
+// Fix crash issue https://github.com/llvm/llvm-trezoa/issues/112560.
 // Make sure clang compiles the following code without crashing:
 
 // CHECK:NamespaceDecl {{.*}} GH112560

@@ -1,6 +1,6 @@
 //===-- Double-precision sincos function ----------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -189,7 +189,7 @@ LLVM_LIBC_FUNCTION(void, sincos, (double x, double *sin_x, double *cos_x)) {
   Float128 msin_k_f128 = get_sin_k(k + 128);
 
   // TODO: Add assertion if Ziv's accuracy tests fail in debug mode.
-  // https://github.com/llvm/llvm-project/issues/96452.
+  // https://github.com/llvm/llvm-trezoa/issues/96452.
 
   if (sin_upper == sin_lower)
     *sin_x = sin_upper;

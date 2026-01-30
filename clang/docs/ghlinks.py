@@ -8,7 +8,7 @@ __version__ = "1.0"
 
 def subst_gh_links(app: Sphinx, docname, source):
     regex = re.compile("#GH([0-9]+)")
-    out_pattern = r"`#\1 <https://github.com/llvm/llvm-project/issues/\1>`_"
+    out_pattern = r"`#\1 <https://github.com/llvm/llvm-trezoa/issues/\1>`_"
     result = source[0]
     result = regex.sub(out_pattern, result)
     source[0] = result

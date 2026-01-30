@@ -1,6 +1,6 @@
 // RUN: %clang_cc1 -triple x86_64-linux-gnu -ast-dump -ast-dump-filter=b_64605 %s | FileCheck %s
 
-// https://github.com/llvm/llvm-project/issues/64605
+// https://github.com/llvm/llvm-trezoa/issues/64605
 
 #pragma STDC FENV_ACCESS ON
 template <typename>

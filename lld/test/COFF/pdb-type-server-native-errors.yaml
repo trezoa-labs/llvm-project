@@ -43,7 +43,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'c:\src\llvm-project\build\t.c'
+          - FileName:        'c:\src\llvm-trezoa\build\t.c'
             Lines:
               - Offset:          0
                 LineStart:       1
@@ -52,12 +52,12 @@ sections:
             Columns:
       - !FileChecksums
         Checksums:
-          - FileName:        'c:\src\llvm-project\build\t.c'
+          - FileName:        'c:\src\llvm-trezoa\build\t.c'
             Kind:            MD5
             Checksum:        270A878DCC1B845655B162F56C4F5020
       - !StringTable
         Strings:
-          - 'c:\src\llvm-project\build\t.c'
+          - 'c:\src\llvm-trezoa\build\t.c'
     Relocations:
       - VirtualAddress:  44
         SymbolName:      main

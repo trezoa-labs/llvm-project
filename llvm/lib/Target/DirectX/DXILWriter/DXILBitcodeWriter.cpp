@@ -1,6 +1,6 @@
 //===- Bitcode/Writer/DXILBitcodeWriter.cpp - DXIL Bitcode Writer ---------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -281,7 +281,7 @@ private:
                        unsigned Abbrev) {
     // DIAssignID is experimental feature to track variable location in IR..
     // FIXME: translate DIAssignID to debug info DXIL supports.
-    //   See https://github.com/llvm/llvm-project/issues/58989
+    //   See https://github.com/llvm/llvm-trezoa/issues/58989
     llvm_unreachable("DXIL cannot contain DIAssignID Nodes");
   }
   void writeDIModule(const DIModule *N, SmallVectorImpl<uint64_t> &Record,
@@ -523,7 +523,7 @@ unsigned DXILBitcodeWriter::getTypeID(Type *T, const Value *V) {
   // For Constant, return T when cannot find in PointerMap.
   // FIXME: support ConstantPointerNull which could map to more than one
   // TypedPointerType.
-  // See https://github.com/llvm/llvm-project/issues/57942.
+  // See https://github.com/llvm/llvm-trezoa/issues/57942.
   if (V && isa<Constant>(V) && !isa<ConstantPointerNull>(V))
     return VE.getTypeID(T);
   return VE.getTypeID(I8PtrTy);

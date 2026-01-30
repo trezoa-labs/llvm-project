@@ -1,6 +1,6 @@
 //===--- SemaDeclAttr.cpp - Declaration Attribute Handling ----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1679,7 +1679,7 @@ static void handleWeakRefAttr(Sema &S, Decl *D, const ParsedAttr &AL) {
 
 // Mark alias/ifunc target as used. Due to name mangling, we look up the
 // demangled name ignoring parameters (not supported by microsoftDemangle
-// https://github.com/llvm/llvm-project/issues/88825). This should handle the
+// https://github.com/llvm/llvm-trezoa/issues/88825). This should handle the
 // majority of use cases while leaving namespace scope names unmarked.
 static void markUsedForAliasOrIfunc(Sema &S, Decl *D, const ParsedAttr &AL,
                                     StringRef Str) {
@@ -6648,7 +6648,7 @@ ProcessDeclAttribute(Sema &S, Scope *scope, Decl *D, const ParsedAttr &AL,
 
       if (AL.getKind() == ParsedAttr::AT_NoDeref) {
         // FIXME: `noderef` currently doesn't work correctly in [[]] syntax.
-        // See https://github.com/llvm/llvm-project/issues/55790 for details.
+        // See https://github.com/llvm/llvm-trezoa/issues/55790 for details.
         // We allow processTypeAttrs() to emit a warning and silently move on.
         break;
       }

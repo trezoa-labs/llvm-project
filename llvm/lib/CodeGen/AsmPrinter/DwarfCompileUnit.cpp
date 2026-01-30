@@ -1,6 +1,6 @@
 //===- llvm/CodeGen/DwarfCompileUnit.cpp - Dwarf Compile Units ------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -304,7 +304,7 @@ void DwarfCompileUnit::addLocationAttribute(
           // if present, __tls_base's index is 1. This doesn't hold for dynamic
           // linking, so TLS variables used in dynamic linking won't have
           // correct debug info for now. See
-          // https://github.com/llvm/llvm-project/blob/19afbfe33156d211fa959dadeea46cd17b9c723c/lld/wasm/Driver.cpp#L786-L823
+          // https://github.com/llvm/llvm-trezoa/blob/19afbfe33156d211fa959dadeea46cd17b9c723c/lld/wasm/Driver.cpp#L786-L823
           addWasmRelocBaseGlobal(Loc, "__tls_base", 1);
           addOpAddress(*Loc, Sym);
           addUInt(*Loc, dwarf::DW_FORM_data1, dwarf::DW_OP_plus);
@@ -335,7 +335,7 @@ void DwarfCompileUnit::addLocationAttribute(
                  Asm->TM.getRelocationModel() == Reloc::PIC_) {
         // FIXME This is not guaranteed, but in practice, if present,
         // __memory_base's index is 1. See
-        // https://github.com/llvm/llvm-project/blob/19afbfe33156d211fa959dadeea46cd17b9c723c/lld/wasm/Driver.cpp#L786-L823
+        // https://github.com/llvm/llvm-trezoa/blob/19afbfe33156d211fa959dadeea46cd17b9c723c/lld/wasm/Driver.cpp#L786-L823
         addWasmRelocBaseGlobal(Loc, "__memory_base", 1);
         addOpAddress(*Loc, Sym);
         addUInt(*Loc, dwarf::DW_FORM_data1, dwarf::DW_OP_plus);

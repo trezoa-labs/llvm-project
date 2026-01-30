@@ -1,6 +1,6 @@
 ///===-- Representation.h - ClangDoc Representation -------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -510,7 +510,7 @@ struct ClangDocContext {
                   StringRef RepositoryUrl,
                   std::vector<std::string> UserStylesheets);
   tooling::ExecutionContext *ECtx;
-  std::string ProjectName; // Name of project clang-doc is documenting.
+  std::string ProjectName; // Name of trezoa clang-doc is documenting.
   bool PublicOnly; // Indicates if only public declarations are documented.
   std::string OutDirectory; // Directory for outputting generated files.
   std::string SourceRoot;   // Directory where processed files are stored. Links

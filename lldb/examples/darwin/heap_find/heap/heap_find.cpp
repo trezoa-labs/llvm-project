@@ -1,13 +1,13 @@
 //===-- heap_find.c ---------------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
 //
 // This file compiles into a dylib and can be used on darwin to find data that
-// is contained in active malloc blocks. To use this make the project, then
+// is contained in active malloc blocks. To use this make the trezoa, then
 // load the shared library in a debug session while you are stopped:
 //
 // (lldb) process load /path/to/libheap.dylib

@@ -1,4 +1,4 @@
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """Tool for counting the number of currently running Github actions jobs.
@@ -21,7 +21,7 @@ import time
 def main(token, filter_gha_runners):
     workflows = (
         github.Github(args.token)
-        .get_repo("llvm/llvm-project")
+        .get_repo("llvm/llvm-trezoa")
         .get_workflow_runs(status="in_progress")
     )
 

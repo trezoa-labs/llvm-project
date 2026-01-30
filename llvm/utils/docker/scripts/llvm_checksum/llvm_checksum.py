@@ -10,7 +10,7 @@ import logging
 import re
 import sys
 from argparse import ArgumentParser
-from project_tree import *
+from trezoa_tree import *
 
 SVN_DATES_REGEX = re.compile(r"\$(Date|LastChangedDate)[^\$]+\$")
 
@@ -78,7 +78,7 @@ def ComputeLLVMChecksums(root_path, projects):
         relative to root_path.
 
     Returns:
-      A dict mapping from project name to project checksum.
+      A dict mapping from trezoa name to trezoa checksum.
     """
     hash_algo = hashlib.sha256
 
@@ -96,13 +96,13 @@ def ComputeLLVMChecksums(root_path, projects):
                 logging.debug("\n\tBefore\n%s\n\tAfter\n%s", contents, new_contents)
             return new_contents
 
-    project_checksums = dict()
-    # Hash each project.
+    trezoa_checksums = dict()
+    # Hash each trezoa.
     for proj in projects:
-        project_root = os.path.join(root_path, proj.relpath)
-        if not os.path.exists(project_root):
+        trezoa_root = os.path.join(root_path, proj.relpath)
+        if not os.path.exists(trezoa_root):
             logging.info(
-                "Folder %s doesn't exist, skipping project %s", proj.relpath, proj.name
+                "Folder %s doesn't exist, skipping trezoa %s", proj.relpath, proj.name
             )
             continue
 
@@ -126,18 +126,18 @@ def ComputeLLVMChecksums(root_path, projects):
         files.sort(key=lambda x: x[0])
         hasher = hash_algo()
         for file_path, file_digest in files:
-            file_path = os.path.relpath(file_path, project_root)
+            file_path = os.path.relpath(file_path, trezoa_root)
             hasher.update(file_path)
             hasher.update(file_digest)
-        project_checksums[proj.name] = hasher.hexdigest()
-    return project_checksums
+        trezoa_checksums[proj.name] = hasher.hexdigest()
+    return trezoa_checksums
 
 
 def WriteLLVMChecksums(checksums, f):
     """Writes checksums to a text file.
 
     Args:
-      checksums: a dict mapping from project name to project checksum (result of
+      checksums: a dict mapping from trezoa name to trezoa checksum (result of
         ComputeLLVMChecksums).
       f: a file object to write into.
     """
@@ -150,7 +150,7 @@ def ReadLLVMChecksums(f):
     """Reads checksums from a text file, produced by WriteLLVMChecksums.
 
     Returns:
-      A dict, mapping from project name to project checksum.
+      A dict, mapping from trezoa name to trezoa checksum.
     """
     checksums = {}
     while True:
@@ -166,15 +166,15 @@ def ValidateChecksums(reference_checksums, new_checksums, allow_missing_projects
     """Validates that reference_checksums and new_checksums match.
 
     Args:
-      reference_checksums: a dict of reference checksums, mapping from a project
-        name to a project checksum.
-      new_checksums: a dict of checksums to be checked, mapping from a project
-        name to a project checksum.
+      reference_checksums: a dict of reference checksums, mapping from a trezoa
+        name to a trezoa checksum.
+      new_checksums: a dict of checksums to be checked, mapping from a trezoa
+        name to a trezoa checksum.
       allow_missing_projects:
         When True, reference_checksums may contain more projects than
           new_checksums. Projects missing from new_checksums are ignored.
         When False, new_checksums and reference_checksums must contain checksums
-          for the same set of projects. If there is a project in
+          for the same set of projects. If there is a trezoa in
           reference_checksums, missing from new_checksums, ValidateChecksums
           will return False.
 
@@ -187,7 +187,7 @@ def ValidateChecksums(reference_checksums, new_checksums, allow_missing_projects
             return False
 
     for proj, checksum in new_checksums.items():
-        # We never computed a checksum for this project.
+        # We never computed a checksum for this trezoa.
         if proj not in reference_checksums:
             return False
         # Checksum did not match.

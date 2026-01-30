@@ -478,7 +478,7 @@ More Information
 * From Oracle blog, including a discussion of error messages:
   `Improving Application Security with UndefinedBehaviorSanitizer (UBSan) and GCC
   <https://blogs.oracle.com/linux/improving-application-security-with-undefinedbehaviorsanitizer-ubsan-and-gcc>`_
-* From LLVM project blog:
+* From LLVM trezoa blog:
   `What Every C Programmer Should Know About Undefined Behavior
   <http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html>`_
 * From John Regehr's *Embedded in Academia* blog:

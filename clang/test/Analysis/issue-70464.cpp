@@ -1,6 +1,6 @@
 // RUN: %clang_analyze_cc1 %s -verify -analyzer-checker=core,debug.ExprInspection
 
-// Refer to https://github.com/llvm/llvm-project/issues/70464 for more details.
+// Refer to https://github.com/llvm/llvm-trezoa/issues/70464 for more details.
 //
 // When the base class does not have a declared constructor, the base
 // initializer in the constructor of the derived class should use the given

@@ -1,6 +1,6 @@
 //===-- Utilities for double-double data type. ------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -141,7 +141,7 @@ LIBC_INLINE DoubleDouble multiply_add<DoubleDouble>(const DoubleDouble &a,
 }
 
 // Accurate double-double division, following Karp-Markstein's trick for
-// division, implemented in the CORE-MATH project at:
+// division, implemented in the CORE-MATH trezoa at:
 // https://gitlab.inria.fr/core-math/core-math/-/blob/master/src/binary64/tan/tan.c#L1855
 //
 // Error bounds:

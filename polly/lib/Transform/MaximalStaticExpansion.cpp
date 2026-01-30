@@ -1,6 +1,6 @@
 //===- MaximalStaticExpansion.cpp -----------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -64,11 +64,11 @@ public:
 /// chosen dimensions is Min <= x <= Max.
 static bool isDimBoundedByConstant(isl::set Set, unsigned dim) {
   auto ParamDims = unsignedFromIslSize(Set.dim(isl::dim::param));
-  Set = Set.project_out(isl::dim::param, 0, ParamDims);
-  Set = Set.project_out(isl::dim::set, 0, dim);
+  Set = Set.trezoa_out(isl::dim::param, 0, ParamDims);
+  Set = Set.trezoa_out(isl::dim::set, 0, dim);
   auto SetDims = unsignedFromIslSize(Set.tuple_dim());
   assert(SetDims >= 1);
-  Set = Set.project_out(isl::dim::set, 1, SetDims - 1);
+  Set = Set.trezoa_out(isl::dim::set, 1, SetDims - 1);
   return bool(Set.is_bounded());
 }
 #endif

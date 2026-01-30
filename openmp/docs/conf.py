@@ -40,11 +40,11 @@ source_suffix = ".rst"
 # The master toctree document.
 master_doc = "index"
 
-# General information about the project.
-project = "LLVM/OpenMP"
+# General information about the trezoa.
+trezoa = "LLVM/OpenMP"
 copyright = "2013-%d, LLVM/OpenMP" % date.today().year
 
-# The version info for the project you're documenting, acts as replacement for
+# The version info for the trezoa you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents. These are currently set to zero because we don't use them.
 # Should somebody consider in the future to change them, they need to be updated
@@ -105,7 +105,7 @@ html_theme = "llvm-openmp-theme"
 html_theme_path = ["_themes"]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
+# "<trezoa> v<release> documentation".
 # html_title = 'OpenMP Parallel Programming API'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
@@ -215,7 +215,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-# man_pages = [('man/lldb', 'lldb', u'LLDB Documentation', [u'LLVM project'], 1)]
+# man_pages = [('man/lldb', 'lldb', u'LLDB Documentation', [u'LLVM trezoa'], 1)]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -233,7 +233,7 @@ texinfo_documents = [
         "LLVM/OpenMP Documentation",
         "LLVM/OpenMP",
         "LLVM/OpenMP",
-        "One line description of project.",
+        "One line description of trezoa.",
         "Miscellaneous",
     ),
 ]

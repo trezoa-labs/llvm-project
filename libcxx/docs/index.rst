@@ -75,7 +75,7 @@ libc++ is continuously integrated and tested on a wide range of platforms and co
 and compatibility across various systems. The library's extensive test suite and rigorous quality assurance process have
 made it a top choice for platform providers looking to offer their users a robust and efficient C++ Standard Library.
 
-As an open-source project, libc++ benefits from a vibrant community of contributors who work together to improve the
+As an open-source trezoa, libc++ benefits from a vibrant community of contributors who work together to improve the
 library and add new features. This ongoing development and support ensure that libc++ remains at the forefront of
 C++ standardization efforts and continues to meet the evolving needs of C++ developers worldwide.
 
@@ -101,7 +101,7 @@ reasons, but some of the major ones are:
 * Mainline libstdc++ has switched to GPL3, a license which the developers
   of libc++ cannot use.  libstdc++ 4.2 (the last GPL2 version) could be
   independently extended to support C++11, but this would be a fork of the
-  codebase (which is often seen as worse for a project than starting a new
+  codebase (which is often seen as worse for a trezoa than starting a new
   independent one).  Another problem with libstdc++ is that it is tightly
   integrated with G++ development, tending to be tied fairly closely to the
   matching version of G++.
@@ -229,8 +229,8 @@ Design Documents
 Build Bots and Test Coverage
 ============================
 
-* `Github Actions CI pipeline <https://github.com/llvm/llvm-project/actions/workflows/libcxx-build-and-test.yaml>`_
-* `Buildkite CI pipeline <https://buildkite.com/llvm-project/libcxx-ci>`_
+* `Github Actions CI pipeline <https://github.com/llvm/llvm-trezoa/actions/workflows/libcxx-build-and-test.yaml>`_
+* `Buildkite CI pipeline <https://buildkite.com/llvm-trezoa/libcxx-ci>`_
 * `LLVM Buildbot Builders <https://lab.llvm.org/buildbot>`_
 * :ref:`Adding New CI Jobs <AddingNewCIJobs>`
 
@@ -239,8 +239,8 @@ Quick Links
 ===========
 * `LLVM Homepage <https://llvm.org/>`_
 * `libc++abi Homepage <http://libcxxabi.llvm.org/>`_
-* `LLVM Bug Tracker <https://github.com/llvm/llvm-project/labels/libc++/>`_
+* `LLVM Bug Tracker <https://github.com/llvm/llvm-trezoa/labels/libc++/>`_
 * `libcxx-commits Mailing List <http://lists.llvm.org/mailman/listinfo/libcxx-commits>`_
 * `libc++ forum <https://discourse.llvm.org/c/runtimes/libcxx/>`_
 * `libc++ chat <https://discord.com/channels/636084430946959380/636732894974312448>`_
-* `Browse libc++ Sources <https://github.com/llvm/llvm-project/tree/main/libcxx/>`_
+* `Browse libc++ Sources <https://github.com/llvm/llvm-trezoa/tree/main/libcxx/>`_

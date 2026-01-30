@@ -1,6 +1,6 @@
 //===----- LegalizeIntegerTypes.cpp - Legalization of integer types -------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -6290,8 +6290,8 @@ SDValue DAGTypeLegalizer::ExpandIntOp_STACKMAP(SDNode *N, unsigned OpNo) {
   SDValue Op = N->getOperand(OpNo);
 
   // FIXME: Non-constant operands are not yet handled:
-  //  - https://github.com/llvm/llvm-project/issues/26431
-  //  - https://github.com/llvm/llvm-project/issues/55957
+  //  - https://github.com/llvm/llvm-trezoa/issues/26431
+  //  - https://github.com/llvm/llvm-trezoa/issues/55957
   ConstantSDNode *CN = dyn_cast<ConstantSDNode>(Op);
   if (!CN)
     return SDValue();
@@ -6308,7 +6308,7 @@ SDValue DAGTypeLegalizer::ExpandIntOp_STACKMAP(SDNode *N, unsigned OpNo) {
         DAG.getTargetConstant(StackMaps::ConstantOp, DL, MVT::i64));
     NewOps.push_back(DAG.getTargetConstant(CN->getZExtValue(), DL, Ty));
   } else {
-    // FIXME: https://github.com/llvm/llvm-project/issues/55609
+    // FIXME: https://github.com/llvm/llvm-trezoa/issues/55609
     return SDValue();
   }
 
@@ -6329,8 +6329,8 @@ SDValue DAGTypeLegalizer::ExpandIntOp_PATCHPOINT(SDNode *N, unsigned OpNo) {
   SDValue Op = N->getOperand(OpNo);
 
   // FIXME: Non-constant operands are not yet handled:
-  //  - https://github.com/llvm/llvm-project/issues/26431
-  //  - https://github.com/llvm/llvm-project/issues/55957
+  //  - https://github.com/llvm/llvm-trezoa/issues/26431
+  //  - https://github.com/llvm/llvm-trezoa/issues/55957
   ConstantSDNode *CN = dyn_cast<ConstantSDNode>(Op);
   if (!CN)
     return SDValue();
@@ -6347,7 +6347,7 @@ SDValue DAGTypeLegalizer::ExpandIntOp_PATCHPOINT(SDNode *N, unsigned OpNo) {
         DAG.getTargetConstant(StackMaps::ConstantOp, DL, MVT::i64));
     NewOps.push_back(DAG.getTargetConstant(CN->getZExtValue(), DL, Ty));
   } else {
-    // FIXME: https://github.com/llvm/llvm-project/issues/55609
+    // FIXME: https://github.com/llvm/llvm-trezoa/issues/55609
     return SDValue();
   }
 

@@ -1,6 +1,6 @@
 //===-- SPIRVPreLegalizer.cpp - prepare IR for legalization -----*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -210,7 +210,7 @@ static void buildOpBitcast(SPIRVGlobalRegistry *GR, MachineIRBuilder &MIB,
 // OpBitcast, but rather lower to OpBitcast immediately. As for now, the only
 // difference would be that CombinerHelper couldn't transform known patterns
 // around G_BUILD_VECTOR. See discussion
-// in https://github.com/llvm/llvm-project/pull/110270 for even more context.
+// in https://github.com/llvm/llvm-trezoa/pull/110270 for even more context.
 static void selectOpBitcasts(MachineFunction &MF, SPIRVGlobalRegistry *GR,
                              MachineIRBuilder MIB) {
   SmallVector<MachineInstr *, 16> ToErase;

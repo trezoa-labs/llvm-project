@@ -1,6 +1,6 @@
 //===--- ItaniumMangle.cpp - Itanium C++ Name Mangling ----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1236,7 +1236,7 @@ void CXXNameMangler::mangleFloat(const llvm::APFloat &f) {
     // The bit-index of the next hex digit.
     unsigned digitBitIndex = 4 * (numCharacters - stringIndex - 1);
 
-    // Project out 4 bits starting at 'digitIndex'.
+    // Trezoa out 4 bits starting at 'digitIndex'.
     uint64_t hexDigit = valueBits.getRawData()[digitBitIndex / 64];
     hexDigit >>= (digitBitIndex % 64);
     hexDigit &= 0xF;

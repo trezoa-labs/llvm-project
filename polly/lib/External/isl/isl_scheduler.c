@@ -835,7 +835,7 @@ static isl_stat compress_node(struct isl_sched_node *node,
  * In particular, it is obtained by composing compression and decompression and
  * taking the relation among the variables in the range.
  */
-static isl_stat project_out_fixed(struct isl_sched_node *node,
+static isl_stat trezoa_out_fixed(struct isl_sched_node *node,
 	__isl_keep isl_set *uncompressed, __isl_take isl_set *set, int pos)
 {
 	isl_id *id;
@@ -912,7 +912,7 @@ static isl_stat compute_sizes(struct isl_sched_node *node,
 		mv = isl_multi_val_set_val(mv, j, v);
 		if (is_zero >= 0 && is_zero) {
 			isl_multi_val_free(mv);
-			if (project_out_fixed(node, uncompressed, set, j) < 0)
+			if (trezoa_out_fixed(node, uncompressed, set, j) < 0)
 				return isl_stat_error;
 			return compute_sizes(node, uncompressed);
 		}
@@ -1566,7 +1566,7 @@ static __isl_give isl_map *compress(__isl_take isl_map *map,
  * to construct loop coalescing schedules.
  * In particular, drop those constraint that bound the difference
  * to the size of the domain.
- * First project out the parameters to improve the effectiveness.
+ * First trezoa out the parameters to improve the effectiveness.
  */
 static __isl_give isl_set *drop_coalescing_constraints(
 	__isl_take isl_set *delta, struct isl_sched_node *node)

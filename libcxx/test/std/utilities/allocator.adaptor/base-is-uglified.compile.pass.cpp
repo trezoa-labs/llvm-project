@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -13,7 +13,7 @@
 // This test ensures that we don't use a non-uglified name 'base' in the
 // implementation of scoped_allocator_adaptor.
 //
-// See https://github.com/llvm/llvm-project/issues/78754.
+// See https://github.com/llvm/llvm-trezoa/issues/78754.
 
 #include <memory>
 #include <scoped_allocator>

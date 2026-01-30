@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     long rss = 0;
     // This test exposes a bug in DFSan's sscanf, that leads to flakiness
     // in release_shadow_space.c (see
-    // https://github.com/llvm/llvm-project/issues/91287)
+    // https://github.com/llvm/llvm-trezoa/issues/91287)
     int r = sscanf(buf, "Garbage text before, %ld, Garbage text after", &rss);
     assert(r == 0);
   }

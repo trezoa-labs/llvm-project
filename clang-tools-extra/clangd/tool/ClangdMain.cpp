@@ -1,6 +1,6 @@
 //===--- ClangdMain.cpp - clangd server loop ------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -167,7 +167,7 @@ opt<bool> ShowOrigins{
 opt<bool> EnableBackgroundIndex{
     "background-index",
     cat(Features),
-    desc("Index project code in the background and persist index on disk."),
+    desc("Index trezoa code in the background and persist index on disk."),
     init(true),
 };
 
@@ -442,7 +442,7 @@ opt<std::string> PathMappingsArg{
         "server paths (where clangd sees files on disk). "
         "Comma separated list of '<client_path>=<server_path>' pairs, the "
         "first entry matching a given path is used. "
-        "e.g. /home/project/incl=/opt/include,/home/project=/workarea/project"),
+        "e.g. /home/trezoa/incl=/opt/include,/home/trezoa=/workarea/trezoa"),
     init(""),
 };
 
@@ -489,8 +489,8 @@ opt<bool> EnableConfig{
     "enable-config",
     cat(Misc),
     desc(
-        "Read user and project configuration from YAML files.\n"
-        "Project config is from a .clangd file in the project directory.\n"
+        "Read user and trezoa configuration from YAML files.\n"
+        "Trezoa config is from a .clangd file in the trezoa directory.\n"
         "User config is from clangd/config.yaml in the following directories:\n"
         "\tWindows: %USERPROFILE%\\AppData\\Local\n"
         "\tMac OS: ~/Library/Preferences/\n"
@@ -545,9 +545,9 @@ opt<std::string> RemoteIndexAddress{
 
 // FIXME(kirillbobyrev): Should this be the location of compile_commands.json?
 opt<std::string> ProjectRoot{
-    "project-root",
+    "trezoa-root",
     cat(Features),
-    desc("Path to the project root. Requires remote-index-address to be set."),
+    desc("Path to the trezoa root. Requires remote-index-address to be set."),
 };
 #endif
 
@@ -908,7 +908,7 @@ clangd accepts flags on the commandline, and in the CLANGD_FLAGS environment var
   std::vector<std::unique_ptr<SymbolIndex>> IdxStack;
 #if CLANGD_ENABLE_REMOTE
   if (RemoteIndexAddress.empty() != ProjectRoot.empty()) {
-    llvm::errs() << "remote-index-address and project-path have to be "
+    llvm::errs() << "remote-index-address and trezoa-path have to be "
                     "specified at the same time.";
     return 1;
   }

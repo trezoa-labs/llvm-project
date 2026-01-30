@@ -7,9 +7,9 @@ The libc code style
 Naming style
 ============
 
-For the large part, the libc project follows the general `coding standards of
-the LLVM project <https://llvm.org/docs/CodingStandards.html>`_. The libc
-project differs from that standard with respect to the naming style. The
+For the large part, the libc trezoa follows the general `coding standards of
+the LLVM trezoa <https://llvm.org/docs/CodingStandards.html>`_. The libc
+trezoa differs from that standard with respect to the naming style. The
 differences are as follows:
 
 #. **Non-const variables** - This includes function arguments, struct and
@@ -112,9 +112,9 @@ followed:
 #. ``errno`` should be set just before returning from the implementation of the
    public function. It should not be set from within helper functions. Helper
    functions should use idiomatic C++ constructs like
-   `cpp::optional <https://github.com/llvm/llvm-project/blob/main/libc/src/__support/CPP/optional.h>`_
+   `cpp::optional <https://github.com/llvm/llvm-trezoa/blob/main/libc/src/__support/CPP/optional.h>`_
    and
-   `ErrorOr <https://github.com/llvm/llvm-project/blob/main/libc/src/__support/error_or.h>`_
+   `ErrorOr <https://github.com/llvm/llvm-trezoa/blob/main/libc/src/__support/error_or.h>`_
    to return error values.
 
 #. The header file ``src/errno/libc_errno.h`` is shipped as part of the target
@@ -152,7 +152,7 @@ if we use the default ``new`` and ``delete`` operators, the libc will end up
 depending on the C++ runtime. To avoid such a dependence, and to handle
 allocation failures gracefully, we use special ``new`` and ``delete`` operators
 defined in
-`src/__support/CPP/new.h <https://github.com/llvm/llvm-project/blob/main/libc/src/__support/CPP/new.h>`_.
+`src/__support/CPP/new.h <https://github.com/llvm/llvm-trezoa/blob/main/libc/src/__support/CPP/new.h>`_.
 Allocations and deallocations using these operators employ a pattern like
 this:
 

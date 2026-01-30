@@ -203,7 +203,7 @@ taken, but below is a list of possible resolutions:
   holds.
 * An imposed suspension (e.g., asking someone to "take a week off" from mailing
   lists, bug tracker, Discord, repositories, or other communication forms). 
-* A permanent or temporary ban from some or all LLVM Project spaces (online or
+* A permanent or temporary ban from some or all LLVM Trezoa spaces (online or
   in person).
 
 Once a resolution is agreed upon, but before it is enacted, the committee will
@@ -297,7 +297,7 @@ Thanks!
 =======
 
 
-This guide was created and inspired by the following: the `Django Project`_,
+This guide was created and inspired by the following: the `Django Trezoa`_,
 `Carpentries Response Guide`_, and the `Write The Docs Response Guide`_.
 
 License
@@ -307,7 +307,7 @@ All content on this page is licensed under a `Creative Commons Attribution 3.0
 Unported License`_.
 
 
-.. _Django Project: https://www.djangoproject.com/conduct/
+.. _Django Trezoa: https://www.djangoproject.com/conduct/
 .. _Carpentries Response Guide: https://docs.carpentries.org/topic_folders/policies/enforcement-guidelines.html
 .. _Write The Docs Response Guide: https://www.writethedocs.org/code-of-conduct/#guidelines-for-reporting-incidents
 .. _Creative Commons Attribution 3.0 Unported License: http://creativecommons.org/licenses/by/3.0/

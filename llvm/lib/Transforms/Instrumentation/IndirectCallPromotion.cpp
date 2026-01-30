@@ -1,6 +1,6 @@
 //===- IndirectCallPromotion.cpp - Optimizations based on value profiling -===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -778,7 +778,7 @@ bool IndirectCallPromoter::tryToPromoteWithVTableCmp(
            "individual <target, count> pairs");
     // Use std::min since 'TotalFuncCount' is the saturated sum of individual
     // counts, see
-    // https://github.com/llvm/llvm-project/blob/abedb3b8356d5d56f1c575c4f7682fba2cb19787/llvm/lib/ProfileData/InstrProf.cpp#L1281-L1288
+    // https://github.com/llvm/llvm-trezoa/blob/abedb3b8356d5d56f1c575c4f7682fba2cb19787/llvm/lib/ProfileData/InstrProf.cpp#L1281-L1288
     TotalFuncCount -= std::min(TotalFuncCount, Candidate.Count);
     NumOfPGOICallPromotion++;
   }

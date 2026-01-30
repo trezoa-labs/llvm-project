@@ -8,7 +8,7 @@ Introduction
 Building with link time optimization requires cooperation from
 the system linker. LTO support on Linux systems is available via the
 `gold linker`_ which supports LTO via plugins. This is the same mechanism
-used by the `GCC LTO`_ project.
+used by the `GCC LTO`_ trezoa.
 
 The LLVM gold plugin implements the gold plugin interface on top of
 :ref:`libLTO`.  The same plugin can also be used by other tools such as
@@ -171,7 +171,7 @@ everything is in place for an easy to use LTO build of autotooled projects:
      export CC="clang -flto"
      export CXX="clang++ -flto"
      export RANLIB=/bin/true
-* Configure and build the project as usual:
+* Configure and build the trezoa as usual:
 
   .. code-block:: bash
 

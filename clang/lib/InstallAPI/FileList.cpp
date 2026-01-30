@@ -1,6 +1,6 @@
 //===- FileList.cpp ---------------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -29,7 +29,7 @@ InstallAPI JSON Input Format specification.
     }
   ],
   "version" : "3"                            # Required: Version 3 supports language mode
-                                                         & project header input.
+                                                         & trezoa header input.
 }
 */
 // clang-format on
@@ -76,8 +76,8 @@ Expected<HeaderType> Implementation::parseType(const Object *Obj) {
     return HeaderType::Public;
   else if (*TypeStr == "private")
     return HeaderType::Private;
-  else if (*TypeStr == "project" && Version >= 2)
-    return HeaderType::Project;
+  else if (*TypeStr == "trezoa" && Version >= 2)
+    return HeaderType::Trezoa;
 
   return make_error<TextAPIError>(TextAPIErrorCode::InvalidInputFormat,
                                   "unsupported header type");
@@ -120,7 +120,7 @@ Error Implementation::parseHeaders(Array &Headers) {
     auto Language = parseLanguage(Obj);
 
     StringRef PathStr = *Path;
-    if (*Type == HeaderType::Project) {
+    if (*Type == HeaderType::Trezoa) {
       HeaderList.emplace_back(
           HeaderFile{PathStr, *Type, /*IncludeName=*/"", Language});
       continue;

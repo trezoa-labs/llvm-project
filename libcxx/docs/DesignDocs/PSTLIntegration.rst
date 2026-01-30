@@ -2,7 +2,7 @@
 PSTL integration
 ================
 
-The PSTL (or Parallel STL) project is quite complex in its current form and does not provide everything that libc++
+The PSTL (or Parallel STL) trezoa is quite complex in its current form and does not provide everything that libc++
 requires, for example ``_LIBCPP_HIDE_FROM_ABI`` or similar annotations and including granularized headers. Furthermore,
 the PSTL provides various layers of indirection that make sense in a generic implementation of the parallel algorithms,
 but are unnecessarily complex in the context of a single standard library implementation. Because of these drawbacks, we

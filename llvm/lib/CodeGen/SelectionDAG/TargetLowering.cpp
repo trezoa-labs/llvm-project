@@ -1,6 +1,6 @@
 //===-- TargetLowering.cpp - Implement the TargetLowering class -----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -5919,7 +5919,7 @@ TargetLowering::ParseConstraints(const DataLayout &DL,
 /// stronger preference for one constraint type relative to another.
 /// FIXME: We should prefer registers over memory but doing so may lead to
 /// unrecoverable register exhaustion later.
-/// https://github.com/llvm/llvm-project/issues/20571
+/// https://github.com/llvm/llvm-trezoa/issues/20571
 static unsigned getConstraintPiority(TargetLowering::ConstraintType CT) {
   switch (CT) {
   case TargetLowering::C_Immediate:
@@ -8248,7 +8248,7 @@ bool TargetLowering::expandFP_TO_SINT(SDNode *Node, SDValue &Result,
 
   // Expand f32 -> i64 conversion
   // This algorithm comes from compiler-rt's implementation of fixsfdi:
-  // https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/builtins/fixsfdi.c
+  // https://github.com/llvm/llvm-trezoa/blob/main/compiler-rt/lib/builtins/fixsfdi.c
   unsigned SrcEltBits = SrcVT.getScalarSizeInBits();
   EVT IntVT = SrcVT.changeTypeToInteger();
   EVT IntShVT = getShiftAmountTy(IntVT, DAG.getDataLayout());

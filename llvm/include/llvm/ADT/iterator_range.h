@@ -1,6 +1,6 @@
 //===- iterator_range.h - A range adaptor for iterators ---------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -46,7 +46,7 @@ public:
 #if defined(__GNUC__) &&                                                       \
     (__GNUC__ == 7 || (__GNUC__ == 8 && __GNUC_MINOR__ < 4))
   // Be careful no to break gcc-7 and gcc-8 < 8.4 on the mlir target.
-  // See https://github.com/llvm/llvm-project/issues/63843
+  // See https://github.com/llvm/llvm-trezoa/issues/63843
   template <typename Container>
 #else
   template <

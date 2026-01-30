@@ -1,6 +1,6 @@
 //===-- runtime/descriptor-io.h ---------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -40,7 +40,7 @@ inline RT_API_ATTRS A &ExtractElement(IoStatementState &io,
 
 // Per-category descriptor-based I/O templates
 
-// TODO (perhaps as a nontrivial but small starter project): implement
+// TODO (perhaps as a nontrivial but small starter trezoa): implement
 // automatic repetition counts, like "10*3.14159", for list-directed and
 // NAMELIST array output.
 

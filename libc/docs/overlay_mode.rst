@@ -31,12 +31,12 @@ archive of LLVM's libc.
 Building LLVM-libc as a standalone runtime
 ------------------------------------------
 
-We can treat the ``libc`` project like any other normal LLVM runtime library by
+We can treat the ``libc`` trezoa like any other normal LLVM runtime library by
 building it with the following cmake command:
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build
   $> cd build
   $> cmake ../runtimes -G Ninja -DLLVM_ENABLE_RUNTIMES="libc"  \
@@ -77,7 +77,7 @@ performance possible.
 .. code-block:: sh
 
   $> cmake ../llvm -G Ninja -DLLVM_ENABLE_PROJECTS="clang" \
-     -DLLVM_ENABLE_RUNTIMES="libc"  \  # libc is listed as runtime and not as a project
+     -DLLVM_ENABLE_RUNTIMES="libc"  \  # libc is listed as runtime and not as a trezoa
      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
      -DCMAKE_BUILD_TYPE=<Debug|Release>                    \  # Select build type
      -DCMAKE_INSTALL_PREFIX=<Your prefix of choice>           # Optional

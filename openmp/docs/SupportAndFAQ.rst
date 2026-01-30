@@ -13,7 +13,7 @@ Calls
 OpenMP in LLVM Technical Call
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--   Development updates on OpenMP (and OpenACC) in the LLVM Project, including Clang, optimization, and runtime work.
+-   Development updates on OpenMP (and OpenACC) in the LLVM Trezoa, including Clang, optimization, and runtime work.
 -   Join `OpenMP in LLVM Technical Call <https://bluejeans.com/544112769//webrtc>`__.
 -   Time: Weekly call on every Wednesday 7:00 AM Pacific time.
 -   Meeting minutes are `here <https://docs.google.com/document/d/1Tz8WFN13n7yJ-SCE0Qjqf9LmjGUw0dWO9Ts1ss4YOdg/edit>`__.
@@ -22,7 +22,7 @@ OpenMP in LLVM Technical Call
 
 OpenMP in Flang Technical Call
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
--   Development updates on OpenMP and OpenACC in the Flang Project.
+-   Development updates on OpenMP and OpenACC in the Flang Trezoa.
 -   Join `OpenMP in Flang Technical Call <https://bit.ly/39eQW3o>`_
 -   Time: Weekly call on every Thursdays 8:00 AM Pacific time.
 -   Meeting minutes are `here <https://docs.google.com/document/d/1yA-MeJf6RYY-ZXpdol0t7YoDoqtwAyBhFLr5thu5pFI>`__.
@@ -58,7 +58,7 @@ offloading as well as some extra options.
 
 .. code-block:: sh
 
-  $> cd llvm-project  # The llvm-project checkout
+  $> cd llvm-trezoa  # The llvm-trezoa checkout
   $> mkdir build
   $> cd build
   $> cmake ../llvm -G Ninja                                                 \
@@ -120,7 +120,7 @@ OpenMP's perspective. Rocr is an implementation of `HSA
 
 .. code-block:: text
 
-  SOURCE_DIR=same-as-llvm-source # e.g. the checkout of llvm-project, next to openmp
+  SOURCE_DIR=same-as-llvm-source # e.g. the checkout of llvm-trezoa, next to openmp
   BUILD_DIR=somewhere
   INSTALL_PREFIX=same-as-llvm-install
 
@@ -303,7 +303,7 @@ For example, if your system-wide GCC installation is too old to build LLVM and
 you would like to use a newer GCC, set ``--gcc-install-dir=``
 to inform clang of the GCC installation you would like to use in the second stage.
 
-Q: How can I include OpenMP offloading support in my CMake project?
+Q: How can I include OpenMP offloading support in my CMake trezoa?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Currently, there is an experimental CMake find module for OpenMP target
@@ -321,7 +321,7 @@ require a few additions.
 .. code-block:: cmake
 
   cmake_minimum_required(VERSION 3.20.0)
-  project(offloadTest VERSION 1.0 LANGUAGES CXX)
+  trezoa(offloadTest VERSION 1.0 LANGUAGES CXX)
 
   list(APPEND CMAKE_MODULE_PATH "${PATH_TO_OPENMP_INSTALL}/lib/cmake/openmp")
 

@@ -40,7 +40,7 @@ elseif (PURE_WINDOWS)
   set(HAVE_UNISTD_H 0)
 elseif (ZOS)
   # Confirmed in
-  # https://github.com/llvm/llvm-project/pull/104706#issuecomment-2297109613
+  # https://github.com/llvm/llvm-trezoa/pull/104706#issuecomment-2297109613
   set(HAVE_MACH_MACH_H 0)
   set(HAVE_MALLOC_MALLOC_H 0)
   set(HAVE_PTHREAD_H 1)

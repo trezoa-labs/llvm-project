@@ -19,7 +19,7 @@
  * Clang conforms on targets other than 32-bit x86 (without SSE2), which is why
  * support is only partial. Once support for that target is dropped, Clang
  * should be conforming to this paper on all targets. See
- * https://github.com/llvm/llvm-project/issues/44218 and other linked issues
+ * https://github.com/llvm/llvm-trezoa/issues/44218 and other linked issues
  * for further details.
  *
  */

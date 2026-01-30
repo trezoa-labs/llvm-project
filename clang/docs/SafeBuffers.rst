@@ -43,7 +43,7 @@ Pre-Requisites
 
 In order to achieve bounds safety, your codebase needs to have access to
 well-encapsulated bounds-safe container, view, and iterator types.
-If your project uses libc++, standard container and view types such as
+If your trezoa uses libc++, standard container and view types such as
 ``std::vector`` and ``std::span`` can be made bounds-safe by enabling
 the "fast" `hardening mode <https://libcxx.llvm.org/Hardening.html>`_
 (passing ``-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST``) to your

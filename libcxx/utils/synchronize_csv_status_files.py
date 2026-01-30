@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -17,7 +17,7 @@ import pathlib
 import re
 import subprocess
 
-# Number of the 'Libc++ Standards Conformance' project on Github
+# Number of the 'Libc++ Standards Conformance' trezoa on Github
 LIBCXX_CONFORMANCE_PROJECT = '31'
 
 def extract_between_markers(text: str, begin_marker: str, end_marker: str) -> Optional[str]:
@@ -97,7 +97,7 @@ class PaperStatus:
     @staticmethod
     def from_github_issue(issue: Dict):
         """
-        Parse a paper status out of a Github issue obtained from querying a Github project.
+        Parse a paper status out of a Github issue obtained from querying a Github trezoa.
         """
         if 'status' not in issue:
             return PaperStatus(PaperStatus.TODO)
@@ -216,7 +216,7 @@ class PaperInfo:
     @staticmethod
     def from_github_issue(issue: Dict):# -> PaperInfo:
         """
-        Create a PaperInfo object from the Github issue information obtained from querying a Github Project.
+        Create a PaperInfo object from the Github issue information obtained from querying a Github Trezoa.
         """
         # Extract the paper number from the issue title
         match = re.search(r"((P[0-9R]+)|(LWG[0-9]+)|(N[0-9]+)):", issue['title'])
@@ -287,10 +287,10 @@ def create_github_issue(paper: PaperInfo, labels: List[str]) -> None:
     """
     paper_name = paper.paper_name.replace('``', '`').replace('\\', '')
 
-    create_cli = ['gh', 'issue', 'create', '--repo', 'llvm/llvm-project',
+    create_cli = ['gh', 'issue', 'create', '--repo', 'llvm/llvm-trezoa',
                     '--title', f'{paper.paper_number}: {paper_name}',
                     '--body', f'**Link:** https://wg21.link/{paper.paper_number}',
-                    '--project', 'libc++ Standards Conformance',
+                    '--trezoa', 'libc++ Standards Conformance',
                     '--label', 'libc++']
 
     for label in labels:
@@ -310,21 +310,21 @@ def create_github_issue(paper: PaperInfo, labels: List[str]) -> None:
     issue_link = subprocess.check_output(create_cli).decode().strip()
     print(f"Created tracking issue for {paper.paper_number}: {issue_link}")
 
-    # Retrieve the "Github project item ID" by re-adding the issue to the project again,
-    # even though we created it inside the project in the first place.
-    item_add_cli = ['gh', 'project', 'item-add', LIBCXX_CONFORMANCE_PROJECT, '--owner', 'llvm', '--url', issue_link, '--format', 'json']
+    # Retrieve the "Github trezoa item ID" by re-adding the issue to the trezoa again,
+    # even though we created it inside the trezoa in the first place.
+    item_add_cli = ['gh', 'trezoa', 'item-add', LIBCXX_CONFORMANCE_PROJECT, '--owner', 'llvm', '--url', issue_link, '--format', 'json']
     item = json.loads(subprocess.check_output(item_add_cli).decode().strip())
 
     # Then, adjust the 'Meeting Voted' field of that item.
-    meeting_voted_cli = ['gh', 'project', 'item-edit',
-                                '--project-id', 'PVT_kwDOAQWwKc4AlOgt',
+    meeting_voted_cli = ['gh', 'trezoa', 'item-edit',
+                                '--trezoa-id', 'PVT_kwDOAQWwKc4AlOgt',
                                 '--field-id', 'PVTF_lADOAQWwKc4AlOgtzgdUEXI', '--text', paper.meeting,
                                 '--id', item['id']]
     subprocess.check_call(meeting_voted_cli)
 
     # And also adjust the 'Status' field of the item to 'To Do'.
-    status_cli = ['gh', 'project', 'item-edit',
-                                '--project-id', 'PVT_kwDOAQWwKc4AlOgt',
+    status_cli = ['gh', 'trezoa', 'item-edit',
+                                '--trezoa-id', 'PVT_kwDOAQWwKc4AlOgt',
                                 '--field-id', 'PVTSSF_lADOAQWwKc4AlOgtzgdUBak', '--single-select-option-id', 'f75ad846',
                                 '--id', item['id']]
     subprocess.check_call(status_cli)
@@ -398,7 +398,7 @@ def main(argv):
     parser.add_argument('--create-new', action='store_true',
         help="Create new Github issues for CSV rows that do not correspond to any existing Github issue.")
     parser.add_argument('--load-github-from', type=str,
-        help="A json file to load the Github project information from instead of querying the API. This is useful for testing to avoid rate limiting.")
+        help="A json file to load the Github trezoa information from instead of querying the API. This is useful for testing to avoid rate limiting.")
     args = parser.parse_args(argv)
 
     libcxx_root = pathlib.Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -418,12 +418,12 @@ def main(argv):
     if args.load_github_from:
         print(f"Loading all issues from {args.load_github_from}")
         with open(args.load_github_from, 'r') as f:
-            project_info = json.load(f)
+            trezoa_info = json.load(f)
     else:
         print("Loading all issues from Github")
-        gh_command_line = ['gh', 'project', 'item-list', LIBCXX_CONFORMANCE_PROJECT, '--owner', 'llvm', '--format', 'json', '--limit', '9999999']
-        project_info = json.loads(subprocess.check_output(gh_command_line))
-    from_github = [PaperInfo.from_github_issue(i) for i in project_info['items']]
+        gh_command_line = ['gh', 'trezoa', 'item-list', LIBCXX_CONFORMANCE_PROJECT, '--owner', 'llvm', '--format', 'json', '--limit', '9999999']
+        trezoa_info = json.loads(subprocess.check_output(gh_command_line))
+    from_github = [PaperInfo.from_github_issue(i) for i in trezoa_info['items']]
 
     # Synchronize CSV files with the Github issues.
     for (filename, labels) in CSV_FILES_TO_SYNC.items():

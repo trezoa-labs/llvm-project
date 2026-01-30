@@ -21,7 +21,7 @@ jobs:
   check_spirv:
     if: github.repository_owner == 'llvm'
     name: Test SPIR-V
-    uses: ./.github/workflows/llvm-project-tests.yml
+    uses: ./.github/workflows/llvm-trezoa-tests.yml
     with:
       build_target: check-llvm-codegen-spirv
       projects:

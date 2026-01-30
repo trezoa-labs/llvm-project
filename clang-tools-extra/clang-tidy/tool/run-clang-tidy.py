@@ -2,7 +2,7 @@
 #
 # ===- run-clang-tidy.py - Parallel clang-tidy runner --------*- python -*--===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -19,7 +19,7 @@ and clang-apply-replacements in $PATH.
 
 Example invocations.
 - Run clang-tidy on all files in the current working directory with a default
-  set of checks and show warnings in the cpp files and all project headers.
+  set of checks and show warnings in the cpp files and all trezoa headers.
     run-clang-tidy.py $PWD
 
 - Fix all header guards.

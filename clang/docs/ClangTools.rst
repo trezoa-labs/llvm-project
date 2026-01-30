@@ -11,10 +11,10 @@ refactoring, etc.
 Only a couple of the most basic and fundamental tools are kept in the
 primary Clang tree. The rest of the tools are kept in a separate
 directory tree, `clang-tools-extra
-<https://github.com/llvm/llvm-project/tree/main/clang-tools-extra>`_.
+<https://github.com/llvm/llvm-trezoa/tree/main/clang-tools-extra>`_.
 
 This document describes a high-level overview of the organization of
-Clang Tools within the project as well as giving an introduction to some
+Clang Tools within the trezoa as well as giving an introduction to some
 of the more important tools. However, it should be noted that this
 document is currently focused on Clang and Clang Tool developers, not on
 end users of these tools.
@@ -47,7 +47,7 @@ into the core Clang library set.
 
 Regardless of which repository Clang Tools' code resides in, the
 development process and practices for all Clang Tools are exactly those
-of Clang itself. They are entirely within the Clang *project*,
+of Clang itself. They are entirely within the Clang *trezoa*,
 regardless of the version control scheme.
 
 Core Clang Tools

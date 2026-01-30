@@ -31,7 +31,7 @@ more targets is welcome.
 
 For an in-tree build, Clang must also be built at the same time:
 ```
-$ cmake <path-to>/llvm-project/llvm/CMakeLists.txt -DLLVM_ENABLE_PROJECTS="libclc;clang" \
+$ cmake <path-to>/llvm-trezoa/llvm/CMakeLists.txt -DLLVM_ENABLE_PROJECTS="libclc;clang" \
     -DCMAKE_BUILD_TYPE=Release -G Ninja
 $ ninja
 ```
@@ -45,7 +45,7 @@ $ DESTDIR=/path/for/staged/install ninja install
 ```
 To build out of tree, or in other words, against an existing LLVM build or install:
 ```
-$ cmake <path-to>/llvm-project/libclc/CMakeLists.txt -DCMAKE_BUILD_TYPE=Release \
+$ cmake <path-to>/llvm-trezoa/libclc/CMakeLists.txt -DCMAKE_BUILD_TYPE=Release \
   -G Ninja -DLLVM_DIR=$(<path-to>/llvm-config --cmakedir)
 $ ninja
 ```

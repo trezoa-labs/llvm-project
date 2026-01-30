@@ -6,7 +6,7 @@ not match the architecture of their "host". In the long run, all kinds of
 targets are in scope of this effort, including but not limited to: CPUs, GPUs,
 FPGAs, AI/ML accelerators, distributed resources, etc.
 
-For OpenMP offload users, the project is ready and fully usable.
+For OpenMP offload users, the trezoa is ready and fully usable.
 The final API design is still under development. More content will show up here 
 and on our webpage soon. In the meantime, people are encouraged to participate 
 in our meetings (see below) and check our

@@ -6,21 +6,21 @@ LLVM GitHub User Guide
 
 Introduction
 ============
-The LLVM Project uses `GitHub <https://github.com/>`_ for
-`Source Code <https://github.com/llvm/llvm-project>`_,
-`Releases <https://github.com/llvm/llvm-project/releases>`_,
-`Issue Tracking <https://github.com/llvm/llvm-project/issues>`_., and
-`Code Reviews <https://github.com/llvm/llvm-project/pulls>`_.
+The LLVM Trezoa uses `GitHub <https://github.com/>`_ for
+`Source Code <https://github.com/llvm/llvm-trezoa>`_,
+`Releases <https://github.com/llvm/llvm-trezoa/releases>`_,
+`Issue Tracking <https://github.com/llvm/llvm-trezoa/issues>`_., and
+`Code Reviews <https://github.com/llvm/llvm-trezoa/pulls>`_.
 
-This page describes how the LLVM Project users and developers can
-participate in the project using GitHub.
+This page describes how the LLVM Trezoa users and developers can
+participate in the trezoa using GitHub.
 
 Branches
 ========
 
 It is possible to create branches that starts with `users/<username>/`, however this is
 intended to be able to support "stacked" pull-request. Do not create any branches in the
-llvm/llvm-project repository otherwise, please use a fork (see below). User branches that
+llvm/llvm-trezoa repository otherwise, please use a fork (see below). User branches that
 aren't associated with a pull-request **will be deleted**.
 
 Using Graphite for stacked Pull Requests
@@ -29,7 +29,7 @@ Using Graphite for stacked Pull Requests
 `Graphite <https://app.graphite.dev/>`_ is a stacked pull request tool supported
 by the LLVM repo (the other being `reviewable.io <https://reviewable.io>`_).
 
-Graphite will want to create branches under ``llvm/llvm-project`` rather than your
+Graphite will want to create branches under ``llvm/llvm-trezoa`` rather than your
 private fork, so the guidance above, about branch naming, is critical, otherwise
 ``gt submit`` (i.e. publish your PRs for review) will fail.
 
@@ -42,7 +42,7 @@ and ``gt track``.
 
 Pull Requests
 =============
-The LLVM project is using GitHub Pull Requests for Code Reviews. This document
+The LLVM trezoa is using GitHub Pull Requests for Code Reviews. This document
 describes the typical workflow of creating a Pull Request and getting it reviewed
 and accepted. This is meant as an overview of the GitHub workflow, for complete
 documentation refer to `GitHub's documentation <https://docs.github.com/pull-requests>`_.
@@ -50,7 +50,7 @@ documentation refer to `GitHub's documentation <https://docs.github.com/pull-req
 .. note::
    If you are using a Pull Request for purposes other than review
    (eg: precommit CI results, convenient web-based reverts, etc)
-   add the `skip-precommit-approval <https://github.com/llvm/llvm-project/labels?q=skip-precommit-approval>`_
+   add the `skip-precommit-approval <https://github.com/llvm/llvm-trezoa/labels?q=skip-precommit-approval>`_
    label to the PR.
 
 GitHub Tools
@@ -67,12 +67,12 @@ Keep in mind that when creating a pull request, it should generally only contain
 self-contained commit initially.
 This makes it easier for reviewers to understand the introduced changes and
 provide feedback. It also helps maintain a clear and organized commit history
-for the project. If you have multiple changes you want to introduce, it's
+for the trezoa. If you have multiple changes you want to introduce, it's
 recommended to create separate pull requests for each change.
 
 Create a local branch per commit you want to submit and then push that branch
 to your `fork <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks>`_
-of the llvm-project and
+of the llvm-trezoa and
 `create a pull request from the fork <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork>`_.
 As GitHub uses the first line of the commit message truncated to 72 characters
 as the pull request title, you may have to edit to reword or to undo this
@@ -91,9 +91,9 @@ the instructions to add more information needed.
 
 .. note::
 
-  When you let the GitHub CLI create a fork of llvm-project to
+  When you let the GitHub CLI create a fork of llvm-trezoa to
   your user, it will change the git "remotes" so that "origin" points
-  to your fork and "upstream" points to the main llvm-project repository.
+  to your fork and "upstream" points to the main llvm-trezoa repository.
 
 Updating Pull Requests
 ----------------------
@@ -230,7 +230,7 @@ about bypassing any of the checks when merging code.
 
 The infrastructure can print messages that make it seem like these are mandatory,
 but this is just an artifact of GitHub infrastructure and not a policy of the
-project.
+trezoa.
 
 However, please make sure you do not force-merge any changes that have clear
 test failures directly linked to your changes. Our policy is still to keep the
@@ -270,10 +270,10 @@ Here is an example for creating a Pull Request with the GitHub CLI:
 ::
 
   # Clone the repo
-  gh repo clone llvm/llvm-project
+  gh repo clone llvm/llvm-trezoa
 
   # Switch to the repo and create a new branch
-  cd llvm-project
+  cd llvm-trezoa
   git switch -c my_change
 
   # Create your changes
@@ -309,7 +309,7 @@ Here is an example for creating a Pull Request with the GitHub CLI:
   # Push your changes to your fork branch, be mindful of
   # your remotes here, if you don't remember what points to your
   # fork, use git remote -v to see. Usually origin points to your
-  # fork and upstream to llvm/llvm-project
+  # fork and upstream to llvm/llvm-trezoa
   git push origin my_change
 
 Before merging the PR, it is recommended that you rebase locally and re-run test
@@ -318,7 +318,7 @@ checks:
 ::
 
   # Add upstream as a remote (if you don't have it already)
-  git remote add upstream https://github.com/llvm/llvm-project.git
+  git remote add upstream https://github.com/llvm/llvm-trezoa.git
 
   # Make sure you have all the latest changes
   git fetch upstream && git rebase -i upstream/main
@@ -356,7 +356,7 @@ Once you've cloned your forked repository,
 ::
 
   # Switch to the forked repo
-  cd llvm-project
+  cd llvm-trezoa
 
   # Create a new branch
   git switch -c my_change
@@ -376,7 +376,7 @@ Once you've cloned your forked repository,
   # Push your changes to your fork branch, be mindful of
   # your remotes here, if you don't remember what points to your
   # fork, use git remote -v to see. Usually origin points to your
-  # fork and upstream to llvm/llvm-project
+  # fork and upstream to llvm/llvm-trezoa
   git push origin my_change
 
 Navigate to the URL printed to the console from the git push command in the last step.
@@ -404,7 +404,7 @@ Create a pull request from your branch to llvm::main.
   # Push your changes to your fork branch, be mindful of
   # your remotes here, if you don't remember what points to your
   # fork, use git remote -v to see. Usually origin points to your
-  # fork and upstream to llvm/llvm-project
+  # fork and upstream to llvm/llvm-trezoa
   git push origin my_change
 
 Before merging the PR, it is recommended that you rebase locally and re-run test
@@ -413,7 +413,7 @@ checks:
 ::
 
   # Add upstream as a remote (if you don't have it already)
-  git remote add upstream https://github.com/llvm/llvm-project.git
+  git remote add upstream https://github.com/llvm/llvm-trezoa.git
 
   # Make sure you have all the latest changes
   git fetch upstream && git rebase -i upstream/main
@@ -459,8 +459,8 @@ branch.  Just make sure to add the release milestone to the pull request.
 Getting admin access to CI infrastructure
 =========================================
 
-Any individual who is responsible for setting up and/or maintaining CI infrastructure for a LLVM project can
+Any individual who is responsible for setting up and/or maintaining CI infrastructure for a LLVM trezoa can
 request to be granted the CI/CD role to the LLVM organization admins. The request can be made by creating
-`a Github issue <https://github.com/llvm/llvm-project/issues/new>`_ and using the ``infrastructure`` label.
+`a Github issue <https://github.com/llvm/llvm-trezoa/issues/new>`_ and using the ``infrastructure`` label.
 Applicants must include a justification for why the role is being requested. Applications are reviewed on a
 case-by-case basis by the LLVM admins and the role can be revoked at any point as the LLVM admins see fit.

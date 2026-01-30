@@ -127,7 +127,7 @@ sections:
               BackendMinor:    0
               BackendBuild:    0
               BackendQFE:      0
-              Version:         'clang version 11.0.0 (https://github.com/llvm/llvm-project.git f5b1301ce8575f6d82e87031a1a5485c33637a93)'
+              Version:         'clang version 11.0.0 (https://github.com/llvm/llvm-trezoa.git f5b1301ce8575f6d82e87031a1a5485c33637a93)'
       - !FrameData
         Frames:
           - CodeSize:        10
@@ -181,7 +181,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'F:\llvm-project\__test\a.cpp'
+          - FileName:        'F:\llvm-trezoa\__test\a.cpp'
             Lines:
               - Offset:          0
                 LineStart:       13
@@ -293,7 +293,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'F:\llvm-project\__test\a.cpp'
+          - FileName:        'F:\llvm-trezoa\__test\a.cpp'
             Lines:
               - Offset:          0
                 LineStart:       35
@@ -385,7 +385,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'F:\llvm-project\__test\a.cpp'
+          - FileName:        'F:\llvm-trezoa\__test\a.cpp'
             Lines:
               - Offset:          0
                 LineStart:       10
@@ -431,12 +431,12 @@ sections:
               UDTName:         HelloPoint
       - !FileChecksums
         Checksums:
-          - FileName:        'F:\llvm-project\__test\a.cpp'
+          - FileName:        'F:\llvm-trezoa\__test\a.cpp'
             Kind:            MD5
             Checksum:        7753D4B71F317402F33D3EEEBECB620E
       - !StringTable
         Strings:
-          - 'F:\llvm-project\__test\a.cpp'
+          - 'F:\llvm-trezoa\__test\a.cpp'
           - '$T0 .raSearch = $eip $T0 ^ = $esp $T0 4 + = '
           - '$T0 .raSearch = $eip $T0 ^ = $esp $T0 4 + = $ebp $T0 4 - ^ = '
           - '$T0 $ebp 4 + = $eip $T0 ^ = $esp $T0 4 + = $ebp $T0 4 - ^ = '
@@ -629,7 +629,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'F:\llvm-project\__test\a.cpp'
+          String:          'F:\llvm-trezoa\__test\a.cpp'
       - Kind:            LF_UDT_SRC_LINE
         UdtSourceLine:
           UDT:             4105
@@ -674,7 +674,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'F:\llvm-project\__test'
+          String:          'F:\llvm-trezoa\__test'
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
@@ -757,7 +757,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'F:\llvm-project\__test\a.cpp'
+          - FileName:        'F:\llvm-trezoa\__test\a.cpp'
             Lines:
               - Offset:          0
                 LineStart:       3

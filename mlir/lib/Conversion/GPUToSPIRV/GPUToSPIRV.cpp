@@ -1,6 +1,6 @@
 //===- GPUToSPIRV.cpp - GPU to SPIR-V Patterns ----------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -502,7 +502,7 @@ static std::optional<Value> createGroupReduceOp(OpBuilder &builder,
     return std::nullopt;
   }
 
-  // TODO(https://github.com/llvm/llvm-project/issues/73459): The SPIR-V spec
+  // TODO(https://github.com/llvm/llvm-trezoa/issues/73459): The SPIR-V spec
   // does not specify how -0.0 / +0.0 and NaN values are handled in *FMin/*FMax
   // reduction ops. We should account possible precision requirements in this
   // conversion.

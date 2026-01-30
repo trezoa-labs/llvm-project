@@ -24,7 +24,7 @@ if (SPHINX_FOUND)
     )
 
     # Change sphinx to build from $build_dir/libc/docs/ rather than
-    # llvm-project/libc/docs/.
+    # llvm-trezoa/libc/docs/.
     add_sphinx_target(html libc SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}")
     # Depend on the copy target.
     add_dependencies(docs-libc-html copy-libc-rst-docs)
@@ -46,7 +46,7 @@ if (SPHINX_FOUND)
       locale
       net/if
       netinet/in
-      # TODO: https://github.com/llvm/llvm-project/issues/123821
+      # TODO: https://github.com/llvm/llvm-trezoa/issues/123821
       # pthread
       setjmp
       signal

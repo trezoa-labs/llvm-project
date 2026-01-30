@@ -9,11 +9,11 @@ Introduction
 ============
 
 This tutorial will guide you through the process of making a change to
-LLVM, and contributing it back to the LLVM project.
+LLVM, and contributing it back to the LLVM trezoa.
 
 .. note::
    The code changes presented here are only an example and not something you
-   should actually submit to the LLVM project. For your first real change to LLVM,
+   should actually submit to the LLVM trezoa. For your first real change to LLVM,
    the code will be different but the rest of the guide will still apply.
 
 We'll be making a change to Clang, but the steps for other parts of LLVM are the same.
@@ -84,16 +84,16 @@ Checkout
 --------
 
 The source code is stored `on
-Github <https://github.com/llvm/llvm-project>`__ in one large repository
+Github <https://github.com/llvm/llvm-trezoa>`__ in one large repository
 ("the monorepo").
 
 It may take a while to download!
 
 .. code:: console
 
-   $ git clone https://github.com/llvm/llvm-project.git
+   $ git clone https://github.com/llvm/llvm-trezoa.git
 
-This will create a directory "llvm-project" with all of the source
+This will create a directory "llvm-trezoa" with all of the source
 code. (Checking out anonymously is OK - pushing commits uses a different
 mechanism, as we'll see later.)
 
@@ -107,14 +107,14 @@ by running CMake. CMake combines information from three sources:
 
 -  settings detected from your system (where are libraries installed?)
 
--  project structure (which files are part of 'clang'?)
+-  trezoa structure (which files are part of 'clang'?)
 
-First, create a directory to build in. Usually, this is ``llvm-project/build``.
+First, create a directory to build in. Usually, this is ``llvm-trezoa/build``.
 
 .. code:: console
 
-   $ mkdir llvm-project/build
-   $ cd llvm-project/build
+   $ mkdir llvm-trezoa/build
+   $ cd llvm-trezoa/build
 
 Now, run CMake:
 
@@ -129,7 +129,7 @@ finally:
 
    Configuring done
    Generating done
-   Build files have been written to: /path/llvm-project/build
+   Build files have been written to: /path/llvm-trezoa/build
 
 And you should see a ``build.ninja`` file in the current directory.
 
@@ -139,10 +139,10 @@ Let's break down that last command a little:
    the ``build.ninja`` file.
 
 -  **../llvm**: this is the path to the source of the "main" LLVM
-   project
+   trezoa
 
 -  The two **-D** flags set CMake variables, which override
-   CMake/project defaults:
+   CMake/trezoa defaults:
 
     -  **CMAKE_BUILD_TYPE=Release**: build in optimized mode, which is
        (surprisingly) the fastest option.
@@ -159,8 +159,8 @@ Let's break down that last command a little:
        projects can be listed, separated by semicolons, such as ``clang;lldb``.
        In this example, we'll be making a change to Clang, so we only add clang.
 
-Finally, create a symlink (or copy) of ``llvm-project/build/compile-commands.json``
-into ``llvm-project/``:
+Finally, create a symlink (or copy) of ``llvm-trezoa/build/compile-commands.json``
+into ``llvm-trezoa/``:
 
 .. code:: console
 
@@ -322,7 +322,7 @@ for those areas of the repository.
 
    $ git log --oneline ../clang/
 
-Or using GitHub, for example https://github.com/llvm/llvm-project/commits/main/clang.
+Or using GitHub, for example https://github.com/llvm/llvm-trezoa/commits/main/clang.
 
 Tagging is imprecise, so don't worry if you are not sure what to put. Reviewers
 will suggest some if they think they are needed.
@@ -374,7 +374,7 @@ Updating your change
 ~~~~~~~~~~~~~~~~~~~~
 
 If you make changes in response to a reviewer's comments, simply update
-your branch with more commits and push to your GitHub fork of ``llvm-project``.
+your branch with more commits and push to your GitHub fork of ``llvm-trezoa``.
 It is best if you answer comments from the reviewer directly instead of expecting
 them to read through all the changes again.
 
@@ -388,7 +388,7 @@ In order to make LLVM a long-term sustainable effort, code needs to be
 maintainable and well tested. Code reviews help to achieve that goal.
 Especially for new contributors, that often means many rounds of reviews
 and push-back on design decisions that do not fit well within the
-overall architecture of the project.
+overall architecture of the trezoa.
 
 For your first patches, this means:
 
@@ -397,7 +397,7 @@ For your first patches, this means:
    that everyone should be following;
 
 -  be patient - understanding how a new feature fits into the
-   architecture of the project is often a time consuming effort, and
+   architecture of the trezoa is often a time consuming effort, and
    people have to juggle this with other responsibilities in their
    lives; **ping the review once a week** when there is no response;
 
@@ -511,10 +511,10 @@ Conclusion
 ==========
 
 Now you should have an understanding of the life cycle of a contribution to the
-LLVM Project.
+LLVM Trezoa.
 
-If some details are still unclear, do not worry. The LLVM Project's process does
-differ from what you may be used to elsewhere on GitHub. Within the project
+If some details are still unclear, do not worry. The LLVM Trezoa's process does
+differ from what you may be used to elsewhere on GitHub. Within the trezoa
 the expectations of different sub-projects may vary too.
 
 So whatever you are contributing to, know that we are not expecting perfection.

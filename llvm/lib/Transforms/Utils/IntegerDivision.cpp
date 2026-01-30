@@ -1,6 +1,6 @@
 //===-- IntegerDivision.cpp - Expand integer division ---------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -140,7 +140,7 @@ static Value *generateSignedDivisionCode(Value *Dividend, Value *Divisor,
 /// point where the caller wants code generated, e.g. at the udiv instruction.
 static Value *generateUnsignedDivisionCode(Value *Dividend, Value *Divisor,
                                            IRBuilder<> &Builder) {
-  // The basic algorithm can be found in the compiler-rt project's
+  // The basic algorithm can be found in the compiler-rt trezoa's
   // implementation of __udivsi3.c. Here, we do a lower-level IR based approach
   // that's been hand-tuned to lessen the amount of control flow involved.
 

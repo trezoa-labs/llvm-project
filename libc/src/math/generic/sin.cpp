@@ -1,6 +1,6 @@
 //===-- Double-precision sin function -------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -164,7 +164,7 @@ LLVM_LIBC_FUNCTION(double, sin, (double x)) {
                                  fputil::quick_mul(cos_k_f128, sin_u));
 
   // TODO: Add assertion if Ziv's accuracy tests fail in debug mode.
-  // https://github.com/llvm/llvm-project/issues/96452.
+  // https://github.com/llvm/llvm-trezoa/issues/96452.
 
   return static_cast<double>(r);
 #endif // !LIBC_MATH_HAS_SKIP_ACCURATE_PASS

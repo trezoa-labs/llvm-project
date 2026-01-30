@@ -1,6 +1,6 @@
 //===- tools/dsymutil/DwarfLinkerForBinary.cpp ----------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -727,7 +727,7 @@ bool DwarfLinkerForBinary::linkImpl(
           // object file is inside a static library, we assume that the
           // static library was built on a different machine. We don't want
           // to discourage module debugging for convenience libraries within
-          // a project though.
+          // a trezoa though.
           if (!ArchiveHintDisplayed) {
             WithColor::note()
                 << "Linking a static library that was built with "

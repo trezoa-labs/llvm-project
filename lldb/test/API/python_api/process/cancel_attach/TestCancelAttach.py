@@ -17,7 +17,7 @@ class AttachCancelTestCase(TestBase):
     @skipIf(
         remote=True,
         hostoslist=["windows"],
-        bugnumber="https://github.com/llvm/llvm-project/issues/115618",
+        bugnumber="https://github.com/llvm/llvm-trezoa/issues/115618",
     )
     def test_scripted_implementation(self):
         """Test that cancelling a stuck "attach waitfor" works."""

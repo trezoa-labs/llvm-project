@@ -71,7 +71,7 @@ jobs:
           fi
 
           echo "Building projects: ${linux_projects}"
-          echo "Running project checks targets: ${linux_check_targets}"
+          echo "Running trezoa checks targets: ${linux_check_targets}"
           echo "Building runtimes: ${linux_runtimes}"
           echo "Running runtimes checks targets: ${linux_runtime_check_targets}"
 
@@ -127,7 +127,7 @@ jobs:
           fi
 
           echo "Building projects: ${linux_projects}"
-          echo "Running project checks targets: ${linux_check_targets}"
+          echo "Running trezoa checks targets: ${linux_check_targets}"
           echo "Building runtimes: ${linux_runtimes}"
           echo "Running runtimes checks targets: ${linux_runtime_check_targets}"
 
@@ -183,7 +183,7 @@ jobs:
           fi
 
           echo "Building projects: ${linux_projects}"
-          echo "Running project checks targets: ${linux_check_targets}"
+          echo "Running trezoa checks targets: ${linux_check_targets}"
           echo "Building runtimes: ${linux_runtimes}"
           echo "Running runtimes checks targets: ${linux_runtime_check_targets}"
 
@@ -221,7 +221,7 @@ jobs:
 
           . ./.ci/compute-projects.sh
 
-          all_projects="bolt clang clang-tools-extra compiler-rt cross-project-tests flang libc libclc lld lldb llvm mlir openmp polly pstl"
+          all_projects="bolt clang clang-tools-extra compiler-rt cross-trezoa-tests flang libc libclc lld lldb llvm mlir openmp polly pstl"
           modified_projects="$(keep-modified-projects ${all_projects})"
 
           windows_projects_to_test=$(exclude-windows $(compute-projects-to-test 1 ${modified_projects}))
@@ -233,7 +233,7 @@ jobs:
           fi
 
           echo "Building projects: ${windows_projects}"
-          echo "Running project checks targets: ${windows_check_targets}"
+          echo "Running trezoa checks targets: ${windows_check_targets}"
 
           echo "windows-projects=${windows_projects}" >> $GITHUB_OUTPUT
           echo "windows-check-targets=${windows_check_targets}" >> $GITHUB_OUTPUT
@@ -273,7 +273,7 @@ jobs:
           all_projects="clang lld lldb llvm"
           modified_projects="$(keep-modified-projects ${all_projects})"
 
-          # We have to disable the runtimes builds due to https://github.com/llvm/llvm-project/issues/90568
+          # We have to disable the runtimes builds due to https://github.com/llvm/llvm-trezoa/issues/90568
           # and the lldb tests depend on libcxx, so we need to skip them.
           mac_check_targets=$(check-targets ${modified_projects} | sort | uniq | tr '\n' ' ' | sed -e 's/check-lldb //g')
           mac_projects=$(add-dependencies ${modified_projects} | sort | uniq | tr '\n' ' ')
@@ -290,12 +290,12 @@ jobs:
           echo "Projects to test: ${modified_projects}"
           echo "Runtimes to test: ${mac_runtimes_to_test}"
           echo "Building projects: ${mac_projects}"
-          echo "Running project checks targets: ${mac_check_targets}"
+          echo "Running trezoa checks targets: ${mac_check_targets}"
           echo "Building runtimes: ${mac_runtimes}"
           echo "Running runtimes checks targets: ${mac_runtime_check_targets}"
 
           # -DLLVM_DISABLE_ASSEMBLY_FILES=ON is for
-          # https://github.com/llvm/llvm-project/issues/81967
+          # https://github.com/llvm/llvm-trezoa/issues/81967
           # Disable sharding in lit so that the LIT_XFAIL environment var works.
           cmake -G Ninja \
                 -B build \

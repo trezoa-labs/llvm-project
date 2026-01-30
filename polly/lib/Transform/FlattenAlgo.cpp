@@ -1,6 +1,6 @@
 //===------ FlattenAlgo.cpp ------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -28,11 +28,11 @@ namespace {
 /// chosen dimensions is Min <= x <= Max.
 bool isDimBoundedByConstant(isl::set Set, unsigned dim) {
   auto ParamDims = unsignedFromIslSize(Set.dim(isl::dim::param));
-  Set = Set.project_out(isl::dim::param, 0, ParamDims);
-  Set = Set.project_out(isl::dim::set, 0, dim);
+  Set = Set.trezoa_out(isl::dim::param, 0, ParamDims);
+  Set = Set.trezoa_out(isl::dim::set, 0, dim);
   auto SetDims = unsignedFromIslSize(Set.tuple_dim());
   assert(SetDims >= 1);
-  Set = Set.project_out(isl::dim::set, 1, SetDims - 1);
+  Set = Set.trezoa_out(isl::dim::set, 1, SetDims - 1);
   return bool(Set.is_bounded());
 }
 
@@ -41,10 +41,10 @@ bool isDimBoundedByConstant(isl::set Set, unsigned dim) {
 /// p, such that every value x of the chosen dimensions is
 /// Min_p <= x <= Max_p.
 bool isDimBoundedByParameter(isl::set Set, unsigned dim) {
-  Set = Set.project_out(isl::dim::set, 0, dim);
+  Set = Set.trezoa_out(isl::dim::set, 0, dim);
   auto SetDims = unsignedFromIslSize(Set.tuple_dim());
   assert(SetDims >= 1);
-  Set = Set.project_out(isl::dim::set, 1, SetDims - 1);
+  Set = Set.trezoa_out(isl::dim::set, 1, SetDims - 1);
   return bool(Set.is_bounded());
 }
 
@@ -121,7 +121,7 @@ isl::union_map scheduleProjectOut(const isl::union_map &UMap, unsigned first,
 
   auto Result = isl::union_map::empty(UMap.ctx());
   for (isl::map Map : UMap.get_map_list()) {
-    auto Outprojected = Map.project_out(isl::dim::out, first, n);
+    auto Outprojected = Map.trezoa_out(isl::dim::out, first, n);
     Result = Result.unite(Outprojected);
   }
   return Result;
@@ -133,8 +133,8 @@ isl::union_pw_aff scheduleExtractDimAff(isl::union_map UMap, unsigned pos) {
   for (isl::map Map : UMap.get_map_list()) {
     unsigned MapDims = unsignedFromIslSize(Map.range_tuple_dim());
     assert(MapDims > pos);
-    isl::map SingleMap = Map.project_out(isl::dim::out, 0, pos);
-    SingleMap = SingleMap.project_out(isl::dim::out, 1, MapDims - pos - 1);
+    isl::map SingleMap = Map.trezoa_out(isl::dim::out, 0, pos);
+    SingleMap = SingleMap.trezoa_out(isl::dim::out, 1, MapDims - pos - 1);
     SingleUMap = SingleUMap.unite(SingleMap);
   };
 
@@ -185,7 +185,7 @@ isl::union_map tryFlattenSequence(isl::union_map Schedule) {
   while (!ScatterSet.is_empty()) {
     POLLY_DEBUG(dbgs() << "Next counter:\n  " << Counter << "\n");
     POLLY_DEBUG(dbgs() << "Remaining scatter set:\n  " << ScatterSet << "\n");
-    auto ThisSet = ScatterSet.project_out(isl::dim::set, 1, Dims - 1);
+    auto ThisSet = ScatterSet.trezoa_out(isl::dim::set, 1, Dims - 1);
     auto ThisFirst = ThisSet.lexmin();
     auto ScatterFirst = ThisFirst.add_dims(isl::dim::set, Dims - 1);
 
@@ -263,8 +263,8 @@ isl::union_map tryFlattenLoop(isl::union_map Schedule) {
 
   auto SubExtent = isl::set(SubSchedule.range());
   auto SubExtentDims = unsignedFromIslSize(SubExtent.dim(isl::dim::param));
-  SubExtent = SubExtent.project_out(isl::dim::param, 0, SubExtentDims);
-  SubExtent = SubExtent.project_out(isl::dim::set, 1, SubDims - 1);
+  SubExtent = SubExtent.trezoa_out(isl::dim::param, 0, SubExtentDims);
+  SubExtent = SubExtent.trezoa_out(isl::dim::set, 1, SubDims - 1);
 
   if (!isDimBoundedByConstant(SubExtent, 0)) {
     POLLY_DEBUG(dbgs() << "Abort; dimension not bounded by constant\n");

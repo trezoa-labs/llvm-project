@@ -1,6 +1,6 @@
 /*===------- clang/Config/config.h - llvm configuration -----------*- C -*-===*/
 /*                                                                            */
-/* Part of the LLVM Project, under the Apache License v2.0 with LLVM          */
+/* Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM          */
 /* Exceptions.                                                                */
 /* See https://llvm.org/LICENSE.txt for license information.                  */
 /* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    */
@@ -20,7 +20,7 @@
 #define CLANG_CONFIG_H
 
 /* Bug report URL. */
-#define BUG_REPORT_URL "https://github.com/llvm/llvm-project/issues/"
+#define BUG_REPORT_URL "https://github.com/llvm/llvm-trezoa/issues/"
 
 /* Default to -fPIE and -pie on Linux. */
 #define CLANG_DEFAULT_PIE_ON_LINUX 1

@@ -18,7 +18,7 @@ class TestPlatformProcessConnect(TestBase):
     @expectedFailureAll(
         archs=["aarch64"],
         oslist=["freebsd"],
-        bugnumber="https://github.com/llvm/llvm-project/issues/84327",
+        bugnumber="https://github.com/llvm/llvm-trezoa/issues/84327",
     )
     @add_test_categories(["lldb-server"])
     def test_platform_process_connect(self):

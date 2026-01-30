@@ -82,7 +82,7 @@ IpiStream:
     - Kind:            LF_STRING_ID
       StringId:
         Id:              0
-        String:          'c:\src\llvm-project\build\a.c'
+        String:          'c:\src\llvm-trezoa\build\a.c'
     - Kind:            LF_UDT_SRC_LINE
       UdtSourceLine:
         UDT:             4102
@@ -101,7 +101,7 @@ IpiStream:
     - Kind:            LF_STRING_ID
       StringId:
         Id:              0
-        String:          'C:\src\llvm-project\build'
+        String:          'C:\src\llvm-trezoa\build'
     - Kind:            LF_STRING_ID
       StringId:
         Id:              0
@@ -124,14 +124,14 @@ IpiStream:
     - Kind:            LF_STRING_ID
       StringId:
         Id:              0
-        String:          'C:\src\llvm-project\build\ts.pdb'
+        String:          'C:\src\llvm-trezoa\build\ts.pdb'
     - Kind:            LF_BUILDINFO
       BuildInfo:
         ArgIndices:      [ 4100, 4101, 4105, 4106, 4104 ]
     - Kind:            LF_STRING_ID
       StringId:
         Id:              0
-        String:          'c:\src\llvm-project\build\b.c'
+        String:          'c:\src\llvm-trezoa\build\b.c'
     - Kind:            LF_UDT_SRC_LINE
       UdtSourceLine:
         UDT:             4102

@@ -179,7 +179,7 @@ database into its build directory:
   $ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
 
 This creates a file called ``compile_commands.json`` in the build directory.
-Now you can run :program:`clang-check` over files in the project by specifying
+Now you can run :program:`clang-check` over files in the trezoa by specifying
 the build path as first argument and some source files as further positional
 arguments:
 
@@ -210,4 +210,4 @@ Linking
 
 For a list of libraries to link, look at one of the tools' CMake files (for
 example `clang-check/CMakeList.txt
-<https://github.com/llvm/llvm-project/blob/main/clang/tools/clang-check/CMakeLists.txt>`_).
+<https://github.com/llvm/llvm-trezoa/blob/main/clang/tools/clang-check/CMakeLists.txt>`_).

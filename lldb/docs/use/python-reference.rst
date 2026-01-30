@@ -432,11 +432,11 @@ run its operations.
 There is a longer discussion of scripted thread plans and the state machine,
 and several interesting examples of their use in:
 
-https://github.com/llvm/llvm-project/blob/main/lldb/examples/python/scripted_step.py
+https://github.com/llvm/llvm-trezoa/blob/main/lldb/examples/python/scripted_step.py
 
 And for a MUCH fuller discussion of the whole state machine, see:
 
-https://github.com/llvm/llvm-project/blob/main/lldb/include/lldb/Target/ThreadPlan.h
+https://github.com/llvm/llvm-trezoa/blob/main/lldb/include/lldb/Target/ThreadPlan.h
 
 If you are reading those comments it is useful to know that scripted thread
 plans are set to be "ControllingPlans", and not "OkayToDiscard".
@@ -888,7 +888,7 @@ Then your new commands are available under the my-utilities node:
 A more interesting template has been created in the source repository that can
 help you to create lldb command quickly:
 
-https://github.com/llvm/llvm-project/blob/main/lldb/examples/python/cmdtemplate.py
+https://github.com/llvm/llvm-trezoa/blob/main/lldb/examples/python/cmdtemplate.py
 
 A commonly required facility is being able to create a command that does some
 token substitution, and then runs a different debugger command (usually, it

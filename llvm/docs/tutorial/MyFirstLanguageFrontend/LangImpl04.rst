@@ -313,7 +313,7 @@ We also need to setup the data layout for the JIT:
 The KaleidoscopeJIT class is a simple JIT built specifically for these
 tutorials, available inside the LLVM source code
 at `llvm-src/examples/Kaleidoscope/include/KaleidoscopeJIT.h
-<https://github.com/llvm/llvm-project/blob/main/llvm/examples/Kaleidoscope/include/KaleidoscopeJIT.h>`_.
+<https://github.com/llvm/llvm-trezoa/blob/main/llvm/examples/Kaleidoscope/include/KaleidoscopeJIT.h>`_.
 In later chapters we will look at how it works and extend it with
 new features, but for now we will take it as given. Its API is very simple:
 ``addModule`` adds an LLVM IR module to the JIT, making its functions

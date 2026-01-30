@@ -1,6 +1,6 @@
 //===----- CGOpenMPRuntime.cpp - Interface to OpenMP Runtimes -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -450,7 +450,7 @@ public:
 
 /// Values for bit flags used in the ident_t to describe the fields.
 /// All enumeric elements are named and described in accordance with the code
-/// from https://github.com/llvm/llvm-project/blob/main/openmp/runtime/src/kmp.h
+/// from https://github.com/llvm/llvm-trezoa/blob/main/openmp/runtime/src/kmp.h
 enum OpenMPLocationFlags : unsigned {
   /// Use trampoline for internal microtask.
   OMP_IDENT_IMD = 0x01,
@@ -479,7 +479,7 @@ enum OpenMPLocationFlags : unsigned {
 
 /// Describes ident structure that describes a source location.
 /// All descriptions are taken from
-/// https://github.com/llvm/llvm-project/blob/main/openmp/runtime/src/kmp.h
+/// https://github.com/llvm/llvm-trezoa/blob/main/openmp/runtime/src/kmp.h
 /// Original structure:
 /// typedef struct ident {
 ///    kmp_int32 reserved_1;   /**<  might be used in Fortran;
@@ -2108,7 +2108,7 @@ void CGOpenMPRuntime::emitTaskgroupRegion(CodeGenFunction &CGF,
   emitInlinedDirective(CGF, OMPD_taskgroup, TaskgroupOpGen);
 }
 
-/// Given an array of pointers to variables, project the address of a
+/// Given an array of pointers to variables, trezoa the address of a
 /// given variable.
 static Address emitAddrOfVarFromArray(CodeGenFunction &CGF, Address Array,
                                       unsigned Index, const VarDecl *Var) {
@@ -3696,7 +3696,7 @@ CGOpenMPRuntime::emitTaskInit(CodeGenFunction &CGF, SourceLocation Loc,
   // kmp_int32 flags, size_t sizeof_kmp_task_t, size_t sizeof_shareds,
   // kmp_routine_entry_t *task_entry);
   // Task flags. Format is taken from
-  // https://github.com/llvm/llvm-project/blob/main/openmp/runtime/src/kmp.h,
+  // https://github.com/llvm/llvm-trezoa/blob/main/openmp/runtime/src/kmp.h,
   // description of kmp_tasking_flags struct.
   enum {
     TiedFlag = 0x1,

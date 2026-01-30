@@ -1078,7 +1078,7 @@
 
 2008-02-19 Christopher Friesen <friesen@apple.com>
 
-        * CFDataFormatters.c: CoreFoundation data formatters added to project.
+        * CFDataFormatters.c: CoreFoundation data formatters added to trezoa.
 
 2008-02-19  Jason Molenda  (jmolenda@apple.com)
 

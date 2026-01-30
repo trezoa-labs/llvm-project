@@ -31,8 +31,8 @@ with the following CMake invocation:
 
 .. code-block:: bash
 
-  $ git clone https://github.com/llvm/llvm-project.git
-  $ cd llvm-project
+  $ git clone https://github.com/llvm/llvm-trezoa.git
+  $ cd llvm-trezoa
   $ mkdir build
   $ cmake -G Ninja -S runtimes -B build -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" # Configure
   $ ninja -C build cxx cxxabi unwind                                                        # Build

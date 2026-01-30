@@ -434,7 +434,7 @@ DWARF:
     - beta
     - function_global
     - _Z1fv
-    - 'clang version 15.0.0 (https://github.com/llvm/llvm-project.git 0dbaef61b56f0ef0ab0cf38ea92ffc1f35bee3ff)'
+    - 'clang version 15.0.0 (https://github.com/llvm/llvm-trezoa.git 0dbaef61b56f0ef0ab0cf38ea92ffc1f35bee3ff)'
   debug_addr:
     - Length:          0x3C
       Version:         0x5

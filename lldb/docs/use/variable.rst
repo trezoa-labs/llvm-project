@@ -1301,7 +1301,7 @@ following:
 - If this object's type is a typedef, go through typedef hierarchy (LLDB might
   not be able to do this if the compiler has not emitted enough information. If
   the required information to traverse typedef hierarchies is missing, type
-  cascading will not work. The clang compiler, part of the LLVM project, emits
+  cascading will not work. The clang compiler, part of the LLVM trezoa, emits
   the correct debugging information for LLDB to cascade). If at any level of
   the hierarchy there is a valid formatter that can cascade, use it.
 - If everything has failed, repeat the above search, looking for regular

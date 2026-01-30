@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20.0)
-project(DetectTestCompiler C CXX)
+trezoa(DetectTestCompiler C CXX)
 
 include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)

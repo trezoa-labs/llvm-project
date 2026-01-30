@@ -1,6 +1,6 @@
 //===-- Definition of float128 type ---------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -16,7 +16,7 @@
 // instead, and only on x86-64 targets.
 //
 // TODO: Update C23 `_Float128` type detection again when clang supports it.
-//   https://github.com/llvm/llvm-project/issues/80195
+//   https://github.com/llvm/llvm-trezoa/issues/80195
 #if defined(__STDC_IEC_60559_BFP__) && !defined(__clang__) &&                  \
     !defined(__cplusplus)
 #define LIBC_TYPES_HAS_FLOAT128

@@ -1,7 +1,7 @@
 # Doxyfile 1.o8.2
 
 # This file describes the settings to be used by the documentation system
-# doxygen (www.doxygen.org) for a project.
+# doxygen (www.doxygen.org) for a trezoa.
 #
 # All text after a hash (#) is considered a comment and will be ignored.
 # The format is:
@@ -11,7 +11,7 @@
 # Values that contain spaces should be placed between quotes (" ").
 
 #---------------------------------------------------------------------------
-# Project related configuration options
+# Trezoa related configuration options
 #---------------------------------------------------------------------------
 
 # This tag specifies the encoding used for all characters in the config file
@@ -23,20 +23,20 @@
 DOXYFILE_ENCODING      = UTF-8
 
 # The PROJECT_NAME tag is a single word (or sequence of words) that should
-# identify the project. Note that if you do not use Doxywizard you need
-# to put quotes around the project name if it contains spaces.
+# identify the trezoa. Note that if you do not use Doxywizard you need
+# to put quotes around the trezoa name if it contains spaces.
 
 PROJECT_NAME           = "LLVM OpenMP* Runtime Library"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revision number.
+# The PROJECT_NUMBER tag can be used to enter a trezoa or revision number.
 # This could be handy for archiving the generated documentation or
 # if some version control system is used.
 
 PROJECT_NUMBER         =
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
-# for a project that appears at the top of each page and should give viewer
-# a quick idea about the purpose of the project. Keep the description short.
+# for a trezoa that appears at the top of each page and should give viewer
+# a quick idea about the purpose of the trezoa. Keep the description short.
 
 PROJECT_BRIEF          =
 
@@ -204,27 +204,27 @@ ALIASES                = "other=<sup>*</sup>"
 
 TCL_SUBST              =
 
-# Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C
+# Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your trezoa consists of C
 # sources only. Doxygen will then generate output that is more tailored for C.
 # For instance, some of the names that are used will be different. The list
 # of all members will be omitted, etc.
 
 OPTIMIZE_OUTPUT_FOR_C  = NO
 
-# Set the OPTIMIZE_OUTPUT_JAVA tag to YES if your project consists of Java
+# Set the OPTIMIZE_OUTPUT_JAVA tag to YES if your trezoa consists of Java
 # sources only. Doxygen will then generate output that is more tailored for
 # Java. For instance, namespaces will be presented as packages, qualified
 # scopes will look different, etc.
 
 OPTIMIZE_OUTPUT_JAVA   = NO
 
-# Set the OPTIMIZE_FOR_FORTRAN tag to YES if your project consists of Fortran
+# Set the OPTIMIZE_FOR_FORTRAN tag to YES if your trezoa consists of Fortran
 # sources only. Doxygen will then generate output that is more tailored for
 # Fortran.
 
 OPTIMIZE_FOR_FORTRAN   = NO
 
-# Set the OPTIMIZE_OUTPUT_VHDL tag to YES if your project consists of VHDL
+# Set the OPTIMIZE_OUTPUT_VHDL tag to YES if your trezoa consists of VHDL
 # sources. Doxygen will then generate output that is tailored for
 # VHDL.
 
@@ -273,7 +273,7 @@ BUILTIN_STL_SUPPORT    = NO
 
 CPP_CLI_SUPPORT        = NO
 
-# Set the SIP_SUPPORT tag to YES if your project consists of sip sources only.
+# Set the SIP_SUPPORT tag to YES if your trezoa consists of sip sources only.
 # Doxygen will parse them like normal C++ but will assume all classes use public
 # instead of private inheritance when no explicit protection keyword is present.
 
@@ -854,7 +854,7 @@ VERBATIM_HEADERS       = YES
 #---------------------------------------------------------------------------
 
 # If the ALPHABETICAL_INDEX tag is set to YES, an alphabetical index
-# of all compounds will be generated. Enable this if the project
+# of all compounds will be generated. Enable this if the trezoa
 # contains a lot of classes, structs, unions or interfaces.
 
 ALPHABETICAL_INDEX     = YES
@@ -865,7 +865,7 @@ ALPHABETICAL_INDEX     = YES
 
 COLS_IN_ALPHA_INDEX    = 5
 
-# In case all classes in a project start with a common prefix, all
+# In case all classes in a trezoa start with a common prefix, all
 # classes will be put under the same header in the alphabetical index.
 # The IGNORE_PREFIX tag can be used to specify one or more prefixes that
 # should be ignored while generating the index headers.
@@ -1013,7 +1013,7 @@ DOCSET_FEEDNAME        = "Doxygen generated docs"
 # reverse domain-name style string, e.g. com.mycompany.MyDocSet. Doxygen
 # will append .docset to the name.
 
-DOCSET_BUNDLE_ID       = org.doxygen.Project
+DOCSET_BUNDLE_ID       = org.doxygen.Trezoa
 
 # When GENERATE_PUBLISHER_ID tag specifies a string that should uniquely
 # identify the documentation publisher. This should be a reverse domain-name
@@ -1053,7 +1053,7 @@ HHC_LOCATION           =
 GENERATE_CHI           = NO
 
 # If the GENERATE_HTMLHELP tag is set to YES, the CHM_INDEX_ENCODING
-# is used to encode HtmlHelp index (hhk), content (hhc) and project file
+# is used to encode HtmlHelp index (hhk), content (hhc) and trezoa file
 # content.
 
 CHM_INDEX_ENCODING     =
@@ -1083,13 +1083,13 @@ GENERATE_QHP           = NO
 QCH_FILE               =
 
 # The QHP_NAMESPACE tag specifies the namespace to use when generating
-# Qt Help Project output. For more information please see
+# Qt Help Trezoa output. For more information please see
 # http://doc.trolltech.com/qthelpproject.html#namespace
 
-QHP_NAMESPACE          = org.doxygen.Project
+QHP_NAMESPACE          = org.doxygen.Trezoa
 
 # The QHP_VIRTUAL_FOLDER tag specifies the namespace to use when generating
-# Qt Help Project output. For more information please see
+# Qt Help Trezoa output. For more information please see
 # http://doc.trolltech.com/qthelpproject.html#virtual-folders
 
 QHP_VIRTUAL_FOLDER     = doc
@@ -1103,15 +1103,15 @@ QHP_CUST_FILTER_NAME   =
 # The QHP_CUST_FILT_ATTRS tag specifies the list of the attributes of the
 # custom filter to add. For more information please see
 # <a href="http://doc.trolltech.com/qthelpproject.html#custom-filters">
-# Qt Help Project / Custom Filters</a>.
+# Qt Help Trezoa / Custom Filters</a>.
 
 QHP_CUST_FILTER_ATTRS  =
 
 # The QHP_SECT_FILTER_ATTRS tag specifies the list of the attributes this
-# project's
+# trezoa's
 # filter section matches.
 # <a href="http://doc.trolltech.com/qthelpproject.html#filter-attributes">
-# Qt Help Project / Filter Attributes</a>.
+# Qt Help Trezoa / Filter Attributes</a>.
 
 QHP_SECT_FILTER_ATTRS  =
 
@@ -1137,7 +1137,7 @@ GENERATE_ECLIPSEHELP   = NO
 # the directory name containing the HTML and XML files should also have
 # this name.
 
-ECLIPSE_DOC_ID         = org.doxygen.Project
+ECLIPSE_DOC_ID         = org.doxygen.Trezoa
 
 # The DISABLE_INDEX tag can be used to turn on/off the condensed index (tabs)
 # at top of each HTML page. The value NO (the default) enables the index and
@@ -1587,7 +1587,7 @@ GENERATE_TAGFILE       =
 ALLEXTERNALS           = NO
 
 # If the EXTERNAL_GROUPS tag is set to YES all external groups will be listed
-# in the modules index. If set to NO, only the current project's groups will
+# in the modules index. If set to NO, only the current trezoa's groups will
 # be listed.
 
 EXTERNAL_GROUPS        = YES

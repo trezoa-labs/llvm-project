@@ -934,7 +934,7 @@ error:
  * If no such value can be found, then the original set did not contain
  * any integer points and we are done.
  * Otherwise, we plug in the value we found in the bounded dimensions,
- * project out these bounded dimensions and end up with a set with
+ * trezoa out these bounded dimensions and end up with a set with
  * a full-dimensional recession cone.
  * A sample point in this set is computed by "rounding up" any
  * rational point in the set.

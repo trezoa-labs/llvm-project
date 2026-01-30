@@ -249,9 +249,9 @@ LinkEditData:
     - ' '
     - __mh_execute_header
     - _main
-    - '/Users/tim/llvm/llvm-project/build.rel/'
+    - '/Users/tim/llvm/llvm-trezoa/build.rel/'
     - tmp.c
-    - '/Users/tim/llvm/llvm-project/build.rel/tmp.o'
+    - '/Users/tim/llvm/llvm-trezoa/build.rel/tmp.o'
     - ''
   FunctionStarts:  [ 0x3FA0 ]
   ChainedFixups:   [ 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x30, 0x0,

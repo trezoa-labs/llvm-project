@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ===-- commit-access-review.py  --------------------------------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -91,7 +91,7 @@ def check_manual_requests(
         """
     formatted_start_date = start_date.strftime("%Y-%m-%dT%H:%M:%S")
     variables = {
-        "query": f"type:issue created:>{formatted_start_date} org:llvm repo:llvm-project label:infra:commit-access,infra:commit-access-request"
+        "query": f"type:issue created:>{formatted_start_date} org:llvm repo:llvm-trezoa label:infra:commit-access,infra:commit-access-request"
     }
 
     has_next_page = True
@@ -200,7 +200,7 @@ def is_new_committer_query_repo(
     query = """
         query ($owner: String!, $user_id: ID!){
           organization(login: $owner) {
-            repository(name: "llvm-project") {
+            repository(name: "llvm-trezoa") {
               ref(qualifiedName: "main") {
                 target {
                   ... on Commit {
@@ -260,7 +260,7 @@ def get_review_count(
     formatted_start_date = start_date.strftime("%Y-%m-%dT%H:%M:%S")
     variables = {
         "owner": "llvm",
-        "repo": "llvm-project",
+        "repo": "llvm-trezoa",
         "user": user,
         "query": f"type:pr commenter:{user} -author:{user} merged:>{formatted_start_date} org:llvm",
     }
@@ -274,7 +274,7 @@ def get_review_count(
 
 def count_prs(gh: github.Github, triage_list: dict, start_date: datetime.datetime):
     """
-    Fetch all the merged PRs for the project since ``start_date`` and update
+    Fetch all the merged PRs for the trezoa since ``start_date`` and update
     ``triage_list`` with the number of PRs merged for each user.
     """
 
@@ -342,7 +342,7 @@ def main():
     token = sys.argv[1]
     gh = github.Github(login_or_token=token)
     org = gh.get_organization("llvm")
-    repo = org.get_repo("llvm-project")
+    repo = org.get_repo("llvm-trezoa")
     one_year_ago = datetime.datetime.now() - datetime.timedelta(days=365)
     triage_list = {}
     for collaborator in repo.get_collaborators(permission="push"):

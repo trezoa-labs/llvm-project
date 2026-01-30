@@ -5305,7 +5305,7 @@ error:
  * from "sub_build" (which includes extra context information)
  * to "build".
  *
- * In particular, project out all additional parameters introduced
+ * In particular, trezoa out all additional parameters introduced
  * by the context node from the enforced constraints and the guard
  * of the single graft.
  */

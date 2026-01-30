@@ -26,11 +26,11 @@ if (LLVM_ENABLE_DOXYGEN)
     set(POLLY_DOXYGEN_QCH_FILENAME "org.llvm.polly.qch" CACHE STRING
       "Filename of the Qt Compressed help file")
     set(POLLY_DOXYGEN_QHP_NAMESPACE "org.llvm.polly" CACHE STRING
-      "Namespace under which the intermediate Qt Help Project file lives")
+      "Namespace under which the intermediate Qt Help Trezoa file lives")
     set(POLLY_DOXYGEN_QHP_CUST_FILTER_NAME "Clang ${POLLY_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#custom-filters")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#custom-filters")
     set(POLLY_DOXYGEN_QHP_CUST_FILTER_ATTRS "Clang,${POLLY_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
     set(polly_doxygen_generate_qhp "YES")
     set(polly_doxygen_qch_filename "${POLLY_DOXYGEN_QCH_FILENAME}")
     set(polly_doxygen_qhp_namespace "${POLLY_DOXYGEN_QHP_NAMESPACE}")

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """ This module parses and validates arguments for command-line interfaces.
@@ -216,7 +216,7 @@ def create_analyze_parser(from_build_command):
         default=[],
         help="""Do not run static analyzer against files found in this
         directory. (You can specify this option multiple times.)
-        Could be useful when project contains 3rd party libraries.""",
+        Could be useful when trezoa contains 3rd party libraries.""",
     )
 
     output = parser.add_argument_group("output control options")
@@ -317,7 +317,7 @@ def create_analyze_parser(from_build_command):
         "--stats",
         "-stats",
         action="store_true",
-        help="""Generates visitation statistics for the project.""",
+        help="""Generates visitation statistics for the trezoa.""",
     )
     advanced.add_argument(
         "--internal-stats",
@@ -509,10 +509,10 @@ def parser_add_compilers(parser):
         metavar="<path>",
         dest="cc",
         default=os.getenv("CC", "cc"),
-        help="""When '%(prog)s' analyzes a project by interposing a compiler
+        help="""When '%(prog)s' analyzes a trezoa by interposing a compiler
         wrapper, which executes a real compiler for compilation and do other
         tasks (record the compiler invocation). Because of this interposing,
-        '%(prog)s' does not know what compiler your project normally uses.
+        '%(prog)s' does not know what compiler your trezoa normally uses.
         Instead, it simply overrides the CC environment variable, and guesses
         your default compiler.
 

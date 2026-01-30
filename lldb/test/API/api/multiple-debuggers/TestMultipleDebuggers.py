@@ -12,7 +12,7 @@ from lldbsuite.test import lldbutil
 class TestMultipleSimultaneousDebuggers(TestBase):
     NO_DEBUG_INFO_TESTCASE = True
 
-    # Sometimes times out on Linux, see https://github.com/llvm/llvm-project/issues/101162.
+    # Sometimes times out on Linux, see https://github.com/llvm/llvm-trezoa/issues/101162.
     @skipIfLinux
     @skipIfNoSBHeaders
     @skipIfWindows

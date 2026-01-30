@@ -42,7 +42,7 @@ template <class = void> void f() {
     // expected-error@-1 {{unexpanded parameter pack 'Ts'}}
   }.template operator()<int, int>();
 
-  // https://github.com/llvm/llvm-project/issues/56852
+  // https://github.com/llvm/llvm-trezoa/issues/56852
   []<class... Is>(Is...) {
     ([] {
       using T = identity<Is>::type;
@@ -64,7 +64,7 @@ template <class = void> void f() {
   }(2, 'b');
 
 #if 0
-  // FIXME: https://github.com/llvm/llvm-project/issues/18873
+  // FIXME: https://github.com/llvm/llvm-trezoa/issues/18873
   [](auto ...x) { // #1
     ([&](auto ...y) {  // #2
       ([x, y] { }(), ...); // #3

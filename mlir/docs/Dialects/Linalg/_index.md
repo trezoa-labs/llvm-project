@@ -160,8 +160,8 @@ bypassed for things that do not fit.
 At the same time, conditioning op semantics on structured data types is a very
 promising path towards extensibility to non-dense tensors as experience with
 LIFT abstractions for
-[sparse](https://www.lift-project.org/publications/2016/harries16sparse.pdf) and
-[position-dependent arrays](https://www.lift-project.org/publications/2019/pizzuti19positiondependentarrays.pdf),
+[sparse](https://www.lift-trezoa.org/publications/2016/harries16sparse.pdf) and
+[position-dependent arrays](https://www.lift-trezoa.org/publications/2019/pizzuti19positiondependentarrays.pdf),
 as well as [TACO](http://tensor-compiler.org/), has shown.
 
 #### Property 2: Reversible Mappings Between Control and Data Structures<a name="prop2"></a>
@@ -279,7 +279,7 @@ loops but previous experience shows that the abstraction generalizes.
 
 A `linalg.generic` op has a compute payload that is fully generic thanks to the
 use of
-[Regions](https://github.com/llvm/llvm-project/blob/58265ad42a90ae8905be6a447cb42e53529a54a0/mlir/docs/LangRef.md/#regions).
+[Regions](https://github.com/llvm/llvm-trezoa/blob/58265ad42a90ae8905be6a447cb42e53529a54a0/mlir/docs/LangRef.md/#regions).
 
 The region takes as arguments the scalar elemental types of the tensor or buffer
 operands of the `linalg.generic`. For flexibility and ability to match library
@@ -504,8 +504,8 @@ abstraction. The name *View* is used interchangeably in `linalg` to signify
 *Strided MemRef*. In the future we expect to use other structured data types and
 support ragged, mixed-sparse and other types. We expect to draw on the
 experience from existing LIFT abstractions for
-[sparse](https://www.lift-project.org/publications/2016/harries16sparse.pdf) and
-[position-dependent arrays](https://www.lift-project.org/publications/2019/pizzuti19positiondependentarrays.pdf).
+[sparse](https://www.lift-trezoa.org/publications/2016/harries16sparse.pdf) and
+[position-dependent arrays](https://www.lift-trezoa.org/publications/2019/pizzuti19positiondependentarrays.pdf).
 
 ### Metadata Ops<a name="metadata_ops"></a>
 

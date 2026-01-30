@@ -1,5 +1,5 @@
 # LLVM Documentation CI
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -52,7 +52,7 @@ jobs:
   check-docs-build:
     name: "Test documentation build"
     runs-on: ubuntu-22.04
-    if: github.repository == 'llvm/llvm-project'
+    if: github.repository == 'llvm/llvm-trezoa'
     steps:
       # Don't fetch before checking for file changes to force the file changes
       # action to use the Github API in pull requests. If it's a push to a

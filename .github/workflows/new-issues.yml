@@ -11,7 +11,7 @@ jobs:
     permissions:
       issues: write
     runs-on: ubuntu-22.04
-    if: github.repository == 'llvm/llvm-project'
+    if: github.repository == 'llvm/llvm-trezoa'
     steps:
       - uses: llvm/actions/issue-labeler@main
         with:

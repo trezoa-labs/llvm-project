@@ -1,9 +1,9 @@
-# Math functions not yet available in the libc project, or those not yet tuned
+# Math functions not yet available in the libc trezoa, or those not yet tuned
 # for GPU workloads are provided as wrappers over vendor libraries. If we find
 # them ahead of time we will import them statically. Otherwise, we will keep
 # them as external references and expect them to be resolved by the user when
 # they compile. In the future,we will use implementations from the 'libc'
-# project and not provide these wrappers.
+# trezoa and not provide these wrappers.
 if(CUDAToolkit_FOUND)
   set(libdevice_path ${CUDAToolkit_BIN_DIR}/../nvvm/libdevice/libdevice.10.bc)
   if (EXISTS ${libdevice_path})

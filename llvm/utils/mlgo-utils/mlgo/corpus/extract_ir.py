@@ -1,4 +1,4 @@
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """Extract IR for training.
@@ -153,7 +153,7 @@ def main(args):
     elif args.input_type == "directory":
         logging.warning(
             "Using the directory input is only recommended if the build system "
-            "your project uses does not support any structured output that "
+            "your trezoa uses does not support any structured output that "
             "ml-compiler-opt understands. If your build system provides a "
             "structured compilation database, use that instead"
         )

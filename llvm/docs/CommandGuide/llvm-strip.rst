@@ -191,7 +191,7 @@ Otherwise, it exits with code 0.
 BUGS
 ----
 
-To report bugs, please visit <https://github.com/llvm/llvm-project/labels/tools:llvm-objcopy%2Fstrip>.
+To report bugs, please visit <https://github.com/llvm/llvm-trezoa/labels/tools:llvm-objcopy%2Fstrip>.
 
 SEE ALSO
 --------

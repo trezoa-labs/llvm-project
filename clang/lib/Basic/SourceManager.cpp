@@ -1,6 +1,6 @@
 //===- SourceManager.cpp - Track and cache source files -------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2009,7 +2009,7 @@ MoveUpTranslationUnitIncludeHierarchy(std::pair<FileID, unsigned> &Loc,
 InBeforeInTUCacheEntry &SourceManager::getInBeforeInTUCache(FileID LFID,
                                                             FileID RFID) const {
   // This is a magic number for limiting the cache size.  It was experimentally
-  // derived from a small Objective-C project (where the cache filled
+  // derived from a small Objective-C trezoa (where the cache filled
   // out to ~250 items).  We can make it larger if necessary.
   // FIXME: this is almost certainly full these days. Use an LRU cache?
   enum { MagicCacheSize = 300 };

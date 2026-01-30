@@ -55,7 +55,7 @@ allowing you to skip ahead as you wish:
    parsing and operator precedence parsing.
 -  `Chapter #3: Code generation to LLVM IR <LangImpl03.html>`_ - with
    the AST ready, we show how easy it is to generate LLVM IR, and show
-   a simple way to incorporate LLVM into your project.
+   a simple way to incorporate LLVM into your trezoa.
 -  `Chapter #4: Adding JIT and Optimizer Support <LangImpl04.html>`_ -
    One great thing about LLVM is its support for JIT compilation, so
    we'll dive right into it and show you the 3 lines it takes to add JIT

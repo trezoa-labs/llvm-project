@@ -1,6 +1,6 @@
 //===-- x86 implementation of memory function building blocks -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -287,8 +287,8 @@ LIBC_INLINE __m512i bytewise_max(__m512i a, __m512i b) {
 }
 LIBC_INLINE uint64_t big_endian_cmp_mask(__m512i max, __m512i value) {
   // The AVX512BMI version is disabled due to bad codegen.
-  // https://github.com/llvm/llvm-project/issues/77459
-  // https://github.com/llvm/llvm-project/pull/77081
+  // https://github.com/llvm/llvm-trezoa/issues/77459
+  // https://github.com/llvm/llvm-trezoa/pull/77081
   // TODO: Re-enable when clang version meets the fixed version.
 #if false && defined(__AVX512VBMI__)
   // When AVX512BMI is available we can completely reverse the vector through

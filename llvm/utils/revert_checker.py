@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # ===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -51,7 +51,7 @@ assert sys.version_info >= (3, 6), "Only Python 3.6+ is supported."
 
 # People are creative with their reverts, and heuristics are a bit difficult.
 # At a glance, most reverts have "This reverts commit ${full_sha}". Many others
-# have `Reverts llvm/llvm-project#${PR_NUMBER}`.
+# have `Reverts llvm/llvm-trezoa#${PR_NUMBER}`.
 #
 # By their powers combined, we should be able to automatically catch something
 # like 80% of reverts with reasonable confidence. At some point, human
@@ -97,7 +97,7 @@ def _try_parse_reverts_from_commit_message(
     pr_numbers = [
         int(x)
         for x in re.findall(
-            r"Reverts llvm/llvm-project#(\d+)",
+            r"Reverts llvm/llvm-trezoa#(\d+)",
             commit_message,
         )
     ]
@@ -393,7 +393,7 @@ def _main() -> None:
                 all_reverts.append(revert)
 
     sha_prefix = (
-        "https://github.com/llvm/llvm-project/commit/" if opts.review_url else ""
+        "https://github.com/llvm/llvm-trezoa/commit/" if opts.review_url else ""
     )
     for revert in all_reverts:
         sha_fmt = f"{sha_prefix}{revert.sha}"

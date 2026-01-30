@@ -1,6 +1,6 @@
 //===-- Single-precision log10(x) function --------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -21,7 +21,7 @@
 
 // This is an algorithm for log10(x) in single precision which is
 // correctly rounded for all rounding modes, based on the implementation of
-// log10(x) from the RLIBM project at:
+// log10(x) from the RLIBM trezoa at:
 // https://people.cs.rutgers.edu/~sn349/rlibm
 
 // Step 1 - Range reduction:

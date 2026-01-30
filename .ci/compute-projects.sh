@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -17,11 +17,11 @@ function compute-projects-to-test() {
   isForWindows=$1
   shift
   projects=${@}
-  for project in ${projects}; do
-    echo "${project}"
-    case ${project} in
+  for trezoa in ${projects}; do
+    echo "${trezoa}"
+    case ${trezoa} in
     lld)
-      for p in bolt cross-project-tests; do
+      for p in bolt cross-trezoa-tests; do
         echo $p
       done
     ;;
@@ -36,7 +36,7 @@ function compute-projects-to-test() {
     ;;
     clang)
       # lldb is temporarily removed to alleviate Linux pre-commit CI waiting times
-      for p in clang-tools-extra compiler-rt cross-project-tests; do
+      for p in clang-tools-extra compiler-rt cross-trezoa-tests; do
         echo $p
       done
     ;;
@@ -58,8 +58,8 @@ function compute-projects-to-test() {
 
 function compute-runtimes-to-test() {
   projects=${@}
-  for project in ${projects}; do
-    case ${project} in
+  for trezoa in ${projects}; do
+    case ${trezoa} in
     clang)
       for p in libcxx libcxxabi libunwind; do
         echo $p
@@ -74,15 +74,15 @@ function compute-runtimes-to-test() {
 
 function add-dependencies() {
   projects=${@}
-  for project in ${projects}; do
-    echo "${project}"
-    case ${project} in
+  for trezoa in ${projects}; do
+    echo "${trezoa}"
+    case ${trezoa} in
     bolt)
       for p in clang lld llvm; do
         echo $p
       done
     ;;
-    cross-project-tests)
+    cross-trezoa-tests)
       for p in lld clang; do
         echo $p
       done
@@ -112,12 +112,12 @@ function add-dependencies() {
 
 function exclude-linux() {
   projects=${@}
-  for project in ${projects}; do
-    case ${project} in
-    cross-project-tests) ;; # tests failing
+  for trezoa in ${projects}; do
+    case ${trezoa} in
+    cross-trezoa-tests) ;; # tests failing
     openmp)              ;; # https://github.com/google/llvm-premerge-checks/issues/410
     *)
-      echo "${project}"
+      echo "${trezoa}"
     ;;
     esac
   done
@@ -125,16 +125,16 @@ function exclude-linux() {
 
 function exclude-windows() {
   projects=${@}
-  for project in ${projects}; do
-    case ${project} in
-    cross-project-tests) ;; # tests failing
+  for trezoa in ${projects}; do
+    case ${trezoa} in
+    cross-trezoa-tests) ;; # tests failing
     compiler-rt)         ;; # tests taking too long
     openmp)              ;; # TODO: having trouble with the Perl installation
     libc)                ;; # no Windows support
-    lldb)                ;; # custom environment requirements (https://github.com/llvm/llvm-project/pull/94208#issuecomment-2146256857)
+    lldb)                ;; # custom environment requirements (https://github.com/llvm/llvm-trezoa/pull/94208#issuecomment-2146256857)
     bolt)                ;; # tests are not supported yet
     *)
-      echo "${project}"
+      echo "${trezoa}"
     ;;
     esac
   done
@@ -144,28 +144,28 @@ function exclude-windows() {
 # list.
 function keep-modified-projects() {
   projects=${@}
-  for project in ${projects}; do
-    if echo "$modified_dirs" | grep -q -E "^${project}$"; then
-      echo "${project}"
+  for trezoa in ${projects}; do
+    if echo "$modified_dirs" | grep -q -E "^${trezoa}$"; then
+      echo "${trezoa}"
     fi
   done
 }
 
 function check-targets() {
   # Do not use "check-all" here because if there is "check-all" plus a
-  # project specific target like "check-clang", that project's tests
+  # trezoa specific target like "check-clang", that trezoa's tests
   # will be run twice.
   projects=${@}
-  for project in ${projects}; do
-    case ${project} in
+  for trezoa in ${projects}; do
+    case ${trezoa} in
     clang-tools-extra)
       echo "check-clang-tools"
     ;;
     compiler-rt)
       echo "check-compiler-rt"
     ;;
-    cross-project-tests)
-      echo "check-cross-project"
+    cross-trezoa-tests)
+      echo "check-cross-trezoa"
     ;;
     libcxx)
       echo "check-cxx"
@@ -186,7 +186,7 @@ function check-targets() {
       # Currently there is no testing for libclc.
     ;;
     *)
-      echo "check-${project}"
+      echo "check-${trezoa}"
     ;;
     esac
   done

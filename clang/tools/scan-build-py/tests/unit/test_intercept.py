@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -12,7 +12,7 @@ import os.path
 class InterceptUtilTest(unittest.TestCase):
     def test_format_entry_filters_action(self):
         def test(command):
-            trace = {"command": command, "directory": "/opt/src/project"}
+            trace = {"command": command, "directory": "/opt/src/trezoa"}
             return list(sut.format_entry(trace))
 
         self.assertTrue(test(["cc", "-c", "file.c", "-o", "file.o"]))
@@ -22,7 +22,7 @@ class InterceptUtilTest(unittest.TestCase):
 
     def test_format_entry_normalize_filename(self):
         parent = os.path.join(os.sep, "home", "me")
-        current = os.path.join(parent, "project")
+        current = os.path.join(parent, "trezoa")
 
         def test(filename):
             trace = {"directory": current, "command": ["cc", "-c", filename]}

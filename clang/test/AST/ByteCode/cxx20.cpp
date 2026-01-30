@@ -100,7 +100,7 @@ static_assert(f());
 #endif
 
 /// Distinct literals have distinct addresses.
-/// see https://github.com/llvm/llvm-project/issues/58754
+/// see https://github.com/llvm/llvm-trezoa/issues/58754
 constexpr auto foo(const char *p) { return p; }
 constexpr auto p1 = "test1";
 constexpr auto p2 = "test2";

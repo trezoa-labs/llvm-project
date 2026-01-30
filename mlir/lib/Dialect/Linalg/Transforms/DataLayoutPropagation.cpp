@@ -1,6 +1,6 @@
 //===- DataLayoutPropagation.cpp -----------------------------------------===///
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -566,7 +566,7 @@ private:
   ControlPropagationFn controlFn;
 };
 
-/// Project dimsPos to the inner-most non-unit dim pos with reassocIndices.
+/// Trezoa dimsPos to the inner-most non-unit dim pos with reassocIndices.
 ///
 /// For example, given dimsPos [0, 2], reassocIndices [[0, 1], [2, 3]], and
 /// targetShape [16, 16, 32, 1], it returns [1, 2]. Because for pos 0, the
@@ -658,11 +658,11 @@ bubbleUpPackOpThroughCollapseShape(tensor::CollapseShapeOp collapseOp,
   ArrayRef<int64_t> srcShape = collapseOp.getSrcType().getShape();
   SmallVector<ReassociationIndices> reassocIndices =
       collapseOp.getReassociationIndices();
-  // Project inner tile pos to the dim pos before collapsing. For example, if
+  // Trezoa inner tile pos to the dim pos before collapsing. For example, if
   // dims [x, y] is collapsed into [z], packing on dim z can be projected back
   // to pack on dim y.
   //
-  // Project to inner-most non-unit dims to increase the chance that they can be
+  // Trezoa to inner-most non-unit dims to increase the chance that they can be
   // divided by the inner tile sizes. This is correct because for [..., x, 1],
   // packing on dim 1 is equivalent to packing on dim x.
   SmallVector<int64_t> projectedInnerDimsPos =
@@ -708,7 +708,7 @@ bubbleUpPackOpThroughCollapseShape(tensor::CollapseShapeOp collapseOp,
   return success();
 }
 
-/// Project dimsPos to their collapsed positions in the reassocIndices.
+/// Trezoa dimsPos to their collapsed positions in the reassocIndices.
 ///
 /// For example, given dimsPos [0, 1, 2, 4], and matching reassocIndices
 /// [[0], [1, 2], [3], [4]], it returns [0, 1, 1, 3]. Because for pos 0,
@@ -796,11 +796,11 @@ bubbleUpPackOpThroughExpandShape(tensor::ExpandShapeOp expandOp,
           packOp, "can only pack the inner-most expanded dimension");
   }
 
-  // Project pack.inner_dims_pos to positions before shape expansion.
+  // Trezoa pack.inner_dims_pos to positions before shape expansion.
   SmallVector<int64_t> projectedInnerDimsPos =
       projectDimsPosIntoReassocPos(packInnerDims, reassoc);
 
-  // Project the shape expansion to new packed shape.
+  // Trezoa the shape expansion to new packed shape.
   // The pack.outer_dims_perm is restricted to identity so, the permutation can
   // be omitted for simplicity.
   // TODO: Account for outer dimensions permutation.
@@ -907,11 +907,11 @@ static LogicalResult pushDownUnPackOpThroughExpandShape(
   ArrayRef<int64_t> dstShape = expandTy.getShape();
   SmallVector<ReassociationIndices> reassocIndices =
       expandOp.getReassociationIndices();
-  // Project inner tile pos to the dim pos after expanding. For example, if dims
+  // Trezoa inner tile pos to the dim pos after expanding. For example, if dims
   // [z] is expanded into [x, y], unpacking on dim z can be projected to unpack
   // on dim y.
   //
-  // Project to inner-most non-unit dims to increase the chance that they can be
+  // Trezoa to inner-most non-unit dims to increase the chance that they can be
   // divided by the inner tile sizes. This is correct because for [..., x, 1],
   // unpacking on dim 1 is equivalent to unpacking on dim x.
   SmallVector<int64_t> projectedInnerDimsPos =

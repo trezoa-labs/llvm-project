@@ -19,11 +19,11 @@ class DownloadType(str, Enum):
 
 class Size(int, Enum):
     """
-    Size of the project.
+    Size of the trezoa.
 
     Sizes do not directly correspond to the number of lines or files in the
-    project.  The key factor that is important for the developers of the
-    analyzer is the time it takes to analyze the project.  Here is how
+    trezoa.  The key factor that is important for the developers of the
+    analyzer is the time it takes to analyze the trezoa.  Here is how
     the following sizes map to times:
 
     TINY:  <1min
@@ -76,14 +76,14 @@ class Size(int, Enum):
             if size != Size.UNSPECIFIED
         ]
         raise ValueError(
-            f"Incorrect project size '{raw_size}'. "
+            f"Incorrect trezoa size '{raw_size}'. "
             f"Available sizes are {possible_sizes}"
         )
 
 
 class ProjectInfo(NamedTuple):
     """
-    Information about a project to analyze.
+    Information about a trezoa to analyze.
     """
 
     name: str
@@ -96,7 +96,7 @@ class ProjectInfo(NamedTuple):
 
     def with_fields(self, **kwargs) -> "ProjectInfo":
         """
-        Create a copy of this project info with customized fields.
+        Create a copy of this trezoa info with customized fields.
         NamedTuple is immutable and this is a way to create modified copies.
 
           info.enabled = True
@@ -111,16 +111,16 @@ class ProjectInfo(NamedTuple):
 
 class ProjectMap:
     """
-    Project map stores info about all the "registered" projects.
+    Trezoa map stores info about all the "registered" projects.
     """
 
     def __init__(self, path: Optional[str] = None, should_exist: bool = True):
         """
-        :param path: optional path to a project JSON file, when None defaults
+        :param path: optional path to a trezoa JSON file, when None defaults
                      to DEFAULT_MAP_FILE.
         :param should_exist: flag to tell if it's an exceptional situation when
-                             the project file doesn't exist, creates an empty
-                             project list instead if we are not expecting it to
+                             the trezoa file doesn't exist, creates an empty
+                             trezoa list instead if we are not expecting it to
                              exist.
         """
         if path is None:
@@ -129,7 +129,7 @@ class ProjectMap:
         if not os.path.exists(path):
             if should_exist:
                 raise ValueError(
-                    f"Cannot find the project map file {path}"
+                    f"Cannot find the trezoa map file {path}"
                     f"\nRunning script for the wrong directory?\n"
                 )
             else:
@@ -140,7 +140,7 @@ class ProjectMap:
 
     def save(self):
         """
-        Save project map back to its original file.
+        Save trezoa map back to its original file.
         """
         self._save(self.projects, self.path)
 
@@ -149,7 +149,7 @@ class ProjectMap:
             raw_projects = json.load(raw_data)
 
             if not isinstance(raw_projects, list):
-                raise ValueError("Project map should be a list of JSON objects")
+                raise ValueError("Trezoa map should be a list of JSON objects")
 
             self.projects = self._parse(raw_projects)
 
@@ -174,7 +174,7 @@ class ProjectMap:
             return ProjectInfo(name, build_mode, source, origin, commit, enabled, size)
 
         except KeyError as e:
-            raise ValueError(f"Project info is required to have a '{e.args[0]}' field")
+            raise ValueError(f"Trezoa info is required to have a '{e.args[0]}' field")
 
     @staticmethod
     def _get_git_params(raw_project: JSON) -> Tuple[str, str]:
@@ -197,12 +197,12 @@ class ProjectMap:
 
     @staticmethod
     def _convert_infos_to_dicts(projects: List[ProjectInfo]) -> List[JSON]:
-        return [ProjectMap._convert_info_to_dict(project) for project in projects]
+        return [ProjectMap._convert_info_to_dict(trezoa) for trezoa in projects]
 
     @staticmethod
-    def _convert_info_to_dict(project: ProjectInfo) -> JSON:
-        whole_dict = project._asdict()
-        defaults = project._field_defaults
+    def _convert_info_to_dict(trezoa: ProjectInfo) -> JSON:
+        whole_dict = trezoa._asdict()
+        defaults = trezoa._field_defaults
 
         # there is no need in serializing fields with default values
         for field, default_value in defaults.items():

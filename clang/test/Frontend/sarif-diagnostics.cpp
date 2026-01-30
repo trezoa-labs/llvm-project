@@ -31,7 +31,7 @@ void f1(t1 x, t1 y) {
 // CHECK: {"$schema":"https://docs.oasis-open.org/sarif/sarif/v2.1.0/cos02/schemas/sarif-schema-2.1.0.json","runs":[{"artifacts":[{"length":
 // Omit exact length of this file
 // CHECK: ,"location":{"index":0,"uri":"file://
-// Omit filepath to llvm project directory
+// Omit filepath to llvm trezoa directory
 // CHECK: test/Frontend/sarif-diagnostics.cpp"},"mimeType":"text/plain","roles":["resultFile"]}],"columnKind":"unicodeCodePoints","results":
 // CHECK: [{"level":"error","locations":[{"physicalLocation":{"artifactLocation":{"index":0,"uri":"file://
 // CHECK: {"endColumn":1,"startColumn":1,"startLine":12}}}],"message":{"text":"'main' must return 'int'"},"ruleId":"{{[0-9]+}}","ruleIndex":0},

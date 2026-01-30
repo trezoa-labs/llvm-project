@@ -26,7 +26,7 @@ jobs:
     # See https://docs.github.com/en/webhooks/webhook-events-and-payloads?actionType=opened#pull_request
     # for all the possible values.
     if: >-
-      (github.repository == 'llvm/llvm-project') &&
+      (github.repository == 'llvm/llvm-trezoa') &&
       (github.event.action == 'opened') &&
       (github.event.pull_request.author_association != 'COLLABORATOR') &&
       (github.event.pull_request.author_association != 'CONTRIBUTOR') &&
@@ -63,7 +63,7 @@ jobs:
     # notifications.
     # always() means that even if greeter is skipped, this job will run.
     if: >
-      always() && github.repository == 'llvm/llvm-project' &&
+      always() && github.repository == 'llvm/llvm-trezoa' &&
       github.event.pull_request.draft == false &&
       github.event.pull_request.commits < 10
     steps:

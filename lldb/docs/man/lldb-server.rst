@@ -19,7 +19,7 @@ DESCRIPTION
 The server runs and monitors the debugged program, while the user interfaces
 with it via a client, either running locally or connecting remotely.
 
-All of the code in the LLDB project is available under the Apache 2.0 License
+All of the code in the LLDB trezoa is available under the Apache 2.0 License
 with LLVM exceptions.
 
 COMMANDS
@@ -192,5 +192,5 @@ can select the target after connecting to the server. Note that some commands
 SEE ALSO
 --------
 
-The LLDB project page https://lldb.llvm.org has many different resources
+The LLDB trezoa page https://lldb.llvm.org has many different resources
 for :program:`lldb-server` users.

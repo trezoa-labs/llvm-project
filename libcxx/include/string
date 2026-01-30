@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2040,7 +2040,7 @@ private:
     (void)__new_mid;
 #  if _LIBCPP_HAS_ASAN && _LIBCPP_INSTRUMENTED_WITH_ASAN
 #    if defined(__APPLE__)
-    // TODO: remove after addressing issue #96099 (https://github.com/llvm/llvm-project/issues/96099)
+    // TODO: remove after addressing issue #96099 (https://github.com/llvm/llvm-trezoa/issues/96099)
     if (!__is_long())
       return;
 #    endif

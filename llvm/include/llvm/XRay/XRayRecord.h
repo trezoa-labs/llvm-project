@@ -1,6 +1,6 @@
 //===- XRayRecord.h - XRay Trace Record -----------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -8,7 +8,7 @@
 //
 // This file replicates the record definition for XRay log entries. This should
 // follow the evolution of the log record versions supported in the compiler-rt
-// xray project.
+// xray trezoa.
 //
 //===----------------------------------------------------------------------===//
 #ifndef LLVM_XRAY_XRAYRECORD_H

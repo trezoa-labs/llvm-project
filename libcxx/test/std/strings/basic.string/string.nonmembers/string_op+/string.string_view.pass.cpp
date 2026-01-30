@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -119,9 +119,9 @@ constexpr void test(const CharT* x, const CharT* y, const CharT* expected) {
   }
   // string_view + string&&
   {
-    // TODO: Remove workaround once https://github.com/llvm/llvm-project/issues/92382 is fixed.
+    // TODO: Remove workaround once https://github.com/llvm/llvm-trezoa/issues/92382 is fixed.
     // Create a `basic_string` to workaround clang bug:
-    // https://github.com/llvm/llvm-project/issues/92382
+    // https://github.com/llvm/llvm-trezoa/issues/92382
     // Comparison between pointers to a string literal and some other object results in constant evaluation failure.
     if constexpr (std::same_as<StringViewT<CharT, TraitsT>, std::basic_string_view<CharT, TraitsT>>) {
       std::basic_string<CharT, TraitsT, AllocT> st_{x, allocator};

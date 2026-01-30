@@ -21,7 +21,7 @@ and generate one or more output files. These output files are typically
 developer needs.
 
 This document describes the LLVM TableGen facility in detail. It is intended
-for the programmer who is using TableGen to produce code for a project. If
+for the programmer who is using TableGen to produce code for a trezoa. If
 you are looking for a simple overview, check out the :doc:`TableGen Overview
 <./index>`.  The various ``*-tblgen`` commands used to invoke TableGen are
 described in :doc:`tblgen Family - Description to C++

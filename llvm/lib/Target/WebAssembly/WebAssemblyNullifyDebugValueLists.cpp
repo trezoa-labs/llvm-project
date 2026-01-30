@@ -1,6 +1,6 @@
 //=== WebAssemblyNullifyDebugValueLists.cpp - Nullify DBG_VALUE_LISTs   ---===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -9,7 +9,7 @@
 /// \file
 /// Nullify DBG_VALUE_LISTs instructions as a temporary measure before we
 /// implement DBG_VALUE_LIST handling in WebAssemblyDebugValueManager.
-/// See https://github.com/llvm/llvm-project/issues/49705.
+/// See https://github.com/llvm/llvm-trezoa/issues/49705.
 /// TODO Correctly handle DBG_VALUE_LISTs
 ///
 //===----------------------------------------------------------------------===//

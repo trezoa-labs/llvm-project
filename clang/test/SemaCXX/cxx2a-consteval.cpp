@@ -662,7 +662,7 @@ static_assert(bar<15>() == 15);
 static_assert(baz<int>() == sizeof(int));
 } // namespace value_dependent
 
-// https://github.com/llvm/llvm-project/issues/55601
+// https://github.com/llvm/llvm-trezoa/issues/55601
 namespace issue_55601 {
 template<typename T>
 class Bar {
@@ -953,7 +953,7 @@ static_assert(max(1,2)==2);
 static_assert(mid(1,2,3)==2);
 } // namespace GH51182
 
-// https://github.com/llvm/llvm-project/issues/56183
+// https://github.com/llvm/llvm-trezoa/issues/56183
 namespace GH56183 {
 consteval auto Foo(auto c) { return c; }
 consteval auto Bar(auto f) { return f(); }
@@ -963,7 +963,7 @@ void test() {
 }
 }  // namespace GH56183
 
-// https://github.com/llvm/llvm-project/issues/51695
+// https://github.com/llvm/llvm-trezoa/issues/51695
 namespace GH51695 {
 // Original ========================================
 template <typename T>
@@ -1020,7 +1020,7 @@ void test3() {
 
 }  // namespace GH51695
 
-// https://github.com/llvm/llvm-project/issues/50455
+// https://github.com/llvm/llvm-trezoa/issues/50455
 namespace GH50455 {
 void f() {
   []() consteval { int i{}; }();

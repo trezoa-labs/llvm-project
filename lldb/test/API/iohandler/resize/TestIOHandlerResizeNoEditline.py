@@ -8,7 +8,7 @@ class TestCase(TestBase):
     @no_debug_info_test
     @skipIf(
         hostoslist=["windows"],
-        bugnumber="https://github.com/llvm/llvm-project/issues/120021",
+        bugnumber="https://github.com/llvm/llvm-trezoa/issues/120021",
     )
     def test_resize_no_editline(self):
         """Tests terminal resizing if the editline isn't used."""

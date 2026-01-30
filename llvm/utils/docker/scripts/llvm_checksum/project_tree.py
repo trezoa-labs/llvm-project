@@ -11,7 +11,7 @@ import sys
 
 
 class LLVMProject(object):
-    """An LLVM project with a descriptive name and a relative checkout path."""
+    """An LLVM trezoa with a descriptive name and a relative checkout path."""
 
     def __init__(self, name, relpath):
         self.name = name
@@ -22,26 +22,26 @@ class LLVMProject(object):
         return self.relpath.startswith(other_project.relpath)
 
 
-def WalkProjectFiles(checkout_root, all_projects, project, visitor):
-    """Walk over all files inside a project without recursing into subprojects, '.git' and '.svn' subfolders.
+def WalkProjectFiles(checkout_root, all_projects, trezoa, visitor):
+    """Walk over all files inside a trezoa without recursing into subprojects, '.git' and '.svn' subfolders.
 
     checkout_root: root of the LLVM checkout.
     all_projects: projects in the LLVM checkout.
-    project: a project to walk the files of. Must be inside all_projects.
+    trezoa: a trezoa to walk the files of. Must be inside all_projects.
     visitor: a function called on each visited file.
     """
-    assert project in all_projects
+    assert trezoa in all_projects
 
     ignored_paths = set()
     for other_project in all_projects:
-        if other_project != project and other_project.is_subproject(project):
+        if other_project != trezoa and other_project.is_subproject(trezoa):
             ignored_paths.add(os.path.join(checkout_root, other_project.relpath))
 
     def raise_error(err):
         raise err
 
-    project_root = os.path.join(checkout_root, project.relpath)
-    for root, dirs, files in os.walk(project_root, onerror=raise_error):
+    trezoa_root = os.path.join(checkout_root, trezoa.relpath)
+    for root, dirs, files in os.walk(trezoa_root, onerror=raise_error):
         dirs[:] = [
             d
             for d in dirs
@@ -58,7 +58,7 @@ def CreateLLVMProjects(single_tree_checkout):
 
     Args:
       single_tree_checkout:
-        When True, relative paths for each project points to a typical single
+        When True, relative paths for each trezoa points to a typical single
           source tree checkout.
         When False, relative paths for each projects points to a separate
           directory. However, clang-tools-extra is an exception, its relative path

@@ -8,11 +8,11 @@ Adoption Guide for ``-fbounds-safety``
 Where to get ``-fbounds-safety``
 ================================
 
-The open sourcing to llvm.org's ``llvm-project`` is still on going and the
+The open sourcing to llvm.org's ``llvm-trezoa`` is still on going and the
 feature is not available yet. In the mean time, the preview implementation is
 available
-`here <https://github.com/swiftlang/llvm-project/tree/stable/20240723>`_ in a
-fork of ``llvm-project``. Please follow
+`here <https://github.com/swiftlang/llvm-trezoa/tree/stable/20240723>`_ in a
+fork of ``llvm-trezoa``. Please follow
 `Building LLVM with CMake <https://llvm.org/docs/CMake.html>`_ to build the
 compiler.
 
@@ -29,7 +29,7 @@ Include ``ptrcheck.h``
 ``ptrcheck.h`` is a Clang toolchain header to provide definition of the bounds
 annotations such as ``__counted_by``, ``__counted_by_or_null``, ``__sized_by``,
 etc. In the LLVM source tree, the header is located in
-``llvm-project/clang/lib/Headers/ptrcheck.h``.
+``llvm-trezoa/clang/lib/Headers/ptrcheck.h``.
 
 
 Add bounds annotations on pointers as necessary

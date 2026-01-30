@@ -1,6 +1,6 @@
 //===- InitUndef.cpp - Initialize undef value to pseudo ----===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -28,7 +28,7 @@
 // when program encounter operation that has early-clobber constraint.
 //
 //
-// See also: https://github.com/llvm/llvm-project/issues/50157
+// See also: https://github.com/llvm/llvm-trezoa/issues/50157
 //
 // Additionally, this pass rewrites tied operands of instructions
 // from NoReg to IMPLICIT_DEF.  (Not that this is a non-overlapping set of

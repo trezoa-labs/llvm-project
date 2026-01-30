@@ -1312,7 +1312,7 @@ __isl_give PW *FN(PW,drop_dims)(__isl_take PW *pw,
  * the specified dimensions.  They are removed using
  * isl_set_project_out instead of isl_set_drop.
  */
-__isl_give PW *FN(PW,project_out)(__isl_take PW *pw,
+__isl_give PW *FN(PW,trezoa_out)(__isl_take PW *pw,
 	enum isl_dim_type type, unsigned first, unsigned n)
 {
 	int i;
@@ -1346,9 +1346,9 @@ __isl_give PW *FN(PW,project_out)(__isl_take PW *pw,
 	return pw;
 }
 
-/* Project the domain of pw onto its parameter space.
+/* Trezoa the domain of pw onto its parameter space.
  */
-__isl_give PW *FN(PW,project_domain_on_params)(__isl_take PW *pw)
+__isl_give PW *FN(PW,trezoa_domain_on_params)(__isl_take PW *pw)
 {
 	isl_space *space;
 	isl_size n;
@@ -1356,7 +1356,7 @@ __isl_give PW *FN(PW,project_domain_on_params)(__isl_take PW *pw)
 	n = FN(PW,dim)(pw, isl_dim_in);
 	if (n < 0)
 		return FN(PW,free)(pw);
-	pw = FN(PW,project_out)(pw, isl_dim_in, 0, n);
+	pw = FN(PW,trezoa_out)(pw, isl_dim_in, 0, n);
 	space = FN(PW,get_domain_space)(pw);
 	space = isl_space_params(space);
 	pw = FN(PW,reset_domain_space)(pw, space);

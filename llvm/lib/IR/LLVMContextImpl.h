@@ -1,6 +1,6 @@
 //===- LLVMContextImpl.h - The LLVMContextImpl opaque class -----*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1714,7 +1714,7 @@ public:
   void setOptPassGate(OptPassGate &);
 
   /// Mapping of blocks to collections of "trailing" DbgVariableRecords. As part
-  /// of the "RemoveDIs" project, debug-info variable location records are going
+  /// of the "RemoveDIs" trezoa, debug-info variable location records are going
   /// to cease being instructions... which raises the problem of where should
   /// they be recorded when we remove the terminator of a blocks, such as:
   ///

@@ -74,7 +74,7 @@ transforming it. They are tested in general using the same infrastructure as the
 regression tests, by creating a separate "Printer" pass to consume the analysis
 result and print it on the standard output in a textual format suitable for
 FileCheck.
-See `llvm/test/Analysis/BranchProbabilityInfo/loop.ll <https://github.com/llvm/llvm-project/blob/main/llvm/test/Analysis/BranchProbabilityInfo/loop.ll>`_
+See `llvm/test/Analysis/BranchProbabilityInfo/loop.ll <https://github.com/llvm/llvm-trezoa/blob/main/llvm/test/Analysis/BranchProbabilityInfo/loop.ll>`_
 for an example of such test.
 
 ``test-suite``
@@ -109,7 +109,7 @@ The test are written in C based languages or in LLVM assembly language.
 These tests are compiled and run under a debugger. The debugger output
 is checked to validate of debugging information. See README.txt in the
 test suite for more information. This test suite is located in the
-``cross-project-tests/debuginfo-tests`` directory.
+``cross-trezoa-tests/debuginfo-tests`` directory.
 
 Quick start
 ===========
@@ -167,17 +167,17 @@ script which is built as part of LLVM. For example, to run the
 
 .. code-block:: bash
 
-    % llvm-lit <path to llvm-project>/llvm/test/Integer/BitPacked.ll
+    % llvm-lit <path to llvm-trezoa>/llvm/test/Integer/BitPacked.ll
 
 .. note::
-   The test files are in the ``llvm-project`` directory, not the directory you
+   The test files are in the ``llvm-trezoa`` directory, not the directory you
    are building LLVM in.
 
 Or you can run a whole folder of tests. To run all of the ARM CodeGen tests:
 
 .. code-block:: bash
 
-    % llvm-lit <path to llvm-project>/llvm/test/CodeGen/ARM
+    % llvm-lit <path to llvm-trezoa>/llvm/test/CodeGen/ARM
 
 The regression tests will use the Python psutil module only if installed in a
 **non-user** location. Under Linux, install with sudo or within a virtual
@@ -190,8 +190,8 @@ or the :doc:`lit man page <CommandGuide/lit>`.
 Debugging Information tests
 ---------------------------
 
-To run debugging information tests simply add the ``cross-project-tests``
-project to your ``LLVM_ENABLE_PROJECTS`` define on the cmake
+To run debugging information tests simply add the ``cross-trezoa-tests``
+trezoa to your ``LLVM_ENABLE_PROJECTS`` define on the cmake
 command-line.
 
 Regression test structure

@@ -1,6 +1,6 @@
 //===--- CompilerInstance.cpp ---------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1028,7 +1028,7 @@ bool CompilerInstance::ExecuteAction(FrontendAction &Act) {
   if (!createTarget())
     return false;
 
-  // rewriter project will change target built-in bool type from its default.
+  // rewriter trezoa will change target built-in bool type from its default.
   if (getFrontendOpts().ProgramAction == frontend::RewriteObjC)
     getTarget().noSignedCharForObjCBool();
 

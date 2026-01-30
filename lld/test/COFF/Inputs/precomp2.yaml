@@ -12,7 +12,7 @@ sections:
           - Kind:            S_OBJNAME
             ObjNameSym:
               Signature:       545589255
-              ObjectName:      'D:\llvm-project\lld\test\COFF\Inputs\precomp2.obj'
+              ObjectName:      'D:\llvm-trezoa\lld\test\COFF\Inputs\precomp2.obj'
           - Kind:            S_COMPILE3
             Compile3Sym:
               Flags:           [ SecurityChecks, HotPatch ]
@@ -28,7 +28,7 @@ sections:
               Version:         'Microsoft (R) Optimizing Compiler'
       - !StringTable
         Strings:
-          - 'D:\llvm-project\lld\test\COFF\precomp\precomp.pch'
+          - 'D:\llvm-trezoa\lld\test\COFF\precomp\precomp.pch'
   - Name:            '.debug$P'
     Characteristics: [ IMAGE_SCN_CNT_INITIALIZED_DATA, IMAGE_SCN_MEM_DISCARDABLE, IMAGE_SCN_MEM_READ ]
     Alignment:       1

@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -54,7 +54,7 @@ inline _LIBCPP_HIDE_FROM_ABI typename __promote<_A1, _A2>::type hypot(_A1 __x, _
 // Computes the three-dimensional hypotenuse: `std::hypot(x,y,z)`.
 // The naive implementation might over-/underflow which is why this implementation is more involved:
 //    If the square of an argument might run into issues, we scale the arguments appropriately.
-// See https://github.com/llvm/llvm-project/issues/92782 for a detailed discussion and summary.
+// See https://github.com/llvm/llvm-trezoa/issues/92782 for a detailed discussion and summary.
 template <class _Real>
 _LIBCPP_HIDE_FROM_ABI _Real __hypot(_Real __x, _Real __y, _Real __z) {
   // Factors needed to determine if over-/underflow might happen

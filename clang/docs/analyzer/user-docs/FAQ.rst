@@ -76,7 +76,7 @@ When the analyzer sees that an unlocalized string is passed to a method that wil
 
    User-facing text should use localized string macro
 
-If your project deliberately uses unlocalized user-facing strings (for example, in a debugging UI that is never shown to users), you can suppress the analyzer warnings (and document your intent) with a function that just returns its input but is annotated to return a localized string:
+If your trezoa deliberately uses unlocalized user-facing strings (for example, in a debugging UI that is never shown to users), you can suppress the analyzer warnings (and document your intent) with a function that just returns its input but is annotated to return a localized string:
 
 .. code-block:: objc
 

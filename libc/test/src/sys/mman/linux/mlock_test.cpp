@@ -1,6 +1,6 @@
 //===-- Unittests for mlock -----------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -54,7 +54,7 @@ static bool get_capacity(unsigned int cap) {
   header.version = _LINUX_CAPABILITY_VERSION_3;
   __user_cap_data_struct data[_LINUX_CAPABILITY_U32S_3];
   // TODO: use capget wrapper once implemented.
-  // https://github.com/llvm/llvm-project/issues/80037
+  // https://github.com/llvm/llvm-trezoa/issues/80037
   long res = LIBC_NAMESPACE::syscall_impl(
       SYS_capget, LIBC_NAMESPACE::cpp::bit_cast<long>(&header),
       LIBC_NAMESPACE::cpp::bit_cast<long>(&data));
@@ -133,7 +133,7 @@ TEST(LlvmLibcMlockTest, InvalidFlag) {
   // specified without MCL_FUTURE or MCL_CURRENT, but this seems to fail on
   // Linux 4.19.y (EOL).
   // TODO(ndesaulniers) re-enable after
-  // https://github.com/llvm/llvm-project/issues/80073 is fixed.
+  // https://github.com/llvm/llvm-trezoa/issues/80073 is fixed.
   // EXPECT_THAT(LIBC_NAMESPACE::mlockall(MCL_ONFAULT), Fails(EINVAL));
 
   LIBC_NAMESPACE::munmap(addr, alloc_size);

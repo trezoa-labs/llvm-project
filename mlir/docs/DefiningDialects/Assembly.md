@@ -12,7 +12,7 @@ To enable this, the owning dialect of these types/attributes can define an inter
 
 ```cpp
 // OpAsmDialectInterface is defined in
-// https://github.com/llvm/llvm-project/blob/91ab10e8d6c256d841da1a1a1b47c334e08d95b9/mlir/include/mlir/IR/OpImplementation.h#L1738
+// https://github.com/llvm/llvm-trezoa/blob/91ab10e8d6c256d841da1a1a1b47c334e08d95b9/mlir/include/mlir/IR/OpImplementation.h#L1738
 struct MyDialectOpAsmDialectInterface : public OpAsmDialectInterface {
  public:
   using OpAsmDialectInterface::OpAsmDialectInterface;
@@ -69,7 +69,7 @@ def Arith_ConstantOp : Op<Arith_Dialect, "constant",
 And the corresponding method:
 
 ```cpp
-// from https://github.com/llvm/llvm-project/blob/5ce271ef74dd3325993c827f496e460ced41af11/mlir/lib/Dialect/Arith/IR/ArithOps.cpp#L184
+// from https://github.com/llvm/llvm-trezoa/blob/5ce271ef74dd3325993c827f496e460ced41af11/mlir/lib/Dialect/Arith/IR/ArithOps.cpp#L184
 void arith::ConstantOp::getAsmResultNames(
     function_ref<void(Value, StringRef)> setNameFn) {
   auto type = getType();

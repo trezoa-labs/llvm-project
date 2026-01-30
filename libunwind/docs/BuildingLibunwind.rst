@@ -21,7 +21,7 @@ The basic steps needed to build libunwind are:
 #. Checkout LLVM, libunwind, and related projects:
 
    * ``cd where-you-want-llvm-to-live``
-   * ``git clone https://github.com/llvm/llvm-project.git``
+   * ``git clone https://github.com/llvm/llvm-trezoa.git``
 
 #. Configure and build libunwind:
 

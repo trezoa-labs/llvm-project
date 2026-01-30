@@ -1,6 +1,6 @@
 //===-- dfsan_custom.cpp --------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2103,15 +2103,15 @@ static inline void setup_tls_args_for_write_callback(
   // The callback code will expect argument shadow labels in the args TLS,
   // and origin labels in the origin args TLS.
   // Previously this was done by a trampoline, but we want to remove this:
-  // https://github.com/llvm/llvm-project/issues/54172
+  // https://github.com/llvm/llvm-trezoa/issues/54172
   //
   // Instead, this code is manually setting up the args TLS data.
   //
   // The offsets used need to correspond with the instrumentation code,
   // see llvm/lib/Transforms/Instrumentation/DataFlowSanitizer.cpp
   // DFSanFunction::getShadowForTLSArgument.
-  // https://github.com/llvm/llvm-project/blob/0acc9e4b5edd8b39ff3d4c6d0e17f02007671c4e/llvm/lib/Transforms/Instrumentation/DataFlowSanitizer.cpp#L1684
-  // https://github.com/llvm/llvm-project/blob/0acc9e4b5edd8b39ff3d4c6d0e17f02007671c4e/llvm/lib/Transforms/Instrumentation/DataFlowSanitizer.cpp#L125
+  // https://github.com/llvm/llvm-trezoa/blob/0acc9e4b5edd8b39ff3d4c6d0e17f02007671c4e/llvm/lib/Transforms/Instrumentation/DataFlowSanitizer.cpp#L1684
+  // https://github.com/llvm/llvm-trezoa/blob/0acc9e4b5edd8b39ff3d4c6d0e17f02007671c4e/llvm/lib/Transforms/Instrumentation/DataFlowSanitizer.cpp#L125
   //
   // Here the arguments are all primitives, but it can be more complex
   // to compute offsets for array/aggregate type arguments.

@@ -1,6 +1,6 @@
 //===------- CGObjCGNU.cpp - Emit LLVM Code from ASTs for a Module --------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2102,7 +2102,7 @@ class CGObjCGNUstep2 : public CGObjCGNUstep {
         // `CreateLoad` were known to miscompile when MSVC 19.40.33813 is used
         // to build Clang. When the bug is fixed in future MSVC releases, we
         // should revert these lines to their previous state. See discussion in
-        // https://github.com/llvm/llvm-project/pull/102681
+        // https://github.com/llvm/llvm-trezoa/pull/102681
         llvm::Value *Val = Builder.CreateStructGEP(classStart, selfValue, 4);
         auto Align = CharUnits::fromQuantity(
             astContext.getTypeAlign(astContext.UnsignedLongTy));

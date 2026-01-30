@@ -1,6 +1,6 @@
 //===--- SemaOverload.cpp - C++ Overloading -------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12076,7 +12076,7 @@ static void NoteImplicitDeductionGuide(Sema &S, FunctionDecl *Fn) {
       // The implicit deduction guide is built on an explicit non-template
       // deduction guide. Currently, this might be the case only for type
       // aliases.
-      // FIXME: Add a test once https://github.com/llvm/llvm-project/pull/96686
+      // FIXME: Add a test once https://github.com/llvm/llvm-trezoa/pull/96686
       // gets merged.
       assert(OriginTemplate->isTypeAlias() &&
              "Non-template implicit deduction guides are only possible for "

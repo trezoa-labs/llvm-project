@@ -1,6 +1,6 @@
 //===- RegisterInfoEmitter.cpp - Generate a Register File Desc. -*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1316,7 +1316,7 @@ void RegisterInfoEmitter::runTargetDesc(raw_ostream &OS) {
       printBitVectorAsHex(OS, RC.getSubClasses(), 32);
 
       // Emit super-reg class masks for any relevant SubRegIndices that can
-      // project into RC.
+      // trezoa into RC.
       IdxList &SRIList = SuperRegIdxLists[RC.EnumValue];
       for (auto &Idx : SubRegIndices) {
         MaskBV.reset();

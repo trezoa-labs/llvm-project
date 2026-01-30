@@ -1,6 +1,6 @@
 //===--- SourceLocationEncoding.h - Small serialized locations --*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -9,7 +9,7 @@
 // We wish to encode the SourceLocation from other module file not dependent
 // on the other module file. So that the source location changes from other
 // module file may not affect the contents of the current module file. Then the
-// users don't need to recompile the whole project due to a new line in a module
+// users don't need to recompile the whole trezoa due to a new line in a module
 // unit in the root of the dependency graph.
 //
 // To achieve this, we need to encode the index of the module file into the

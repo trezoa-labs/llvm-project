@@ -254,7 +254,7 @@ void check_conditional_literal(char *s, int *i) {
 
 void test_promotion(void) {
   // No promotions for *scanf pointers clarified in N2562
-  // https://github.com/llvm/llvm-project/issues/57102
+  // https://github.com/llvm/llvm-trezoa/issues/57102
   // N2562: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2562.pdf
   int i;
   signed char sc;

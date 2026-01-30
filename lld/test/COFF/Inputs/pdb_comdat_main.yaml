@@ -16,7 +16,7 @@ sections:
           - Kind:            S_OBJNAME
             ObjNameSym:
               Signature:       0
-              ObjectName:      'C:\src\llvm-project\build\pdb_comdat_main.obj'
+              ObjectName:      'C:\src\llvm-trezoa\build\pdb_comdat_main.obj'
           - Kind:            S_COMPILE3
             Compile3Sym:
               Flags:           [ SecurityChecks, HotPatch ]
@@ -61,7 +61,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'c:\src\llvm-project\build\pdb_comdat_main.c'
+          - FileName:        'c:\src\llvm-trezoa\build\pdb_comdat_main.c'
             Lines:
               - Offset:          0
                 LineStart:       2
@@ -92,16 +92,16 @@ sections:
               DisplayName:     global
       - !FileChecksums
         Checksums:
-          - FileName:        'c:\src\llvm-project\build\pdb_comdat_main.c'
+          - FileName:        'c:\src\llvm-trezoa\build\pdb_comdat_main.c'
             Kind:            MD5
             Checksum:        F969E51BBE373436D81492EB61387F36
-          - FileName:        'c:\src\llvm-project\build\foo.h'
+          - FileName:        'c:\src\llvm-trezoa\build\foo.h'
             Kind:            MD5
             Checksum:        D74D834EFAC3AE2B45E606A8320B1D5C
       - !StringTable
         Strings:
-          - 'c:\src\llvm-project\build\pdb_comdat_main.c'
-          - 'c:\src\llvm-project\build\foo.h'
+          - 'c:\src\llvm-trezoa\build\pdb_comdat_main.c'
+          - 'c:\src\llvm-trezoa\build\foo.h'
       - !Symbols
         Records:
           - Kind:            S_BUILDINFO
@@ -172,7 +172,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'C:\src\llvm-project\build'
+          String:          'C:\src\llvm-trezoa\build'
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
@@ -195,7 +195,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'C:\src\llvm-project\build\vc140.pdb'
+          String:          'C:\src\llvm-trezoa\build\vc140.pdb'
       - Kind:            LF_BUILDINFO
         BuildInfo:
           ArgIndices:      [ 4104, 4105, 4109, 4110, 4108 ]
@@ -256,7 +256,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'c:\src\llvm-project\build\foo.h'
+          - FileName:        'c:\src\llvm-trezoa\build\foo.h'
             Lines:
               - Offset:          0
                 LineStart:       2

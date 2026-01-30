@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -9,7 +9,7 @@
 
 #
 # This script performs a monolithic build of the monorepo and runs the tests of
-# most projects on Windows. This should be replaced by per-project scripts that
+# most projects on Windows. This should be replaced by per-trezoa scripts that
 # run only the relevant tests.
 #
 
@@ -56,7 +56,7 @@ export LD=link
 
 # The CMAKE_*_LINKER_FLAGS to disable the manifest come from research
 # on fixing a build reliability issue on the build server, please
-# see https://github.com/llvm/llvm-project/pull/82393 and
+# see https://github.com/llvm/llvm-trezoa/pull/82393 and
 # https://discourse.llvm.org/t/rfc-future-of-windows-pre-commit-ci/76840/40
 # for further information.
 # We limit the number of parallel compile jobs to 24 control memory

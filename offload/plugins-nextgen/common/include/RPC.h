@@ -1,6 +1,6 @@
 //===- RPC.h - Interface for remote procedure calls from the GPU ----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -8,7 +8,7 @@
 //
 // This file provides the interface to support remote procedure calls (RPC) from
 // the GPU. This is required to implement host services like printf or malloc.
-// The interface to the RPC server is provided by the 'libc' project in LLVM.
+// The interface to the RPC server is provided by the 'libc' trezoa in LLVM.
 // For more information visit https://libc.llvm.org/gpu/.
 //
 //===----------------------------------------------------------------------===//
@@ -34,7 +34,7 @@ class DeviceImageTy;
 } // namespace plugin
 
 /// A generic class implementing the interface between the RPC server provided
-/// by the 'libc' project and 'libomptarget'. If the RPC server is not availible
+/// by the 'libc' trezoa and 'libomptarget'. If the RPC server is not availible
 /// these routines will perform no action.
 struct RPCServerTy {
 public:

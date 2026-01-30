@@ -4,7 +4,7 @@
 #define Y(expression) expression ;
 
 void foo() {
-  // https://github.com/llvm/llvm-project/issues/60722:
+  // https://github.com/llvm/llvm-trezoa/issues/60722:
   //
   // - Due to to the error recovery, the lexer inserts a pair of () around the
   //   macro argument int{,}, so we will see [(, int, {, ,, }, )] tokens.

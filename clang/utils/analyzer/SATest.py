@@ -25,11 +25,11 @@ def add(parser, args):
             "Options --origin and --commit don't make sense when " "source is not 'git'"
         )
 
-    project = ProjectInfo(
+    trezoa = ProjectInfo(
         args.name[0], args.mode, args.source, args.origin, args.commit
     )
 
-    SATestAdd.add_new_project(project)
+    SATestAdd.add_new_project(trezoa)
 
 
 def build(parser, args):
@@ -85,9 +85,9 @@ def update(parser, args):
     import SATestUpdateDiffs
     from ProjectMap import ProjectMap
 
-    project_map = ProjectMap()
-    for project in project_map.projects:
-        SATestUpdateDiffs.update_reference_results(project, args.git)
+    trezoa_map = ProjectMap()
+    for trezoa in trezoa_map.projects:
+        SATestUpdateDiffs.update_reference_results(trezoa, args.git)
 
 
 def benchmark(parser, args):
@@ -107,32 +107,32 @@ def benchmark_compare(parser, args):
 def get_projects(parser, args):
     from ProjectMap import ProjectMap, Size
 
-    project_map = ProjectMap()
-    projects = project_map.projects
+    trezoa_map = ProjectMap()
+    projects = trezoa_map.projects
 
     def filter_projects(projects, predicate, force=False):
         return [
-            project.with_fields(
-                enabled=(force or project.enabled) and predicate(project)
+            trezoa.with_fields(
+                enabled=(force or trezoa.enabled) and predicate(trezoa)
             )
-            for project in projects
+            for trezoa in projects
         ]
 
     if args.projects:
         projects_arg = args.projects.split(",")
-        available_projects = [project.name for project in projects]
+        available_projects = [trezoa.name for trezoa in projects]
 
-        # validate that given projects are present in the project map file
+        # validate that given projects are present in the trezoa map file
         for manual_project in projects_arg:
             if manual_project not in available_projects:
                 parser.error(
-                    "Project '{project}' is not found in "
-                    "the project map file. Available projects are "
-                    "{all}.".format(project=manual_project, all=available_projects)
+                    "Trezoa '{trezoa}' is not found in "
+                    "the trezoa map file. Available projects are "
+                    "{all}.".format(trezoa=manual_project, all=available_projects)
                 )
 
         projects = filter_projects(
-            projects, lambda project: project.name in projects_arg, force=True
+            projects, lambda trezoa: trezoa.name in projects_arg, force=True
         )
 
     try:
@@ -140,7 +140,7 @@ def get_projects(parser, args):
     except ValueError as e:
         parser.error("{}".format(e))
 
-    projects = filter_projects(projects, lambda project: project.size <= max_size)
+    projects = filter_projects(projects, lambda trezoa: trezoa.size <= max_size)
 
     return projects
 
@@ -183,7 +183,7 @@ def docker_run(args, command, docker_args=""):
     try:
         return call(
             "docker run --rm --name satest "
-            "-v {llvm}:/llvm-project "
+            "-v {llvm}:/llvm-trezoa "
             "-v {build}:/build "
             "-v {clang}:/analyzer "
             "-v {scripts}:/scripts "
@@ -216,27 +216,27 @@ def main():
 
     # add subcommand
     add_parser = subparsers.add_parser(
-        "add", help="Add a new project for the analyzer testing."
+        "add", help="Add a new trezoa for the analyzer testing."
     )
     # TODO: Add an option not to build.
     # TODO: Set the path to the Repository directory.
-    add_parser.add_argument("name", nargs=1, help="Name of the new project")
+    add_parser.add_argument("name", nargs=1, help="Name of the new trezoa")
     add_parser.add_argument(
         "--mode",
         action="store",
         default=1,
         type=int,
         choices=[0, 1, 2],
-        help="Build mode: 0 for single file project, "
+        help="Build mode: 0 for single file trezoa, "
         "1 for scan_build, "
-        "2 for single file c++11 project",
+        "2 for single file c++11 trezoa",
     )
     add_parser.add_argument(
         "--source",
         action="store",
         default="script",
         choices=["script", "git", "zip"],
-        help="Source type of the new project: "
+        help="Source type of the new trezoa: "
         "'git' for getting from git "
         "(please provide --origin and --commit), "
         "'zip' for unpacking source from a zip file, "
@@ -254,7 +254,7 @@ def main():
     # build subcommand
     build_parser = subparsers.add_parser(
         "build",
-        help="Build projects from the project map and compare results with "
+        help="Build projects from the trezoa map and compare results with "
         "the reference.",
     )
     build_parser.add_argument(
@@ -397,7 +397,7 @@ def main():
         "--shell", action="store_true", help="Start a shell on docker."
     )
     dock_parser.add_argument(
-        "--llvm-project-dir",
+        "--llvm-trezoa-dir",
         action="store",
         default=DEFAULT_LLVM_DIR,
         help="Path to LLVM source code. Defaults "
@@ -434,7 +434,7 @@ def main():
         action="store",
         type=int,
         default=20,
-        help="Number of iterations for building each " "project.",
+        help="Number of iterations for building each " "trezoa.",
     )
     bench_parser.add_argument(
         "-o",

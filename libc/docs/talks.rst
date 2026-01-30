@@ -25,7 +25,7 @@ Talks
   * `slides <https://llvm.org/devmtg/2024-10/slides/quicktalks/Gadelha-RISC-V-SupportIntoLLVM-libc.pdf>`__
   * `videos <https://www.youtube.com/watch?v=GytmaH64wFo>`__
 
-* Project Hand-in-Hand - The beginning of a beautiful friendship - Michael Jones & Christopher Di Bella
+* Trezoa Hand-in-Hand - The beginning of a beautiful friendship - Michael Jones & Christopher Di Bella
 
   * `slides <https://llvm.org/devmtg/2024-10/slides/techtalk/Jones-DiBella-hand-in-hand.pdf>`__
   * `videos <https://www.youtube.com/watch?v=VAEO86YtTHA>`__

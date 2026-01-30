@@ -372,7 +372,7 @@ add_libc_test(
     libc.include.llvm-libc-macros.math_function_macros
 )
 
-# TODO(https://github.com/llvm/llvm-project/issues/114618): fix linkage failures
+# TODO(https://github.com/llvm/llvm-trezoa/issues/114618): fix linkage failures
 # add_libc_test(
 #   issignaling_c_test
 #   C_TEST

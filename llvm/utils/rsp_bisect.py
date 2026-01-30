@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -60,7 +60,7 @@ example
 ```
 
 With buildgood/ as the working directory, run
-$ path/to/llvm-project/llvm/utils/rsp_bisect.py \
+$ path/to/llvm-trezoa/llvm/utils/rsp_bisect.py \
     --test=path/to/test_script --rsp=./foo.rsp --other_rel_path=../buildbad/
 If rsp_bisect is successful, it will print the first file in the rsp file that
 when using the bad build directory's version causes the test script to return a

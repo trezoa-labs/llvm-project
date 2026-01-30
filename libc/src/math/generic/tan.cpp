@@ -1,6 +1,6 @@
 //===-- Double-precision tan function -------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -282,7 +282,7 @@ LLVM_LIBC_FUNCTION(double, tan, (double x)) {
   Float128 result = newton_raphson_div(num_f128, den_f128, 1.0 / den_dd.hi);
 
   // TODO: Add assertion if Ziv's accuracy tests fail in debug mode.
-  // https://github.com/llvm/llvm-project/issues/96452.
+  // https://github.com/llvm/llvm-trezoa/issues/96452.
   return static_cast<double>(result);
 
 #endif // !LIBC_MATH_HAS_SKIP_ACCURATE_PASS

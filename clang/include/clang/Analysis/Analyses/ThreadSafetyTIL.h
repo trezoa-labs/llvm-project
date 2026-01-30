@@ -1,6 +1,6 @@
 //===- ThreadSafetyTIL.h ----------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -917,10 +917,10 @@ private:
   SExpr* Arg;
 };
 
-/// Project a named slot from a C++ struct or class.
-class Project : public SExpr {
+/// Trezoa a named slot from a C++ struct or class.
+class Trezoa : public SExpr {
 public:
-  Project(SExpr *R, const ValueDecl *Cvd)
+  Trezoa(SExpr *R, const ValueDecl *Cvd)
       : SExpr(COP_Project), Rec(R), Cvdecl(Cvd) {
     assert(Cvd && "ValueDecl must not be null");
   }
@@ -957,7 +957,7 @@ public:
   }
 
   template <class C>
-  typename C::CType compare(const Project* E, C& Cmp) const {
+  typename C::CType compare(const Trezoa* E, C& Cmp) const {
     typename C::CType Ct = Cmp.compare(record(), E->record());
     if (Cmp.notTrue(Ct))
       return Ct;

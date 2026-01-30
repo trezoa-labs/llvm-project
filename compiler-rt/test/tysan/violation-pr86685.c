@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Violation reported in https://github.com/llvm/llvm-project/issues/86685.
+// Violation reported in https://github.com/llvm/llvm-trezoa/issues/86685.
 void foo(int *s, float *f, long n) {
   for (long i = 0; i < n; ++i) {
     *f = 2;

@@ -1,6 +1,6 @@
 //===- Any.h - Generic type erased holder of any type -----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -132,7 +132,7 @@ private:
 // put the variable into .bss. To prevent this issue from happening, initialize
 // the variable with a non-zero value, which forces it to land in .data (because
 // .bss is zero-initialized).
-// See also https://github.com/llvm/llvm-project/issues/62270
+// See also https://github.com/llvm/llvm-trezoa/issues/62270
 template <typename T> char Any::TypeId<T>::Id = 1;
 
 template <class T> T any_cast(const Any &Value) {

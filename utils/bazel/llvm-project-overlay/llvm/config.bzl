@@ -112,7 +112,7 @@ llvm_config_defines = os_defines + builtin_thread_pointer + select({
     # platforms (e.g. glibc < 2.18. See
     # https://sourceware.org/bugzilla/show_bug.cgi?id=15366). These are also
     # included unconditionally in the CMake build:
-    # https://github.com/llvm/llvm-project/blob/cd0dd8ece8e/llvm/cmake/modules/HandleLLVMOptions.cmake#L907-L909
+    # https://github.com/llvm/llvm-trezoa/blob/cd0dd8ece8e/llvm/cmake/modules/HandleLLVMOptions.cmake#L907-L909
     "__STDC_LIMIT_MACROS",
     "__STDC_CONSTANT_MACROS",
     "__STDC_FORMAT_MACROS",

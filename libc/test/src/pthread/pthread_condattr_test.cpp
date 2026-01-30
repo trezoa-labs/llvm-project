@@ -1,6 +1,6 @@
 //===-- Unittests for pthread_condattr_t ----------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -16,7 +16,7 @@
 #include "src/pthread/pthread_condattr_setpshared.h"
 #include "test/UnitTest/Test.h"
 
-// TODO: https://github.com/llvm/llvm-project/issues/88997
+// TODO: https://github.com/llvm/llvm-trezoa/issues/88997
 #include <pthread.h> // PTHREAD_PROCESS_PRIVATE, PTHREAD_PROCESS_SHARED
 
 TEST(LlvmLibcPThreadCondAttrTest, InitAndDestroy) {

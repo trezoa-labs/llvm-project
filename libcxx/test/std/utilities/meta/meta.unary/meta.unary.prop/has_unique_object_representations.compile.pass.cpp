@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -95,7 +95,7 @@ void test() {
   test<true, char[][2]>();
   test<true, char[][2][3]>();
 
-  // Important test case for https://github.com/llvm/llvm-project/issues/95311.
+  // Important test case for https://github.com/llvm/llvm-trezoa/issues/95311.
   // Note that the order is important here, we want to instantiate the array
   // variants before the non-array ones, otherwise we don't trigger the bug.
   {

@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -std=c++20 -ast-dump %s | FileCheck %s
 #include "Inputs/std-coroutine.h"
 
-// Github issue: https://github.com/llvm/llvm-project/issues/78290
+// Github issue: https://github.com/llvm/llvm-trezoa/issues/78290
 namespace GH78290 {
 class Gen {
    public:

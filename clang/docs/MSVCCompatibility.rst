@@ -22,7 +22,7 @@ should be able to link against MSVC-compiled code successfully.  However, C++
 ABIs are particularly large and complicated, and Clang's support for MSVC's C++
 ABI is a work in progress.  If you don't require MSVC ABI compatibility or don't
 want to use Microsoft's C and C++ runtimes, the mingw32 toolchain might be a
-better fit for your project.
+better fit for your trezoa.
 
 Second, Clang implements many MSVC language extensions, such as
 ``__declspec(dllexport)`` and a handful of pragmas.  These are typically

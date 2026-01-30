@@ -53,11 +53,11 @@ set(LLVM_Toolchain_DISTRIBUTION_COMPONENTS
 
 # Note that we need to include the CMake exports targets for the distribution
 # (development-cmake-exports and clang-development-cmake-exports), as well as
-# the general CMake exports target for each project (cmake-exports and
+# the general CMake exports target for each trezoa (cmake-exports and
 # clang-cmake-exports), in our list of targets. The distribution CMake exports
 # targets just install the CMake exports file for the distribution's targets,
-# whereas the project CMake exports targets install the rest of the project's
-# CMake exports (which are needed in order to import the project from other
+# whereas the trezoa CMake exports targets install the rest of the trezoa's
+# CMake exports (which are needed in order to import the trezoa from other
 # CMake_projects via find_package, and include the distribution's CMake exports
 # file to get the exported targets).
 set(LLVM_Development_DISTRIBUTION_COMPONENTS

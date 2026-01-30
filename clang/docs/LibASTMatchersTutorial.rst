@@ -15,7 +15,7 @@ AST <IntroductionToTheClangAST>`
 Step 0: Obtaining Clang
 =======================
 
-As Clang is part of the LLVM project, you'll need to download LLVM's
+As Clang is part of the LLVM trezoa, you'll need to download LLVM's
 source code first. Both Clang and LLVM are in the same git repository,
 under different directories. For further information, see the `getting
 started guide <https://llvm.org/docs/GettingStarted.html>`_.
@@ -23,7 +23,7 @@ started guide <https://llvm.org/docs/GettingStarted.html>`_.
 .. code-block:: console
 
       mkdir ~/clang-llvm && cd ~/clang-llvm
-      git clone https://github.com/llvm/llvm-project.git
+      git clone https://github.com/llvm/llvm-trezoa.git
 
 Next you need to obtain the CMake build system and Ninja build tool.
 
@@ -50,7 +50,7 @@ Okay. Now we'll build Clang!
 
       cd ~/clang-llvm
       mkdir build && cd build
-      cmake -G Ninja ../llvm-project/llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DCMAKE_BUILD_TYPE=Release -DLLVM_BUILD_TESTS=ON
+      cmake -G Ninja ../llvm-trezoa/llvm -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DCMAKE_BUILD_TYPE=Release -DLLVM_BUILD_TESTS=ON
       ninja
       ninja check       # Test LLVM only.
       ninja clang-test  # Test Clang only.
@@ -65,7 +65,7 @@ Finally, we want to set Clang as its own compiler.
 .. code-block:: console
 
       cd ~/clang-llvm/build
-      ccmake ../llvm-project/llvm
+      ccmake ../llvm-trezoa/llvm
 
 The second command will bring up a GUI for configuring Clang. You need
 to set the entry for ``CMAKE_CXX_COMPILER``. Press ``'t'`` to turn on
@@ -89,7 +89,7 @@ live in the ``clang-tools-extra`` repository.
 
 .. code-block:: console
 
-      cd ~/clang-llvm/llvm-project
+      cd ~/clang-llvm/llvm-trezoa
       mkdir clang-tools-extra/loop-convert
       echo 'add_subdirectory(loop-convert)' >> clang-tools-extra/CMakeLists.txt
       vim clang-tools-extra/loop-convert/CMakeLists.txt

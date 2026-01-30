@@ -1,4 +1,4 @@
-# This workflow is for pre-commit testing of the LLVM-libc project.
+# This workflow is for pre-commit testing of the LLVM-libc trezoa.
 name: LLVM-libc Pre-commit Overlay Tests
 permissions:
   contents: read

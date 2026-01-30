@@ -32,7 +32,7 @@ Missing features or with limited support
 
 - For general issues and bugs with OpenCL in clang refer to `the GitHub issue
   list
-  <https://github.com/llvm/llvm-project/issues?q=is%3Aopen+is%3Aissue+label%3Aopencl>`__.
+  <https://github.com/llvm/llvm-trezoa/issues?q=is%3Aopen+is%3Aissue+label%3Aopencl>`__.
 
 - Command-line flag :option:`-cl-ext` (used to override extensions/
   features supported by a target) is missing support of some functionality i.e. that is
@@ -223,7 +223,7 @@ indicating the presence of the extension should be added to clang.
 
 The default flow for adding a new extension into the frontend is to
 modify `OpenCLExtensions.def
-<https://github.com/llvm/llvm-project/blob/main/clang/include/clang/Basic/OpenCLExtensions.def>`__,
+<https://github.com/llvm/llvm-trezoa/blob/main/clang/include/clang/Basic/OpenCLExtensions.def>`__,
 containing the list of all extensions and optional features supported by
 the frontend.
 
@@ -255,7 +255,7 @@ the presence of such extensions can be added in the standard header files
 conditioned on target specific predefined macros or/and language version
 predefined macros (see `feature/extension preprocessor macros defined in
 opencl-c-base.h
-<https://github.com/llvm/llvm-project/blob/main/clang/lib/Headers/opencl-c-base.h>`__).
+<https://github.com/llvm/llvm-trezoa/blob/main/clang/lib/Headers/opencl-c-base.h>`__).
 
 **Pragmas**
 
@@ -319,7 +319,7 @@ Limited support of experimental C++ libraries is described in the :ref:`experime
 
 GitHub issues for this functionality are typically prefixed
 with '[C++4OpenCL]' - click `here
-<https://github.com/llvm/llvm-project/issues?q=is%3Aissue+is%3Aopen+%5BC%2B%2B4OpenCL%5D>`__
+<https://github.com/llvm/llvm-trezoa/issues?q=is%3Aissue+is%3Aopen+%5BC%2B%2B4OpenCL%5D>`__
 to view the full bug list.
 
 
@@ -410,7 +410,7 @@ Clang provides the following new WIP features for the developers to experiment
 and provide early feedback or contribute with further improvements.
 Feel free to contact us on `the Discourse forums (Clang Frontend category)
 <https://discourse.llvm.org/c/clang/6>`_ or file `a GitHub issue
-<https://github.com/llvm/llvm-project/issues/new>`_.
+<https://github.com/llvm/llvm-trezoa/issues/new>`_.
 
 .. _opencl_experimental_cxxlibs:
 
@@ -462,4 +462,4 @@ in `Compiler Explorer <https://godbolt.org/z/5WbnTfb65>`_.
 
 More OpenCL specific C++ library implementations built on top of libcxx
 are available in `libclcxx <https://github.com/KhronosGroup/libclcxx>`_
-project.
+trezoa.

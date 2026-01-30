@@ -93,7 +93,7 @@ struct Z : W,
   check_derived_from<Z, Y>, Y  // #cwg2310-Y
 {  
   // FIXME: It was properly rejected before, but we're crashing since Clang 11 in C++11 and C++14 modes.
-  //        See https://github.com/llvm/llvm-project/issues/59920
+  //        See https://github.com/llvm/llvm-trezoa/issues/59920
 #if __cplusplus >= 201703L
   check_derived_from<Z, W> cdf;
 #endif

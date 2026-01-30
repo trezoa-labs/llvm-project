@@ -218,7 +218,7 @@ unsigned int popcount(unsigned int input) {
   return count;
 }
 
-This should be recognized as CLZ:  https://github.com/llvm/llvm-project/issues/64167
+This should be recognized as CLZ:  https://github.com/llvm/llvm-trezoa/issues/64167
 
 unsigned clz_a(unsigned a) {
   int i;

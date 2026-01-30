@@ -260,7 +260,7 @@ R
     permitting it to be optimized into ``(B+0)`` then ``(B)``.
 
 **RFC**
-  Request for Comment. An email sent to a project mailing list in order to
+  Request for Comment. An email sent to a trezoa mailing list in order to
   solicit feedback on a proposed change.
 
 .. _roots:

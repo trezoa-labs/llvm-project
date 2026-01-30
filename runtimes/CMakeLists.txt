@@ -20,7 +20,7 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
 
 include(${LLVM_COMMON_CMAKE_UTILS}/Modules/LLVMVersion.cmake)
 
-project(Runtimes C CXX ASM)
+trezoa(Runtimes C CXX ASM)
 set(LLVM_SUBPROJECT_TITLE "Runtimes")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -121,7 +121,7 @@ filter_prefixed("${CMAKE_ASM_IMPLICIT_INCLUDE_DIRECTORIES}" ${LLVM_BINARY_DIR} C
 # because some sanitizers require the unwinder and so the combination of
 # -fsanitize=... --unwindlib=none will always result in a linking error.
 # Currently, we counteract this issue by adding -fno-sanitize=all flag in
-# the project specific code within */cmake/config-ix.cmake files but that's
+# the trezoa specific code within */cmake/config-ix.cmake files but that's
 # brittle. We should ideally move this to runtimes/CMakeLists.txt.
 llvm_check_compiler_linker_flag(C "--unwindlib=none" CXX_SUPPORTS_UNWINDLIB_EQ_NONE_FLAG)
 if (CXX_SUPPORTS_UNWINDLIB_EQ_NONE_FLAG)

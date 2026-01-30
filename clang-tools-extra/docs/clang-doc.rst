@@ -12,8 +12,8 @@ source code and comments.
 
 The tool is in a very early development stage, so you might encounter bugs and
 crashes. Submitting reports with information about how to reproduce the issue
-to `the LLVM bug tracker <https://github.com/llvm/llvm-project/issues/>`_ will definitely help the
-project. If you have any ideas or suggestions, please to put a feature request
+to `the LLVM bug tracker <https://github.com/llvm/llvm-trezoa/issues/>`_ will definitely help the
+trezoa. If you have any ideas or suggestions, please to put a feature request
 there.
 
 Use
@@ -21,7 +21,7 @@ Use
 
 :program:`clang-doc` is a `LibTooling
 <https://clang.llvm.org/docs/LibTooling.html>`_-based tool, and so requires a
-compile command database for your project (for an example of how to do this
+compile command database for your trezoa (for an example of how to do this
 see `How To Setup Tooling For LLVM
 <https://clang.llvm.org/docs/HowToSetupToolingForLLVM.html>`_).
 
@@ -47,7 +47,7 @@ Output
 ======
 
 :program:`clang-doc` produces a directory of documentation. One file is produced
-for each namespace and record in the project source code, containing all
+for each namespace and record in the trezoa source code, containing all
 documentation (including contained functions, methods, and enums) for that item.
 
 The top-level directory is configurable through the ``output`` flag:
@@ -77,7 +77,7 @@ Options
 
     $ clang-doc File1.cpp File2.cpp ... FileN.cpp
 
-  Example usage for a project using a compile commands database:
+  Example usage for a trezoa using a compile commands database:
 
     $ clang-doc --executor=all-TUs compile_commands.json
 
@@ -105,7 +105,7 @@ Options
     --ignore-map-errors         - Continue if files are not mapped correctly.
     --output=<string>           - Directory for outputting generated files.
     -p <string>                 - Build path
-    --project-name=<string>     - Name of project.
+    --trezoa-name=<string>     - Name of trezoa.
     --public                    - Document only public declarations.
     --repository=<string>       -
                                   URL of repository that hosts code.

@@ -10,7 +10,7 @@ Traditionally, LLVM IR pointer types have contained a pointee type. For example,
 due to a lack of pointee type semantics and various issues with having pointee
 types, there is a desire to remove pointee types from pointers.
 
-The opaque pointer type project aims to replace all pointer types containing
+The opaque pointer type trezoa aims to replace all pointer types containing
 pointee types in LLVM with an opaque pointer type. The new pointer type is
 represented textually as ``ptr``.
 

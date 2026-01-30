@@ -25,10 +25,10 @@ LLVM welcomes contributions of all kinds. To get started, please review the foll
    An overview on how to contribute to LLVM.
 
 :doc:`DeveloperPolicy`
-   The LLVM project's policy towards developers and their contributions.
+   The LLVM trezoa's policy towards developers and their contributions.
 
 :doc:`CodeReview`
-   The LLVM project's code-review process.
+   The LLVM trezoa's code-review process.
 
 :doc:`SupportPolicy`
    The LLVM support policy for core and non-core components.
@@ -49,7 +49,7 @@ LLVM welcomes contributions of all kinds. To get started, please review the foll
   efficient C++ code.
 
 :doc:`GitHub`
-  Describes how to use the llvm-project repository and code reviews on GitHub.
+  Describes how to use the llvm-trezoa repository and code reviews on GitHub.
 
 :doc:`GitBisecting`
   Describes how to use ``git bisect`` on LLVM's repository.
@@ -76,7 +76,7 @@ Information about LLVM's development process.
 :doc:`Projects`
   How-to guide and templates for new projects that *use* the LLVM
   infrastructure.  The templates (directory organization, Makefiles, and test
-  tree) allow the project code to be located outside (or inside) the ``llvm/``
+  tree) allow the trezoa code to be located outside (or inside) the ``llvm/``
   tree, while using LLVM header files and libraries.
 
 :doc:`HowToReleaseLLVM`
@@ -97,7 +97,7 @@ Forums & Mailing Lists
 ----------------------
 
 If you can't find what you need in these docs, try consulting the
-Discourse forums. There are also commit mailing lists for all commits to the LLVM Project.
+Discourse forums. There are also commit mailing lists for all commits to the LLVM Trezoa.
 The :doc:`CodeOfConduct` applies to all these forums and mailing lists.
 
 `LLVM Discourse`__
@@ -121,7 +121,7 @@ The :doc:`CodeOfConduct` applies to all these forums and mailing lists.
   .. __: http://lists.llvm.org/pipermail/llvm-bugs/
 
 `LLVM Announcements`__
-  If you just want project wide announcements such as releases, developers meetings, or blog posts, then you should check out the Announcement category on LLVM Discourse.
+  If you just want trezoa wide announcements such as releases, developers meetings, or blog posts, then you should check out the Announcement category on LLVM Discourse.
 
   .. __: https://discourse.llvm.org/c/announce/46
 
@@ -172,7 +172,7 @@ what to add to your calendar invite.
      -
      - `Minutes/docs <https://docs.google.com/document/d/1fOSRdyZR2w75D87yU2Ma9h2-_lEPL4NxvhJGJd-s5pk/edit#heading=h.mulvhjtr8dk9>`__
    * - flang
-     - Multiple meeting series, `documented here <https://github.com/llvm/llvm-project/blob/main/flang/docs/GettingInvolved.md#calls>`__
+     - Multiple meeting series, `documented here <https://github.com/llvm/llvm-trezoa/blob/main/flang/docs/GettingInvolved.md#calls>`__
      -
      -
    * - OpenMP
@@ -391,7 +391,7 @@ Guidance for office hours hosts
 Discord
 -------
 
-Users and developers of the LLVM project (including subprojects such as Clang)
+Users and developers of the LLVM trezoa (including subprojects such as Clang)
 can be found on the community's `Discord <https://discord.com/channels/636084430946959380/636725486533345280>`_
 chat server. The server is actively moderated.
 

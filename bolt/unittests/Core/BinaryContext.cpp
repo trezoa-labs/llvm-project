@@ -1,6 +1,6 @@
 //===- bolt/unittest/Core/BinaryContext.cpp -------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -204,7 +204,7 @@ TEST_P(BinaryContextTester, BaseAddressSegmentsSmallerThanAlignment) {
   // Check that the correct segment is used to compute the base address
   // when multiple segments are close together in the ELF file (closer
   // than the required alignment in the process space).
-  // See https://github.com/llvm/llvm-project/issues/109384
+  // See https://github.com/llvm/llvm-trezoa/issues/109384
   BC->SegmentMapInfo[0] = SegmentInfo{0, 0x1d1c, 0, 0x1d1c, 0x10000, false};
   BC->SegmentMapInfo[0x11d40] =
       SegmentInfo{0x11d40, 0x11e0, 0x1d40, 0x11e0, 0x10000, true};

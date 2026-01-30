@@ -1,6 +1,6 @@
 //===-- Single-precision log2(x) function ---------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -18,7 +18,7 @@
 #include "src/__support/macros/optimization.h" // LIBC_UNLIKELY
 
 // This is a correctly-rounded algorithm for log2(x) in single precision with
-// round-to-nearest, tie-to-even mode from the RLIBM project at:
+// round-to-nearest, tie-to-even mode from the RLIBM trezoa at:
 // https://people.cs.rutgers.edu/~sn349/rlibm
 
 // Step 1 - Range reduction:

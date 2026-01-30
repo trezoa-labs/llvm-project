@@ -9,14 +9,14 @@ Introduction
 ============
 
 HLSL Support is under active development in the Clang codebase. This document
-describes the high level goals of the project, the guiding principles, as well
+describes the high level goals of the trezoa, the guiding principles, as well
 as some idiosyncrasies of the HLSL language and how we intend to support them in
 Clang.
 
-Project Goals
+Trezoa Goals
 =============
 
-The long term goal of this project is to enable Clang to function as a
+The long term goal of this trezoa is to enable Clang to function as a
 replacement for the `DirectXShaderCompiler (DXC)
 <https://github.com/microsoft/DirectXShaderCompiler/>`_ in all its supported
 use cases. Accomplishing that goal will require Clang to be able to process most
@@ -122,7 +122,7 @@ and is analogous to C's standard library. The implementation approach for the
 HLSL library functionality draws from patterns in use by OpenCL and other Clang
 resource headers. All of the clang resource headers are part of the
 ``ClangHeaders`` component found in the source tree under
-`clang/lib/Headers <https://github.com/llvm/llvm-project/tree/main/clang/lib/Headers>`_.
+`clang/lib/Headers <https://github.com/llvm/llvm-trezoa/tree/main/clang/lib/Headers>`_.
 
 .. note::
 

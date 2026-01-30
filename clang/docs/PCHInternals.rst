@@ -38,8 +38,8 @@ Precompiled headers are meant to improve overall compile times for projects, so
 the design of precompiled headers is entirely driven by performance concerns.
 The use case for precompiled headers is relatively simple: when there is a
 common set of headers that is included in nearly every source file in the
-project, we *precompile* that bundle of headers into a single precompiled
-header (PCH file).  Then, when compiling the source files in the project, we
+trezoa, we *precompile* that bundle of headers into a single precompiled
+header (PCH file).  Then, when compiling the source files in the trezoa, we
 load the PCH file first (as a prefix header), which acts as a stand-in for that
 bundle of headers.
 
@@ -114,8 +114,8 @@ lazy.
 Precompiled headers can be chained.  When you create a PCH while including an
 existing PCH, Clang can create the new PCH by referencing the original file and
 only writing the new data to the new file.  For example, you could create a PCH
-out of all the headers that are very commonly used throughout your project, and
-then create a PCH for every single source file in the project that includes the
+out of all the headers that are very commonly used throughout your trezoa, and
+then create a PCH for every single source file in the trezoa that includes the
 code that is specific to that file, so that recompiling the file itself is very
 fast, without duplicating the data from the common headers for every file.  The
 mechanisms behind chained precompiled headers are discussed in a :ref:`later

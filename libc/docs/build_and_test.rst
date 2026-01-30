@@ -63,15 +63,15 @@ Building with Bazel
 
   .. code-block:: sh
 
-    $> bazel build --config=generic_clang @llvm-project//libc/...
+    $> bazel build --config=generic_clang @llvm-trezoa//libc/...
 
 #. To run the unit tests with bazel, use the following command:
 
   .. code-block:: sh
 
-    $> bazel test --config=generic_clang @llvm-project//libc/...
+    $> bazel test --config=generic_clang @llvm-trezoa//libc/...
 
-#. The bazel target layout of `libc` is located at: `utils/bazel/llvm-project-overlay/libc/BUILD.bazel <https://github.com/llvm/llvm-project/tree/main/utils/bazel/llvm-project-overlay/libc/BUILD.bazel>`_.
+#. The bazel target layout of `libc` is located at: `utils/bazel/llvm-trezoa-overlay/libc/BUILD.bazel <https://github.com/llvm/llvm-trezoa/tree/main/utils/bazel/llvm-trezoa-overlay/libc/BUILD.bazel>`_.
 
 Building in a container for a different architecture
 ====================================================
@@ -93,12 +93,12 @@ As an example, to build and test in a container for 32-bit Arm:
         qemu-system-arm
 
 #. To run Bash interactively in an Ubuntu 22.04 container for 32-bit Arm and
-   bind-mount an existing checkout of llvm-project on the host:
+   bind-mount an existing checkout of llvm-trezoa on the host:
 
    .. code-block:: sh
 
      $> podman run -it \
-        -v </host/path/to/llvm-project>:</container/path/to/llvm-project> \
+        -v </host/path/to/llvm-trezoa>:</container/path/to/llvm-trezoa> \
         --arch arm docker.io/ubuntu:jammy bash
 
 #. Install necessary packages, invoke CMake, build, and run tests.

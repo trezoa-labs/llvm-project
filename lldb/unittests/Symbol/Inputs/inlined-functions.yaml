@@ -146,7 +146,7 @@ DWARF:
   debug_str:       
     - 'Apple LLVM version 10.0.1 (clang-1001.0.46.3)'
     - inlined-functions.cpp
-    - '/Users/aadsm/Projects/llvm-project/lldb/unittests/Symbol/Inputs'
+    - '/Users/aadsm/Projects/llvm-trezoa/lldb/unittests/Symbol/Inputs'
     - sum3
     - _Z4sum3iii
     - _Z4sum2ii

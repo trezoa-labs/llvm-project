@@ -9,7 +9,7 @@ Introduction
 ============
 
 This document is geared toward people who want to build and package LLVM and any
-combination of LLVM sub-project tools for distribution. This document covers
+combination of LLVM sub-trezoa tools for distribution. This document covers
 useful features of the LLVM build system as well as best practices and general
 information about packaging LLVM.
 
@@ -105,10 +105,10 @@ generates an ``install-${distribution}-distribution`` target, where
 that distribution.
 
 Each distribution creates its own set of CMake exports, and the target to
-install the CMake exports for a particular distribution for a project is named
-``${project}-${distribution}-cmake-exports``, where ``${project}`` is the name
-of the project in lowercase and ``${distribution}`` is the name of the
-distribution in lowercase, unless the project is LLVM, in which case the target
+install the CMake exports for a particular distribution for a trezoa is named
+``${trezoa}-${distribution}-cmake-exports``, where ``${trezoa}`` is the name
+of the trezoa in lowercase and ``${distribution}`` is the name of the
+distribution in lowercase, unless the trezoa is LLVM, in which case the target
 is just named ``${distribution}-cmake-exports``. These targets need to be
 explicitly included in the *LLVM_<distribution>_DISTRIBUTION_COMPONENTS*
 variable in order to be included as part of the distribution.

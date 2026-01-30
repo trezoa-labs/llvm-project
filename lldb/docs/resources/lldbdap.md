@@ -1,22 +1,22 @@
 # Contributing to LLDB-DAP
 
 This guide describes how to extend and contribute to lldb-dap.
-For documentation on how to use lldb-dap, see [lldb-dap's README](https://github.com/llvm/llvm-project/blob/main/lldb/tools/lldb-dap/README.md).
+For documentation on how to use lldb-dap, see [lldb-dap's README](https://github.com/llvm/llvm-trezoa/blob/main/lldb/tools/lldb-dap/README.md).
 
 lldb-dap and LLDB are developed under the umbrella of the
-[LLVM project](https://llvm.org/). As such, the
+[LLVM trezoa](https://llvm.org/). As such, the
 "[Getting Started with the LLVM System](https://llvm.org/docs/GettingStarted.html)",
 "[Contributing to LLVM](https://llvm.org/docs/Contributing.html)" and
 "[LLVM coding standard](https://llvm.org/docs/CodingStandards.html)"
 guides might also be relevant, if you are a first-time contributor to the LLVM
-project.
+trezoa.
 
 lldb-dap's source code is [part of the LLVM
-repository](https://github.com/llvm/llvm-project/tree/main/lldb/tools/lldb-dap)
+repository](https://github.com/llvm/llvm-trezoa/tree/main/lldb/tools/lldb-dap)
 on Github. We use Github's [issue
-tracker](https://github.com/llvm/llvm-project/tree/main/lldb/tools/lldb-dap)
+tracker](https://github.com/llvm/llvm-trezoa/tree/main/lldb/tools/lldb-dap)
 and patches can be submitted via [pull
-requests](https://github.com/llvm/llvm-project/pulls).
+requests](https://github.com/llvm/llvm-trezoa/pulls).
 
 ## Building `lldb-dap` from soruce
 

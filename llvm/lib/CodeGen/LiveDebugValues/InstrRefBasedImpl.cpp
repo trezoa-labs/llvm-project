@@ -1,6 +1,6 @@
 //===- InstrRefBasedImpl.cpp - Tracking Debug Value MIs -------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1290,7 +1290,7 @@ MLocTracker::emitLoc(const SmallVectorImpl<ResolvedDbgOp> &DbgOps,
           }
         }
 
-        // https://github.com/llvm/llvm-project/issues/64093
+        // https://github.com/llvm/llvm-trezoa/issues/64093
         // in particular #issuecomment-2531264124. We use variable locations
         // such as DBG_VALUE $xmm0 as shorthand to refer to "the low lane of
         // $xmm0", and this is reflected in how DWARF is interpreted too.

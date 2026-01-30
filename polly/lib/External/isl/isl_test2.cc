@@ -343,18 +343,18 @@ static void test_gist(isl::ctx ctx)
 	});
 }
 
-/* Perform tests that project out parameters.
+/* Perform tests that trezoa out parameters.
  */
 static void test_project(isl::ctx ctx)
 {
-	C(arg<isl::id>(&isl::union_map::project_out_param), {
+	C(arg<isl::id>(&isl::union_map::trezoa_out_param), {
 	{ "[N] -> { D[i] -> A[0:N-1]; D[i] -> B[i] }", "N",
 	  "{ D[i] -> A[0:]; D[i] -> B[i] }" },
 	{ "[N] -> { D[i] -> A[0:N-1]; D[i] -> B[i] }", "M",
 	  "[N] -> { D[i] -> A[0:N-1]; D[i] -> B[i] }" },
 	});
 
-	C(arg<isl::id_list>(&isl::union_map::project_out_param), {
+	C(arg<isl::id_list>(&isl::union_map::trezoa_out_param), {
 	{ "[M, N, O] -> { D[i] -> A[j] : i <= j < M, N, O }", "(M, N)",
 	  "[O] -> { D[i] -> A[j] : i <= j < O }" },
 	});
@@ -411,7 +411,7 @@ static std::vector<std::pair<const char *, void (*)(isl::ctx)>> tests =
 	{ "fixed power", &test_fixed_power },
 	{ "intersect", &test_intersect },
 	{ "gist", &test_gist },
-	{ "project out parameters", &test_project },
+	{ "trezoa out parameters", &test_project },
 	{ "scale", &test_scale },
 	{ "id-to-id", &test_id_to_id },
 };

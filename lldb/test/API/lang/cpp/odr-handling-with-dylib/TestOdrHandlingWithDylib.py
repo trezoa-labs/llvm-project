@@ -6,7 +6,7 @@ from lldbsuite.test import lldbutil
 
 class OdrHandlingWithDylibTestCase(TestBase):
     @skipIf(
-        bugnumber="https://github.com/llvm/llvm-project/issues/50375, rdar://135551810"
+        bugnumber="https://github.com/llvm/llvm-trezoa/issues/50375, rdar://135551810"
     )
     def test(self):
         """

@@ -572,7 +572,7 @@ static __isl_give isl_map *after_at_level(__isl_take isl_space *space,
  *
  * Since the user expects a mapping from sink iterations to source iterations,
  * whereas the domain of "dep" is a wrapped map, mapping sink iterations
- * to accessed array elements, we first need to project out the accessed
+ * to accessed array elements, we first need to trezoa out the accessed
  * sink array elements by applying acc->domain_map.
  * Similarly, the sink restriction specified by the user needs to be
  * converted back to the wrapped map.

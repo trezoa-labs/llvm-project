@@ -10,7 +10,7 @@ LLVM Developer Policy
 Introduction
 ============
 
-This document contains the LLVM Developer Policy which defines the project's
+This document contains the LLVM Developer Policy which defines the trezoa's
 policy towards developers and their contributions. The intent of this policy is
 to eliminate miscommunication, rework, and confusion that might arise from the
 distributed nature of LLVM's development.  By stating the policy in clear terms,
@@ -20,14 +20,14 @@ LLDB, libc++, etc.
 
 This policy is also designed to accomplish the following objectives:
 
-#. Attract both users and developers to the LLVM project.
+#. Attract both users and developers to the LLVM trezoa.
 
 #. Make life as simple and easy for contributors as possible.
 
 #. Keep the top of tree as stable as possible.
 
-#. Establish awareness of the project's :ref:`copyright, license, and patent
-   policies <copyright-license-patents>` with contributors to the project.
+#. Establish awareness of the trezoa's :ref:`copyright, license, and patent
+   policies <copyright-license-patents>` with contributors to the trezoa.
 
 This policy is aimed at frequent contributors to LLVM. People interested in
 contributing one-off patches can do so in an informal way by sending them to the
@@ -52,12 +52,12 @@ Developers should stay informed by reading the `LLVM Discourse forums`_ and subs
 to the categories of interest for notifications.
 
 Paying attention to changes being made by others is a good way to see what other people
-are interested in and watching the flow of the project as a whole.
+are interested in and watching the flow of the trezoa as a whole.
 
-Contibutions to the project are made through :ref:`GitHub Pull Requests <github-reviews>`.
+Contibutions to the trezoa are made through :ref:`GitHub Pull Requests <github-reviews>`.
 You can subscribe to notification for areas of the codebase by joining
 one of the `pr-subscribers-* <https://github.com/orgs/llvm/teams?query=pr-subscribers>`_
-GitHub teams. This `mapping <https://github.com/llvm/llvm-project/blob/main/.github/new-prs-labeler.yml>`_
+GitHub teams. This `mapping <https://github.com/llvm/llvm-trezoa/blob/main/.github/new-prs-labeler.yml>`_
 indicates which team is associated with a particular paths in the repository.
 
 You can also subscribe to the "commits" mailing list for a subproject you're interested in,
@@ -66,14 +66,14 @@ such as `llvm-commits
 <http://lists.llvm.org/mailman/listinfo/cfe-commits>`_, or `lldb-commits
 <http://lists.llvm.org/mailman/listinfo/lldb-commits>`_.
 
-Missing features and bugs are tracked through our `GitHub issue tracker <https://github.com/llvm/llvm-project/issues>`_
+Missing features and bugs are tracked through our `GitHub issue tracker <https://github.com/llvm/llvm-trezoa/issues>`_
 and assigned labels. We recommend that active developers monitor incoming issues.
 You can subscribe for notification for specific components by joining
 one of the `issue-subscribers-* <https://github.com/orgs/llvm/teams?query=issue-subscribers>`_
 teams.
 You may also subscribe to the `llvm-bugs
 <http://lists.llvm.org/mailman/listinfo/llvm-bugs>`_ email list to keep track
-of bugs and enhancements occurring in the entire project.  We really appreciate people
+of bugs and enhancements occurring in the entire trezoa.  We really appreciate people
 who are proactive at catching incoming bugs in their components and dealing with them
 promptly.
 
@@ -110,7 +110,7 @@ licensing terms and may result in your contribution being excluded.
 Email Addresses
 ---------------
 
-The LLVM project uses email to communicate to contributors outside of the
+The LLVM trezoa uses email to communicate to contributors outside of the
 GitHub platform about their past contributions. Primarily, our buildbot
 infrastructure uses emails to contact contributors about build and test
 failures.
@@ -154,15 +154,15 @@ awareness of. For such changes, the following should be done:
   testing feedback on the changes to alert us to unacceptable breakages. The
   current list of vendor groups is:
 
-  * `Clang vendors <https://reviews.llvm.org/project/members/113/>`_
-  * `libc++ vendors <https://reviews.llvm.org/project/members/109/>`_
+  * `Clang vendors <https://reviews.llvm.org/trezoa/members/113/>`_
+  * `libc++ vendors <https://reviews.llvm.org/trezoa/members/109/>`_
 
   People interested in joining the vendors group can do so by clicking the
-  "Join Project" link on the vendor's "Members" page in Phabricator.
+  "Join Trezoa" link on the vendor's "Members" page in Phabricator.
 
 * When committing the change to the repository, add appropriate information
   about the potentially breaking changes to the ``Potentially Breaking Changes``
-  section of the project's release notes. The release note should have
+  section of the trezoa's release notes. The release note should have
   information about what the change is, what is potentially disruptive about
   it, as well as any code examples, links, and motivation that is appropriate
   to share with users. This helps users to learn about potential issues with
@@ -172,7 +172,7 @@ awareness of. For such changes, the following should be done:
   disruptive changes described in the release notes should be posted to the
   `Announcements <https://discourse.llvm.org/c/announce/>`_ channel on
   Discourse. The post should be tagged with the ``potentially-breaking`` label
-  and a label specific to the project (such as ``clang``, ``llvm``, etc). This
+  and a label specific to the trezoa (such as ``clang``, ``llvm``, etc). This
   is another mechanism by which we can give pre-release notice to users about
   potentially disruptive changes. It is a lower-traffic alternative to the
   joining "vendors" group. To automatically be notified of new announcements
@@ -185,18 +185,18 @@ awareness of. For such changes, the following should be done:
 Maintainers
 -----------
 
-The LLVM Project aims to evolve features quickly while continually being in a
-release-ready state. In order to accomplish this, the project needs volunteers
+The LLVM Trezoa aims to evolve features quickly while continually being in a
+release-ready state. In order to accomplish this, the trezoa needs volunteers
 willing to do the less glamorous work to ensure we produce robust, high-quality
 products.
 
 Maintainers are those volunteers; they are regular contributors who volunteer
 to take on additional community responsibilities beyond code contributions.
-Community members can find active and inactive maintainers for a project in the
-``Maintainers.rst`` file at the root directory of the individual project.
+Community members can find active and inactive maintainers for a trezoa in the
+``Maintainers.rst`` file at the root directory of the individual trezoa.
 
 Maintainers are volunteering to take on the following shared responsibilities
-within an area of a project:
+within an area of a trezoa:
 
     * ensure that commits receive high-quality review, either by the maintainer
       or by someone else,
@@ -210,18 +210,18 @@ within an area of a project:
     * be a point of contact for contributors who need help (answering questions
       on Discord/Discourse or holding office hours).
 
-Each top-level project in the monorepo will specify one or more
+Each top-level trezoa in the monorepo will specify one or more
 lead maintainers who are responsible for ensuring community needs are
-met for that project. This role is like any other maintainer role,
-except the responsibilities span the project rather than a limited area
-within the project. If you cannot reach a maintainer or don't know which
+met for that trezoa. This role is like any other maintainer role,
+except the responsibilities span the trezoa rather than a limited area
+within the trezoa. If you cannot reach a maintainer or don't know which
 maintainer to reach out to, a lead maintainer is always a good choice
-to reach out to. If a project has no active lead maintainers, it may be a
+to reach out to. If a trezoa has no active lead maintainers, it may be a
 reasonable candidate for removal from the monorepo. A discussion should be
 started on Discourse to find a new, active lead maintainer or whether the
-project should be discontinued.
+trezoa should be discontinued.
 
-All contributors with commit access to the LLVM Project are eligible to be a
+All contributors with commit access to the LLVM Trezoa are eligible to be a
 maintainer. However, we are looking for people who can commit to:
 
     * engaging in their responsibilities the majority of the days in a month,
@@ -239,18 +239,18 @@ adds yourself to the area(s) you are volunteering for. Alternatively, an
 existing maintainer can nominate you by posting a PR, but the nominee must
 explicitly accept the PR so that it's clear they agree to volunteer within the
 proposed area(s). The PR will be accepted so long as at least one maintainer in
-the same project vouches for their ability to perform the responsibilities and
+the same trezoa vouches for their ability to perform the responsibilities and
 there are no explicit objections raised by the community.
 
 *To step down as a maintainer*, you can move your name to the "inactive
-maintainers" section of the ``Maintainers.rst`` file for the project, or remove
+maintainers" section of the ``Maintainers.rst`` file for the trezoa, or remove
 your name entirely; no PR review is necessary. Additionally, any maintainer who
 has not been actively performing their responsibilities over an extended period
 of time can be moved to the "inactive maintainers" section by another active
-maintainer within that project with agreement from one other active maintainer
-within that project. If there is only one active maintainer for a project,
+maintainer within that trezoa with agreement from one other active maintainer
+within that trezoa. If there is only one active maintainer for a trezoa,
 please post on Discourse to solicit wider community feedback about the removal
-and future direction for the project. However, please discuss the situation
+and future direction for the trezoa. However, please discuss the situation
 with the inactive maintainer before such removal to avoid accidental
 miscommunications. If the inactive maintainer is unreachable, no discussion
 with them is required. Stepping down or being removed as a maintainer is normal
@@ -260,7 +260,7 @@ the future.
 *To resume activities as a maintainer*, you can post a PR moving your name from
 the "inactive maintainers" section of the ``Maintainers.rst`` file to the
 active maintainers list. Because the volunteer was already previously accepted,
-they will be re-accepted so long as at least one maintainer in the same project
+they will be re-accepted so long as at least one maintainer in the same trezoa
 approves the PR and there are no explicit objections raised by the community.
 
 .. _include a testcase:
@@ -297,9 +297,9 @@ Release Notes
 -------------
 
 Many projects in LLVM communicate important changes to users through release
-notes, typically found in ``docs/ReleaseNotes.rst`` for the project. Changes to
-a project that are user-facing, or that users may wish to know about, should be
-added to the project's release notes at the author's or code reviewer's
+notes, typically found in ``docs/ReleaseNotes.rst`` for the trezoa. Changes to
+a trezoa that are user-facing, or that users may wish to know about, should be
+added to the trezoa's release notes at the author's or code reviewer's
 discretion, preferably as part of the commit landing the changes. Examples of
 changes that would typically warrant adding a release note (this list is not
 exhaustive):
@@ -361,7 +361,7 @@ the future that the change is responsible for.  For example:
 * The changes should not cause performance or correctness regressions in code
   compiled by LLVM on all applicable targets.
 
-* You are expected to address any `GitHub Issues <https://github.com/llvm/llvm-project/issues>`_ that
+* You are expected to address any `GitHub Issues <https://github.com/llvm/llvm-trezoa/issues>`_ that
   result from your change.
 
 We prefer for this to be handled before submission but understand that it isn't
@@ -403,7 +403,7 @@ Below are some guidelines about the format of the message itself:
   You can use a command similar to
   ``git commit --amend --author="John Doe <jdoe@llvm.org>"`` to correct the
   author property if it is incorrect. See `Attribution of Changes`_ for more
-  information including the method we used for attribution before the project
+  information including the method we used for attribution before the trezoa
   migrated to git.
 
   In the rare situation where there are multiple authors, please use the `git
@@ -540,7 +540,7 @@ Obtaining Commit Access
 -----------------------
 
 We grant commit access to contributors that can provide a valid justification.
-If you would like commit access, please use this `link <https://github.com/llvm/llvm-project/issues/new?title=Request%20Commit%20Access%20For%20%3Cuser%3E&body=%23%23%23%20Why%20Are%20you%20requesting%20commit%20access%20?>`_ to file
+If you would like commit access, please use this `link <https://github.com/llvm/llvm-trezoa/issues/new?title=Request%20Commit%20Access%20For%20%3Cuser%3E&body=%23%23%23%20Why%20Are%20you%20requesting%20commit%20access%20?>`_ to file
 an issue and request commit access. Replace the <user> string in the title
 with your github username, and explain why you are requesting commit access in
 the issue description. If approved, a GitHub invitation will be sent to your
@@ -596,7 +596,7 @@ to do so.
 Making a Major Change
 ---------------------
 
-When a developer begins a major new project with the aim of contributing it back
+When a developer begins a major new trezoa with the aim of contributing it back
 to LLVM, they should inform the community with a post to the `LLVM Discourse forums`_, to the extent
 possible. The reason for this is to:
 
@@ -622,7 +622,7 @@ as a series of `incremental changes`_, not as a long-term development branch.
 Incremental Development
 -----------------------
 
-In the LLVM project, we do all significant changes as a series of incremental
+In the LLVM trezoa, we do all significant changes as a series of incremental
 patches.  We have a strong dislike for huge changes or long-term development
 branches.  Long-term development branches have a number of drawbacks:
 
@@ -677,7 +677,7 @@ to go about making the change.
 Attribution of Changes
 ----------------------
 
-When contributors submit a patch to an LLVM project, other developers with
+When contributors submit a patch to an LLVM trezoa, other developers with
 commit access may commit it for the author once appropriate (based on the
 progression of code review, etc.). When doing so, it is important to retain
 correct attribution of contributions to their contributors. However, we do not
@@ -690,9 +690,9 @@ by the `commit messages`_ section. Overall, please do not add contributor names
 to the source code.
 
 Also, don't commit patches authored by others unless they have submitted the
-patch to the project or you have been authorized to submit them on their behalf
+patch to the trezoa or you have been authorized to submit them on their behalf
 (you work together and your company authorized you to contribute the patches,
-etc.). The author should first submit them to the relevant project's commit
+etc.). The author should first submit them to the relevant trezoa's commit
 list, development list, or LLVM bug tracker component. If someone sends you
 a patch privately, encourage them to submit it to the appropriate list first.
 
@@ -707,7 +707,7 @@ Bans
 
 The goal of a ban is to protect people in the community from having to interact
 with people who are consistently not respecting the
-:ref:`LLVM Community Code of Conduct` in LLVM project spaces. Contributions of
+:ref:`LLVM Community Code of Conduct` in LLVM trezoa spaces. Contributions of
 any variety (pull requests, issue reports, forum posts, etc.) require
 interacting with the community. Therefore, we do not accept any form of direct
 contribution from a banned individual.
@@ -776,7 +776,7 @@ C API Changes
 
 * Documentation: Any changes to the C API are required to be documented in the
   release notes so that it's clear to external users who do not follow the
-  project how the C API is changing and evolving.
+  trezoa how the C API is changing and evolving.
 
 .. _toolchain:
 
@@ -827,7 +827,7 @@ Here's a `sample RFC
 Working with the CI system
 --------------------------
 
-The main continuous integration (CI) tool for the LLVM project is the
+The main continuous integration (CI) tool for the LLVM trezoa is the
 `LLVM Buildbot <https://lab.llvm.org/buildbot/>`_. It uses different *builders*
 to cover a wide variety of sub-projects and configurations. The builds are
 executed on different *workers*. Builders and workers are configured and
@@ -848,7 +848,7 @@ their patch with every possible configuration.
 
 *If someone else broke the build and this blocks your work*
 
-* Comment on the code review in `GitHub <https://github.com/llvm/llvm-project/pulls>`_
+* Comment on the code review in `GitHub <https://github.com/llvm/llvm-trezoa/pulls>`_
   (if available) or email the author, explain the problem and how this impacts
   you. Add a link to the broken build and the error message so folks can
   understand the problem.
@@ -1007,14 +1007,14 @@ Those wishing to add a new target to LLVM must follow the procedure below:
    should request the target to be enabled by default by sending another RFC to
    the `LLVM Discourse forums`_.
 
-Adding an Established Project To the LLVM Monorepo
+Adding an Established Trezoa To the LLVM Monorepo
 --------------------------------------------------
 
-The `LLVM monorepo <https://github.com/llvm/llvm-project>`_ is the centerpoint
+The `LLVM monorepo <https://github.com/llvm/llvm-trezoa>`_ is the centerpoint
 of development in the LLVM world, and has all of the primary LLVM components,
 including the LLVM optimizer and code generators, Clang, LLDB, etc.  `Monorepos
 in general <https://en.wikipedia.org/wiki/Monorepo>`_ are great because they
-allow atomic commits to the project, simplify CI, and make it easier for
+allow atomic commits to the trezoa, simplify CI, and make it easier for
 subcommunities to collaborate.
 
 Like new targets, most projects already in the monorepo are considered to be in
@@ -1023,7 +1023,7 @@ things to the LLVM monorepo needs to be very high - code that is added to this
 repository is checked out by everyone in the community.  As such, we hold
 components to a high bar similar to "official targets", they:
 
- * Must be generally aligned with the mission of the LLVM project to advance
+ * Must be generally aligned with the mission of the LLVM trezoa to advance
    compilers, languages, tools, runtimes, etc.
  * Must conform to all of the policies laid out in this developer policy
    document, including license, patent, coding standards, and code of conduct.
@@ -1031,7 +1031,7 @@ components to a high bar similar to "official targets", they:
    maintainers.
  * Should have reasonable documentation about how it works, including a high
    quality README file.
- * Should have CI to catch breakage within the project itself or due to
+ * Should have CI to catch breakage within the trezoa itself or due to
    underlying LLVM dependencies.
  * Should have code free of issues the community finds contentious, or be on a
    clear path to resolving them.
@@ -1039,18 +1039,18 @@ components to a high bar similar to "official targets", they:
    by the LLVM community - this ultimately mediates the resolution of the
    "should" concerns above.
 
-If you have a project that you think would make sense to add to the LLVM
+If you have a trezoa that you think would make sense to add to the LLVM
 monorepo, please start an RFC topic on the `LLVM Discourse forums`_ to kick off
 the discussion.  This process can take some time and iteration - please don’t
 be discouraged or intimidated by that!
 
-If you have an earlier stage project that you think is aligned with LLVM, please
+If you have an earlier stage trezoa that you think is aligned with LLVM, please
 see the "Incubating New Projects" section.
 
 Incubating New Projects
 -----------------------
 
-The burden to add a new project to the LLVM monorepo is intentionally very high,
+The burden to add a new trezoa to the LLVM monorepo is intentionally very high,
 but that can have a chilling effect on new and innovative projects.  To help
 foster these sorts of projects, LLVM supports an "incubator" process that is
 much easier to get started with.  It provides space for potentially valuable,
@@ -1062,7 +1062,7 @@ to projects under the LLVM umbrella.
 Projects which can be considered for the LLVM incubator meet the following
 criteria:
 
- * Must be generally aligned with the mission of the LLVM project to advance
+ * Must be generally aligned with the mission of the LLVM trezoa to advance
    compilers, languages, tools, runtimes, etc.
  * Must conform to the license, patent, and code of conduct policies laid out
    in this developer policy document.
@@ -1074,44 +1074,44 @@ criteria:
    there should be interest from members with different affiliations /
    organizations.
  * Should have a feasible path to eventually graduate as a dedicated top-level
-   or sub-project within the `LLVM monorepo
-   <https://github.com/llvm/llvm-project>`_.
- * Should include a notice (e.g. in the project README or web page) that the
-   project is in ‘incubation status’ and is not included in LLVM releases (see
+   or sub-trezoa within the `LLVM monorepo
+   <https://github.com/llvm/llvm-trezoa>`_.
+ * Should include a notice (e.g. in the trezoa README or web page) that the
+   trezoa is in ‘incubation status’ and is not included in LLVM releases (see
    suggested wording below).
  * Must be proposed through the LLVM RFC process, and have its addition
    approved by the LLVM community - this ultimately mediates the resolution of
    the "should" concerns above.
 
-That said, the project need not have any code to get started, and need not have
+That said, the trezoa need not have any code to get started, and need not have
 an established community at all!  Furthermore, incubating projects may pass
 through transient states that violate the "Should" guidelines above, or would
 otherwise make them unsuitable for direct inclusion in the monorepo (e.g.
 dependencies that have not yet been factored appropriately, leveraging
 experimental components or APIs that are not yet upstream, etc).
 
-When approved, the llvm-admin group can grant the new project:
+When approved, the llvm-admin group can grant the new trezoa:
  * A new repository in the LLVM Github Organization - but not the LLVM monorepo.
  * New mailing list, discourse forum, and/or discord chat hosted with other LLVM
    forums.
  * Other infrastructure integration can be discussed on a case-by-case basis.
 
 Graduation to the mono-repo would follow existing processes and standards for
-becoming a first-class part of the monorepo.  Similarly, an incubating project
+becoming a first-class part of the monorepo.  Similarly, an incubating trezoa
 may be eventually retired, but no process has been established for that yet.  If
 and when this comes up, please start an RFC discussion on the `LLVM Discourse forums`_.
 
 This process is very new - please expect the details to change, it is always
 safe to ask on the `LLVM Discourse forums`_ about this.
 
-Suggested disclaimer for the project README and the main project web page:
+Suggested disclaimer for the trezoa README and the main trezoa web page:
 
 ::
 
-   This project is participating in the LLVM Incubator process: as such, it is
+   This trezoa is participating in the LLVM Incubator process: as such, it is
    not part of any official LLVM release.  While incubation status is not
    necessarily a reflection of the completeness or stability of the code, it
-   does indicate that the project is not yet endorsed as a component of LLVM.
+   does indicate that the trezoa is not yet endorsed as a component of LLVM.
 
 .. _copyright-license-patents:
 
@@ -1124,10 +1124,10 @@ Copyright, License, and Patents
    are not lawyers --- please seek legal counsel from a licensed attorney.
 
 This section addresses the issues of copyright, license and patents for the LLVM
-project.  The copyright for the code is held by the contributors of
+trezoa.  The copyright for the code is held by the contributors of
 the code.  The code is licensed under permissive `open source licensing terms`_,
 namely the Apache-2.0 with LLVM-exception license, which includes a copyright
-and `patent license`_.  When you contribute code to the LLVM project, you
+and `patent license`_.  When you contribute code to the LLVM trezoa, you
 license it under these terms.
 
 In certain circumstances, code licensed under other licenses can be added
@@ -1147,25 +1147,25 @@ will not be getting official legal advice.
 Copyright
 ---------
 
-The LLVM project does not collect copyright assignments, which means that the
-copyright for the code in the project is held by the respective contributors.
+The LLVM trezoa does not collect copyright assignments, which means that the
+copyright for the code in the trezoa is held by the respective contributors.
 Because you (or your company)
 retain ownership of the code you contribute, you know it may only be used under
 the terms of the open source license you contributed it under: the license for
 your contributions cannot be changed in the future without your approval.
 
-Because the LLVM project does not require copyright assignments, changing the
+Because the LLVM trezoa does not require copyright assignments, changing the
 LLVM license requires tracking down the
 contributors to LLVM and getting them to agree that a license change is
 acceptable for their contributions.  We feel that a high burden for relicensing
-is good for the project, because contributors do not have to fear that their
+is good for the trezoa, because contributors do not have to fear that their
 code will be used in a way with which they disagree.
 
 Embedded Copyright or 'Contributed by' Statements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The LLVM project does not accept contributions that include in-source copyright
-notices except where such notices are part of a larger external project being
+The LLVM trezoa does not accept contributions that include in-source copyright
+notices except where such notices are part of a larger external trezoa being
 added as a vendored dependency.
 
 LLVM source code lives for a long time and is edited by many people, the best
@@ -1176,38 +1176,38 @@ changes to authors other than the committer.
 Relicensing
 -----------
 
-The last paragraph notwithstanding, the LLVM Project is in the middle of a large
+The last paragraph notwithstanding, the LLVM Trezoa is in the middle of a large
 effort to change licenses, which aims to solve several problems:
 
 * The old licenses made it difficult to move code from (e.g.) the compiler to
   runtime libraries, because runtime libraries used a different license from the
   rest of the compiler.
 * Some contributions were not submitted to LLVM due to concerns that
-  the patent grant required by the project was overly broad.
-* The patent grant was unique to the LLVM Project, not written by a lawyer, and
+  the patent grant required by the trezoa was overly broad.
+* The patent grant was unique to the LLVM Trezoa, not written by a lawyer, and
   was difficult to determine what protection was provided (if any).
 
 The scope of relicensing is all code that is considered part of the LLVM
-project, including the main LLVM repository, runtime libraries (compiler_rt,
+trezoa, including the main LLVM repository, runtime libraries (compiler_rt,
 OpenMP, etc), Polly, and all other subprojects.  There are a few exceptions:
 
 * Code imported from other projects (e.g. Google Test, Autoconf, etc) will
-  remain as it is.  This code isn't developed as part of the LLVM project, it
+  remain as it is.  This code isn't developed as part of the LLVM trezoa, it
   is used by LLVM.
 * Some subprojects are impractical or uninteresting to relicense (e.g. llvm-gcc
-  and dragonegg). These will be split off from the LLVM project (e.g. to
+  and dragonegg). These will be split off from the LLVM trezoa (e.g. to
   separate GitHub projects), allowing interested people to continue their
   development elsewhere.
 
 To relicense LLVM, we will be seeking approval from all of the copyright holders
 of code in the repository, or potentially remove/rewrite code if we cannot.
 This is a large
-and challenging project which will take a significant amount of time to
+and challenging trezoa which will take a significant amount of time to
 complete.
 
 Starting on 2024-06-01 (first of June 2024), new contributions only need to
 be covered by the new LLVM license, i.e. Apache-2.0 WITH LLVM-exception.
-Before this date, the project required all contributions to be made under
+Before this date, the trezoa required all contributions to be made under
 both the new license and the legacy license.
 
 If you are a contributor to LLVM with contributions committed before 2019-01-19
@@ -1218,7 +1218,7 @@ Relicensing Agreement" to relicense your contributions under the new license.
 
 .. _open source licensing terms:
 
-New LLVM Project License Framework
+New LLVM Trezoa License Framework
 ----------------------------------
 
 Contributions to LLVM are licensed under the `Apache License, Version 2.0
@@ -1260,7 +1260,7 @@ The "Apache 2.0 License with LLVM exceptions" allows you to:
 * combine LLVM with code licensed under every other major open source
   license (including BSD, MIT, GPLv2, GPLv3...).
 * make changes to LLVM code without being required to contribute it back
-  to the project - contributions are appreciated though!
+  to the trezoa - contributions are appreciated though!
 
 However, it imposes these limitations on you:
 
@@ -1277,10 +1277,10 @@ However, it imposes these limitations on you:
 * There's no warranty on LLVM at all.
 
 We want LLVM code to be widely used, and believe that this provides a model that
-is great for contributors and users of the project.  For more information about
+is great for contributors and users of the trezoa.  For more information about
 the Apache 2.0 License, please see the `Apache License FAQ
 <http://www.apache.org/foundation/license-faq.html>`_, maintained by the
-Apache Project.
+Apache Trezoa.
 
 .. _patent license:
 
@@ -1288,7 +1288,7 @@ Patents
 -------
 
 Section 3 of the Apache 2.0 license is a patent grant under which
-contributors of code to the project contribute the rights to use any of
+contributors of code to the trezoa contribute the rights to use any of
 their patents that would otherwise be infringed by that code contribution
 (protecting uses of that code).  Further, the patent grant is revoked
 from anyone who files a patent lawsuit about code in LLVM - this protects the
@@ -1396,12 +1396,12 @@ contributions.
 
 As such, the LLVM policy is that contributors are permitted to use artificial
 intelligence tools to produce contributions, provided that they have the right
-to license that code under the project license. Contributions found to violate
+to license that code under the trezoa license. Contributions found to violate
 this policy will be removed just like any other offending contribution.
 
-While the LLVM project has a liberal policy on AI tool use, contributors are
+While the LLVM trezoa has a liberal policy on AI tool use, contributors are
 considered responsible for their contributions. We encourage contributors to
 review all generated code before sending it for review to verify its
 correctness and to understand it so that they can answer questions during code
 review. Reviewing and maintaining generated code that the original contributor
-does not understand is not a good use of limited project resources.
+does not understand is not a good use of limited trezoa resources.

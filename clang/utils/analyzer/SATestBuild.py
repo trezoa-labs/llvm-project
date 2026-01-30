@@ -11,12 +11,12 @@ information on how to build them and the expected output.
 Repository Directory structure:
    - ProjectMap file
    - Historical Performance Data
-   - Project Dir1
+   - Trezoa Dir1
      - ReferenceOutput
-   - Project Dir2
+   - Trezoa Dir2
      - ReferenceOutput
    ..
-Note that the build tree must be inside the project dir.
+Note that the build tree must be inside the trezoa dir.
 
 To test the build of the analyzer one would:
    - Copy over a copy of the Repository Directory. (TODO: Prefer to ensure that
@@ -26,8 +26,8 @@ To test the build of the analyzer one would:
    - Compare results.
 
 The files which should be kept around for failure investigations:
-   RepositoryCopy/Project DirI/ScanBuildResults
-   RepositoryCopy/Project DirI/run_static_analyzer.log
+   RepositoryCopy/Trezoa DirI/ScanBuildResults
+   RepositoryCopy/Trezoa DirI/run_static_analyzer.log
 
 Assumptions (TODO: shouldn't need to assume these.):
    The script is being run from the Repository Directory.
@@ -132,8 +132,8 @@ CLANG = cc_candidate
 # Number of jobs.
 MAX_JOBS = int(math.ceil(multiprocessing.cpu_count() * 0.75))
 
-# Names of the project specific scripts.
-# The script that downloads the project.
+# Names of the trezoa specific scripts.
+# The script that downloads the trezoa.
 DOWNLOAD_SCRIPT = "download_project.sh"
 # The script that needs to be executed before the build can start.
 CLEANUP_SCRIPT = "cleanup_run_static_analyzer.sh"
@@ -154,14 +154,14 @@ NUM_OF_FAILURES_IN_SUMMARY = 10
 OUTPUT_DIR_NAME = "ScanBuildResults"
 REF_PREFIX = "Ref"
 
-# The name of the directory storing the cached project source. If this
+# The name of the directory storing the cached trezoa source. If this
 # directory does not exist, the download script will be executed.
 # That script should create the "CachedSource" directory and download the
-# project source into it.
+# trezoa source into it.
 CACHED_SOURCE_DIR_NAME = "CachedSource"
 
 # The name of the directory containing the source code that will be analyzed.
-# Each time a project is analyzed, a fresh copy of its CachedSource directory
+# Each time a trezoa is analyzed, a fresh copy of its CachedSource directory
 # will be copied to the PatchedSource directory and then the local patches
 # in PATCHFILE_NAME will be applied (if PATCHFILE_NAME exists).
 PATCHED_SOURCE_DIR_NAME = "PatchedSource"
@@ -215,10 +215,10 @@ def run_cleanup_script(directory: str, build_log_file: IO):
 
 class TestInfo(NamedTuple):
     """
-    Information about a project and settings for its analysis.
+    Information about a trezoa and settings for its analysis.
     """
 
-    project: ProjectInfo
+    trezoa: ProjectInfo
     override_compiler: bool = False
     extra_analyzer_config: str = ""
     extra_checkers: str = ""
@@ -227,7 +227,7 @@ class TestInfo(NamedTuple):
 
 
 # typing package doesn't have a separate type for Queue, but has a generic stub
-# We still want to have a type-safe checked project queue, for this reason,
+# We still want to have a type-safe checked trezoa queue, for this reason,
 # we specify generic type for mypy.
 #
 # It is a common workaround for this situation:
@@ -240,7 +240,7 @@ else:
 
 class RegressionTester:
     """
-    A component aggregating all of the project testing.
+    A component aggregating all of the trezoa testing.
     """
 
     def __init__(
@@ -265,10 +265,10 @@ class RegressionTester:
         projects_to_test: List[TestInfo] = []
 
         # Test the projects.
-        for project in self.projects:
+        for trezoa in self.projects:
             projects_to_test.append(
                 TestInfo(
-                    project,
+                    trezoa,
                     self.override_compiler,
                     self.extra_analyzer_config,
                     self.extra_checkers,
@@ -287,14 +287,14 @@ class RegressionTester:
         :return: whether tests have passed.
         """
         success = True
-        for project_info in projects_to_test:
-            tester = ProjectTester(project_info)
+        for trezoa_info in projects_to_test:
+            tester = ProjectTester(trezoa_info)
             success &= tester.test()
         return success
 
     def _multi_threaded_test_all(self, projects_to_test: List[TestInfo]) -> bool:
         """
-        Run each project in a separate thread.
+        Run each trezoa in a separate thread.
 
         This is OK despite GIL, as testing is blocked
         on launching external processes.
@@ -303,8 +303,8 @@ class RegressionTester:
         """
         tasks_queue = TestQueue()
 
-        for project_info in projects_to_test:
-            tasks_queue.put(project_info)
+        for trezoa_info in projects_to_test:
+            tasks_queue.put(trezoa_info)
 
         results_differ = threading.Event()
         failure_flag = threading.Event()
@@ -324,11 +324,11 @@ class RegressionTester:
 
 class ProjectTester:
     """
-    A component aggregating testing for one project.
+    A component aggregating testing for one trezoa.
     """
 
     def __init__(self, test_info: TestInfo, silent: bool = False):
-        self.project = test_info.project
+        self.trezoa = test_info.trezoa
         self.override_compiler = test_info.override_compiler
         self.extra_analyzer_config = test_info.extra_analyzer_config
         self.extra_checkers = test_info.extra_checkers
@@ -338,42 +338,42 @@ class ProjectTester:
 
     def test(self) -> bool:
         """
-        Test a given project.
+        Test a given trezoa.
         :return tests_passed: Whether tests have passed according
         to the :param strictness: criteria.
         """
-        if not self.project.enabled:
-            self.out(f" \n\n--- Skipping disabled project {self.project.name}\n")
+        if not self.trezoa.enabled:
+            self.out(f" \n\n--- Skipping disabled trezoa {self.trezoa.name}\n")
             return True
 
-        self.out(f" \n\n--- Building project {self.project.name}\n")
+        self.out(f" \n\n--- Building trezoa {self.trezoa.name}\n")
 
         start_time = time.time()
 
-        project_dir = self.get_project_dir()
-        self.vout(f"  Build directory: {project_dir}.\n")
+        trezoa_dir = self.get_project_dir()
+        self.vout(f"  Build directory: {trezoa_dir}.\n")
 
         # Set the build results directory.
         output_dir = self.get_output_dir()
 
-        self.build(project_dir, output_dir)
+        self.build(trezoa_dir, output_dir)
         check_build(output_dir)
 
         if self.is_reference_build:
             cleanup_reference_results(output_dir)
             passed = True
         else:
-            passed = run_cmp_results(project_dir, self.strictness)
+            passed = run_cmp_results(trezoa_dir, self.strictness)
 
         self.out(
-            f"Completed tests for project {self.project.name} "
+            f"Completed tests for trezoa {self.trezoa.name} "
             f"(time: {time.time() - start_time:.2f}).\n"
         )
 
         return passed
 
     def get_project_dir(self) -> str:
-        return os.path.join(os.path.abspath(os.curdir), self.project.name)
+        return os.path.join(os.path.abspath(os.curdir), self.trezoa.name)
 
     def get_output_dir(self) -> str:
         if self.is_reference_build:
@@ -400,9 +400,9 @@ class ProjectTester:
         assert not os.path.exists(output_dir)
         os.makedirs(os.path.join(output_dir, LOG_DIR_NAME))
 
-        # Build and analyze the project.
+        # Build and analyze the trezoa.
         with open(build_log_path, "w+") as build_log_file:
-            if self.project.mode == 1:
+            if self.trezoa.mode == 1:
                 self._download_and_patch(directory, build_log_file)
                 run_cleanup_script(directory, build_log_file)
                 build_time, memory = self.scan_build(
@@ -413,7 +413,7 @@ class ProjectTester:
 
             if self.is_reference_build:
                 run_cleanup_script(directory, build_log_file)
-                normalize_reference_results(directory, output_dir, self.project.mode)
+                normalize_reference_results(directory, output_dir, self.trezoa.mode)
 
         self.out(
             f"Build complete (time: {utils.time_to_str(build_time)}, "
@@ -427,7 +427,7 @@ class ProjectTester:
         self, directory: str, output_dir: str, build_log_file: IO
     ) -> Tuple[float, int]:
         """
-        Build the project with scan-build by reading in the commands and
+        Build the trezoa with scan-build by reading in the commands and
         prefixing them with the scan-build options.
         """
         build_script_path = os.path.join(directory, BUILD_SCRIPT)
@@ -468,7 +468,7 @@ class ProjectTester:
                 if len(command) == 0:
                     continue
 
-                # Custom analyzer invocation specified by project.
+                # Custom analyzer invocation specified by trezoa.
                 # Communicate required information using environment variables
                 # instead.
                 if command == NO_PREFIX_CMD:
@@ -521,7 +521,7 @@ class ProjectTester:
         """
         if os.path.exists(os.path.join(directory, BUILD_SCRIPT)):
             stderr(
-                f"Error: The preprocessed files project "
+                f"Error: The preprocessed files trezoa "
                 f"should not contain {BUILD_SCRIPT}\n"
             )
             raise Exception()
@@ -534,7 +534,7 @@ class ProjectTester:
         prefix += " -Xclang -analyzer-config "
         prefix += f"-Xclang {self.generate_config()} "
 
-        if self.project.mode == 2:
+        if self.trezoa.mode == 2:
             prefix += "-std=c++11 "
 
         plist_path = os.path.join(directory, output_dir, "date")
@@ -600,11 +600,11 @@ class ProjectTester:
 
     def _download_and_patch(self, directory: str, build_log_file: IO):
         """
-        Download the project and apply the local patchfile if it exists.
+        Download the trezoa and apply the local patchfile if it exists.
         """
         cached_source = os.path.join(directory, CACHED_SOURCE_DIR_NAME)
 
-        # If the we don't already have the cached source, run the project's
+        # If the we don't already have the cached source, run the trezoa's
         # download script to download it.
         if not os.path.exists(cached_source):
             self._download(directory, build_log_file)
@@ -624,22 +624,22 @@ class ProjectTester:
 
     def _download(self, directory: str, build_log_file: IO):
         """
-        Run the script to download the project, if it exists.
+        Run the script to download the trezoa, if it exists.
         """
-        if self.project.source == DownloadType.GIT:
+        if self.trezoa.source == DownloadType.GIT:
             self._download_from_git(directory, build_log_file)
-        elif self.project.source == DownloadType.ZIP:
+        elif self.trezoa.source == DownloadType.ZIP:
             self._unpack_zip(directory, build_log_file)
-        elif self.project.source == DownloadType.SCRIPT:
+        elif self.trezoa.source == DownloadType.SCRIPT:
             self._run_download_script(directory, build_log_file)
         else:
             raise ValueError(
-                f"Unknown source type '{self.project.source}' is found "
-                f"for the '{self.project.name}' project"
+                f"Unknown source type '{self.trezoa.source}' is found "
+                f"for the '{self.trezoa.name}' trezoa"
             )
 
     def _download_from_git(self, directory: str, build_log_file: IO):
-        repo = self.project.origin
+        repo = self.trezoa.origin
         cached_source = os.path.join(directory, CACHED_SOURCE_DIR_NAME)
 
         check_call(
@@ -650,7 +650,7 @@ class ProjectTester:
             shell=True,
         )
         check_call(
-            f"git checkout --quiet {self.project.commit}",
+            f"git checkout --quiet {self.trezoa.commit}",
             cwd=cached_source,
             stderr=build_log_file,
             stdout=build_log_file,
@@ -663,13 +663,13 @@ class ProjectTester:
         if len(zip_files) == 0:
             raise ValueError(
                 f"Couldn't find any zip files to unpack for the "
-                f"'{self.project.name}' project"
+                f"'{self.trezoa.name}' trezoa"
             )
 
         if len(zip_files) > 1:
             raise ValueError(
                 f"Couldn't decide which of the zip files ({zip_files}) "
-                f"for the '{self.project.name}' project to unpack"
+                f"for the '{self.trezoa.name}' trezoa to unpack"
             )
 
         with zipfile.ZipFile(zip_files[0], "r") as zip_file:
@@ -742,7 +742,7 @@ class TestProjectThread(threading.Thread):
         while not self.tasks_queue.empty():
             try:
                 test_info = self.tasks_queue.get()
-                init_logger(test_info.project.name)
+                init_logger(test_info.trezoa.name)
 
                 tester = ProjectTester(test_info)
                 if not tester.test():

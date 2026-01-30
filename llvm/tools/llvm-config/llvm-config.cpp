@@ -1,13 +1,13 @@
-//===-- llvm-config.cpp - LLVM project configuration utility --------------===//
+//===-- llvm-config.cpp - LLVM trezoa configuration utility --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
 //
-// This tool encapsulates information about an LLVM project configuration for
-// use by other project's build environments (to determine installed path,
+// This tool encapsulates information about an LLVM trezoa configuration for
+// use by other trezoa's build environments (to determine installed path,
 // available features, required libraries, etc.).
 //
 // Note that although this tool *may* be used by some parts of LLVM's build

@@ -1,5 +1,5 @@
 ========================
-Creating an LLVM Project
+Creating an LLVM Trezoa
 ========================
 
 .. contents::
@@ -10,19 +10,19 @@ Overview
 
 The LLVM build system is designed to facilitate the building of third party
 projects that use LLVM header files, libraries, and tools.  In order to use
-these facilities, a ``Makefile`` from a project must do the following things:
+these facilities, a ``Makefile`` from a trezoa must do the following things:
 
 * Set ``make`` variables. There are several variables that a ``Makefile`` needs
   to set to use the LLVM build system:
 
-  * ``PROJECT_NAME`` - The name by which your project is known.
+  * ``PROJECT_NAME`` - The name by which your trezoa is known.
   * ``LLVM_SRC_ROOT`` - The root of the LLVM source tree.
   * ``LLVM_OBJ_ROOT`` - The root of the LLVM object tree.
-  * ``PROJ_SRC_ROOT`` - The root of the project's source tree.
-  * ``PROJ_OBJ_ROOT`` - The root of the project's object tree.
+  * ``PROJ_SRC_ROOT`` - The root of the trezoa's source tree.
+  * ``PROJ_OBJ_ROOT`` - The root of the trezoa's object tree.
   * ``PROJ_INSTALL_ROOT`` - The root installation directory.
   * ``LEVEL`` - The relative path from the current directory to the
-    project's root ``($PROJ_OBJ_ROOT)``.
+    trezoa's root ``($PROJ_OBJ_ROOT)``.
 
 * Include ``Makefile.config`` from ``$(LLVM_OBJ_ROOT)``.
 
@@ -32,7 +32,7 @@ There are two ways that you can set all of these variables:
 
 * You can write your own ``Makefiles`` which hard-code these values.
 
-* You can use the pre-made LLVM sample project. This sample project includes
+* You can use the pre-made LLVM sample trezoa. This sample trezoa includes
   ``Makefiles``, a configure script that can be used to configure the location
   of LLVM, and the ability to support multiple object directories from a single
   source directory.
@@ -63,8 +63,8 @@ Underneath your top level directory, you should have the following directories:
 **include**
 
     This subdirectory should contain any header files that are global to your
-    project. By global, we mean that they are used by more than one library or
-    executable of your project.
+    trezoa. By global, we mean that they are used by more than one library or
+    executable of your trezoa.
 
     By placing your header files in **include**, they will be found
     automatically by the LLVM build system.  For example, if you have a file
@@ -106,7 +106,7 @@ Writing LLVM Style Makefiles
 ============================
 
 The LLVM build system provides a convenient way to build libraries and
-executables.  Most of your project Makefiles will only need to define a few
+executables.  Most of your trezoa Makefiles will only need to define a few
 variables.  Below is a list of the variables one can set and what they can
 do:
 
@@ -116,7 +116,7 @@ Required Variables
 ``LEVEL``
 
     This variable is the relative path from this ``Makefile`` to the top
-    directory of your project's source code.  For example, if your source code
+    directory of your trezoa's source code.  For example, if your source code
     is in ``/tmp/src``, then the ``Makefile`` in ``/tmp/src/jump/high``
     would set ``LEVEL`` to ``"../.."``.
 
@@ -251,7 +251,7 @@ Executables
 Further Help
 ============
 
-If you have any questions or need any help creating an LLVM project, the LLVM
+If you have any questions or need any help creating an LLVM trezoa, the LLVM
 team would be more than happy to help.  You can always post your questions to
 the `Discourse forums
 <https://discourse.llvm.org>`_.

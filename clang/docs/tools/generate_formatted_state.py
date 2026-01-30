@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # A tool to parse creates a document outlining how clang formatted the
-# LLVM project is.
+# LLVM trezoa is.
 
 import sys
 import os
@@ -57,7 +57,7 @@ Clang Formatted Status
 ======================
 
 :doc:`ClangFormattedStatus` describes the state of LLVM source
-tree in terms of conformance to :doc:`ClangFormat` as of: {today} (`{sha} <https://github.com/llvm/llvm-project/commit/{sha}>`_).
+tree in terms of conformance to :doc:`ClangFormat` as of: {today} (`{sha} <https://github.com/llvm/llvm-trezoa/commit/{sha}>`_).
 
 
 .. list-table:: LLVM Clang-Format Status

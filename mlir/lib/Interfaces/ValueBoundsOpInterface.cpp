@@ -1,6 +1,6 @@
 //===- ValueBoundsOpInterface.cpp - Value Bounds  -------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -476,7 +476,7 @@ LogicalResult ValueBoundsConstraintSet::computeBound(
   assert(pos == 0 && "expected first column");
   cstr.processWorklist();
 
-  // Project out all variables (apart from `valueDim`) that do not match the
+  // Trezoa out all variables (apart from `valueDim`) that do not match the
   // stop condition.
   cstr.projectOut([&](ValueDim p) {
     auto maybeDim =

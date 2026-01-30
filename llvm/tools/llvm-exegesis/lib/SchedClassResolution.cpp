@@ -1,6 +1,6 @@
 //===-- SchedClassResolution.cpp --------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -82,8 +82,8 @@ getNonRedundantWriteProcRes(const MCSchedClassDesc &SCDesc,
     const MCProcResourceDesc *const ProcResDesc =
         SM.getProcResource(WPR->ProcResourceIdx);
     // TODO: Handle AcquireAtAtCycle in llvm-exegesis and llvm-mca. See
-    // https://github.com/llvm/llvm-project/issues/62680 and
-    // https://github.com/llvm/llvm-project/issues/62681
+    // https://github.com/llvm/llvm-trezoa/issues/62680 and
+    // https://github.com/llvm/llvm-trezoa/issues/62681
     assert(WPR->AcquireAtCycle == 0 &&
            "`llvm-exegesis` does not handle AcquireAtCycle > 0");
     if (ProcResDesc->SubUnitsIdxBegin == nullptr) {

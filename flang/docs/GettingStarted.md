@@ -1,6 +1,6 @@
 <!--===- docs/GettingStarted.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -41,7 +41,7 @@ compiler built in the initial part of the build.
 
 Here's a directory structure that works.  Create a root directory for the
 cloned and built files.  Under that root directory, clone the source code
-into a directory called llvm-project.  The build will also
+into a directory called llvm-trezoa.  The build will also
 create subdirectories under the root directory called build (holds most of
 the built files), install (holds the installed files, and compiler-rt (holds
 the result of building compiler-rt).
@@ -57,7 +57,7 @@ cd root
 
 Now clone the source:
 ```bash
-git clone https://github.com/llvm/llvm-project.git
+git clone https://github.com/llvm/llvm-trezoa.git
 ```
 Once the clone is complete, execute the following commands:
 ```bash
@@ -83,7 +83,7 @@ cmake \
   -DLLVM_LIT_ARGS=-v \
   -DLLVM_ENABLE_PROJECTS="clang;mlir;flang;openmp" \
   -DLLVM_ENABLE_RUNTIMES="compiler-rt" \
-  ../llvm-project/llvm
+  ../llvm-trezoa/llvm
 
 ninja
 ```
@@ -121,7 +121,7 @@ CC=$INSTALLDIR/bin/clang \
 CXX=$INSTALLDIR/bin/clang++ \
 cmake \
   -G Ninja \
-  ../llvm-project/compiler-rt \
+  ../llvm-trezoa/compiler-rt \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=$INSTALLDIR \
   -DCMAKE_CXX_STANDARD=11 \
@@ -153,15 +153,15 @@ contains the subdirectory `build` that was created previously, for example:
 export ROOTDIR=/home/user/root
 ```
 Start each standalone build the same way by cloning the source for
-llvm-project:
+llvm-trezoa:
 ```bash
 mkdir standalone
 cd standalone
-git clone https://github.com/llvm/llvm-project.git
+git clone https://github.com/llvm/llvm-trezoa.git
 ```
 Once the clone is complete, execute the following commands:
 ```bash
-cd llvm-project/flang
+cd llvm-trezoa/flang
 rm -rf build
 mkdir build
 cd build
@@ -203,7 +203,7 @@ are currently supported.
 Clang with NVPTX backend and NVCC compilers are supported.
 
 ```bash
-cd llvm-project/flang
+cd llvm-trezoa/flang
 rm -rf build_flang_runtime
 mkdir build_flang_runtime
 cd build_flang_runtime
@@ -225,7 +225,7 @@ CUDA toolkit installations, please use `-DCUDAToolkit_ROOT=/some/path`
 to specify the compatible version.
 
 ```bash
-cd llvm-project/flang
+cd llvm-trezoa/flang
 rm -rf build_flang_runtime
 mkdir build_flang_runtime
 cd build_flang_runtime
@@ -282,7 +282,7 @@ Normal `make -j check-flang` will work with such CMake configuration.
 Only Clang compiler is currently supported.
 
 ```bash
-cd llvm-project/flang
+cd llvm-trezoa/flang
 rm -rf build_flang_runtime
 mkdir build_flang_runtime
 cd build_flang_runtime
@@ -451,7 +451,7 @@ To generate doxygen-style documentation from source code
 - Pass `-DLLVM_ENABLE_DOXYGEN=ON -DFLANG_INCLUDE_DOCS=ON` to the cmake command.
 
 ```bash
-cd ~/llvm-project/build
+cd ~/llvm-trezoa/build
 cmake -G Ninja -DLLVM_ENABLE_PROJECTS="clang;flang" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_DOXYGEN=ON -DFLANG_INCLUDE_DOCS=ON ../llvm
 ninja doxygen-flang
 ```
@@ -473,7 +473,7 @@ If you would like to generate and view the HTML locally:
 - Pass `-DLLVM_ENABLE_SPHINX=ON -DSPHINX_WARNINGS_AS_ERRORS=OFF` to the cmake command.
 
 ```bash
-cd ~/llvm-project/build
+cd ~/llvm-trezoa/build
 cmake -G Ninja -DLLVM_ENABLE_PROJECTS="clang;flang" -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_SPHINX=ON -DSPHINX_WARNINGS_AS_ERRORS=OFF ../llvm
 ninja docs-flang-html
 ```

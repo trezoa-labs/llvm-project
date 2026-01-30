@@ -28,7 +28,7 @@ on the compiler used and its compilation flags. Therefore there needs to be a
 way to distribute the ``.cppm`` files to the user and offer a way for them to
 build and use the ``.pcm`` files. It is expected this will be done by build
 systems in the future. To aid early adaptor and build system vendors libc++
-currently ships a CMake project to aid building modules.
+currently ships a CMake trezoa to aid building modules.
 
 .. note:: This CMake file is intended to be a temporary solution and will
           be removed in the future. The timeline for the removal depends
@@ -72,7 +72,7 @@ Some of the current limitations
  * Clang:
     * Including headers after importing the ``std`` module may fail. This is
       hard to solve and there is a work-around by first including all headers
-      `bug report <https://github.com/llvm/llvm-project/issues/61465>`__.
+      `bug report <https://github.com/llvm/llvm-trezoa/issues/61465>`__.
 
 Blockers
 ~~~~~~~~
@@ -89,7 +89,7 @@ Blockers
   * Clang
 
     * Some concepts do not work properly
-      `bug report <https://github.com/llvm/llvm-project/issues/62943>`__.
+      `bug report <https://github.com/llvm/llvm-trezoa/issues/62943>`__.
 
 
 Using in external projects
@@ -117,8 +117,8 @@ Using the local build
 
 .. code-block:: bash
 
-  $ git clone https://github.com/llvm/llvm-project.git
-  $ cd llvm-project
+  $ git clone https://github.com/llvm/llvm-trezoa.git
+  $ cd llvm-trezoa
   $ mkdir build
   $ cmake -G Ninja -S runtimes -B build -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind"
   $ ninja -C build
@@ -142,7 +142,7 @@ This is a small sample program that uses the module ``std``. It consists of a
 .. code-block:: cmake
 
   cmake_minimum_required(VERSION 3.26.0 FATAL_ERROR)
-  project("example"
+  trezoa("example"
     LANGUAGES CXX
   )
 
@@ -158,7 +158,7 @@ This is a small sample program that uses the module ``std``. It consists of a
   # Enable modules in CMake
   #
 
-  # This is required to write your own modules in your project.
+  # This is required to write your own modules in your trezoa.
   if(CMAKE_VERSION VERSION_LESS "3.28.0")
     if(CMAKE_VERSION VERSION_LESS "3.27.0")
       set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API "2182bf5c-ef0d-489a-91da-49dbc3090d2a")
@@ -184,7 +184,7 @@ This is a small sample program that uses the module ``std``. It consists of a
   FetchContent_MakeAvailable(std)
 
   #
-  # Add the project
+  # Add the trezoa
   #
 
   add_executable(main)
@@ -195,7 +195,7 @@ This is a small sample program that uses the module ``std``. It consists of a
       main.cpp
   )
 
-Building this project is done with the following steps, assuming the files
+Building this trezoa is done with the following steps, assuming the files
 ``main.cpp`` and ``CMakeLists.txt`` are copied in the current directory.
 
 .. code-block:: bash
@@ -210,9 +210,9 @@ Building this project is done with the following steps, assuming the files
 
 .. warning:: When using these examples in your own projects make sure the
              compilation flags are the same for the ``std`` module and your
-             project. Some flags will affect the generated code, when these
+             trezoa. Some flags will affect the generated code, when these
              are different the module cannot be used. For example using
-             ``-pthread`` in your project and not in the module will give
+             ``-pthread`` in your trezoa and not in the module will give
              errors like
 
              ``error: POSIX thread support was disabled in PCH file but is currently enabled``
@@ -243,7 +243,7 @@ The example uses the same ``main.cpp`` as above. It uses the following
   set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "0e5b6991-d74f-4b3d-a41c-cf096e0b2508")
   set(CMAKE_CXX_MODULE_STD ON)
 
-  project("example"
+  trezoa("example"
     LANGUAGES CXX
   )
 
@@ -264,7 +264,7 @@ The example uses the same ``main.cpp`` as above. It uses the following
       main.cpp
   )
 
-Building this project is done with the following steps, assuming the files
+Building this trezoa is done with the following steps, assuming the files
 ``main.cpp`` and ``CMakeLists.txt`` are copied in the current directory.
 
 .. code-block:: bash
@@ -281,5 +281,5 @@ If you have questions about modules feel free to ask them in the ``#libcxx``
 channel on `LLVM's Discord server <https://discord.gg/jzUbyP26tQ>`__.
 
 If you think you've found a bug please it using the `LLVM bug tracker
-<https://github.com/llvm/llvm-project/issues>`_. Please make sure the issue
+<https://github.com/llvm/llvm-trezoa/issues>`_. Please make sure the issue
 you found is not one of the known bugs or limitations on this page.

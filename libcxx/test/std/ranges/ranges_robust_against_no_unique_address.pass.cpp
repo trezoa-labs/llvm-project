@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -9,7 +9,7 @@
 // UNSUPPORTED: c++03, c++11, c++14, c++17
 
 // Test that views that use __movable_box do not overwrite overlapping subobjects.
-// https://github.com/llvm/llvm-project/issues/70506
+// https://github.com/llvm/llvm-trezoa/issues/70506
 
 #include <cassert>
 #include <ranges>

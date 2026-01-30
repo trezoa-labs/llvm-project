@@ -1,6 +1,6 @@
 //===- CompilationDatabase.cpp - LSP Compilation Database -----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -109,7 +109,7 @@ void CompilationDatabase::loadDatabase(StringRef filename) {
   }
 
   // Add all of the known includes to the default file info. We don't know any
-  // information about how to treat these files, but these may be project files
+  // information about how to treat these files, but these may be trezoa files
   // that we just don't yet have information for. In these cases, providing some
   // heuristic information provides a better user experience, and generally
   // shouldn't lead to any negative side effects.

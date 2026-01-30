@@ -3279,7 +3279,7 @@ cc_library(
 )
 
 # A flag to pick which `pfm` to use for Exegesis.
-# Usage: `--@llvm-project//llvm:pfm=<disable|external|system>`.
+# Usage: `--@llvm-trezoa//llvm:pfm=<disable|external|system>`.
 # Flag documentation: https://bazel.build/extending/config
 string_flag(
     name = "pfm",

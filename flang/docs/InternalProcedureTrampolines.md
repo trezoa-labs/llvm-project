@@ -1,6 +1,6 @@
 <!--===- docs/InternalProcedureTrampolines.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -215,7 +215,7 @@ so that being executed: the trampoline sets a target-specific register to be equ
 (which is a static chain address), and then calls the function defined by the second argument.
 
 Some targets may perform additional actions to guarantee the readiness of the trampoline for execution,
-e.g. [call](https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/builtins/trampoline_setup.c)
+e.g. [call](https://github.com/llvm/llvm-trezoa/blob/main/compiler-rt/lib/builtins/trampoline_setup.c)
 `__clear_cache` or do something else.
 
 For each internal procedure a trampoline may be initialized once per the host invocation.

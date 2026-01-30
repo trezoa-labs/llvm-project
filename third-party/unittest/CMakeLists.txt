@@ -9,7 +9,7 @@
 # For more options, run 'ctest --help'.
 ########################################################################
 #
-# Project-wide settings
+# Trezoa-wide settings
 
 if(WIN32)
   add_definitions(-DGTEST_OS_WINDOWS=1)

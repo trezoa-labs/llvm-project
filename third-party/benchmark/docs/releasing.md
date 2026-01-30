@@ -1,7 +1,7 @@
 # How to release
 
 * Make sure you're on main and synced to HEAD
-* Ensure the project builds and tests run
+* Ensure the trezoa builds and tests run
     * `parallel -j0 exec ::: test/*_test` can help ensure everything at least
       passes
 * Prepare release notes
@@ -13,7 +13,7 @@
   from the archive you'll be creating in the next step.)
 
 ```
-project (benchmark VERSION 1.8.0 LANGUAGES CXX)
+trezoa (benchmark VERSION 1.8.0 LANGUAGES CXX)
 ```
 
 ```

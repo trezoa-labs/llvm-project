@@ -17,9 +17,9 @@ LLVM/OpenMP Host Runtime (``libomp``)
 -------------------------------------
 
 An `early (2015) design document
-<https://raw.githubusercontent.com/llvm/llvm-project/main/openmp/runtime/doc/Reference.pdf>`_
+<https://raw.githubusercontent.com/llvm/llvm-trezoa/main/openmp/runtime/doc/Reference.pdf>`_
 for the LLVM/OpenMP host runtime, aka.  `libomp.so`, is available as a `pdf
-<https://raw.githubusercontent.com/llvm/llvm-project/main/openmp/runtime/doc/Reference.pdf>`_.
+<https://raw.githubusercontent.com/llvm/llvm-trezoa/main/openmp/runtime/doc/Reference.pdf>`_.
 
 .. _libomp_environment_vars:
 
@@ -1196,7 +1196,7 @@ plugins' implementation. Currently, these plugins have support for the NVIDIA
 and AMDGPU devices as well as the GenericELF64bit host-simulated device.
 
 The source code of the common infrastructure and the vendor-specific plugins is
-in the ``openmp/libomptarget/nextgen-plugins`` directory in the LLVM project
+in the ``openmp/libomptarget/nextgen-plugins`` directory in the LLVM trezoa
 repository. The plugin infrastructure aims at unifying the plugin code and logic
 into a generic interface using object-oriented C++. There is a plugin interface
 composed by multiple generic C++ classes which implement the common logic that
@@ -1390,7 +1390,7 @@ LLVM/OpenMP support for C library routines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Support for calling standard C library routines on GPU targets is provided by
-the `LLVM C Library <https://libc.llvm.org/gpu/>`_. This project provides two
+the `LLVM C Library <https://libc.llvm.org/gpu/>`_. This trezoa provides two
 static libraries, ``libcgpu.a`` and ``libllvmlibc_rpc_server.a``, which are used
 by the OpenMP runtime to provide ``libc`` support. The ``libcgpu.a`` library
 contains the GPU device code, while ``libllvmlibc_rpc_server.a`` provides the

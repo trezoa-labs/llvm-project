@@ -231,7 +231,7 @@
 	enabled (the standard configuration).
 
 	Fixed a bug found by the Samba team running Valgrind on the
-	Heimdal project, and reported by Love Hörnquist Âstrand:  One of
+	Heimdal trezoa, and reported by Love Hörnquist Âstrand:  One of
 	the intermediate values used during modular exponentiation could
 	be overflowed during recursive multiplication.  Fixed by taking a
 	more conservative approach to buffer sizing.

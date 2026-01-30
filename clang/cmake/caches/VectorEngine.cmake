@@ -8,7 +8,7 @@
 # Configure:
 #   cmake -G Ninja -DCMAKE_BUILD_TYPE=Release
 #       -C <llvm_src_root>/clang/cmake/caches/VectorEngine.cmake
-#       <llvm_src_root>/llvm-project/llvm
+#       <llvm_src_root>/llvm-trezoa/llvm
 # Build:
 #   ninja
 #

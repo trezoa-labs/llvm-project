@@ -1,6 +1,6 @@
 // RUN: %clang_cc1 -fopenmp-simd -fsyntax-only -verify %s
-// see https://github.com/llvm/llvm-project/issues/69069 
-// or https://github.com/llvm/llvm-project/pull/71480
+// see https://github.com/llvm/llvm-trezoa/issues/69069 
+// or https://github.com/llvm/llvm-trezoa/pull/71480
 
 void test() {
   int v; const int x; // expected-note {{variable 'x' declared const here}}

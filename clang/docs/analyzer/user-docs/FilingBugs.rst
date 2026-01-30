@@ -15,4 +15,4 @@ following:
   and why.
 
 Please `file bugs and feature requests <https://llvm.org/docs/HowToSubmitABug.html>`_
-in `LLVM's issue tracker <https://github.com/llvm/llvm-project/issues>`_ and label the report with the ``clang:static analyzer`` label.
+in `LLVM's issue tracker <https://github.com/llvm/llvm-trezoa/issues>`_ and label the report with the ``clang:static analyzer`` label.

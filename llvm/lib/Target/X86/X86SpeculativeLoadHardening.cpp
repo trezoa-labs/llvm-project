@@ -1,6 +1,6 @@
 //====- X86SpeculativeLoadHardening.cpp - A Spectre v1 mitigation ---------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12,7 +12,7 @@
 /// or other condition) to reach a load with invalid inputs and leak the data
 /// accessed by that load using a side channel out of the speculative domain.
 ///
-/// For details on the attacks, see the first variant in both the Project Zero
+/// For details on the attacks, see the first variant in both the Trezoa Zero
 /// writeup and the Spectre paper:
 /// https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html
 /// https://spectreattack.com/spectre.pdf

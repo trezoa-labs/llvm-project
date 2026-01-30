@@ -1,5 +1,5 @@
 # Mimick `GNUInstallDirs` for one more install directory, the one where
-# project's installed cmake subdirs go.
+# trezoa's installed cmake subdirs go.
 
 # These functions are internal functions vendored in from GNUInstallDirs (with
 # new names), so we don't depend on unstable implementation details. They are

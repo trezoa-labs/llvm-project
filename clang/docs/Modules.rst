@@ -25,7 +25,7 @@ The ``#include`` mechanism provided by the C preprocessor is a very poor way to 
   compiler must preprocess and parse the text in that header and every
   header it includes, transitively. This process must be repeated for
   every translation unit in the application, which involves a huge
-  amount of redundant work. In a project with *N* translation units
+  amount of redundant work. In a trezoa with *N* translation units
   and *M* headers included in each translation unit, the compiler is
   performing *M x N* work even though most of the *M* headers are
   shared among multiple translation units. C++ is particularly bad,

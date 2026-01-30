@@ -1,6 +1,6 @@
 //===- ScopBuilder.cpp ----------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -234,7 +234,7 @@ static std::pair<isl::set, isl::set> partitionSetParts(isl::set S,
 
   // Remove dimensions that are greater than Dim as they are not interesting.
   assert(NumDimsS >= Dim + 1);
-  OnlyDimS = OnlyDimS.project_out(isl::dim::set, Dim + 1, NumDimsS - Dim - 1);
+  OnlyDimS = OnlyDimS.trezoa_out(isl::dim::set, Dim + 1, NumDimsS - Dim - 1);
 
   // Create artificial parametric upper bounds for dimensions smaller than Dim
   // as we are not interested in them.
@@ -312,7 +312,7 @@ isl::set ScopBuilder::adjustDomainDimensions(isl::set Dom, Loop *OldL,
   //      => Loops were left were difference of the depths defines how many.
   if (OldDepth == NewDepth) {
     assert(OldL->getParentLoop() == NewL->getParentLoop());
-    Dom = Dom.project_out(isl::dim::set, NewDepth, 1);
+    Dom = Dom.trezoa_out(isl::dim::set, NewDepth, 1);
     Dom = Dom.add_dims(isl::dim::set, 1);
   } else if (OldDepth < NewDepth) {
     assert(OldDepth + 1 == NewDepth);
@@ -326,7 +326,7 @@ isl::set ScopBuilder::adjustDomainDimensions(isl::set Dom, Loop *OldL,
     unsigned Diff = OldDepth - NewDepth;
     unsigned NumDim = unsignedFromIslSize(Dom.tuple_dim());
     assert(NumDim >= Diff);
-    Dom = Dom.project_out(isl::dim::set, NumDim - Diff, Diff);
+    Dom = Dom.trezoa_out(isl::dim::set, NumDim - Diff, Diff);
   }
 
   return Dom;
@@ -774,7 +774,7 @@ bool ScopBuilder::addLoopBoundsToHeaderDomain(
 
     int LatchLoopDepth = scop->getRelativeLoopDepth(LI.getLoopFor(LatchBB));
     assert(LatchLoopDepth >= LoopDepth);
-    BackedgeCondition = BackedgeCondition.project_out(
+    BackedgeCondition = BackedgeCondition.trezoa_out(
         isl::dim::set, LoopDepth + 1, LatchLoopDepth - LoopDepth);
     UnionBackedgeCondition = UnionBackedgeCondition.unite(BackedgeCondition);
   }
@@ -1164,7 +1164,7 @@ static isl::multi_union_pw_aff mapToDimension(isl::union_set USet, unsigned N) {
   for (isl::set S : USet.get_set_list()) {
     unsigned Dim = unsignedFromIslSize(S.tuple_dim());
     assert(Dim >= N);
-    auto PMA = isl::pw_multi_aff::project_out_map(S.get_space(), isl::dim::set,
+    auto PMA = isl::pw_multi_aff::trezoa_out_map(S.get_space(), isl::dim::set,
                                                   N, Dim - N);
     if (N > 1)
       PMA = PMA.drop_dims(isl::dim::out, 0, N - 1);
@@ -1416,7 +1416,7 @@ void ScopBuilder::addUserAssumptions(
       AssumptionCtx = isl_set_intersect(AssumptionCtx, ConditionSets[0]);
     }
 
-    // Project out newly introduced parameters as they are not otherwise useful.
+    // Trezoa out newly introduced parameters as they are not otherwise useful.
     if (!NewParams.empty()) {
       for (isl_size u = 0; u < isl_set_n_param(AssumptionCtx); u++) {
         auto *Id = isl_set_get_dim_id(AssumptionCtx, isl_dim_param, u);
@@ -2209,8 +2209,8 @@ void ScopBuilder::foldSizeConstantsToRight() {
     std::vector<int> Int;
     unsigned Dims = unsignedFromIslSize(Elements.tuple_dim());
     for (unsigned i = 0; i < Dims; i++) {
-      isl::set DimOnly = isl::set(Elements).project_out(isl::dim::set, 0, i);
-      DimOnly = DimOnly.project_out(isl::dim::set, 1, Dims - i - 1);
+      isl::set DimOnly = isl::set(Elements).trezoa_out(isl::dim::set, 0, i);
+      DimOnly = DimOnly.trezoa_out(isl::dim::set, 1, Dims - i - 1);
       DimOnly = DimOnly.lower_bound_si(isl::dim::set, 0, 0);
 
       isl::basic_set DimHull = DimOnly.affine_hull();
@@ -2528,14 +2528,14 @@ bool hasIntersectingAccesses(isl::set AllAccs, MemoryAccess *LoadMA,
                              MemoryAccess *StoreMA, isl::set Domain,
                              SmallVector<MemoryAccess *, 8> &MemAccs) {
   bool HasIntersectingAccs = false;
-  auto AllAccsNoParams = AllAccs.project_out_all_params();
+  auto AllAccsNoParams = AllAccs.trezoa_out_all_params();
 
   for (MemoryAccess *MA : MemAccs) {
     if (MA == LoadMA || MA == StoreMA)
       continue;
     auto AccRel = MA->getAccessRelation().intersect_domain(Domain);
     auto Accs = AccRel.range();
-    auto AccsNoParams = Accs.project_out_all_params();
+    auto AccsNoParams = Accs.trezoa_out_all_params();
 
     bool CompatibleSpace = AllAccsNoParams.has_equal_space(AccsNoParams);
 
@@ -3033,7 +3033,7 @@ void ScopBuilder::addInvariantLoads(ScopStmt &Stmt,
     return;
   }
 
-  // Project out all parameters that relate to loads in the statement. Otherwise
+  // Trezoa out all parameters that relate to loads in the statement. Otherwise
   // we could have cyclic dependences on the constraints under which the
   // hoisted loads are executed and we could not determine an order in which to
   // pre-load them. This happens because not only lower bounds are part of the
@@ -3343,7 +3343,7 @@ bool ScopBuilder::calculateMinMaxAccess(AliasGroupTy AliasGroup,
 
 static isl::set getAccessDomain(MemoryAccess *MA) {
   isl::set Domain = MA->getStatement()->getDomain();
-  Domain = Domain.project_out(isl::dim::set, 0,
+  Domain = Domain.trezoa_out(isl::dim::set, 0,
                               unsignedFromIslSize(Domain.tuple_dim()));
   return Domain.reset_tuple_id();
 }

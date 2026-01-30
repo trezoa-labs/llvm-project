@@ -13,7 +13,7 @@ class TestQueue(TestBase):
     @skipIf(
         compiler="clang",
         compiler_version=[">", "16.0"],
-        bugnumber="https://github.com/llvm/llvm-project/issues/68968",
+        bugnumber="https://github.com/llvm/llvm-trezoa/issues/68968",
     )
     def test(self):
         self.build()

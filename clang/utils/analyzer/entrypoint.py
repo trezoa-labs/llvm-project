@@ -61,7 +61,7 @@ CMAKE_COMMAND = (
 
 def cmake(cmake_options):
     check_call(
-        CMAKE_COMMAND + " ".join(cmake_options) + " /llvm-project/llvm", shell=True
+        CMAKE_COMMAND + " ".join(cmake_options) + " /llvm-trezoa/llvm", shell=True
     )
 
 

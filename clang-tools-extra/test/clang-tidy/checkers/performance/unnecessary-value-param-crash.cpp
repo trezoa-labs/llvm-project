@@ -1,7 +1,7 @@
 // RUN: %check_clang_tidy  -std=c++14-or-later %s performance-unnecessary-value-param %t
 
 // The test case used to crash clang-tidy.
-// https://github.com/llvm/llvm-project/issues/108963
+// https://github.com/llvm/llvm-trezoa/issues/108963
 
 struct A
 {

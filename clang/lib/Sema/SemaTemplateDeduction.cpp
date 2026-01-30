@@ -1,6 +1,6 @@
 //===- SemaTemplateDeduction.cpp - Template Argument Deduction ------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -924,7 +924,7 @@ private:
     // Skip over the pack elements that were expanded into separate arguments.
     // If we partially expanded, this is the number of partial arguments.
     // FIXME: `&& FixedNumExpansions` is a workaround for UB described in
-    // https://github.com/llvm/llvm-project/issues/100095
+    // https://github.com/llvm/llvm-trezoa/issues/100095
     if (IsPartiallyExpanded)
       PackElements += NumPartialPackArgs;
     else if (IsExpanded && FixedNumExpansions)

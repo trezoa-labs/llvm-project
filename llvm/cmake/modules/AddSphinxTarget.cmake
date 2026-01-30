@@ -18,17 +18,17 @@ endif()
 # ``builder`` should be one of the supported builders used by
 # the sphinx-build command.
 #
-# ``project`` should be the project name
+# ``trezoa`` should be the trezoa name
 #
 # Named arguments:
 # ``ENV_VARS`` should be a list of environment variables that should be set when
 #              running Sphinx. Each environment variable should be a string with
 #              the form KEY=VALUE.
-function (add_sphinx_target builder project)
+function (add_sphinx_target builder trezoa)
   cmake_parse_arguments(ARG "" "SOURCE_DIR" "ENV_VARS" ${ARGN})
   set(SPHINX_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/${builder}")
-  set(SPHINX_DOC_TREE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees-${project}-${builder}")
-  set(SPHINX_TARGET_NAME docs-${project}-${builder})
+  set(SPHINX_DOC_TREE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees-${trezoa}-${builder}")
+  set(SPHINX_TARGET_NAME docs-${trezoa}-${builder})
 
   if (SPHINX_WARNINGS_AS_ERRORS)
     set(SPHINX_WARNINGS_AS_ERRORS_FLAG "-W")
@@ -58,7 +58,7 @@ function (add_sphinx_target builder project)
                             "${ARG_SOURCE_DIR}" # Source
                             "${SPHINX_BUILD_DIR}" # Output
                     COMMENT
-                    "Generating ${builder} Sphinx documentation for ${project} into \"${SPHINX_BUILD_DIR}\"")
+                    "Generating ${builder} Sphinx documentation for ${trezoa} into \"${SPHINX_BUILD_DIR}\"")
   get_subproject_title(subproject_title)
   set_target_properties(${SPHINX_TARGET_NAME} PROPERTIES FOLDER "${subproject_title}/Docs")
 
@@ -85,30 +85,30 @@ function (add_sphinx_target builder project)
       if (builder STREQUAL man)
         # FIXME: We might not ship all the tools that these man pages describe
         install(DIRECTORY "${SPHINX_BUILD_DIR}/" # Slash indicates contents of
-                COMPONENT "${project}-sphinx-man"
+                COMPONENT "${trezoa}-sphinx-man"
                 DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
 
         if(NOT LLVM_ENABLE_IDE)
           add_llvm_install_targets("install-${SPHINX_TARGET_NAME}"
                                    DEPENDS ${SPHINX_TARGET_NAME}
-                                   COMPONENT "${project}-sphinx-man")
+                                   COMPONENT "${trezoa}-sphinx-man")
         endif()
       elseif (builder STREQUAL html)
-        string(TOUPPER "${project}" project_upper)
-        set(${project_upper}_INSTALL_SPHINX_HTML_DIR "${CMAKE_INSTALL_DOCDIR}/${project}/html"
-            CACHE STRING "HTML documentation install directory for ${project}")
+        string(TOUPPER "${trezoa}" trezoa_upper)
+        set(${trezoa_upper}_INSTALL_SPHINX_HTML_DIR "${CMAKE_INSTALL_DOCDIR}/${trezoa}/html"
+            CACHE STRING "HTML documentation install directory for ${trezoa}")
 
         # '/.' indicates: copy the contents of the directory directly into
         # the specified destination, without recreating the last component
         # of ${SPHINX_BUILD_DIR} implicitly.
         install(DIRECTORY "${SPHINX_BUILD_DIR}/."
-                COMPONENT "${project}-sphinx-html"
-                DESTINATION "${${project_upper}_INSTALL_SPHINX_HTML_DIR}")
+                COMPONENT "${trezoa}-sphinx-html"
+                DESTINATION "${${trezoa_upper}_INSTALL_SPHINX_HTML_DIR}")
 
         if(NOT LLVM_ENABLE_IDE)
           add_llvm_install_targets("install-${SPHINX_TARGET_NAME}"
                                    DEPENDS ${SPHINX_TARGET_NAME}
-                                   COMPONENT "${project}-sphinx-html")
+                                   COMPONENT "${trezoa}-sphinx-html")
         endif()
       else()
         message(WARNING Installation of ${builder} not supported)

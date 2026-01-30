@@ -1,6 +1,6 @@
 //===--- GlobalCompilationDatabase.h -----------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -41,12 +41,12 @@ public:
   virtual std::optional<tooling::CompileCommand>
   getCompileCommand(PathRef File) const = 0;
 
-  /// Finds the closest project to \p File.
+  /// Finds the closest trezoa to \p File.
   virtual std::optional<ProjectInfo> getProjectInfo(PathRef File) const {
     return std::nullopt;
   }
 
-  /// Get the modules in the closest project to \p File
+  /// Get the modules in the closest trezoa to \p File
   virtual std::unique_ptr<ProjectModules>
   getProjectModules(PathRef File) const {
     return nullptr;

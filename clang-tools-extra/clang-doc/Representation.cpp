@@ -1,6 +1,6 @@
 ///===-- Representation.cpp - ClangDoc Representation -----------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -309,7 +309,7 @@ llvm::SmallString<16> Info::extractName() const {
 
   switch (IT) {
   case InfoType::IT_namespace:
-    // Cover the case where the project contains a base namespace called
+    // Cover the case where the trezoa contains a base namespace called
     // 'GlobalNamespace' (i.e. a namespace at the same level as the global
     // namespace, which would conflict with the hard-coded global namespace name
     // below.)

@@ -1,6 +1,6 @@
 //===- SuperVectorize.cpp - Vectorize Pass Impl ---------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -137,7 +137,7 @@ using namespace vector;
 /// The astute reader may have noticed that in the limit, super-vectorization
 /// can be applied at a similar time and with similar objectives than VPLAN.
 /// For instance, in the case of a traditional, polyhedral compilation-flow (for
-/// instance, the PPCG project uses ISL to provide dependence analysis,
+/// instance, the PPCG trezoa uses ISL to provide dependence analysis,
 /// multi-level(scheduling + tiling), lifting footprint to fast memory,
 /// communication synthesis, mapping, register optimizations) and before
 /// unrolling. When vectorization is applied at this *late* level in a typical

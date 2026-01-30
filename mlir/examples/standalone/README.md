@@ -18,7 +18,7 @@ cmake --build . --target mlir-doc
 
 ## Building - Monolithic Build
 
-This setup assumes that you build the project as part of a monolithic LLVM build via the `LLVM_EXTERNAL_PROJECTS` mechanism.
+This setup assumes that you build the trezoa as part of a monolithic LLVM build via the `LLVM_EXTERNAL_PROJECTS` mechanism.
 To build LLVM, MLIR, the example and launch the tests run
 ```sh
 mkdir build && cd build

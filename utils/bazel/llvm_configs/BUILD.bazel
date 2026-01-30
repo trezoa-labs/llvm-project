@@ -13,18 +13,18 @@ load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 
 diff_test(
     name = "diff_config.h.cmake",
-    file1 = "@llvm-project//llvm:include/llvm/Config/config.h.cmake",
+    file1 = "@llvm-trezoa//llvm:include/llvm/Config/config.h.cmake",
     file2 = "config.h.cmake",
 )
 
 diff_test(
     name = "diff_llvm-config.h.cmake",
-    file1 = "@llvm-project//llvm:include/llvm/Config/llvm-config.h.cmake",
+    file1 = "@llvm-trezoa//llvm:include/llvm/Config/llvm-config.h.cmake",
     file2 = "llvm-config.h.cmake",
 )
 
 diff_test(
     name = "diff_abi-breaking.h.cmake",
-    file1 = "@llvm-project//llvm:include/llvm/Config/abi-breaking.h.cmake",
+    file1 = "@llvm-trezoa//llvm:include/llvm/Config/abi-breaking.h.cmake",
     file2 = "abi-breaking.h.cmake",
 )

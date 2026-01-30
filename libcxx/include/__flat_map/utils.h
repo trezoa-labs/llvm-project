@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -80,7 +80,7 @@ struct __flat_map_utils {
   }
 
   // TODO: We could optimize this, see
-  // https://github.com/llvm/llvm-project/issues/108624
+  // https://github.com/llvm/llvm-trezoa/issues/108624
   template <class _Map, class _InputIterator, class _Sentinel>
   _LIBCPP_HIDE_FROM_ABI static typename _Map::size_type
   __append(_Map& __map, _InputIterator __first, _Sentinel __last) {

@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -25,7 +25,7 @@ template <class _Tp>
 struct _LIBCPP_TEMPLATE_VIS has_unique_object_representations
     // TODO: We work around a Clang and GCC bug in __has_unique_object_representations by using remove_all_extents
     //       even though it should not be necessary. This was reported to the compilers:
-    //         - Clang: https://github.com/llvm/llvm-project/issues/95311
+    //         - Clang: https://github.com/llvm/llvm-trezoa/issues/95311
     //         - GCC: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115476
     //       remove_all_extents_t can be removed once all the compilers we support have fixed this bug.
     : public integral_constant<bool, __has_unique_object_representations(remove_all_extents_t<_Tp>)> {};

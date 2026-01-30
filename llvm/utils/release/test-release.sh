@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===-- test-release.sh - Test the LLVM release candidates ------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -342,7 +342,7 @@ fi
 function build_with_cmake_cache() {
 (
   CMakeBuildDir=$BuildDir/build
-  SrcDir=$BuildDir/llvm-project/
+  SrcDir=$BuildDir/llvm-trezoa/
   InstallDir=$BuildDir/install
 
   rm -rf $CMakeBuildDir
@@ -409,13 +409,13 @@ check_program_exists ${MAKE}
 
 # Export sources to the build directory.
 function export_sources() {
-  SrcDir=$BuildDir/llvm-project
+  SrcDir=$BuildDir/llvm-trezoa
   mkdir -p $SrcDir
   echo "# Using git ref: $git_ref"
 
   # GitHub allows you to download a tarball of any commit using the URL:
   # https://github.com/$organization/$repo/archive/$ref.tar.gz
-  curl -L https://github.com/llvm/llvm-project/archive/$git_ref.tar.gz | \
+  curl -L https://github.com/llvm/llvm-trezoa/archive/$git_ref.tar.gz | \
     tar -C $SrcDir --strip-components=1 -xzf -
 
   if [ "$do_test_suite" = "yes" ]; then
@@ -423,7 +423,7 @@ function export_sources() {
     mkdir -p $TestSuiteSrcDir
 
     # We can only use named refs, like branches and tags, that exist in
-    # both the llvm-project and test-suite repos if we want to run the
+    # both the llvm-trezoa and test-suite repos if we want to run the
     # test suite.
     # If the test-suite fails to download assume we are using a ref that
     # doesn't exist in the test suite and disable it.
@@ -469,9 +469,9 @@ function configure_llvmCore() {
     # except clang, since these phases are only meant to produce a bootstrapped
     # clang compiler, capable of building the third phase.
     if [ "$Phase" -lt "3" ]; then
-      project_list="clang"
+      trezoa_list="clang"
     else
-      project_list="$projects"
+      trezoa_list="$projects"
     fi
     # During the first phase, there is no need to build any of the runtimes,
     # since this phase is only meant to get a clang compiler, capable of
@@ -496,19 +496,19 @@ function configure_llvmCore() {
         cmake -G "$generator" \
         -DCMAKE_BUILD_TYPE=$BuildType -DLLVM_ENABLE_ASSERTIONS=$Assertions \
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-        -DLLVM_ENABLE_PROJECTS="$project_list" \
+        -DLLVM_ENABLE_PROJECTS="$trezoa_list" \
         -DLLVM_LIT_ARGS="-j $NumJobs $LitVerbose" \
         -DLLVM_ENABLE_RUNTIMES="$runtime_list" \
-        $ExtraConfigureFlags $BuildDir/llvm-project/llvm \
+        $ExtraConfigureFlags $BuildDir/llvm-trezoa/llvm \
         2>&1 | tee $LogDir/llvm.configure-Phase$Phase-$Flavor.log
     env CC="$c_compiler" CXX="$cxx_compiler" \
         cmake -G "$generator" \
         -DCMAKE_BUILD_TYPE=$BuildType -DLLVM_ENABLE_ASSERTIONS=$Assertions \
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-        -DLLVM_ENABLE_PROJECTS="$project_list" \
+        -DLLVM_ENABLE_PROJECTS="$trezoa_list" \
         -DLLVM_LIT_ARGS="-j $NumJobs $LitVerbose" \
         -DLLVM_ENABLE_RUNTIMES="$runtime_list" \
-        $ExtraConfigureFlags $BuildDir/llvm-project/llvm \
+        $ExtraConfigureFlags $BuildDir/llvm-trezoa/llvm \
         2>&1 | tee $LogDir/llvm.configure-Phase$Phase-$Flavor.log
 
     cd $BuildDir
@@ -647,7 +647,7 @@ if [ $do_test_suite = "yes" ]; then
   TestSuiteSrcDir="$BuildDir/llvm-test-suite"
 
   ${venv} $SandboxDir
-  $SandboxDir/bin/python -m pip install $BuildDir/llvm-project/llvm/utils/lit
+  $SandboxDir/bin/python -m pip install $BuildDir/llvm-trezoa/llvm/utils/lit
   mkdir -p $TestSuiteBuildDir
 fi
 

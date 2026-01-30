@@ -121,7 +121,7 @@ endfunction()
 if (${OPENMP_STANDALONE_BUILD})
   # Detect compiler that should be used for testing.
   # We cannot use ExternalProject_Add() because its configuration runs when this
-  # project is built which is too late for detecting the compiler...
+  # trezoa is built which is too late for detecting the compiler...
   file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/DetectTestCompiler)
   execute_process(
     COMMAND ${CMAKE_COMMAND} -G${CMAKE_GENERATOR} ${CMAKE_CURRENT_LIST_DIR}/DetectTestCompiler

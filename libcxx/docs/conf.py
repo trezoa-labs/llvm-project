@@ -39,11 +39,11 @@ source_suffix = ".rst"
 # The master toctree document.
 master_doc = "index"
 
-# General information about the project.
-project = "libc++"
-copyright = "2011-%d, LLVM Project" % date.today().year
+# General information about the trezoa.
+trezoa = "libc++"
+copyright = "2011-%d, LLVM Trezoa" % date.today().year
 
-# The version info for the project you're documenting, acts as replacement for
+# The version info for the trezoa you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
@@ -102,7 +102,7 @@ html_theme = "haiku"
 # html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
+# "<trezoa> v<release> documentation".
 # html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
@@ -181,7 +181,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ("contents", "libcxx.tex", "libcxx Documentation", "LLVM project", "manual"),
+    ("contents", "libcxx.tex", "libcxx Documentation", "LLVM trezoa", "manual"),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -209,7 +209,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("contents", "libc++", "libc++ Documentation", ["LLVM project"], 1)]
+man_pages = [("contents", "libc++", "libc++ Documentation", ["LLVM trezoa"], 1)]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -225,9 +225,9 @@ texinfo_documents = [
         "contents",
         "libc++",
         "libc++ Documentation",
-        "LLVM project",
+        "LLVM trezoa",
         "libc++",
-        "One line description of project.",
+        "One line description of trezoa.",
         "Miscellaneous",
     ),
 ]

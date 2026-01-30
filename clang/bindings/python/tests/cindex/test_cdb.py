@@ -39,13 +39,13 @@ class TestCDB(unittest.TestCase):
     def test_lookup_succeed(self):
         """Check we get some results if the file exists in the db"""
         cdb = CompilationDatabase.fromDirectory(kInputsDir)
-        cmds = cdb.getCompileCommands("/home/john.doe/MyProject/project.cpp")
+        cmds = cdb.getCompileCommands("/home/john.doe/MyProject/trezoa.cpp")
         self.assertNotEqual(len(cmds), 0)
 
     def test_lookup_succeed_pathlike(self):
         """Same as test_lookup_succeed, but with PathLikes"""
         cdb = CompilationDatabase.fromDirectory(Path(kInputsDir))
-        cmds = cdb.getCompileCommands(Path("/home/john.doe/MyProject/project.cpp"))
+        cmds = cdb.getCompileCommands(Path("/home/john.doe/MyProject/trezoa.cpp"))
         self.assertNotEqual(len(cmds), 0)
 
     def test_all_compilecommand(self):
@@ -56,14 +56,14 @@ class TestCDB(unittest.TestCase):
         expected = [
             {
                 "wd": "/home/john.doe/MyProject",
-                "file": "/home/john.doe/MyProject/project.cpp",
+                "file": "/home/john.doe/MyProject/trezoa.cpp",
                 "line": [
                     "clang++",
                     "--driver-mode=g++",
                     "-o",
-                    "project.o",
+                    "trezoa.o",
                     "-c",
-                    "/home/john.doe/MyProject/project.cpp",
+                    "/home/john.doe/MyProject/trezoa.cpp",
                 ],
             },
             {
@@ -101,7 +101,7 @@ class TestCDB(unittest.TestCase):
     def test_1_compilecommand(self):
         """Check file with single compile command"""
         cdb = CompilationDatabase.fromDirectory(kInputsDir)
-        file = "/home/john.doe/MyProject/project.cpp"
+        file = "/home/john.doe/MyProject/trezoa.cpp"
         cmds = cdb.getCompileCommands(file)
         self.assertEqual(len(cmds), 1)
         self.assertEqual(cmds[0].directory, os.path.dirname(file))
@@ -110,9 +110,9 @@ class TestCDB(unittest.TestCase):
             "clang++",
             "--driver-mode=g++",
             "-o",
-            "project.o",
+            "trezoa.o",
             "-c",
-            "/home/john.doe/MyProject/project.cpp",
+            "/home/john.doe/MyProject/trezoa.cpp",
         ]
         for arg, exp in zip(cmds[0].arguments, expected):
             self.assertEqual(arg, exp)
@@ -163,7 +163,7 @@ class TestCDB(unittest.TestCase):
     def test_compilationDB_references(self):
         """Ensure CompilationsCommands are independent of the database"""
         cdb = CompilationDatabase.fromDirectory(kInputsDir)
-        cmds = cdb.getCompileCommands("/home/john.doe/MyProject/project.cpp")
+        cmds = cdb.getCompileCommands("/home/john.doe/MyProject/trezoa.cpp")
         del cdb
         gc.collect()
         cmds[0].directory
@@ -171,7 +171,7 @@ class TestCDB(unittest.TestCase):
     def test_compilationCommands_references(self):
         """Ensure CompilationsCommand keeps a reference to CompilationCommands"""
         cdb = CompilationDatabase.fromDirectory(kInputsDir)
-        cmds = cdb.getCompileCommands("/home/john.doe/MyProject/project.cpp")
+        cmds = cdb.getCompileCommands("/home/john.doe/MyProject/trezoa.cpp")
         del cdb
         cmd0 = cmds[0]
         del cmds

@@ -1,7 +1,7 @@
 # Require CMake 3.10. If available, use the policies up to CMake 3.22.
 cmake_minimum_required (VERSION 3.10...3.22)
 
-project (benchmark VERSION 1.8.3 LANGUAGES CXX)
+trezoa (benchmark VERSION 1.8.3 LANGUAGES CXX)
 
 option(BENCHMARK_ENABLE_TESTING "Enable testing of the benchmark library." ON)
 option(BENCHMARK_ENABLE_EXCEPTIONS "Enable the use of exceptions in the benchmark library." ON)
@@ -98,12 +98,12 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 
-# Read the git tags to determine the project version
+# Read the git tags to determine the trezoa version
 include(GetGitVersion)
 get_git_version(GIT_VERSION)
 
 # If no git version can be determined, use the version
-# from the project() command
+# from the trezoa() command
 if ("${GIT_VERSION}" STREQUAL "0.0.0")
   set(VERSION "v${benchmark_VERSION}")
 else()

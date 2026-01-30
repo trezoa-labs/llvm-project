@@ -32,7 +32,7 @@ sections:
           - Kind:            S_OBJNAME
             ObjNameSym:
               Signature:       0
-              ObjectName:      'C:\src\llvm-project\build\t.obj'
+              ObjectName:      'C:\src\llvm-trezoa\build\t.obj'
           - Kind:            S_COMPILE3
             Compile3Sym:
               Flags:           [ SecurityChecks, HotPatch ]
@@ -79,7 +79,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'c:\src\llvm-project\build\t.cpp'
+          - FileName:        'c:\src\llvm-trezoa\build\t.cpp'
             Lines:
               - Offset:          0
                 LineStart:       1
@@ -118,7 +118,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'c:\src\llvm-project\build\t.cpp'
+          - FileName:        'c:\src\llvm-trezoa\build\t.cpp'
             Lines:
               - Offset:          0
                 LineStart:       3
@@ -197,12 +197,12 @@ sections:
               UDTName:         size_t
       - !FileChecksums
         Checksums:
-          - FileName:        'c:\src\llvm-project\build\t.cpp'
+          - FileName:        'c:\src\llvm-trezoa\build\t.cpp'
             Kind:            MD5
             Checksum:        3C4D132707FA572FA0869E4E4DAA7F85
       - !StringTable
         Strings:
-          - 'c:\src\llvm-project\build\t.cpp'
+          - 'c:\src\llvm-trezoa\build\t.cpp'
       - !Symbols
         Records:
           - Kind:            S_BUILDINFO
@@ -274,7 +274,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'c:\src\llvm-project\build\t.cpp'
+          String:          'c:\src\llvm-trezoa\build\t.cpp'
       - Kind:            LF_UDT_SRC_LINE
         UdtSourceLine:
           UDT:             4098
@@ -367,7 +367,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'c:\src\llvm-project\build\predefined c++ attributes (compiler internal)'
+          String:          'c:\src\llvm-trezoa\build\predefined c++ attributes (compiler internal)'
       - Kind:            LF_UDT_SRC_LINE
         UdtSourceLine:
           UDT:             4110
@@ -1390,7 +1390,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'C:\src\llvm-project\build'
+          String:          'C:\src\llvm-trezoa\build'
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
@@ -1413,7 +1413,7 @@ sections:
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0
-          String:          'C:\src\llvm-project\build\vc140.pdb'
+          String:          'C:\src\llvm-trezoa\build\vc140.pdb'
       - Kind:            LF_BUILDINFO
         BuildInfo:
           ArgIndices:      [ 4198, 4199, 4203, 4204, 4202 ]

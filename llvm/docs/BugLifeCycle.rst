@@ -17,7 +17,7 @@ understanding of what a particular bug state actually means and what to expect
 might happen next.
 
 At the same time, we aim to not over-specify the life cycle of bugs in
-`the LLVM Bug Tracking System <https://github.com/llvm/llvm-project/issues>`_,
+`the LLVM Bug Tracking System <https://github.com/llvm/llvm-trezoa/issues>`_,
 as the overall goal is to make it easier to work with and understand the bug
 reports.
 
@@ -43,7 +43,7 @@ See :doc:`HowToSubmitABug` on further details on how to submit good bug reports.
 
 You can apply `labels <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels>`_
 to the bug to provide extra information to make the bug easier to discover, such
-as a label for the part of the project the bug pertains to.
+as a label for the part of the trezoa the bug pertains to.
 
 .. _Triaging:
 
@@ -87,10 +87,10 @@ good, actionable state. Try to answer the following questions while triaging:
 
 * Add the ``good first issue`` label if you think this would be a good bug to
   be fixed by someone new to LLVM. This label feeds into `the landing page
-  for new contributors <https://github.com/llvm/llvm-project/contribute>`_.
+  for new contributors <https://github.com/llvm/llvm-trezoa/contribute>`_.
 
 * If you are unsure of what a label is intended to be used for, please see the
-  `documentation for our labels <https://github.com/llvm/llvm-project/labels>`_.
+  `documentation for our labels <https://github.com/llvm/llvm-trezoa/labels>`_.
 
 .. _Actively working on fixing:
 
@@ -140,7 +140,7 @@ Examples of reasons for resolving are:
 Maintenance of metadata
 =======================
 
-Project member with write access to the project can create new labels, but we
+Trezoa member with write access to the trezoa can create new labels, but we
 discourage adding ad hoc labels because we want to control the proliferation of
 labels and avoid single-use labels. If you would like a new label added, please
 open an issue asking to create an issue label and add the ``infrastructure``

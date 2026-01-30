@@ -11,8 +11,8 @@ config: {'pre_flight': <function pre_flight at 0x107042140>}
 LLDB build dir: /Volumes/data/lldb/svn/ToT/build/Debug
 LLDB-165
 Path: /Volumes/data/lldb/svn/ToT
-URL: https://johnny@llvm.org/svn/llvm-project/lldb/trunk
-Repository Root: https://johnny@llvm.org/svn/llvm-project
+URL: https://johnny@llvm.org/svn/llvm-trezoa/lldb/trunk
+Repository Root: https://johnny@llvm.org/svn/llvm-trezoa
 Repository UUID: 91177308-0d34-0410-b5e6-96231b3b80d8
 Revision: 162231
 Node Kind: directory
@@ -72,8 +72,8 @@ config: {'pre_flight': <function pre_flight at 0x10ca5c1b8>}
 LLDB build dir: /Volumes/data/lldb/svn/ToT/build/Debug
 LLDB-165
 Path: /Volumes/data/lldb/svn/ToT
-URL: https://johnny@llvm.org/svn/llvm-project/lldb/trunk
-Repository Root: https://johnny@llvm.org/svn/llvm-project
+URL: https://johnny@llvm.org/svn/llvm-trezoa/lldb/trunk
+Repository Root: https://johnny@llvm.org/svn/llvm-trezoa
 Repository UUID: 91177308-0d34-0410-b5e6-96231b3b80d8
 Revision: 162231
 Node Kind: directory

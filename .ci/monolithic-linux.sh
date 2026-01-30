@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -9,7 +9,7 @@
 
 #
 # This script performs a monolithic build of the monorepo and runs the tests of
-# most projects on Linux. This should be replaced by per-project scripts that
+# most projects on Linux. This should be replaced by per-trezoa scripts that
 # run only the relevant tests.
 #
 

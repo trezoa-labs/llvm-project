@@ -3825,13 +3825,13 @@ specification on some architectures:
   with different precision than expected and it can alter NaN values. Since
   optimizations can make contradicting assumptions, this can lead to arbitrary
   miscompilations. See `issue #44218
-  <https://github.com/llvm/llvm-project/issues/44218>`_.
+  <https://github.com/llvm/llvm-trezoa/issues/44218>`_.
 - x86-32 (even with SSE2 enabled) may implicitly perform such a conversion on
   values returned from a function for some calling conventions. See `issue
-  #66803 <https://github.com/llvm/llvm-project/issues/66803>`_.
+  #66803 <https://github.com/llvm/llvm-trezoa/issues/66803>`_.
 - Older MIPS versions use the opposite polarity for the quiet/signaling bit, and
   LLVM does not correctly represent this. See `issue #60796
-  <https://github.com/llvm/llvm-project/issues/60796>`_.
+  <https://github.com/llvm/llvm-trezoa/issues/60796>`_.
 
 .. _floatsem:
 

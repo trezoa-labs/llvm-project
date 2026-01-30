@@ -1,6 +1,6 @@
 //===--- Config.h - User configuration of clangd behavior --------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -36,7 +36,7 @@
 namespace clang {
 namespace clangd {
 
-/// Settings that express user/project preferences and control clangd behavior.
+/// Settings that express user/trezoa preferences and control clangd behavior.
 ///
 /// Generally, features should consume Config::current() and the caller is
 /// responsible for setting it appropriately. In practice these callers are

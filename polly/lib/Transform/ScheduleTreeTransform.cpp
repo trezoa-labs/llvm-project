@@ -1,6 +1,6 @@
 //===- polly/ScheduleTreeTransform.cpp --------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -300,13 +300,13 @@ struct ExtensionNodeRewriter final
       unsigned OuterDims = ExtDims - BandDims;
 
       isl::map BandSched =
-          Ext.project_out(isl::dim::in, 0, OuterDims).reverse();
+          Ext.trezoa_out(isl::dim::in, 0, OuterDims).reverse();
       NewPartialSchedMap = NewPartialSchedMap.unite(BandSched);
 
       // There might be more outer bands that have to schedule the extensions.
       if (OuterDims > 0) {
         isl::map OuterSched =
-            Ext.project_out(isl::dim::in, OuterDims, BandDims);
+            Ext.trezoa_out(isl::dim::in, OuterDims, BandDims);
         OuterExtensions = OuterExtensions.unite(OuterSched);
       }
     }
@@ -1119,8 +1119,8 @@ isl::set polly::getPartialTilePrefixes(isl::set ScheduleRange,
       ScheduleRange.drop_constraints_involving_dims(isl::dim::set, Dims - 1, 1);
   auto ExtentPrefixes = addExtentConstraints(LoopPrefixes, VectorWidth);
   isl::set BadPrefixes = ExtentPrefixes.subtract(ScheduleRange);
-  BadPrefixes = BadPrefixes.project_out(isl::dim::set, Dims - 1, 1);
-  LoopPrefixes = LoopPrefixes.project_out(isl::dim::set, Dims - 1, 1);
+  BadPrefixes = BadPrefixes.trezoa_out(isl::dim::set, Dims - 1, 1);
+  LoopPrefixes = LoopPrefixes.trezoa_out(isl::dim::set, Dims - 1, 1);
   return LoopPrefixes.subtract(BadPrefixes);
 }
 

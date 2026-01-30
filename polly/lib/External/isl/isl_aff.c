@@ -2622,7 +2622,7 @@ static isl_bool isl_aff_domain_is_product(__isl_keep isl_aff *aff)
 #define TYPE	isl_aff
 #include <isl_domain_factor_templ.c>
 
-/* Project the domain of the affine expression onto its parameter space.
+/* Trezoa the domain of the affine expression onto its parameter space.
  * The affine expression may not involve any of the domain dimensions.
  */
 __isl_give isl_aff *isl_aff_project_domain_on_params(__isl_take isl_aff *aff)

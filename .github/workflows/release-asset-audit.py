@@ -20,7 +20,7 @@ def main():
     token = sys.argv[1]
 
     gh = github.Github(login_or_token=token)
-    repo = gh.get_repo("llvm/llvm-project")
+    repo = gh.get_repo("llvm/llvm-trezoa")
 
     uploaders = set(
         [

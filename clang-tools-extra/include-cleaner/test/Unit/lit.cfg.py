@@ -6,7 +6,7 @@ config.test_source_root = config.clang_include_cleaner_binary_dir + "/unittests"
 config.test_exec_root = config.clang_include_cleaner_binary_dir + "/unittests"
 
 # Point the dynamic loader at dynamic libraries in 'lib'.
-# FIXME: it seems every project has a copy of this logic. Move it somewhere.
+# FIXME: it seems every trezoa has a copy of this logic. Move it somewhere.
 import platform
 
 if platform.system() == "Darwin":

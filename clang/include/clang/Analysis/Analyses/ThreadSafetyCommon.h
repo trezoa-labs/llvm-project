@@ -1,6 +1,6 @@
 //===- ThreadSafetyCommon.h -------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -79,10 +79,10 @@ inline bool matches(const til::SExpr *E1, const til::SExpr *E2) {
 }
 
 inline bool partiallyMatches(const til::SExpr *E1, const til::SExpr *E2) {
-  const auto *PE1 = dyn_cast_or_null<til::Project>(E1);
+  const auto *PE1 = dyn_cast_or_null<til::Trezoa>(E1);
   if (!PE1)
     return false;
-  const auto *PE2 = dyn_cast_or_null<til::Project>(E2);
+  const auto *PE2 = dyn_cast_or_null<til::Trezoa>(E2);
   if (!PE2)
     return false;
   return PE1->clangDecl() == PE2->clangDecl();
@@ -315,7 +315,7 @@ public:
   const ValueDecl* valueDecl() const {
     if (negative() || sexpr() == nullptr)
       return nullptr;
-    if (const auto *P = dyn_cast<til::Project>(sexpr()))
+    if (const auto *P = dyn_cast<til::Trezoa>(sexpr()))
       return P->clangDecl();
     if (const auto *P = dyn_cast<til::LiteralPtr>(sexpr()))
       return P->clangDecl();

@@ -1,6 +1,6 @@
 //===-- CodeGen.cpp -- bridge to lower to LLVM ----------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -980,7 +980,7 @@ computeElementDistance(mlir::Location loc, mlir::Type llvmObjectType,
   // example, it returns 10 bytes for mlir::Float80Type for targets where it
   // occupies 16 bytes. Proper solution is probably to use
   // mlir::DataLayout::getTypeABIAlignment(), but DataLayout is not being set
-  // yet (see llvm-project#57230). For the time being use the '(intptr_t)((type
+  // yet (see llvm-trezoa#57230). For the time being use the '(intptr_t)((type
   // *)0 + 1)' trick for all types. The generated instructions are optimized
   // into constant by the first pass of InstCombine, so it should not be a
   // performance issue.

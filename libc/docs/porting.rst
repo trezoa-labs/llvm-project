@@ -28,14 +28,14 @@ An OS specific config directory
 
 If you are starting to bring up LLVM's libc on a new operating system, the first
 step is to add a directory for that OS in the ``libc/config`` directory. Both
-`Linux <https://github.com/llvm/llvm-project/tree/main/libc/config/linux>`_ and
-`Windows <https://github.com/llvm/llvm-project/tree/main/libc/config/windows>`_,
+`Linux <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux>`_ and
+`Windows <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/windows>`_,
 the two operating systems on which LLVM's libc is being actively developed,
 have their own config directory.
 
 .. note:: Windows development is not as active as the development on Linux.
    There is a
-   `Darwin <https://github.com/llvm/llvm-project/tree/main/libc/config/darwin>`_
+   `Darwin <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/darwin>`_
    config also which is in a similar state as Windows.
 
 .. note:: LLVM's libc is being brought up on the
@@ -57,8 +57,8 @@ have to add a subdirectory (within the config directory os the operating
 system) for each target architecture, and list the relevant config information
 separately in those subdirectories. For example, for Linux, the x86_64 and
 aarch64 configs are in separate directories, named
-`x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/x86_64>`_
-and `aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/aarch64>`_.
+`x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/x86_64>`_
+and `aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/aarch64>`_.
 The libc CMake machinery looks for subdirectories named after the target
 architecture.
 
@@ -74,11 +74,11 @@ created in the architecture subdirectory for each architecture. Else, having a
 single ``entrypoints.txt`` in the operating system directory is sufficient.
 
 The Linux config has an ``entrypoint.txt`` for each individual target
-architecture separately: `aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/aarch64>`_,
-`arm32 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/arm>`_ and
-`x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/x86_64>`_. On the
+architecture separately: `aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/aarch64>`_,
+`arm32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/arm>`_ and
+`x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/x86_64>`_. On the
 other hand, the Windows config has a single ``entrypoints.txt``
-`file <https://github.com/llvm/llvm-project/tree/main/libc/config/windows/entrypoints.txt>`_.
+`file <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/windows/entrypoints.txt>`_.
 
 A typical bring up procedure will normally bring up a small group of entrypoints
 at a time. The usual practice is to progressively add the targets for those
@@ -99,7 +99,7 @@ provided by the libc. This is relevant only if the libc is to be used in the
 the ``entrypoints.txt`` file, one ``headers.txt`` file should be listed for
 each individual target architecture if you are doing an architecture specific
 bring up. The Linux config has ``headers.txt`` file listed separately for the
-`aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/aarch64>`_
+`aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/aarch64>`_
 config and the
-`x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/x86_64>`_
+`x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/x86_64>`_
 config.

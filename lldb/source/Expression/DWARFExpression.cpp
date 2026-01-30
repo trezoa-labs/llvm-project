@@ -1,6 +1,6 @@
 //===-- DWARFExpression.cpp -----------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -913,7 +913,7 @@ llvm::Expected<Value> DWARFExpression::Evaluate(
   // there.
   auto to_generic = [&](auto v) {
     // TODO: Avoid implicit trunc?
-    // See https://github.com/llvm/llvm-project/issues/112510.
+    // See https://github.com/llvm/llvm-trezoa/issues/112510.
     bool is_signed = std::is_signed<decltype(v)>::value;
     return Scalar(llvm::APSInt(llvm::APInt(8 * opcodes.GetAddressByteSize(), v,
                                            is_signed, /*implicitTrunc=*/true),

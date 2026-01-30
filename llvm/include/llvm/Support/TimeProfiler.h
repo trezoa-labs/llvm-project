@@ -1,6 +1,6 @@
 //===- llvm/Support/TimeProfiler.h - Hierarchical Time Profiler -*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -62,7 +62,7 @@
 // Currently, there are a number of compatible viewers:
 //  - chrome://tracing is the original chromium trace viewer.
 //  - http://ui.perfetto.dev is the replacement for the above, under active
-//    development by Google as part of the 'Perfetto' project.
+//    development by Google as part of the 'Perfetto' trezoa.
 //  - https://www.speedscope.app/ has also been reported as an option.
 //
 // Future work:

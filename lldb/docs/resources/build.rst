@@ -9,12 +9,12 @@ Please refer to the `LLVM Getting Started Guide
 general instructions on how to check out the LLVM monorepo, which contains the
 LLDB sources.
 
-Git browser: https://github.com/llvm/llvm-project/tree/main/lldb
+Git browser: https://github.com/llvm/llvm-trezoa/tree/main/lldb
 
 Preliminaries
 -------------
 
-LLDB relies on many of the technologies developed by the larger LLVM project.
+LLDB relies on many of the technologies developed by the larger LLVM trezoa.
 In particular, it requires both Clang and LLVM itself in order to build. Due to
 this tight integration the Getting Started guides for both of these projects
 come as prerequisite reading:
@@ -150,16 +150,16 @@ macOS
 Building LLDB with CMake
 ------------------------
 
-The LLVM project is migrating to a single monolithic repository for LLVM and
+The LLVM trezoa is migrating to a single monolithic repository for LLVM and
 its subprojects. This is the recommended way to build LLDB. Check out the
 source-tree with git:
 
 ::
 
-  $ git clone https://github.com/llvm/llvm-project.git
+  $ git clone https://github.com/llvm/llvm-trezoa.git
 
 CMake is a cross-platform build-generator tool. CMake does not build the
-project, it generates the files needed by your build tool. The recommended
+trezoa, it generates the files needed by your build tool. The recommended
 build tool for LLVM is Ninja, but other generators like Xcode or Visual Studio
 may be used as well. Please also read `Building LLVM with CMake
 <https://llvm.org/docs/CMake.html>`_.
@@ -172,7 +172,7 @@ to the ``llvm`` directory in the source-tree:
 
 ::
 
-  $ cmake -G Ninja -DLLVM_ENABLE_PROJECTS="clang;lldb" [<cmake options>] path/to/llvm-project/llvm
+  $ cmake -G Ninja -DLLVM_ENABLE_PROJECTS="clang;lldb" [<cmake options>] path/to/llvm-trezoa/llvm
 
 We used the ``LLVM_ENABLE_PROJECTS`` option here to tell the build-system which
 subprojects to build in addition to LLVM (for more options see
@@ -211,7 +211,7 @@ Clang. Then we build the ``ALL`` target with ninja:
 
   $ cmake -B /path/to/llvm-build -G Ninja \
           -DLLVM_ENABLE_PROJECTS=clang \
-          [<more cmake options>] /path/to/llvm-project/llvm
+          [<more cmake options>] /path/to/llvm-trezoa/llvm
   $ ninja
 
 Now run CMake a second time with ``-B`` pointing to a new directory for the
@@ -225,7 +225,7 @@ build directory for Clang, remember to pass its module path via ``Clang_DIR``
 
   $ cmake -B /path/to/lldb-build -G Ninja \
           -DLLVM_DIR=/path/to/llvm-build/lib/cmake/llvm \
-          [<more cmake options>] /path/to/llvm-project/lldb
+          [<more cmake options>] /path/to/llvm-trezoa/lldb
   $ ninja lldb lldb-server
 
 If you do not require or cannot build ``lldb-server`` on your platform, simply
@@ -315,14 +315,14 @@ cmake twice and generate the output into two different folders. One for
 compiling (the ninja folder), and one for editing, browsing and debugging.
 
 Follow the previous instructions in one directory, and generate a Visual Studio
-project in another directory.
+trezoa in another directory.
 
 ::
 
   $ cmake -G "Visual Studio 16 2019" -A x64 -T host=x64 <cmake variables> <path to root of llvm source tree>
 
 Then you can open the .sln file in Visual Studio, set lldb as the startup
-project, and use F5 to run it. You need only edit the project settings to set
+trezoa, and use F5 to run it. You need only edit the trezoa settings to set
 the executable and the working directory to point to binaries inside of the
 ninja tree.
 
@@ -353,25 +353,25 @@ CMake scripts and can be useful to reproduce builds for particular use-cases
 A cache is passed to CMake with the ``-C`` flag, following the absolute path to
 the file on disk. Subsequent ``-D`` options are still allowed. Please find the
 currently available caches in the `lldb/cmake/caches/
-<https://github.com/llvm/llvm-project/tree/main/lldb/cmake/caches>`_
+<https://github.com/llvm/llvm-trezoa/tree/main/lldb/cmake/caches>`_
 directory.
 
 Common configurations on macOS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Build, test and install a distribution of LLDB from the `monorepo
-<https://github.com/llvm/llvm-project>`_ (see also `Building a Distribution of
+<https://github.com/llvm/llvm-trezoa>`_ (see also `Building a Distribution of
 LLVM <https://llvm.org/docs/BuildingADistribution.html>`_):
 
 ::
 
-  $ git clone https://github.com/llvm/llvm-project
+  $ git clone https://github.com/llvm/llvm-trezoa
 
   $ cmake -B /path/to/lldb-build -G Ninja \
-          -C /path/to/llvm-project/lldb/cmake/caches/Apple-lldb-macOS.cmake \
+          -C /path/to/llvm-trezoa/lldb/cmake/caches/Apple-lldb-macOS.cmake \
           -DLLVM_ENABLE_PROJECTS="clang;lldb" \
           -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
-          llvm-project/llvm
+          llvm-trezoa/llvm
 
   $ DESTDIR=/path/to/lldb-install ninja -C /path/to/lldb-build check-lldb install-distribution
 
@@ -381,19 +381,19 @@ Build LLDB standalone for development with Xcode:
 
 ::
 
-  $ git clone https://github.com/llvm/llvm-project
+  $ git clone https://github.com/llvm/llvm-trezoa
 
   $ cmake -B /path/to/llvm-build -G Ninja \
-          -C /path/to/llvm-project/lldb/cmake/caches/Apple-lldb-base.cmake \
+          -C /path/to/llvm-trezoa/lldb/cmake/caches/Apple-lldb-base.cmake \
           -DLLVM_ENABLE_PROJECTS="clang" \
           -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
-          llvm-project/llvm
+          llvm-trezoa/llvm
   $ ninja -C /path/to/llvm-build
 
   $ cmake -B /path/to/lldb-build \
-          -C /path/to/llvm-project/lldb/cmake/caches/Apple-lldb-Xcode.cmake \
+          -C /path/to/llvm-trezoa/lldb/cmake/caches/Apple-lldb-Xcode.cmake \
           -DLLVM_DIR=/path/to/llvm-build/lib/cmake/llvm \
-          llvm-project/lldb
+          llvm-trezoa/lldb
   $ open lldb.xcodeproj
   $ cmake --build /path/to/lldb-build --target check-lldb
 
@@ -427,7 +427,7 @@ to ensure you get a working configuration:
 
 ::
 
-  $ pip3 install -r /path/to/llvm-project/llvm/docs/requirements.txt
+  $ pip3 install -r /path/to/llvm-trezoa/llvm/docs/requirements.txt
 
 To build the documentation, configure with ``LLVM_ENABLE_SPHINX=ON`` and build the desired target(s).
 
@@ -553,7 +553,7 @@ Configure as follows:
 
 ::
 
-  cmake <path-to-monorepo>/llvm-project/llvm -G Ninja \
+  cmake <path-to-monorepo>/llvm-trezoa/llvm -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_ENABLE_PROJECTS="clang;lld;lldb" \
     -DCMAKE_SYSTEM_NAME=Linux \
@@ -577,7 +577,7 @@ tools. Install the compiler as in example 1 then run CMake as follows:
 
 ::
 
-  cmake <path-to-monorepo>/llvm-project/llvm -G Ninja \
+  cmake <path-to-monorepo>/llvm-trezoa/llvm -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_ENABLE_PROJECTS="clang;lld;lldb" \
     -DCMAKE_SYSTEM_NAME=Linux \

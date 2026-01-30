@@ -2943,7 +2943,7 @@ error:
 	return NULL;
 }
 
-/* Project the domain of the quasi-polynomial onto its parameter space.
+/* Trezoa the domain of the quasi-polynomial onto its parameter space.
  * The quasi-polynomial may not involve any of the domain dimensions.
  */
 __isl_give isl_qpolynomial *isl_qpolynomial_project_domain_on_params(

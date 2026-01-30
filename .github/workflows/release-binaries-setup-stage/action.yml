@@ -53,7 +53,7 @@ runs:
       if: ${{ steps.download.outputs.download-path }}
       shell: bash
       run: |
-        tar --zstd -xf llvm-project.tar.zst
-        rm llvm-project.tar.zst
+        tar --zstd -xf llvm-trezoa.tar.zst
+        rm llvm-trezoa.tar.zst
         tar --zstd -C ${{ steps.build-prefix.outputs.build-prefix}} -xf build.tar.zst
         rm build.tar.zst

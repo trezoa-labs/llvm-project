@@ -1,5 +1,5 @@
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 CCDIR=/usr/bin
@@ -41,7 +41,7 @@ sudid:
 
 
 RootsDirectory ?= /tmp/
-# Note: the libsystem project (built by the libsystemroot target below) uses the ALTUSRLOCALLIBSYSTEM variable, so we use it here to maintain parity
+# Note: the libsystem trezoa (built by the libsystemroot target below) uses the ALTUSRLOCALLIBSYSTEM variable, so we use it here to maintain parity
 ALTUSRLOCALLIBSYSTEM ?= $(RootsDirectory)/alt-usr-local-lib-system/
 altusrlocallibsystem:
 	ditto /usr/local/lib/system $(ALTUSRLOCALLIBSYSTEM)  # FIXME: conditionalize this copy

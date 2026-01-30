@@ -117,7 +117,7 @@ running CMake:
 #. The ARM libraries won't be installed in your system.
    But the CMake prepare step, which checks for
    dependencies, will check the *host* libraries, not the *target*
-   ones. Below there's a list of some dependencies, but your project could
+   ones. Below there's a list of some dependencies, but your trezoa could
    have more, or this document could be outdated. You'll see the errors
    while linking as an indication of that.
 

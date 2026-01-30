@@ -1,12 +1,12 @@
 //===--- StdLib.h - Index the C and C++ standard library ---------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
 // Eagerly indexing the standard library gives a much friendlier "warm start"
-// with working code completion in a standalone file or small project.
+// with working code completion in a standalone file or small trezoa.
 //
 // We act as if we saw a file which included the whole standard library:
 //   #include <array>
@@ -17,7 +17,7 @@
 //
 // This happens within the context of some particular open file, and we reuse
 // its CompilerInvocation. Matching its include path, LangOpts etc ensures that
-// we see the standard library and configuration that matches the project.
+// we see the standard library and configuration that matches the trezoa.
 //===----------------------------------------------------------------------===//
 
 #ifndef LLVM_CLANG_TOOLS_EXTRA_CLANGD_INDEX_STDLIB_H

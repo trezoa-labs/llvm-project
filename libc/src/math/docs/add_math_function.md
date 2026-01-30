@@ -140,12 +140,12 @@ implementation (which is very often glibc).
 
 - Check out the LLVM source tree:
 ```
-  $ git clone https://github.com/llvm/llvm-project.git
+  $ git clone https://github.com/llvm/llvm-trezoa.git
 ```
 
 - Setup projects with CMake:
 ```
-  $ cd llvm-project
+  $ cd llvm-trezoa
   $ mkdir build
   $ cd build
   $ cmake ../llvm -G Ninja \

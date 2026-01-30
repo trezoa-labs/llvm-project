@@ -1,6 +1,6 @@
 //===--- tools/extra/clang-tidy/ClangTidyMain.cpp - Clang tidy tool -------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -252,7 +252,7 @@ static cl::opt<bool> DumpConfig("dump-config", desc(R"(
 Dumps configuration in the YAML format to
 stdout. This option can be used along with a
 file name (and '--' if the file is outside of a
-project with configured compilation database).
+trezoa with configured compilation database).
 The configuration used for this file will be
 printed.
 Use along with -checks=* to include

@@ -130,16 +130,16 @@ So you have an idea of a useful check for :program:`clang-tidy`.
 First, if you're not familiar with LLVM development, read through the `Getting Started 
 with the LLVM System`_ document for instructions on setting up your workflow and
 the `LLVM Coding Standards`_ document to familiarize yourself with the coding
-style used in the project. For code reviews we currently use `LLVM Github`_,
+style used in the trezoa. For code reviews we currently use `LLVM Github`_,
 though historically we used Phabricator.
 
 .. _Getting Started with the LLVM System: https://llvm.org/docs/GettingStarted.html
 .. _LLVM Coding Standards: https://llvm.org/docs/CodingStandards.html
-.. _LLVM Github: https://github.com/llvm/llvm-project
+.. _LLVM Github: https://github.com/llvm/llvm-trezoa
 
 Next, you need to decide which module the check belongs to. Modules
 are located in subdirectories of `clang-tidy/
-<https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clang-tidy/>`_
+<https://github.com/llvm/llvm-trezoa/tree/main/clang-tools-extra/clang-tidy/>`_
 and contain checks targeting a certain aspect of code quality (performance,
 readability, etc.), certain coding style or standard (Google, LLVM, CERT, etc.)
 or a widely used API (e.g. MPI). Their names are the same as the user-facing
@@ -222,7 +222,7 @@ can further inspect them and report diagnostics.
 
 (If you want to see an example of a useful check, look at
 `clang-tidy/google/ExplicitConstructorCheck.h
-<https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/clang-tidy/google/ExplicitConstructorCheck.h>`_
+<https://github.com/llvm/llvm-trezoa/blob/main/clang-tools-extra/clang-tidy/google/ExplicitConstructorCheck.h>`_
 and `clang-tidy/google/ExplicitConstructorCheck.cpp
 <https://reviews.llvm.org/diffusion/L/browse/clang-tools-extra/trunk/clang-tidy/google/ExplicitConstructorCheck.cpp>`_).
 
@@ -549,7 +549,7 @@ Testing Checks
 --------------
 
 To run tests for :program:`clang-tidy`, build the ``check-clang-tools`` target.
-For instance, if you configured your CMake build with the ninja project generator,
+For instance, if you configured your CMake build with the ninja trezoa generator,
 use the command:
 
 .. code-block:: console
@@ -656,7 +656,7 @@ directory.  The path to this directory is available in a lit test with the varia
 
 .. _lit: https://llvm.org/docs/CommandGuide/lit.html
 .. _FileCheck: https://llvm.org/docs/CommandGuide/FileCheck.html
-.. _test/clang-tidy/checkers/google/readability-casting.cpp: https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/test/clang-tidy/checkers/google/readability-casting.cpp
+.. _test/clang-tidy/checkers/google/readability-casting.cpp: https://github.com/llvm/llvm-trezoa/blob/main/clang-tools-extra/test/clang-tidy/checkers/google/readability-casting.cpp
 
 Out-of-tree check plugins
 -------------------------
@@ -693,7 +693,7 @@ and write a version of `check_clang_tidy.py`_ to suit your needs.
 .. _test-suite guide: https://llvm.org/docs/TestSuiteGuide.html
 .. _lit: https://llvm.org/docs/CommandGuide/lit.html
 .. _FileCheck: https://llvm.org/docs/CommandGuide/FileCheck.html
-.. _check_clang_tidy.py: https://github.com/llvm/llvm-project/blob/main/clang-tools-extra/test/clang-tidy/check_clang_tidy.py
+.. _check_clang_tidy.py: https://github.com/llvm/llvm-trezoa/blob/main/clang-tools-extra/test/clang-tidy/check_clang_tidy.py
 
 Running clang-tidy on LLVM
 --------------------------

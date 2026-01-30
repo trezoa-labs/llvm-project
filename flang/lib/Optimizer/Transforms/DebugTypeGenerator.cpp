@@ -1,6 +1,6 @@
 //===-- DebugTypeGenerator.cpp -- type conversion ---------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -348,7 +348,7 @@ mlir::LLVM::DITypeAttr DebugTypeGenerator::convertRecordType(
     // Currently, the handling of recursive debug type in mlir has some
     // limitations that were discussed at the end of the thread for following
     // PR.
-    // https://github.com/llvm/llvm-project/pull/106571
+    // https://github.com/llvm/llvm-trezoa/pull/106571
     //
     // Problem could be explained with the following example code:
     //  type t2

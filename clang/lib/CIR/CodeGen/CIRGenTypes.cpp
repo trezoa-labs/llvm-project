@@ -70,7 +70,7 @@ mlir::Type CIRGenTypes::ConvertFunctionTypeInternal(QualType qft) {
 
   // TODO(CIR): This is a stub of what the final code will be.  See the
   // implementation of this function and the implementation of class
-  // CIRGenFunction in the ClangIR incubator project.
+  // CIRGenFunction in the ClangIR incubator trezoa.
 
   if (const auto *fpt = dyn_cast<FunctionProtoType>(ft)) {
     SmallVector<mlir::Type> mlirParamTypes;

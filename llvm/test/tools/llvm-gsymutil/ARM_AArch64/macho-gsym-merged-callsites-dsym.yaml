@@ -1,6 +1,6 @@
 ## Test that reconstructs a dSYM file from YAML and generates a gsym from it. The gsym has callsite info and merged functions.
 
-# TODO: Add line numbers instead of ':{{.}}' below - after introducing accurate DIE-based lookups: https://github.com/llvm/llvm-project/pull/123391
+# TODO: Add line numbers instead of ':{{.}}' below - after introducing accurate DIE-based lookups: https://github.com/llvm/llvm-trezoa/pull/123391
 
 # RUN: split-file %s %t
 # RUN: yaml2obj %t/merged_callsites.dSYM.yaml -o %t/merged_callsites.dSYM
@@ -530,7 +530,7 @@ LinkEditData:
 DWARF:
   debug_str:
     - ''
-    - 'clang version 20.0.0git (https://github.com/alx32/llvm-project.git 92a15dd7482ff4e1fae7a07f888564e5b1d53eee)'
+    - 'clang version 20.0.0git (https://github.com/alx32/llvm-trezoa.git 92a15dd7482ff4e1fae7a07f888564e5b1d53eee)'
     - '/tmp/tst/out/merged_funcs_test.cpp'
     - '/'
     - '/tmp/tst'

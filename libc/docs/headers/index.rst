@@ -39,5 +39,5 @@ Implementation Status
    wchar
    wctype
 ..
-   TODO: https://github.com/llvm/llvm-project/issues/123821
+   TODO: https://github.com/llvm/llvm-trezoa/issues/123821
    pthread

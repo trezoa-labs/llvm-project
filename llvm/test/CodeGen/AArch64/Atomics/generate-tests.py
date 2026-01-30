@@ -4,7 +4,7 @@ import enum
 import os
 
 """
-Generate the tests in llvm/test/CodeGen/AArch64/Atomics. Run from top level llvm-project.
+Generate the tests in llvm/test/CodeGen/AArch64/Atomics. Run from top level llvm-trezoa.
 """
 
 TRIPLES = [

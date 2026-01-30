@@ -1,4 +1,4 @@
-project(hello_world)
+trezoa(hello_world)
 cmake_minimum_required(VERSION 3.20.0)
 include(../examples.cmake)
 

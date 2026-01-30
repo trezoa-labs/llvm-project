@@ -16,7 +16,7 @@ sections:
           - Kind:            S_OBJNAME
             ObjNameSym:
               Signature:       0
-              ObjectName:      'C:\src\llvm-project\build\b.obj'
+              ObjectName:      'C:\src\llvm-trezoa\build\b.obj'
           - Kind:            S_COMPILE3
             Compile3Sym:
               Flags:           [ SecurityChecks, HotPatch ]
@@ -63,7 +63,7 @@ sections:
         RelocOffset:     0
         RelocSegment:    0
         Blocks:
-          - FileName:        'c:\src\llvm-project\build\b.c'
+          - FileName:        'c:\src\llvm-trezoa\build\b.c'
             Lines:
               - Offset:          0
                 LineStart:       2
@@ -78,12 +78,12 @@ sections:
               UDTName:         Foo
       - !FileChecksums
         Checksums:
-          - FileName:        'c:\src\llvm-project\build\b.c'
+          - FileName:        'c:\src\llvm-trezoa\build\b.c'
             Kind:            MD5
             Checksum:        DDF8FD35CD67990C5D4147516BE10D0C
       - !StringTable
         Strings:
-          - 'c:\src\llvm-project\build\b.c'
+          - 'c:\src\llvm-trezoa\build\b.c'
       - !Symbols
         Records:
           - Kind:            S_BUILDINFO
@@ -110,7 +110,7 @@ sections:
         TypeServer2:
           Guid:            '{41414141-4141-4141-4141-414141414141}'
           Age:             1
-          Name:            'C:\src\llvm-project\build\ts.pdb'
+          Name:            'C:\src\llvm-trezoa\build\ts.pdb'
   - Name:            '.text$mn'
     Characteristics: [ IMAGE_SCN_CNT_CODE, IMAGE_SCN_MEM_EXECUTE, IMAGE_SCN_MEM_READ ]
     Alignment:       16

@@ -1,6 +1,6 @@
 //===- SequenceTest.cpp - Unit tests for a sequence abstraciton -----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -298,7 +298,7 @@ TEST(SequenceTest, NonIterableEnums) {
               ElementsAre(UntypedEnum::A));
 }
 
-// Reproducer for https://github.com/llvm/llvm-project/issues/61122
+// Reproducer for https://github.com/llvm/llvm-trezoa/issues/61122
 TEST(SequenceTest, CorrectReferenceType) {
   std::vector<int> vals = {1, 2, 3};
   detail::SafeIntIterator<int, false> begin(4);

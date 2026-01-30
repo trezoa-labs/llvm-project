@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -149,7 +149,7 @@ int main(int argc, char**)
     assert(res1 == 1324997410816LL);
     }
 
-    // https://github.com/llvm/llvm-project/issues/96196
+    // https://github.com/llvm/llvm-trezoa/issues/96196
     {
         assert(test_limits<unsigned int>());
         assert(test_limits<std::uint32_t>());

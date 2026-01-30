@@ -1,7 +1,7 @@
 // REQUIRES: host-supports-jit
 // UNSUPPORTED: system-aix
 // At -O2, somehow "x = 42" appears first when piped into FileCheck,
-// see https://github.com/llvm/llvm-project/issues/143547.
+// see https://github.com/llvm/llvm-trezoa/issues/143547.
 // UNSUPPORTED: system-windows
 // RUN: cat %s | clang-repl | FileCheck %s
 // RUN: cat %s | clang-repl -Xcc -Xclang -Xcc -verify -Xcc -O2 | FileCheck %s

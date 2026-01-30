@@ -287,7 +287,7 @@ Symbols:
     Size:            0x14
 DWARF:
   debug_str:
-    - 'clang version 16.0.0 (https://github.com/llvm/llvm-project 47d28b7a8268e37aa0de76b859f4508e3dbac6ce)'
+    - 'clang version 16.0.0 (https://github.com/llvm/llvm-trezoa 47d28b7a8268e37aa0de76b859f4508e3dbac6ce)'
     - defaults.cpp
     - '/home/gardei'
     - main

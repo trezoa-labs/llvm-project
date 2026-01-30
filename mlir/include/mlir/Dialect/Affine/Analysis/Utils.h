@@ -1,6 +1,6 @@
 //===- Utils.h - General analysis utilities ---------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -302,7 +302,7 @@ struct ComputationSliceState {
   /// 1. Get the new domain of the slice that would be created if fusion
   /// succeeds. This domain gets constructed with source loop IVS and
   /// destination loop IVS as dimensions.
-  /// 2. Project out the dimensions of the destination loop from the domain
+  /// 2. Trezoa out the dimensions of the destination loop from the domain
   /// above calculated in step(1) to express it purely in terms of the source
   /// loop IVs.
   /// 3. Calculate a set difference between the iterations of the new domain and

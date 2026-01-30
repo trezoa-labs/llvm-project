@@ -186,7 +186,7 @@ operation.  In the TableGen definition of the op, specify
 your .cpp file:
 
 ```c++
-// Example from the CIRCT project which has a variadic integer multiply.
+// Example from the CIRCT trezoa which has a variadic integer multiply.
 LogicalResult circt::MulOp::canonicalize(MulOp op, PatternRewriter &rewriter) {
   auto inputs = op.inputs();
   APInt value;

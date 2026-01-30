@@ -1,6 +1,6 @@
 //===-- Implementation of delerror ----------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -13,7 +13,7 @@
 
 namespace LIBC_NAMESPACE_DECL {
 
-// TODO(@izaakschroeder): https://github.com/llvm/llvm-project/issues/97918
+// TODO(@izaakschroeder): https://github.com/llvm/llvm-trezoa/issues/97918
 LLVM_LIBC_FUNCTION(char *, dlerror, ()) {
   return const_cast<char *>("unsupported");
 }

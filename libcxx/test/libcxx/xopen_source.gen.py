@@ -1,6 +1,6 @@
 # ===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -10,7 +10,7 @@
 # We may not want to guarantee this forever, but since this works today and
 # it's something that users rely on, it makes sense to put a test on it.
 #
-# https://github.com/llvm/llvm-project/issues/117630
+# https://github.com/llvm/llvm-trezoa/issues/117630
 
 # RUN: %{python} %s %{libcxx-dir}/utils
 # END.

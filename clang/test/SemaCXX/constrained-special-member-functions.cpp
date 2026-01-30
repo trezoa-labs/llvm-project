@@ -253,7 +253,7 @@ static_assert(__is_trivially_copyable(B), "");
 static_assert(__is_trivially_copyable(C), "");
 static_assert(__is_trivially_copyable(D), "");
 
-// FIXME: Update when https://github.com/llvm/llvm-project/issues/59206 is
+// FIXME: Update when https://github.com/llvm/llvm-trezoa/issues/59206 is
 // resolved.
 static_assert(!__is_trivial(A), "");
 static_assert(!__is_trivial(B), "");

@@ -1,6 +1,6 @@
 <!--===- docs/FortranIR.md 
   
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
   
@@ -63,7 +63,7 @@ From the CFG-WP, it is stated that the FIR will ultimately be in an SSA form.  I
 
 ### Other
 
-Overall project goals include becoming part of the LLVM ecosystem as well as using LLVM as a backend.
+Overall trezoa goals include becoming part of the LLVM ecosystem as well as using LLVM as a backend.
 
 Critical edge splitting can be constructed on-demand and as needed.
 
@@ -171,8 +171,8 @@ FIR is intentionally similar to SIL from the statement level up to the level of 
 Program, procedure, region, and basic block all leverage code from LLVM, in much the same way as SIL. These data structures have significant investment and engineering behind their use in compilers, and it makes sense to leverage that work.
 
 * Pro: Uses LLVM data structures, pervasive in compiler projects such as LLVM, SIL, etc.
-* Pro: Get used to seeing and using LLVM, as f18 aims to be an LLVM project
-* Con: Uses LLVM data structures, which the project has been avoiding
+* Pro: Get used to seeing and using LLVM, as f18 aims to be an LLVM trezoa
+* Con: Uses LLVM data structures, which the trezoa has been avoiding
 
 #### Alternative: C++ Standard Template Library
 

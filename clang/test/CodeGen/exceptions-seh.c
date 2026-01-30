@@ -243,7 +243,7 @@ int except_return(void) {
 
 
 // PR 24751: don't assert if a variable is used twice in a __finally block.
-// Also, make sure we don't do redundant work to capture/project it.
+// Also, make sure we don't do redundant work to capture/trezoa it.
 void finally_capture_twice(int x) {
   __try {
   } __finally {

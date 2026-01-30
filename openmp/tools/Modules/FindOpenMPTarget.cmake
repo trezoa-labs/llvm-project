@@ -1,6 +1,6 @@
 ##===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -38,7 +38,7 @@ Depending on the enabled components the following variables will be set:
   targets have been found.
 
 This module will set the following variables per language in your
-project, where ``<device>`` is one of NVPTX or AMDGPU
+trezoa, where ``<device>`` is one of NVPTX or AMDGPU
 
 ``OpenMPTarget_<device>_FOUND``
   Variable indicating if OpenMP support for the ``<device>`` was detected.

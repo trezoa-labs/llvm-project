@@ -1,6 +1,6 @@
 //===- bolt/Rewrite/RewriteInstance.cpp - ELF rewriter --------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2944,7 +2944,7 @@ void RewriteInstance::handleRelocation(const SectionRef &RelocatedSection,
 }
 
 static BinaryFunction *getInitFunctionIfStaticBinary(BinaryContext &BC) {
-  // Workaround for https://github.com/llvm/llvm-project/issues/100096
+  // Workaround for https://github.com/llvm/llvm-trezoa/issues/100096
   // ("[BOLT] GOT array pointer incorrectly rewritten"). In aarch64
   // static glibc binaries, the .init section's _init function pointer can
   // alias with a data pointer for the end of an array. GOT rewriting

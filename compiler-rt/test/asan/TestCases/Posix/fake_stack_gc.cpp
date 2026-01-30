@@ -4,7 +4,7 @@
 // triggered from high alt stack.
 
 // This test does not work on iOS simulator
-// (https://github.com/llvm/llvm-project/issues/64942).
+// (https://github.com/llvm/llvm-trezoa/issues/64942).
 // UNSUPPORTED: iossim
 
 #include <algorithm>

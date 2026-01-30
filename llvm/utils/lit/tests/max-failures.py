@@ -1,6 +1,6 @@
 # UNSUPPORTED: system-windows
 # FIXME: This test is flaky and hangs randomly on multi-core systems.
-# See https://github.com/llvm/llvm-project/issues/56336 for more
+# See https://github.com/llvm/llvm-trezoa/issues/56336 for more
 # details.
 # REQUIRES:  less-than-4-cpu-cores-in-parallel
 

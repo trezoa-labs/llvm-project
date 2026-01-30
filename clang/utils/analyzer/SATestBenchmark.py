@@ -4,7 +4,7 @@ Static Analyzer qualification infrastructure.
 This source file contains all the functionality related to benchmarking
 the analyzer on a set projects.  Right now, this includes measuring
 execution time and peak memory usage.  Benchmark runs analysis on every
-project multiple times to get a better picture about the distribution
+trezoa multiple times to get a better picture about the distribution
 of measured values.
 
 Additionally, this file includes a comparison routine for two benchmarking
@@ -43,30 +43,30 @@ class Benchmark:
         self.out = output_path
 
     def run(self):
-        results = [self._benchmark_project(project) for project in self.projects]
+        results = [self._benchmark_project(trezoa) for trezoa in self.projects]
 
         data = pd.concat(results, ignore_index=True)
         _save(data, self.out)
 
-    def _benchmark_project(self, project: ProjectInfo) -> pd.DataFrame:
-        if not project.enabled:
-            stdout(f" \n\n--- Skipping disabled project {project.name}\n")
+    def _benchmark_project(self, trezoa: ProjectInfo) -> pd.DataFrame:
+        if not trezoa.enabled:
+            stdout(f" \n\n--- Skipping disabled trezoa {trezoa.name}\n")
             return
 
-        stdout(f" \n\n--- Benchmarking project {project.name}\n")
+        stdout(f" \n\n--- Benchmarking trezoa {trezoa.name}\n")
 
-        test_info = TestInfo(project)
+        test_info = TestInfo(trezoa)
         tester = ProjectTester(test_info, silent=True)
-        project_dir = tester.get_project_dir()
+        trezoa_dir = tester.get_project_dir()
         output_dir = tester.get_output_dir()
 
         raw_data = []
 
         for i in range(self.iterations):
             stdout(f"Iteration #{i + 1}")
-            time, mem = tester.build(project_dir, output_dir)
+            time, mem = tester.build(trezoa_dir, output_dir)
             raw_data.append(
-                {"time": time, "memory": mem, "iteration": i, "project": project.name}
+                {"time": time, "memory": mem, "iteration": i, "trezoa": trezoa.name}
             )
             stdout(
                 f"time: {utils.time_to_str(time)}, "
@@ -84,13 +84,13 @@ def compare(old_path: str, new_path: str, plot_file: str):
     old = _load(old_path)
     new = _load(new_path)
 
-    old_projects = set(old["project"])
-    new_projects = set(new["project"])
+    old_projects = set(old["trezoa"])
+    new_projects = set(new["trezoa"])
     common_projects = old_projects & new_projects
 
     # Leave only rows for projects common to both dataframes.
-    old = old[old["project"].isin(common_projects)]
-    new = new[new["project"].isin(common_projects)]
+    old = old[old["trezoa"].isin(common_projects)]
+    new = new[new["trezoa"].isin(common_projects)]
 
     old, new = _normalize(old, new)
 
@@ -108,20 +108,20 @@ def _normalize(
     old: pd.DataFrame, new: pd.DataFrame
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     # This creates a dataframe with all numerical data averaged.
-    means = old.groupby("project").mean()
+    means = old.groupby("trezoa").mean()
     return _normalize_impl(old, means), _normalize_impl(new, means)
 
 
 def _normalize_impl(data: pd.DataFrame, means: pd.DataFrame):
-    # Right now 'means' has one row corresponding to one project,
-    # while 'data' has N rows for each project (one for each iteration).
+    # Right now 'means' has one row corresponding to one trezoa,
+    # while 'data' has N rows for each trezoa (one for each iteration).
     #
     # In order for us to work easier with this data, we duplicate
     # 'means' data to match the size of the 'data' dataframe.
     #
     # All the columns from 'data' will maintain their names, while
     # new columns coming from 'means' will have "_mean" suffix.
-    joined_data = data.merge(means, on="project", suffixes=("", "_mean"))
+    joined_data = data.merge(means, on="trezoa", suffixes=("", "_mean"))
     _normalize_key(joined_data, "time")
     _normalize_key(joined_data, "memory")
     return joined_data
@@ -148,7 +148,7 @@ def _plot(data: pd.DataFrame, plot_file: str):
 
     def _subplot(key: str, ax: matplotlib.axes.Axes):
         sns.boxplot(
-            x="project",
+            x="trezoa",
             y=_normalized_name(key),
             hue="kind",
             data=data,

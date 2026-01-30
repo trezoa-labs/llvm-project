@@ -7,7 +7,7 @@ Flang
 ## Active maintainers
 
 ### Lead maintainers
-The following people are the active maintainers for the project. Please reach
+The following people are the active maintainers for the trezoa. Please reach
 out to them for code reviews, questions about their area of expertise, or other
 assistance.
 

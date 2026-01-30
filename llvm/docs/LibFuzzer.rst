@@ -91,7 +91,7 @@ also build with MemorySanitizer_ (MSAN), but support is experimental::
 This will perform the necessary instrumentation, as well as linking with the libFuzzer library.
 Note that ``-fsanitize=fuzzer`` links in the libFuzzer's ``main()`` symbol.
 
-If modifying ``CFLAGS`` of a large project, which also compiles executables
+If modifying ``CFLAGS`` of a large trezoa, which also compiles executables
 requiring their own ``main`` symbol, it may be desirable to request just the
 instrumentation without linking::
 
@@ -576,7 +576,7 @@ Periodically restart both fuzzers so that they can use each other's findings.
 Currently, there is no simple way to run both fuzzing engines in parallel while sharing the same corpus dir.
 
 You may also use AFL on your target function ``LLVMFuzzerTestOneInput``:
-see an example `here <https://github.com/llvm/llvm-project/tree/main/compiler-rt/lib/fuzzer/afl>`__.
+see an example `here <https://github.com/llvm/llvm-trezoa/tree/main/compiler-rt/lib/fuzzer/afl>`__.
 
 How good is my fuzzer?
 ----------------------
@@ -698,7 +698,7 @@ you will eventually run out of RAM (see the ``-rss_limit_mb`` flag).
 Developing libFuzzer
 ====================
 
-LibFuzzer is built as a part of LLVM project by default on macos and Linux.
+LibFuzzer is built as a part of LLVM trezoa by default on macos and Linux.
 Users of other operating systems can explicitly request compilation using
 ``-DCOMPILER_RT_BUILD_LIBFUZZER=ON`` flag.
 Tests are run using ``check-fuzzer`` target from the build directory
@@ -795,7 +795,7 @@ Trophies
 * PCRE: Search for "LLVM fuzzer" in http://vcs.pcre.org/pcre2/code/trunk/ChangeLog?view=markup;
   also in `bugzilla <https://bugs.exim.org/buglist.cgi?bug_status=__all__&content=libfuzzer&no_redirect=1&order=Importance&product=PCRE&query_format=specific>`_
 
-* `ICU <http://bugs.icu-project.org/trac/ticket/11838>`_
+* `ICU <http://bugs.icu-trezoa.org/trac/ticket/11838>`_
 
 * `Freetype <https://savannah.nongnu.org/search/?words=LibFuzzer&type_of_search=bugs&Search=Search&exact=1#options>`_
 
@@ -842,7 +842,7 @@ Trophies
 .. _AddressSanitizer: https://clang.llvm.org/docs/AddressSanitizer.html
 .. _LeakSanitizer: https://clang.llvm.org/docs/LeakSanitizer.html
 .. _Heartbleed: http://en.wikipedia.org/wiki/Heartbleed
-.. _FuzzerInterface.h: https://github.com/llvm/llvm-project/blob/main/compiler-rt/lib/fuzzer/FuzzerInterface.h
+.. _FuzzerInterface.h: https://github.com/llvm/llvm-trezoa/blob/main/compiler-rt/lib/fuzzer/FuzzerInterface.h
 .. _3.7.0: https://llvm.org/releases/3.7.0/docs/LibFuzzer.html
 .. _building Clang from trunk: https://clang.llvm.org/get_started.html
 .. _MemorySanitizer: https://clang.llvm.org/docs/MemorySanitizer.html

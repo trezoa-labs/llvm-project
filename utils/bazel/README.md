@@ -24,7 +24,7 @@ for adding this configuration.
 
 # Quick Start
 
-1. `git clone https://github.com/llvm/llvm-project.git; cd llvm-project` if
+1. `git clone https://github.com/llvm/llvm-trezoa.git; cd llvm-trezoa` if
    you don't have a checkout yet.
 2. Install Bazel at the version indicated by [.bazelversion](./.bazelversion),
    following the official instructions, if you don't have it installed yet:
@@ -40,23 +40,23 @@ for adding this configuration.
    The `--config=generic_clang` flag by default sets the compiler to be `clang`
    binary on the `PATH`.
    ```
-   bazel build --config=generic_clang @llvm-project//...
+   bazel build --config=generic_clang @llvm-trezoa//...
    ```
    To provide a specific path to your `clang`, use the `--repo_env` Bazel flag.
    For example:
    ```
-   bazel build --config=generic_clang --repo_env=CC=/usr/bin/clang --repo_env=CXX=/usr/bin/clang++  @llvm-project//...
+   bazel build --config=generic_clang --repo_env=CC=/usr/bin/clang --repo_env=CXX=/usr/bin/clang++  @llvm-trezoa//...
    ```
 6. If you are using **gcc** or **MSVC**, instead of `--config=generic_clang`
    , pass `--config=generic_gcc` or `--config=generic_msvc`, which sets the
    compiler to be `gcc` binary on the `PATH`.
    ```
-   bazel build --config=generic_gcc @llvm-project//...
+   bazel build --config=generic_gcc @llvm-trezoa//...
    ```
    To provide a specific path to your `gcc`, use the `--repo_env` Bazel flag.
    For example:
    ```
-   bazel build --config=generic_gcc --repo_env=CC=/usr/bin/gcc --repo_env=CXX=/usr/bin/g++  @llvm-project//...
+   bazel build --config=generic_gcc --repo_env=CC=/usr/bin/gcc --repo_env=CXX=/usr/bin/g++  @llvm-trezoa//...
    ```
 
 # Configuration
@@ -100,7 +100,7 @@ configuration you'd like to use that isn't supported, please send a patch.
 
 # Continuous Testing
 
-A [Buildkite pipeline](https://buildkite.com/llvm-project/upstream-bazel)
+A [Buildkite pipeline](https://buildkite.com/llvm-trezoa/upstream-bazel)
 runs the full Bazel build on every commit to the main branch. Notifications of
 failures are sent to the
 [llvm-bazel-alerts google group](https://groups.google.com/g/llvm-bazel-alerts),

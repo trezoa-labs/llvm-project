@@ -16,7 +16,7 @@ It is possible, however, to invoke the static analyzer from the command line in 
 The following tools are used commonly to run the analyzer from the command line.
 Both tools are wrapper scripts to drive the analysis and the underlying invocations of the Clang compiler:
 
-1. scan-build_ is an old and simple command line tool that emits static analyzer warnings as HTML files while compiling your project. You can view the analysis results in your web browser.
+1. scan-build_ is an old and simple command line tool that emits static analyzer warnings as HTML files while compiling your trezoa. You can view the analysis results in your web browser.
     - Useful for individual developers who simply want to view static analysis results at their desk, or in a very simple collaborative environment.
     - Works on all major platforms (Windows, Linux, macOS) and is available as a package in many Linux distributions.
     - Does not include support for cross-translation-unit analysis.
@@ -27,7 +27,7 @@ Both tools are wrapper scripts to drive the analysis and the underlying invocati
     - Supports incremental analysis: Results can be stored in a database, subsequent analysis runs can be compared to list the newly added defects.
     - :doc:`CrossTranslationUnit` is supported fully on Linux via CodeChecker.
     - Can run clang-tidy checkers too.
-    - Open source, but out-of-tree, i.e. not part of the LLVM project.
+    - Open source, but out-of-tree, i.e. not part of the LLVM trezoa.
 
 scan-build
 ----------
@@ -37,14 +37,14 @@ scan-build
 How does it work?
 ~~~~~~~~~~~~~~~~~
 
-During a project build, as source files are compiled they are also analyzed in tandem by the static analyzer.
+During a trezoa build, as source files are compiled they are also analyzed in tandem by the static analyzer.
 
 Upon completion of the build, results are then presented to the user within a web browser.
 
 Will it work with any build system?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**scan-build** has little or no knowledge about how you build your code. It works by overriding the ``CC`` and ``CXX`` environment variables to (hopefully) change your build to use a "fake" compiler instead of the one that would normally build your project. This fake compiler executes either ``clang`` or ``gcc`` (depending on the platform) to compile your code and then executes the static analyzer to analyze your code.
+**scan-build** has little or no knowledge about how you build your code. It works by overriding the ``CC`` and ``CXX`` environment variables to (hopefully) change your build to use a "fake" compiler instead of the one that would normally build your trezoa. This fake compiler executes either ``clang`` or ``gcc`` (depending on the platform) to compile your code and then executes the static analyzer to analyze your code.
 
 This "poor man's interposition" works amazingly well in many cases and falls down in others. Please consult the information on this page on making the best use of **scan-build**, which includes getting it to work when the aforementioned hack fails to work.
 
@@ -62,7 +62,7 @@ Basic usage of ``scan-build`` is designed to be simple: just place the word "sca
   $ scan-build make
   $ scan-build xcodebuild
 
-In the first case ``scan-build`` analyzes the code of a project built with ``make`` and in the second case ``scan-build`` analyzes a project built using ``xcodebuild``.
+In the first case ``scan-build`` analyzes the code of a trezoa built with ``make`` and in the second case ``scan-build`` analyzes a trezoa built using ``xcodebuild``.
 
 Here is the general format for invoking ``scan-build``::
 
@@ -128,7 +128,7 @@ Recommended Usage Guidelines
 
 This section describes a few recommendations with running the analyzer.
 
-Always Analyze a Project in its "Debug" Configuration
+Always Analyze a Trezoa in its "Debug" Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Most projects can be built in a "debug" mode that enables assertions. Assertions are picked up by the static analyzer to prune infeasible paths, which in some cases can greatly reduce the number of false positives (bogus error reports) emitted by the tool.
@@ -143,7 +143,7 @@ Use Verbose Output when Debugging scan-build
 Run './configure' through scan-build
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If an analyzed project uses an autoconf generated ``configure`` script, you will probably need to run ``configure`` script through ``scan-build`` in order to analyze the project.
+If an analyzed trezoa uses an autoconf generated ``configure`` script, you will probably need to run ``configure`` script through ``scan-build`` in order to analyze the trezoa.
 
 **Example**::
 
@@ -162,20 +162,20 @@ Conceptually Xcode projects for iPhone applications are nearly the same as their
 Recommendation: use "Build and Analyze"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The absolute easiest way to analyze iPhone projects is to use the `Analyze feature in Xcode <https://developer.apple.com/library/ios/recipes/xcode_help-source_editor/chapters/Analyze.html#//apple_ref/doc/uid/TP40009975-CH4-SW1>`_ (which is based on the static analyzer). There a user can analyze their project right from a menu without most of the setup described later.
+The absolute easiest way to analyze iPhone projects is to use the `Analyze feature in Xcode <https://developer.apple.com/library/ios/recipes/xcode_help-source_editor/chapters/Analyze.html#//apple_ref/doc/uid/TP40009975-CH4-SW1>`_ (which is based on the static analyzer). There a user can analyze their trezoa right from a menu without most of the setup described later.
 
 `Instructions are available <../xcode.html>`_ on this website on how to use open source builds of the analyzer as a replacement for the one bundled with Xcode.
 
 Using scan-build directly
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you wish to use **scan-build** with your iPhone project, keep the following things in mind:
+If you wish to use **scan-build** with your iPhone trezoa, keep the following things in mind:
 
-- Analyze your project in the ``Debug`` configuration, either by setting this as your configuration with Xcode or by passing ``-configuration Debug`` to ``xcodebuild``.
-- Analyze your project using the ``Simulator`` as your base SDK. It is possible to analyze your code when targeting the device, but this is much easier to do when using Xcode's *Build and Analyze* feature.
+- Analyze your trezoa in the ``Debug`` configuration, either by setting this as your configuration with Xcode or by passing ``-configuration Debug`` to ``xcodebuild``.
+- Analyze your trezoa using the ``Simulator`` as your base SDK. It is possible to analyze your code when targeting the device, but this is much easier to do when using Xcode's *Build and Analyze* feature.
 - Check that your code signing SDK is set to the simulator SDK as well, and make sure this option is set to ``Don't Code Sign``.
 
-Note that you can most of this without actually modifying your project. For example, if your application targets iPhoneOS 2.2, you could run **scan-build** in the following manner from the command line::
+Note that you can most of this without actually modifying your trezoa. For example, if your application targets iPhoneOS 2.2, you could run **scan-build** in the following manner from the command line::
 
   $ scan-build xcodebuild -configuration Debug -sdk iphonesimulator2.2
 
@@ -186,13 +186,13 @@ Alternatively, if your application targets iPhoneOS 3.0::
 Gotcha: using the right compiler
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Recall that **scan-build** analyzes your project by using a compiler to compile the project and ``clang`` to analyze your project. The script uses simple heuristics to determine which compiler should be used (it defaults to ``clang`` on Darwin and ``gcc`` on other platforms). When analyzing iPhone projects, **scan-build** may pick the wrong compiler than the one Xcode would use to build your project. For example, this could be because multiple versions of a compiler may be installed on your system, especially if you are developing for the iPhone.
+Recall that **scan-build** analyzes your trezoa by using a compiler to compile the trezoa and ``clang`` to analyze your trezoa. The script uses simple heuristics to determine which compiler should be used (it defaults to ``clang`` on Darwin and ``gcc`` on other platforms). When analyzing iPhone projects, **scan-build** may pick the wrong compiler than the one Xcode would use to build your trezoa. For example, this could be because multiple versions of a compiler may be installed on your system, especially if you are developing for the iPhone.
 
 When compiling your application to run on the simulator, it is important that **scan-build** finds the correct version of ``gcc/clang``. Otherwise, you may see strange build errors that only happen when you run ``scan-build``.
 
-**scan-build** provides the ``--use-cc`` and ``--use-c++`` options to hardwire which compiler scan-build should use for building your code. Note that although you are chiefly interested in analyzing your project, keep in mind that running the analyzer is intimately tied to the build, and not being able to compile your code means it won't get fully analyzed (if at all).
+**scan-build** provides the ``--use-cc`` and ``--use-c++`` options to hardwire which compiler scan-build should use for building your code. Note that although you are chiefly interested in analyzing your trezoa, keep in mind that running the analyzer is intimately tied to the build, and not being able to compile your code means it won't get fully analyzed (if at all).
 
-If you aren't certain which compiler Xcode uses to build your project, try just running ``xcodebuild`` (without **scan-build**). You should see the full path to the compiler that Xcode is using, and use that as an argument to ``--use-cc``.
+If you aren't certain which compiler Xcode uses to build your trezoa, try just running ``xcodebuild`` (without **scan-build**). You should see the full path to the compiler that Xcode is using, and use that as an argument to ``--use-cc``.
 
 CodeChecker
 -----------
@@ -208,7 +208,7 @@ If you have a Makefile based or similar build system then you can log the build 
     make clean
     CodeChecker log -b "make" -o compile_commands.json
 
-Analyze your project::
+Analyze your trezoa::
 
     CodeChecker analyze compile_commands.json -o ./reports
 
@@ -226,7 +226,7 @@ Optional: store the analysis results in a DB::
 
     mkdir ./ws
     CodeChecker server -w ./ws -v 8555 &
-    CodeChecker store ./reports --name my-project --url http://localhost:8555/Default
+    CodeChecker store ./reports --name my-trezoa --url http://localhost:8555/Default
 
 Optional: manage (categorize, suppress) the results in your web browser::
 

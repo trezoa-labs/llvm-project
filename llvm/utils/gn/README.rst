@@ -34,7 +34,7 @@ This is a `good overview of GN <https://docs.google.com/presentation/d/15Zwb53Jc
 Quick start
 ===========
 
-#. ``git clone https://github.com/llvm/llvm-project.git; cd llvm-project`` if
+#. ``git clone https://github.com/llvm/llvm-trezoa.git; cd llvm-trezoa`` if
    you don't have a checkout yet.
 
 #. ``llvm/utils/gn/get.py`` to download a prebuilt gn binary if you're on a

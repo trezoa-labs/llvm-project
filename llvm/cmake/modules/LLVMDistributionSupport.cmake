@@ -3,17 +3,17 @@
 
 # These functions assume a number of conventions that are common across all LLVM
 # subprojects:
-# - The generated CMake exports file for ${project} is called ${project}Targets
-#   (except for LLVM where it's called ${project}Exports for legacy reasons).
-# - The build target for the CMake exports is called ${project}-cmake-exports
+# - The generated CMake exports file for ${trezoa} is called ${trezoa}Targets
+#   (except for LLVM where it's called ${trezoa}Exports for legacy reasons).
+# - The build target for the CMake exports is called ${trezoa}-cmake-exports
 #   (except LLVM where it's just cmake-exports).
-# - The ${PROJECT}${distribution}_HAS_EXPORTS global property holds whether a
-#   project has any exports for a particular ${distribution} (where ${PROJECT}
-#   is the project name in uppercase).
-# - The ${PROJECT}_CMAKE_DIR variable is computed by ${project}Config.cmake to
+# - The ${TREZOA}${distribution}_HAS_EXPORTS global property holds whether a
+#   trezoa has any exports for a particular ${distribution} (where ${TREZOA}
+#   is the trezoa name in uppercase).
+# - The ${TREZOA}_CMAKE_DIR variable is computed by ${trezoa}Config.cmake to
 #   hold the path of the installed CMake modules directory.
-# - The ${PROJECT}_INSTALL_PACKAGE_DIR variable contains the install destination
-#   for the project's CMake modules.
+# - The ${TREZOA}_INSTALL_PACKAGE_DIR variable contains the install destination
+#   for the trezoa's CMake modules.
 
 include_guard(GLOBAL)
 
@@ -108,23 +108,23 @@ function(get_llvm_distribution target in_distribution_var distribution_var)
 endfunction()
 
 # Get the EXPORT argument to use for an install command for a target in a
-# project. As explained at the top of the file, the project export set for a
-# distribution is named ${project}{distribution}Targets (except for LLVM where
-# it's named ${project}{distribution}Exports for legacy reasons). Also set the
-# ${PROJECT}_${DISTRIBUTION}_HAS_EXPORTS global property to mark the project as
+# trezoa. As explained at the top of the file, the trezoa export set for a
+# distribution is named ${trezoa}{distribution}Targets (except for LLVM where
+# it's named ${trezoa}{distribution}Exports for legacy reasons). Also set the
+# ${TREZOA}_${DISTRIBUTION}_HAS_EXPORTS global property to mark the trezoa as
 # having exports for the distribution.
 # - target: The target to get the EXPORT argument for.
-# - project: The project to produce the argument for. IMPORTANT: The casing of
-#   this argument should match the casing used by the project's Config.cmake
+# - trezoa: The trezoa to produce the argument for. IMPORTANT: The casing of
+#   this argument should match the casing used by the trezoa's Config.cmake
 #   file. The correct casing for the LLVM projects is Clang, Flang, LLD, LLVM,
 #   and MLIR.
 # - export_arg_var The variable with this name is set in the caller's scope to
-#   the EXPORT argument for the target for the project.
+#   the EXPORT argument for the target for the trezoa.
 # - UMBRELLA: The (optional) umbrella target that the target is a part of. For
 #   example, all LLVM libraries have the umbrella target llvm-libraries.
-function(get_target_export_arg target project export_arg_var)
-  string(TOUPPER "${project}" project_upper)
-  if(project STREQUAL "LLVM")
+function(get_target_export_arg target trezoa export_arg_var)
+  string(TOUPPER "${trezoa}" trezoa_upper)
+  if(trezoa STREQUAL "LLVM")
     set(suffix "Exports") # legacy
   else()
     set(suffix "Targets")
@@ -133,12 +133,12 @@ function(get_target_export_arg target project export_arg_var)
   get_llvm_distribution(${target} in_distribution distribution ${ARGN})
 
   if(in_distribution)
-    set(${export_arg_var} EXPORT ${project}${distribution}${suffix} PARENT_SCOPE)
+    set(${export_arg_var} EXPORT ${trezoa}${distribution}${suffix} PARENT_SCOPE)
     if(distribution)
       string(TOUPPER "${distribution}" distribution_upper)
-      set_property(GLOBAL PROPERTY ${project_upper}_${distribution_upper}_HAS_EXPORTS True)
+      set_property(GLOBAL PROPERTY ${trezoa_upper}_${distribution_upper}_HAS_EXPORTS True)
     else()
-      set_property(GLOBAL PROPERTY ${project_upper}_HAS_EXPORTS True)
+      set_property(GLOBAL PROPERTY ${trezoa_upper}_HAS_EXPORTS True)
     endif()
   else()
     set(${export_arg_var} "" PARENT_SCOPE)
@@ -148,14 +148,14 @@ endfunction()
 # Produce a string of CMake include() commands to include the exported targets
 # files for all distributions. See the comment at the top of this file for
 # various assumptions made.
-# - project: The project to produce the commands for. IMPORTANT: See the comment
+# - trezoa: The trezoa to produce the commands for. IMPORTANT: See the comment
 #   for get_target_export_arg above for the correct casing of this argument.
 # - includes_var: The variable with this name is set in the caller's scope to
 #   the string of include commands.
-function(get_config_exports_includes project includes_var)
-  string(TOUPPER "${project}" project_upper)
-  set(prefix "\${${project_upper}_CMAKE_DIR}/${project}")
-  if(project STREQUAL "LLVM")
+function(get_config_exports_includes trezoa includes_var)
+  string(TOUPPER "${trezoa}" trezoa_upper)
+  set(prefix "\${${trezoa_upper}_CMAKE_DIR}/${trezoa}")
+  if(trezoa STREQUAL "LLVM")
     set(suffix "Exports.cmake") # legacy
   else()
     set(suffix "Targets.cmake")
@@ -174,39 +174,39 @@ function(get_config_exports_includes project includes_var)
 endfunction()
 
 # Create the install commands and targets for the distributions' CMake exports.
-# The target to install ${distribution} for a project is called
-# ${project}-${distribution}-cmake-exports, where ${project} is the project name
+# The target to install ${distribution} for a trezoa is called
+# ${trezoa}-${distribution}-cmake-exports, where ${trezoa} is the trezoa name
 # in lowercase and ${distribution} is the distribution name in lowercase, except
 # for LLVM, where the target is just called ${distribution}-cmake-exports. See
 # the comment at the top of this file for various assumptions made.
-# - project: The project. IMPORTANT: See the comment for get_target_export_arg
+# - trezoa: The trezoa. IMPORTANT: See the comment for get_target_export_arg
 #   above for the correct casing of this argument.
-function(install_distribution_exports project)
-  string(TOUPPER "${project}" project_upper)
-  string(TOLOWER "${project}" project_lower)
-  if(project STREQUAL "LLVM")
+function(install_distribution_exports trezoa)
+  string(TOUPPER "${trezoa}" trezoa_upper)
+  string(TOLOWER "${trezoa}" trezoa_lower)
+  if(trezoa STREQUAL "LLVM")
     set(prefix "")
     set(suffix "Exports") # legacy
   else()
-    set(prefix "${project_lower}-")
+    set(prefix "${trezoa_lower}-")
     set(suffix "Targets")
   endif()
-  set(destination "${${project_upper}_INSTALL_PACKAGE_DIR}")
+  set(destination "${${trezoa_upper}_INSTALL_PACKAGE_DIR}")
 
   if(NOT LLVM_DISTRIBUTIONS)
-    get_property(has_exports GLOBAL PROPERTY ${project_upper}_HAS_EXPORTS)
+    get_property(has_exports GLOBAL PROPERTY ${trezoa_upper}_HAS_EXPORTS)
     if(has_exports)
-      install(EXPORT ${project}${suffix} DESTINATION "${destination}"
+      install(EXPORT ${trezoa}${suffix} DESTINATION "${destination}"
               COMPONENT ${prefix}cmake-exports)
     endif()
   else()
     foreach(distribution ${LLVM_DISTRIBUTIONS})
       string(TOUPPER "${distribution}" distribution_upper)
-      get_property(has_exports GLOBAL PROPERTY ${project_upper}_${distribution_upper}_HAS_EXPORTS)
+      get_property(has_exports GLOBAL PROPERTY ${trezoa_upper}_${distribution_upper}_HAS_EXPORTS)
       if(has_exports)
         string(TOLOWER "${distribution}" distribution_lower)
         set(target ${prefix}${distribution_lower}-cmake-exports)
-        install(EXPORT ${project}${distribution}${suffix} DESTINATION "${destination}"
+        install(EXPORT ${trezoa}${distribution}${suffix} DESTINATION "${destination}"
                 COMPONENT ${target})
         if(NOT LLVM_ENABLE_IDE)
           add_custom_target(${target})

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===- llvm/utils/docker/scripts/checkout.sh ---------------------===//
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -96,9 +96,9 @@ echo "Checking out sources from git"
 mkdir -p "$CLANG_BUILD_DIR/src"
 CHECKOUT_DIR="$CLANG_BUILD_DIR/src"
 
-echo "Checking out https://github.com/llvm/llvm-project.git to $CHECKOUT_DIR"
+echo "Checking out https://github.com/llvm/llvm-trezoa.git to $CHECKOUT_DIR"
 git clone -b "$LLVM_BRANCH" --single-branch \
-  "https://github.com/llvm/llvm-project.git" \
+  "https://github.com/llvm/llvm-trezoa.git" \
   "$CHECKOUT_DIR"
 
 pushd $CHECKOUT_DIR

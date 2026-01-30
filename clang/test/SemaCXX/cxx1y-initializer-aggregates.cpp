@@ -116,7 +116,7 @@ namespace nested_union {
   static_assert(f({1}) == 2, ""); // expected-error {{call to 'f' is ambiguous}}
 }
 
-// Fix crash issue https://github.com/llvm/llvm-project/issues/112560.
+// Fix crash issue https://github.com/llvm/llvm-trezoa/issues/112560.
 // Make sure clang compiles the following code without crashing:
 namespace GH112560 {
 union U {

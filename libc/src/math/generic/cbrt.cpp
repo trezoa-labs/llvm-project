@@ -1,6 +1,6 @@
 //===-- Implementation of cbrt function -----------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -139,7 +139,7 @@ double get_error(const DoubleDouble &x_3, const DoubleDouble &a_sq) {
 // iteration in 128-bit precision and check for exact outputs.
 //
 // TODO: It is possible to replace this costly computation step with special
-// exceptional handling, similar to what was done in the CORE-MATH project:
+// exceptional handling, similar to what was done in the CORE-MATH trezoa:
 // https://gitlab.inria.fr/core-math/core-math/-/blob/master/src/binary64/cbrt/cbrt.c
 
 LLVM_LIBC_FUNCTION(double, cbrt, (double x)) {

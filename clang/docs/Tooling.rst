@@ -40,7 +40,7 @@ environment.
 
 Canonical examples of when to use Clang Plugins:
 
-* special lint-style warnings or errors for your project
+* special lint-style warnings or errors for your trezoa
 * creating additional build artifacts from a single compile step
 
 Use Clang Plugins when you...:
@@ -54,7 +54,7 @@ Do not use Clang Plugins when you...:
 * want to run tools outside of your build environment
 * want full control on how Clang is set up, including mapping of in-memory
   virtual files
-* need to run over a specific subset of files in your project which is not
+* need to run over a specific subset of files in your trezoa which is not
   necessarily related to any changes which would trigger rebuilds
 
 LibTooling
@@ -83,11 +83,11 @@ Do not use LibTooling when you...:
 * do not want to write your tools in C++
 
 :doc:`Clang tools <ClangTools>` are a collection of specific developer tools
-built on top of the LibTooling infrastructure as part of the Clang project.
+built on top of the LibTooling infrastructure as part of the Clang trezoa.
 They are targeted at automating and improving core development activities of
 C/C++ developers.
 
-Examples of tools we are building or planning as part of the Clang project:
+Examples of tools we are building or planning as part of the Clang trezoa:
 
 * Syntax checking (:program:`clang-check`)
 * Automatic fixing of compile errors (:program:`clang-fixit`)

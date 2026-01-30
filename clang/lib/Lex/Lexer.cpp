@@ -1,6 +1,6 @@
 //===- Lexer.cpp - C Language Family Lexer --------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1558,7 +1558,7 @@ static llvm::SmallString<5> codepointAsHexString(uint32_t C) {
   return CharBuf;
 }
 
-// To mitigate https://github.com/llvm/llvm-project/issues/54732,
+// To mitigate https://github.com/llvm/llvm-trezoa/issues/54732,
 // we allow "Mathematical Notation Characters" in identifiers.
 // This is a proposed profile that extends the XID_Start/XID_continue
 // with mathematical symbols, superscipts and subscripts digits

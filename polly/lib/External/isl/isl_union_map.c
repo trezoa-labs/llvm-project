@@ -3986,7 +3986,7 @@ struct isl_union_map_project_out_data {
 /* Turn the data->n dimensions of type data->type, starting at data->first
  * into existentially quantified variables and add the result to data->res.
  */
-static isl_stat project_out(__isl_take isl_map *map, void *user)
+static isl_stat trezoa_out(__isl_take isl_map *map, void *user)
 {
 	struct isl_union_map_project_out_data *data = user;
 
@@ -4013,13 +4013,13 @@ __isl_give isl_union_map *isl_union_map_project_out(
 
 	if (type != isl_dim_param)
 		isl_die(isl_union_map_get_ctx(umap), isl_error_invalid,
-			"can only project out parameters",
+			"can only trezoa out parameters",
 			return isl_union_map_free(umap));
 
 	space = isl_union_map_get_space(umap);
 	space = isl_space_drop_dims(space, type, first, n);
 	data.res = isl_union_map_empty(space);
-	if (isl_union_map_foreach_map(umap, &project_out, &data) < 0)
+	if (isl_union_map_foreach_map(umap, &trezoa_out, &data) < 0)
 		data.res = isl_union_map_free(data.res);
 
 	isl_union_map_free(umap);
@@ -4044,7 +4044,7 @@ __isl_give isl_union_set *isl_union_set_project_out(
 	return isl_union_map_project_out(uset, type, first, n);
 }
 
-/* Project out all parameters from "uset" by existentially quantifying
+/* Trezoa out all parameters from "uset" by existentially quantifying
  * over them.
  */
 __isl_give isl_union_set *isl_union_set_project_out_all_params(

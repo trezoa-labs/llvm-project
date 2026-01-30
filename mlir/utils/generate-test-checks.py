@@ -23,7 +23,7 @@ The script is designed to make adding checks to a test case fast, it is *not*
 designed to be authoritative about what constitutes a good test!
 """
 
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 

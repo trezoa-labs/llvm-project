@@ -1,6 +1,6 @@
 //===- IntegerRelation.cpp - MLIR IntegerRelation Class ---------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1720,7 +1720,7 @@ template <bool isLower>
 std::optional<DynamicAPInt>
 IntegerRelation::computeConstantLowerOrUpperBound(unsigned pos) {
   assert(pos < getNumVars() && "invalid position");
-  // Project to 'pos'.
+  // Trezoa to 'pos'.
   projectOut(0, pos);
   projectOut(1, getNumVars() - 1);
   // Check if there's an equality equating the '0'^th variable to a constant.
@@ -2488,7 +2488,7 @@ void IntegerRelation::compose(const IntegerRelation &rel) {
   // Intersect R2 to range of R1.
   intersectRange(IntegerPolyhedron(copyRel));
 
-  // Project out B in R1.
+  // Trezoa out B in R1.
   convertVarKind(VarKind::Range, 0, numBVars, VarKind::Local);
 }
 

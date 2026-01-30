@@ -1,6 +1,6 @@
 //===- GuardWidening.cpp - ---- Guard widening ----------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -119,7 +119,7 @@ static void eliminateGuard(Instruction *GuardInst, MemorySSAUpdater *MSSAU) {
 /// loop-invariant condition into a loop-variant. It means that if
 /// widenable.condition() call is invariant (w.r.t. any loop), the new wide
 /// condition should stay invariant. Otherwise there can be a miscompile, like
-/// the one described at https://github.com/llvm/llvm-project/issues/60234. The
+/// the one described at https://github.com/llvm/llvm-trezoa/issues/60234. The
 /// safest way to do it is to expand the new condition at WC's block.
 static std::optional<BasicBlock::iterator>
 findInsertionPointForWideCondition(Instruction *WCOrGuard) {

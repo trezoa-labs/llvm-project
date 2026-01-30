@@ -60,7 +60,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 VOLUME /analyzer
 VOLUME /projects
-VOLUME /llvm-project
+VOLUME /llvm-trezoa
 VOLUME /build
 VOLUME /scripts
 

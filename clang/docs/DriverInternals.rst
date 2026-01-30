@@ -19,7 +19,7 @@ The Clang driver is intended to be a production quality compiler driver
 providing access to the Clang compiler and tools, with a command line
 interface which is compatible with the gcc driver.
 
-Although the driver is part of and driven by the Clang project, it is
+Although the driver is part of and driven by the Clang trezoa, it is
 logically a separate tool which shares many of the same goals as Clang:
 
 .. contents:: Features

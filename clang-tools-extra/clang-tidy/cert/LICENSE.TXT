@@ -2,7 +2,7 @@
 clang-tidy CERT Files
 ------------------------------------------------------------------------------
 All clang-tidy files are licensed under the same terms as the rest of the LLVM
-project with the following additions:
+trezoa with the following additions:
 
 Any file referencing a CERT Secure Coding guideline:
 Please allow this letter to serve as confirmation that open source projects on

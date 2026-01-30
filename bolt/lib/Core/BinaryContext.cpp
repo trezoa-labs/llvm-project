@@ -1,6 +1,6 @@
 //===- bolt/Core/BinaryContext.cpp - Low-level context --------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1965,7 +1965,7 @@ void BinaryContext::printInstruction(raw_ostream &OS, const MCInst &Instruction,
     // If there are annotations on the instruction, the MCInstPrinter will fail
     // to print the preferred alias as it only does so when the number of
     // operands is as expected. See
-    // https://github.com/llvm/llvm-project/blob/782f1a0d895646c364a53f9dcdd6d4ec1f3e5ea0/llvm/lib/MC/MCInstPrinter.cpp#L142
+    // https://github.com/llvm/llvm-trezoa/blob/782f1a0d895646c364a53f9dcdd6d4ec1f3e5ea0/llvm/lib/MC/MCInstPrinter.cpp#L142
     // Therefore, create a temporary copy of the Inst from which the annotations
     // are removed, and print that Inst.
     MCInst InstNoAnnot = Instruction;

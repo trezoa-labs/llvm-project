@@ -1434,7 +1434,7 @@ namespace test70 {
   // Check lines at top of file.
 }
 
-// https://github.com/llvm/llvm-project/issues/31462
+// https://github.com/llvm/llvm-trezoa/issues/31462
 namespace test71 {
   template <class T>
   struct foo {

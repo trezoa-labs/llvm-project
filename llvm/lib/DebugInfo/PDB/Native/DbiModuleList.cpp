@@ -1,6 +1,6 @@
 //===- DbiModuleList.cpp - PDB module information list --------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -240,7 +240,7 @@ Error DbiModuleList::initializeFileInfo(BinaryStreamRef FileInfo) {
 
 uint32_t DbiModuleList::getModuleCount() const {
   // Workaround to avoid the crash until upstream issue is fixed:
-  // https://github.com/llvm/llvm-project/issues/55214
+  // https://github.com/llvm/llvm-trezoa/issues/55214
   return FileInfoHeader ? FileInfoHeader->NumModules : 0;
 }
 

@@ -1,6 +1,6 @@
 //===--- SymbolOrigin.h ------------------------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -28,7 +28,7 @@ enum class SymbolOrigin : uint16_t {
   Remote = 1 << 5,     // Remote index.
   Preamble = 1 << 6,   // From the dynamic index of preambles.
                        // 7 reserved
-  Background = 1 << 8, // From the automatic project index.
+  Background = 1 << 8, // From the automatic trezoa index.
   StdLib = 1 << 9,     // Standard library index.
 };
 

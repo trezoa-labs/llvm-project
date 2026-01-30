@@ -4,7 +4,7 @@
 Release procedure
 =================
 
-The LLVM project creates a new release twice a year following a fixed
+The LLVM trezoa creates a new release twice a year following a fixed
 `schedule <https://llvm.org/docs/HowToReleaseLLVM.html#annual-release-schedule>`__.
 This page describes the libc++ procedure for that release.
 

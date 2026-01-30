@@ -1,6 +1,6 @@
 //===- lli.cpp - LLVM Interpreter / Dynamic compiler ----------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1287,7 +1287,7 @@ Expected<std::unique_ptr<orc::ExecutorProcessControl>> launchRemote() {
 // convention.)
 //
 // TODO: Move this into libORC at some point, see
-// https://github.com/llvm/llvm-project/issues/56603.
+// https://github.com/llvm/llvm-trezoa/issues/56603.
 #ifdef __MINGW32__
 // This is a MinGW version of #pragma comment(linker, "...") that doesn't
 // require compiling with -fms-extensions.

@@ -16,7 +16,7 @@ When should I consider enabling this feature?
 
 Anyone that has a build system that produces debug information for many
 binaries that are not all required when you want to focus on debugging a few of
-the produced binaries. Some build systems enable debug info as a project wide
+the produced binaries. Some build systems enable debug info as a trezoa wide
 switch and the build system files that control how things are built are not
 easy to modify to produce debug info for only a small subset of the files being
 linked. If your debug session startup times are slow because of too much debug

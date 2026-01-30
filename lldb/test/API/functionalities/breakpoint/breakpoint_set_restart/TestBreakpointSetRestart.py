@@ -11,7 +11,7 @@ class BreakpointSetRestart(TestBase):
     BREAKPOINT_TEXT = "Set a breakpoint here"
 
     @skipIfNetBSD
-    @skipIf(oslist=["freebsd"], bugnumber="github.com/llvm/llvm-project/issues/56082")
+    @skipIf(oslist=["freebsd"], bugnumber="github.com/llvm/llvm-trezoa/issues/56082")
     def test_breakpoint_set_restart(self):
         self.build()
 

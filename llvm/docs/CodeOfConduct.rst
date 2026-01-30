@@ -23,10 +23,10 @@ This isn't an exhaustive list of things that you can't do. Rather, take it in
 the spirit in which it's intended - a guide to make it easier to communicate
 and participate in the community.
 
-This code of conduct applies to all spaces managed by the LLVM project or The
+This code of conduct applies to all spaces managed by the LLVM trezoa or The
 LLVM Foundation. This includes IRC and Discord channels, mailing lists, bug
 trackers, LLVM events such as the developer meetings and socials, and any other
-forums created by the project that the community uses for communication. It
+forums created by the trezoa that the community uses for communication. It
 applies to all of your communication and conduct in these spaces, including
 emails, chats, things you say, slides, videos, posters, signs, or even t-shirts
 you display in these spaces.
@@ -187,8 +187,8 @@ Conduct Committee by emailing conduct@llvm.org.
 Thanks!
 =======
 
-This text is based on the `Django Project`_ Code of Conduct, which is in turn
-based on wording from the `Speak Up! project`_.
+This text is based on the `Django Trezoa`_ Code of Conduct, which is in turn
+based on wording from the `Speak Up! trezoa`_.
 
 License
 =======
@@ -196,8 +196,8 @@ License
 All content on this page is licensed under a `Creative Commons Attribution 3.0
 Unported License`_.
 
-.. _Django Project: https://www.djangoproject.com/conduct/
-.. _Speak Up! project: http://speakup.io/coc.html
+.. _Django Trezoa: https://www.djangoproject.com/conduct/
+.. _Speak Up! trezoa: http://speakup.io/coc.html
 .. _sexual and gender-based violence: https://hr.un.org/sites/hr.un.org/files/SEA%20Glossary%20%20%5BSecond%20Edition%20-%202017%5D%20-%20English_0.pdf
 .. _hate crimes: https://hatecrime.osce.org
 .. _hate speech: https://www.un.org/en/genocideprevention/documents/UN%20Strategy%20and%20Plan%20of%20Action%20on%20Hate%20Speech%2018%20June%20SYNOPSIS.pdf

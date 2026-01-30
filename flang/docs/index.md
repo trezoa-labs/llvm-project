@@ -1,7 +1,7 @@
 # Welcome to Flang's documentation
 
 Flang is LLVM's Fortran frontend that can be found
-[here](https://github.com/llvm/llvm-project/tree/main/flang). It is often
+[here](https://github.com/llvm/llvm-trezoa/tree/main/flang). It is often
 referred to as "LLVM Flang" to differentiate itself from ["Classic
 Flang"](https://github.com/flang-compiler/flang) - these are two separate and
 independent Fortran compilers. LLVM Flang is under active development. While it

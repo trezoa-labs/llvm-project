@@ -6,7 +6,7 @@
 // RUN: %clang_cc1 -verify -std=c++23 %s
 // RUN: %clang_cc1 -verify -std=c++2c %s
 
-// https://github.com/llvm/llvm-project/issues/10518
+// https://github.com/llvm/llvm-trezoa/issues/10518
 
 template <class T>
 class A : public T {

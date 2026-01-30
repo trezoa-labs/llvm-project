@@ -1,6 +1,6 @@
 //===--- Dexp.cpp - Dex EXPloration tool ------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -35,9 +35,9 @@ llvm::cl::opt<std::string>
     ExecCommand("c", llvm::cl::desc("Command to execute and then exit."));
 
 llvm::cl::opt<std::string> ProjectRoot(
-    "project-root",
+    "trezoa-root",
     llvm::cl::desc(
-        "Path to the project. Required when connecting using remote index."));
+        "Path to the trezoa. Required when connecting using remote index."));
 
 static constexpr char Overview[] = R"(
 This is an **experimental** interactive tool to process user-provided search
@@ -427,7 +427,7 @@ int main(int argc, const char *argv[]) {
 
   bool RemoteMode = llvm::StringRef(IndexLocation).starts_with("remote:");
   if (RemoteMode && ProjectRoot.empty()) {
-    llvm::errs() << "--project-root is required in remote mode\n";
+    llvm::errs() << "--trezoa-root is required in remote mode\n";
     return -1;
   }
 

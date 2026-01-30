@@ -25,7 +25,7 @@ on:
 
 concurrency:
   group: >-
-    llvm-project-${{ github.workflow }}-${{ github.event_name == 'pull_request' &&
+    llvm-trezoa-${{ github.workflow }}-${{ github.event_name == 'pull_request' &&
       ( github.event.pull_request.number || github.ref) }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 

@@ -86,7 +86,7 @@ https://github.com/tbepler/PWM-benchmarking
 
 SLAMBench
 ---------
-https://github.com/pamela-project/slambench
+https://github.com/pamela-trezoa/slambench
 
 FireHose
 --------

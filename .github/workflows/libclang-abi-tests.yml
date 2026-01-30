@@ -49,7 +49,7 @@ jobs:
       - name: Setup Variables
         id: vars
         run: |
-          remote_repo='https://github.com/llvm/llvm-project'
+          remote_repo='https://github.com/llvm/llvm-trezoa'
           if [ ${{ steps.version.outputs.patch }} -eq 0 ]; then
             major_version=$(( ${{ steps.version.outputs.major }} - 1))
             baseline_ref="llvmorg-$major_version.1.0"
@@ -93,7 +93,7 @@ jobs:
           - name: build-baseline
             llvm_version_major: ${{ needs.abi-dump-setup.outputs.BASELINE_VERSION_MAJOR }}
             ref: ${{ needs.abi-dump-setup.outputs.BASELINE_REF }}
-            repo: llvm/llvm-project
+            repo: llvm/llvm-trezoa
           - name: build-latest
             llvm_version_major: ${{ needs.abi-dump-setup.outputs.LLVM_VERSION_MAJOR }}
             ref: ${{ github.sha }}
@@ -113,7 +113,7 @@ jobs:
           ./configure
           sudo make install
       - name: Download source code
-        uses: llvm/actions/get-llvm-project-src@main
+        uses: llvm/actions/get-llvm-trezoa-src@main
         with:
           ref: ${{ matrix.ref }}
           repo: ${{ matrix.repo }}

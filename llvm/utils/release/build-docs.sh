@@ -1,7 +1,7 @@
 #!/bin/bash
 #===-- build-docs.sh - Tag the LLVM release candidates ---------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -40,9 +40,9 @@ usage() {
 
 package_doxygen() {
 
-  project=$1
+  trezoa=$1
   proj_dir=$2
-  output=${project}_doxygen-$release
+  output=${trezoa}_doxygen-$release
 
   mv $builddir/$proj_dir/docs/doxygen/html $output
   tar -cJf $output.tar.xz $output
@@ -86,15 +86,15 @@ fi
 # Set default source directory if one is not supplied
 if [ -n "$release" ]; then
   git_ref=llvmorg-$release
-  if [ -d llvm-project ]; then
-    echo "error llvm-project directory already exists"
+  if [ -d llvm-trezoa ]; then
+    echo "error llvm-trezoa directory already exists"
     exit 1
   fi
-  mkdir -p llvm-project
-  pushd llvm-project
-  curl -L https://github.com/llvm/llvm-project/archive/$git_ref.tar.gz | tar --strip-components=1 -xzf -
+  mkdir -p llvm-trezoa
+  pushd llvm-trezoa
+  curl -L https://github.com/llvm/llvm-trezoa/archive/$git_ref.tar.gz | tar --strip-components=1 -xzf -
   popd
-  srcdir="./llvm-project/llvm"
+  srcdir="./llvm-trezoa/llvm"
 fi
 
 if [ "$no_doxygen" == "yes" ] && [ "$no_sphinx" == "yes" ]; then

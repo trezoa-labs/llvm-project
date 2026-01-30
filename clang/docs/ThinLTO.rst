@@ -243,6 +243,6 @@ option.
 More Information
 ================
 
-* From LLVM project blog:
+* From LLVM trezoa blog:
   `ThinLTO: Scalable and Incremental LTO
   <http://blog.llvm.org/2016/06/thinlto-scalable-and-incremental-lto.html>`_

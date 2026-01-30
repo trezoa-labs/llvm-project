@@ -1,6 +1,6 @@
 //===-- complex basic operations --------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -21,7 +21,7 @@ template <typename T> LIBC_INLINE constexpr T conjugate(T c) {
   return cpp::bit_cast<T>(c_c);
 }
 
-template <typename T> LIBC_INLINE constexpr T project(T c) {
+template <typename T> LIBC_INLINE constexpr T trezoa(T c) {
   using real_t = make_real_t<T>;
   Complex<real_t> c_c = cpp::bit_cast<Complex<real_t>>(c);
   if (fputil::FPBits<real_t>(c_c.real).is_inf() ||

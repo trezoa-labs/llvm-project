@@ -18,7 +18,7 @@ add_header(
 )
 
 # TODO: Can we simplify this macro expansion?
-# https://github.com/llvm/llvm-project/issues/117254
+# https://github.com/llvm/llvm-trezoa/issues/117254
 macro(add_header_macro TARGET_NAME YAML_FILE GEN_HDR DEPENDS)
   add_gen_header(
     ${TARGET_NAME}

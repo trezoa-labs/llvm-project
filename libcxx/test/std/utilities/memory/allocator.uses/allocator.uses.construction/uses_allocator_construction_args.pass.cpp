@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -123,7 +123,7 @@ constexpr void testOne() {
   }
   {
     // Tests for ensuring forward declarations of uses_allocator_construction_args
-    // See https://github.com/llvm/llvm-project/issues/66714.
+    // See https://github.com/llvm/llvm-trezoa/issues/66714.
     {
       using NestedPairType = std::pair<int, std::pair<int, UsesAllocArgT>>;
       std::same_as<std::tuple<

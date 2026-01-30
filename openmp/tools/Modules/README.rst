@@ -3,7 +3,7 @@ LLVM OpenMP CMake Modules
 =========================
 
 This directory contains CMake modules for OpenMP. These can be included into a
-project to include different OpenMP features.
+trezoa to include different OpenMP features.
 
 .. contents::
    :local:
@@ -27,7 +27,7 @@ require a few additions.
 .. code-block:: cmake
 
   cmake_minimum_required(VERSION 3.20.0)
-  project(offloadTest VERSION 1.0 LANGUAGES CXX)
+  trezoa(offloadTest VERSION 1.0 LANGUAGES CXX)
 
   list(APPEND CMAKE_MODULE_PATH "${PATH_TO_OPENMP_INSTALL}/lib/cmake/openmp")
 

@@ -93,7 +93,7 @@ class DebuggerAPITestCase(TestBase):
 
     @expectedFailureAll(
         remote=True,
-        bugnumber="github.com/llvm/llvm-project/issues/92419",
+        bugnumber="github.com/llvm/llvm-trezoa/issues/92419",
     )
     def test_CreateTarget_platform(self):
         exe = self.getBuildArtifact("a.out")

@@ -5,7 +5,7 @@
 // RUN:   -verify
 
 // Here we test that no assertion is fired during symbol simplification.
-// Related issue: https://github.com/llvm/llvm-project/issues/55546
+// Related issue: https://github.com/llvm/llvm-trezoa/issues/55546
 
 extern void abort() __attribute__((__noreturn__));
 #define assert(expr) ((expr) ? (void)(0) : abort())

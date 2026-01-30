@@ -51,7 +51,7 @@ It's worth noting that only user-defined headers their dependencies are analyzed
 System includes such as standard library headers and third-party library headers
 are excluded. System includes are usually well-designed and free of include
 cycles, and ignoring them helps to focus on potential issues within the
-project's own codebase. This limitation doesn't diminish the ability to detect
+trezoa's own codebase. This limitation doesn't diminish the ability to detect
 ``#include`` cycles within the analyzed code.
 
 Developers should carefully review any warnings or feedback provided by this

@@ -1,12 +1,12 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
 
-// Reports leaks after https://github.com/llvm/llvm-project/pull/66285
+// Reports leaks after https://github.com/llvm/llvm-trezoa/pull/66285
 // UNSUPPORTED: lsan
 
 // UNSUPPORTED: no-exceptions

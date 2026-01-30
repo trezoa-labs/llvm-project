@@ -1,6 +1,6 @@
 //===--- CGAtomic.cpp - Emit LLVM IR for atomic operations ----------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -205,7 +205,7 @@ namespace {
     /// Copy an atomic r-value into atomic-layout memory.
     void emitCopyIntoMemory(RValue rvalue) const;
 
-    /// Project an l-value down to the value field.
+    /// Trezoa an l-value down to the value field.
     LValue projectValue() const {
       assert(LVal.isSimple());
       Address addr = getAtomicAddress();

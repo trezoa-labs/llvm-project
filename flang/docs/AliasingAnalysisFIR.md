@@ -1,6 +1,6 @@
 <!--===- docs/Aliasing.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -11,7 +11,7 @@
 This document describes the design of Alias Analysis for the FIR dialect, using the MLIR infrastructure. The intention is to use this analysis as a building block for more advanced analyses such as global code motion. 
 
 The result will be 
-1. A class, implementing the  [AliasAnalysis](https://github.com/llvm/llvm-project/blob/189900eb149bb55ae3787346f57c1ccbdc50fb3c/mlir/include/mlir/Analysis/AliasAnalysis.h#L232) interface. It will be able to answer two types of queries:
+1. A class, implementing the  [AliasAnalysis](https://github.com/llvm/llvm-trezoa/blob/189900eb149bb55ae3787346f57c1ccbdc50fb3c/mlir/include/mlir/Analysis/AliasAnalysis.h#L232) interface. It will be able to answer two types of queries:
    - AliasResult Alias (Value lhs, Value rhs)
     
      Given two memory references, return their aliasing behavior

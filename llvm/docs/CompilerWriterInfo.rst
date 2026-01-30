@@ -209,6 +209,6 @@ Miscellaneous Resources
 * `Executable File Formats <https://wiki.osdev.org/Category:Executable_Formats>`_
   has a list of various executable file formats.
 
-* `GCC prefetch project <http://gcc.gnu.org/projects/prefetch.html>`_ page has a
+* `GCC prefetch trezoa <http://gcc.gnu.org/projects/prefetch.html>`_ page has a
   good survey of the prefetching capabilities of a variety of modern
   processors.

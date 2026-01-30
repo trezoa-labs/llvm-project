@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -12,7 +12,7 @@
 
 // template <ErrorCodeEnum E> error_code(E e);
 
-// Regression test for https://github.com/llvm/llvm-project/issues/57614
+// Regression test for https://github.com/llvm/llvm-trezoa/issues/57614
 
 int make_error_code; // It's important that this comes before <system_error>
 

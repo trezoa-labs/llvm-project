@@ -122,7 +122,7 @@ to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code.
 When the desired code formatting style is different from the available options,
 the style can be customized using the ``-style="{key: value, ...}"`` option or
 by putting your style configuration in the ``.clang-format`` or ``_clang-format``
-file in your project's directory and using ``clang-format -style=file``.
+file in your trezoa's directory and using ``clang-format -style=file``.
 
 An easy way to create the ``.clang-format`` file is:
 
@@ -240,7 +240,7 @@ CLion Integration
 
 :program:`clang-format` is integrated into `CLion <https://www.jetbrains
 .com/clion/>`_ as an alternative code formatter. CLion turns it on
-automatically when there is a ``.clang-format`` file under the project root.
+automatically when there is a ``.clang-format`` file under the trezoa root.
 Code style rules are applied as you type, including indentation,
 auto-completion, code generation, and refactorings.
 

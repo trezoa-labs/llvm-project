@@ -317,7 +317,7 @@ There are six statistics tracked in a coverage summary:
 
 Of these six statistics, function coverage is usually the least granular while
 branch coverage (with MC/DC) is the most granular. 100% branch coverage for a
-function implies 100% region coverage for a function. The project-wide totals
+function implies 100% region coverage for a function. The trezoa-wide totals
 for each statistic are listed in the summary.
 
 Format compatibility guarantees
@@ -409,7 +409,7 @@ under your control:
 
 In C++ files, declare these as ``extern "C"``.
 
-Collecting coverage reports for the llvm project
+Collecting coverage reports for the llvm trezoa
 ================================================
 
 To prepare a coverage report for llvm (and any of its sub-projects), add

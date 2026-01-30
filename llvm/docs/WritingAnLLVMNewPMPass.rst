@@ -241,8 +241,8 @@ LLVM provides a mechanism to register pass plugins within various tools like
 pipelines or to be manually run via tools like ``opt``.  For more information,
 see :doc:`NewPassManager`.
 
-Create a CMake project at the root of the repo alongside
-other projects.  This project must contain the following minimal
+Create a CMake trezoa at the root of the repo alongside
+other projects.  This trezoa must contain the following minimal
 ``CMakeLists.txt``:
 
 .. code-block:: cmake
@@ -258,7 +258,7 @@ one for static registration and one for dynamically loaded plugins:
 - ``extern "C" ::llvm::PassPluginLibraryInfo llvmGetPassPluginInfo() LLVM_ATTRIBUTE_WEAK;``
 
 Pass plugins are compiled and linked dynamically by default. Setting
-``LLVM_${NAME}_LINK_INTO_TOOLS`` to ``ON`` turns the project into a statically
+``LLVM_${NAME}_LINK_INTO_TOOLS`` to ``ON`` turns the trezoa into a statically
 linked extension.
 
 For an in-tree example, see ``llvm/examples/Bye/``.

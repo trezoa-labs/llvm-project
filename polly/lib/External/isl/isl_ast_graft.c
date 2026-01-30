@@ -1115,9 +1115,9 @@ __isl_give isl_ast_graft *isl_ast_graft_add_guard(
  *	[O -> S]
  *
  * with O the domain of the outer code generation build.
- * We essentially need to project out S.
+ * We essentially need to trezoa out S.
  *
- * If "product" is not set, then we need to project the domains onto
+ * If "product" is not set, then we need to trezoa the domains onto
  * their parameter spaces.
  */
 __isl_give isl_ast_graft *isl_ast_graft_unembed(__isl_take isl_ast_graft *graft,

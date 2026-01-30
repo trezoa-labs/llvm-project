@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -129,7 +129,7 @@ int main(int, char**)
 
 #if TEST_STD_VER >= 17
     {
-      // See https://github.com/llvm/llvm-project/pull/93071#issuecomment-2166047398
+      // See https://github.com/llvm/llvm-trezoa/pull/93071#issuecomment-2166047398
       std::shared_ptr<char[]> a(new char[10], std::default_delete<char[]>());
     }
 #endif

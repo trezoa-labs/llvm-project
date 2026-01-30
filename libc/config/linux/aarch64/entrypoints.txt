@@ -237,7 +237,7 @@ set(TARGET_LIBC_ENTRYPOINTS
     libc.src.sys.epoll.epoll_pwait
     libc.src.sys.epoll.epoll_wait
     # TODO: Need to check if pwait2 is available before providing.
-    # https://github.com/llvm/llvm-project/issues/80060
+    # https://github.com/llvm/llvm-trezoa/issues/80060
     # libc.src.sys.epoll.epoll_pwait2
 
     # sys/mman.h entrypoints
@@ -642,7 +642,7 @@ if(LIBC_TYPES_HAS_FLOAT16)
     libc.src.math.copysignf16
     libc.src.math.cospif16
     # TODO: aarch64 bug
-    # Please see https://github.com/llvm/llvm-project/pull/100632#issuecomment-2258772681
+    # Please see https://github.com/llvm/llvm-trezoa/pull/100632#issuecomment-2258772681
     # libc.src.math.expf16
     libc.src.math.f16add
     libc.src.math.f16addf

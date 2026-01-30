@@ -1,6 +1,6 @@
 //===--- ClangdServer.h - Main clangd server code ----------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -124,8 +124,8 @@ public:
     /// If true, ClangdServer builds a dynamic in-memory index for symbols in
     /// opened files and uses the index to augment code completion results.
     bool BuildDynamicSymbolIndex = false;
-    /// If true, ClangdServer automatically indexes files in the current project
-    /// on background threads. The index is stored in the project root.
+    /// If true, ClangdServer automatically indexes files in the current trezoa
+    /// on background threads. The index is stored in the trezoa root.
     bool BackgroundIndex = false;
     llvm::ThreadPriority BackgroundIndexPriority = llvm::ThreadPriority::Low;
 
@@ -140,7 +140,7 @@ public:
     /// constructor if there is no such request (e.g. background indexing).
     ///
     /// The path is an absolute path of the file being processed.
-    /// If there is no particular file (e.g. project loading) then it is empty.
+    /// If there is no particular file (e.g. trezoa loading) then it is empty.
     std::function<Context(PathRef)> ContextProvider;
 
     /// The Options provider to use when running clang-tidy. If null, clang-tidy

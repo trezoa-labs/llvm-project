@@ -41,7 +41,7 @@ minimizing adoption effort.
 The ``-fbounds-safety`` extension has been adopted on millions of lines of
 production C code and proven to work in a consumer operating system setting. The
 extension was designed to enable incremental adoption — a key requirement in
-real-world settings where modifying an entire project and its dependencies all
+real-world settings where modifying an entire trezoa and its dependencies all
 at once is often not possible. It also addresses multiple of other practical
 challenges that have made existing approaches to safer C dialects difficult to
 adopt, offering these properties that make it widely adoptable in practice:

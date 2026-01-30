@@ -35,7 +35,7 @@ Can also use the graphical version of CMake:
 * Open `CMake GUI`.
 * Under `Where to build the binaries`, same path as source plus `build`.
 * Under `CMAKE_INSTALL_PREFIX`, same path as source plus `install`.
-* Click `Configure`, `Generate`, `Open Project`.
+* Click `Configure`, `Generate`, `Open Trezoa`.
 * If build fails, try deleting entire directory and starting again, or unticking options to build less.
 
 ## Building with Intel 2015 Update 1 or Intel System Studio Update 4

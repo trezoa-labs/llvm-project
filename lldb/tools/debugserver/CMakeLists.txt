@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-project(Debugserver LANGUAGES C CXX ASM-ATT)
+trezoa(Debugserver LANGUAGES C CXX ASM-ATT)
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)

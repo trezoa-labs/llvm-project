@@ -1,7 +1,7 @@
 #!/bin/bash
 #===- llvm/utils/docker/build_docker_image.sh ----------------------------===//
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -35,7 +35,7 @@ Available options:
                         Cherry-picks are performed in the sorted order using the
                         following command:
                         'git cherry-pick \$rev'.
-    -p|--llvm-project   Add the project to a list LLVM_ENABLE_PROJECTS, passed to
+    -p|--llvm-trezoa   Add the trezoa to a list LLVM_ENABLE_PROJECTS, passed to
                         CMake.
                         Can be specified multiple times.
     --checksums         name of a file, containing checksums of llvm checkout.
@@ -105,7 +105,7 @@ while [[ $# -gt 0 ]]; do
       BUILDSCRIPT_ARGS="$BUILDSCRIPT_ARGS $1 $2"
       shift 2
       ;;
-    -p|--llvm-project)
+    -p|--llvm-trezoa)
       PROJ="$2"
       CMAKE_ENABLED_PROJECTS="$CMAKE_ENABLED_PROJECTS;$PROJ"
       shift 2

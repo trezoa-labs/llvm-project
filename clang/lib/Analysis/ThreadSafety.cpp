@@ -1,6 +1,6 @@
 //===- ThreadSafety.cpp ---------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1267,7 +1267,7 @@ bool ThreadSafetyAnalyzer::inCurrentScope(const CapabilityExpr &CapE) {
   }
 
   // Members are in scope from methods of the same class.
-  if (const auto *P = dyn_cast<til::Project>(SExp)) {
+  if (const auto *P = dyn_cast<til::Trezoa>(SExp)) {
     if (!isa_and_nonnull<CXXMethodDecl>(CurrentFunction))
       return false;
     const ValueDecl *VD = P->clangDecl();

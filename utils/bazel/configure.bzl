@@ -2,10 +2,10 @@
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
-"""Helper macros to configure the LLVM overlay project."""
+"""Helper macros to configure the LLVM overlay trezoa."""
 
 # Directory of overlay files relative to WORKSPACE
-DEFAULT_OVERLAY_PATH = "llvm-project-overlay"
+DEFAULT_OVERLAY_PATH = "llvm-trezoa-overlay"
 
 DEFAULT_TARGETS = [
     "AArch64",
@@ -33,7 +33,7 @@ DEFAULT_TARGETS = [
 def _overlay_directories(repository_ctx):
     src_path = repository_ctx.path(Label("@llvm-raw//:WORKSPACE")).dirname
     bazel_path = src_path.get_child("utils").get_child("bazel")
-    overlay_path = bazel_path.get_child("llvm-project-overlay")
+    overlay_path = bazel_path.get_child("llvm-trezoa-overlay")
     script_path = bazel_path.get_child("overlay_directories.py")
 
     python_bin = repository_ctx.which("python3")

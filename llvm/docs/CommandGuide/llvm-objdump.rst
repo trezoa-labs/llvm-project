@@ -474,7 +474,7 @@ XCOFF ONLY OPTIONS AND COMMANDS
 BUGS
 ----
 
-To report bugs, please visit <https://github.com/llvm/llvm-project/labels/tools:llvm-objdump/>.
+To report bugs, please visit <https://github.com/llvm/llvm-trezoa/labels/tools:llvm-objdump/>.
 
 SEE ALSO
 --------

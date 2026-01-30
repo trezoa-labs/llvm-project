@@ -1,6 +1,6 @@
 /*===------- llvm/Config/config.h - llvm configuration ------------*- C -*-===*/
 /*                                                                            */
-/* Part of the LLVM Project, under the Apache License v2.0 with LLVM          */
+/* Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM          */
 /* Exceptions.                                                                */
 /* See https://llvm.org/LICENSE.txt for license information.                  */
 /* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    */
@@ -24,7 +24,7 @@
 #include "llvm/Config/llvm-config.h"
 
 /* Bug report URL. */
-#define BUG_REPORT_URL "https://github.com/llvm/llvm-project/issues/"
+#define BUG_REPORT_URL "https://github.com/llvm/llvm-trezoa/issues/"
 
 /* Define to 1 to enable backtraces, and to 0 otherwise. */
 #define ENABLE_BACKTRACES 1
@@ -265,7 +265,7 @@
 /* LTDL_SHLIB_EXT defined in Bazel */
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "https://github.com/llvm/llvm-project/issues/"
+#define PACKAGE_BUGREPORT "https://github.com/llvm/llvm-trezoa/issues/"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "LLVM"

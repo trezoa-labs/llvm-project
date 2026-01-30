@@ -26,9 +26,9 @@ math.h
 Source Locations
 ================
 
-- The main source is located at: `libc/src/math <https://github.com/llvm/llvm-project/tree/main/libc/src/math>`_.
-- The tests are located at: `libc/test/src/math <https://github.com/llvm/llvm-project/tree/main/libc/test/src/math>`_.
-- The floating point utilities are located at: `libc/src/__support/FPUtil <https://github.com/llvm/llvm-project/tree/main/libc/src/__support/FPUtil>`_.
+- The main source is located at: `libc/src/math <https://github.com/llvm/llvm-trezoa/tree/main/libc/src/math>`_.
+- The tests are located at: `libc/test/src/math <https://github.com/llvm/llvm-trezoa/tree/main/libc/test/src/math>`_.
+- The floating point utilities are located at: `libc/src/__support/FPUtil <https://github.com/llvm/llvm-trezoa/tree/main/libc/src/__support/FPUtil>`_.
 
 Implementation Requirements / Goals
 ===================================
@@ -64,40 +64,40 @@ Implementation Requirements / Goals
 Add a new math function to LLVM libc
 ====================================
 
-* To add a new math function, follow the steps at: `libc/src/math/docs/add_math_function.md <https://github.com/llvm/llvm-project/tree/main/libc/src/math/docs/add_math_function.md>`_.
+* To add a new math function, follow the steps at: `libc/src/math/docs/add_math_function.md <https://github.com/llvm/llvm-trezoa/tree/main/libc/src/math/docs/add_math_function.md>`_.
 
 Implementation Status
 =====================
 
 * To check math functions enabled for Linux:
 
-  - `linux-x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/x86_64/entrypoints.txt>`_
+  - `linux-x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/x86_64/entrypoints.txt>`_
 
-  - `linux-aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/aarch64/entrypoints.txt>`_
+  - `linux-aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/aarch64/entrypoints.txt>`_
 
-  - `linux-aarch32 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/arm/entrypoints.txt>`_
+  - `linux-aarch32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/arm/entrypoints.txt>`_
 
-  - `linux-riscv and linux-riscv32 <https://github.com/llvm/llvm-project/tree/main/libc/config/linux/riscv/entrypoints.txt>`_
+  - `linux-riscv and linux-riscv32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/linux/riscv/entrypoints.txt>`_
 
 * To check math functions enabled for Windows:
 
-  - `windows-x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/windows/entrypoints.txt>`_
+  - `windows-x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/windows/entrypoints.txt>`_
 
   - windows-aarch64 - to be added
 
 * To check math functions enabled for macOS:
 
-  - `darwin-x86_64 <https://github.com/llvm/llvm-project/tree/main/libc/config/darwin/x86_64/entrypoints.txt>`_
+  - `darwin-x86_64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/darwin/x86_64/entrypoints.txt>`_
 
-  - `darwin-aarch64 <https://github.com/llvm/llvm-project/tree/main/libc/config/darwin/arm/entrypoints.txt>`_
+  - `darwin-aarch64 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/darwin/arm/entrypoints.txt>`_
 
 * To check math functions enabled for GPU:
 
-  - `gpu-entrypoints <https://github.com/llvm/llvm-project/tree/main/libc/config/gpu/entrypoints.txt>`_
+  - `gpu-entrypoints <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/gpu/entrypoints.txt>`_
 
 * To check math functions enabled for embedded system:
 
-  - `baremetal-aarch32 <https://github.com/llvm/llvm-project/tree/main/libc/config/baremetal/arm/entrypoints.txt>`_
+  - `baremetal-aarch32 <https://github.com/llvm/llvm-trezoa/tree/main/libc/config/baremetal/arm/entrypoints.txt>`_
 
   - baremetal-riscv32 - to be added
 
@@ -372,10 +372,10 @@ Legends:
 Performance
 ===========
 
-* Simple performance testings are located at: `libc/test/src/math/performance_testing <https://github.com/llvm/llvm-project/tree/main/libc/test/src/math/performance_testing>`_.
+* Simple performance testings are located at: `libc/test/src/math/performance_testing <https://github.com/llvm/llvm-trezoa/tree/main/libc/test/src/math/performance_testing>`_.
 
 * We also use the *perf* tool from the `CORE-MATH <https://core-math.gitlabpages.inria.fr/>`_
-  project: `link <https://gitlab.inria.fr/core-math/core-math/-/tree/master>`_.
+  trezoa: `link <https://gitlab.inria.fr/core-math/core-math/-/tree/master>`_.
   The performance results from the CORE-MATH's perf tool are reported in the
   table below, using the system library as reference (such as the `GNU C library <https://www.gnu.org/software/libc/>`_
   on Linux). Fmod performance results obtained with "performance_testing".
@@ -454,6 +454,6 @@ References
 * `CRLIBM <https://hal-ens-lyon.archives-ouvertes.fr/ensl-01529804/file/crlibm.pdf>`_.
 * `RLIBM <https://people.cs.rutgers.edu/~sn349/rlibm/>`_.
 * `Sollya <https://www.sollya.org/>`_.
-* `The CORE-MATH Project <https://core-math.gitlabpages.inria.fr/>`_.
+* `The CORE-MATH Trezoa <https://core-math.gitlabpages.inria.fr/>`_.
 * `The GNU C Library (glibc) <https://www.gnu.org/software/libc/>`_.
 * `The GNU MPFR Library <https://www.mpfr.org/>`_.

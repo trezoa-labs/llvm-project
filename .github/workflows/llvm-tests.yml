@@ -83,7 +83,7 @@ concurrency:
 #           - name: build-baseline
 #             llvm_version_major: ${{ needs.abi-dump-setup.outputs.BASELINE_VERSION_MAJOR }}
 #             ref: llvmorg-${{ needs.abi-dump-setup.outputs.BASELINE_VERSION_MAJOR }}.${{ needs.abi-dump-setup.outputs.BASELINE_VERSION_MINOR }}.0
-#             repo: llvm/llvm-project
+#             repo: llvm/llvm-trezoa
 #           - name: build-latest
 #             llvm_version_major: ${{ needs.abi-dump-setup.outputs.LLVM_VERSION_MAJOR }}
 #             ref: ${{ github.sha }}
@@ -103,7 +103,7 @@ concurrency:
 #           ./configure
 #           sudo make install
 #       - name: Download source code
-#         uses: llvm/actions/get-llvm-project-src@main
+#         uses: llvm/actions/get-llvm-trezoa-src@main
 #         with:
 #           ref: ${{ matrix.ref }}
 #           repo: ${{ matrix.repo }}

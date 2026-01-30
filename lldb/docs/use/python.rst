@@ -497,7 +497,7 @@ tree_utils.py - Example Python functions using LLDB's API, including DFS
    """
    # ===-- tree_utils.py ---------------------------------------*- Python -*-===//
    #
-   #  Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   #  Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    #  See https://llvm.org/LICENSE.txt for license information.
    #  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
    #
@@ -619,7 +619,7 @@ dictionary.c - Sample dictionary program, with bug
 
    //===-- dictionary.c ---------------------------------------------*- C -*-===//
    //
-   // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   // Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    // See https://llvm.org/LICENSE.txt for license information.
    // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
    //
@@ -791,6 +791,6 @@ dictionary.c - Sample dictionary program, with bug
    }
 
 
-The text for "Romeo and Juliet" can be obtained from the Gutenberg Project
+The text for "Romeo and Juliet" can be obtained from the Gutenberg Trezoa
 (http://www.gutenberg.org).
 

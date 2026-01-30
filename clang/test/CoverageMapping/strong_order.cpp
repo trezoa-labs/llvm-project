@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -mllvm -emptyline-comment-coverage=false -fprofile-instrument=clang -fcoverage-mapping -dump-coverage-mapping -emit-llvm-only -std=c++23 -triple %itanium_abi_triple -main-file-name if.cpp %s
 
 // No crash for following example.
-// See https://github.com/llvm/llvm-project/issues/45481
+// See https://github.com/llvm/llvm-trezoa/issues/45481
 namespace std {
 class strong_ordering;
 

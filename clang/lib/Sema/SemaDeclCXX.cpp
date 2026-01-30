@@ -1,6 +1,6 @@
 //===------ SemaDeclCXX.cpp - Semantic Analysis for C++ Declarations ------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -7061,7 +7061,7 @@ void Sema::CheckCompletedCXXClass(Scope *S, CXXRecordDecl *Record) {
     bool EffectivelyConstexprDestructor = true;
     // Avoid triggering vtable instantiation due to a dtor that is not
     // "effectively constexpr" for better compatibility.
-    // See https://github.com/llvm/llvm-project/issues/102293 for more info.
+    // See https://github.com/llvm/llvm-trezoa/issues/102293 for more info.
     if (isa<CXXDestructorDecl>(M)) {
       auto Check = [](QualType T, auto &&Check) -> bool {
         const CXXRecordDecl *RD =
@@ -7155,7 +7155,7 @@ void Sema::CheckCompletedCXXClass(Scope *S, CXXRecordDecl *Record) {
   // That diagnostic defaults to an error, but we allow projects to
   // map it down to a warning (or ignore it).  It's a fairly common
   // practice among users of the ms_struct pragma to mass-annotate
-  // headers, sweeping up a bunch of types that the project doesn't
+  // headers, sweeping up a bunch of types that the trezoa doesn't
   // really rely on MSVC-compatible layout for.  We must therefore
   // support "ms_struct except for C++ stuff" as a secondary ABI.
   // Don't emit this diagnostic if the feature was enabled as a
@@ -12117,7 +12117,7 @@ static bool TryNamespaceTypoCorrection(Sema &S, LookupResult &R, Scope *Sc,
                         Sema::CTK_ErrorRecovery)) {
     // Generally we find it is confusing more than helpful to diagnose the
     // invisible namespace.
-    // See https://github.com/llvm/llvm-project/issues/73893.
+    // See https://github.com/llvm/llvm-trezoa/issues/73893.
     //
     // However, we should diagnose when the users are trying to using an
     // invisible namespace. So we handle the case specially here.

@@ -871,7 +871,7 @@ compilations steps.
   .. code-block:: console
 
     $ export CC_PRINT_PROC_STAT=1
-    $ export CC_PRINT_PROC_STAT_FILE=~/project-build-proc-stat.csv
+    $ export CC_PRINT_PROC_STAT_FILE=~/trezoa-build-proc-stat.csv
     $ make
 
 Other Options
@@ -1337,7 +1337,7 @@ Controlling Diagnostics via Suppression Mappings
 
 Warning suppression mappings enable users to suppress Clang's diagnostics at a
 per-file granularity. This allows enforcing diagnostics in specific parts of the
-project even if there are violations in some headers.
+trezoa even if there are violations in some headers.
 
 .. code-block:: console
 
@@ -2673,7 +2673,7 @@ usual build cycle when using sample profilers for optimization:
    While Perf is Linux-specific, SEP can be used on Linux, Windows, and FreeBSD.
 
    The LLVM tool ``llvm-profgen`` can convert output of either Perf or SEP. An
-   external project, `AutoFDO <https://github.com/google/autofdo>`_, also
+   external trezoa, `AutoFDO <https://github.com/google/autofdo>`_, also
    provides a ``create_llvm_prof`` tool which supports Linux Perf output.
 
    When using Perf:
@@ -3253,7 +3253,7 @@ Disabling Instrumentation
 
 In certain situations, it may be useful to disable profile generation or use
 for specific files in a build, without affecting the main compilation flags
-used for the other files in the project.
+used for the other files in the trezoa.
 
 In these cases, you can use the flag ``-fno-profile-instr-generate`` (or
 ``-fno-profile-generate``) to disable profile generation, and
@@ -4690,7 +4690,7 @@ Note that only very basic functionality is supported at this point and therefore
 it is not suitable for arbitrary use cases. This feature is only enabled when clang
 build is configured with ``-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=SPIRV`` option.
 
-Linking is done using ``spirv-link`` from `the SPIRV-Tools project
+Linking is done using ``spirv-link`` from `the SPIRV-Tools trezoa
 <https://github.com/KhronosGroup/SPIRV-Tools#linker>`_. Similar to other external
 linkers, Clang will expect ``spirv-link`` to be installed separately and to be
 present in the ``PATH`` environment variable. Please refer to `the build and
@@ -4722,14 +4722,14 @@ clang-cl can also be used from inside Visual Studio by selecting the LLVM
 Platform Toolset. The toolset is not part of the installer, but may be installed
 separately from the
 `Visual Studio Marketplace <https://marketplace.visualstudio.com/items?itemName=LLVMExtensions.llvm-toolchain>`_.
-To use the toolset, select a project in Solution Explorer, open its Property
+To use the toolset, select a trezoa in Solution Explorer, open its Property
 Page (Alt+F7), and in the "General" section of "Configuration Properties"
 change "Platform Toolset" to LLVM.  Doing so enables an additional Property
 Page for selecting the clang-cl executable to use for builds.
 
 To use the toolset with MSBuild directly, invoke it with e.g.
 ``/p:PlatformToolset=LLVM``. This allows trying out the clang-cl toolchain
-without modifying your project files.
+without modifying your trezoa files.
 
 It's also possible to point MSBuild at clang-cl without changing toolset by
 passing ``/p:CLToolPath=c:\llvm\bin /p:CLToolExe=clang-cl.exe``.
@@ -4773,7 +4773,7 @@ options are spelled with a leading ``/``, they will be mistaken for a filename:
 
     clang-cl.exe: error: no such file or directory: '/foobar'
 
-Please `file a bug <https://github.com/llvm/llvm-project/issues/new?labels=clang-cl>`_
+Please `file a bug <https://github.com/llvm/llvm-trezoa/issues/new?labels=clang-cl>`_
 for any valid cl.exe flags that clang-cl does not understand.
 
 Execute ``clang-cl /?`` to see a list of supported options:

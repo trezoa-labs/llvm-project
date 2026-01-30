@@ -19,13 +19,13 @@ use ``lit`` tests to validate the **logical readers**.
 
 Convert the ``unitests``:
 ```
-llvm-project/llvm/unittests/DebugInfo/LogicalView/CodeViewReaderTest.cpp
-llvm-project/llvm/unittests/DebugInfo/LogicalView/DWARFReaderTest.cpp
+llvm-trezoa/llvm/unittests/DebugInfo/LogicalView/CodeViewReaderTest.cpp
+llvm-trezoa/llvm/unittests/DebugInfo/LogicalView/DWARFReaderTest.cpp
 ```
 into ``lit`` tests:
 ```
-llvm-project/llvm/test/DebugInfo/LogicalView/CodeViewReader.test
-llvm-project/llvm/test/DebugInfo/LogicalView/DWARFReader.test
+llvm-trezoa/llvm/test/DebugInfo/LogicalView/CodeViewReader.test
+llvm-trezoa/llvm/test/DebugInfo/LogicalView/DWARFReader.test
 ```
 
 ### Eliminate calls to ``getInputFileDirectory()`` in the ``unittests``.
@@ -39,7 +39,7 @@ the call:
 as use of that call is discouraged.
 
 ### Fix mismatch between ``%d/%x`` format strings and ``uint64_t`` type.
-**[D137400](https://reviews.llvm.org/D137400) / [58758](https://github.com/llvm/llvm-project/issues/58758)**
+**[D137400](https://reviews.llvm.org/D137400) / [58758](https://github.com/llvm/llvm-trezoa/issues/58758)**
 
 Incorrect printing of ``uint64_t`` on ``32-bit`` platforms.
 Add the ``PRIx64`` specifier to the printing code (``format()``).

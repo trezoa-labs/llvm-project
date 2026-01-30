@@ -1,6 +1,6 @@
 //===- DXILResource.cpp - DXIL Resource helper objects --------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -44,7 +44,7 @@ template <> void ResourceTable<ConstantBuffer>::collect(Module &M) {
         ConstantBuffer(Counter++, hlsl::FrontendResource(cast<MDNode>(Res))));
   }
   // FIXME: share CBufferDataLayout with CBuffer load lowering.
-  //   See https://github.com/llvm/llvm-project/issues/58381
+  //   See https://github.com/llvm/llvm-trezoa/issues/58381
   CBufferDataLayout CBDL(M.getDataLayout(), /*IsLegacy*/ true);
   for (auto &CB : Data)
     CB.setSize(CBDL);
@@ -240,7 +240,7 @@ void UAVResource::print(raw_ostream &OS) const {
                    8, OS);
 
   // FIXME: support SampleCount.
-  // See https://github.com/llvm/llvm-project/issues/58175
+  // See https://github.com/llvm/llvm-trezoa/issues/58175
   printKind(Shape, 12, OS, /*SRV*/ false, HasCounter);
   // Print the binding part.
   ResourceBase::print(OS, "U", "u");

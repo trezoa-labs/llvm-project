@@ -116,7 +116,7 @@ Changes to the LLVM IR
 Changes to LLVM infrastructure
 ------------------------------
 
- * Two methods that use Instruction pointers as code positions (moveBefore, getFirstNonPHI) have been deprecated in favour of overloads and variants that use `BasicBlock::iterator`s instead. The pointer-flavoured methods will be removed in a future release. This work is part of the [RemoveDIs](https://llvm.org/docs/RemoveDIsDebugInfo.html) project, the documentation for which contains instructions for updating call-sites using the deprecated methods.
+ * Two methods that use Instruction pointers as code positions (moveBefore, getFirstNonPHI) have been deprecated in favour of overloads and variants that use `BasicBlock::iterator`s instead. The pointer-flavoured methods will be removed in a future release. This work is part of the [RemoveDIs](https://llvm.org/docs/RemoveDIsDebugInfo.html) trezoa, the documentation for which contains instructions for updating call-sites using the deprecated methods.
 
 Changes to building LLVM
 ------------------------
@@ -209,13 +209,13 @@ Changes to the Hexagon Backend
 Changes to the LoongArch Backend
 --------------------------------
 
-* [Incorrect GOT usage](https://github.com/llvm/llvm-project/pull/117099) for `non-dso_local` function calls in large code model is fixed.
+* [Incorrect GOT usage](https://github.com/llvm/llvm-trezoa/pull/117099) for `non-dso_local` function calls in large code model is fixed.
 
-* A [gprof support issue](https://github.com/llvm/llvm-project/issues/121103) is fixed.
+* A [gprof support issue](https://github.com/llvm/llvm-trezoa/issues/121103) is fixed.
 
-* A [SDAG hang issue](https://github.com/llvm/llvm-project/issues/107355) caused by `ISD::CONCAT_VECTORS` is fixed.
+* A [SDAG hang issue](https://github.com/llvm/llvm-trezoa/issues/107355) caused by `ISD::CONCAT_VECTORS` is fixed.
 
-* A [compiler crash issue](https://github.com/llvm/llvm-project/issues/118301) when converting `half` to `i32` is fixed.
+* A [compiler crash issue](https://github.com/llvm/llvm-trezoa/issues/118301) when converting `half` to `i32` is fixed.
 
 * Almost all of `la64v1.1` instructions can now be generated. The full list is
   `frecipe.s`, `frecipe.d`, `frsqrte.s`, `frsqrte.d`, `vfrecipe.s`, `vfrecipe.d`,
@@ -584,7 +584,7 @@ Changes to LLDB
   ```
 
 * DWARF indexing speed (for binaries not using the `debug_names` index) increased
-  by [30-60%](https://github.com/llvm/llvm-project/pull/118657).
+  by [30-60%](https://github.com/llvm/llvm-trezoa/pull/118657).
 
 * The `frame diagnose` now works on ELF-based systems. After a crash, LLDB will
   try to determine the likely cause of the signal, matching Darwin behavior.
@@ -647,13 +647,13 @@ Changes to LLDB
 * LLDB now supports optionally enabled/disabled register sets (particularly floating point registers) for RISC-V 64. This happens for targets like `RV64IMAC` or `RV64IMACV`,
   that have no floating point registers. The change is applied to native debugging and core-file usage.
 
-* LLDB now supports [core-file for LoongArch](https://github.com/llvm/llvm-project/pull/112296).
+* LLDB now supports [core-file for LoongArch](https://github.com/llvm/llvm-trezoa/pull/112296).
 
-* LLDB now supports [hardware breakpoint and watchpoint for LoongArch](https://github.com/llvm/llvm-project/pull/118770).
+* LLDB now supports [hardware breakpoint and watchpoint for LoongArch](https://github.com/llvm/llvm-trezoa/pull/118770).
 
-* LLDB now supports [vector registers for LoongArch](https://github.com/llvm/llvm-project/pull/120664) when debugging a live process.
+* LLDB now supports [vector registers for LoongArch](https://github.com/llvm/llvm-trezoa/pull/120664) when debugging a live process.
 
-* Incorrect floating-point register DWARF numbers for LoongArch were [fixed](https://github.com/llvm/llvm-project/pull/120391).
+* Incorrect floating-point register DWARF numbers for LoongArch were [fixed](https://github.com/llvm/llvm-trezoa/pull/120391).
 
 * Support was added for handling the GDB Remote Protocol `x` packet in the format introduced by GDB 16.2. LLDB currently uses a different format for `x` and LLDB is now able to handle both formats. At some point in the future support for LLDB's format of `x` will be removed.
 
@@ -669,7 +669,7 @@ Changes to the Profile Runtime
 * On platforms where ``atexit``-registered functions are not called when
   a DSO is ``dlclose``'d, a mechanism is added that implements this
   missing functionality for calls to ``atexit`` in the profile runtime.
-  [This is currently only enabled on AIX](https://github.com/llvm/llvm-project/pull/102940).
+  [This is currently only enabled on AIX](https://github.com/llvm/llvm-trezoa/pull/102940).
 
 Other Changes
 -------------
@@ -677,7 +677,7 @@ Other Changes
 External Open Source Projects Using LLVM {{env.config.release}}
 ===============================================================
 
-* A project...
+* A trezoa...
 
 Additional Information
 ======================

@@ -1,6 +1,6 @@
 //===- ThreadSafetyTraverse.h -----------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -221,7 +221,7 @@ public:
     return E0 && E1;
   }
 
-  R_SExpr reduceProject(Project &Orig, R_SExpr E0) { return E0; }
+  R_SExpr reduceProject(Trezoa &Orig, R_SExpr E0) { return E0; }
   R_SExpr reduceCall(Call &Orig, R_SExpr E0) { return E0; }
   R_SExpr reduceAlloc(Alloc &Orig, R_SExpr E0) { return E0; }
   R_SExpr reduceLoad(Load &Orig, R_SExpr E0) { return E0; }
@@ -705,7 +705,7 @@ protected:
     }
   }
 
-  void printProject(const Project *E, StreamType &SS) {
+  void printProject(const Trezoa *E, StreamType &SS) {
     if (CStyle) {
       // Omit the  this->
       if (const auto *SAP = dyn_cast<SApply>(E->record())) {

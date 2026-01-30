@@ -195,7 +195,7 @@ branch of LLVM monorepo:
 ```bash
 $ mkdir ${TOPLEV}
 $ cd ${TOPLEV}
-$ git clone --branch=release/7.x https://github.com/llvm/llvm-project.git
+$ git clone --branch=release/7.x https://github.com/llvm/llvm-trezoa.git
 ```
 
 ### Building Stage 1 Compiler
@@ -209,7 +209,7 @@ compiler-rt components that are known to cause build issues at release/7.x.
 ```bash
 $ mkdir ${TOPLEV}/stage1
 $ cd ${TOPLEV}/stage1
-$ cmake -G Ninja ${TOPLEV}/llvm-project/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
+$ cmake -G Ninja ${TOPLEV}/llvm-trezoa/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_ASM_COMPILER=gcc \
       -DLLVM_ENABLE_PROJECTS="clang;lld" \
@@ -228,7 +228,7 @@ profile generation capabilities:
 $ mkdir ${TOPLEV}/stage2-prof-gen
 $ cd ${TOPLEV}/stage2-prof-gen
 $ CPATH=${TOPLEV}/stage1/install/bin/
-$ cmake -G Ninja ${TOPLEV}/llvm-project/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
+$ cmake -G Ninja ${TOPLEV}/llvm-trezoa/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=$CPATH/clang -DCMAKE_CXX_COMPILER=$CPATH/clang++ \
     -DLLVM_ENABLE_PROJECTS="clang;lld" \
@@ -246,7 +246,7 @@ while building Clang itself:
 $ mkdir ${TOPLEV}/stage3-train
 $ cd ${TOPLEV}/stage3-train
 $ CPATH=${TOPLEV}/stage2-prof-gen/install/bin
-$ cmake -G Ninja ${TOPLEV}/llvm-project/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
+$ cmake -G Ninja ${TOPLEV}/llvm-trezoa/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=$CPATH/clang -DCMAKE_CXX_COMPILER=$CPATH/clang++ \
     -DLLVM_ENABLE_PROJECTS="clang" \
@@ -275,7 +275,7 @@ $ mkdir ${TOPLEV}/stage2-prof-use-lto
 $ cd ${TOPLEV}/stage2-prof-use-lto
 $ CPATH=${TOPLEV}/stage1/install/bin/
 $ export LDFLAGS="-Wl,-q"
-$ cmake -G Ninja ${TOPLEV}/llvm-project/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
+$ cmake -G Ninja ${TOPLEV}/llvm-trezoa/llvm -DLLVM_TARGETS_TO_BUILD=X86 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=$CPATH/clang -DCMAKE_CXX_COMPILER=$CPATH/clang++ \
     -DLLVM_ENABLE_PROJECTS="clang;lld" \

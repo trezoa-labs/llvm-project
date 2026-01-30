@@ -28,7 +28,7 @@ Standard C++ Named modules
 In order to better understand the compiler's behavior, it is helpful to
 understand some terms and definitions for readers who are not familiar with the
 C++ feature. This document is not a tutorial on C++; it only introduces
-necessary concepts to better understand use of modules in a project.
+necessary concepts to better understand use of modules in a trezoa.
 
 Background and terminology
 --------------------------
@@ -339,7 +339,7 @@ When these options are specified in the same invocation of the compiler, the
 
 Note: all dependant BMIs must be specified explicitly, either directly or
 indirectly dependent BMIs explicitly. See
-https://github.com/llvm/llvm-project/issues/62707 for details.
+https://github.com/llvm/llvm-trezoa/issues/62707 for details.
 
 When compiling a ``module implementation unit``, the BMI of the corresponding
 ``primary module interface unit`` must be specified because a module
@@ -513,7 +513,7 @@ consistency with MSVC, ODR checking of declarations in the global module
 fragment is disabled by default. These checks can be enabled by specifying
 ``-Xclang -fno-skip-odr-check-in-gmf`` when compiling. If the check is enabled
 and you encounter incorrect or missing diagnostics, please report them via the
-`community issue tracker <https://github.com/llvm/llvm-project/issues/>`_.
+`community issue tracker <https://github.com/llvm/llvm-trezoa/issues/>`_.
 
 Privacy Issue
 -------------
@@ -740,7 +740,7 @@ feedback about missed optimization opportunities. For example,
     return B();
   }
 
-To compile the project (for brevity, some commands are omitted.):
+To compile the trezoa (for brevity, some commands are omitted.):
 
 .. code-block:: console
 
@@ -945,7 +945,7 @@ both headers and module interfaces for a while to not break existing users.
 This section suggests some suggestions on how to ease the transition process
 for existing libraries. **Note that this information is only intended as
 guidance, rather than as requirements to use modules in Clang.** It presumes
-the project is starting with no module-based dependencies.
+the trezoa is starting with no module-based dependencies.
 
 ABI non-breaking styles
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -1050,13 +1050,13 @@ The pattern for ABI breaking style is similar to the export extern-C++ style.
   ...
   #include "header_n.h"
 
-  #if the number of .cpp files in your project are small
+  #if the number of .cpp files in your trezoa are small
   module :private;
   #include "source_1.cpp"
   #include "source_2.cpp"
   ...
   #include "source_n.cpp"
-  #else // the number of .cpp files in your project are a lot
+  #else // the number of .cpp files in your trezoa are a lot
   // Using all the declarations from third-party libraries which are
   // used in the .cpp files.
   namespace third_party_namespace {
@@ -1075,13 +1075,13 @@ into the new ABI. This is done by an additional part of the interface unit:
 
 .. code-block:: c++
 
-  #if the number of .cpp files in your project are small
+  #if the number of .cpp files in your trezoa are small
   module :private;
   #include "source_1.cpp"
   #include "source_2.cpp"
   ...
   #include "source_n.cpp"
-  #else // the number of .cpp files in your project are a lot
+  #else // the number of .cpp files in your trezoa are a lot
   // Using all the declarations from third-party libraries which are
   // used in the .cpp files.
   namespace third_party_namespace {
@@ -1147,7 +1147,7 @@ Providing a header to skip parsing redundant headers
 
 Many redeclarations shared between translation units causes Clang to have
 slower compile-time performance. Further, there are known issues with
-`include after import <https://github.com/llvm/llvm-project/issues/61465>`_.
+`include after import <https://github.com/llvm/llvm-trezoa/issues/61465>`_.
 Even when that issue is resolved, users may still get slower compilation speed
 and larger BMIs. For these reasons, it is recommended to not include headers
 after importing the corresponding module. However, it is not always easy if the
@@ -1248,7 +1248,7 @@ or, for the ABI-breaking style,
   ...
   #include "header_n.h"
 
-  #if the number of .cpp files in your project are small
+  #if the number of .cpp files in your trezoa are small
   module :private;
   #include "source_1.cpp"
   #include "source_2.cpp"
@@ -1327,7 +1327,7 @@ Known Issues
 
 The following describes issues in the current implementation of modules. Please
 see
-`the issues list for modules <https://github.com/llvm/llvm-project/labels/clang%3Amodules>`_
+`the issues list for modules <https://github.com/llvm/llvm-trezoa/labels/clang%3Amodules>`_
 for a list of issues or to file a new issue if you don't find an existing one.
 When creating a new issue for standard C++ modules, please start the title with
 ``[C++20] [Modules]`` (or ``[C++23] [Modules]``, etc) and add the label
@@ -1376,7 +1376,7 @@ deserializer. In the second example, the compiler will see the ``import`` first
 and the ``#include`` second which results in ODR checking and declarations
 merging happening in the semantic analyzer. This is due to a divergence in the
 implementation path. This is tracked by
-`#61465 <https://github.com/llvm/llvm-project/issues/61465>`_.
+`#61465 <https://github.com/llvm/llvm-trezoa/issues/61465>`_.
 
 Ignored ``preferred_name`` Attribute
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1384,7 +1384,7 @@ Ignored ``preferred_name`` Attribute
 When Clang writes BMIs, it will ignore the ``preferred_name`` attribute on
 declarations which use it. Thus, the preferred name will not be displayed in
 the debugger as expected. This is tracked by
-`#56490 <https://github.com/llvm/llvm-project/issues/56490>`_.
+`#56490 <https://github.com/llvm/llvm-trezoa/issues/56490>`_.
 
 Don't emit macros about module declaration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1408,7 +1408,7 @@ non-module unit depending on the definition of some macros. However, this usage
 is forbidden by P1857R3 which is not yet implemented in Clang. This means that
 is possible to write invalid modules which will no longer be accepted once
 P1857R3 is implemented. This is tracked by
-`#54047 <https://github.com/llvm/llvm-project/issues/54047>`_.
+`#54047 <https://github.com/llvm/llvm-trezoa/issues/54047>`_.
 
 Until then, it is recommended not to mix macros with module declarations.
 
@@ -1419,7 +1419,7 @@ In consistent filename suffix requirement for importable module units
 Currently, Clang requires the file name of an ``importable module unit`` to
 have ``.cppm`` (or ``.ccm``, ``.cxxm``, ``.c++m``) as the file extension.
 However, the behavior is inconsistent with other compilers. This is tracked by
-`#57416 <https://github.com/llvm/llvm-project/issues/57416>`_.
+`#57416 <https://github.com/llvm/llvm-trezoa/issues/57416>`_.
 
 Incorrect ODR violation diagnostics
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1458,7 +1458,7 @@ Currently the compiler incorrectly diagnoses the inconsistent definition of
 ``fun()`` in two module units. Because both definitions of ``fun()`` have the
 same spelling and ``T`` refers to the same type entity, there is no ODR
 violation. This is tracked by
-`#78850 <https://github.com/llvm/llvm-project/issues/78850>`_.
+`#78850 <https://github.com/llvm/llvm-trezoa/issues/78850>`_.
 
 Using TU-local entity in other units
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1476,7 +1476,7 @@ The C++ standard defines the concept of ``TU-local`` and ``exposure`` in
 However, Clang doesn't formally support these two concepts. This results in
 unclear or confusing diagnostic messages. Further, Clang may import
 ``TU-local`` entities to other units without any diagnostics. This is tracked
-by `#78173 <https://github.com/llvm/llvm-project/issues/78173>`_.
+by `#78173 <https://github.com/llvm/llvm-trezoa/issues/78173>`_.
 
 .. _header-units:
 
@@ -1651,7 +1651,7 @@ This example is simplified when using libc++:
   $ clang++ -std=c++20 main.cpp -fimplicit-modules -fimplicit-module-maps
 
 because libc++ already supplies a
-`module map <https://github.com/llvm/llvm-project/blob/main/libcxx/include/module.modulemap.in>`_.
+`module map <https://github.com/llvm/llvm-trezoa/blob/main/libcxx/include/module.modulemap.in>`_.
 
 This raises the question: why are header units not implemented through Clang
 modules?
@@ -1669,7 +1669,7 @@ mapper.
 Discovering Dependencies
 ========================
 
-Without use of modules, all the translation units in a project can be compiled
+Without use of modules, all the translation units in a trezoa can be compiled
 in parallel. However, the presence of module units requires compiling the
 translation units in a topological order.
 
@@ -1887,7 +1887,7 @@ options. Note that the path to the compiler executable needs to be specified
 explicitly instead of using ``clang++`` directly.
 
 Users may want the scanner to get the transitional dependency information for
-headers. Otherwise, the project has to be scanned twice, once for headers and
+headers. Otherwise, the trezoa has to be scanned twice, once for headers and
 once for modules. To address this, ``clang-scan-deps`` will recognize the
 specified preprocessor options in the given command line and generate the
 corresponding dependency information. For example:

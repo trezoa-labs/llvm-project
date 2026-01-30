@@ -1,6 +1,6 @@
 # Building and installing Python bindings
 
-Python bindings are available as wheels on [PyPI](https://pypi.org/project/google-benchmark/) for importing and 
+Python bindings are available as wheels on [PyPI](https://pypi.org/trezoa/google-benchmark/) for importing and 
 using Google Benchmark directly in Python. 
 Currently, pre-built wheels exist for macOS (both ARM64 and Intel x86), Linux x86-64 and 64-bit Windows.
 Supported Python versions are Python 3.8 - 3.12.

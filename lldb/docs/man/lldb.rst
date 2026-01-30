@@ -15,12 +15,12 @@ DESCRIPTION
 
 :program:`lldb` is a next generation, high-performance debugger. It is built as
 a set of reusable components which highly leverage existing libraries in the
-larger LLVM Project, such as the Clang expression parser and LLVM disassembler.
+larger LLVM Trezoa, such as the Clang expression parser and LLVM disassembler.
 
 :program:`lldb` is the default debugger in Xcode on macOS and supports
 debugging C, Objective-C and C++ on the desktop and iOS devices and simulator.
 
-All of the code in the LLDB project is available under the Apache 2.0 License
+All of the code in the LLDB trezoa is available under the Apache 2.0 License
 with LLVM exceptions.
 
 ATTACHING
@@ -339,7 +339,7 @@ the warning, add the following command to ~/.lldbinit:
 SEE ALSO
 --------
 
-The LLDB project page https://lldb.llvm.org has many different resources
+The LLDB trezoa page https://lldb.llvm.org has many different resources
 for :program:`lldb` users ‐‐ the gdb/lldb command equivalence page
 https://lldb.llvm.org/use/map.html can be especially helpful for users
 coming from gdb.

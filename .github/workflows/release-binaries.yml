@@ -92,8 +92,8 @@ jobs:
       shell: bash
       # In order for the test-release.sh script to run correctly, the LLVM
       # source needs to be at the following location relative to the build dir:
-      # | X.Y.Z-rcN | ./rcN/llvm-project
-      # | X.Y.Z     | ./final/llvm-project
+      # | X.Y.Z-rcN | ./rcN/llvm-trezoa
+      # | X.Y.Z     | ./final/llvm-trezoa
       #
       # We also need to set divergent flags based on the release version:
       # | X.Y.Z-rcN | -rc N -test-asserts
@@ -131,7 +131,7 @@ jobs:
 
         # The macOS builds try to cross compile some libraries so we need to
         # add extra CMake args to disable them.
-        # See https://github.com/llvm/llvm-project/issues/99767
+        # See https://github.com/llvm/llvm-trezoa/issues/99767
         if [ "$RUNNER_OS" = "macOS" ]; then
           target_cmake_flags="$target_cmake_flags -DBOOTSTRAP_BOOTSTRAP_COMPILER_RT_ENABLE_IOS=OFF"
           if [ "$RUNNER_ARCH" = "ARM64" ]; then

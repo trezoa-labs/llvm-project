@@ -285,8 +285,8 @@ LLDB mostly follows the `GDB Remote Protocol <https://sourceware.org/gdb/onlined
 . Where there are differences it tries to handle both LLDB and GDB behaviour.
 
 LLDB does have extensions to the protocol which are documented in
-`lldb-gdb-remote.txt <https://github.com/llvm/llvm-project/blob/main/lldb/docs/lldb-gdb-remote.txt>`_
-and `lldb/docs/lldb-platform-packets.txt <https://github.com/llvm/llvm-project/blob/main/lldb/docs/lldb-platform-packets.txt>`_.
+`lldb-gdb-remote.txt <https://github.com/llvm/llvm-trezoa/blob/main/lldb/docs/lldb-gdb-remote.txt>`_
+and `lldb/docs/lldb-platform-packets.txt <https://github.com/llvm/llvm-trezoa/blob/main/lldb/docs/lldb-platform-packets.txt>`_.
 
 Logging Packets
 ***************
@@ -409,7 +409,7 @@ Some examples are listed below with suggestions for how to investigate them.
 
 * Debugger
 
-  * Use a `released version of LLDB <https://github.com/llvm/llvm-project/releases>`_.
+  * Use a `released version of LLDB <https://github.com/llvm/llvm-trezoa/releases>`_.
 
   * If on MacOS, try the system ``lldb``.
 
@@ -501,7 +501,7 @@ the inferior process.
 The program presented `here <https://eli.thegreenplace.net/2011/01/23/how-debuggers-work-part-1>`_
 (`source <https://github.com/eliben/code-for-blog/blob/master/2011/simple_tracer.c>`_)
 is a great starting point. There is also an AArch64 specific example in
-`the LLDB examples folder <https://github.com/llvm/llvm-project/tree/main/lldb/examples/ptrace_example.c>`_.
+`the LLDB examples folder <https://github.com/llvm/llvm-trezoa/tree/main/lldb/examples/ptrace_example.c>`_.
 
 For either, you'll need to modify that to fit your architecture. A tip for this
 is to take any constants used in it, find in which function(s) they are used in

@@ -1,6 +1,6 @@
 //===-- DataflowEnvironment.h -----------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -753,7 +753,7 @@ private:
   // FIXME: move the fields `CallStack`, `ResultObjectMap`, `ReturnVal`,
   // `ReturnLoc` and `ThisPointeeLoc` into a separate call-context object,
   // shared between environments in the same call.
-  // https://github.com/llvm/llvm-project/issues/59005
+  // https://github.com/llvm/llvm-trezoa/issues/59005
 
   // The stack of functions called from the initial analysis target.
   std::vector<const FunctionDecl *> CallStack;

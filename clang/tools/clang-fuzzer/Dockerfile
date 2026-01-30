@@ -1,6 +1,6 @@
 #===- llvm/tools/clang/tools/clang-fuzzer ---------------------------------===//
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -18,9 +18,9 @@ WORKDIR /root
 RUN wget -qO- https://github.com/google/protobuf/releases/download/v3.3.0/protobuf-cpp-3.3.0.tar.gz | tar zxf -
 RUN cd protobuf-3.3.0 && ./autogen.sh && ./configure && make -j $(nproc) && make check -j $(nproc) && make install && ldconfig
 # Get LLVM
-RUN svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm
-RUN cd llvm/tools && svn co http://llvm.org/svn/llvm-project/cfe/trunk clang -r $(cd ../ && svn info | grep Revision | awk '{print $2}')
-RUN cd llvm/projects && svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt -r $(cd ../ && svn info | grep Revision | awk '{print $2}')
+RUN svn co http://llvm.org/svn/llvm-trezoa/llvm/trunk llvm
+RUN cd llvm/tools && svn co http://llvm.org/svn/llvm-trezoa/cfe/trunk clang -r $(cd ../ && svn info | grep Revision | awk '{print $2}')
+RUN cd llvm/projects && svn co http://llvm.org/svn/llvm-trezoa/compiler-rt/trunk compiler-rt -r $(cd ../ && svn info | grep Revision | awk '{print $2}')
 # Build plain LLVM (stage 0)
 RUN mkdir build0 && cd build0 && cmake -GNinja -DCMAKE_BUILD_TYPE=Release ../llvm && ninja
 # Configure instrumented LLVM (stage 1)

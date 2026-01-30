@@ -52,11 +52,11 @@ import sphinx
 # The master toctree document.
 master_doc = "index"
 
-# General information about the project.
-project = "Flang"
+# General information about the trezoa.
+trezoa = "Flang"
 copyright = "2017-%d, The Flang Team" % date.today().year
 
-# The version info for the project you're documenting, acts as replacement for
+# The version info for the trezoa you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents. These are currently set to zero because we don't use them.
 # Should somebody consider in the future to change them, they need to be updated
@@ -117,7 +117,7 @@ html_theme = "haiku"
 # html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
+# "<trezoa> v<release> documentation".
 html_title = "The Flang Compiler"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.

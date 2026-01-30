@@ -1,6 +1,6 @@
 //===- ASTWriter.cpp - AST File Writer ------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -4570,7 +4570,7 @@ void ASTWriter::GenerateNameLookupTable(
     // FIMXE: It looks sufficient to test
     // isLookupResultNotInteresting here. But due to bug we have
     // to test isLookupResultExternal here. See
-    // https://github.com/llvm/llvm-project/issues/61065 for details.
+    // https://github.com/llvm/llvm-trezoa/issues/61065 for details.
     if ((GeneratingReducedBMI || isLookupResultExternal(Result, DC)) &&
         isLookupResultNotInteresting(*this, Result))
       continue;
@@ -5157,7 +5157,7 @@ void ASTRecordWriter::AddAttr(const Attr *A) {
   auto &Record = *this;
   // FIXME: Clang can't handle the serialization/deserialization of
   // preferred_name properly now. See
-  // https://github.com/llvm/llvm-project/issues/56490 for example.
+  // https://github.com/llvm/llvm-trezoa/issues/56490 for example.
   if (!A || (isa<PreferredNameAttr>(A) &&
              Writer->isWritingStdCXXNamedModules()))
     return Record.push_back(0);

@@ -14,7 +14,7 @@ The configuration file is ``src/.clang-tidy``.
 
 restrict-system-libc-header
 ---------------------------
-One of libc-project’s design goals is to use kernel headers and compiler
+One of libc-trezoa’s design goals is to use kernel headers and compiler
 provided headers to prevent code duplication on a per platform basis. This
 presents a problem when writing implementations since system libc headers are
 easy to include accidentally and we can't just use the ``-nostdinc`` flag.

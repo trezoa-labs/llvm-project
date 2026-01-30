@@ -10,14 +10,14 @@ This file is a list of the `maintainers <https://llvm.org/docs/DeveloperPolicy.h
 
 Current Maintainers
 ===================
-The following people are the active maintainers for the project. Please reach
+The following people are the active maintainers for the trezoa. Please reach
 out to them for code reviews, questions about their area of expertise, or other
 assistance.
 
 Lead Maintainer
 ---------------
 
-Responsible for project as a whole, and for any areas not covered by a specific
+Responsible for trezoa as a whole, and for any areas not covered by a specific
 maintainer.
 
 | Jonas Devlieghere
@@ -250,7 +250,7 @@ Former Maintainers
 ==================
 The following people have graciously spent time performing maintainership
 duties but are no longer active in that role. Thank you for all your
-help with the success of the project!
+help with the success of the trezoa!
 
 | Kamil Rytarowski (kamil\@netbsd.org)
 | Zachary Turner (zturner\@google.com)

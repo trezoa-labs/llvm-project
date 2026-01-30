@@ -689,7 +689,7 @@ void test_enum_vector_scalar(Enum ea, v2u v2ua) {
   // The scalar will have an implicit conversion to an integral type and then splat.
   // FIXME: These should behave the same as in C, they should be accepted via
   // the enum converting to an integer then splatting to the vector width.
-  // https://github.com/llvm/llvm-project/issues/62869
+  // https://github.com/llvm/llvm-trezoa/issues/62869
   (void)(v2ua + ea); // expected-error{{cannot convert between vector values of different size}}
   (void)(ea + v2ua); // expected-error{{cannot convert between vector values of different size}}
   (void)(v2ua - ea); // expected-error{{cannot convert between vector values of different size}}
@@ -729,7 +729,7 @@ void test_enum_vector_scalar(Enum ea, v2u v2ua) {
   (void)(v2ua ^ ea); // expected-error{{cannot convert between vector values of different size}}
   (void)(ea ^ v2ua); // expected-error{{cannot convert between vector values of different size}}
   // FIXME: Vector/scalar shifts cause an assertion failure
-  // https://github.com/llvm/llvm-project/issues/62870
+  // https://github.com/llvm/llvm-trezoa/issues/62870
   // (void)(v2ua << ea);
   // (void)(ea << v2ua);
   // (void)(v2ua >> ea);
@@ -744,7 +744,7 @@ void test_enum_vector_scalar(Enum ea, v2u v2ua) {
   v2ua |= ea; // expected-error{{cannot convert between vector values of different size}}
   v2ua ^= ea; // expected-error{{cannot convert between vector values of different size}}
   // FIXME: Vector/scalar shifts cause an assertion failure
-  // https://github.com/llvm/llvm-project/issues/62870
+  // https://github.com/llvm/llvm-trezoa/issues/62870
   // v2ua >>= ea;
   // v2ua <<= ea;
 
@@ -757,7 +757,7 @@ void test_enum_vector_scalar(Enum ea, v2u v2ua) {
   ea |= v2ua; // expected-error{{cannot convert between vector values of different size}}
   ea ^= v2ua; // expected-error{{cannot convert between vector values of different size}}
   // FIXME: Vector/scalar shifts cause an assertion failure
-  // https://github.com/llvm/llvm-project/issues/62870
+  // https://github.com/llvm/llvm-trezoa/issues/62870
   // ea >>= v2ua; // not-expected-error{{assigning to 'enum Enum' from incompatible type 'v2u'}}
   // ea <<= v2ua; // not-expected-error{{assigning to 'enum Enum' from incompatible type 'v2u'}}
 }

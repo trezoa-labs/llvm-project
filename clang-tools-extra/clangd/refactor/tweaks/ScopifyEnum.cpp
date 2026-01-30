@@ -1,6 +1,6 @@
 //===--- ScopifyEnum.cpp --------------------------------------- -*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -43,7 +43,7 @@ namespace {
 ///   enum class E { V1, V2 };
 ///   void f() { E e1 = E::V1; }
 ///
-/// Note that the respective project code might not compile anymore
+/// Note that the respective trezoa code might not compile anymore
 /// if it made use of the now-gone implicit conversion to int.
 /// This is out of scope for this tweak.
 

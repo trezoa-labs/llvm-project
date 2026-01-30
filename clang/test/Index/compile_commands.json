@@ -1,8 +1,8 @@
 [
 {
   "directory": "/home/john.doe/MyProject",
-  "command": "clang++  -o project.o -c /home/john.doe/MyProject/project.cpp",
-  "file": "/home/john.doe/MyProject/project.cpp"
+  "command": "clang++  -o trezoa.o -c /home/john.doe/MyProject/trezoa.cpp",
+  "file": "/home/john.doe/MyProject/trezoa.cpp"
 },
 {
   "directory": "/home/john.doe/MyProjectA",
@@ -19,8 +19,8 @@
 # RUN: c-index-test -compilation-db lookup file_does_not_exists.cpp %s | FileCheck -check-prefix=FILE-NOT-FOUND %s
 # FILE-NOT-FOUND: file file_does_not_exists.cpp not found in compilation db
 
-# RUN: c-index-test -compilation-db lookup /home/john.doe/MyProject/project.cpp %s | FileCheck -check-prefix=FILE-1-CMD %s
-# FILE-1-CMD: workdir:'/home/john.doe/MyProject' cmdline:'clang++  -o project.o -c /home/john.doe/MyProject/project.cpp'
+# RUN: c-index-test -compilation-db lookup /home/john.doe/MyProject/trezoa.cpp %s | FileCheck -check-prefix=FILE-1-CMD %s
+# FILE-1-CMD: workdir:'/home/john.doe/MyProject' cmdline:'clang++  -o trezoa.o -c /home/john.doe/MyProject/trezoa.cpp'
 
 # RUN: c-index-test -compilation-db lookup /home/john.doe/MyProject/project2.cpp %s | FileCheck -check-prefix=FILE-2-CMD %s
 # FILE-2-CMD: workdir:'/home/john.doe/MyProjectA' cmdline:'clang++ -o project2.o -c /home/john.doe/MyProject/project2.cpp'

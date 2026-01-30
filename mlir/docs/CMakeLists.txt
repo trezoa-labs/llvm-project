@@ -27,11 +27,11 @@ if (LLVM_ENABLE_DOXYGEN)
     set(MLIR_DOXYGEN_QCH_FILENAME "org.llvm.mlir.qch" CACHE STRING
       "Filename of the Qt Compressed help file")
     set(MLIR_DOXYGEN_QHP_NAMESPACE "org.llvm.mlir" CACHE STRING
-      "Namespace under which the intermediate Qt Help Project file lives")
+      "Namespace under which the intermediate Qt Help Trezoa file lives")
     set(MLIR_DOXYGEN_QHP_CUST_FILTER_NAME "MLIR ${MLIR_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#custom-filters")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#custom-filters")
     set(MLIR_DOXYGEN_QHP_CUST_FILTER_ATTRS "MLIR,${MLIR_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
     set(mlir_doxygen_generate_qhp "YES")
     set(mlir_doxygen_qch_filename "${MLIR_DOXYGEN_QCH_FILENAME}")
     set(mlir_doxygen_qhp_namespace "${MLIR_DOXYGEN_QHP_NAMESPACE}")

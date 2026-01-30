@@ -961,7 +961,7 @@ Given that the focus is transformations, which inevitably means changes to the
 binary module; so serialization is not designed to be a general tool for
 investigating the SPIR-V binary module and does not guarantee roundtrip
 equivalence (at least for now). For the latter, please use the
-assembler/disassembler in the [SPIRV-Tools][SpirvTools] project.
+assembler/disassembler in the [SPIRV-Tools][SpirvTools] trezoa.
 
 A few transformations are performed in the process of serialization because of
 the representational differences between SPIR-V dialect and binary format:
@@ -1389,7 +1389,7 @@ dialect.
 [SpirvTools]: https://github.com/KhronosGroup/SPIRV-Tools
 [Rationale]: ../Rationale/Rationale.md/#block-arguments-vs-phi-nodes
 [ODS]: ../DefiningDialects/Operations.md
-[GreedyPatternRewriter]: https://github.com/llvm/llvm-project/blob/main/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp
+[GreedyPatternRewriter]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp
 [MlirDialectConversionTypeConversion]: ../DialectConversion.md/#type-converter
 [MlirDialectConversionRewritePattern]: ../DialectConversion.md/#conversion-patterns
 [MlirDialectConversionSignatureConversion]: ../DialectConversion.md/#region-signature-conversion
@@ -1400,26 +1400,26 @@ dialect.
 [MlirIndexType]: Builtin.md/#indextype
 [MlirGpuDialect]: GPU.md
 [MlirArithmeticDialect]: Arithmetic.md
-[MlirSpirvHeaders]: https://github.com/llvm/llvm-project/tree/main/mlir/include/mlir/Dialect/SPIRV
-[MlirSpirvLibs]: https://github.com/llvm/llvm-project/tree/main/mlir/lib/Dialect/SPIRV
-[MlirSpirvTests]: https://github.com/llvm/llvm-project/tree/main/mlir/test/Dialect/SPIRV
-[MlirSpirvUnittests]: https://github.com/llvm/llvm-project/tree/main/mlir/unittests/Dialect/SPIRV
-[MlirGpuToSpirvHeaders]: https://github.com/llvm/llvm-project/tree/main/mlir/include/mlir/Conversion/GPUToSPIRV
-[MlirGpuToSpirvLibs]: https://github.com/llvm/llvm-project/tree/main/mlir/lib/Conversion/GPUToSPIRV
-[MlirFuncToSpirvHeaders]: https://github.com/llvm/llvm-project/tree/main/mlir/include/mlir/Conversion/FuncToSPIRV
-[MlirFuncToSpirvLibs]: https://github.com/llvm/llvm-project/tree/main/mlir/lib/Conversion/FuncToSPIRV
-[MlirSpirvDialect]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVDialect.h
-[MlirSpirvTypes]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVTypes.h
-[MlirSpirvOpsH]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVOps.h
-[MlirSpirvSerialization]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Target/SPIRV/Serialization.h
-[MlirSpirvBase]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVBase.td
-[MlirSpirvPasses]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/Transforms/Passes.h
-[MlirSpirvConversion]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/Transforms/SPIRVConversion.h
-[MlirSpirvAbi]: https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/TargetAndABI.h
-[MlirSpirvOpsCpp]: https://github.com/llvm/llvm-project/blob/main/mlir/lib/Dialect/SPIRV/IR/SPIRVOps.cpp
+[MlirSpirvHeaders]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/include/mlir/Dialect/SPIRV
+[MlirSpirvLibs]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/lib/Dialect/SPIRV
+[MlirSpirvTests]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/test/Dialect/SPIRV
+[MlirSpirvUnittests]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/unittests/Dialect/SPIRV
+[MlirGpuToSpirvHeaders]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/include/mlir/Conversion/GPUToSPIRV
+[MlirGpuToSpirvLibs]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/lib/Conversion/GPUToSPIRV
+[MlirFuncToSpirvHeaders]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/include/mlir/Conversion/FuncToSPIRV
+[MlirFuncToSpirvLibs]: https://github.com/llvm/llvm-trezoa/tree/main/mlir/lib/Conversion/FuncToSPIRV
+[MlirSpirvDialect]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVDialect.h
+[MlirSpirvTypes]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVTypes.h
+[MlirSpirvOpsH]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVOps.h
+[MlirSpirvSerialization]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Target/SPIRV/Serialization.h
+[MlirSpirvBase]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/SPIRVBase.td
+[MlirSpirvPasses]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/Transforms/Passes.h
+[MlirSpirvConversion]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/Transforms/SPIRVConversion.h
+[MlirSpirvAbi]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/Dialect/SPIRV/IR/TargetAndABI.h
+[MlirSpirvOpsCpp]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/lib/Dialect/SPIRV/IR/SPIRVOps.cpp
 [GitHubDialectTracking]: https://github.com/tensorflow/mlir/issues/302
 [GitHubLoweringTracking]: https://github.com/tensorflow/mlir/issues/303
-[GenSpirvUtilsPy]: https://github.com/llvm/llvm-project/blob/main/mlir/utils/spirv/gen_spirv_dialect.py
+[GenSpirvUtilsPy]: https://github.com/llvm/llvm-trezoa/blob/main/mlir/utils/spirv/gen_spirv_dialect.py
 [CustomTypeAttrTutorial]: ../DefiningDialects/AttributesAndTypes.md
 [VulkanExtensionPhysicalStorageBuffer]: https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_physical_storage_buffer.html
 [VulkanExtensionVariablePointers]: https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_variable_pointers.html

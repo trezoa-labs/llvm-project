@@ -1,6 +1,6 @@
 //===- Builders.cpp - Helpers for constructing MLIR Classes ---------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -225,7 +225,7 @@ IntegerAttr Builder::getIntegerAttr(Type type, int64_t value) {
   if (type.isIndex())
     return IntegerAttr::get(type, APInt(64, value));
   // TODO: Avoid implicit trunc?
-  // See https://github.com/llvm/llvm-project/issues/112510.
+  // See https://github.com/llvm/llvm-trezoa/issues/112510.
   return IntegerAttr::get(type, APInt(type.getIntOrFloatBitWidth(), value,
                                       type.isSignedInteger(),
                                       /*implicitTrunc=*/true));

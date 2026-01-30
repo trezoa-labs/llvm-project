@@ -1,6 +1,6 @@
 //===- ReturnValueChecker - Check methods always returning true -*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -37,7 +37,7 @@ public:
 
 private:
   const CallDescriptionSet Methods = {
-      // These are known in the LLVM project: 'Error()'
+      // These are known in the LLVM trezoa: 'Error()'
       {CDM::CXXMethod, {"ARMAsmParser", "Error"}},
       {CDM::CXXMethod, {"HexagonAsmParser", "Error"}},
       {CDM::CXXMethod, {"LLLexer", "Error"}},

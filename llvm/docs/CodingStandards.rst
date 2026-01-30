@@ -8,7 +8,7 @@ LLVM Coding Standards
 Introduction
 ============
 
-This document describes coding standards that are used in the LLVM project.
+This document describes coding standards that are used in the LLVM trezoa.
 Although no coding standards should be regarded as absolute requirements to be
 followed in all instances, coding standards are
 particularly important for large-scale code bases that follow a library-based
@@ -89,7 +89,7 @@ on the standard library facilities and the LLVM support libraries as much as
 possible.
 
 LLVM support libraries (for example, `ADT
-<https://github.com/llvm/llvm-project/tree/main/llvm/include/llvm/ADT>`_)
+<https://github.com/llvm/llvm-trezoa/tree/main/llvm/include/llvm/ADT>`_)
 implement specialized data structures or functionality missing in the standard
 library. Such libraries are usually implemented in the ``llvm`` namespace and
 follow the expected standard interface, when there is one.
@@ -127,7 +127,7 @@ we currently use black version 23.x in LLVM.
 
 When contributing a patch unrelated to formatting, you should format only the
 Python code that the patch modifies. For this purpose, use the `darker
-<https://pypi.org/project/darker/>`_ utility, which runs default black rules
+<https://pypi.org/trezoa/darker/>`_ utility, which runs default black rules
 over only the modified Python code. Doing so should ensure the patch will pass
 the Python format checks in LLVM's pre-commit CI, which also uses darker. When
 contributing a patch specifically for reformatting Python files, use black,
@@ -179,7 +179,7 @@ the file. The standard header looks like this:
 
   //===----------------------------------------------------------------------===//
   //
-  // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+  // Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
   // See https://llvm.org/LICENSE.txt for license information.
   // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
   //
@@ -384,11 +384,11 @@ wrong style:
 
 As with other coding standards, individual projects, such as the Clang Static
 Analyzer, may have preexisting styles that do not conform to this. If a
-different formatting scheme is used consistently throughout the project, use
+different formatting scheme is used consistently throughout the trezoa, use
 that style instead. Otherwise, this standard applies to all LLVM tools,
 including clang, clang-tidy, and so on.
 
-If the tool or project does not have existing functions to emit warnings or
+If the tool or trezoa does not have existing functions to emit warnings or
 errors, use the error and warning handlers provided in ``Support/WithColor.h``
 to ensure they are printed in the appropriate style, rather than printing to
 stderr directly.
@@ -410,7 +410,7 @@ listed.  We prefer these ``#include``\s to be listed in this order:
 
 #. Main Module Header
 #. Local/Private Headers
-#. LLVM project/subproject headers (``clang/...``, ``lldb/...``, ``llvm/...``, etc)
+#. LLVM trezoa/subproject headers (``clang/...``, ``lldb/...``, ``llvm/...``, etc)
 #. System ``#include``\s
 
 and each category should be sorted lexicographically by the full path.
@@ -423,7 +423,7 @@ that the header does not have any hidden dependencies which are not explicitly
 ``#include``\d in the header, but should be. It is also a form of documentation
 in the ``.cpp`` file to indicate where the interfaces it implements are defined.
 
-LLVM project and subproject headers should be grouped from most specific to least
+LLVM trezoa and subproject headers should be grouped from most specific to least
 specific, for the same reasons described above.  For example, LLDB depends on
 both clang and LLVM, and clang depends on LLVM.  So an LLDB source file should
 include ``lldb`` headers first, followed by ``clang`` headers, followed by
@@ -1322,7 +1322,7 @@ never use ``'using namespace std;'`` in LLVM.
 
 The exception to the general rule (i.e. it's not an exception for the ``std``
 namespace) is for implementation files.  For example, all of the code in the
-LLVM project implements code that lives in the 'llvm' namespace.  As such, it is
+LLVM trezoa implements code that lives in the 'llvm' namespace.  As such, it is
 ok, and actually clearer, for the ``.cpp`` files to have a ``'using namespace
 llvm;'`` directive at the top, after the ``#include``\s.  This reduces
 indentation in the body of the file for source editors that indent based on

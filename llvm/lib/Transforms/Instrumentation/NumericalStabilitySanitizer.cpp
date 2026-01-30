@@ -1,6 +1,6 @@
 //===-- NumericalStabilitySanitizer.cpp -----------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1365,7 +1365,7 @@ const KnownIntrinsic::WidenedIntrinsic KnownIntrinsic::kWidenedIntrinsics[] = {
     // e.g. llvm.x86.sse2.min.sd means extract first element, min, insert back.
     // Intrinsics that take any non-vector FT types:
     // NOTE: Right now because of
-    // https://github.com/llvm/llvm-project/issues/44744
+    // https://github.com/llvm/llvm-trezoa/issues/44744
     // for f128 we need to use makeX86FP80X86FP80 (go to a lower precision and
     // come back).
     {"llvm.sqrt.f32", Intrinsic::sqrt, makeDoubleDouble},

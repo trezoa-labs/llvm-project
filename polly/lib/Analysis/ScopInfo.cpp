@@ -1,6 +1,6 @@
 //===- ScopInfo.cpp -------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -639,7 +639,7 @@ isl::basic_map MemoryAccess::createBasicAccessMap(ScopStmt *Statement) {
 // then apply the reverse access relation to obtain the set of iterations that
 // may contain invalid accesses and reduce this set of iterations to the ones
 // that are actually executed by intersecting them with the domain of the
-// statement. If we now project out all loop dimensions, we obtain a set of
+// statement. If we now trezoa out all loop dimensions, we obtain a set of
 // parameters that may cause statement instances to be executed that may
 // possibly yield out of bound memory accesses. The complement of these
 // constraints is the set of constraints that needs to be assumed to ensure such

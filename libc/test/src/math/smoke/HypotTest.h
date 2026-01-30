@@ -1,6 +1,6 @@
 //===-- Utility class to test different flavors of hypot ------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -26,7 +26,7 @@ struct HypotTestTemplate : public LIBC_NAMESPACE::testing::Test {
 
 #ifndef LIBC_TARGET_ARCH_IS_NVPTX
     // TODO: Investigate why sNaN tests are failing on nVidia.
-    // https://github.com/llvm/llvm-project/issues/99706.
+    // https://github.com/llvm/llvm-trezoa/issues/99706.
     EXPECT_FP_EQ(func(inf, sNaN), aNaN);
     EXPECT_FP_EQ(func(sNaN, neg_inf), aNaN);
 #endif // !LIBC_TARGET_ARCH_IS_NVPTX

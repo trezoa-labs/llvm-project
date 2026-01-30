@@ -98,7 +98,7 @@ def _site_initialize():
     disable_multithreading = False
     # This flag disables eagerly loading all dialects. Eagerly loading is often
     # not the desired behavior (see
-    # https://github.com/llvm/llvm-project/issues/56037), and the logic is that
+    # https://github.com/llvm/llvm-trezoa/issues/56037), and the logic is that
     # if any module has this attribute set, then we don't load all (e.g., it's
     # being used in a solution where the loading is controlled).
     disable_load_all_available_dialects = False

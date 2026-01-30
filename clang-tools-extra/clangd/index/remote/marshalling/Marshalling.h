@@ -1,6 +1,6 @@
 //===--- Marshalling.h -------------------------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -24,12 +24,12 @@ namespace remote {
 //
 /// A notable exception is URI translation. Because paths to files are different
 /// on indexing machine and client machine
-/// ("/remote/machine/projects/llvm-project/llvm/include/HelloWorld.h" versus
-/// "/usr/local/username/llvm-project/llvm/include/HelloWorld.h"), they need to
+/// ("/remote/machine/projects/llvm-trezoa/llvm/include/HelloWorld.h" versus
+/// "/usr/local/username/llvm-trezoa/llvm/include/HelloWorld.h"), they need to
 /// be converted appropriately. Remote machine strips the prefix
 /// (RemoteIndexRoot) from the absolute path and passes paths relative to the
-/// project root over the wire ("include/HelloWorld.h" in this example). The
-/// indexed project root is passed to the remote server. Client receives this
+/// trezoa root over the wire ("include/HelloWorld.h" in this example). The
+/// indexed trezoa root is passed to the remote server. Client receives this
 /// relative path and constructs a URI that points to the relevant file in the
 /// filesystem. The relative path is appended to LocalIndexRoot to construct the
 /// full path and build the final URI.
@@ -97,7 +97,7 @@ private:
   llvm::Expected<clangd::Symbol::IncludeHeaderWithReferences>
   fromProtobuf(const HeaderWithReferences &Message);
 
-  /// RemoteIndexRoot and LocalIndexRoot are absolute paths to the project (on
+  /// RemoteIndexRoot and LocalIndexRoot are absolute paths to the trezoa (on
   /// remote and local machine respectively) and include a trailing slash. One
   /// of them can be missing (if the machines are different they don't know each
   /// other's specifics and will only do one-way translation), but both can not

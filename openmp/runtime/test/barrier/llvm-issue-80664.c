@@ -8,7 +8,7 @@
 // RUN: env OMP_WAIT_POLICY=passive \
 // RUN:     KMP_FORKJOIN_BARRIER_PATTERN='dist,dist' %libomp-run
 //
-// LLVM ISSUE 80664: https://github.com/llvm/llvm-project/issues/80664
+// LLVM ISSUE 80664: https://github.com/llvm/llvm-trezoa/issues/80664
 //
 // Distributed barrier + OMP_WAIT_POLICY=passive hangs in library termination
 // Reason: the resume logic in __kmp_free_team() was faulty and, when checking

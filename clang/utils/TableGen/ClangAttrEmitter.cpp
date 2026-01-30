@@ -1,6 +1,6 @@
 //===-- ClangAttrEmitter.cpp - Generate Clang attribute handling ----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2697,7 +2697,7 @@ static void emitAttributes(const RecordKeeper &Records, raw_ostream &OS,
     const Record &R = *Attr;
 
     // FIXME: Currently, documentation is generated as-needed due to the fact
-    // that there is no way to allow a generated project "reach into" the docs
+    // that there is no way to allow a generated trezoa "reach into" the docs
     // directory (for instance, it may be an out-of-tree build). However, we want
     // to ensure that every attribute has a Documentation field, and produce an
     // error if it has been neglected. Otherwise, the on-demand generation which

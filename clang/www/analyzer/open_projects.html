@@ -80,7 +80,7 @@ mailing list</a> to notify other members of the community.</p>
          We should model (potentially some of) such evaluations,
          and the same applies for destructors called from
          <code>operator delete[]</code>.
-         See tests cases in <a href="https://github.com/llvm/llvm-project/tree/main/clang/test/Analysis/handle_constructors_with_new_array.cpp">handle_constructors_with_new_array.cpp</a>.
+         See tests cases in <a href="https://github.com/llvm/llvm-trezoa/tree/main/clang/test/Analysis/handle_constructors_with_new_array.cpp">handle_constructors_with_new_array.cpp</a>.
       </p>
       <p>
       Constructing an array requires invoking multiple (potentially unknown)
@@ -119,7 +119,7 @@ mailing list</a> to notify other members of the community.</p>
     <li>Handle constructors for default arguments
       <p>Default arguments in C++ are recomputed at every call,
          and are therefore local, and not static, variables.
-         See tests cases in <a href="https://github.com/llvm/llvm-project/tree/main/clang/test/Analysis/handle_constructors_for_default_arguments.cpp">handle_constructors_for_default_arguments.cpp</a>.
+         See tests cases in <a href="https://github.com/llvm/llvm-trezoa/tree/main/clang/test/Analysis/handle_constructors_for_default_arguments.cpp">handle_constructors_for_default_arguments.cpp</a>.
       </p>
       <p>
       Default arguments are annoying because the initializer expression is
@@ -172,7 +172,7 @@ mailing list</a> to notify other members of the community.</p>
 
     <li>Floating-point support.
       <p>Currently, the analyzer treats all floating-point values as unknown.
-      This project would involve adding a new <code>SVal</code> kind
+      This trezoa would involve adding a new <code>SVal</code> kind
       for constant floats, generalizing the constraint manager to handle floats,
       and auditing existing code to make sure it doesn't
       make incorrect assumptions (most notably, that <code>X == X</code>
@@ -186,7 +186,7 @@ mailing list</a> to notify other members of the community.</p>
       However, that results in lost coverage in cases where the loop always
       executes more than <tt>N</tt> times.
       A Google Summer Of Code
-      <a href="https://summerofcode.withgoogle.com/archive/2017/projects/6071606019358720/">project</a>
+      <a href="https://summerofcode.withgoogle.com/archive/2017/projects/6071606019358720/">trezoa</a>
       was completed to make the loop bound parameterizable,
       but the <a href="https://en.wikipedia.org/wiki/Widening_(computer_science)">widening</a>
       problem still remains open.

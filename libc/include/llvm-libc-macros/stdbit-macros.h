@@ -1,6 +1,6 @@
 //===-- Definition of macros to be used with stdbit functions ----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -14,7 +14,7 @@
 #define __STDC_ENDIAN_BIG__ __ORDER_BIG_ENDIAN__
 #define __STDC_ENDIAN_NATIVE__ __BYTE_ORDER__
 
-// TODO(https://github.com/llvm/llvm-project/issues/80509): support _BitInt().
+// TODO(https://github.com/llvm/llvm-trezoa/issues/80509): support _BitInt().
 #ifdef __cplusplus
 inline unsigned stdc_leading_zeros(unsigned char x) {
   return stdc_leading_zeros_uc(x);

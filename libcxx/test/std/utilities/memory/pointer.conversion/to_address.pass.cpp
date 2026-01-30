@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -153,7 +153,7 @@ constexpr bool test() {
     assert(std::to_address(&p11) == &p11);
     ASSERT_SAME_TYPE(decltype(std::to_address(&p11)), int(**)());
 
-    // See https://github.com/llvm/llvm-project/issues/67449
+    // See https://github.com/llvm/llvm-trezoa/issues/67449
     {
         struct S { };
         S* p = nullptr;

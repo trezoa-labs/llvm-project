@@ -125,7 +125,7 @@ auto t32 = 0 ? (UPX1){} : (UPY1){};
 N t33 = t32;  // expected-error {{lvalue of type 'C::type1' (aka 'int *')}}
 N t34 = *t32; // expected-error {{lvalue of type 'B1' (aka 'int')}}
 
-// See https://github.com/llvm/llvm-project/issues/61419
+// See https://github.com/llvm/llvm-trezoa/issues/61419
 namespace PR61419 {
   template <class T0, class T1> struct pair {
     T0 first;

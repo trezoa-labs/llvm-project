@@ -1,6 +1,6 @@
 //===--- Cuda.cpp - Cuda Tool and ToolChain Implementations -----*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -868,7 +868,7 @@ void CudaToolChain::addClangTargetOptions(
   // Unsized function arguments used for variadics were introduced in CUDA-9.0
   // We still do not support generating code that actually uses variadic
   // arguments yet, but we do need to allow parsing them as recent CUDA
-  // headers rely on that. https://github.com/llvm/llvm-project/issues/58410
+  // headers rely on that. https://github.com/llvm/llvm-trezoa/issues/58410
   if (CudaInstallation.version() >= CudaVersion::CUDA_90)
     CC1Args.push_back("-fcuda-allow-variadic-functions");
 

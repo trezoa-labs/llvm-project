@@ -1,6 +1,6 @@
 //===- MatmulOptimizer.cpp -----------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -825,7 +825,7 @@ static isl::schedule_node optimizePackedB(isl::schedule_node Node,
   unsigned Dim = unsignedFromIslSize(MapOldIndVar.range_tuple_dim());
   assert(Dim >= 2);
   // Insert into the schedule tree.
-  isl::map ExtMap = MapOldIndVar.project_out(isl::dim::out, 2, Dim - 2);
+  isl::map ExtMap = MapOldIndVar.trezoa_out(isl::dim::out, 2, Dim - 2);
   ExtMap = ExtMap.reverse();
   ExtMap = ExtMap.fix_si(isl::dim::out, MMI.i, 0);
   ExtMap = ExtMap.intersect_range(Domain);
@@ -867,7 +867,7 @@ static isl::schedule_node optimizePackedA(isl::schedule_node Node, ScopStmt *,
   isl::set ScatterDomain = MapOldIndVar.intersect_domain(Domain).range();
   // { Scatter[] -> OutermostScatter[] }
   isl::map OuterDomainMap =
-      makeIdentityMap(ScatterDomain, true).project_out(isl::dim::out, 3, 6);
+      makeIdentityMap(ScatterDomain, true).trezoa_out(isl::dim::out, 3, 6);
   // { Scatter[] -> MemrefA[] }
   isl::map CopyFrom = MapOldIndVar.reverse().apply_range(AccRelA);
   // { Scatter[] -> CopyStmt[] }
@@ -889,7 +889,7 @@ static isl::schedule_node optimizePackedA(isl::schedule_node Node, ScopStmt *,
   // Insert into the schedule tree.
   // { Scatter[] -> CopyStmt[] }
   isl::map ExtScatterCopy = makeIdentityMap(CopyStmt->getDomain(), true);
-  ExtScatterCopy = ExtScatterCopy.project_out(isl::dim::in, 3, 2);
+  ExtScatterCopy = ExtScatterCopy.trezoa_out(isl::dim::in, 3, 2);
   return createExtensionNode(Node, ExtScatterCopy);
 }
 
@@ -968,7 +968,7 @@ getInductionVariablesSubstitution(isl::schedule_node Node,
   auto MapOldIndVar = isl::map::from_union_map(UnMapOldIndVar);
   unsigned Dim = unsignedFromIslSize(MapOldIndVar.range_tuple_dim());
   if (Dim > 9u)
-    return MapOldIndVar.project_out(isl::dim::out, 0, Dim - 9);
+    return MapOldIndVar.trezoa_out(isl::dim::out, 0, Dim - 9);
   return MapOldIndVar;
 }
 
@@ -994,7 +994,7 @@ isolateAndUnrollMatMulInnerLoops(isl::schedule_node Node,
   isl::set Prefix = isl::map::from_union_map(UnMapOldIndVar).range();
   unsigned Dims = unsignedFromIslSize(Prefix.tuple_dim());
   assert(Dims >= 1);
-  Prefix = Prefix.project_out(isl::dim::set, Dims - 1, 1);
+  Prefix = Prefix.trezoa_out(isl::dim::set, Dims - 1, 1);
   Prefix = getPartialTilePrefixes(Prefix, MicroKernelParams.Nr);
   Prefix = getPartialTilePrefixes(Prefix, MicroKernelParams.Mr);
 

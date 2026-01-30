@@ -1,6 +1,6 @@
 //===- RealtimeSanitizer.h - RealtimeSanitizer instrumentation --*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -13,7 +13,7 @@
 // __rtsan_realtime_exit at the entry and exit points of functions that are
 // marked with the appropriate attribute.
 //
-// See also: llvm-project/compiler-rt/lib/rtsan/
+// See also: llvm-trezoa/compiler-rt/lib/rtsan/
 //
 //===----------------------------------------------------------------------===//
 #ifndef LLVM_TRANSFORMS_INSTRUMENTATION_REALTIMESANITIZER_H

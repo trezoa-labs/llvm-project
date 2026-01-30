@@ -28,7 +28,7 @@ Author: [M. J. Fromberger](https://github.com/creachadair)
 
 To use the library in your code, include "imath.h" wherever you intend to use
 the library's routines.  The integer library is just a single source file, so
-you can compile it into your project in whatever way makes sense.  If you wish
+you can compile it into your trezoa in whatever way makes sense.  If you wish
 to use rational arithmetic, you will also need to include "imrat.h".
 
 ## Background

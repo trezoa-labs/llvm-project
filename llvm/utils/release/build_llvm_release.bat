@@ -5,7 +5,7 @@ goto begin
 
 :usage
 echo Script for building the LLVM installer on Windows,
-echo used for the releases at https://github.com/llvm/llvm-project/releases
+echo used for the releases at https://github.com/llvm/llvm-trezoa/releases
 echo.
 echo Usage: build_llvm_release.bat --version ^<version^> [--x86,--x64, --arm64] [--skip-checkout] [--local-python]
 echo.
@@ -134,10 +134,10 @@ if "%skip-checkout%" == "true" (
   set llvm_src=%~dp0..\..\..
 ) else (
   echo Checking out %revision%
-  curl -L https://github.com/llvm/llvm-project/archive/%revision%.zip -o src.zip || exit /b 1
+  curl -L https://github.com/llvm/llvm-trezoa/archive/%revision%.zip -o src.zip || exit /b 1
   7z x src.zip || exit /b 1
-  mv llvm-project-* llvm-project || exit /b 1
-  set llvm_src=%build_dir%\llvm-project
+  mv llvm-trezoa-* llvm-trezoa || exit /b 1
+  set llvm_src=%build_dir%\llvm-trezoa
 )
 
 curl -O https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.9.12/libxml2-v2.9.12.tar.gz || exit /b 1
@@ -292,7 +292,7 @@ ninja package || exit /b 1
 :: generate tarball with install toolchain only off
 set filename=clang+llvm-%version%-x86_64-pc-windows-msvc
 cmake -GNinja %cmake_flags% %cmake_profile_flags% -DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF ^
-  -DCMAKE_INSTALL_PREFIX=%build_dir%/%filename% ..\llvm-project\llvm || exit /b 1
+  -DCMAKE_INSTALL_PREFIX=%build_dir%/%filename% ..\llvm-trezoa\llvm || exit /b 1
 ninja install || exit /b 1
 :: check llvm_config is present & returns something
 %build_dir%/%filename%/bin/llvm-config.exe --bindir || exit /b 1

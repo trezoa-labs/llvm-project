@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -19,7 +19,7 @@
 //
 // Note This requires every standard library implementation to write their own
 // helper function. Vendors are encouraged to create a pull request at
-// https://github.com/llvm/llvm-project so their specific implementation can be
+// https://github.com/llvm/llvm-trezoa so their specific implementation can be
 // part of this file.
 
 #include "test_macros.h"
@@ -41,7 +41,7 @@ test_leap_second_create(const std::chrono::sys_seconds& date, const std::chrono:
 
 #else // _LIBCPP_VERSION
 #  error                                                                                                               \
-      "Please create a vendor specific version of the test typedef and file a PR at https://github.com/llvm/llvm-project"
+      "Please create a vendor specific version of the test typedef and file a PR at https://github.com/llvm/llvm-trezoa"
 #endif // _LIBCPP_VERSION
 
 #endif // SUPPORT_TEST_CHRONO_LEAP_SECOND_HPP

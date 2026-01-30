@@ -1,6 +1,6 @@
 //===--- Triple.cpp - Target triple helper class --------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1594,7 +1594,7 @@ VersionTuple Triple::getDXILVersion() const {
   Arch.consume_front("dxilv");
   VersionTuple DXILVersion = parseVersionFromName(Arch);
   // FIXME: validate DXIL version against Shader Model version.
-  // Tracked by https://github.com/llvm/llvm-project/issues/91388
+  // Tracked by https://github.com/llvm/llvm-trezoa/issues/91388
   return DXILVersion;
 }
 

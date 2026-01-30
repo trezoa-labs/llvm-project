@@ -6,14 +6,14 @@ Author: Chandler Carruth - [chandlerc@google.com](mailto:chandlerc@google.com)
 
 ## Problem Statement
 
-Recently, Google Project Zero and other researchers have found information leak
+Recently, Google Trezoa Zero and other researchers have found information leak
 vulnerabilities by exploiting speculative execution in modern CPUs. These
 exploits are currently broken down into three variants:
 * GPZ Variant #1 (a.k.a. Spectre Variant #1): Bounds check (or predicate) bypass
 * GPZ Variant #2 (a.k.a. Spectre Variant #2): Branch target injection
 * GPZ Variant #3 (a.k.a. Meltdown): Rogue data cache load
 
-For more details, see the Google Project Zero blog post and the Spectre research
+For more details, see the Google Trezoa Zero blog post and the Spectre research
 paper:
 * https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html
 * https://spectreattack.com/spectre.pdf
@@ -26,7 +26,7 @@ speculative execution is unwound due to being incorrect. Mispredicted paths can
 cause code to be executed with data inputs that never occur in correct
 executions, making checks against malicious inputs ineffective and allowing
 attackers to use malicious data inputs to leak secret data. Here is an example,
-extracted and simplified from the Project Zero paper:
+extracted and simplified from the Trezoa Zero paper:
 ```
 struct array {
   unsigned long length;

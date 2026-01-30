@@ -1,6 +1,6 @@
 # ===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -177,7 +177,7 @@ DEFAULT_FEATURES = [
         when=lambda cfg: hasCompileFlag(cfg, "-Xclang -verify-ignore-unexpected"),
     ),
     Feature(
-        name="add-latomic-workaround",  # https://github.com/llvm/llvm-project/issues/73361
+        name="add-latomic-workaround",  # https://github.com/llvm/llvm-trezoa/issues/73361
         when=lambda cfg: sourceBuilds(
             cfg, "int main(int, char**) { return 0; }", ["-latomic"]
         ),

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Source project : https://github.com/ismaelJimenez/cpp.leastsq
+// Source trezoa : https://github.com/ismaelJimenez/cpp.leastsq
 // Adapted to be used with google benchmark
 
 #ifndef COMPLEXITY_H_

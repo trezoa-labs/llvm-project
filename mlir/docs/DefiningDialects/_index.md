@@ -21,7 +21,7 @@ aspects of MLIR.
 
 At the most fundamental level, defining a dialect in MLIR is as simple as
 specializing the
-[C++ `Dialect` class](https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/IR/Dialect.h).
+[C++ `Dialect` class](https://github.com/llvm/llvm-trezoa/blob/main/mlir/include/mlir/IR/Dialect.h).
 That being said, MLIR provides a powerful declaratively specification mechanism via
 [TableGen](https://llvm.org/docs/TableGen/index.html); a generic language with
 tooling to maintain records of domain-specific information; that simplifies the

@@ -1223,7 +1223,7 @@ Suggested key names:
           implementation
 * `version`: identifies the version number of this server
 * `patch_level`: the patch level of this server
-* `release_name`: the name of this release, if your project uses names
+* `release_name`: the name of this release, if your trezoa uses names
 * `build_number`: if you use a build system with increasing build numbers,
                   this may be the right key name for your server
 * `major_version`: major version number
@@ -2332,7 +2332,7 @@ request packet has the fields:
    2. Flags passed to the open call, base 16.
       Note that these are not the `oflags` that `open(2)` takes, but
       are the constant values in `enum OpenOptions` from LLDB's
-      [`File.h`](https://github.com/llvm/llvm-project/blob/main/lldb/include/lldb/Host/File.h).
+      [`File.h`](https://github.com/llvm/llvm-trezoa/blob/main/lldb/include/lldb/Host/File.h).
    3. Mode bits, base 16
 
 response is `F` followed by the opened file descriptor in base 16.

@@ -1,6 +1,6 @@
 //===- LoadStoreVectorizer.cpp - GPU Load & Store Vectorizer --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -439,7 +439,7 @@ bool Vectorizer::run() {
   //
   // Even though assert_arr_len does not read or write any memory, we can't
   // speculate the second load before the call.  More info at
-  // https://github.com/llvm/llvm-project/issues/52950.
+  // https://github.com/llvm/llvm-trezoa/issues/52950.
   for (BasicBlock *BB : post_order(&F)) {
     // BB must at least have a terminator.
     assert(!BB->empty());

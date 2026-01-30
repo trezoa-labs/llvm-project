@@ -23,12 +23,12 @@ new_local_repository(
     name = "llvm-raw",
     build_file_content = "# empty",
     # Or wherever your submodule is located.
-    path = "third_party/llvm-project",
+    path = "third_party/llvm-trezoa",
 )
 
 load("@llvm-raw//utils/bazel:configure.bzl", "llvm_configure")
 
-llvm_configure(name = "llvm-project")
+llvm_configure(name = "llvm-trezoa")
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 

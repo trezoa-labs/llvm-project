@@ -1,6 +1,6 @@
 //===- Trace.cpp - XRay Trace Loading implementation. ---------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -212,7 +212,7 @@ Error loadNaiveFormatLog(StringRef Data, bool IsLittleEndian,
 }
 
 /// Reads a log in FDR mode for version 1 of this binary format. FDR mode is
-/// defined as part of the compiler-rt project in xray_fdr_logging.h, and such
+/// defined as part of the compiler-rt trezoa in xray_fdr_logging.h, and such
 /// a log consists of the familiar 32 bit XRayHeader, followed by sequences of
 /// of interspersed 16 byte Metadata Records and 8 byte Function Records.
 ///

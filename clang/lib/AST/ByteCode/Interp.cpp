@@ -1,6 +1,6 @@
 //===------- Interp.cpp - Interpreter for the constexpr VM ------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1684,7 +1684,7 @@ bool DiagTypeid(InterpState &S, CodePtr OpPC) {
   return false;
 }
 
-// https://github.com/llvm/llvm-project/issues/102513
+// https://github.com/llvm/llvm-trezoa/issues/102513
 #if defined(_MSC_VER) && !defined(__clang__) && !defined(NDEBUG)
 #pragma optimize("", off)
 #endif
@@ -1712,7 +1712,7 @@ bool Interpret(InterpState &S) {
     }
   }
 }
-// https://github.com/llvm/llvm-project/issues/102513
+// https://github.com/llvm/llvm-trezoa/issues/102513
 #if defined(_MSC_VER) && !defined(__clang__) && !defined(NDEBUG)
 #pragma optimize("", on)
 #endif

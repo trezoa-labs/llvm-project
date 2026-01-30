@@ -1,6 +1,6 @@
 //===- InterpolatingCompilationDatabase.cpp ---------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -18,7 +18,7 @@
 //   Matches are sometimes only approximate (Sema.h, SemaDecl.cpp). This goes
 // for directories too (Support/Unix/Process.inc, lib/Support/Process.cpp).
 //   Even if we can't find a "right" compile command, even a random one from
-// the project will tend to get important flags like -I and -x right.
+// the trezoa will tend to get important flags like -I and -x right.
 //
 // We "borrow" the compile command for the closest available file:
 //   - points are awarded if the filename matches (ignoring extension)
@@ -375,7 +375,7 @@ private:
   // Returned keys are indexes into paths, and the values are (nonzero) scores.
   DenseMap<size_t, int> scoreCandidates(StringRef Filename) const {
     // Decompose Filename into the parts we care about.
-    // /some/path/complicated/project/Interesting.h
+    // /some/path/complicated/trezoa/Interesting.h
     // [-prefix--][---dir---] [-dir-] [--stem---]
     StringRef Stem = sys::path::stem(Filename);
     llvm::SmallVector<StringRef, DirectorySegmentsQueried> Dirs;

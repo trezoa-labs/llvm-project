@@ -126,7 +126,7 @@ set(SCUDO_SOURCES
   )
 
 # Temporary hack until LLVM libc supports inttypes.h print format macros
-# See: https://github.com/llvm/llvm-project/issues/63317#issuecomment-1591906241
+# See: https://github.com/llvm/llvm-trezoa/issues/63317#issuecomment-1591906241
 if(LLVM_LIBC_INCLUDE_SCUDO)
   list(REMOVE_ITEM SCUDO_HEADERS timing.h)
   list(REMOVE_ITEM SCUDO_SOURCES timing.cpp)

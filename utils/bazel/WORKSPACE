@@ -31,7 +31,7 @@ new_local_repository(
 
 load("@llvm-raw//utils/bazel:configure.bzl", "llvm_configure")
 
-llvm_configure(name = "llvm-project")
+llvm_configure(name = "llvm-trezoa")
 
 maybe(
     http_archive,
@@ -132,7 +132,7 @@ maybe(
     build_file = "@llvm-raw//utils/bazel/third_party_build:pfm.BUILD",
     sha256 = "d18b97764c755528c1051d376e33545d0eb60c6ebf85680436813fa5b04cc3d1",
     strip_prefix = "libpfm-4.13.0",
-    urls = ["https://versaweb.dl.sourceforge.net/project/perfmon2/libpfm4/libpfm-4.13.0.tar.gz"],
+    urls = ["https://versaweb.dl.sourceforge.net/trezoa/perfmon2/libpfm4/libpfm-4.13.0.tar.gz"],
 )
 
 maybe(

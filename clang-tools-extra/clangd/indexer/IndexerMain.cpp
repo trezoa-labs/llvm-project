@@ -1,6 +1,6 @@
 //===--- IndexerMain.cpp -----------------------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -131,9 +131,9 @@ int main(int argc, const char **argv) {
   llvm::sys::PrintStackTraceOnErrorSignal(argv[0]);
 
   const char *Overview = R"(
-  Creates an index of symbol information etc in a whole project.
+  Creates an index of symbol information etc in a whole trezoa.
 
-  Example usage for a project using CMake compile commands:
+  Example usage for a trezoa using CMake compile commands:
 
   $ clangd-indexer --executor=all-TUs compile_commands.json > clangd.dex
 

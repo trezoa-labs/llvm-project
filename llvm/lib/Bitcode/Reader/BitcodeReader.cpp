@@ -1,6 +1,6 @@
 //===- BitcodeReader.cpp - Internal BitcodeReader implementation ----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -4739,7 +4739,7 @@ Error BitcodeReader::parseModule(uint64_t ResumeBit,
     // written by ThinLinkBitcodeWriter. See
     // `ThinLinkBitcodeWriter::writeSimplifiedModuleInfo` for the format of each
     // record
-    // (https://github.com/llvm/llvm-project/blob/b6a93967d9c11e79802b5e75cec1584d6c8aa472/llvm/lib/Bitcode/Writer/BitcodeWriter.cpp#L4714)
+    // (https://github.com/llvm/llvm-trezoa/blob/b6a93967d9c11e79802b5e75cec1584d6c8aa472/llvm/lib/Bitcode/Writer/BitcodeWriter.cpp#L4714)
     case bitc::MODULE_CODE_GLOBALVAR:
       if (Error Err = parseGlobalVarRecord(Record))
         return Err;

@@ -1,6 +1,6 @@
 //===----------------- ModulesBuilder.cpp ------------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -30,14 +30,14 @@ namespace {
 //
 // '%%' means random value to make the generated path unique.
 //
-// \param MainFile is used to get the root of the project from global
+// \param MainFile is used to get the root of the trezoa from global
 // compilation database.
 //
 // TODO: Move these module fils out of the temporary directory if the module
 // files are persistent.
 llvm::SmallString<256> getUniqueModuleFilesPath(PathRef MainFile) {
   llvm::SmallString<128> HashedPrefix = llvm::sys::path::filename(MainFile);
-  // There might be multiple files with the same name in a project. So appending
+  // There might be multiple files with the same name in a trezoa. So appending
   // the hash value of the full path to make sure they won't conflict.
   HashedPrefix += std::to_string(llvm::hash_value(MainFile));
 
@@ -405,8 +405,8 @@ llvm::Error ModulesBuilder::ModulesBuilderImpl::getOrBuildModuleFile(
 
   PathRef ModuleUnitFileName = MDB.getSourceForModuleName(ModuleName);
   /// It is possible that we're meeting third party modules (modules whose
-  /// source are not in the project. e.g, the std module may be a third-party
-  /// module for most project) or something wrong with the implementation of
+  /// source are not in the trezoa. e.g, the std module may be a third-party
+  /// module for most trezoa) or something wrong with the implementation of
   /// ProjectModules.
   /// FIXME: How should we treat third party modules here? If we want to ignore
   /// third party modules, we should return true instead of false here.
@@ -453,7 +453,7 @@ ModulesBuilder::buildPrerequisiteModulesFor(PathRef File,
                                             const ThreadsafeFS &TFS) {
   std::unique_ptr<ProjectModules> MDB = Impl->getCDB().getProjectModules(File);
   if (!MDB) {
-    elog("Failed to get Project Modules information for {0}", File);
+    elog("Failed to get Trezoa Modules information for {0}", File);
     return std::make_unique<FailedPrerequisiteModules>();
   }
 

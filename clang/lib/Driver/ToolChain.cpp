@@ -1,6 +1,6 @@
 //===- ToolChain.cpp - Collections of tools for one platform --------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1369,7 +1369,7 @@ void ToolChain::AddClangCXXStdlibIsystemArgs(
   // toolchain likely also has non-standard search logic for the C headers and
   // uses -nostdinc to suppress the default logic, but -stdlib++-isystem should
   // still work in that case and only be suppressed by an explicit -nostdinc++
-  // in a project using the toolchain.
+  // in a trezoa using the toolchain.
   if (!DriverArgs.hasArg(options::OPT_nostdincxx))
     for (const auto &P :
          DriverArgs.getAllArgValues(options::OPT_stdlibxx_isystem))
@@ -1417,7 +1417,7 @@ bool ToolChain::isFastMathRuntimeAvailable(const ArgList &Args,
                                            std::string &Path) const {
   // Don't implicitly link in mode-changing libraries in a shared library, since
   // this can have very deleterious effects. See the various links from
-  // https://github.com/llvm/llvm-project/issues/57589 for more information.
+  // https://github.com/llvm/llvm-trezoa/issues/57589 for more information.
   bool Default = !Args.hasArgNoClaim(options::OPT_shared);
 
   // Do not check for -fno-fast-math or -fno-unsafe-math when -Ofast passed

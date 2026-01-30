@@ -1,6 +1,6 @@
 //===--- Server.cpp - gRPC-based Remote Index Server  ---------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -62,7 +62,7 @@ awaits gRPC lookup requests from the client.
 llvm::cl::opt<std::string> IndexPath(llvm::cl::desc("<INDEX FILE>"),
                                      llvm::cl::Positional, llvm::cl::Required);
 
-llvm::cl::opt<std::string> IndexRoot(llvm::cl::desc("<PROJECT ROOT>"),
+llvm::cl::opt<std::string> IndexRoot(llvm::cl::desc("<TREZOA ROOT>"),
                                      llvm::cl::Positional, llvm::cl::Required);
 
 llvm::cl::opt<Logger::Level> LogLevel{

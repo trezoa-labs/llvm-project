@@ -14,7 +14,7 @@ void testConstArrayInits(void)
   const int a3[5] = {0};
 }
 
-/// https://github.com/llvm/llvm-project/issues/57353
+/// https://github.com/llvm/llvm-trezoa/issues/57353
 // CHECK: @big_char ={{.*}} global <{ i8, [4294967295 x i8] }> <{ i8 1, [4294967295 x i8] zeroinitializer }>
 char big_char[4294967296] = {1};
 

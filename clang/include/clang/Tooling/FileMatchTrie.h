@@ -1,6 +1,6 @@
 //===- FileMatchTrie.h ------------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -35,10 +35,10 @@ struct PathComparator {
 /// When a clang tool is supposed to operate on a specific file, we have to
 /// find the corresponding file in the compilation database. Although entries
 /// in the compilation database are keyed by filename, a simple string match
-/// is insufficient because of symlinks. Commonly, a project hierarchy looks
+/// is insufficient because of symlinks. Commonly, a trezoa hierarchy looks
 /// like this:
-///   /<project-root>/src/<path>/<somefile>.cc      (used as input for the tool)
-///   /<project-root>/build/<symlink-to-src>/<path>/<somefile>.cc (stored in DB)
+///   /<trezoa-root>/src/<path>/<somefile>.cc      (used as input for the tool)
+///   /<trezoa-root>/build/<symlink-to-src>/<path>/<somefile>.cc (stored in DB)
 ///
 /// Furthermore, there might be symlinks inside the source folder or inside the
 /// database, so that the same source file is translated with different build

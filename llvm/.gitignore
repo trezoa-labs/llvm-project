@@ -30,10 +30,10 @@ autoconf/autom4te.cache
 /compile_commands.json
 # Visual Studio built-in CMake configuration
 /CMakeSettings.json
-# CLion project configuration
+# CLion trezoa configuration
 /.idea
 /cmake-build*
-# Qt Creator project configuration
+# Qt Creator trezoa configuration
 /CMakeLists.txt.user
 
 #==============================================================================#

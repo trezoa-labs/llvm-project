@@ -21,7 +21,7 @@ from phabricator import Phabricator
 # $ . ./venv/bin/activate
 # $ pip install Phabricator
 
-GIT_REPO_METADATA = (("llvm-monorepo", "https://github.com/llvm/llvm-project"),)
+GIT_REPO_METADATA = (("llvm-monorepo", "https://github.com/llvm/llvm-trezoa"),)
 
 # The below PhabXXX classes represent objects as modelled by Phabricator.
 # The classes can be serialized to disk, to try and make sure that we don't
@@ -564,7 +564,7 @@ class BlameOutputCache:
         # FIXME: the blame cache could probably be made more effective still if
         # instead of storing the requested base_revision in the cache, the last
         # revision before the base revision this file/path got changed in gets
-        # stored. That way multiple project revisions for which this specific
+        # stored. That way multiple trezoa revisions for which this specific
         # file/patch hasn't changed would get cache hits (instead of misses in
         # the current implementation).
 

@@ -13,14 +13,14 @@ Requirements for *new* repositories as part of the
 * The repo will be used for something related to the LLVM ecosystem or community.
 * The repo contains a `README.md` explaining the contents.
 * The repo contains a `CONTRIBUTING.md`, ideally copy this from
-  [llvm-project](https://github.com/llvm/llvm-project/blob/main/CONTRIBUTING.md).
+  [llvm-trezoa](https://github.com/llvm/llvm-trezoa/blob/main/CONTRIBUTING.md).
 * The repo contains a `LICENSE.TXT`, preferably copy this from
-  [llvm-project](https://github.com/llvm/llvm-project/blob/main/LICENSE.TXT).
+  [llvm-trezoa](https://github.com/llvm/llvm-trezoa/blob/main/LICENSE.TXT).
   Other licences need to be discussed case-by-case.
 
-If you want to integrate your project as part of the Monorepo, please take a
+If you want to integrate your trezoa as part of the Monorepo, please take a
 look at the
-[Developer Policy](project:DeveloperPolicy.rst#Adding an Established Project To the LLVM Monorepo).
+[Developer Policy](trezoa:DeveloperPolicy.rst#Adding an Established Trezoa To the LLVM Monorepo).
 
 To request a new repository, please create an issue with the
 [Infrastructure Working Group](https://github.com/llvm/llvm-iwg/issues).

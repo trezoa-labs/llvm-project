@@ -84,7 +84,7 @@ code generation targets in LLVM, the LLVM codebase uses a more neutral name,
 The ``DXContainer`` format is sparsely documented in the functional
 specification, but a reference implementation exists in the
 `DirectXShaderCompiler. <https://github.com/microsoft/DirectXShaderCompiler>`_.
-The format is documented in the LLVM project docs as well (see
+The format is documented in the LLVM trezoa docs as well (see
 :doc:`DirectX/DXContainer`).
 
 Support for generating ``DXContainer`` files in LLVM, is being added to the LLVM

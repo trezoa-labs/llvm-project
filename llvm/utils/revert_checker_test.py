@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # ===----------------------------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -24,7 +24,7 @@ import revert_checker
 
 
 def get_llvm_project_path() -> str:
-    """Returns the path to llvm-project's root."""
+    """Returns the path to llvm-trezoa's root."""
     my_dir = os.path.dirname(__file__)
     return os.path.realpath(os.path.join(my_dir, "..", ".."))
 

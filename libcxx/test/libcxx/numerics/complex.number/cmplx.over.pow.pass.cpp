@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -15,7 +15,7 @@
 //  template<class T, class U> complex<__promote<T, U>::type> pow(const T&, const complex<U>&);
 
 // Test that these additional overloads are free from catching std::complex<non-floating-point>,
-// which is expected by several 3rd party libraries, see https://github.com/llvm/llvm-project/issues/109858.
+// which is expected by several 3rd party libraries, see https://github.com/llvm/llvm-trezoa/issues/109858.
 //
 // Note that we reserve the right to break this in the future if we have a reason to, but for the time being,
 // make sure we don't break this property unintentionally.

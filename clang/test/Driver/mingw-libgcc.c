@@ -1,5 +1,5 @@
 // Test if mingw toolchain driver emits static linking (-lgcc -lgcc_eh) or dynamic linking (-lgcc_s -lgcc).
-// Verified with gcc version 5.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 project).
+// Verified with gcc version 5.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 trezoa).
 
 // gcc, static
 // RUN: %clang -v --target=i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefixes=CHECK_STATIC,CHECK_BDYNAMIC %s

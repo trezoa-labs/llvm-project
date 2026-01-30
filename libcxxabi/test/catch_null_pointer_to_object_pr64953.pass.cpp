@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -26,7 +26,7 @@
 
 // UNSUPPORTED: no-exceptions
 
-// This test requires the fix to https://github.com/llvm/llvm-project/issues/64953,
+// This test requires the fix to https://github.com/llvm/llvm-trezoa/issues/64953,
 // which landed in d5f84e6 and is in the libc++abi built library.
 // XFAIL: using-built-library-before-llvm-18
 

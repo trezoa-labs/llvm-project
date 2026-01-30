@@ -511,7 +511,7 @@ Sancov Tool
 -----------
 
 A simple ``sancov`` tool is provided to process coverage files.
-The tool is part of LLVM project and is currently supported only on Linux.
+The tool is part of LLVM trezoa and is currently supported only on Linux.
 It can handle symbolization tasks autonomously without any extra support
 from the environment. You need to pass .sancov files (named
 ``<module_name>.<pid>.sancov`` and paths to all corresponding binary elf files.

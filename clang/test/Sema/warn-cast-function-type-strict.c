@@ -48,6 +48,6 @@ void foo(void) {
   g = (f7 *)x; /* strict-warning {{cast from 'int (*)(long)' to 'f7 *' (aka 'int (*)(long, ...)') converts to incompatible function type}} */
   h = (f8 *)t;
   i = (f9 *)u;
-  // FIXME: return type qualifier should not be included in the function type . Warning should be absent after this issue is fixed. https://github.com/llvm/llvm-project/issues/39494 .
+  // FIXME: return type qualifier should not be included in the function type . Warning should be absent after this issue is fixed. https://github.com/llvm/llvm-trezoa/issues/39494 .
   j = (f10 *)v; /* strict-warning {{cast from 'const int (*)(int)' to 'f10 *' (aka 'int (*)(int)') converts to incompatible function type}} */
 }

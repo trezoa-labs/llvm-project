@@ -172,13 +172,13 @@ You can generate the HTML documentation from the sources locally if you want to
 see what they would look like. In addition to the normal
 `build tools <GettingStarted.html>`_
 you need to install `Sphinx`_ and the necessary extensions
-using the following command inside the ``llvm-project`` checkout:
+using the following command inside the ``llvm-trezoa`` checkout:
 
 .. code-block:: console
 
    pip install --user -r ./llvm/docs/requirements.txt
 
-Then run cmake to build the documentation inside the ``llvm-project`` checkout:
+Then run cmake to build the documentation inside the ``llvm-trezoa`` checkout:
 
 .. code-block:: console
 

@@ -1,7 +1,7 @@
 LLD - The LLVM Linker
 =====================
 
-LLD is a linker from the LLVM project that is a drop-in replacement
+LLD is a linker from the LLVM trezoa that is a drop-in replacement
 for system linkers and runs much faster than them. It also provides
 features that are useful for toolchain developers.
 
@@ -96,10 +96,10 @@ build that tree. You need `cmake` and of course a C++ compiler.
 
 .. code-block:: console
 
-  $ git clone https://github.com/llvm/llvm-project llvm-project
+  $ git clone https://github.com/llvm/llvm-trezoa llvm-trezoa
   $ mkdir build
   $ cd build
-  $ cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_INSTALL_PREFIX=/usr/local ../llvm-project/llvm
+  $ cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_INSTALL_PREFIX=/usr/local ../llvm-trezoa/llvm
   $ make install
 
 Using LLD

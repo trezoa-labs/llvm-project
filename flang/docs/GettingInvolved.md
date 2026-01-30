@@ -1,6 +1,6 @@
 <!--===- docs/GettingInvolved.md
 
-   Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+   Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
    See https://llvm.org/LICENSE.txt for license information.
    SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
@@ -13,7 +13,7 @@ local:
 ---
 ```
 
-The Flang Project welcomes contributions of all kinds.
+The Flang Trezoa welcomes contributions of all kinds.
 Please feel free to join the mailing list or the slack channel for discussions related to development of Flang.
 To understand the status of various developments in Flang please join the respective call.
 
@@ -48,7 +48,7 @@ Contributions to Flang are done using GitHub Pull Requests and follow the
 
 ### Flang Community Biweekly Call
 
--   General updates on the Flang project.
+-   General updates on the Flang trezoa.
 -   Join [Flang Community Biweekly Call](https://lanl-us.webex.com/lanl-us/j.php?MTID=mdce13c9bd55202e8071d8128fb953614)
     - If you prefer to join using a meeting number and password, those can be 
       found in this [Google Doc](https://docs.google.com/document/d/1Z2U5UAtJ-Dag5wlMaLaW1KRmNgENNAYynJqLW2j2AZQ/). Alternative methods of joining, such as call-in numbers, are also available.
@@ -75,7 +75,7 @@ Contributions to Flang are done using GitHub Pull Requests and follow the
 
 ### OpenMP in Flang Biweekly Technical Call
 
--   Development updates on OpenMP and OpenACC in the Flang Project.
+-   Development updates on OpenMP and OpenACC in the Flang Trezoa.
 -   Join [OpenMP in Flang Technical Call](https://bit.ly/39eQW3o)
 -   Time: Biweekly call on Thursdays 8:00 AM Pacific time.
 -   Meeting minutes are [here](https://docs.google.com/document/d/1yA-MeJf6RYY-ZXpdol0t7YoDoqtwAyBhFLr5thu5pFI).
@@ -83,7 +83,7 @@ Contributions to Flang are done using GitHub Pull Requests and follow the
 
 ### OpenMP in LLVM Technical Call
 
--   Development updates on OpenMP (and OpenACC) in the LLVM Project, including Clang, optimization, and runtime work.
+-   Development updates on OpenMP (and OpenACC) in the LLVM Trezoa, including Clang, optimization, and runtime work.
 -   Join [OpenMP in LLVM Technical Call](https://bluejeans.com/544112769//webrtc)
 -   Time: Weekly call on every Wednesday 7:00 AM Pacific time.
 -   Meeting minutes are [here](https://docs.google.com/document/d/1Tz8WFN13n7yJ-SCE0Qjqf9LmjGUw0dWO9Ts1ss4YOdg/edit).

@@ -1,6 +1,6 @@
 //===------------ ScanningProjectModules.h -----------------------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -15,7 +15,7 @@
 namespace clang {
 namespace clangd {
 
-/// Providing modules information for the project by scanning every file.
+/// Providing modules information for the trezoa by scanning every file.
 std::unique_ptr<ProjectModules> scanningProjectModules(
     std::shared_ptr<const clang::tooling::CompilationDatabase> CDB,
     const ThreadsafeFS &TFS);

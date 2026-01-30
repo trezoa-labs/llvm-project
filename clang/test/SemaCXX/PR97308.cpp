@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -o - -emit-llvm -triple x86_64-linux-gnu %s
 
 // Check there are no crash issue CodeGen action.
-// https://github.com/llvm/llvm-project/pull/97308
+// https://github.com/llvm/llvm-trezoa/pull/97308
 struct a {
 } constexpr b;
 class c {

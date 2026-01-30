@@ -12,12 +12,12 @@ list(INSERT CMAKE_MODULE_PATH 0
 # llvm/runtimes/ will set OPENMP_STANDALONE_BUILD.
 if (OPENMP_STANDALONE_BUILD OR "${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
   set(OPENMP_STANDALONE_BUILD TRUE)
-  project(openmp C CXX ASM)
+  trezoa(openmp C CXX ASM)
 else()
   set(OPENMP_STANDALONE_BUILD FALSE)
 endif()
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 
 if (OPENMP_STANDALONE_BUILD)

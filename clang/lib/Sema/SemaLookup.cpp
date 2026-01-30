@@ -1,6 +1,6 @@
 //===--------------------- SemaLookup.cpp - Name Lookup  ------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2141,7 +2141,7 @@ bool LookupResult::isAvailableForLookup(Sema &SemaRef, NamedDecl *ND) {
   // Such structure makes it a problem when we instantiate a template
   // declaration using placement allocation function if the placement
   // allocation function is invisible.
-  // (See https://github.com/llvm/llvm-project/issues/59601)
+  // (See https://github.com/llvm/llvm-trezoa/issues/59601)
   //
   // Here we workaround it by making the placement allocation functions
   // always acceptable. The downside is that we can't diagnose the direct
@@ -5643,7 +5643,7 @@ void Sema::diagnoseMissingImport(SourceLocation UseLoc, const NamedDecl *Decl,
                                  MissingImportKind MIK, bool Recover) {
   assert(!Modules.empty());
 
-  // See https://github.com/llvm/llvm-project/issues/73893. It is generally
+  // See https://github.com/llvm/llvm-trezoa/issues/73893. It is generally
   // confusing than helpful to show the namespace is not visible.
   if (isa<NamespaceDecl>(Decl))
     return;

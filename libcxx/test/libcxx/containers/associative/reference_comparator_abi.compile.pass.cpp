@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -15,7 +15,7 @@
 // If we decide to make reference comparators ill-formed, this test would become
 // unnecessary.
 //
-// See https://github.com/llvm/llvm-project/issues/118559 for more details.
+// See https://github.com/llvm/llvm-trezoa/issues/118559 for more details.
 
 #include <set>
 #include <map>

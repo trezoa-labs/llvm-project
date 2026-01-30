@@ -1,6 +1,6 @@
 //===--- ConfigProvider.h - Loading of user configuration --------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -8,7 +8,7 @@
 //
 // Various clangd features have configurable behaviour (or can be disabled).
 // The configuration system allows users to control this:
-//  - in a user config file, a project config file, via LSP, or via flags
+//  - in a user config file, a trezoa config file, via LSP, or via flags
 //  - specifying different settings for different files
 // This file defines the structures used for this, that produce a Config.
 //

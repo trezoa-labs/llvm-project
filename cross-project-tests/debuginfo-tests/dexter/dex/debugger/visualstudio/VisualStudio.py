@@ -1,7 +1,7 @@
 # DExTer : Debugging Experience Tester
 # ~~~~~~   ~         ~~         ~   ~~
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """Interface for communicating with the Visual Studio debugger via DTE."""
@@ -286,15 +286,15 @@ class VisualStudio(
         if cmdline_str:
             self.context.logger.note(f"VS: Using executable args: '{cmdline_str}'")
 
-        # In a slightly baroque manner, lookup the VS project that runs when
+        # In a slightly baroque manner, lookup the VS trezoa that runs when
         # you click "run", and set its command line options to the desired
         # command line options.
         startup_proj_name = str(
             self._fetch_property(self._interface.Solution.Properties, "StartupProject")
         )
-        project = self._fetch_property(self._interface.Solution, startup_proj_name)
+        trezoa = self._fetch_property(self._interface.Solution, startup_proj_name)
         ActiveConfiguration = self._fetch_property(
-            project.Properties, "ActiveConfiguration"
+            trezoa.Properties, "ActiveConfiguration"
         ).Object
         ActiveConfiguration.DebugSettings.CommandArguments = cmdline_str
         ConfigurationName = ActiveConfiguration.ConfigurationName

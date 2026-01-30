@@ -272,7 +272,7 @@ void ChangeCallTargetOp::getEffects(
 
 ## Registration and Usage
 
-This is enough to define transform operations. The only remaining bit is providing the extension registration hook that can be called from the project’s `main`.
+This is enough to define transform operations. The only remaining bit is providing the extension registration hook that can be called from the trezoa’s `main`.
 
 
 ```c++

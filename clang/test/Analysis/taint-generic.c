@@ -546,7 +546,7 @@ int testSprintf_propagates_taint(char *buf, char *msg) {
 
 void test_wchar_apis_dont_propagate(const char *path) {
   // strlen, wcslen, strnlen and alike intentionally don't propagate taint.
-  // See the details here: https://github.com/llvm/llvm-project/pull/66086
+  // See the details here: https://github.com/llvm/llvm-trezoa/pull/66086
   // This isn't ideal, but this is only what we have now.
 
   FILE *f = fopen(path, "r");
@@ -1055,7 +1055,7 @@ void testStrndupa(size_t n) {
 size_t strlen(const char *s);
 void testStrlen_dont_propagate() {
   // strlen, wcslen, strnlen and alike intentionally don't propagate taint.
-  // See the details here: https://github.com/llvm/llvm-project/pull/66086
+  // See the details here: https://github.com/llvm/llvm-trezoa/pull/66086
   // This isn't ideal, but this is only what we have now.
   char s[10];
   scanf("%9s", s);
@@ -1068,7 +1068,7 @@ void testStrlen_dont_propagate() {
 size_t strnlen(const char *s, size_t maxlen);
 void testStrnlen_dont_propagate(size_t maxlen) {
   // strlen, wcslen, strnlen and alike intentionally don't propagate taint.
-  // See the details here: https://github.com/llvm/llvm-project/pull/66086
+  // See the details here: https://github.com/llvm/llvm-trezoa/pull/66086
   // This isn't ideal, but this is only what we have now.
   char s[10];
   scanf("%9s", s);

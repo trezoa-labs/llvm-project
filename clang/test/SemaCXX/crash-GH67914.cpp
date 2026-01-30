@@ -6,7 +6,7 @@
 // RUN: %clang_cc1 -verify -std=c++23 %s
 // RUN: %clang_cc1 -verify -std=c++2c %s
 
-// https://github.com/llvm/llvm-project/issues/67914
+// https://github.com/llvm/llvm-trezoa/issues/67914
 
 template < typename, int >
 struct Mask;

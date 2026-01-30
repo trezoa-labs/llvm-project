@@ -1,6 +1,6 @@
 //===-- clang-doc/HTMLGeneratorTest.cpp -----------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -30,7 +30,7 @@ ClangDocContext
 getClangDocContext(std::vector<std::string> UserStylesheets = {},
                    StringRef RepositoryUrl = "") {
   ClangDocContext CDCtx{
-      {}, "test-project", {}, {}, {}, RepositoryUrl, UserStylesheets};
+      {}, "test-trezoa", {}, {}, {}, RepositoryUrl, UserStylesheets};
   CDCtx.UserStylesheets.insert(
       CDCtx.UserStylesheets.begin(),
       "../share/clang/clang-doc-default-stylesheet.css");
@@ -68,7 +68,7 @@ TEST(HTMLGeneratorTest, emitNamespaceHTML) {
 <link rel="stylesheet" href="../user-provided-stylesheet.css"/>
 <script src="../index_json.js"></script>
 <script src="../index.js"></script>
-<header id="project-title">test-project</header>
+<header id="trezoa-title">test-trezoa</header>
 <main>
   <div id="sidebar-left" path="Namespace" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left"></div>
   <div id="main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
@@ -185,7 +185,7 @@ TEST(HTMLGeneratorTest, emitRecordHTML) {
 <link rel="stylesheet" href="../../../clang-doc-default-stylesheet.css"/>
 <script src="../../../index_json.js"></script>
 <script src="../../../index.js"></script>
-<header id="project-title">test-project</header>
+<header id="trezoa-title">test-trezoa</header>
 <main>
   <div id="sidebar-left" path="X/Y/Z" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left"></div>
   <div id="main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
@@ -308,7 +308,7 @@ TEST(HTMLGeneratorTest, emitFunctionHTML) {
 <link rel="stylesheet" href="clang-doc-default-stylesheet.css"/>
 <script src="index_json.js"></script>
 <script src="index.js"></script>
-<header id="project-title">test-project</header>
+<header id="trezoa-title">test-trezoa</header>
 <main>
   <div id="sidebar-left" path="" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left"></div>
   <div id="main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
@@ -356,7 +356,7 @@ TEST(HTMLGeneratorTest, emitEnumHTML) {
 <link rel="stylesheet" href="clang-doc-default-stylesheet.css"/>
 <script src="index_json.js"></script>
 <script src="index.js"></script>
-<header id="project-title">test-project</header>
+<header id="trezoa-title">test-trezoa</header>
 <main>
   <div id="sidebar-left" path="" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left"></div>
   <div id="main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
@@ -451,7 +451,7 @@ TEST(HTMLGeneratorTest, emitCommentHTML) {
 <link rel="stylesheet" href="clang-doc-default-stylesheet.css"/>
 <script src="index_json.js"></script>
 <script src="index.js"></script>
-<header id="project-title">test-project</header>
+<header id="trezoa-title">test-trezoa</header>
 <main>
   <div id="sidebar-left" path="" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left"></div>
   <div id="main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">

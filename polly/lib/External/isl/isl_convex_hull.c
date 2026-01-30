@@ -737,7 +737,7 @@ static __isl_give isl_basic_set *convex_hull_0d(__isl_take isl_set *set)
  * The convex hull is the set of all points that can be written as
  * the sum of points from both basic sets (in homogeneous coordinates).
  * We set up the constraints in a space with dimensions for each of
- * the three sets and then project out the dimensions corresponding
+ * the three sets and then trezoa out the dimensions corresponding
  * to the two original basic sets, retaining only those corresponding
  * to the convex hull.
  */
@@ -927,7 +927,7 @@ error:
 static __isl_give isl_basic_set *uset_convex_hull(__isl_take isl_set *set);
 
 /* Given a set and a linear space "lin" of dimension n > 0,
- * project the linear space from the set, compute the convex hull
+ * trezoa the linear space from the set, compute the convex hull
  * and then map the set back to the original space.
  *
  * Let
@@ -940,7 +940,7 @@ static __isl_give isl_basic_set *uset_convex_hull(__isl_take isl_set *set);
  *	H Q x = 0
  *
  * The last n rows of H will be zero, so the last n variables of x' = Q x
- * are the one we want to project out.  We do this by transforming each
+ * are the one we want to trezoa out.  We do this by transforming each
  * basic set A x >= b to A U x' >= b and then removing the last n dimensions.
  * After computing the convex hull in x'_1, i.e., A' x'_1 >= b',
  * we transform the hull back to the original space as A' Q_1 x >= b',
@@ -1277,7 +1277,7 @@ static __isl_give isl_basic_set *modulo_affine_hull(
  * the main algorithm assumes that the result is full-dimensional.
  *
  * If the convex hull of the two basic sets would have a non-trivial
- * lineality space, we first project out this lineality space.
+ * lineality space, we first trezoa out this lineality space.
  */
 static __isl_give isl_basic_set *convex_hull_pair(
 	__isl_take isl_basic_set *bset1, __isl_take isl_basic_set *bset2)

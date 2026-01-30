@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 """ This module is responsible for the Clang executable.
 
-Since Clang command line interface is so rich, but this project is using only
+Since Clang command line interface is so rich, but this trezoa is using only
 a subset of that, it makes sense to create a function specific wrapper. """
 
 import subprocess

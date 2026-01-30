@@ -1163,7 +1163,7 @@ Codeview and ELF targets with recent versions of Clang, GCC and MSVC
 The above test is used to illustrate a scope issue found in the Clang
 compiler:
 `PR44884 (Bugs LLVM) <https://bugs.llvm.org/show_bug.cgi?id=44884>`_ /
-`PR44229 (GitHub LLVM) <https://github.com/llvm/llvm-project/issues/44229>`_
+`PR44229 (GitHub LLVM) <https://github.com/llvm/llvm-trezoa/issues/44229>`_
 
 The lines 4 and 7 contains 2 typedefs, defined at different lexical
 scopes.
@@ -1388,7 +1388,7 @@ Codeview and ELF targets with recent versions of Clang, GCC and MSVC
 The above test is used to illustrate a scope issue found in the Clang
 compiler:
 `PR46466 (Bugs LLVM) <https://bugs.llvm.org/show_bug.cgi?id=46466>`_ /
-`PR45811 (GitHub LLVM) <https://github.com/llvm/llvm-project/issues/45811>`_
+`PR45811 (GitHub LLVM) <https://github.com/llvm/llvm-trezoa/issues/45811>`_
 
 These are the logical views that :program:`llvm-debuginfo-analyzer`
 generates for 3 different compilers (MSVC, Clang and GCC), emitting
@@ -1667,7 +1667,7 @@ file defines *forceinline*.
 The above test is used to illustrate a variable issue found in the Clang
 compiler:
 `PR43860 (Bugs LLVM) <https://bugs.llvm.org/show_bug.cgi?id=43860>`_ /
-`PR43205 (GitHub) <https://github.com/llvm/llvm-project/issues/43205>`_
+`PR43205 (GitHub) <https://github.com/llvm/llvm-trezoa/issues/43205>`_
 
 These are the logical views that :program:`llvm-debuginfo-analyzer`
 generates for 3 different compilers (MSVC, Clang and GCC), emitting

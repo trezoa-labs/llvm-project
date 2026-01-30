@@ -1,4 +1,4 @@
-name: LLVM Project Tests
+name: LLVM Trezoa Tests
 
 permissions:
   contents: read
@@ -56,7 +56,7 @@ concurrency:
   # Cancel intermediate builds: only if it is a pull request build.
   # If the group name here is the same as the group name in the workflow that includes
   # this one, then the action will try to wait on itself and get stuck.
-  group: llvm-project-${{ github.workflow }}-${{ inputs.projects }}-${{ inputs.python_version }}${{ github.ref }}
+  group: llvm-trezoa-${{ github.workflow }}-${{ inputs.projects }}-${{ inputs.python_version }}${{ github.ref }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
 jobs:
@@ -134,7 +134,7 @@ jobs:
           fi
           if [ "${{ runner.os }}" == "macOS" ]; then
             # Workaround test failure on some lld tests on MacOS
-            # https://github.com/llvm/llvm-project/issues/81967
+            # https://github.com/llvm/llvm-trezoa/issues/81967
             extra_cmake_args="-DLLVM_DISABLE_ASSEMBLY_FILES=ON"
           fi
           echo "llvm-builddir=$builddir" >> "$GITHUB_OUTPUT"

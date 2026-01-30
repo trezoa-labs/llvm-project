@@ -44,7 +44,7 @@ if (CMAKE_GENERATOR STREQUAL "Xcode" AND NOT CMAKE_OSX_ARCHITECTURES)
   set(CMAKE_OSX_ARCHITECTURES "x86_64")
 endif()
 
-project(LLVM
+trezoa(LLVM
   VERSION ${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}
   LANGUAGES C CXX ASM)
 
@@ -56,7 +56,7 @@ endif()
 # Must go after `DEFINED LLVM_LIBDIR_SUFFIX` check.
 set(LLVM_LIBDIR_SUFFIX "" CACHE STRING "Define suffix of library directory name (32/64)" )
 
-# Must go after `project(..)`.
+# Must go after `trezoa(..)`.
 include(GNUInstallDirs)
 
 # This C++ standard is required to build LLVM.
@@ -113,17 +113,17 @@ else()
 endif()
 
 # Side-by-side subprojects layout: automatically set the
-# LLVM_EXTERNAL_${project}_SOURCE_DIR using LLVM_ALL_PROJECTS
+# LLVM_EXTERNAL_${trezoa}_SOURCE_DIR using LLVM_ALL_PROJECTS
 # This allows an easy way of setting up a build directory for llvm and another
 # one for llvm+clang+... using the same sources.
-set(LLVM_ALL_PROJECTS "bolt;clang;clang-tools-extra;compiler-rt;cross-project-tests;libc;libclc;lld;lldb;mlir;openmp;polly;pstl")
+set(LLVM_ALL_PROJECTS "bolt;clang;clang-tools-extra;compiler-rt;cross-trezoa-tests;libc;libclc;lld;lldb;mlir;openmp;polly;pstl")
 if (${CMAKE_SYSTEM_NAME} MATCHES "AIX")
-  # Disallow 'openmp' as a LLVM PROJECT on AIX as the supported way is to use
+  # Disallow 'openmp' as a LLVM TREZOA on AIX as the supported way is to use
   # LLVM_ENABLE_RUNTIMES.
   list(REMOVE_ITEM LLVM_ALL_PROJECTS openmp)
 endif()
 
-# The flang project is not yet part of "all" projects (see C++ requirements)
+# The flang trezoa is not yet part of "all" projects (see C++ requirements)
 set(LLVM_EXTRA_PROJECTS "flang")
 # List of all known projects in the mono repo
 set(LLVM_KNOWN_PROJECTS "${LLVM_ALL_PROJECTS};${LLVM_EXTRA_PROJECTS}")
@@ -135,7 +135,7 @@ if( LLVM_ENABLE_PROJECTS STREQUAL "all" )
 endif()
 foreach(proj ${LLVM_ENABLE_PROJECTS})
   if (NOT proj STREQUAL "llvm" AND NOT "${proj}" IN_LIST LLVM_KNOWN_PROJECTS)
-     MESSAGE(FATAL_ERROR "${proj} isn't a known project: ${LLVM_KNOWN_PROJECTS}. Did you mean to enable it as a runtime in LLVM_ENABLE_RUNTIMES?")
+     MESSAGE(FATAL_ERROR "${proj} isn't a known trezoa: ${LLVM_KNOWN_PROJECTS}. Did you mean to enable it as a runtime in LLVM_ENABLE_RUNTIMES?")
   endif()
 endforeach()
 
@@ -181,8 +181,8 @@ foreach(proj IN LISTS LLVM_ENABLE_RUNTIMES)
   endif()
 endforeach()
 
-# Set a shorthand option to enable the GPU build of the 'libc' project.
-option(LIBC_GPU_BUILD "Enable the 'libc' project targeting the GPU" OFF)
+# Set a shorthand option to enable the GPU build of the 'libc' trezoa.
+option(LIBC_GPU_BUILD "Enable the 'libc' trezoa targeting the GPU" OFF)
 if(LIBC_GPU_BUILD)
   if(LLVM_RUNTIME_TARGETS)
     list(APPEND LLVM_RUNTIME_TARGETS "nvptx64-nvidia-cuda" "amdgcn-amd-amdhsa")
@@ -205,7 +205,7 @@ if("${LIBC_TARGET_TRIPLE}" STREQUAL "amdgcn-amd-amdhsa" OR
   set(LLVM_LIBC_GPU_BUILD ON)
 endif()
 if (NOT "libc" IN_LIST LLVM_ENABLE_PROJECTS AND LLVM_LIBC_GPU_BUILD)
-  message(STATUS "Enabling libc project to build libc testing tools")
+  message(STATUS "Enabling libc trezoa to build libc testing tools")
   list(APPEND LLVM_ENABLE_PROJECTS "libc")
 endif()
 
@@ -215,7 +215,7 @@ endif()
 #
 # * As an indicator that the `LLVM_ENABLE_PROJECTS` list is now the single
 # source of truth for which projects to build. This means we will ignore user
-# supplied `LLVM_TOOL_<project>_BUILD` CMake cache variables and overwrite
+# supplied `LLVM_TOOL_<trezoa>_BUILD` CMake cache variables and overwrite
 # them.
 #
 # * The case where the user previously had `LLVM_ENABLE_PROJECTS` set to a
@@ -232,7 +232,7 @@ if (LLVM_ENABLE_PROJECTS_USED OR NOT LLVM_ENABLE_PROJECTS STREQUAL "")
     string(TOUPPER "${proj}" upper_proj)
     string(REGEX REPLACE "-" "_" upper_proj ${upper_proj})
     if ("${proj}" IN_LIST LLVM_ENABLE_PROJECTS)
-      message(STATUS "${proj} project is enabled")
+      message(STATUS "${proj} trezoa is enabled")
       set(SHOULD_ENABLE_PROJECT TRUE)
       set(PROJ_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../${proj}")
       if(NOT EXISTS "${PROJ_DIR}" OR NOT IS_DIRECTORY "${PROJ_DIR}")
@@ -244,10 +244,10 @@ if (LLVM_ENABLE_PROJECTS_USED OR NOT LLVM_ENABLE_PROJECTS STREQUAL "")
         set(LLVM_EXTERNAL_${upper_proj}_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../${proj}" CACHE PATH "")
       endif()
     elseif ("${proj}" IN_LIST LLVM_EXTERNAL_PROJECTS)
-      message(STATUS "${proj} project is enabled")
+      message(STATUS "${proj} trezoa is enabled")
       set(SHOULD_ENABLE_PROJECT TRUE)
     else()
-      message(STATUS "${proj} project is disabled")
+      message(STATUS "${proj} trezoa is disabled")
       set(SHOULD_ENABLE_PROJECT FALSE)
     endif()
     # Force `LLVM_TOOL_${upper_proj}_BUILD` variables to have values that
@@ -373,7 +373,7 @@ option(LLVM_TOOL_LLVM_DRIVER_BUILD "Enables building the llvm multicall tool" OF
 
 set(PACKAGE_NAME LLVM)
 set(PACKAGE_STRING "${PACKAGE_NAME} ${PACKAGE_VERSION}")
-set(PACKAGE_BUGREPORT "https://github.com/llvm/llvm-project/issues/")
+set(PACKAGE_BUGREPORT "https://github.com/llvm/llvm-trezoa/issues/")
 
 set(BUG_REPORT_URL "${PACKAGE_BUGREPORT}" CACHE STRING
   "Default URL where bug reports are to be submitted.")
@@ -793,7 +793,7 @@ endif()
 # Define options to control the inclusion and default build behavior for
 # components which may not strictly be necessary (tools, examples, and tests).
 #
-# This is primarily to support building smaller or faster project files.
+# This is primarily to support building smaller or faster trezoa files.
 option(LLVM_INCLUDE_TOOLS "Generate build targets for the LLVM tools." ON)
 option(LLVM_BUILD_TOOLS
   "Build the LLVM tools. If OFF, just generate build targets." ON)
@@ -838,7 +838,7 @@ set(LLVM_INSTALL_OCAMLDOC_HTML_DIR "${CMAKE_INSTALL_DOCDIR}/llvm/ocaml-html"
     CACHE STRING "OCamldoc-generated HTML documentation install directory")
 
 option (LLVM_BUILD_EXTERNAL_COMPILER_RT
-  "Build compiler-rt as an external project." OFF)
+  "Build compiler-rt as an external trezoa." OFF)
 
 option (LLVM_VERSION_PRINTER_SHOW_HOST_TARGET_INFO
   "Show target and host info when tools are invoked with --version." ON)
@@ -907,7 +907,7 @@ if (CMAKE_BUILD_TYPE AND uppercase_CMAKE_BUILD_TYPE MATCHES "^(RELWITHDEBINFO|DE
 endif()
 
 if (MSVC_IDE)
-  option(LLVM_ADD_NATIVE_VISUALIZERS_TO_SOLUTION "Configure project to use Visual Studio native visualizers" TRUE)
+  option(LLVM_ADD_NATIVE_VISUALIZERS_TO_SOLUTION "Configure trezoa to use Visual Studio native visualizers" TRUE)
 endif()
 
 if(NOT LLVM_INDIVIDUAL_TEST_COVERAGE)

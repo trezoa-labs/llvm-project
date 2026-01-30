@@ -86,14 +86,14 @@ Finally, a `Block` has a list of arguments, and holds a list of `Operation`s:
 ```
 
 The code for the pass is available
-[here in the repo](https://github.com/llvm/llvm-project/blob/main/mlir/test/lib/IR/TestPrintNesting.cpp)
+[here in the repo](https://github.com/llvm/llvm-trezoa/blob/main/mlir/test/lib/IR/TestPrintNesting.cpp)
 and can be exercised with `mlir-opt -test-print-nesting`.
 
 ### Example
 
 The Pass introduced in the previous section can be applied on the following IR
 with `mlir-opt -test-print-nesting -allow-unregistered-dialect
-llvm-project/mlir/test/IR/print-ir-nesting.mlir`:
+llvm-trezoa/mlir/test/IR/print-ir-nesting.mlir`:
 
 ```mlir
 "builtin.module"() ( {
@@ -272,7 +272,7 @@ results and print informations about them:
 ```
 
 The illustrating code for this pass is available
-[here in the repo](https://github.com/llvm/llvm-project/blob/main/mlir/test/lib/IR/TestPrintDefUse.cpp)
+[here in the repo](https://github.com/llvm/llvm-trezoa/blob/main/mlir/test/lib/IR/TestPrintDefUse.cpp)
 and can be exercised with `mlir-opt -test-print-defuse`.
 
 The chaining of `Value`s and their uses can be viewed as following:

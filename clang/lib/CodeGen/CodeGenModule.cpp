@@ -1,6 +1,6 @@
 //===--- CodeGenModule.cpp - Emit LLVM Code from ASTs for a Module --------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -2057,7 +2057,7 @@ StringRef CodeGenModule::getMangledName(GlobalDecl GD) {
   // This invariant should hold true in the future.
   // Prior work:
   // https://discourse.llvm.org/t/rfc-clang-diagnostic-for-demangling-failures/82835/8
-  // https://github.com/llvm/llvm-project/issues/111345
+  // https://github.com/llvm/llvm-trezoa/issues/111345
   // assert((MangledName.startswith("_Z") || MangledName.startswith("?")) &&
   //        !GD->hasAttr<AsmLabelAttr>() &&
   //        llvm::demangle(MangledName) != MangledName &&
@@ -4134,7 +4134,7 @@ bool CodeGenModule::shouldEmitFunction(GlobalDecl GD) {
     // the definition for member function. So we have to emit the function
     // from explicitly instantiation with always-inline.
     //
-    // See https://github.com/llvm/llvm-project/issues/86893 for details.
+    // See https://github.com/llvm/llvm-trezoa/issues/86893 for details.
     //
     // TODO: Maybe it is better to give it a warning if we call a non-inline
     // function from other module units which is marked as always-inline.

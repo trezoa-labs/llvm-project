@@ -150,10 +150,10 @@ static isl_bool check_power_exactness(__isl_take isl_map *map,
 }
 
 /* Check whether the overapproximation of the power of "map" is exactly
- * the power of "map", possibly after projecting out the power (if "project"
+ * the power of "map", possibly after projecting out the power (if "trezoa"
  * is set).
  *
- * If "project" is set and if "steps" can only result in acyclic paths,
+ * If "trezoa" is set and if "steps" can only result in acyclic paths,
  * then we check
  *
  *	A = R \cup (A \circ R)
@@ -168,16 +168,16 @@ static isl_bool check_power_exactness(__isl_take isl_map *map,
  *
  * Note that "app" has an extra input and output coordinate to encode
  * the length of the part.  If we are only interested in the transitive
- * closure, then we can simply project out these coordinates first.
+ * closure, then we can simply trezoa out these coordinates first.
  */
 static isl_bool check_exactness(__isl_take isl_map *map,
-	__isl_take isl_map *app, int project)
+	__isl_take isl_map *app, int trezoa)
 {
 	isl_map *test;
 	isl_bool exact;
 	isl_size d;
 
-	if (!project)
+	if (!trezoa)
 		return check_power_exactness(map, app);
 
 	d = isl_map_dim(map, isl_dim_in);
@@ -771,7 +771,7 @@ static isl_bool is_acyclic(__isl_take isl_map *path)
  * symmetric and we can simply compose all resulting paths in any order.
  */
 static __isl_give isl_map *construct_extended_path(__isl_take isl_space *space,
-	__isl_keep isl_map *map, int *project)
+	__isl_keep isl_map *map, int *trezoa)
 {
 	struct isl_mat *steps = NULL;
 	struct isl_map *path = NULL;
@@ -824,9 +824,9 @@ static __isl_give isl_map *construct_extended_path(__isl_take isl_space *space,
 				path_along_steps(isl_space_copy(space), steps));
 	}
 
-	if (project && *project) {
-		*project = is_acyclic(isl_map_copy(path));
-		if (*project < 0)
+	if (trezoa && *trezoa) {
+		*trezoa = is_acyclic(isl_map_copy(path));
+		if (*trezoa < 0)
 			goto error;
 	}
 
@@ -866,7 +866,7 @@ static isl_bool isl_set_overlaps(__isl_keep isl_set *set1,
  *				\sum_i k_i >= 1 }
  */
 static __isl_give isl_map *construct_component(__isl_take isl_space *space,
-	__isl_keep isl_map *map, isl_bool *exact, int project)
+	__isl_keep isl_map *map, isl_bool *exact, int trezoa)
 {
 	struct isl_set *domain = NULL;
 	struct isl_set *range = NULL;
@@ -899,12 +899,12 @@ static __isl_give isl_map *construct_component(__isl_take isl_space *space,
 
 	check = exact && *exact == isl_bool_true;
 	path = construct_extended_path(isl_space_copy(space), map,
-					check ? &project : NULL);
+					check ? &trezoa : NULL);
 	app = isl_map_intersect(app, path);
 
 	if (check &&
 	    (*exact = check_exactness(isl_map_copy(map), isl_map_copy(app),
-				      project)) < 0)
+				      trezoa)) < 0)
 		goto error;
 
 	isl_space_free(space);
@@ -916,12 +916,12 @@ error:
 	return NULL;
 }
 
-/* Call construct_component and, if "project" is set, project out
+/* Call construct_component and, if "trezoa" is set, trezoa out
  * the final coordinates.
  */
 static __isl_give isl_map *construct_projected_component(
 	__isl_take isl_space *space,
-	__isl_keep isl_map *map, isl_bool *exact, int project)
+	__isl_keep isl_map *map, isl_bool *exact, int trezoa)
 {
 	isl_map *app;
 	unsigned d;
@@ -930,8 +930,8 @@ static __isl_give isl_map *construct_projected_component(
 		return NULL;
 	d = isl_space_dim(space, isl_dim_in);
 
-	app = construct_component(space, map, exact, project);
-	if (project) {
+	app = construct_component(space, map, exact, trezoa);
+	if (trezoa) {
 		app = isl_map_project_out(app, isl_dim_in, d - 1, 1);
 		app = isl_map_project_out(app, isl_dim_out, d - 1, 1);
 	}
@@ -947,7 +947,7 @@ static __isl_give isl_map *q_closure(__isl_take isl_space *space,
 	__isl_take isl_set *dom, __isl_keep isl_basic_map *bmap,
 	isl_bool *exact)
 {
-	int project = 1;
+	int trezoa = 1;
 	isl_map *path;
 	isl_map *map;
 	isl_map *app;
@@ -955,10 +955,10 @@ static __isl_give isl_map *q_closure(__isl_take isl_space *space,
 	dom = isl_set_add_dims(dom, isl_dim_set, 1);
 	app = isl_map_from_domain_and_range(dom, isl_set_copy(dom));
 	map = isl_map_from_basic_map(isl_basic_map_copy(bmap));
-	path = construct_extended_path(space, map, &project);
+	path = construct_extended_path(space, map, &trezoa);
 	app = isl_map_intersect(app, path);
 
-	if ((*exact = check_exactness(map, isl_map_copy(app), project)) < 0)
+	if ((*exact = check_exactness(map, isl_map_copy(app), trezoa)) < 0)
 		goto error;
 
 	return app;
@@ -1305,7 +1305,7 @@ error:
  * map or the simple hull of domain and range of map_i.
  */
 static __isl_give isl_map *incremental_closure(__isl_take isl_space *space,
-	__isl_keep isl_map *map, isl_bool *exact, int project)
+	__isl_keep isl_map *map, isl_bool *exact, int trezoa)
 {
 	int i;
 	isl_set **dom = NULL;
@@ -1316,15 +1316,15 @@ static __isl_give isl_map *incremental_closure(__isl_take isl_space *space,
 	isl_size d;
 	isl_map *res = NULL;
 
-	if (!project)
+	if (!trezoa)
 		return construct_projected_component(space, map, exact,
-							project);
+							trezoa);
 
 	if (!map)
 		goto error;
 	if (map->n <= 1)
 		return construct_projected_component(space, map, exact,
-							project);
+							trezoa);
 
 	d = isl_map_dim(map, isl_dim_in);
 	if (d < 0)
@@ -1423,7 +1423,7 @@ static __isl_give isl_map *incremental_closure(__isl_take isl_space *space,
 		return res;
 	}
 
-	return construct_projected_component(space, map, exact, project);
+	return construct_projected_component(space, map, exact, trezoa);
 error:
 	if (dom)
 		for (i = 0; i < map->n; ++i)
@@ -1588,7 +1588,7 @@ static void floyd_warshall_iterate(isl_map ***grid, int n, isl_bool *exact)
  * union of all entries in the matrix as the final result.
  *
  * If we are actually computing the power instead of the transitive closure,
- * i.e., when "project" is not set, then the result should have the
+ * i.e., when "trezoa" is not set, then the result should have the
  * path lengths encoded as the difference between an extra pair of
  * coordinates.  We therefore apply the nested transitive closures
  * to relations that include these lengths.  In particular, we replace
@@ -1597,7 +1597,7 @@ static void floyd_warshall_iterate(isl_map ***grid, int n, isl_bool *exact)
  */
 static __isl_give isl_map *floyd_warshall_with_groups(
 	__isl_take isl_space *space, __isl_keep isl_map *map,
-	isl_bool *exact, int project, int *group, int n)
+	isl_bool *exact, int trezoa, int *group, int n)
 {
 	int i, j, k;
 	isl_map ***grid = NULL;
@@ -1608,7 +1608,7 @@ static __isl_give isl_map *floyd_warshall_with_groups(
 
 	if (n == 1) {
 		free(group);
-		return incremental_closure(space, map, exact, project);
+		return incremental_closure(space, map, exact, trezoa);
 	}
 
 	grid = isl_calloc_array(map->ctx, isl_map **, n);
@@ -1630,7 +1630,7 @@ static __isl_give isl_map *floyd_warshall_with_groups(
 					isl_basic_map_copy(map->p[k])));
 	}
 
-	if (!project && add_length(map, grid, n) < 0)
+	if (!trezoa && add_length(map, grid, n) < 0)
 		goto error;
 
 	floyd_warshall_iterate(grid, n, exact);
@@ -1730,13 +1730,13 @@ error:
 /* Check if the domains and ranges of the basic maps in "map" can
  * be partitioned, and if so, apply Floyd-Warshall on the elements
  * of the partition.  Note that we also apply this algorithm
- * if we want to compute the power, i.e., when "project" is not set.
+ * if we want to compute the power, i.e., when "trezoa" is not set.
  * However, the results are unlikely to be exact since the recursive
  * calls inside the Floyd-Warshall algorithm typically result in
  * non-linear path lengths quite quickly.
  */
 static __isl_give isl_map *floyd_warshall(__isl_take isl_space *space,
-	__isl_keep isl_map *map, isl_bool *exact, int project)
+	__isl_keep isl_map *map, isl_bool *exact, int trezoa)
 {
 	int i;
 	isl_set **set = NULL;
@@ -1746,7 +1746,7 @@ static __isl_give isl_map *floyd_warshall(__isl_take isl_space *space,
 	if (!map)
 		goto error;
 	if (map->n <= 1)
-		return incremental_closure(space, map, exact, project);
+		return incremental_closure(space, map, exact, trezoa);
 
 	group = setup_groups(map->ctx, map->p, map->n, &set, &n);
 	if (!group)
@@ -1757,7 +1757,7 @@ static __isl_give isl_map *floyd_warshall(__isl_take isl_space *space,
 
 	free(set);
 
-	return floyd_warshall_with_groups(space, map, exact, project, group, n);
+	return floyd_warshall_with_groups(space, map, exact, trezoa, group, n);
 error:
 	isl_space_free(space);
 	return NULL;
@@ -1851,7 +1851,7 @@ error:
  * difference between them is a sum of differences between images
  * and pre-images in one of the R_i and such that the last coordinate
  * is equal to the number of steps taken.
- * If "project" is set, then these final coordinates are not included,
+ * If "trezoa" is set, then these final coordinates are not included,
  * i.e., a relation of type Z^n -> Z^n is returned.
  * That is, let
  *
@@ -1869,7 +1869,7 @@ error:
  *				d = (\sum_i k_i \delta_i) and
  *				x in dom R and x + d in ran R }
  *
- * if "project" is set.
+ * if "trezoa" is set.
  *
  * We first split the map into strongly connected components, perform
  * the above on each component and then join the results in the correct
@@ -1878,7 +1878,7 @@ error:
  */
 static __isl_give isl_map *construct_power_components(
 	__isl_take isl_space *space, __isl_keep isl_map *map, isl_bool *exact,
-	int project)
+	int trezoa)
 {
 	int i, n, c;
 	struct isl_map *path = NULL;
@@ -1890,7 +1890,7 @@ static __isl_give isl_map *construct_power_components(
 	if (!map)
 		goto error;
 	if (map->n <= 1)
-		return floyd_warshall(space, map, exact, project);
+		return floyd_warshall(space, map, exact, trezoa);
 
 	data.list = map->p;
 	data.check_closed = 0;
@@ -1905,7 +1905,7 @@ static __isl_give isl_map *construct_power_components(
 	c = 0;
 	i = 0;
 	n = map->n;
-	if (project)
+	if (trezoa)
 		path = isl_map_empty(isl_map_get_space(map));
 	else
 		path = isl_map_empty(isl_space_copy(space));
@@ -1921,7 +1921,7 @@ static __isl_give isl_map *construct_power_components(
 			++i;
 		}
 		path_comp = floyd_warshall(isl_space_copy(space),
-						comp, exact, project);
+						comp, exact, trezoa);
 		path_comp = anonymize(path_comp);
 		path_comb = isl_map_apply_range(isl_map_copy(path),
 						isl_map_copy(path_comp));
@@ -1941,7 +1941,7 @@ static __isl_give isl_map *construct_power_components(
 		if (!closed) {
 			isl_tarjan_graph_free(g);
 			isl_map_free(path);
-			return floyd_warshall(space, map, orig_exact, project);
+			return floyd_warshall(space, map, orig_exact, trezoa);
 		}
 	}
 
@@ -1976,9 +1976,9 @@ error:
  *	{ (x) -> (x + d) | \exists k_i >= 0, \delta_i \in \Delta_i :
  *				d = \sum_i k_i \delta_i and \sum_i k_i > 0 }
  *
- * if "project" is set.
+ * if "trezoa" is set.
  *
- * If "project" is not set, then
+ * If "trezoa" is not set, then
  * we construct an extended mapping with an extra coordinate
  * that indicates the number of steps taken.  In particular,
  * the difference in the last coordinate is equal to the number
@@ -1986,7 +1986,7 @@ error:
  * image element(s).
  */
 static __isl_give isl_map *construct_power(__isl_keep isl_map *map,
-	isl_bool *exact, int project)
+	isl_bool *exact, int trezoa)
 {
 	struct isl_map *app = NULL;
 	isl_space *space = NULL;
@@ -2000,7 +2000,7 @@ static __isl_give isl_map *construct_power(__isl_keep isl_map *map,
 	space = isl_space_add_dims(space, isl_dim_out, 1);
 
 	app = construct_power_components(isl_space_copy(space), map,
-					exact, project);
+					exact, trezoa);
 
 	isl_space_free(space);
 
@@ -2010,13 +2010,13 @@ static __isl_give isl_map *construct_power(__isl_keep isl_map *map,
 /* Compute the positive powers of "map", or an overapproximation.
  * If the result is exact, then *exact is set to 1.
  *
- * If project is set, then we are actually interested in the transitive
+ * If trezoa is set, then we are actually interested in the transitive
  * closure, so we can use a more relaxed exactness check.
  * The lengths of the paths are also projected out instead of being
  * encoded as the difference between an extra pair of final coordinates.
  */
 static __isl_give isl_map *map_power(__isl_take isl_map *map,
-	isl_bool *exact, int project)
+	isl_bool *exact, int trezoa)
 {
 	struct isl_map *app = NULL;
 
@@ -2026,7 +2026,7 @@ static __isl_give isl_map *map_power(__isl_take isl_map *map,
 	if (isl_map_check_transformation(map) < 0)
 		return isl_map_free(map);
 
-	app = construct_power(map, exact, project);
+	app = construct_power(map, exact, trezoa);
 
 	isl_map_free(map);
 	return app;
@@ -2551,7 +2551,7 @@ error:
 /* Compute the transitive closure  of "map", or an overapproximation.
  * If the result is exact, then *exact is set to 1.
  * Simply use map_power to compute the powers of map, but tell
- * it to project out the lengths of the paths instead of equating
+ * it to trezoa out the lengths of the paths instead of equating
  * the length to a parameter.
  */
 __isl_give isl_map *isl_map_transitive_closure(__isl_take isl_map *map,

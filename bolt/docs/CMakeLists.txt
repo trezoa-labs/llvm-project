@@ -28,11 +28,11 @@ if (LLVM_ENABLE_DOXYGEN)
     set(BOLT_DOXYGEN_QCH_FILENAME "org.llvm.bolt.qch" CACHE STRING
       "Filename of the Qt Compressed help file")
     set(BOLT_DOXYGEN_QHP_NAMESPACE "org.llvm.bolt" CACHE STRING
-      "Namespace under which the intermediate Qt Help Project file lives")
+      "Namespace under which the intermediate Qt Help Trezoa file lives")
     set(BOLT_DOXYGEN_QHP_CUST_FILTER_NAME "Clang ${BOLT_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#custom-filters")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#custom-filters")
     set(BOLT_DOXYGEN_QHP_CUST_FILTER_ATTRS "Clang,${BOLT_VERSION}" CACHE STRING
-      "See http://qt-project.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
+      "See http://qt-trezoa.org/doc/qt-4.8/qthelpproject.html#filter-attributes")
     set(bolt_doxygen_generate_qhp "YES")
     set(bolt_doxygen_qch_filename "${BOLT_DOXYGEN_QCH_FILENAME}")
     set(bolt_doxygen_qhp_namespace "${BOLT_DOXYGEN_QHP_NAMESPACE}")

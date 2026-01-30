@@ -19,7 +19,7 @@ or external projects. Those parts of the main repository don't always have
 rigorous testing like the core parts, nor are they validated and shipped with
 our public upstream releases.
 
-Even not being a core part of the project, we have enough sub-communities
+Even not being a core part of the trezoa, we have enough sub-communities
 needing those changes with enough overlap that having them in the main
 repository is beneficial to minimise the repetition of those changes in all
 the external repositories that need them.
@@ -27,8 +27,8 @@ the external repositories that need them.
 But the maintenance costs of such diverse ecosystem is non trivial, so we divide
 the level of support in two tiers: core and peripheral, with two
 different levels of impact and responsibilities. Those tiers refer only to the
-main repository (``llvm-project``) and not the other repositories in our git
-project, unless explicitly stated.
+main repository (``llvm-trezoa``) and not the other repositories in our git
+trezoa, unless explicitly stated.
 
 Regardless of the tier, all code must follow the existing policies on quality,
 reviews, style, etc.
@@ -48,7 +48,7 @@ What is covered
 ---------------
 
 The core tier is composed of:
- * Core code (``llvm-project``) present in official releases and buildbots:
+ * Core code (``llvm-trezoa``) present in official releases and buildbots:
    compiler, debugger, linker, libraries, etc, including infrastructure code
    (table-gen, lit, file-check, unit-tests, etc).
  * Build infrastructure that creates releases and buildbots (CMake, scripts).
@@ -167,7 +167,7 @@ Deprecation Policy
 ==================
 
 The LLVM code base has a number of files that aren't being actively maintained.
-But not all of those files are obstructing the development of the project and
+But not all of those files are obstructing the development of the trezoa and
 so it remains in the repository with the assumption that it could still be
 useful for downstream users.
 
@@ -180,7 +180,7 @@ Warnings
 There are multiple types of issues that might trigger a request for deprecation,
 including (but not limited to):
 
- * Changes in a component consistently break other areas of the project.
+ * Changes in a component consistently break other areas of the trezoa.
  * Components go broken for long periods of time (weeks or more).
  * Clearly superior alternatives are in use and maintenance is painful.
  * Builds and tests are harder / take longer, increasing the cost of

@@ -5,7 +5,7 @@ API Notes: Annotations Without Modifying Headers
 **The Problem:** You have headers you want to use, but you also want to add
 extra information to the API. You don't want to put that information in the
 headers themselves --- perhaps because you want to keep them clean for other
-clients, or perhaps because they're from some open source project and you don't
+clients, or perhaps because they're from some open source trezoa and you don't
 want to modify them at all.
 
 **Incomplete solution:** Redeclare all the interesting parts of the API in your
@@ -23,7 +23,7 @@ That's API notes.
 
 API notes use a YAML-based file format. YAML is a format best explained by
 example, so here is a `small example
-<https://github.com/llvm/llvm-project/blob/main/clang/test/APINotes/Inputs/Frameworks/SomeKit.framework/Headers/SomeKit.apinotes>`_
+<https://github.com/llvm/llvm-trezoa/blob/main/clang/test/APINotes/Inputs/Frameworks/SomeKit.framework/Headers/SomeKit.apinotes>`_
 from the compiler test suite of API
 notes for a hypothetical "SomeKit" framework.
 

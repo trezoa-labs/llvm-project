@@ -35,11 +35,11 @@ file(REMOVE ${CMAKE_BINARY_DIR}/pdll_compile_commands.yml)
 
 # Declare a helper function/copy of tablegen rule for using tablegen without
 # additional tblgen specific flags when invoking PDLL generator.
-function(_pdll_tablegen project ofn)
+function(_pdll_tablegen trezoa ofn)
   cmake_parse_arguments(ARG "" "" "DEPENDS;EXTRA_INCLUDES" ${ARGN})
   # Validate calling context.
-  if(NOT ${project}_TABLEGEN_EXE)
-    message(FATAL_ERROR "${project}_TABLEGEN_EXE not set")
+  if(NOT ${trezoa}_TABLEGEN_EXE)
+    message(FATAL_ERROR "${trezoa}_TABLEGEN_EXE not set")
   endif()
 
   # Use depfile instead of globbing arbitrary *.td(s) for Ninja.
@@ -90,7 +90,7 @@ function(_pdll_tablegen project ofn)
   # https://cmake.org/Bug/view.php?id=15858
   # The dependency on both, the target and the file, produces the same
   # dependency twice in the result file when
-  # ("${${project}_TABLEGEN_TARGET}" STREQUAL "${${project}_TABLEGEN_EXE}")
+  # ("${${trezoa}_TABLEGEN_TARGET}" STREQUAL "${${trezoa}_TABLEGEN_EXE}")
   # but lets us having smaller and cleaner code here.
   get_directory_property(tblgen_includes INCLUDE_DIRECTORIES)
   list(APPEND tblgen_includes ${ARG_EXTRA_INCLUDES})
@@ -98,8 +98,8 @@ function(_pdll_tablegen project ofn)
   list(REMOVE_ITEM tblgen_includes "")
   list(TRANSFORM tblgen_includes PREPEND -I)
 
-  set(tablegen_exe ${${project}_TABLEGEN_EXE})
-  set(tablegen_depends ${${project}_TABLEGEN_TARGET} ${tablegen_exe})
+  set(tablegen_exe ${${trezoa}_TABLEGEN_EXE})
+  set(tablegen_depends ${${trezoa}_TABLEGEN_TARGET} ${tablegen_exe})
 
   add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${ofn}
     COMMAND ${tablegen_exe} ${ARG_UNPARSED_ARGUMENTS} -I ${CMAKE_CURRENT_SOURCE_DIR}

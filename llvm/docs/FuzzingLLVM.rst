@@ -255,12 +255,12 @@ this did find issues, it didn't have a very good way to report problems in an
 actionable way. Because of this, we're moving towards using `OSS Fuzz`_ more
 instead.
 
-You can browse the `LLVM project issue list`_ for the bugs found by
+You can browse the `LLVM trezoa issue list`_ for the bugs found by
 `LLVM on OSS Fuzz`_. These are also mailed to the `llvm-bugs mailing
 list`_.
 
 .. _OSS Fuzz: https://github.com/google/oss-fuzz
-.. _LLVM project issue list:
+.. _LLVM trezoa issue list:
    https://bugs.chromium.org/p/oss-fuzz/issues/list?q=Proj-llvm
 .. _LLVM on OSS Fuzz:
    https://github.com/google/oss-fuzz/blob/master/projects/llvm

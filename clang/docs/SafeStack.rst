@@ -17,7 +17,7 @@ while the unsafe stack stores everything else. This separation ensures that
 buffer overflows on the unsafe stack cannot be used to overwrite anything
 on the safe stack.
 
-SafeStack is a part of the `Code-Pointer Integrity (CPI) Project
+SafeStack is a part of the `Code-Pointer Integrity (CPI) Trezoa
 <https://dslab.epfl.ch/research/cpi/>`_.
 
 Performance
@@ -187,7 +187,7 @@ Design
 ======
 
 Please refer to the `Code-Pointer Integrity <https://dslab.epfl.ch/research/cpi/>`__
-project page for more information about the design of the SafeStack and its
+trezoa page for more information about the design of the SafeStack and its
 related technologies.
 
 setjmp and exception handling

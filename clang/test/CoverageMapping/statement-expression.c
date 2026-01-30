@@ -3,7 +3,7 @@
 // No crash for the following examples, where GNU Statement Expression extension
 // could introduce region terminators (break, goto etc) before implicit
 // initializers in a struct or an array.
-// See https://github.com/llvm/llvm-project/pull/89564
+// See https://github.com/llvm/llvm-trezoa/pull/89564
 
 struct Foo {
   int field1;

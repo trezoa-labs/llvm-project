@@ -1,7 +1,7 @@
 include(ExternalProject)
 
 # llvm_ExternalProject_BuildCmd(out_var target)
-#   Utility function for constructing command lines for external project targets
+#   Utility function for constructing command lines for external trezoa targets
 function(llvm_ExternalProject_BuildCmd out_var target bin_dir stamp_dir)
   cmake_parse_arguments(ARG "" "CONFIGURATION" "" ${ARGN})
   if(NOT ARG_CONFIGURATION)
@@ -41,17 +41,17 @@ endfunction()
 #   USE_TOOLCHAIN
 #     Use just-built tools (see TOOLCHAIN_TOOLS)
 #   EXCLUDE_FROM_ALL
-#     Exclude this project from the all target
+#     Exclude this trezoa from the all target
 #   NO_INSTALL
-#     Don't generate install targets for this project
+#     Don't generate install targets for this trezoa
 #   ALWAYS_CLEAN
-#     Always clean the sub-project before building
+#     Always clean the sub-trezoa before building
 #   CMAKE_ARGS arguments...
-#     Optional cmake arguments to pass when configuring the project
+#     Optional cmake arguments to pass when configuring the trezoa
 #   TOOLCHAIN_TOOLS targets...
 #     Targets for toolchain tools (defaults to clang;lld)
 #   DEPENDS targets...
-#     Targets that this project depends on
+#     Targets that this trezoa depends on
 #   EXTRA_TARGETS targets...
 #     Extra targets in the subproject to generate targets for
 #   PASSTHROUGH_PREFIXES prefix...
@@ -200,7 +200,7 @@ function(llvm_ExternalProject_Add name source_dir)
     endforeach()
   endforeach()
 
-  # Populate the non-project-specific passthrough variables
+  # Populate the non-trezoa-specific passthrough variables
   foreach(variableName ${LLVM_EXTERNAL_PROJECT_PASSTHROUGH})
     if(DEFINED ${variableName})
       if("${${variableName}}" STREQUAL "")

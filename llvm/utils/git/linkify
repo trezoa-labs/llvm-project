@@ -16,5 +16,5 @@
 # see https://github.com/Alhadis/OSC8-Adoption
 
 sed \
-  -e 's,\(#\|\bPR\)\([0-9]\+\),\x1b]8;;https://github.com/llvm/llvm-project/issues/\2\x1b\\\0\x1b]8;;\x1b\\,gi' \
-  -e 's,[0-9a-f]\{40\},\x1b]8;;https://github.com/llvm/llvm-project/commit/\0\x1b\\\0\x1b]8;;\x1b\\,g'
+  -e 's,\(#\|\bPR\)\([0-9]\+\),\x1b]8;;https://github.com/llvm/llvm-trezoa/issues/\2\x1b\\\0\x1b]8;;\x1b\\,gi' \
+  -e 's,[0-9a-f]\{40\},\x1b]8;;https://github.com/llvm/llvm-trezoa/commit/\0\x1b\\\0\x1b]8;;\x1b\\,g'

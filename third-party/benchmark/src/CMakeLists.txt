@@ -84,7 +84,7 @@ target_link_libraries(benchmark_main PUBLIC benchmark::benchmark)
 set(generated_dir "${PROJECT_BINARY_DIR}")
 
 set(version_config "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake")
-set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
+set(trezoa_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
 set(pkg_config "${generated_dir}/${PROJECT_NAME}.pc")
 set(targets_to_export benchmark benchmark_main)
 set(targets_export_name "${PROJECT_NAME}Targets")
@@ -95,7 +95,7 @@ include(CMakePackageConfigHelpers)
 
 configure_package_config_file (
   ${PROJECT_SOURCE_DIR}/cmake/Config.cmake.in
-  ${project_config}
+  ${trezoa_config}
   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
   NO_SET_AND_CHECK_MACRO
   NO_CHECK_REQUIRED_COMPONENTS_MACRO
@@ -129,7 +129,7 @@ if (BENCHMARK_ENABLE_INSTALL)
     FILES_MATCHING PATTERN "*.*h")
 
   install(
-      FILES "${project_config}" "${version_config}"
+      FILES "${trezoa_config}" "${version_config}"
       DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
   install(

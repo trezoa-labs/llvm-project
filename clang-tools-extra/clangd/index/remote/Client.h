@@ -1,6 +1,6 @@
 //===--- Client.h - Connect to a remote index via gRPC -----------*- C++-*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -28,7 +28,7 @@ namespace remote {
 /// This method attempts to resolve the address and establish the connection.
 ///
 /// \returns nullptr if the address is not resolved during the function call or
-/// if the project was compiled without Remote Index support.
+/// if the trezoa was compiled without Remote Index support.
 std::unique_ptr<clangd::SymbolIndex> getClient(llvm::StringRef Address,
                                                llvm::StringRef IndexRoot);
 

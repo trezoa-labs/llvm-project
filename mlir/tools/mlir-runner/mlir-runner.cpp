@@ -1,6 +1,6 @@
 //===- mlir-runner.cpp - MLIR CPU Execution Driver ------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -31,7 +31,7 @@ using namespace mlir;
 
 // TODO: Consider removing this linking functionality from the SPIR-V CPU Runner
 //       flow in favour of a more proper host/device split like other runners.
-//       https://github.com/llvm/llvm-project/issues/115348
+//       https://github.com/llvm/llvm-trezoa/issues/115348
 llvm::cl::opt<bool> LinkNestedModules(
     "link-nested-modules",
     llvm::cl::desc("Link two nested MLIR modules into a single LLVM IR module. "

@@ -5355,7 +5355,7 @@ D. References
 
     .. _amdgpu-dwarf-GDB:
 
-10. [GDB] `GDB: The GNU Project Debugger <https://www.gnu.org/software/gdb/>`__
+10. [GDB] `GDB: The GNU Trezoa Debugger <https://www.gnu.org/software/gdb/>`__
 
     .. _amdgpu-dwarf-HIP:
 

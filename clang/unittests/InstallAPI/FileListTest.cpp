@@ -1,6 +1,6 @@
 //===- unittests/InstallAPI/FileList.cpp - File List Tests ---------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -43,7 +43,7 @@ TEST(FileList, Version3) {
         "language" : "objective-c++"
       },
       {
-        "type" : "project",
+        "type" : "trezoa",
         "path" : "/tmp/src/baz.h"
       }
     ]
@@ -54,7 +54,7 @@ TEST(FileList, Version3) {
        clang::Language::ObjC},
       {"/tmp/dst/usr/local/include/bar.h", HeaderType::Private, "bar.h",
        clang::Language::ObjCXX},
-      {"/tmp/src/baz.h", HeaderType::Project, "", std::nullopt}};
+      {"/tmp/src/baz.h", HeaderType::Trezoa, "", std::nullopt}};
 
   testValidFileList(Input, Expected);
 }
@@ -91,14 +91,14 @@ TEST(FileList, Version2) {
         "path" : "/usr/include/foo.h"
       },
       {
-        "type" : "project",
+        "type" : "trezoa",
         "path" : "src/bar.h"
       }
     ]
   })";
   HeaderSeq Expected = {
       {"/usr/include/foo.h", HeaderType::Public, "foo.h", std::nullopt},
-      {"src/bar.h", HeaderType::Project, "", std::nullopt},
+      {"src/bar.h", HeaderType::Trezoa, "", std::nullopt},
   };
 
   testValidFileList(Input, Expected);
@@ -131,7 +131,7 @@ TEST(FileList, InvalidTypes) {
     "version" : "1",
     "headers" : [
       {
-        "type" : "project",
+        "type" : "trezoa",
         "path" : "/usr/include/foo.h"
       }
     ]

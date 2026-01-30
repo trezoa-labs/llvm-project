@@ -1,6 +1,6 @@
 //===- SCF.cpp - Structured Control Flow Operations -----------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1557,7 +1557,7 @@ public:
 ///          of the scf.forall besides within scf.forall.in_parallel terminator,
 ///          this canonicalization remains valid. For more details, please refer
 ///          to :
-///          https://github.com/llvm/llvm-project/pull/90189#discussion_r1589011124
+///          https://github.com/llvm/llvm-trezoa/pull/90189#discussion_r1589011124
 ///       3. TODO(avarma): Generalize it for other store ops. Currently it
 ///          handles tensor.parallel_insert_slice ops only.
 ///

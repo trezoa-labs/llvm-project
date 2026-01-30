@@ -1,7 +1,7 @@
 # See www/CMake.html for instructions on how to build libcxxabi with CMake.
 
 #===============================================================================
-# Setup Project
+# Setup Trezoa
 #===============================================================================
 
 cmake_minimum_required(VERSION 3.20.0)

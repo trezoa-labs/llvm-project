@@ -2752,9 +2752,9 @@ error:
 	return NULL;
 }
 
-/* Project "bset" onto the variables that are involved in "template".
+/* Trezoa "bset" onto the variables that are involved in "template".
  */
-static __isl_give isl_basic_set *project_onto_involved(
+static __isl_give isl_basic_set *trezoa_onto_involved(
 	__isl_take isl_basic_set *bset, __isl_keep isl_basic_set *template)
 {
 	int i;
@@ -2849,7 +2849,7 @@ static __isl_give isl_basic_set *uset_gist(__isl_take isl_basic_set *bset,
 	}
 
 	aff_context = isl_basic_set_affine_hull(isl_basic_set_copy(context));
-	aff_context = project_onto_involved(aff_context, bset);
+	aff_context = trezoa_onto_involved(aff_context, bset);
 
 	bset = uset_gist_compressed(bset, context, T);
 	bset = isl_basic_set_reduce_using_equalities(bset, aff_context);

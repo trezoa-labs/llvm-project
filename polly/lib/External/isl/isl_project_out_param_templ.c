@@ -13,7 +13,7 @@
 /* If "obj" involves a parameter with identifier "id",
  * then turn it into an existentially quantified variable.
  */
-__isl_give TYPE *FN(TYPE,project_out_param_id)(__isl_take TYPE *obj,
+__isl_give TYPE *FN(TYPE,trezoa_out_param_id)(__isl_take TYPE *obj,
 	__isl_take isl_id *id)
 {
 	int pos;
@@ -24,7 +24,7 @@ __isl_give TYPE *FN(TYPE,project_out_param_id)(__isl_take TYPE *obj,
 	isl_id_free(id);
 	if (pos < 0)
 		return obj;
-	return FN(TYPE,project_out)(obj, isl_dim_param, pos, 1);
+	return FN(TYPE,trezoa_out)(obj, isl_dim_param, pos, 1);
 error:
 	FN(TYPE,free)(obj);
 	isl_id_free(id);
@@ -34,7 +34,7 @@ error:
 /* If "obj" involves any of the parameters with identifiers in "list",
  * then turn them into existentially quantified variables.
  */
-__isl_give TYPE *FN(TYPE,project_out_param_id_list)(__isl_take TYPE *obj,
+__isl_give TYPE *FN(TYPE,trezoa_out_param_id_list)(__isl_take TYPE *obj,
 	__isl_take isl_id_list *list)
 {
 	int i;
@@ -47,7 +47,7 @@ __isl_give TYPE *FN(TYPE,project_out_param_id_list)(__isl_take TYPE *obj,
 		isl_id *id;
 
 		id = isl_id_list_get_at(list, i);
-		obj = FN(TYPE,project_out_param_id)(obj, id);
+		obj = FN(TYPE,trezoa_out_param_id)(obj, id);
 	}
 
 	isl_id_list_free(list);

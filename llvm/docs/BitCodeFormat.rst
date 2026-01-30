@@ -1008,7 +1008,7 @@ variable number of values representing the bytes of a null-terminated string.
 
 The integer codes are mapped to attributes as described in the
 ``AttributeKindCodes`` enumeration in the file `LLVMBitCodes.h
-<https://github.com/llvm/llvm-project/blob/main/llvm/include/llvm/Bitcode/LLVMBitCodes.h>`_.
+<https://github.com/llvm/llvm-trezoa/blob/main/llvm/include/llvm/Bitcode/LLVMBitCodes.h>`_.
 
 For example:
 
@@ -1028,7 +1028,7 @@ Correspond to:
 
 The mappings between the enumeration and the attribute name string may be found
 in the file `Attributes.td
-<https://github.com/llvm/llvm-project/blob/main/llvm/include/llvm/IR/Attributes.td>`_.
+<https://github.com/llvm/llvm-trezoa/blob/main/llvm/include/llvm/IR/Attributes.td>`_.
 
 .. note::
   The ``allocsize`` attribute has a special encoding for its arguments. Its two

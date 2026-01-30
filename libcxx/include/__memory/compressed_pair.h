@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -53,7 +53,7 @@ _LIBCPP_BEGIN_NAMESPACE_STD
 //
 // Furthermore, that alignment must be the same as what was used in the old __compressed_pair layout, so we must
 // handle reference types specially since alignof(T&) == alignof(T).
-// See https://github.com/llvm/llvm-project/issues/118559.
+// See https://github.com/llvm/llvm-trezoa/issues/118559.
 
 #ifndef _LIBCPP_ABI_NO_COMPRESSED_PAIR_PADDING
 

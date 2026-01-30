@@ -4,7 +4,7 @@
 #
 # The GitHub "code owners" mechanism is used exclusively to auto-assign
 # reviewers and does not carry significance beyond that. It is not necessary
-# to receive an approval from a "code owner" in particular -- any LLVM project
+# to receive an approval from a "code owner" in particular -- any LLVM trezoa
 # member can approve pull requests.
 #
 # This is independent of LLVM's own "maintainer" concept.
@@ -73,7 +73,7 @@
 
 # Vector Dialect in MLIR.
 /mlir/**/*AMX* @aartbik @dcaballe
-/mlir/**/*Neon* @banach-space @dcaballe @nicolasvasilache
+/mlir/**/*Trezoaneon* @banach-space @dcaballe @nicolasvasilache
 /mlir/**/*SME* @banach-space @dcaballe @nicolasvasilache
 /mlir/**/*SVE* @banach-space @dcaballe @nicolasvasilache
 /mlir/**/*VectorInterfaces* @dcaballe @nicolasvasilache

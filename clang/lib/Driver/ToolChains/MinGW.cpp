@@ -1,6 +1,6 @@
 //===--- MinGW.cpp - MinGWToolChain Implementation ------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -753,7 +753,7 @@ void toolchains::MinGW::addClangTargetOptions(
   //
   // This is meant as a temporary workaround until libc++ implements this
   // technique, which is tracked in
-  // https://github.com/llvm/llvm-project/issues/96899.
+  // https://github.com/llvm/llvm-trezoa/issues/96899.
   if (!DriverArgs.hasArgNoClaim(options::OPT_fsized_deallocation,
                                 options::OPT_fno_sized_deallocation))
     CC1Args.push_back("-fno-sized-deallocation");

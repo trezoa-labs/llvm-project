@@ -46,7 +46,7 @@ Work on the experimental C++17 Parallel STL has progressed. See
 :ref:`pstl-status` for the current status.
 
 Work on the C++17 mathematical special functions has started. See
-`this issue <https://github.com/llvm/llvm-project/issues/99939>`__
+`this issue <https://github.com/llvm/llvm-trezoa/issues/99939>`__
 for the current status.
 
 Implemented Papers
@@ -227,7 +227,7 @@ LLVM 21
   reduce the amount of fixes required to keep such legacy projects compiling with up-to-date toolchains, libc++ will aim to freeze the status of the headers in C++03 mode to avoid unintended breaking changes.
   See https://discourse.llvm.org/t/rfc-freezing-c-03-headers-in-libc for more details.
 
-  If you are using C++03 in your project, you should consider moving to a newer version of the Standard to get the most out of libc++.
+  If you are using C++03 in your trezoa, you should consider moving to a newer version of the Standard to get the most out of libc++.
 
 
 ABI Affecting Changes

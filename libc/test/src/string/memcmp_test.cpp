@@ -1,6 +1,6 @@
 //===-- Unittests for memcmp ----------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -39,7 +39,7 @@ TEST(LlvmLibcMemcmpTest, LhsAfterRhsLexically) {
 }
 
 TEST(LlvmLibcMemcmpTest, Issue77080) {
-  // https://github.com/llvm/llvm-project/issues/77080
+  // https://github.com/llvm/llvm-trezoa/issues/77080
   constexpr char lhs[35] = "1.069cd68bbe76eb2143a3284d27ebe220";
   constexpr char rhs[35] = "1.0500185b5d966a544e2d0fa40701b0f3";
   ASSERT_GE(LIBC_NAMESPACE::memcmp(lhs, rhs, 34), 1);

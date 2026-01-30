@@ -12,7 +12,7 @@ sections:
           - Kind:            S_OBJNAME
             ObjNameSym:
               Signature:       545589255
-              ObjectName:      'D:\llvm-project\lld\test\COFF\Inputs\precomp2-a.obj'
+              ObjectName:      'D:\llvm-trezoa\lld\test\COFF\Inputs\precomp2-a.obj'
           - Kind:            S_COMPILE3
             Compile3Sym:
               Flags:           [ SecurityChecks, HotPatch ]
@@ -28,9 +28,9 @@ sections:
               Version:         'Microsoft (R) Optimizing Compiler'
       - !StringTable
         Strings:
-          - 'D:\llvm-project\lld\test\COFF\precomp\precomp.pch'
-          - 'D:\llvm-project\lld\test\COFF\precomp\precomp.h'
-          - 'D:\llvm-project\lld\test\COFF\precomp\a.cpp'
+          - 'D:\llvm-trezoa\lld\test\COFF\precomp\precomp.pch'
+          - 'D:\llvm-trezoa\lld\test\COFF\precomp\precomp.h'
+          - 'D:\llvm-trezoa\lld\test\COFF\precomp\a.cpp'
   - Name:            '.debug$T'
     Characteristics: [ IMAGE_SCN_CNT_INITIALIZED_DATA, IMAGE_SCN_MEM_DISCARDABLE, IMAGE_SCN_MEM_READ ]
     Alignment:       1
@@ -40,7 +40,7 @@ sections:
           StartTypeIndex:  4096
           TypesCount:      3
           Signature:       545589255
-          PrecompFilePath: 'D:\llvm-project\lld\test\COFF\Inputs\precomp2.obj'
+          PrecompFilePath: 'D:\llvm-trezoa\lld\test\COFF\Inputs\precomp2.obj'
       - Kind:            LF_STRING_ID
         StringId:
           Id:              0

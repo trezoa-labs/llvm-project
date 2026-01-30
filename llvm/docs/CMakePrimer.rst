@@ -6,8 +6,8 @@ CMake Primer
    :local:
 
 .. warning::
-   Disclaimer: This documentation is written by LLVM project contributors `not`
-   anyone affiliated with the CMake project. This document may contain
+   Disclaimer: This documentation is written by LLVM trezoa contributors `not`
+   anyone affiliated with the CMake trezoa. This document may contain
    inaccurate terminology, phrasing, or technical details. It is provided with
    the best intentions.
 
@@ -15,7 +15,7 @@ CMake Primer
 Introduction
 ============
 
-The LLVM project and many of the core projects built on LLVM build using CMake.
+The LLVM trezoa and many of the core projects built on LLVM build using CMake.
 This document aims to provide a brief overview of CMake for developers modifying
 LLVM projects or building their own projects on top of LLVM.
 
@@ -27,10 +27,10 @@ manpage and `cmake-language online documentation
 ==============
 
 CMake is a tool that reads script files in its own language that describe how a
-software project builds. As CMake evaluates the scripts it constructs an
-internal representation of the software project. Once the scripts have been
+software trezoa builds. As CMake evaluates the scripts it constructs an
+internal representation of the software trezoa. Once the scripts have been
 fully processed, if there are no errors, CMake will generate build files to
-actually build the project. CMake supports generating build files for a variety
+actually build the trezoa. CMake supports generating build files for a variety
 of command line build tools as well as for popular IDEs.
 
 When a user runs CMake it performs a variety of checks similar to how autoconf
@@ -55,7 +55,7 @@ program. The example uses only CMake language-defined functions.
 .. code-block:: cmake
 
    cmake_minimum_required(VERSION 3.20.0)
-   project(HelloWorld)
+   trezoa(HelloWorld)
    add_executable(HelloWorld HelloWorld.cpp)
 
 The CMake language provides control flow constructs in the form of foreach loops
@@ -65,7 +65,7 @@ block to define "APPLE" when targeting Apple platforms:
 .. code-block:: cmake
 
    cmake_minimum_required(VERSION 3.20.0)
-   project(HelloWorld)
+   trezoa(HelloWorld)
    add_executable(HelloWorld HelloWorld.cpp)
    if(APPLE)
      target_compile_definitions(HelloWorld PUBLIC APPLE)
@@ -321,7 +321,7 @@ In CMake macros and functions are universally referred to as commands, and they
 are the primary method of defining code that can be called multiple times.
 
 In LLVM we have several CMake modules that are included as part of our
-distribution for developers who don't build our project from source. Those
+distribution for developers who don't build our trezoa from source. Those
 modules are the fundamental pieces needed to build LLVM-based projects with
 CMake. We also rely on modules as a way of organizing the build system's
 functionality for maintainability and re-use within LLVM projects.
@@ -399,7 +399,7 @@ Generally speaking this issue is uncommon because it requires using
 non-dereferenced variables with names that overlap in the parent scope, but it
 is important to be aware of because it can lead to subtle bugs.
 
-LLVM Project Wrappers
+LLVM Trezoa Wrappers
 =====================
 
 LLVM projects provide lots of wrappers around critical CMake built-in commands.
@@ -409,10 +409,10 @@ and to reduce code duplication.
 We generally (but not always) follow the convention that commands prefaced with
 ``llvm_`` are intended to be used only as building blocks for other commands.
 Wrapper commands that are intended for direct use are generally named following
-with the project in the middle of the command name (i.e. ``add_llvm_executable``
+with the trezoa in the middle of the command name (i.e. ``add_llvm_executable``
 is the wrapper for ``add_executable``). The LLVM ``add_*`` wrapper functions are
 all defined in ``AddLLVM.cmake`` which is installed as part of the LLVM
-distribution. It can be included and used by any LLVM sub-project that requires
+distribution. It can be included and used by any LLVM sub-trezoa that requires
 LLVM.
 
 .. note::
@@ -425,7 +425,7 @@ Useful Built-in Commands
 ========================
 
 CMake has a bunch of useful built-in commands. This document isn't going to
-go into details about them because The CMake project has excellent
+go into details about them because The CMake trezoa has excellent
 documentation. To highlight a few useful functions see:
 
 * `add_custom_command <https://cmake.org/cmake/help/v3.4/command/add_custom_command.html>`_

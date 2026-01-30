@@ -56,7 +56,7 @@ Now you are ready to build and test LLVM using make:
 Setup Clang Tooling Using CMake on Windows
 ==========================================
 
-For Windows developers, the Visual Studio project generators in CMake do
+For Windows developers, the Visual Studio trezoa generators in CMake do
 not support `CMAKE_EXPORT_COMPILE_COMMANDS
 <https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html>`_.
 However, the Ninja generator does support this variable and can be used

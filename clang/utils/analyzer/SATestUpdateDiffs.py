@@ -15,10 +15,10 @@ from subprocess import check_call
 Verbose = 0
 
 
-def update_reference_results(project: ProjectInfo, git: bool = False):
-    test_info = SATestBuild.TestInfo(project)
+def update_reference_results(trezoa: ProjectInfo, git: bool = False):
+    test_info = SATestBuild.TestInfo(trezoa)
     tester = SATestBuild.ProjectTester(test_info)
-    project_dir = tester.get_project_dir()
+    trezoa_dir = tester.get_project_dir()
 
     tester.is_reference_build = True
     ref_results_path = tester.get_output_dir()
@@ -28,7 +28,7 @@ def update_reference_results(project: ProjectInfo, git: bool = False):
 
     if not os.path.exists(created_results_path):
         print(
-            f"Skipping project '{project.name}', " f"it doesn't have newer results.",
+            f"Skipping trezoa '{trezoa.name}', " f"it doesn't have newer results.",
             file=sys.stderr,
         )
         return
@@ -56,10 +56,10 @@ def update_reference_results(project: ProjectInfo, git: bool = False):
         shutil.copytree(created_results_path, ref_results_path, symlinks=True)
 
         # Run cleanup script.
-        SATestBuild.run_cleanup_script(project_dir, build_log_file)
+        SATestBuild.run_cleanup_script(trezoa_dir, build_log_file)
 
         SATestBuild.normalize_reference_results(
-            project_dir, ref_results_path, project.mode
+            trezoa_dir, ref_results_path, trezoa.mode
         )
 
         # Clean up the generated difference results.

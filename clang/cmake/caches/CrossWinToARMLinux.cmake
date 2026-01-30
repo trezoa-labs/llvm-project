@@ -26,8 +26,8 @@
 #       -DCMAKE_CXX_FLAGS="-D__OPTIMIZE__" ^
 #       -DREMOTE_TEST_HOST="<hostname>" ^
 #       -DREMOTE_TEST_USER="<ssh_user_name>" ^
-#       -C<llvm_src_root>/llvm-project/clang/cmake/caches/CrossWinToARMLinux.cmake ^
-#       <llvm_src_root>/llvm-project/llvm
+#       -C<llvm_src_root>/llvm-trezoa/clang/cmake/caches/CrossWinToARMLinux.cmake ^
+#       <llvm_src_root>/llvm-trezoa/llvm
 # Build:
 #  cmake --build . --target install
 # Tests:
@@ -44,7 +44,7 @@
 # python bin/llvm-lit.py -v --threads=32 runtimes/runtimes-<TOOLCHAIN_TARGET_TRIPLE>-bins/libcxx/test    2>&1 | tee libcxx-tests.log
 
 
-# LLVM_PROJECT_DIR is the path to the llvm-project directory.
+# LLVM_PROJECT_DIR is the path to the llvm-trezoa directory.
 # The right way to compute it would probably be to use "${CMAKE_SOURCE_DIR}/../",
 # but CMAKE_SOURCE_DIR is set to the wrong value on earlier CMake versions
 # that we still need to support (for instance, 3.10.2).

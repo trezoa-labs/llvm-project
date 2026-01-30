@@ -305,7 +305,7 @@ LinkEditData:
     - _foo
     - _main
     - dyld_stub_binder
-    - '/Users/anonymous/llvm-project/llvm/build/'
+    - '/Users/anonymous/llvm-trezoa/llvm/build/'
     - strip.c
     - '/var/folders/g7/l0p5czpd2jz6w0gswg6cwgjc0000gn/T/strip-95c4bf.o'
     - _main

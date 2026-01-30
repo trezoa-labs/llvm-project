@@ -37,14 +37,14 @@ jobs:
       issues: write
       pull-requests: write
     if: >-
-      (github.repository == 'llvm/llvm-project') &&
+      (github.repository == 'llvm/llvm-trezoa') &&
       !startswith(github.event.comment.body, '<!--IGNORE-->') &&
       contains(github.event.action == 'opened' && github.event.issue.body || github.event.comment.body, '/cherry-pick')
     steps:
       - name: Fetch LLVM sources
         uses: actions/checkout@v4
         with:
-          repository: llvm/llvm-project
+          repository: llvm/llvm-trezoa
           # GitHub stores the token used for checkout and uses it for pushes
           # too, but we want to use a different token for pushing, so we need
           # to disable persist-credentials here.

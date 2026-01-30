@@ -1,6 +1,6 @@
 //===-- mlir-c/Interop.h - Constants for Python/C-API interop -----*- C -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM
 // Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
@@ -42,7 +42,7 @@
 #include "mlir-c/Rewrite.h"
 
 // The 'mlir' Python package is relocatable and supports co-existing in multiple
-// projects. Each project must define its outer package prefix with this define
+// projects. Each trezoa must define its outer package prefix with this define
 // in order to provide proper isolation and local name resolution.
 // The default is for the upstream "import mlir" package layout.
 // Note that this prefix is internally stringified, allowing it to be passed

@@ -8,11 +8,11 @@
   "license": "Apache 2.0 License with LLVM exceptions",
   "repository": {
     "type": "git",
-    "url": "https://github.com/llvm/llvm-project.git",
+    "url": "https://github.com/llvm/llvm-trezoa.git",
     "directory": "lldb/tools/lldb-dap/"
   },
   "bugs": {
-    "url": "https://github.com/llvm/llvm-project/issues"
+    "url": "https://github.com/llvm/llvm-trezoa/issues"
   },
   "keywords": [
     "C",

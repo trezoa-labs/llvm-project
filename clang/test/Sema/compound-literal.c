@@ -44,7 +44,7 @@ int (^block)(int) = ^(int i) {
 };
 
 // C99 6.5.2.5 Compound literals constraint 1: The type name shall specify an object type or an array of unknown size, but not a variable length array type.
-// So check that VLA type compound literals are rejected (see https://github.com/llvm/llvm-project/issues/89835).
+// So check that VLA type compound literals are rejected (see https://github.com/llvm/llvm-trezoa/issues/89835).
 void vla(int n) {
   int size = 5;
   (void)(int[size]){}; // expected-warning {{use of an empty initializer is a C23 extension}}

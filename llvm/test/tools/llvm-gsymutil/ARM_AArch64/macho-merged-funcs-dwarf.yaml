@@ -302,7 +302,7 @@ LinkEditData:
 DWARF:
   debug_str:
     - ''
-    - 'clang version 20.0.0git (https://github.com/alx32/llvm-project.git cfb92be0a9cdd0f4595100c5add4e2795a44134e)'
+    - 'clang version 20.0.0git (https://github.com/alx32/llvm-trezoa.git cfb92be0a9cdd0f4595100c5add4e2795a44134e)'
     - 'out/file_01.cpp'
     - '/'
     - '/tmp/test_gsym_yaml'

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -41,7 +41,7 @@ Macros:
 // LWG3869 Deprecate std::errc constants related to UNIX STREAMS
 //
 // This LWG issue deprecates the POSIX macros ENODATA, ENOSR, ENOSTR, and ETIME. These were
-// deprecated in libc++ in https://github.com/llvm/llvm-project/pull/80542.
+// deprecated in libc++ in https://github.com/llvm/llvm-trezoa/pull/80542.
 // Based on the post commit feedback the macro are no longer deprecated.
 // Instead libc++ leaves the deprecation to the provider of errno.h.
 

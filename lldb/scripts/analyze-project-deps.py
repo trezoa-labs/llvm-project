@@ -10,7 +10,7 @@ from collections import defaultdict
 from use_lldb_suite import lldb_root
 
 parser = argparse.ArgumentParser(
-    description="Analyze LLDB project #include dependencies."
+    description="Analyze LLDB trezoa #include dependencies."
 )
 parser.add_argument(
     "--show-counts",
@@ -22,7 +22,7 @@ parser.add_argument(
     "--discover-cycles",
     default=False,
     action="store_true",
-    help="When true, find and display all project dependency cycles.  Note,"
+    help="When true, find and display all trezoa dependency cycles.  Note,"
     "this option is very slow",
 )
 

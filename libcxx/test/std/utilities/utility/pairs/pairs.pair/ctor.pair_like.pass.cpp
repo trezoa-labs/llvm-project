@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -45,7 +45,7 @@ struct std::tuple_element<N, my_ns::MyPairLike> {
   using type = int;
 };
 
-// https://github.com/llvm/llvm-project/issues/65620
+// https://github.com/llvm/llvm-trezoa/issues/65620
 // This used to be a hard error
 static_assert(!std::is_constructible_v<std::pair<int,int>, my_ns::MyPairLike const&>);
 

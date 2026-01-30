@@ -1,6 +1,6 @@
 //===- tools/dsymutil/MachODebugMapParser.cpp - Parse STABS debug maps ----===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -401,7 +401,7 @@ MachODebugMapParser::parseOneBinary(const MachOObjectFile &MainBinary,
 
 // Table that maps Darwin's Mach-O stab constants to strings to allow printing.
 // llvm-nm has very similar code, the strings used here are however slightly
-// different and part of the interface of dsymutil (some project's build-systems
+// different and part of the interface of dsymutil (some trezoa's build-systems
 // parse the ouptut of dsymutil -s), thus they shouldn't be changed.
 struct DarwinStabName {
   uint8_t NType;

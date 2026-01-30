@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #===-- merge-request.sh  ---------------------------------------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -50,9 +50,9 @@ while [ $# -gt 0 ]; do
       shift
       revisions="$revisions $1"
       ;;
-    -project)
+    -trezoa)
       shift
-      project="$1"
+      trezoa="$1"
       ;;
     -component)
       shift
@@ -169,7 +169,7 @@ echo "Done"
 # use the commit message for the first commit.
 commit_summary=''
 for r in $revisions; do
-  commit_msg=`svn log -r $r https://llvm.org/svn/llvm-project/`
+  commit_msg=`svn log -r $r https://llvm.org/svn/llvm-trezoa/`
   if [ $? -ne 0 ]; then
     echo "warning: failed to get commit message."
     commit_msg=""

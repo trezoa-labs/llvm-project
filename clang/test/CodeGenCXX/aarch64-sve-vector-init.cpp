@@ -1213,7 +1213,7 @@ void test_copy_mf8x4(__clang_svmfloat8x4_t a) {
   __clang_svmfloat8x4_t b{a};
 }
 
-/// Reduced from: https://github.com/llvm/llvm-project/issues/107609
+/// Reduced from: https://github.com/llvm/llvm-trezoa/issues/107609
 using vec_t = __SVInt8_t;
 
 // CHECK-LABEL: define dso_local void @_Z20test_copy_s8_typedefu10__SVInt8_t

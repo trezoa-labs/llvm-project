@@ -1,6 +1,6 @@
 //===--- tools/clang-repl/ClangRepl.cpp - clang-repl - the Clang REPL -----===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -28,7 +28,7 @@
 
 // Disable LSan for this test.
 // FIXME: Re-enable once we can assume GCC 13.2 or higher.
-// https://llvm.org/github.com/llvm/llvm-project/issues/67586.
+// https://llvm.org/github.com/llvm/llvm-trezoa/issues/67586.
 #if LLVM_ADDRESS_SANITIZER_BUILD || LLVM_HWADDRESS_SANITIZER_BUILD
 #include <sanitizer/lsan_interface.h>
 LLVM_ATTRIBUTE_USED int __lsan_is_turned_off() { return 1; }

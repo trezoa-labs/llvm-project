@@ -1,6 +1,6 @@
 //===- ThreadSafetyCommon.cpp ---------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -374,7 +374,7 @@ static const ValueDecl *getValueDeclFromSExpr(const til::SExpr *E) {
     return V->clangDecl();
   if (const auto *Ph = dyn_cast<til::Phi>(E))
     return Ph->clangDecl();
-  if (const auto *P = dyn_cast<til::Project>(E))
+  if (const auto *P = dyn_cast<til::Trezoa>(E))
     return P->clangDecl();
   if (const auto *L = dyn_cast<til::LiteralPtr>(E))
     return L->clangDecl();
@@ -413,7 +413,7 @@ til::SExpr *SExprBuilder::translateMemberExpr(const MemberExpr *ME,
   if (const auto *VD = dyn_cast<CXXMethodDecl>(D))
     D = getFirstVirtualDecl(VD);
 
-  til::Project *P = new (Arena) til::Project(E, D);
+  til::Trezoa *P = new (Arena) til::Trezoa(E, D);
   if (hasAnyPointerType(BE))
     P->setArrow(true);
   return P;
@@ -426,7 +426,7 @@ til::SExpr *SExprBuilder::translateObjCIVarRefExpr(const ObjCIvarRefExpr *IVRE,
 
   const auto *D = cast<ObjCIvarDecl>(IVRE->getDecl()->getCanonicalDecl());
 
-  til::Project *P = new (Arena) til::Project(E, D);
+  til::Trezoa *P = new (Arena) til::Trezoa(E, D);
   if (hasAnyPointerType(BE))
     P->setArrow(true);
   return P;
@@ -505,7 +505,7 @@ til::SExpr *SExprBuilder::translateUnaryOperator(const UnaryOperator *UO,
           // This is a pointer-to-member expression, e.g. &MyClass::mu_.
           // We interpret this syntax specially, as a wildcard.
           auto *W = new (Arena) til::Wildcard();
-          return new (Arena) til::Project(W, DRE->getDecl());
+          return new (Arena) til::Trezoa(W, DRE->getDecl());
         }
       }
     }

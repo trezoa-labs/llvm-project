@@ -4825,7 +4825,7 @@ static isl_bool need_split_set(__isl_keep isl_set *set, __isl_keep isl_mat *cst)
  * We only do the split when it is needed.
  * For example if the last input variable m = min(a,b) and the only
  * constraints in the given basic set are lower bounds on m,
- * i.e., l <= m = min(a,b), then we can simply project out m
+ * i.e., l <= m = min(a,b), then we can simply trezoa out m
  * to obtain l <= a and l <= b, without having to split on whether
  * m is equal to a or b.
  */

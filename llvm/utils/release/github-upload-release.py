@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # ===-- github-upload-release.py  ------------------------------------------===#
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
 # ===------------------------------------------------------------------------===#
 #
-# Create and manage releases in the llvm github project.
+# Create and manage releases in the llvm github trezoa.
 #
 # This script requires python3 and the PyGithub module.
 #
@@ -48,7 +48,7 @@ def create_release(repo, release, tag=None, name=None, message=None):
 
             # A note on binaries
 
-            Volunteers make binaries for the LLVM project, which will be uploaded
+            Volunteers make binaries for the LLVM trezoa, which will be uploaded
             when they have had time to test and build these binaries. They might
             not be available directly or not at all for each release. We suggest
             you use the binaries from your distribution or build your own if you
@@ -86,7 +86,7 @@ args = parser.parse_args()
 
 gh = github.Github(args.token)
 llvm_org = gh.get_organization("llvm")
-llvm_repo = llvm_org.get_repo("llvm-project")
+llvm_repo = llvm_org.get_repo("llvm-trezoa")
 
 if args.user:
     if not args.user_token:

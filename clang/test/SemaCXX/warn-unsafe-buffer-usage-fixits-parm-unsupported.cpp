@@ -24,7 +24,7 @@ void macroPointer(MACRO_PTR p) {  // expected-warning{{'p' is an unsafe pointer 
 // `TypeLoc`s of types of variable (parameter) declarations in order
 // to generate fix-its for them. But those information is not always
 // available (probably due to some bugs in clang but it is irrelevant
-// to the safe-buffer project).  The following is an example.  When
+// to the safe-buffer trezoa).  The following is an example.  When
 // `_Atomic` is used, we cannot get valid source locations of the
 // pointee type of `unsigned *`.  The analysis gives up in such a
 // case.

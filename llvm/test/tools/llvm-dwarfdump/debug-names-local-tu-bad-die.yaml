@@ -101,7 +101,7 @@ Symbols:
 DWARF:
   debug_str:
     - foo
-    - 'Facebook clang version 15.0.0 (https://git.internal.tfbnw.net/repos/git/ro/osmeta/external/llvm-project 8d5ea9d2ad1c1a5a908bb6246c02abab225d5bc8)'
+    - 'Facebook clang version 15.0.0 (https://git.internal.tfbnw.net/repos/git/ro/osmeta/external/llvm-trezoa 8d5ea9d2ad1c1a5a908bb6246c02abab225d5bc8)'
     - main.cpp
     - main
     - int

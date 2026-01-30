@@ -1,6 +1,6 @@
 //===--- CGDebugInfo.cpp - Emit Debug Information for a Module ------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1441,7 +1441,7 @@ llvm::DIType *CGDebugInfo::CreateType(const TemplateSpecializationType *Ty,
 
   if (CGM.getCodeGenOpts().DebugTemplateAlias &&
       // FIXME: This is a workaround for the issue
-      //        https://github.com/llvm/llvm-project/issues/89774
+      //        https://github.com/llvm/llvm-trezoa/issues/89774
       // The TemplateSpecializationType doesn't contain any instantiation
       // information; dependent template arguments can't be resolved. For now,
       // fall back to DW_TAG_typedefs for template aliases that are

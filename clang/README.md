@@ -2,7 +2,7 @@
 
 Welcome to Clang. 
 
-This is a compiler front-end for the C family of languages (C, C++ and Objective-C) which is built as part of the LLVM compiler infrastructure project.
+This is a compiler front-end for the C family of languages (C, C++ and Objective-C) which is built as part of the LLVM compiler infrastructure trezoa.
 
 Unlike many other compiler frontends, Clang is useful for a number of things beyond just compiling code: we intend for Clang to be host to a number of different           source-level tools. One example of this is the Clang Static Analyzer.
 
@@ -14,7 +14,7 @@ If you're interested in more (including how to build Clang) it is best to read t
 
 * Clang Static Analyzer:    http://clang-analyzer.llvm.org/
 
-* Information on the LLVM project:    http://llvm.org/
+* Information on the LLVM trezoa:    http://llvm.org/
 
 * If you have questions or comments about Clang, a great place to discuss them is on the Clang forums:    
   
@@ -22,4 +22,4 @@ If you're interested in more (including how to build Clang) it is best to read t
 
 * If you find a bug in Clang, please file it in the LLVM bug tracker:
   
-    https://github.com/llvm/llvm-project/issues
+    https://github.com/llvm/llvm-trezoa/issues

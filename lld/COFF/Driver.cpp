@@ -1,6 +1,6 @@
 //===- Driver.cpp ---------------------------------------------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1774,7 +1774,7 @@ void LinkerDriver::linkerMain(ArrayRef<const char *> argsArr) {
     config->dynamicBase = false;
 
   // MSDN claims "/FIXED:NO is the default setting for a DLL, and /FIXED is the
-  // default setting for any other project type.", but link.exe defaults to
+  // default setting for any other trezoa type.", but link.exe defaults to
   // /FIXED:NO for exe outputs as well. Match behavior, not docs.
   bool fixed = args.hasFlag(OPT_fixed, OPT_fixed_no, false);
   if (fixed) {

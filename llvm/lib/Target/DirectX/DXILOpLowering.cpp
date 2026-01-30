@@ -1,6 +1,6 @@
 //===- DXILOpLowering.cpp - Lowering to DXIL operations -------------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -815,7 +815,7 @@ public:
         HasErrors |= lowerUpdateCounter(F);
         break;
       // TODO: this can be removed when
-      // https://github.com/llvm/llvm-project/issues/113192 is fixed
+      // https://github.com/llvm/llvm-trezoa/issues/113192 is fixed
       case Intrinsic::dx_splitdouble:
         HasErrors |= replaceFunctionWithNamedStructOp(
             F, OpCode::SplitDouble,

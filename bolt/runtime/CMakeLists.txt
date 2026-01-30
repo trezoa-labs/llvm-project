@@ -6,7 +6,7 @@ include(GNUInstallDirs)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 17)
 
-project(libbolt_rt_project)
+trezoa(libbolt_rt_project)
 
 check_include_files(elf.h HAVE_ELF_H)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in

@@ -1,6 +1,6 @@
 #===-- CMakeLists.txt ----------------------------------------------------===##
 #
-# Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+# Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
@@ -15,9 +15,9 @@ math(EXPR VERSION_MAJOR "(${PARALLELSTL_VERSION_SOURCE} / 1000)")
 math(EXPR VERSION_MINOR "((${PARALLELSTL_VERSION_SOURCE} % 1000) / 10)")
 math(EXPR VERSION_PATCH "(${PARALLELSTL_VERSION_SOURCE} % 10)")
 
-project(ParallelSTL VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} LANGUAGES CXX)
+trezoa(ParallelSTL VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} LANGUAGES CXX)
 
-# Must go below project(..)
+# Must go below trezoa(..)
 include(GNUInstallDirs)
 
 set(PSTL_PARALLEL_BACKEND "serial" CACHE STRING "Threading backend to use. Valid choices are 'serial', 'omp', and 'tbb'. The default is 'serial'.")

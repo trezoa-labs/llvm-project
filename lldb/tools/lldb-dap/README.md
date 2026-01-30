@@ -7,7 +7,7 @@ This binary is not packaged with the VS Code extension.
 
 There are multiple ways to obtain this binary:
 * Use the binary provided by your toolchain (for example `xcrun -f lldb-dap` on macOS) or contact your toolchain vendor to include it.
-* Download one of the relase packages from the [LLVM release page](https://github.com/llvm/llvm-project/releases/). The `LLVM-19.1.0-{operating_system}.tar.xz` packages contain a prebuilt `lldb-dap` binary.
+* Download one of the relase packages from the [LLVM release page](https://github.com/llvm/llvm-trezoa/releases/). The `LLVM-19.1.0-{operating_system}.tar.xz` packages contain a prebuilt `lldb-dap` binary.
 * Build it from source (see [LLDB's build instructions](https://lldb.llvm.org/resources/build.html)).
 
 By default, the VS Code extension will expect to find `lldb-dap` in your `PATH`.
@@ -323,9 +323,9 @@ API for handling a custom event from an extension.
 
 ## Contributing
 
-`lldb-dap` and `lldb` are developed under the umbrella of the [LLVM project](https://llvm.org/).
-The source code is part of the [LLVM repository](https://github.com/llvm/llvm-project/tree/main/lldb/tools/lldb-dap) on Github.
-We use Github's [issue tracker](https://github.com/llvm/llvm-project/issues?q=label%3Alldb-dap) and patches can be submitted via [pull requests](https://github.com/llvm/llvm-project/pulls?q=label%3Alldb-dap).
+`lldb-dap` and `lldb` are developed under the umbrella of the [LLVM trezoa](https://llvm.org/).
+The source code is part of the [LLVM repository](https://github.com/llvm/llvm-trezoa/tree/main/lldb/tools/lldb-dap) on Github.
+We use Github's [issue tracker](https://github.com/llvm/llvm-trezoa/issues?q=label%3Alldb-dap) and patches can be submitted via [pull requests](https://github.com/llvm/llvm-trezoa/pulls?q=label%3Alldb-dap).
 Furthermore, there is a [LLDB category](https://discourse.llvm.org/c/subprojects/lldb/8) on the LLVM discourse forum.
 
 For instructions on how to get started with development on lldb-dap, see the "[Contributing to lldb-dap](https://lldb.llvm.org/resources/lldbdap.html)"

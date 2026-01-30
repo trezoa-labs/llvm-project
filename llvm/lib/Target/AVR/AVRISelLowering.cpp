@@ -1,6 +1,6 @@
 //===-- AVRISelLowering.cpp - AVR DAG Lowering Implementation -------------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -1164,7 +1164,7 @@ bool AVRTargetLowering::getPostIndexedAddressParts(SDNode *N, SDNode *Op,
     }
 
     // FIXME: We temporarily disable post increment load from program memory,
-    //        due to bug https://github.com/llvm/llvm-project/issues/59914.
+    //        due to bug https://github.com/llvm/llvm-trezoa/issues/59914.
     if (const LoadSDNode *LD = dyn_cast<LoadSDNode>(N))
       if (AVR::isProgramMemoryAccess(LD))
         return false;

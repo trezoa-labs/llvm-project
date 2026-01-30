@@ -1,6 +1,6 @@
 //===- BugReporter.h - Generate PathDiagnostics -----------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -235,7 +235,7 @@ public:
   /// Fix-it hints are the suggested edits to the code that would resolve
   /// the problem explained by the bug report. Fix-it hints should be
   /// as conservative as possible because it is not uncommon for the user
-  /// to blindly apply all fixits to their project. Note that it is very hard
+  /// to blindly apply all fixits to their trezoa. Note that it is very hard
   /// to produce a good fix-it hint for most path-sensitive warnings.
   void addFixItHint(const FixItHint &F) {
     Fixits.push_back(F);

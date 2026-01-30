@@ -1,8 +1,8 @@
 [
 {
   "directory": "/home/john.doe/MyProject",
-  "command": "clang++  -o project.o -c /home/john.doe/MyProject/project.cpp",
-  "file": "/home/john.doe/MyProject/project.cpp"
+  "command": "clang++  -o trezoa.o -c /home/john.doe/MyProject/trezoa.cpp",
+  "file": "/home/john.doe/MyProject/trezoa.cpp"
 },
 {
   "directory": "/home/john.doe/MyProjectA",

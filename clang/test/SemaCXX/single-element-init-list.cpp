@@ -46,7 +46,7 @@ namespace std {
   };
 }
 
-// https://github.com/llvm/llvm-project/pull/77768#issuecomment-1908062472
+// https://github.com/llvm/llvm-trezoa/pull/77768#issuecomment-1908062472
 namespace Issue1 {
   struct A {
     constexpr A() {}
@@ -66,7 +66,7 @@ namespace Issue1 {
   static_assert(C().b.called_ctor == 0);
 }
 
-// https://github.com/llvm/llvm-project/pull/77768#issuecomment-1957171805
+// https://github.com/llvm/llvm-trezoa/pull/77768#issuecomment-1957171805
 namespace Issue2 {
   struct A {
     constexpr A(int x_) {}

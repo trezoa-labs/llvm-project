@@ -7,7 +7,7 @@ Introduction and Warning
 
 
 During the course of using LLVM, you may wish to customize it for your research
-project or for experimentation. At this point, you may realize that you need to
+trezoa or for experimentation. At this point, you may realize that you need to
 add something to LLVM, whether it be a new fundamental type, a new intrinsic
 function, or a whole new instruction.
 

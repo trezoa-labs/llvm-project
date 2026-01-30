@@ -25,15 +25,15 @@ runs:
         # See https://unit42.paloaltonetworks.com/github-repo-artifacts-leak-tokens/
         rm -Rf .git/config
         # Windows does not support symlinks, so we need to dereference them.
-        tar --exclude build/ ${{ (runner.os == 'Windows' && '-h') || '' }} -c . | zstd -T0 -c > ../llvm-project.tar.zst
-        mv ../llvm-project.tar.zst .
+        tar --exclude build/ ${{ (runner.os == 'Windows' && '-h') || '' }} -c . | zstd -T0 -c > ../llvm-trezoa.tar.zst
+        mv ../llvm-trezoa.tar.zst .
         tar -C ${{ inputs.build-prefix }} -c build/ | zstd -T0 -c > build.tar.zst
 
     - name: Upload Stage 1 Source
       uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8 #v4.3.0
       with:
         name: ${{ runner.os }}-${{ runner.arch }}-${{ github.job }}-source
-        path: llvm-project.tar.zst
+        path: llvm-trezoa.tar.zst
         retention-days: 2
 
     - name: Upload Stage 1 Build Dir

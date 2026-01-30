@@ -1,6 +1,6 @@
 //===------ ISLTools.cpp ----------------------------------------*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -629,15 +629,15 @@ static int flatCompare(const isl::basic_set &A, const isl::basic_set &B) {
 
   for (unsigned i = 0; i < Len; i += 1) {
     isl::basic_set ADim =
-        A.project_out(isl::dim::param, 0,
+        A.trezoa_out(isl::dim::param, 0,
                       unsignedFromIslSize(A.dim(isl::dim::param)))
-            .project_out(isl::dim::set, i + 1, ALen - i - 1)
-            .project_out(isl::dim::set, 0, i);
+            .trezoa_out(isl::dim::set, i + 1, ALen - i - 1)
+            .trezoa_out(isl::dim::set, 0, i);
     isl::basic_set BDim =
-        B.project_out(isl::dim::param, 0,
+        B.trezoa_out(isl::dim::param, 0,
                       unsignedFromIslSize(B.dim(isl::dim::param)))
-            .project_out(isl::dim::set, i + 1, BLen - i - 1)
-            .project_out(isl::dim::set, 0, i);
+            .trezoa_out(isl::dim::set, i + 1, BLen - i - 1)
+            .trezoa_out(isl::dim::set, 0, i);
 
     isl::basic_set AHull = isl::set(ADim).convex_hull();
     isl::basic_set BHull = isl::set(BDim).convex_hull();
@@ -810,10 +810,10 @@ static void recursiveExpand(isl::basic_set BSet, unsigned Dim,
   }
 
   isl::basic_set DimOnly =
-      BSet.project_out(isl::dim::param, 0,
+      BSet.trezoa_out(isl::dim::param, 0,
                        unsignedFromIslSize(BSet.dim(isl::dim::param)))
-          .project_out(isl::dim::set, Dim + 1, Dims - Dim - 1)
-          .project_out(isl::dim::set, 0, Dim);
+          .trezoa_out(isl::dim::set, Dim + 1, Dims - Dim - 1)
+          .trezoa_out(isl::dim::set, 0, Dim);
   if (!DimOnly.is_bounded()) {
     recursiveExpand(BSet, Dim + 1, Expanded);
     return;

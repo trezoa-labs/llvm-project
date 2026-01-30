@@ -1,6 +1,6 @@
 //===-- PathMappingTests.cpp  ------------------------*- C++ -*-----------===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -63,7 +63,7 @@ TEST(ParsePathMappingTests, ImproperFormat) {
   // uneven mappings
   EXPECT_TRUE(failedParse("/home/myuser1="));
   // mappings need to be absolute
-  EXPECT_TRUE(failedParse("home/project=/workarea/project"));
+  EXPECT_TRUE(failedParse("home/trezoa=/workarea/trezoa"));
   // duplicate delimiter
   EXPECT_TRUE(failedParse("/home==/workarea"));
   // no delimiter
@@ -74,12 +74,12 @@ TEST(ParsePathMappingTests, ImproperFormat) {
 
 TEST(ParsePathMappingTests, ParsesMultiple) {
   std::string RawPathMappings =
-      "/home/project=/workarea/project,/home/project/.includes=/opt/include";
+      "/home/trezoa=/workarea/trezoa,/home/trezoa/.includes=/opt/include";
   auto Parsed = parsePathMappings(RawPathMappings);
   ASSERT_TRUE(bool(Parsed));
   EXPECT_THAT(*Parsed,
-              ElementsAre(Mapping("/home/project", "/workarea/project"),
-                          Mapping("/home/project/.includes", "/opt/include")));
+              ElementsAre(Mapping("/home/trezoa", "/workarea/trezoa"),
+                          Mapping("/home/trezoa/.includes", "/opt/include")));
 }
 
 bool mapsProperly(llvm::StringRef Orig, llvm::StringRef Expected,

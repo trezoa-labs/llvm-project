@@ -232,7 +232,7 @@ endmacro()
 
 function(get_compiler_rt_root_source_dir ROOT_DIR_VAR)
   # Compute the path to the root of the Compiler-RT source tree
-  # regardless of how the project was configured.
+  # regardless of how the trezoa was configured.
   #
   # This function is useful because using `${CMAKE_SOURCE_DIR}`
   # is error prone due to the numerous ways Compiler-RT can be
@@ -251,19 +251,19 @@ function(get_compiler_rt_root_source_dir ROOT_DIR_VAR)
   set(PATH_TO_COMPILER_RT_SOURCE_ROOT "")
   if (DEFINED CompilerRTBuiltins_SOURCE_DIR)
     # Compiler-RT Builtins standalone build.
-    # `llvm-project/compiler-rt/lib/builtins`
+    # `llvm-trezoa/compiler-rt/lib/builtins`
     set(PATH_TO_COMPILER_RT_SOURCE_ROOT "${CompilerRTBuiltins_SOURCE_DIR}/../../")
   elseif (DEFINED CompilerRTCRT_SOURCE_DIR)
     # Compiler-RT CRT standalone build.
-    # `llvm-project/compiler-rt/lib/crt`
+    # `llvm-trezoa/compiler-rt/lib/crt`
     set(PATH_TO_COMPILER_RT_SOURCE_ROOT "${CompilerRTCRT_SOURCE_DIR}/../../")
   elseif(DEFINED CompilerRT_SOURCE_DIR)
     # Compiler-RT standalone build.
-    # `llvm-project/compiler-rt`
+    # `llvm-trezoa/compiler-rt`
     set(PATH_TO_COMPILER_RT_SOURCE_ROOT "${CompilerRT_SOURCE_DIR}")
   elseif (EXISTS "${CMAKE_SOURCE_DIR}/../compiler-rt")
-    # In tree build with LLVM as the root project.
-    # See `llvm-project/projects/`.
+    # In tree build with LLVM as the root trezoa.
+    # See `llvm-trezoa/projects/`.
     # Assumes monorepo layout.
     set(PATH_TO_COMPILER_RT_SOURCE_ROOT "${CMAKE_SOURCE_DIR}/../compiler-rt")
   else()
@@ -348,7 +348,7 @@ macro(load_llvm_config)
                     "You can override the inferred path by adding "
                     "`-DLLVM_MAIN_SRC_DIR=<path_to_llvm_src>` to your CMake invocation "
                     "where `<path_to_llvm_src>` is the path to the `llvm` directory in "
-                    "the `llvm-project` repo. "
+                    "the `llvm-trezoa` repo. "
                     "This will be treated as error in the future.")
   endif()
 

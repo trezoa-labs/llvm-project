@@ -571,7 +571,7 @@ void capture_implicitly_by_ref_as_loop_counter() {
 
 
 void test_escaping_on_var_before_switch_case_no_crash(int c) {
-  // https://github.com/llvm/llvm-project/issues/68819
+  // https://github.com/llvm/llvm-trezoa/issues/68819
   switch (c) {
     int i; // no-crash: The declaration of `i` is found here.
     case 0: {

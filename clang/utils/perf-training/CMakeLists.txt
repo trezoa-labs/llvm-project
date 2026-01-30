@@ -3,7 +3,7 @@ include(LLVMExternalProjectUtils)
 set(CLANG_PGO_TRAINING_DATA "${CMAKE_CURRENT_SOURCE_DIR}" CACHE PATH
   "The path to a lit testsuite containing samples for PGO and order file generation"
   )
-set(CLANG_PGO_TRAINING_DATA_SOURCE_DIR OFF CACHE STRING "Path to source directory containing cmake project with source files to use for generating pgo data")
+set(CLANG_PGO_TRAINING_DATA_SOURCE_DIR OFF CACHE STRING "Path to source directory containing cmake trezoa with source files to use for generating pgo data")
 set(CLANG_PGO_TRAINING_DEPS "" CACHE STRING "Extra dependencies needed to build the PGO training data.")
 
 if(LLVM_BUILD_INSTRUMENTED)

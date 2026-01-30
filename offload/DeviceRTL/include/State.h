@@ -1,6 +1,6 @@
 //===-------- State.h - OpenMP State & ICV interface ------------- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -158,7 +158,7 @@ struct DateEnvironmentRAII {
 /// TODO
 void resetStateForThread(uint32_t TId);
 
-// FIXME: https://github.com/llvm/llvm-project/issues/123241.
+// FIXME: https://github.com/llvm/llvm-trezoa/issues/123241.
 #define lookupForModify32Impl(Member, Ident, ForceTeamState)                   \
   {                                                                            \
     if (OMP_LIKELY(ForceTeamState || !config::mayUseThreadStates() ||          \
@@ -176,7 +176,7 @@ void resetStateForThread(uint32_t TId);
     return ThreadStates[TId]->ICVState.Member;                                 \
   }
 
-// FIXME: https://github.com/llvm/llvm-project/issues/123241.
+// FIXME: https://github.com/llvm/llvm-trezoa/issues/123241.
 #define lookupImpl(Member, ForceTeamState)                                     \
   {                                                                            \
     auto TId = mapping::getThreadIdInBlock();                                  \

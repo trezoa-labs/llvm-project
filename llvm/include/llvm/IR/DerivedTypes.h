@@ -1,6 +1,6 @@
 //===- llvm/DerivedTypes.h - Classes for handling data types ----*- C++ -*-===//
 //
-// Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
+// Part of the LLVM Trezoa, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
@@ -166,7 +166,7 @@ unsigned Type::getFunctionNumParams() const {
 /// A handy container for a FunctionType+Callee-pointer pair, which can be
 /// passed around as a single entity. This assists in replacing the use of
 /// PointerType::getElementType() to access the function's type, since that's
-/// slated for removal as part of the [opaque pointer types] project.
+/// slated for removal as part of the [opaque pointer types] trezoa.
 class FunctionCallee {
 public:
   // Allow implicit conversion from types which have a getFunctionType member

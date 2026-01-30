@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -triple i686-pc-linux-gnu -std=c23 -emit-llvm -o - %s | FileCheck %s
 
 // Ensure that thread_local and _Thread_local emit the same codegen. See
-// https://github.com/llvm/llvm-project/issues/70068 for details.
+// https://github.com/llvm/llvm-trezoa/issues/70068 for details.
 
 void func(void) {
   static thread_local int i = 12;

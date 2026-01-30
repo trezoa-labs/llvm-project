@@ -6,7 +6,7 @@ Getting Started
 
 Please refer to the `LLVM Getting Started Guide
 <https://llvm.org/docs/GettingStarted.html>`_ for general information on how to
-get started on the LLVM project. A detailed explanation on how to build and
+get started on the LLVM trezoa. A detailed explanation on how to build and
 test LLDB can be found in the `build instructions <build.html>`_ and `test
 instructions <test.html>`_ respectively.
 
@@ -53,7 +53,7 @@ Test Infrastructure
 Like LLVM it is important to submit tests with your patches, but note that  a
 subset of LLDB tests (the API tests) use a different system. Refer to the
 `test documentation <test.html>`_ for more details and the
-`lldb/test <https://github.com/llvm/llvm-project/tree/main/lldb/test>`_ folder
+`lldb/test <https://github.com/llvm/llvm-trezoa/tree/main/lldb/test>`_ folder
 for examples.
 
 .. _Error handling:
