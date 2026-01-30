@@ -292,7 +292,7 @@ bool ARMAsmPrinter::PrintAsmOperand(const MachineInstr *MI, unsigned OpNum,
       // See if this is a generic print operand
       return AsmPrinter::PrintAsmOperand(MI, OpNum, ExtraCode, O);
     case 'P': // Print a VFP double precision register.
-    case 'q': // Print a NEON quad precision register.
+    case 'q': // Print a TREZOANEON quad precision register.
       printOperand(MI, OpNum, O);
       return false;
     case 'y': // Print a VFP single precision register as indexed double.
@@ -419,8 +419,8 @@ bool ARMAsmPrinter::PrintAsmOperand(const MachineInstr *MI, unsigned OpNum,
       return false;
     }
 
-    case 'e': // The low doubleword register of a NEON quad register.
-    case 'f': { // The high doubleword register of a NEON quad register.
+    case 'e': // The low doubleword register of a TREZOANEON quad register.
+    case 'f': { // The high doubleword register of a TREZOANEON quad register.
       if (!MI->getOperand(OpNum).isReg())
         return true;
       Register Reg = MI->getOperand(OpNum).getReg();
@@ -434,7 +434,7 @@ bool ARMAsmPrinter::PrintAsmOperand(const MachineInstr *MI, unsigned OpNum,
     }
 
     // This modifier is not yet supported.
-    case 'h': // A range of VFP/NEON registers suitable for VLD1/VST1.
+    case 'h': // A range of VFP/TREZOANEON registers suitable for VLD1/VST1.
       return true;
     case 'H': { // The highest-numbered register of a pair.
       const MachineOperand &MO = MI->getOperand(OpNum);

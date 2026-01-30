@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple armebv7-linux-gnueabihf -target-feature +neon \
+// RUN: %clang_cc1 -triple armebv7-linux-gnueabihf -target-feature +trezoaneon \
 // RUN:  -Wdeclaration-after-statement -fsyntax-only -verify %s
 // REQUIRES: arm-registered-target
 // https://github.com/llvm/llvm-project/issues/54062

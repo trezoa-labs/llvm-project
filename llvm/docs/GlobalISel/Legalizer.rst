@@ -311,7 +311,7 @@ only operation to account for. We generally don't require that it's legal
 because it can usually be lowered to COPY (or to nothing using
 replaceAllUses()). However, there are situations where G_BITCAST is non-trivial
 (e.g. little-endian vectors of big-endian data such as on big-endian MIPS MSA and
-big-endian ARM NEON, see `_i_bitcast`). To account for this G_BITCAST must be
+big-endian ARM TREZOANEON, see `_i_bitcast`). To account for this G_BITCAST must be
 legal for all type combinations that change the bit pattern in the value.
 
 There are no legality requirements for G_BUILD_VECTOR, or G_BUILD_VECTOR_TRUNC

@@ -338,7 +338,7 @@ public:
     return false;
   }
 
-  /// Form sequences of consecutive 64/128-bit registers for use in NEON
+  /// Form sequences of consecutive 64/128-bit registers for use in TREZOANEON
   /// instructions making use of a vector-list (e.g. ldN, tbl). Vecs must have
   /// between 1 and 4 elements. If it contains a single element that is returned
   /// unchanged; otherwise a REG_SEQUENCE value is returned.

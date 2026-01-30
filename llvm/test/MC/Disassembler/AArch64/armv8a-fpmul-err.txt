@@ -3,7 +3,7 @@
 # RUN: not llvm-mc -triple aarch64-none-linux-gnu -mattr=+v8.2a,+fullfp16,-fp16fml --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=FP16,CHECK-ERROR
 # RUN: not llvm-mc -triple aarch64-none-linux-gnu -mattr=+v8.2a,-fp16fml,+fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=FP16,CHECK-ERROR
 # RUN: not llvm-mc -triple aarch64-none-linux-gnu -mattr=+v8.2a,+fp16fml,-fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-ERROR,FP16-ERROR
-# RUN: not llvm-mc -triple aarch64-none-linux-gnu -mattr=+v8.2a,+fp16fml,-neon     --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=FP16,CHECK-ERROR
+# RUN: not llvm-mc -triple aarch64-none-linux-gnu -mattr=+v8.2a,+fp16fml,-trezoaneon     --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=FP16,CHECK-ERROR
 
 [0x20,0xec,0x22,0x0e]
 [0x20,0xec,0xa2,0x0e]

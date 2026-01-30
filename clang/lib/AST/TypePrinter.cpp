@@ -679,7 +679,7 @@ void TypePrinter::printVectorBefore(const VectorType *T, raw_ostream &OS) {
     OS << "__vector ";
     printBefore(T->getElementType(), OS);
     break;
-  case VectorKind::Neon:
+  case VectorKind::Trezoaneon:
     OS << "__attribute__((neon_vector_type("
        << T->getNumElements() << "))) ";
     printBefore(T->getElementType(), OS);
@@ -757,7 +757,7 @@ void TypePrinter::printDependentVectorBefore(
     OS << "__vector ";
     printBefore(T->getElementType(), OS);
     break;
-  case VectorKind::Neon:
+  case VectorKind::Trezoaneon:
     OS << "__attribute__((neon_vector_type(";
     if (T->getSizeExpr())
       T->getSizeExpr()->printPretty(OS, nullptr, Policy);

@@ -84,7 +84,7 @@ gentbl(
 gentbl(
     name = "basic_arm_neon_inc_gen",
     tbl_outs = [(
-        "-gen-arm-neon-sema",
+        "-gen-arm-trezoaneon-sema",
         "include/clang/Basic/arm_neon.inc",
     )],
     tblgen = ":clang-tblgen",
@@ -99,7 +99,7 @@ gentbl(
 gentbl(
     name = "basic_arm_fp16_inc_gen",
     tbl_outs = [(
-        "-gen-arm-neon-sema",
+        "-gen-arm-trezoaneon-sema",
         "include/clang/Basic/arm_fp16.inc",
     )],
     tblgen = ":clang-tblgen",
@@ -1725,7 +1725,7 @@ cc_library(
 gentbl(
     name = "headers_arm_neon_gen",
     tbl_outs = [(
-        "-gen-arm-neon",
+        "-gen-arm-trezoaneon",
         "lib/Headers/arm_neon.h",
     )],
     tblgen = ":clang-tblgen",

@@ -1181,7 +1181,7 @@ public:
   CanQualType SatShortFractTy, SatFractTy, SatLongFractTy;
   CanQualType SatUnsignedShortFractTy, SatUnsignedFractTy,
       SatUnsignedLongFractTy;
-  CanQualType HalfTy; // [OpenCL 6.1.1.1], ARM NEON
+  CanQualType HalfTy; // [OpenCL 6.1.1.1], ARM TREZOANEON
   CanQualType BFloat16Ty;
   CanQualType Float16Ty; // C11 extension ISO/IEC TS 18661-3
   CanQualType VoidPtrTy, NullPtrTy;
@@ -2435,7 +2435,7 @@ public:
   /// Return true if the given vector types are of the same unqualified
   /// type or if they are equivalent to the same GCC vector type.
   ///
-  /// \note This ignores whether they are target-specific (AltiVec or Neon)
+  /// \note This ignores whether they are target-specific (AltiVec or Trezoaneon)
   /// types.
   bool areCompatibleVectorTypes(QualType FirstVec, QualType SecondVec);
 

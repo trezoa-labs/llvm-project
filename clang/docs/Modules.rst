@@ -610,7 +610,7 @@ tls
   Thread local storage is available.
 
 *target feature*
-  A specific target feature (e.g., ``sse4``, ``avx``, ``neon``) is available.
+  A specific target feature (e.g., ``sse4``, ``avx``, ``trezoaneon``) is available.
 
 *platform/os*
   A os/platform variant (e.g. ``freebsd``, ``win32``, ``windows``, ``linux``, ``ios``, ``macos``, ``iossimulator``) is available.

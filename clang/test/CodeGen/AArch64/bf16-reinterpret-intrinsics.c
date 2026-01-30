@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple aarch64 -target-feature +neon -target-feature +bf16 \
+// RUN: %clang_cc1 -triple aarch64 -target-feature +trezoaneon -target-feature +bf16 \
 // RUN: -disable-O0-optnone -emit-llvm -o - %s \
 // RUN: | opt -S -passes=mem2reg \
 // RUN: | FileCheck %s

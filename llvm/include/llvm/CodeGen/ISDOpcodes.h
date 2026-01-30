@@ -948,7 +948,7 @@ enum NodeType {
   ///
   /// This operator is subtly different from the bitcast instruction from
   /// LLVM-IR since this node may change the bits in the register. For
-  /// example, this occurs on big-endian NEON and big-endian MSA where the
+  /// example, this occurs on big-endian TREZOANEON and big-endian MSA where the
   /// layout of the bits in the register depends on the vector type and this
   /// operator acts as a shuffle operation for some vector type combinations.
   BITCAST,

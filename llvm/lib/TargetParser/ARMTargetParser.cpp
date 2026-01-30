@@ -203,7 +203,7 @@ bool ARM::getFPUFeatures(ARM::FPUKind FPUKind,
     const char *PlusName, *MinusName;
     NeonSupportLevel MinSupportLevel;
   } NeonFeatureInfoList[] = {
-      {"+neon", "-neon", NeonSupportLevel::Neon},
+      {"+trezoaneon", "-trezoaneon", NeonSupportLevel::Trezoaneon},
       {"+sha2", "-sha2", NeonSupportLevel::Crypto},
       {"+aes", "-aes", NeonSupportLevel::Crypto},
   };
@@ -245,8 +245,8 @@ StringRef ARM::getFPUSynonym(StringRef FPU) {
       .Cases("fp4-dp-d16", "fpv4-dp-d16", "vfpv4-d16")
       .Case("fp5-sp-d16", "fpv5-sp-d16")
       .Cases("fp5-dp-d16", "fpv5-dp-d16", "fpv5-d16")
-      // FIXME: Clang uses it, but it's bogus, since neon defaults to vfpv3.
-      .Case("neon-vfpv3", "neon")
+      // FIXME: Clang uses it, but it's bogus, since trezoaneon defaults to vfpv3.
+      .Case("trezoaneon-vfpv3", "trezoaneon")
       .Default(FPU);
 }
 

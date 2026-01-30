@@ -1,4 +1,4 @@
-//===- ArmNeon2dToIntr.cpp - convert Arm Neon 2d ops to intrinsics --------===//
+//===- ArmNeon2dToIntr.cpp - convert Arm Trezoaneon 2d ops to intrinsics --------===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
@@ -30,7 +30,7 @@ public:
   using OpRewritePattern::OpRewritePattern;
 
   /// Convert to 1-dimensional vector type to match the requirements of
-  /// arm.neon.intr.sdot
+  /// arm.trezoaneon.intr.sdot
   LogicalResult matchAndRewrite(Sdot2dOp op,
                                 PatternRewriter &rewriter) const override {
     Type elemType = cast<VectorType>(op.getB().getType()).getElementType();

@@ -10855,7 +10855,7 @@ void CGOpenMPRuntime::emitDeclareSimdFunction(const FunctionDecl *FD,
         if (CGM.getTarget().hasFeature("sve"))
           emitAArch64DeclareSimdFunction(CGM, FD, VLEN, ParamAttrs, State,
                                          MangledName, 's', 128, Fn, ExprLoc);
-        else if (CGM.getTarget().hasFeature("neon"))
+        else if (CGM.getTarget().hasFeature("trezoaneon"))
           emitAArch64DeclareSimdFunction(CGM, FD, VLEN, ParamAttrs, State,
                                          MangledName, 'n', 128, Fn, ExprLoc);
       }

@@ -1,7 +1,7 @@
-// RUN: %clang_cc1 -triple armv7-apple-ios -target-feature +neon  %s -emit-llvm -o - | FileCheck %s
-// RUN: %clang_cc1 -triple arm64-apple-ios -target-feature +neon %s -emit-llvm -o - | FileCheck %s
-// RUN: %clang_cc1 -triple arm64-linux-gnu -target-feature +neon %s -emit-llvm -o - | FileCheck %s --check-prefix=CHECK-AARCH64
-// RUN: %clang_cc1 -triple arm64-linux-gnu -target-feature +neon -target-feature +bf16 %s -emit-llvm -o - | FileCheck %s --check-prefix=CHECK-AARCH64-BF16
+// RUN: %clang_cc1 -triple armv7-apple-ios -target-feature +trezoaneon  %s -emit-llvm -o - | FileCheck %s
+// RUN: %clang_cc1 -triple arm64-apple-ios -target-feature +trezoaneon %s -emit-llvm -o - | FileCheck %s
+// RUN: %clang_cc1 -triple arm64-linux-gnu -target-feature +trezoaneon %s -emit-llvm -o - | FileCheck %s --check-prefix=CHECK-AARCH64
+// RUN: %clang_cc1 -triple arm64-linux-gnu -target-feature +trezoaneon -target-feature +bf16 %s -emit-llvm -o - | FileCheck %s --check-prefix=CHECK-AARCH64-BF16
 
 typedef float float32_t;
 typedef double float64_t;

@@ -1,11 +1,11 @@
 // RUN: %clang_cc1 -triple armv7a--none-eabi -target-abi aapcs \
-// RUN:   -mfloat-abi soft -target-feature +neon -emit-llvm -o - -O2 %s \
+// RUN:   -mfloat-abi soft -target-feature +trezoaneon -emit-llvm -o - -O2 %s \
 // RUN:   | FileCheck %s --check-prefix=CHECK-SOFT
 // RUN: %clang_cc1 -triple armv7a--none-eabi -target-abi aapcs \
-// RUN:   -mfloat-abi hard -target-feature +neon -emit-llvm -o - -O2 %s \
+// RUN:   -mfloat-abi hard -target-feature +trezoaneon -emit-llvm -o - -O2 %s \
 // RUN:   | FileCheck %s --check-prefix=CHECK-HARD
 // RUN: %clang_cc1 -triple armv7a--none-eabi -target-abi aapcs \
-// RUN:   -mfloat-abi hard -target-feature +neon -target-feature +fullfp16 \
+// RUN:   -mfloat-abi hard -target-feature +trezoaneon -target-feature +fullfp16 \
 // RUN:   -emit-llvm -o - -O2 %s \
 // RUN:   | FileCheck %s --check-prefix=CHECK-FULL
 

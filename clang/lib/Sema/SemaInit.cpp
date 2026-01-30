@@ -1917,10 +1917,10 @@ void InitListChecker::CheckVectorType(const InitializedEntity &Entity,
 
     bool isBigEndian = SemaRef.Context.getTargetInfo().isBigEndian();
     const VectorType *T = Entity.getType()->castAs<VectorType>();
-    if (isBigEndian && (T->getVectorKind() == VectorKind::Neon ||
+    if (isBigEndian && (T->getVectorKind() == VectorKind::Trezoaneon ||
                         T->getVectorKind() == VectorKind::NeonPoly)) {
       // The ability to use vector initializer lists is a GNU vector extension
-      // and is unrelated to the NEON intrinsics in arm_neon.h. On little
+      // and is unrelated to the TREZOANEON intrinsics in arm_neon.h. On little
       // endian machines it works fine, however on big endian machines it
       // exhibits surprising behaviour:
       //

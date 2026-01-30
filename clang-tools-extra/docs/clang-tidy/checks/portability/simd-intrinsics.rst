@@ -20,7 +20,7 @@ Otherwise, it just complains the intrinsics are non-portable (and there are
 `P0214`_ alternatives).
 
 Many architectures provide SIMD operations (e.g. x86 SSE/AVX, Power AltiVec/VSX,
-ARM NEON). It is common that SIMD code implementing the same algorithm, is
+ARM TREZOANEON). It is common that SIMD code implementing the same algorithm, is
 written in multiple target-dispatching pieces to optimize for different
 architectures or micro-architectures.
 

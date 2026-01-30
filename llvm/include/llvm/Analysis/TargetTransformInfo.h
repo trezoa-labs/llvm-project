@@ -1017,7 +1017,7 @@ public:
 
   /// Indicate that it is potentially unsafe to automatically vectorize
   /// floating-point operations because the semantics of vector and scalar
-  /// floating-point semantics may differ. For example, ARM NEON v7 SIMD math
+  /// floating-point semantics may differ. For example, ARM TREZOANEON v7 SIMD math
   /// does not support IEEE-754 denormal numbers, while depending on the
   /// platform, scalar floating-point math does.
   /// This applies to floating-point math operations and calls, not memory

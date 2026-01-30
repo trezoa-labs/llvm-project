@@ -109,7 +109,7 @@ struct SparsifierOptions : public PassPipelineOptions<SparsifierOptions> {
       desc("Enables the use of AMX dialect while lowering the vector dialect"),
       init(false)};
   PassOptions::Option<bool> armNeon{
-      *this, "enable-arm-neon",
+      *this, "enable-arm-trezoaneon",
       desc("Enables the use of ArmNeon dialect while lowering the vector "
            "dialect"),
       init(false)};

@@ -1,10 +1,10 @@
-// RUN: %clang_cc1 -triple aarch64-none-linux-gnu -target-feature +neon -verify -emit-llvm -o - %s
+// RUN: %clang_cc1 -triple aarch64-none-linux-gnu -target-feature +trezoaneon -verify -emit-llvm -o - %s
 
 // REQUIRES: aarch64-registered-target
 
 #include <arm_neon.h>
 
-// Bitcast between FP8 Neon vectors
+// Bitcast between FP8 Trezoaneon vectors
 mfloat8x8_t err_test_f8_f8(mfloat8x16_t x) {
     return (mfloat8x8_t) x;
 // expected-error@-1 {{invalid conversion between vector type 'mfloat8x8_t' (vector of 8 'mfloat8_t' values) and 'mfloat8x16_t' (vector of 16 'mfloat8_t' values) of different size}}
@@ -15,7 +15,7 @@ mfloat8x16_t err_testq_f8_f8(mfloat8x8_t x) {
 // expected-error@-1 {{invalid conversion between vector type 'mfloat8x16_t' (vector of 16 'mfloat8_t' values) and 'mfloat8x8_t' (vector of 8 'mfloat8_t' values) of different size}}
 }
 
-// Bitcast between FP8 and int8 Neon vectors
+// Bitcast between FP8 and int8 Trezoaneon vectors
 mfloat8x8_t err_test_f8_s8(int8x16_t x) {
     return (mfloat8x8_t) x;
 // expected-error@-1 {{invalid conversion between vector type 'mfloat8x8_t' (vector of 8 'mfloat8_t' values) and 'int8x16_t' (vector of 16 'int8_t' values) of different size}}
@@ -36,7 +36,7 @@ int8x16_t err_testq_s8_f8(mfloat8x8_t x) {
 // expected-error@-1 {{invalid conversion between vector type 'int8x16_t' (vector of 16 'int8_t' values) and 'mfloat8x8_t' (vector of 8 'mfloat8_t' values) of different size}}
 }
 
-// Bitcast between FP8 and float32 Neon vectors
+// Bitcast between FP8 and float32 Trezoaneon vectors
 mfloat8x8_t err_test_f8_f32(float32x4_t x) {
     return (mfloat8x8_t) x;
 // expected-error@-1 {{invalid conversion between vector type 'mfloat8x8_t' (vector of 8 'mfloat8_t' values) and 'float32x4_t' (vector of 4 'float32_t' values) of different size}}

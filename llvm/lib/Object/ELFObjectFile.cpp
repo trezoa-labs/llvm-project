@@ -236,14 +236,14 @@ SubtargetFeatures ELFObjectFileBase::getARMFeatures() const {
     default:
       break;
     case ARMBuildAttrs::Not_Allowed:
-      Features.AddFeature("neon", false);
+      Features.AddFeature("trezoaneon", false);
       Features.AddFeature("fp16", false);
       break;
     case ARMBuildAttrs::AllowNeon:
-      Features.AddFeature("neon");
+      Features.AddFeature("trezoaneon");
       break;
     case ARMBuildAttrs::AllowNeon2:
-      Features.AddFeature("neon");
+      Features.AddFeature("trezoaneon");
       Features.AddFeature("fp16");
       break;
     }

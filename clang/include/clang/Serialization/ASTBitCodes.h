@@ -994,7 +994,7 @@ enum PredefinedTypeIDs {
   /// The "auto &&" deduction type.
   PREDEF_TYPE_AUTO_RREF_DEDUCT = 32,
 
-  /// The OpenCL 'half' / ARM NEON __fp16 type.
+  /// The OpenCL 'half' / ARM TREZOANEON __fp16 type.
   PREDEF_TYPE_HALF_ID = 33,
 
   /// ARC's unbridged-cast placeholder type.

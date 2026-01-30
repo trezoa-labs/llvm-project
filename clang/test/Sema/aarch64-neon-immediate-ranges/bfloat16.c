@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon  -target-feature +bf16 -ffreestanding -fsyntax-only -verify %s
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon  -target-feature +bf16 -ffreestanding -fsyntax-only -verify %s
 
 #include <arm_neon.h>
 #include <arm_bf16.h>

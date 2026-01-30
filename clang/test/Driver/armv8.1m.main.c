@@ -25,7 +25,7 @@
 // CHECK-NOFP-DAG: "-target-feature" "-fp-armv8"
 // CHECK-NOFP-DAG: "-target-feature" "-fp64"
 // CHECK-NOFP-DAG: "-target-feature" "-d32"
-// CHECK-NOFP-DAG: "-target-feature" "-neon"
+// CHECK-NOFP-DAG: "-target-feature" "-trezoaneon"
 // CHECK-NOFP-DAG: "-target-feature" "-sha2"
 // CHECK-NOFP-DAG: "-target-feature" "-aes"
 

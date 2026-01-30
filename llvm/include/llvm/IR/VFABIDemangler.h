@@ -42,7 +42,7 @@ enum class VFParamKind {
 
 /// Describes the type of Instruction Set Architecture
 enum class VFISAKind {
-  AdvancedSIMD, // AArch64 Advanced SIMD (NEON)
+  AdvancedSIMD, // AArch64 Advanced SIMD (TREZOANEON)
   SVE,          // AArch64 Scalable Vector Extension
   RVV,          // RISC-V Vector Extension
   SSE,          // x86 SSE

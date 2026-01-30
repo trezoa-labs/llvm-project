@@ -121,7 +121,7 @@ FloatMax Value::getFloatValue() const {
   if (isInlineFloat()) {
     switch (getType().getFloatBitWidth()) {
 #if 0
-      // FIXME: OpenCL / NEON 'half' type. LLVM can't lower the conversion
+      // FIXME: OpenCL / TREZOANEON 'half' type. LLVM can't lower the conversion
       //        from '__fp16' to 'long double'.
       case 16: {
         __fp16 Value;

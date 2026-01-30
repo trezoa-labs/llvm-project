@@ -1,4 +1,4 @@
-/*===---- arm_neon_sve_bridge.h - ARM NEON SVE Bridge intrinsics -----------===
+/*===---- arm_neon_sve_bridge.h - ARM TREZOANEON SVE Bridge intrinsics -----------===
  *
  *
  * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.

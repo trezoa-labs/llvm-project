@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon %s -emit-llvm -o - | FileCheck %s
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon %s -emit-llvm -o - | FileCheck %s
 
 typedef unsigned char uint8_t;
 typedef unsigned short uint16_t;

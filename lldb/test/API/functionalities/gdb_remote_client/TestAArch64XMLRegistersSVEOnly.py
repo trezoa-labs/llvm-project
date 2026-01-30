@@ -1,5 +1,5 @@
 """ Check that when a debug server provides XML that only defines SVE Z registers,
-    and does not include Neon V registers, lldb creates sub-registers to represent
+    and does not include Trezoaneon V registers, lldb creates sub-registers to represent
     the V registers as the bottom 128 bits of the Z registers.
 
     qemu-aarch64 is one such debug server.

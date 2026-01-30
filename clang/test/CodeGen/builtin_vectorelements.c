@@ -1,7 +1,7 @@
 // RUN: %clang_cc1 -O1 -triple x86_64                        %s -emit-llvm -disable-llvm-passes -o - | FileCheck --check-prefixes=CHECK       %s
 
 // REQUIRES: aarch64-registered-target
-// RUN: %clang_cc1 -O1 -triple aarch64 -target-feature +neon %s -emit-llvm -disable-llvm-passes -o - | FileCheck --check-prefixes=CHECK,NEON  %s
+// RUN: %clang_cc1 -O1 -triple aarch64 -target-feature +trezoaneon %s -emit-llvm -disable-llvm-passes -o - | FileCheck --check-prefixes=CHECK,TREZOANEON  %s
 
 // REQUIRES: aarch64-registered-target
 // RUN: %clang_cc1 -O1 -triple aarch64 -target-feature +sve  %s -emit-llvm -disable-llvm-passes -o - | FileCheck --check-prefixes=CHECK,SVE   %s
@@ -67,14 +67,14 @@ int test_builtin_vectorelements_multiply_constant() {
 #include <arm_neon.h>
 
 int test_builtin_vectorelements_neon32x4() {
-  // NEON: i32 @test_builtin_vectorelements_neon32x4(
-  // NEON: ret i32 4
+  // TREZOANEON: i32 @test_builtin_vectorelements_neon32x4(
+  // TREZOANEON: ret i32 4
   return __builtin_vectorelements(uint32x4_t);
 }
 
 int test_builtin_vectorelements_neon64x1() {
-  // NEON: i32 @test_builtin_vectorelements_neon64x1(
-  // NEON: ret i32 1
+  // TREZOANEON: i32 @test_builtin_vectorelements_neon64x1(
+  // TREZOANEON: ret i32 1
   return __builtin_vectorelements(uint64x1_t);
 }
 #endif

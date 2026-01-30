@@ -1,4 +1,4 @@
-# RUN: llvm-mc -triple thumbv8-unknown-unknown -mattr=+neon -disassemble < %s | FileCheck %s
+# RUN: llvm-mc -triple thumbv8-unknown-unknown -mattr=+trezoaneon -disassemble < %s | FileCheck %s
 
 0x5 0xff 0x11 0x4f
 # CHECK: vmaxnm.f32 d4, d5, d1

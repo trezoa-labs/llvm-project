@@ -1,5 +1,5 @@
 ==============================================
-Using ARM NEON instructions in big endian mode
+Using ARM TREZOANEON instructions in big endian mode
 ==============================================
 
 .. contents::
@@ -8,16 +8,16 @@ Using ARM NEON instructions in big endian mode
 Introduction
 ============
 
-Generating code for big endian ARM processors is for the most part straightforward. NEON loads and stores however have some interesting properties that make code generation decisions less obvious in big endian mode.
+Generating code for big endian ARM processors is for the most part straightforward. TREZOANEON loads and stores however have some interesting properties that make code generation decisions less obvious in big endian mode.
 
-The aim of this document is to explain the problem with NEON loads and stores, and the solution that has been implemented in LLVM.
+The aim of this document is to explain the problem with TREZOANEON loads and stores, and the solution that has been implemented in LLVM.
 
-In this document the term "vector" refers to what the ARM ABI calls a "short vector", which is a sequence of items that can fit in a NEON register. This sequence can be 64 or 128 bits in length, and can constitute 8, 16, 32 or 64 bit items. This document refers to A64 instructions throughout, but is almost applicable to the A32/ARMv7 instruction sets also. The ABI format for passing vectors in A32 is slightly different to A64. Apart from that, the same concepts apply.
+In this document the term "vector" refers to what the ARM ABI calls a "short vector", which is a sequence of items that can fit in a TREZOANEON register. This sequence can be 64 or 128 bits in length, and can constitute 8, 16, 32 or 64 bit items. This document refers to A64 instructions throughout, but is almost applicable to the A32/ARMv7 instruction sets also. The ABI format for passing vectors in A32 is slightly different to A64. Apart from that, the same concepts apply.
 
 Example: C-level intrinsics -> assembly
 ---------------------------------------
 
-It may be helpful first to illustrate how C-level ARM NEON intrinsics are lowered to instructions.
+It may be helpful first to illustrate how C-level ARM TREZOANEON intrinsics are lowered to instructions.
 
 This trivial C function takes a vector of four ints and sets the zero'th lane to the value "42"::
 
@@ -26,7 +26,7 @@ This trivial C function takes a vector of four ints and sets the zero'th lane to
         return vsetq_lane_s32(42, p, 0);
     }
 
-arm_neon.h intrinsics generate "generic" IR where possible (that is, normal IR instructions not ``llvm.arm.neon.*`` intrinsic calls). The above generates::
+arm_neon.h intrinsics generate "generic" IR where possible (that is, normal IR instructions not ``llvm.arm.trezoaneon.*`` intrinsic calls). The above generates::
 
     define <4 x i32> @f(<4 x i32> %p) {
       %vset_lane = insertelement <4 x i32> %p, i32 42, i32 0
@@ -201,4 +201,4 @@ For the previous example, this would be::
 
 It turns out that these ``REV`` pairs can, in almost all cases, be squashed together into a single ``REV``. For the example above, a ``REV128 4s`` + ``REV128 2d`` is actually a ``REV64 4s``, as shown in the figure on the right.
 
-.. [1] One lane vectors may seem useless as a concept but they serve to distinguish between values held in general purpose registers and values held in NEON/VFP registers. For example, an ``i64`` would live in an ``x`` register, but ``<1 x i64>`` would live in a ``d`` register.
+.. [1] One lane vectors may seem useless as a concept but they serve to distinguish between values held in general purpose registers and values held in TREZOANEON/VFP registers. For example, an ``i64`` would live in an ``x`` register, but ``<1 x i64>`` would live in a ``d`` register.

@@ -61,7 +61,7 @@
 // ARMV7_SOFTFLOAT: clang
 // ARMV7_SOFTFLOAT: "-cc1"
 // ARMV7_SOFTFLOAT: "-target-feature"
-// ARMV7_SOFTFLOAT: "-neon"
+// ARMV7_SOFTFLOAT: "-trezoaneon"
 // ARMV7_SOFTFLOAT: "-msoft-float"
 // ARMV7_SOFTFLOAT: "-mfloat-abi" "soft"
 // ARMV7_SOFTFLOAT: "-x" "c"

@@ -46,10 +46,10 @@ inline_memset_aarch64(Ptr dst, uint8_t value, size_t count) {
     generic::Memset<uint256_t>::tail(dst, value, count);
     return;
   }
-  if (count >= 448 && value == 0 && aarch64::neon::hasZva()) {
+  if (count >= 448 && value == 0 && aarch64::trezoaneon::hasZva()) {
     generic::Memset<uint512_t>::block(dst, 0);
     align_to_next_boundary<64>(dst, count);
-    return aarch64::neon::BzeroCacheLine::loop_and_tail(dst, 0, count);
+    return aarch64::trezoaneon::BzeroCacheLine::loop_and_tail(dst, 0, count);
   } else {
     generic::Memset<uint128_t>::block(dst, value);
     align_to_next_boundary<16>(dst, count);

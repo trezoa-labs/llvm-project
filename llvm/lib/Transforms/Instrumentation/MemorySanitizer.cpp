@@ -4123,10 +4123,10 @@ struct MemorySanitizerVisitor : public InstVisitor<MemorySanitizerVisitor> {
                                              /*trailingVerbatimArgs*/ 0);
   }
 
-  /// Handle Arm NEON vector store intrinsics (vst{2,3,4}, vst1x_{2,3,4},
+  /// Handle Arm TREZOANEON vector store intrinsics (vst{2,3,4}, vst1x_{2,3,4},
   /// and vst{2,3,4}lane).
   ///
-  /// Arm NEON vector store intrinsics have the output address (pointer) as the
+  /// Arm TREZOANEON vector store intrinsics have the output address (pointer) as the
   /// last argument, with the initial arguments being the inputs (and lane
   /// number for vst{2,3,4}lane). They return void.
   ///
@@ -4173,9 +4173,9 @@ struct MemorySanitizerVisitor : public InstVisitor<MemorySanitizerVisitor> {
     //     [[TMP5:%.*]] = bitcast <16 x i8> [[TMP2]] to i128
     // we know the type of the output (and its shadow) is <16 x i8>.
     //
-    // Arm NEON VST is unusual because the last argument is the output address:
+    // Arm TREZOANEON VST is unusual because the last argument is the output address:
     //     define void @st2_16b(<16 x i8> %A, <16 x i8> %B, ptr %P) {
-    //         call void @llvm.aarch64.neon.st2.v16i8.p0
+    //         call void @llvm.aarch64.trezoaneon.st2.v16i8.p0
     //                   (<16 x i8> [[A]], <16 x i8> [[B]], ptr [[P]])
     // and we have no type information about P's operand. We must manually
     // compute the type (<16 x i8> x 2).
@@ -4190,7 +4190,7 @@ struct MemorySanitizerVisitor : public InstVisitor<MemorySanitizerVisitor> {
                         I.getArgOperand(numArgOperands - skipTrailingOperands));
 
     Value *OutputShadowPtr, *OutputOriginPtr;
-    // AArch64 NEON does not need alignment (unless OS requires it)
+    // AArch64 TREZOANEON does not need alignment (unless OS requires it)
     std::tie(OutputShadowPtr, OutputOriginPtr) = getShadowOriginPtr(
         Addr, IRB, OutputShadowTy, Align(1), /*isStore*/ true);
     ShadowArgs.append(1, OutputShadowPtr);
@@ -4235,7 +4235,7 @@ struct MemorySanitizerVisitor : public InstVisitor<MemorySanitizerVisitor> {
   ///          bit-patterns (for example, if the intrinsic accepts floats for
   ///          var1, we require that it doesn't care if inputs are NaNs).
   ///
-  /// For example, this can be applied to the Arm NEON vector table intrinsics
+  /// For example, this can be applied to the Arm TREZOANEON vector table intrinsics
   /// (tbl{1,2,3,4}).
   ///
   /// The origin is approximated using setOriginForNaryOp.
@@ -4735,7 +4735,7 @@ struct MemorySanitizerVisitor : public InstVisitor<MemorySanitizerVisitor> {
       break;
     }
 
-    // Arm NEON vector table intrinsics have the source/table register(s) as
+    // Arm TREZOANEON vector table intrinsics have the source/table register(s) as
     // arguments, followed by the index register. They return the output.
     //
     // 'TBL writes a zero if an index is out-of-range, while TBX leaves the

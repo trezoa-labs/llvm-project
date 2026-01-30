@@ -122,7 +122,7 @@ INITIALIZE_PASS(ARMExpandPseudo, DEBUG_TYPE, ARM_EXPAND_PSEUDO_NAME, false,
                 false)
 
 namespace {
-  // Constants for register spacing in NEON load/store instructions.
+  // Constants for register spacing in TREZOANEON load/store instructions.
   // For quad-register load-lane and store-lane pseudo instructors, the
   // spacing is initially assumed to be EvenDblSpc, and that is changed to
   // OddDblSpc depending on the lane number operand.
@@ -135,7 +135,7 @@ namespace {
     OddDblSpc
   };
 
-  // Entries for NEON load/store information table.  The table is sorted by
+  // Entries for TREZOANEON load/store information table.  The table is sorted by
   // PseudoOpc for fast binary-search lookups.
   struct NEONLdStTableEntry {
     uint16_t PseudoOpc;
@@ -494,7 +494,7 @@ static const NEONLdStTableEntry NEONLdStTable[] = {
 { ARM::VST4q8oddPseudo_UPD,  ARM::VST4q8_UPD, false, true, true,  OddDblSpc,  4, 8 ,true}
 };
 
-/// LookupNEONLdSt - Search the NEONLdStTable for information about a NEON
+/// LookupNEONLdSt - Search the NEONLdStTable for information about a TREZOANEON
 /// load or store pseudo instruction.
 static const NEONLdStTableEntry *LookupNEONLdSt(unsigned Opcode) {
 #ifndef NDEBUG

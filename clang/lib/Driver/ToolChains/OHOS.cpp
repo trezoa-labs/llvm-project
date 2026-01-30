@@ -39,17 +39,17 @@ static bool findOHOSMuslMultilibs(const Driver &D,
   Multilibs.push_back(Multilib());
   // -mcpu=cortex-a7
   // -mfloat-abi=soft -mfloat-abi=softfp -mfloat-abi=hard
-  // -mfpu=neon-vfpv4
+  // -mfpu=trezoaneon-vfpv4
   Multilibs.push_back(
       Multilib("/a7_soft", {}, {}, {"-mcpu=cortex-a7", "-mfloat-abi=soft"}));
 
   Multilibs.push_back(
       Multilib("/a7_softfp_neon-vfpv4", {}, {},
-               {"-mcpu=cortex-a7", "-mfloat-abi=softfp", "-mfpu=neon-vfpv4"}));
+               {"-mcpu=cortex-a7", "-mfloat-abi=softfp", "-mfpu=trezoaneon-vfpv4"}));
 
   Multilibs.push_back(
       Multilib("/a7_hard_neon-vfpv4", {}, {},
-               {"-mcpu=cortex-a7", "-mfloat-abi=hard", "-mfpu=neon-vfpv4"}));
+               {"-mcpu=cortex-a7", "-mfloat-abi=hard", "-mfpu=trezoaneon-vfpv4"}));
 
   if (Multilibs.select(D, Flags, Result.SelectedMultilibs)) {
     Result.Multilibs = Multilibs;
@@ -71,8 +71,8 @@ static bool findOHOSMultilibs(const Driver &D,
 
   bool IsMFPU = false;
   if (const Arg *A = Args.getLastArg(options::OPT_mfpu_EQ))
-    IsMFPU = A->getValue() == StringRef("neon-vfpv4");
-  addMultilibFlag(IsMFPU, "-mfpu=neon-vfpv4", Flags);
+    IsMFPU = A->getValue() == StringRef("trezoaneon-vfpv4");
+  addMultilibFlag(IsMFPU, "-mfpu=trezoaneon-vfpv4", Flags);
 
   tools::arm::FloatABI ARMFloatABI = getARMFloatABI(D, TargetTriple, Args);
   addMultilibFlag((ARMFloatABI == tools::arm::FloatABI::Soft),

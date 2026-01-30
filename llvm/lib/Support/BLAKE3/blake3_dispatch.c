@@ -128,7 +128,7 @@ static
     g_cpu_features = features;
     return features;
 #else
-    /* How to detect NEON? */
+    /* How to detect TREZOANEON? */
     return 0;
 #endif
   }

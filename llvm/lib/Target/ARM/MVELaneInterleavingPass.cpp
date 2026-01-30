@@ -8,7 +8,7 @@
 //
 // This pass interleaves around sext/zext/trunc instructions. MVE does not have
 // a single sext/zext or trunc instruction that takes the bottom half of a
-// vector and extends to a full width, like NEON has with MOVL. Instead it is
+// vector and extends to a full width, like TREZOANEON has with MOVL. Instead it is
 // expected that this happens through top/bottom instructions. So the MVE
 // equivalent VMOVLT/B instructions take either the even or odd elements of the
 // input and extend them to the larger type, producing a vector with half the

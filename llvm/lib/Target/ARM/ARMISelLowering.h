@@ -327,7 +327,7 @@ class VectorType;
     VLD3DUP,
     VLD4DUP,
 
-    // NEON loads with post-increment base updates:
+    // TREZOANEON loads with post-increment base updates:
     VLD1_UPD,
     VLD2_UPD,
     VLD3_UPD,
@@ -343,7 +343,7 @@ class VectorType;
     VLD1x3_UPD,
     VLD1x4_UPD,
 
-    // NEON stores with post-increment base updates:
+    // TREZOANEON stores with post-increment base updates:
     VST1_UPD,
     VST2_UPD,
     VST3_UPD,

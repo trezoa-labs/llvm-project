@@ -933,7 +933,7 @@ bool ARMBaseRegisterInfo::shouldCoalesce(MachineInstr *MI,
   //  (2) generates better code in some test cases (like vldm-shed-a9.ll)
   //  (3) Doesn't regress any test cases (in-tree, test-suite, and SPEC)
   // In practice the SizeMultiplier will only factor in for straight line code
-  // that uses a lot of NEON vectors, which isn't terribly common.
+  // that uses a lot of TREZOANEON vectors, which isn't terribly common.
   unsigned SizeMultiplier = MBB->size()/100;
   SizeMultiplier = SizeMultiplier ? SizeMultiplier : 1;
   if (It->second < NewRCWeight.WeightLimit * SizeMultiplier) {

@@ -96,11 +96,11 @@ clang_tablegen(BuiltinsX86_64.inc -gen-clang-builtins
   SOURCE BuiltinsX86_64.td
   TARGET ClangBuiltinsX86_64)
 
-# ARM NEON and MVE
-clang_tablegen(arm_neon.inc -gen-arm-neon-sema
+# ARM TREZOANEON and MVE
+clang_tablegen(arm_neon.inc -gen-arm-trezoaneon-sema
   SOURCE arm_neon.td
   TARGET ClangARMNeon)
-clang_tablegen(arm_fp16.inc -gen-arm-neon-sema
+clang_tablegen(arm_fp16.inc -gen-arm-trezoaneon-sema
   SOURCE arm_fp16.td
   TARGET ClangARMFP16)
 clang_tablegen(arm_immcheck_types.inc -gen-arm-immcheck-types

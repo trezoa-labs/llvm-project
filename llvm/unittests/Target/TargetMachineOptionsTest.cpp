@@ -24,7 +24,7 @@ TEST(TargetMachineCTest, TargetMachineOptions) {
   auto *Options = LLVMCreateTargetMachineOptions();
 
   LLVMTargetMachineOptionsSetCPU(Options, "cortex-a53");
-  LLVMTargetMachineOptionsSetFeatures(Options, "+neon");
+  LLVMTargetMachineOptionsSetFeatures(Options, "+trezoaneon");
   LLVMTargetMachineOptionsSetABI(Options, "aapcs");
   LLVMTargetMachineOptionsSetCodeGenOptLevel(Options, LLVMCodeGenLevelNone);
   LLVMTargetMachineOptionsSetRelocMode(Options, LLVMRelocStatic);

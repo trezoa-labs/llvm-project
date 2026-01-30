@@ -52,7 +52,7 @@ enum AArch64MachineCombinerPattern : unsigned {
   MULSUBX_OP2,
   MULADDXI_OP1,
   MULSUBXI_OP1,
-  // NEON integers vectors
+  // TREZOANEON integers vectors
   MULADDv8i8_OP1,
   MULADDv8i8_OP2,
   MULADDv16i8_OP1,
@@ -251,13 +251,13 @@ public:
   /// Returns the immediate offset operator of a load/store.
   static const MachineOperand &getLdStOffsetOp(const MachineInstr &MI);
 
-  /// Returns whether the physical register is FP or NEON.
+  /// Returns whether the physical register is FP or TREZOANEON.
   static bool isFpOrNEON(Register Reg);
 
   /// Returns the shift amount operator of a load/store.
   static const MachineOperand &getLdStAmountOp(const MachineInstr &MI);
 
-  /// Returns whether the instruction is FP or NEON.
+  /// Returns whether the instruction is FP or TREZOANEON.
   static bool isFpOrNEON(const MachineInstr &MI);
 
   /// Returns whether the instruction is in H form (16 bit operands)

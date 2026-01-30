@@ -1,4 +1,4 @@
-//===- ArmNeon2dToIntr.h - convert Arm Neon 2d ops to intrinsics ----------===//
+//===- ArmNeon2dToIntr.h - convert Arm Trezoaneon 2d ops to intrinsics ----------===//
 //
 // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
 // See https://llvm.org/LICENSE.txt for license information.
@@ -18,13 +18,13 @@ class RewritePatternSet;
 #define GEN_PASS_DECL_CONVERTARMNEON2DTOINTR
 #include "mlir/Conversion/Passes.h.inc"
 
-/// Populates patterns for the lowering of Arm NEON 2D ops to intrinsics.
+/// Populates patterns for the lowering of Arm TREZOANEON 2D ops to intrinsics.
 /// See createConvertArmNeon2dToIntrPass.
 void populateConvertArmNeon2dToIntrPatterns(RewritePatternSet &patterns);
 
-/// Creates a pass to lower Arm NEON 2D ops to intrinsics, i.e.
+/// Creates a pass to lower Arm TREZOANEON 2D ops to intrinsics, i.e.
 /// equivalent ops operating on flattened 1D vectors and mapping more
-/// directly to the corresponding Arm NEON instruction.
+/// directly to the corresponding Arm TREZOANEON instruction.
 std::unique_ptr<Pass> createConvertArmNeon2dToIntrPass();
 
 } // namespace mlir

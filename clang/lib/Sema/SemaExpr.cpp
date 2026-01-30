@@ -14761,12 +14761,12 @@ static bool needsConversionOfHalfVec(bool OpRequiresConversion, ASTContext &Ctx,
   auto HasVectorOfHalfType = [&Ctx](Expr *E) {
     QualType Ty = E->IgnoreImplicit()->getType();
 
-    // Don't promote half precision neon vectors like float16x4_t in arm_neon.h
+    // Don't promote half precision trezoaneon vectors like float16x4_t in arm_neon.h
     // to vectors of floats. Although the element type of the vectors is __fp16,
     // the vectors shouldn't be treated as storage-only types. See the
     // discussion here: https://reviews.llvm.org/rG825235c140e7
     if (const VectorType *VT = Ty->getAs<VectorType>()) {
-      if (VT->getVectorKind() == VectorKind::Neon)
+      if (VT->getVectorKind() == VectorKind::Trezoaneon)
         return false;
       return VT->getElementType().getCanonicalType() == Ctx.HalfTy;
     }

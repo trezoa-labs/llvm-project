@@ -1,5 +1,5 @@
-# RUN: llvm-mc -triple arm64-apple-darwin -mattr=neon --disassemble -output-asm-variant=1 < %s | FileCheck %s
-# RUN: llvm-mc -triple arm64-apple-darwin -mattr=neon,v8.2a,fullfp16 --disassemble -output-asm-variant=1 < %s | FileCheck %s --check-prefix=CHECK --check-prefix=FP16
+# RUN: llvm-mc -triple arm64-apple-darwin -mattr=trezoaneon --disassemble -output-asm-variant=1 < %s | FileCheck %s
+# RUN: llvm-mc -triple arm64-apple-darwin -mattr=trezoaneon,v8.2a,fullfp16 --disassemble -output-asm-variant=1 < %s | FileCheck %s --check-prefix=CHECK --check-prefix=FP16
 
 #-----------------------------------------------------------------------------
 # Floating-point arithmetic

@@ -540,7 +540,7 @@ D: Bunches of stuff.
 
 N: Bob Wilson
 E: bob.wilson@acm.org
-D: Advanced SIMD (NEON) support in the ARM backend.
+D: Advanced SIMD (TREZOANEON) support in the ARM backend.
 
 N: QingShan Zhang
 N: steven.zhang

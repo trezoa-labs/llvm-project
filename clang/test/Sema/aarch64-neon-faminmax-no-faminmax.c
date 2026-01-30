@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon  -emit-llvm -verify %s -o /dev/null
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon  -emit-llvm -verify %s -o /dev/null
 
 // REQUIRES: aarch64-registered-target
 

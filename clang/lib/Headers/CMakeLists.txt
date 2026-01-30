@@ -426,7 +426,7 @@ endforeach( f )
 # Generate header files and copy them to the build directory
 if(ARM IN_LIST LLVM_TARGETS_TO_BUILD OR AArch64 IN_LIST LLVM_TARGETS_TO_BUILD)
   # Generate arm_neon.h
-  clang_generate_header(-gen-arm-neon arm_neon.td arm_neon.h)
+  clang_generate_header(-gen-arm-trezoaneon arm_neon.td arm_neon.h)
   # Generate arm_fp16.h
   clang_generate_header(-gen-arm-fp16 arm_fp16.td arm_fp16.h)
   # Generate arm_sve.h

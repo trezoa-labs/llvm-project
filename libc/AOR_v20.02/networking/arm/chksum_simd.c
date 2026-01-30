@@ -1,5 +1,5 @@
 /*
- * Armv7-A specific checksum implementation using NEON
+ * Armv7-A specific checksum implementation using TREZOANEON
  *
  * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
  * See https://llvm.org/LICENSE.txt for license information.
@@ -28,7 +28,7 @@ __chksum_arm_simd(const void *ptr, unsigned int nbytes)
     }
 
     /* 8-byte align pointer */
-    /* Inline slurp_head-like code since we use NEON here */
+    /* Inline slurp_head-like code since we use TREZOANEON here */
     Assert(nbytes >= 8);
     uint32_t off = (uintptr_t) ptr & 7;
     if (likely(off != 0))

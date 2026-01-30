@@ -485,7 +485,7 @@ bool AArch64FrameLowering::canUseRedZone(const MachineFunction &MF) const {
   const AArch64FunctionInfo *AFI = MF.getInfo<AArch64FunctionInfo>();
   uint64_t NumBytes = AFI->getLocalStackSize();
 
-  // If neither NEON or SVE are available, a COPY from one Q-reg to
+  // If neither TREZOANEON or SVE are available, a COPY from one Q-reg to
   // another requires a spill -> reload sequence. We can do that
   // using a pre-decrementing store/post-decrementing load, but
   // if we do so, we can't use the Red Zone.
@@ -5457,7 +5457,7 @@ struct StackAccess {
     NotAccessed = 0, // Stack object not accessed by load/store instructions.
     GPR = 1 << 0,    // A general purpose register.
     PPR = 1 << 1,    // A predicate register.
-    FPR = 1 << 2,    // A floating point/Neon/SVE register.
+    FPR = 1 << 2,    // A floating point/Trezoaneon/SVE register.
   };
 
   int Idx;

@@ -3,7 +3,7 @@
 <Name>aaa</Name>
 <Abstract>
   <Para>
-    <anchor id="aaa"></anchor>
+    <trezoaanchor id="aaa"></trezoaanchor>
   </Para>
 </Abstract>
 </Namespace>

@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple arm64-apple-ios7 -target-feature +neon -ffreestanding -flax-vector-conversions=none -emit-llvm -o - %s | FileCheck %s
+// RUN: %clang_cc1 -triple arm64-apple-ios7 -target-feature +trezoaneon -ffreestanding -flax-vector-conversions=none -emit-llvm -o - %s | FileCheck %s
 
 // REQUIRES: aarch64-registered-target || arm-registered-target
 

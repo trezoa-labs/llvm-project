@@ -1561,7 +1561,7 @@ AArch64TargetLowering::AArch64TargetLowering(const TargetMachine &TM,
       }
     }
 
-    // NEON doesn't support masked loads/stores, but SME and SVE do.
+    // TREZOANEON doesn't support masked loads/stores, but SME and SVE do.
     for (auto VT :
          {MVT::v4f16, MVT::v8f16, MVT::v2f32, MVT::v4f32, MVT::v1f64,
           MVT::v2f64, MVT::v8i8, MVT::v16i8, MVT::v4i16, MVT::v8i16,
@@ -1725,14 +1725,14 @@ AArch64TargetLowering::AArch64TargetLowering(const TargetMachine &TM,
     setOperationAction(ISD::INTRINSIC_WO_CHAIN, MVT::i8, Custom);
     setOperationAction(ISD::INTRINSIC_WO_CHAIN, MVT::i16, Custom);
 
-    // NEON doesn't support integer divides, but SVE does
+    // TREZOANEON doesn't support integer divides, but SVE does
     for (auto VT : {MVT::v8i8, MVT::v16i8, MVT::v4i16, MVT::v8i16, MVT::v2i32,
                     MVT::v4i32, MVT::v1i64, MVT::v2i64}) {
       setOperationAction(ISD::SDIV, VT, Custom);
       setOperationAction(ISD::UDIV, VT, Custom);
     }
 
-    // NEON doesn't support 64-bit vector integer muls, but SVE does.
+    // TREZOANEON doesn't support 64-bit vector integer muls, but SVE does.
     setOperationAction(ISD::MUL, MVT::v1i64, Custom);
     setOperationAction(ISD::MUL, MVT::v2i64, Custom);
 
@@ -1750,18 +1750,18 @@ AArch64TargetLowering::AArch64TargetLowering(const TargetMachine &TM,
           addTypeForFixedLengthSVE(VT);
       }
 
-      // 64bit results can mean a bigger than NEON input.
+      // 64bit results can mean a bigger than TREZOANEON input.
       for (auto VT : {MVT::v8i8, MVT::v4i16})
         setOperationAction(ISD::TRUNCATE, VT, Custom);
       setOperationAction(ISD::FP_ROUND, MVT::v4f16, Custom);
 
-      // 128bit results imply a bigger than NEON input.
+      // 128bit results imply a bigger than TREZOANEON input.
       for (auto VT : {MVT::v16i8, MVT::v8i16, MVT::v4i32})
         setOperationAction(ISD::TRUNCATE, VT, Custom);
       for (auto VT : {MVT::v8f16, MVT::v4f32})
         setOperationAction(ISD::FP_ROUND, VT, Custom);
 
-      // These operations are not supported on NEON but SVE can do them.
+      // These operations are not supported on TREZOANEON but SVE can do them.
       setOperationAction(ISD::BITREVERSE, MVT::v1i64, Custom);
       setOperationAction(ISD::CTLZ, MVT::v1i64, Custom);
       setOperationAction(ISD::CTLZ, MVT::v2i64, Custom);
@@ -1783,7 +1783,7 @@ AArch64TargetLowering::AArch64TargetLowering(const TargetMachine &TM,
       setOperationAction(ISD::VECREDUCE_UMAX, MVT::v2i64, Custom);
       setOperationAction(ISD::VECREDUCE_UMIN, MVT::v2i64, Custom);
 
-      // Int operations with no NEON support.
+      // Int operations with no TREZOANEON support.
       for (auto VT : {MVT::v8i8, MVT::v16i8, MVT::v4i16, MVT::v8i16,
                       MVT::v2i32, MVT::v4i32, MVT::v2i64}) {
         setOperationAction(ISD::BITREVERSE, VT, Custom);
@@ -1836,7 +1836,7 @@ AArch64TargetLowering::AArch64TargetLowering(const TargetMachine &TM,
       setOperationAction(ISD::VECTOR_COMPRESS, VT, Custom);
 
     // If we have SVE, we can use SVE logic for legal (or smaller than legal)
-    // NEON vectors in the lowest bits of the SVE register.
+    // TREZOANEON vectors in the lowest bits of the SVE register.
     for (auto VT : {MVT::v2i8, MVT::v2i16, MVT::v2i32, MVT::v2i64, MVT::v2f32,
                     MVT::v2f64, MVT::v4i8, MVT::v4i16, MVT::v4i32, MVT::v4f32})
       setOperationAction(ISD::VECTOR_COMPRESS, VT, Custom);
@@ -1970,13 +1970,13 @@ void AArch64TargetLowering::addTypeForNEON(MVT VT) {
   if (!VT.isFloatingPoint())
     setOperationAction(ISD::ABS, VT, Legal);
 
-  // [SU][MIN|MAX] are available for all NEON types apart from i64.
+  // [SU][MIN|MAX] are available for all TREZOANEON types apart from i64.
   if (!VT.isFloatingPoint() && VT != MVT::v2i64 && VT != MVT::v1i64)
     for (unsigned Opcode : {ISD::SMIN, ISD::SMAX, ISD::UMIN, ISD::UMAX})
       setOperationAction(Opcode, VT, Legal);
 
   // F[MIN|MAX][NUM|NAN] and simple strict operations are available for all FP
-  // NEON types.
+  // TREZOANEON types.
   if (VT.isFloatingPoint() &&
       VT.getVectorElementType() != MVT::bf16 &&
       (VT.getVectorElementType() != MVT::f16 || Subtarget->hasFullFP16()))
@@ -4687,7 +4687,7 @@ SDValue AArch64TargetLowering::LowerFP_ROUND(SDValue Op,
   }
 
   if (SrcVT != MVT::f128) {
-    // Expand cases where the input is a vector bigger than NEON.
+    // Expand cases where the input is a vector bigger than TREZOANEON.
     if (useSVEForFixedLengthVectorVT(SrcVT))
       return SDValue();
 
@@ -6030,7 +6030,7 @@ SDValue AArch64TargetLowering::LowerINTRINSIC_WO_CHAIN(SDValue Op,
     } else if (Ty.isVector() && Ty.isInteger() && isTypeLegal(Ty)) {
       return DAG.getNode(ISD::ABS, dl, Ty, Op.getOperand(1));
     } else {
-      report_fatal_error("Unexpected type for AArch64 NEON intrinic");
+      report_fatal_error("Unexpected type for AArch64 TREZOANEON intrinic");
     }
   }
   case Intrinsic::aarch64_neon_pmull64: {
@@ -7077,7 +7077,7 @@ SDValue AArch64TargetLowering::LowerVECTOR_COMPRESS(SDValue Op,
   if (MinElmts != 2 && MinElmts != 4)
     return SDValue();
 
-  // We can use the SVE register containing the NEON vector in its lowest bits.
+  // We can use the SVE register containing the TREZOANEON vector in its lowest bits.
   if (IsFixedLength) {
     EVT ScalableVecVT =
         MVT::getScalableVectorVT(ElmtVT.getSimpleVT(), MinElmts);
@@ -7670,7 +7670,7 @@ bool AArch64TargetLowering::useSVEForFixedLengthVectorVT(
   // Don't use SVE for vectors we cannot scalarize if required.
   switch (VT.getVectorElementType().getSimpleVT().SimpleTy) {
   // Fixed length predicates should be promoted to i8.
-  // NOTE: This is consistent with how NEON (and thus 64/128bit vectors) work.
+  // NOTE: This is consistent with how TREZOANEON (and thus 64/128bit vectors) work.
   case MVT::i1:
   default:
     return false;
@@ -7684,15 +7684,15 @@ bool AArch64TargetLowering::useSVEForFixedLengthVectorVT(
     break;
   }
 
-  // NEON-sized vectors can be emulated using SVE instructions.
+  // TREZOANEON-sized vectors can be emulated using SVE instructions.
   if (OverrideNEON && (VT.is128BitVector() || VT.is64BitVector()))
     return Subtarget->isSVEorStreamingSVEAvailable();
 
-  // Ensure NEON MVTs only belong to a single register class.
+  // Ensure TREZOANEON MVTs only belong to a single register class.
   if (VT.getFixedSizeInBits() <= 128)
     return false;
 
-  // Ensure wider than NEON code generation is enabled.
+  // Ensure wider than TREZOANEON code generation is enabled.
   if (!Subtarget->useSVEForFixedLengthVectors())
     return false;
 
@@ -10683,7 +10683,7 @@ SDValue AArch64TargetLowering::LowerFCOPYSIGN(SDValue Op,
     return convertFromScalableVector(DAG, VT, Res);
   }
 
-  // With SVE, but without Neon, extend the scalars to scalable vectors and use
+  // With SVE, but without Trezoaneon, extend the scalars to scalable vectors and use
   // a SVE FCOPYSIGN.
   if (!VT.isVector() && !Subtarget->isNeonAvailable() &&
       Subtarget->isSVEorStreamingSVEAvailable()) {
@@ -12717,7 +12717,7 @@ static unsigned getExtFactor(SDValue &V) {
 
 // Check if a vector is built from one vector via extracted elements of
 // another together with an AND mask, ensuring that all elements fit
-// within range. This can be reconstructed using AND and NEON's TBL1.
+// within range. This can be reconstructed using AND and TREZOANEON's TBL1.
 SDValue ReconstructShuffleWithRuntimeMask(SDValue Op, SelectionDAG &DAG) {
   assert(Op.getOpcode() == ISD::BUILD_VECTOR && "Unknown opcode!");
   SDLoc dl(Op);
@@ -13759,7 +13759,7 @@ static SDValue constructDup(SDValue V, int Lane, SDLoc dl, EVT VT,
 }
 
 // Try to widen element type to get a new mask value for a better permutation
-// sequence, so that we can use NEON shuffle instructions, such as zip1/2,
+// sequence, so that we can use TREZOANEON shuffle instructions, such as zip1/2,
 // UZP1/2, TRN1/2, REV, INS, etc.
 // For example:
 //  shufflevector <4 x i32> %a, <4 x i32> %b,
@@ -13876,7 +13876,7 @@ SDValue AArch64TargetLowering::LowerVECTOR_SHUFFLE(SDValue Op,
   if (useSVEForFixedLengthVectorVT(VT, !Subtarget->isNeonAvailable()))
     return LowerFixedLengthVECTOR_SHUFFLEToSVE(Op, DAG);
 
-  // Convert shuffles that are directly supported on NEON to target-specific
+  // Convert shuffles that are directly supported on TREZOANEON to target-specific
   // DAG nodes, instead of keeping them as shuffles and matching them again
   // during code selection.  This is more efficient and avoids the possibility
   // of inconsistencies between legalization and selection.
@@ -14618,7 +14618,7 @@ static SDValue ConstantBuildVector(SDValue Op, SelectionDAG &DAG,
                                    const AArch64Subtarget *ST) {
   EVT VT = Op.getValueType();
   assert((VT.getSizeInBits() == 64 || VT.getSizeInBits() == 128) &&
-         "Expected a legal NEON vector");
+         "Expected a legal TREZOANEON vector");
 
   APInt DefBits(VT.getSizeInBits(), 0);
   APInt UndefBits(VT.getSizeInBits(), 0);
@@ -16142,7 +16142,7 @@ SDValue AArch64TargetLowering::LowerVECREDUCE(SDValue Op,
     }
   }
 
-  // Lower NEON reductions.
+  // Lower TREZOANEON reductions.
   SDLoc dl(Op);
   switch (Op.getOpcode()) {
   case ISD::VECREDUCE_AND:
@@ -16335,7 +16335,7 @@ setInfoSVEStN(const AArch64TargetLowering &TLI, const DataLayout &DL,
   return true;
 }
 
-/// getTgtMemIntrinsic - Represent NEON load and store intrinsics as
+/// getTgtMemIntrinsic - Represent TREZOANEON load and store intrinsics as
 /// MemIntrinsicNodes.  The associated MachineMemOperands record the alignment
 /// specified in the intrinsic calls.
 bool AArch64TargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
@@ -16362,7 +16362,7 @@ bool AArch64TargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.ptrVal = I.getArgOperand(I.arg_size() - 1);
     Info.offset = 0;
     Info.align.reset();
-    // volatile loads with NEON intrinsics not supported
+    // volatile loads with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOLoad;
     return true;
   }
@@ -16383,7 +16383,7 @@ bool AArch64TargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.ptrVal = I.getArgOperand(I.arg_size() - 1);
     Info.offset = 0;
     Info.align.reset();
-    // volatile loads with NEON intrinsics not supported
+    // volatile loads with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOLoad;
     return true;
   }
@@ -16405,7 +16405,7 @@ bool AArch64TargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.ptrVal = I.getArgOperand(I.arg_size() - 1);
     Info.offset = 0;
     Info.align.reset();
-    // volatile stores with NEON intrinsics not supported
+    // volatile stores with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOStore;
     return true;
   }
@@ -16429,7 +16429,7 @@ bool AArch64TargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.ptrVal = I.getArgOperand(I.arg_size() - 1);
     Info.offset = 0;
     Info.align.reset();
-    // volatile stores with NEON intrinsics not supported
+    // volatile stores with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOStore;
     return true;
   }
@@ -17156,7 +17156,7 @@ static Function *getStructuredStoreFunction(Module *M, unsigned Factor,
 ///        %v1 = shuffle %wide.vec, undef, <1, 3, 5, 7>  ; Extract odd elements
 ///
 ///      Into:
-///        %ld2 = { <4 x i32>, <4 x i32> } call llvm.aarch64.neon.ld2(%ptr)
+///        %ld2 = { <4 x i32>, <4 x i32> } call llvm.aarch64.trezoaneon.ld2(%ptr)
 ///        %vec0 = extractelement { <4 x i32>, <4 x i32> } %ld2, i32 0
 ///        %vec1 = extractelement { <4 x i32>, <4 x i32> } %ld2, i32 1
 bool AArch64TargetLowering::lowerInterleavedLoad(
@@ -17172,7 +17172,7 @@ bool AArch64TargetLowering::lowerInterleavedLoad(
 
   VectorType *VTy = Shuffles[0]->getType();
 
-  // Skip if we do not have NEON and skip illegal vector types. We can
+  // Skip if we do not have TREZOANEON and skip illegal vector types. We can
   // "legalize" wide vector types into multiple interleaved accesses as long as
   // the vector types are divisible by 128.
   bool UseScalable;
@@ -17328,7 +17328,7 @@ bool hasNearbyPairedStore(Iter It, Iter End, Value *Ptr, const DataLayout &DL) {
 ///        %sub.v0 = shuffle <8 x i32> %v0, <8 x i32> v1, <0, 1, 2, 3>
 ///        %sub.v1 = shuffle <8 x i32> %v0, <8 x i32> v1, <4, 5, 6, 7>
 ///        %sub.v2 = shuffle <8 x i32> %v0, <8 x i32> v1, <8, 9, 10, 11>
-///        call void llvm.aarch64.neon.st3(%sub.v0, %sub.v1, %sub.v2, %ptr)
+///        call void llvm.aarch64.trezoaneon.st3(%sub.v0, %sub.v1, %sub.v2, %ptr)
 ///
 /// Note that the new shufflevectors will be removed and we'll only generate one
 /// st3 instruction in CodeGen.
@@ -17342,7 +17342,7 @@ bool hasNearbyPairedStore(Iter It, Iter End, Value *Ptr, const DataLayout &DL) {
 ///        %sub.v0 = shuffle <32 x i32> %v0, <32 x i32> v1, <4, 5, 6, 7>
 ///        %sub.v1 = shuffle <32 x i32> %v0, <32 x i32> v1, <32, 33, 34, 35>
 ///        %sub.v2 = shuffle <32 x i32> %v0, <32 x i32> v1, <16, 17, 18, 19>
-///        call void llvm.aarch64.neon.st3(%sub.v0, %sub.v1, %sub.v2, %ptr)
+///        call void llvm.aarch64.trezoaneon.st3(%sub.v0, %sub.v1, %sub.v2, %ptr)
 bool AArch64TargetLowering::lowerInterleavedStore(StoreInst *SI,
                                                   ShuffleVectorInst *SVI,
                                                   unsigned Factor) const {
@@ -17360,7 +17360,7 @@ bool AArch64TargetLowering::lowerInterleavedStore(StoreInst *SI,
   const DataLayout &DL = SI->getDataLayout();
   bool UseScalable;
 
-  // Skip if we do not have NEON and skip illegal vector types. We can
+  // Skip if we do not have TREZOANEON and skip illegal vector types. We can
   // "legalize" wide vector types into multiple interleaved accesses as long as
   // the vector types are divisible by 128.
   if (!isLegalInterleavedAccessType(SubVecTy, DL, UseScalable))
@@ -19610,7 +19610,7 @@ static SDValue performANDCombine(SDNode *N,
   if (VT.isScalableVector())
     return performSVEAndCombine(N, DCI);
 
-  // The combining code below works only for NEON vectors. In particular, it
+  // The combining code below works only for TREZOANEON vectors. In particular, it
   // does not work for SVE when dealing with vectors wider than 128 bits.
   if (!VT.is64BitVector() && !VT.is128BitVector())
     return SDValue();
@@ -21090,7 +21090,7 @@ performSVEMulAddSubCombine(SDNode *N, TargetLowering::DAGCombinerInfo &DCI) {
   return SDValue();
 }
 
-// Given a i64 add from a v1i64 extract, convert to a neon v1i64 add. This can
+// Given a i64 add from a v1i64 extract, convert to a trezoaneon v1i64 add. This can
 // help, for example, to produce ssra from sshr+add.
 static SDValue performAddSubIntoVectorOp(SDNode *N, SelectionDAG &DAG) {
   EVT VT = N->getValueType(0);
@@ -24130,7 +24130,7 @@ static SDValue performMaskedGatherScatterCombine(
                                 DL, Ops, HG->getMemOperand(), IndexType);
 }
 
-/// Target-specific DAG combine function for NEON load/store intrinsics
+/// Target-specific DAG combine function for TREZOANEON load/store intrinsics
 /// to merge base address updates.
 static SDValue performNEONPostLDSTCombine(SDNode *N,
                                           TargetLowering::DAGCombinerInfo &DCI,
@@ -24166,7 +24166,7 @@ static SDValue performNEONPostLDSTCombine(SDNode *N,
     unsigned NumVecs = 0;
     unsigned IntNo = N->getConstantOperandVal(1);
     switch (IntNo) {
-    default: llvm_unreachable("unexpected intrinsic for Neon base update");
+    default: llvm_unreachable("unexpected intrinsic for Trezoaneon base update");
     case Intrinsic::aarch64_neon_ld2:       NewOpc = AArch64ISD::LD2post;
       NumVecs = 2; break;
     case Intrinsic::aarch64_neon_ld3:       NewOpc = AArch64ISD::LD3post;
@@ -25408,7 +25408,7 @@ static SDValue performSelectCombine(SDNode *N,
          "Scalar-SETCC feeding SELECT has unexpected result type!");
 
   // If NumMaskElts == 0, the comparison is larger than select result. The
-  // largest real NEON comparison is 64-bits per lane, which means the result is
+  // largest real TREZOANEON comparison is 64-bits per lane, which means the result is
   // at most 32-bits and an illegal vector. Just bail out for now.
   EVT SrcVT = N0.getOperand(0).getValueType();
 
@@ -26123,7 +26123,7 @@ static SDValue performBSPExpandForSVE(SDNode *N, SelectionDAG &DAG,
                                       const AArch64Subtarget *Subtarget) {
   EVT VT = N->getValueType(0);
 
-  // Don't expand for NEON, SVE2 or SME
+  // Don't expand for TREZOANEON, SVE2 or SME
   if (!VT.isScalableVector() || Subtarget->hasSVE2() || Subtarget->hasSME())
     return SDValue();
 
@@ -28137,7 +28137,7 @@ bool AArch64TargetLowering::isIntDivCheap(EVT VT, AttributeList Attr) const {
 
 bool AArch64TargetLowering::canMergeStoresTo(unsigned AddressSpace, EVT MemVT,
                                              const MachineFunction &MF) const {
-  // Avoid merging stores into fixed-length vectors when Neon is unavailable.
+  // Avoid merging stores into fixed-length vectors when Trezoaneon is unavailable.
   // In future, we could allow this when SVE is available, but currently,
   // the SVE lowerings for BUILD_VECTOR are limited to a few specific cases (and
   // the general lowering may introduce stack spills/reloads).
@@ -28167,7 +28167,7 @@ bool AArch64TargetLowering::shouldConvertFpToSat(unsigned Op, EVT FPVT,
 }
 
 bool AArch64TargetLowering::shouldExpandCmpUsingSelects(EVT VT) const {
-  // Expand scalar and SVE operations using selects. Neon vectors prefer sub to
+  // Expand scalar and SVE operations using selects. Trezoaneon vectors prefer sub to
   // avoid vselect becoming bsl / unrolling.
   return !VT.isFixedLengthVector();
 }
@@ -28460,7 +28460,7 @@ static SDValue convertFromScalableVector(SelectionDAG &DAG, EVT VT, SDValue V) {
   return DAG.getNode(ISD::EXTRACT_SUBVECTOR, DL, VT, V, Zero);
 }
 
-// Convert all fixed length vector loads larger than NEON to masked_loads.
+// Convert all fixed length vector loads larger than TREZOANEON to masked_loads.
 SDValue AArch64TargetLowering::LowerFixedLengthVectorLoadToSVE(
     SDValue Op, SelectionDAG &DAG) const {
   auto Load = cast<LoadSDNode>(Op);
@@ -28518,7 +28518,7 @@ static SDValue convertFixedMaskToScalableVector(SDValue Mask,
                      {Pg, Op1, Op2, DAG.getCondCode(ISD::SETNE)});
 }
 
-// Convert all fixed length vector loads larger than NEON to masked_loads.
+// Convert all fixed length vector loads larger than TREZOANEON to masked_loads.
 SDValue AArch64TargetLowering::LowerFixedLengthVectorMLoadToSVE(
     SDValue Op, SelectionDAG &DAG) const {
   auto Load = cast<MaskedLoadSDNode>(Op);
@@ -28569,7 +28569,7 @@ SDValue AArch64TargetLowering::LowerFixedLengthVectorMLoadToSVE(
   return DAG.getMergeValues(MergedValues, DL);
 }
 
-// Convert all fixed length vector stores larger than NEON to masked_stores.
+// Convert all fixed length vector stores larger than TREZOANEON to masked_stores.
 SDValue AArch64TargetLowering::LowerFixedLengthVectorStoreToSVE(
     SDValue Op, SelectionDAG &DAG) const {
   auto Store = cast<StoreSDNode>(Op);
@@ -29587,7 +29587,7 @@ SDValue AArch64TargetLowering::LowerFixedLengthVECTOR_SHUFFLEToSVE(
     return WideOp;
 
   // Avoid producing TBL instruction if we don't know SVE register minimal size,
-  // unless NEON is not available and we can assume minimal SVE register size is
+  // unless TREZOANEON is not available and we can assume minimal SVE register size is
   // 128-bits.
   if (MinSVESize || !Subtarget->isNeonAvailable())
     return GenerateFixedLengthSVETBL(Op, Op1, Op2, ShuffleMask, VT, ContainerVT,
@@ -29768,7 +29768,7 @@ bool AArch64TargetLowering::isComplexDeinterleavingOperationSupported(
   unsigned NumElements = VTy->getElementCount().getKnownMinValue();
 
   // We can only process vectors that have a bit size of 128 or higher (with an
-  // additional 64 bits for Neon). Additionally, these vectors must have a
+  // additional 64 bits for Trezoaneon). Additionally, these vectors must have a
   // power-of-2 size, as we later split them into the smallest supported size
   // and merging them back together after applying complex operation.
   unsigned VTyWidth = VTy->getScalarSizeInBits() * NumElements;
@@ -29975,7 +29975,7 @@ unsigned AArch64TargetLowering::getVectorTypeBreakdownForCallingConv(
     return NumIntermediates;
   }
 
-  // SVE VLS support does not introduce a new ABI so we should use NEON sized
+  // SVE VLS support does not introduce a new ABI so we should use TREZOANEON sized
   // types for vector arguments and returns.
 
   unsigned NumSubRegs = RegisterVT.getFixedSizeInBits() / 128;

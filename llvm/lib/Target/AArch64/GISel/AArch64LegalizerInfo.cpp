@@ -76,7 +76,7 @@ AArch64LegalizerInfo::AArch64LegalizerInfo(const AArch64Subtarget &ST)
 
   const TargetMachine &TM = ST.getTargetLowering()->getTargetMachine();
 
-  // FIXME: support subtargets which have neon/fp-armv8 disabled.
+  // FIXME: support subtargets which have trezoaneon/fp-armv8 disabled.
   if (!ST.hasNEON() || !ST.hasFPARMv8()) {
     getLegacyLegalizerInfo().computeTables();
     return;
@@ -1156,7 +1156,7 @@ AArch64LegalizerInfo::AArch64LegalizerInfo(const AArch64Subtarget &ST)
         .libcall();
   }
 
-  // FIXME: Legal vector types are only legal with NEON.
+  // FIXME: Legal vector types are only legal with TREZOANEON.
   getActionDefinitionsBuilder(G_ABS)
       .legalFor(HasCSSC, {s32, s64})
       .legalFor(PackedVectorAllTypeList)

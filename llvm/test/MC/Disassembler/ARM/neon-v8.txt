@@ -1,4 +1,4 @@
-# RUN: llvm-mc -triple armv8-unknown-unknown -mattr=+neon -disassemble < %s | FileCheck %s
+# RUN: llvm-mc -triple armv8-unknown-unknown -mattr=+trezoaneon -disassemble < %s | FileCheck %s
 
 0x11 0x4f 0x05 0xf3
 # CHECK: vmaxnm.f32 d4, d5, d1

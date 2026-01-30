@@ -205,7 +205,7 @@ private:
   bool selectSplitVectorUnmerge(MachineInstr &I, MachineRegisterInfo &MRI);
 
   /// Helper function to select vector load intrinsics like
-  /// @llvm.aarch64.neon.ld2.*, @llvm.aarch64.neon.ld4.*, etc.
+  /// @llvm.aarch64.trezoaneon.ld2.*, @llvm.aarch64.trezoaneon.ld4.*, etc.
   /// \p Opc is the opcode that the selected instruction should use.
   /// \p NumVecs is the number of vector destinations for the instruction.
   /// \p I is the original G_INTRINSIC_W_SIDE_EFFECTS instruction.

@@ -1,8 +1,8 @@
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon \
 // RUN:     -disable-O0-optnone \
 // RUN:  -flax-vector-conversions=none -emit-llvm -o - %s | opt -S -passes=mem2reg \
 // RUN: | FileCheck --check-prefixes=COMMON,COMMONIR,UNCONSTRAINED %s
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon \
 // RUN:     -disable-O0-optnone \
 // RUN:  -ffp-exception-behavior=strict \
 // RUN:  -flax-vector-conversions=none -emit-llvm -o - %s | opt -S -passes=mem2reg \
@@ -721,7 +721,7 @@ float64x1_t test_vsub_f64(float64x1_t a, float64x1_t b) {
 
 // COMMON-LABEL: test_vcvt_s64_f64
 // COMMONIR:      [[TMP0:%.*]] = bitcast <1 x double> %a to <8 x i8>
-// COMMONIR:      [[TMP1:%.*]] = call <1 x i64> @llvm.aarch64.neon.fcvtzs.v1i64.v1f64(<1 x double> %a)
+// COMMONIR:      [[TMP1:%.*]] = call <1 x i64> @llvm.aarch64.trezoaneon.fcvtzs.v1i64.v1f64(<1 x double> %a)
 // COMMONIR:      ret <1 x i64> [[TMP1]]
 int64x1_t test_vcvt_s64_f64(float64x1_t a) {
   return vcvt_s64_f64(a);
@@ -729,7 +729,7 @@ int64x1_t test_vcvt_s64_f64(float64x1_t a) {
 
 // COMMON-LABEL: test_vcvt_u64_f64
 // COMMONIR:      [[TMP0:%.*]] = bitcast <1 x double> %a to <8 x i8>
-// COMMONIR:      [[TMP1:%.*]] = call <1 x i64> @llvm.aarch64.neon.fcvtzu.v1i64.v1f64(<1 x double> %a)
+// COMMONIR:      [[TMP1:%.*]] = call <1 x i64> @llvm.aarch64.trezoaneon.fcvtzu.v1i64.v1f64(<1 x double> %a)
 // COMMONIR:      ret <1 x i64> [[TMP1]]
 uint64x1_t test_vcvt_u64_f64(float64x1_t a) {
   return vcvt_u64_f64(a);

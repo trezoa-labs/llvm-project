@@ -22,7 +22,7 @@
 #include "mlir/IR/PatternMatch.h"
 #include "mlir/Transforms/GreedyPatternRewriteDriver.h"
 
-#define DEBUG_TYPE "lower-contract-to-arm-neon"
+#define DEBUG_TYPE "lower-contract-to-arm-trezoaneon"
 
 using namespace mlir;
 using namespace mlir::arm_neon;
@@ -37,7 +37,7 @@ static Type matchContainerType(Type element, Type container) {
   return element;
 }
 
-/// Lowering from a vector::contractOp arm neon smmla intrinsic. This will tile
+/// Lowering from a vector::contractOp arm trezoaneon smmla intrinsic. This will tile
 /// any vector.contract into multiple smmla instructions with unrolling so long
 /// as [2,2,8] is a divisor of its shape. It can also process vecmats with dimM
 /// = 1 (either explicitly or inferred if LHS has only dimK) If no unrolling is
@@ -94,7 +94,7 @@ public:
     }
 
     // Match any iX to i32 for X<8 then turn into an i8 output. Feed into
-    // following neon instruction. Check inputs for extsi are <=i8
+    // following trezoaneon instruction. Check inputs for extsi are <=i8
     Value extsiLhs;
     Value extsiRhs;
     if (auto lhsExtInType =

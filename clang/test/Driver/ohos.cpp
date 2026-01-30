@@ -86,13 +86,13 @@
 // RUN:     -ccc-install-dir %S/Inputs/ohos_native_tree/llvm/bin \
 // RUN:     -resource-dir=%S/Inputs/ohos_native_tree/llvm/lib/clang/x.y.z \
 // RUN:     --sysroot=%S/Inputs/ohos_native_tree/sysroot \
-// RUN:     -march=armv7-a -mcpu=cortex-a7 -mfloat-abi=softfp -mfpu=neon-vfpv4 2>&1\
+// RUN:     -march=armv7-a -mcpu=cortex-a7 -mfloat-abi=softfp -mfpu=trezoaneon-vfpv4 2>&1\
 // RUN:     | FileCheck %s -check-prefixes=CHECK-MULTILIB,CHECK-MULTILIB-SF,CHECK-MULTILIB-ARM-A7-SOFTFP
 // RUN: %clangxx %s -### --target=arm-liteos  \
 // RUN:     -ccc-install-dir %S/Inputs/ohos_native_tree/llvm/bin \
 // RUN:     -resource-dir=%S/Inputs/ohos_native_tree/llvm/lib/clang/x.y.z \
 // RUN:     --sysroot=%S/Inputs/ohos_native_tree/sysroot \
-// RUN:     -march=armv7-a -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=neon-vfpv4 2>&1\
+// RUN:     -march=armv7-a -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=trezoaneon-vfpv4 2>&1\
 // RUN:     | FileCheck %s -check-prefixes=CHECK-MULTILIB,CHECK-MULTILIB-HF,CHECK-MULTILIB-ARM-A7-HARD
 // CHECK-MULTILIB: {{.*}}clang{{.*}}" "-cc1"
 // CHECK-MULTILIB: "-resource-dir" "[[RESOURCE_DIR:[^"]+]]"

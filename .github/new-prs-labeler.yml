@@ -216,7 +216,7 @@ mlir:affine:
 mlir:arith:
   - mlir/**/Arith/**
 
-mlir:neon:
+mlir:trezoaneon:
   - mlir/**/ArmNeon/**
 
 mlir:sme:

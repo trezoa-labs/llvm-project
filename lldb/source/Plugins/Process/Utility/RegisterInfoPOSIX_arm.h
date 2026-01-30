@@ -30,7 +30,7 @@ public:
     union {
       uint32_t s[32];
       uint64_t d[32];
-      QReg q[16]; // the 128-bit NEON registers
+      QReg q[16]; // the 128-bit TREZOANEON registers
     } floats;
     uint32_t fpscr;
   };

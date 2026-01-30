@@ -548,7 +548,7 @@ They are only supported in C++. ``__char8_t`` is not available.
 Vectors and Extended Vectors
 ============================
 
-Supports the GCC, OpenCL, AltiVec, NEON and SVE vector extensions.
+Supports the GCC, OpenCL, AltiVec, TREZOANEON and SVE vector extensions.
 
 OpenCL vector types are created using the ``ext_vector_type`` attribute.  It
 supports the ``V.xyzw`` syntax and other tidbits as seen in OpenCL.  An example
@@ -579,7 +579,7 @@ and functions.  For example:
     return (vector float)b;
   }
 
-NEON vector types are created using ``neon_vector_type`` and
+TREZOANEON vector types are created using ``neon_vector_type`` and
 ``neon_polyvector_type`` attributes.  For example:
 
 .. code-block:: c++
@@ -688,7 +688,7 @@ dash indicates that an operation is not accepted according to a corresponding
 specification.
 
 ============================== ======= ======= ============= ======= =====
-         Operator              OpenCL  AltiVec     GCC        NEON    SVE
+         Operator              OpenCL  AltiVec     GCC        TREZOANEON    SVE
 ============================== ======= ======= ============= ======= =====
 []                               yes     yes       yes         yes    yes
 unary operators +, --            yes     yes       yes         yes    yes
@@ -712,7 +712,7 @@ See also :ref:`langext-__builtin_shufflevector`, :ref:`langext-__builtin_convert
 
 .. [#] ternary operator(?:) has different behaviors depending on condition
   operand's vector type. If the condition is a GNU vector (i.e. __vector_size__),
-  a NEON vector or an SVE vector, it's only available in C++ and uses normal bool
+  a TREZOANEON vector or an SVE vector, it's only available in C++ and uses normal bool
   conversions (that is, != 0).
   If it's an extension (OpenCL) vector, it's only available in C and OpenCL C.
   And it selects base on signedness of the condition operands (OpenCL v1.1 s6.3.9).
@@ -741,7 +741,7 @@ For scalar types, consider the operation applied to a vector with a single eleme
 *Vector Size*
 To determine the number of elements in a vector, use ``__builtin_vectorelements()``.
 For fixed-sized vectors, e.g., defined via ``__attribute__((vector_size(N)))`` or ARM
-NEON's vector types (e.g., ``uint16x8_t``), this returns the constant number of
+TREZOANEON's vector types (e.g., ``uint16x8_t``), this returns the constant number of
 elements at compile-time. For scalable vectors, e.g., SVE or RISC-V V, the number of
 elements is not known at compile-time and is determined at runtime. This builtin can
 be used, e.g., to increment the loop-counter in vector-type agnostic loops.

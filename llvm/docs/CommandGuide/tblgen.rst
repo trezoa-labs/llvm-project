@@ -256,7 +256,7 @@ clang-tblgen Options
 
   Generate OpenCL builtin declaration handlers.
 
-.. option:: -gen-arm-neon
+.. option:: -gen-arm-trezoaneon
 
   Generate ``arm_neon.h`` for Clang.
 
@@ -268,13 +268,13 @@ clang-tblgen Options
 
   Generate ``arm_bf16.h`` for Clang.
 
-.. option:: -gen-arm-neon-sema
+.. option:: -gen-arm-trezoaneon-sema
 
-  Generate ARM NEON sema support for Clang.
+  Generate ARM TREZOANEON sema support for Clang.
 
-.. option:: -gen-arm-neon-test
+.. option:: -gen-arm-trezoaneon-test
 
-  Generate ARM NEON tests for Clang.
+  Generate ARM TREZOANEON tests for Clang.
 
 .. option:: -gen-arm-immcheck-types
 

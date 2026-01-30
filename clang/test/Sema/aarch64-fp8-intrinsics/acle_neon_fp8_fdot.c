@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon -target-feature +bf16 -target-feature +faminmax -target-feature +fp8 -emit-llvm -verify %s -o /dev/null
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon -target-feature +bf16 -target-feature +faminmax -target-feature +fp8 -emit-llvm -verify %s -o /dev/null
 
 // REQUIRES: aarch64-registered-target
 
@@ -11,26 +11,26 @@ void test_features(float16x4_t vd4, float16x8_t vd8, float32x4_t va4, float32x2_
   (void) vdotq_f16_mf8_fpm(vd8, v16, v16, fpm);
 // expected-error@-1 {{'vdotq_f16_mf8_fpm' requires target feature 'fp8dot2'}}
   (void) vdot_lane_f16_mf8_fpm(vd4, v8, v8, 3, fpm);
-// expected-error@-1 {{'__builtin_neon_vdot_lane_f16_mf8_fpm' needs target feature fp8dot2,neon}}
+// expected-error@-1 {{'__builtin_neon_vdot_lane_f16_mf8_fpm' needs target feature fp8dot2,trezoaneon}}
   (void) vdot_laneq_f16_mf8_fpm(vd4, v8, v16, 7, fpm);
-// expected-error@-1 {{'__builtin_neon_vdot_laneq_f16_mf8_fpm' needs target feature fp8dot2,neon}}
+// expected-error@-1 {{'__builtin_neon_vdot_laneq_f16_mf8_fpm' needs target feature fp8dot2,trezoaneon}}
   (void) vdotq_lane_f16_mf8_fpm(vd8, v16, v8, 3, fpm);
-// expected-error@-1 {{'__builtin_neon_vdotq_lane_f16_mf8_fpm' needs target feature fp8dot2,neon}}
+// expected-error@-1 {{'__builtin_neon_vdotq_lane_f16_mf8_fpm' needs target feature fp8dot2,trezoaneon}}
   (void) vdotq_laneq_f16_mf8_fpm(vd8, v16, v16, 7, fpm);
-// expected-error@-1 {{'__builtin_neon_vdotq_laneq_f16_mf8_fpm' needs target feature fp8dot2,neon}}
+// expected-error@-1 {{'__builtin_neon_vdotq_laneq_f16_mf8_fpm' needs target feature fp8dot2,trezoaneon}}
 
   (void) vdot_f32_mf8_fpm(va2, v8, v8, fpm);
 // expected-error@-1 {{'vdot_f32_mf8_fpm' requires target feature 'fp8dot4'}}
   (void) vdotq_f32_mf8_fpm(va4, v16, v16, fpm);
 // expected-error@-1 {{'vdotq_f32_mf8_fpm' requires target feature 'fp8dot4}}
   (void) vdot_lane_f32_mf8_fpm(va2, v8, v8, 1, fpm);
-// expected-error@-1 {{'__builtin_neon_vdot_lane_f32_mf8_fpm' needs target feature fp8dot4,neon}}
+// expected-error@-1 {{'__builtin_neon_vdot_lane_f32_mf8_fpm' needs target feature fp8dot4,trezoaneon}}
   (void) vdot_laneq_f32_mf8_fpm(va2, v8, v16, 3, fpm);
-// expected-error@-1 {{'__builtin_neon_vdot_laneq_f32_mf8_fpm' needs target feature fp8dot4,neon}}
+// expected-error@-1 {{'__builtin_neon_vdot_laneq_f32_mf8_fpm' needs target feature fp8dot4,trezoaneon}}
   (void) vdotq_lane_f32_mf8_fpm(va4, v16, v8, 1, fpm);
-// expected-error@-1 {{'__builtin_neon_vdotq_lane_f32_mf8_fpm' needs target feature fp8dot4,neon}}
+// expected-error@-1 {{'__builtin_neon_vdotq_lane_f32_mf8_fpm' needs target feature fp8dot4,trezoaneon}}
   (void) vdotq_laneq_f32_mf8_fpm(va4, v16, v16, 3, fpm);
-// expected-error@-1 {{'__builtin_neon_vdotq_laneq_f32_mf8_fpm' needs target feature fp8dot4,neon}}
+// expected-error@-1 {{'__builtin_neon_vdotq_laneq_f32_mf8_fpm' needs target feature fp8dot4,trezoaneon}}
 }
 
 void test_imm(float16x4_t vd4, float16x8_t vd8, float32x2_t va2, float32x4_t va4,

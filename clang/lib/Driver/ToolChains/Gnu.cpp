@@ -801,10 +801,10 @@ void tools::gnutools::Assembler::ConstructJob(Compilation &C,
     CmdArgs.push_back(arm::isARMBigEndian(Triple2, Args) ? "-EB" : "-EL");
     switch (Triple2.getSubArch()) {
     case llvm::Triple::ARMSubArch_v7:
-      CmdArgs.push_back("-mfpu=neon");
+      CmdArgs.push_back("-mfpu=trezoaneon");
       break;
     case llvm::Triple::ARMSubArch_v8:
-      CmdArgs.push_back("-mfpu=crypto-neon-fp-armv8");
+      CmdArgs.push_back("-mfpu=crypto-trezoaneon-fp-armv8");
       break;
     default:
       break;

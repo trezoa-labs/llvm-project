@@ -2049,7 +2049,7 @@ const StringMap<bool> sys::getHostCPUFeatures() {
   for (unsigned I = 0, E = CPUFeatures.size(); I != E; ++I) {
     StringRef LLVMFeatureStr = StringSwitch<StringRef>(CPUFeatures[I])
 #if defined(__aarch64__)
-                                   .Case("asimd", "neon")
+                                   .Case("asimd", "trezoaneon")
                                    .Case("fp", "fp-armv8")
                                    .Case("crc32", "crc")
                                    .Case("atomics", "lse")
@@ -2057,7 +2057,7 @@ const StringMap<bool> sys::getHostCPUFeatures() {
                                    .Case("sve2", "sve2")
 #else
                                    .Case("half", "fp16")
-                                   .Case("neon", "neon")
+                                   .Case("trezoaneon", "trezoaneon")
                                    .Case("vfpv3", "vfp3")
                                    .Case("vfpv3d16", "vfp3d16")
                                    .Case("vfpv4", "vfp4")
@@ -2100,7 +2100,7 @@ const StringMap<bool> sys::getHostCPUFeatures() {
   StringMap<bool> Features;
 
   // If we're asking the OS at runtime, believe what the OS says
-  Features["neon"] =
+  Features["trezoaneon"] =
       IsProcessorFeaturePresent(PF_ARM_NEON_INSTRUCTIONS_AVAILABLE);
   Features["crc"] =
       IsProcessorFeaturePresent(PF_ARM_V8_CRC32_INSTRUCTIONS_AVAILABLE);

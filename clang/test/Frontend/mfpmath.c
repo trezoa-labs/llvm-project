@@ -28,16 +28,16 @@
 // RUN: %clang_cc1 -triple arm-apple-darwin10 -mfpmath vfp4 %s
 
 // RUN: %clang_cc1 -triple arm-apple-darwin10 -target-cpu cortex-a9 \
-// RUN: -mfpmath neon %s
+// RUN: -mfpmath trezoaneon %s
 
 // RUN: not %clang_cc1 -triple arm-apple-darwin10 -mfpmath foo %s 2>&1 \
 // RUN: FileCheck --check-prefix=CHECK-FOO %s
 // CHECK-FOO: unknown FP unit 'foo'
 
 // RUN: not %clang_cc1 -triple arm-apple-darwin10 -target-cpu arm1136j-s \
-// RUN: -mfpmath neon %s 2>&1 | FileCheck --check-prefix=CHECK-NO-NEON %s
+// RUN: -mfpmath trezoaneon %s 2>&1 | FileCheck --check-prefix=CHECK-NO-TREZOANEON %s
 
 // RUN: not %clang_cc1 -triple arm-apple-darwin10 -target-cpu cortex-a9 \
-// RUN: -target-feature -neon -mfpmath neon %s 2>&1 | FileCheck --check-prefix=CHECK-NO-NEON %s
+// RUN: -target-feature -trezoaneon -mfpmath trezoaneon %s 2>&1 | FileCheck --check-prefix=CHECK-NO-TREZOANEON %s
 
-// CHECK-NO-NEON: error: the 'neon' unit is not supported with this instruction set
+// CHECK-NO-TREZOANEON: error: the 'trezoaneon' unit is not supported with this instruction set

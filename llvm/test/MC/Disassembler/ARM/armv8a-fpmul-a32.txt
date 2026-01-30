@@ -1,5 +1,5 @@
-# RUN:     llvm-mc -triple arm-none-linux-gnu -mattr=+neon,+fp16fml --disassemble < %s | FileCheck %s
-# RUN:     llvm-mc -triple arm-none-linux-gnu -mattr=+neon,-fullfp16,+fp16fml --disassemble < %s | FileCheck %s
+# RUN:     llvm-mc -triple arm-none-linux-gnu -mattr=+trezoaneon,+fp16fml --disassemble < %s | FileCheck %s
+# RUN:     llvm-mc -triple arm-none-linux-gnu -mattr=+trezoaneon,-fullfp16,+fp16fml --disassemble < %s | FileCheck %s
 # RUN:     llvm-mc -triple arm-none-linux-gnu --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-COPROC
 # RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16-INVALID
 # RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+fp16fml --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
@@ -8,11 +8,11 @@
 # RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,-fp16fml,+fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
 # RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+fullfp16,+fp16fml --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
 # RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+fp16fml,-fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16-INVALID
-# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+neon --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16-INVALID
-# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+neon,+fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
-# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+neon,+fullfp16,-fp16fml --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
-# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+neon,-fp16fml,+fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
-# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+neon,+fp16fml,-fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16-INVALID
+# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+trezoaneon --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16-INVALID
+# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+trezoaneon,+fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
+# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+trezoaneon,+fullfp16,-fp16fml --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
+# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+trezoaneon,-fp16fml,+fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16
+# RUN: not llvm-mc -triple arm-none-linux-gnu -mattr=+v8.2a,+trezoaneon,+fp16fml,-fullfp16 --disassemble < %s 2>&1 | FileCheck %s --check-prefixes=CHECK-INVALID,FP16-INVALID
 
 [0x91,0x08,0x20,0xfc]
 [0x91,0x08,0xa0,0xfc]

@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon \
 // RUN:  -disable-O0-optnone -emit-llvm -o - %s \
 // RUN: | opt -S -passes=mem2reg | FileCheck %s
 

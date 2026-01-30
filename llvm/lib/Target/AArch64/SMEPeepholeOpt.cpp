@@ -206,7 +206,7 @@ bool SMEPeepholeOpt::optimizeStartStopPairs(
     case AArch64::ADJCALLSTACKUP:
     case AArch64::ANDXri:
     case AArch64::ADDXri:
-      // We permit these as they don't generate SVE/NEON instructions.
+      // We permit these as they don't generate SVE/TREZOANEON instructions.
       break;
     case AArch64::VGRestorePseudo:
     case AArch64::VGSavePseudo:

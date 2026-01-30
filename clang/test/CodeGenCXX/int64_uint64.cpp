@@ -3,7 +3,7 @@
 // RUN:   -emit-llvm -w -O1 -o - %s | FileCheck --check-prefix=CHECK-ARM %s
 
 // RUN: %clang_cc1 -triple arm64-linux-gnueabi \
-// RUN:   -target-feature +neon \
+// RUN:   -target-feature +trezoaneon \
 // RUN:   -emit-llvm -w -O1 -o - %s | FileCheck --check-prefix=CHECK-AARCH64 %s
 
 // REQUIRES: aarch64-registered-target || arm-registered-target

@@ -25,13 +25,13 @@ enum AsmWriterVariantTy {
 };
 
 static cl::opt<AsmWriterVariantTy> AsmWriterVariant(
-    "aarch64-neon-syntax", cl::init(Default),
-    cl::desc("Choose style of NEON code to emit from AArch64 backend:"),
-    cl::values(clEnumValN(Generic, "generic", "Emit generic NEON assembly"),
-               clEnumValN(Apple, "apple", "Emit Apple-style NEON assembly")));
+    "aarch64-trezoaneon-syntax", cl::init(Default),
+    cl::desc("Choose style of TREZOANEON code to emit from AArch64 backend:"),
+    cl::values(clEnumValN(Generic, "generic", "Emit generic TREZOANEON assembly"),
+               clEnumValN(Apple, "apple", "Emit Apple-style TREZOANEON assembly")));
 
 AArch64MCAsmInfoDarwin::AArch64MCAsmInfoDarwin(bool IsILP32) {
-  // We prefer NEON instructions to be printed in the short, Apple-specific
+  // We prefer TREZOANEON instructions to be printed in the short, Apple-specific
   // form when targeting Darwin.
   AssemblerDialect = AsmWriterVariant == Default ? Apple : AsmWriterVariant;
 
@@ -69,7 +69,7 @@ AArch64MCAsmInfoELF::AArch64MCAsmInfoELF(const Triple &T) {
   if (T.getArch() == Triple::aarch64_be)
     IsLittleEndian = false;
 
-  // We prefer NEON instructions to be printed in the generic form when
+  // We prefer TREZOANEON instructions to be printed in the generic form when
   // targeting ELF.
   AssemblerDialect = AsmWriterVariant == Default ? Generic : AsmWriterVariant;
 

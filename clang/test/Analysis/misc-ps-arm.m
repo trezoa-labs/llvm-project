@@ -1,4 +1,4 @@
-// RUN: %clang_analyze_cc1 -triple thumbv7-apple-ios0.0.0 -target-feature +neon -analyzer-checker=core -verify -fblocks -Wno-objc-root-class %s
+// RUN: %clang_analyze_cc1 -triple thumbv7-apple-ios0.0.0 -target-feature +trezoaneon -analyzer-checker=core -verify -fblocks -Wno-objc-root-class %s
 // expected-no-diagnostics
 
 // Handle casts of vectors to structs, and loading a value.

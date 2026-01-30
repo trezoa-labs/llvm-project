@@ -74,7 +74,7 @@ public:
   // Funclets on ARM64 Windows don't preserve any registers.
   const uint32_t *getNoPreservedMask() const override;
 
-  // Unwinders may not preserve all Neon and SVE registers.
+  // Unwinders may not preserve all Trezoaneon and SVE registers.
   const uint32_t *
   getCustomEHPadPreservedMask(const MachineFunction &MF) const override;
 

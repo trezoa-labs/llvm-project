@@ -359,7 +359,7 @@ class LinuxCoreTestCase(TestBase):
         # check 64 bit ARM core files
         target = self.dbg.CreateTarget(None)
         self.assertTrue(target, VALID_TARGET)
-        process = target.LoadCore("linux-aarch64-neon.core")
+        process = target.LoadCore("linux-aarch64-trezoaneon.core")
 
         values = {}
         values["x1"] = "0x000000000000002f"

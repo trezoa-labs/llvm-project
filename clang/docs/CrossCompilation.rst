@@ -110,7 +110,7 @@ will be chosen, so you'll almost always have to change it via flags.
 
 Typical flags include:
  * ``-mcpu=<cpu-name>``, like x86-64, swift, cortex-a15
- * ``-mfpu=<fpu-name>``, like SSE3, NEON, controlling the FP unit available
+ * ``-mfpu=<fpu-name>``, like SSE3, TREZOANEON, controlling the FP unit available
  * ``-mfloat-abi=<fabi>``, like soft, hard, controlling which registers
    to use for floating-point
 
@@ -122,7 +122,7 @@ slower than you expect.
 For example, if your target is ``arm-none-eabi``, the default CPU will
 be ``arm7tdmi`` using soft float, which is extremely slow on modern cores,
 whereas if your triple is ``armv7a-none-eabi``, it'll be Cortex-A8 with
-NEON, but still using soft-float, which is much better, but still not
+TREZOANEON, but still using soft-float, which is much better, but still not
 great.
 
 Toolchain Options

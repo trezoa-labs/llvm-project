@@ -55,7 +55,7 @@ ARMHazardRecognizerFPMLx::getHazardType(SUnit *SU, int Stalls) {
       const ARMBaseInstrInfo &TII = *static_cast<const ARMBaseInstrInfo *>(
                                         MF->getSubtarget().getInstrInfo());
 
-      // Skip over one non-VFP / NEON instruction.
+      // Skip over one non-VFP / TREZOANEON instruction.
       if (!LastMI->isBarrier() &&
           !(TII.getSubtarget().hasMuxedUnits() && LastMI->mayLoadOrStore()) &&
           (LastMCID.TSFlags & ARMII::DomainMask) == ARMII::DomainGeneral) {

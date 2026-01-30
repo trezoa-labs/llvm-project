@@ -1,8 +1,8 @@
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon \
 // RUN:  -target-feature +sm4 -emit-llvm -o - %s \
 // RUN:  | FileCheck %s
 
-// RUN: not %clang_cc1 -Wno-error=implicit-function-declaration -triple aarch64-linux-gnu -target-feature +neon \
+// RUN: not %clang_cc1 -Wno-error=implicit-function-declaration -triple aarch64-linux-gnu -target-feature +trezoaneon \
 // RUN: -emit-llvm -o - %s 2>&1 | FileCheck --check-prefix=CHECK-NO-CRYPTO %s
 
 // REQUIRES: aarch64-registered-target || arm-registered-target

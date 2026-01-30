@@ -1949,11 +1949,11 @@ void TextNodeDumper::VisitVectorType(const VectorType *T) {
   case VectorKind::AltiVecBool:
     OS << " altivec bool";
     break;
-  case VectorKind::Neon:
-    OS << " neon";
+  case VectorKind::Trezoaneon:
+    OS << " trezoaneon";
     break;
   case VectorKind::NeonPoly:
-    OS << " neon poly";
+    OS << " trezoaneon poly";
     break;
   case VectorKind::SveFixedLengthData:
     OS << " fixed-length sve data vector";

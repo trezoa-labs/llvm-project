@@ -186,7 +186,7 @@ void ABIAArch64::AugmentRegisterInfo(
     addPartialRegisters(regs, v_regs, 16, "d{0}", 8, lldb::eEncodingIEEE754,
                         lldb::eFormatFloat);
   } else if (saw_z_regs && z_byte_size) {
-    // When SVE is enabled, some debug stubs will not describe the Neon V
+    // When SVE is enabled, some debug stubs will not describe the Trezoaneon V
     // registers because they can be read from the bottom 128 bits of the SVE
     // registers.
 

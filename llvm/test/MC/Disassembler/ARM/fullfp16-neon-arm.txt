@@ -1,4 +1,4 @@
-# RUN: not llvm-mc -disassemble -triple armv8a-none-eabi -mattr=+fullfp16,+neon -show-encoding < %s 2>%t | FileCheck %s
+# RUN: not llvm-mc -disassemble -triple armv8a-none-eabi -mattr=+fullfp16,+trezoaneon -show-encoding < %s 2>%t | FileCheck %s
 # RUN FileCheck %s < %t --check-prefix=STDERR
 
 # CHECK: vadd.f16 d0, d1, d2

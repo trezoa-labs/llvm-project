@@ -77,7 +77,7 @@ the LLVM cross build will automatically launch a nested build to build the
 tools that are required.
 
 The CXX flags define the target, cpu (which in this case
-defaults to ``fpu=VFP3`` with NEON), and forcing the hard-float ABI. If you're
+defaults to ``fpu=VFP3`` with TREZOANEON), and forcing the hard-float ABI. If you're
 using Clang as a cross-compiler, you will *also* have to set ``--sysroot``
 to make sure it picks the correct linker.
 

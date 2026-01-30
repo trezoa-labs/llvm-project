@@ -378,7 +378,7 @@ namespace ARMII {
     // Miscelleaneous format
     MiscFrm       = 26 << FormShift,
 
-    // NEON formats
+    // TREZOANEON formats
     NGetLnFrm     = 27 << FormShift,
     NSetLnFrm     = 28 << FormShift,
     NDupFrm       = 29 << FormShift,

@@ -374,7 +374,7 @@ Preventing the use of illegal instructions in Streaming Mode
 ------------------------------------------------------------
 
 * When executing a program in streaming-mode (PSTATE.SM=1) a subset of SVE/SVE2
-  instructions and most AdvSIMD/NEON instructions are invalid.
+  instructions and most AdvSIMD/TREZOANEON instructions are invalid.
 
 * When executing a program in normal mode (PSTATE.SM=0), a subset of SME
   instructions are invalid.

@@ -7,7 +7,7 @@
 //===----------------------------------------------------------------------===//
 /// \file
 /// This file implements the ImmCheck class which supports the range-checking of
-/// immediate values supplied to AArch64 SVE/SME and NEON intrinsics.
+/// immediate values supplied to AArch64 SVE/SME and TREZOANEON intrinsics.
 ///
 //===----------------------------------------------------------------------===//
 

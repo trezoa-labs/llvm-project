@@ -11,7 +11,7 @@
 // RUN:  -ffreestanding \
 // RUN:  -emit-llvm -w -o - %s | FileCheck %s
 
-// RUN: %clang_cc1 -triple arm64-apple-darwin9 -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-apple-darwin9 -target-feature +trezoaneon \
 // RUN:   -ffreestanding \
 // RUN:   -emit-llvm -w -o - %s | FileCheck -check-prefix=CHECK64 %s
 
@@ -93,7 +93,7 @@ void test_hetero(struct heterogeneous_struct arg) {
   hetero_callee(arg);
 }
 
-// Neon multi-vector types are homogeneous aggregates.
+// Trezoaneon multi-vector types are homogeneous aggregates.
 // CHECK: define{{.*}} arm_aapcs_vfpcc <16 x i8> @f0(%struct.int8x16x4_t %{{.*}})
 // CHECK64: define{{.*}} <16 x i8> @f0([4 x <16 x i8>] alignstack(16) %{{.*}})
 int8x16_t f0(int8x16x4_t v4) {

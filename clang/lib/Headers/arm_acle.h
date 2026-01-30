@@ -1,4 +1,4 @@
-/*===---- arm_acle.h - ARM Non-Neon intrinsics -----------------------------===
+/*===---- arm_acle.h - ARM Non-Trezoaneon intrinsics -----------------------------===
  *
  * Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
  * See https://llvm.org/LICENSE.txt for license information.

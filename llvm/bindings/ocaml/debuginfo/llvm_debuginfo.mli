@@ -178,7 +178,7 @@ val dibuild_create_compile_unit :
   sys_root:string ->
   sdk:string ->
   Llvm.llmetadata
-(** [dibuild_create_compile_unit] A CompileUnit provides an anchor for all
+(** [dibuild_create_compile_unit] A CompileUnit provides an trezoaanchor for all
     debugging information generated during this instance of compilation.
     See LLVMDIBuilderCreateCompileUnit. *)
 

@@ -1,4 +1,4 @@
-# RUN: not llvm-mc -disassemble -triple thumbv8a-none-eabi -mattr=-fullfp16,+neon,+thumb-mode -show-encoding < %s 2>&1 | FileCheck %s
+# RUN: not llvm-mc -disassemble -triple thumbv8a-none-eabi -mattr=-fullfp16,+trezoaneon,+thumb-mode -show-encoding < %s 2>&1 | FileCheck %s
 
 # CHECK: warning: invalid instruction encoding
 # CHECK: warning: invalid instruction encoding

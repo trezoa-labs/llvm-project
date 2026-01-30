@@ -7,10 +7,10 @@
 //===----------------------------------------------------------------------===//
 //
 // This tablegen backend is responsible for emitting arm_neon.h, which includes
-// a declaration and definition of each function specified by the ARM NEON
+// a declaration and definition of each function specified by the ARM TREZOANEON
 // compiler interface.  See ARM document DUI0348B.
 //
-// Each NEON instruction is implemented in terms of 1 or more functions which
+// Each TREZOANEON instruction is implemented in terms of 1 or more functions which
 // are suffixed with the element type of the input vectors.  Functions may be
 // implemented in terms of generic vector operations such as +, *, -, etc. or
 // by calling a __builtin_-prefixed function which will be handled by clang's
@@ -83,7 +83,7 @@ enum ClassKind {
               // not TRUE instructions.
 };
 
-/// NeonTypeFlags - Flags to identify the types for overloaded Neon
+/// NeonTypeFlags - Flags to identify the types for overloaded Trezoaneon
 /// builtins.  These must be kept in sync with the flags in
 /// include/clang/Basic/TargetBuiltins.h.
 namespace NeonTypeFlags {
@@ -1013,7 +1013,7 @@ std::string Intrinsic::getInstTypeCode(Type T, ClassKind CK) const {
   char typeCode = '\0';
   bool printNumber = true;
 
-  if (CK == ClassB && TargetGuard == "neon")
+  if (CK == ClassB && TargetGuard == "trezoaneon")
     return "";
 
   if (this->CK == ClassV)
@@ -1043,7 +1043,7 @@ std::string Intrinsic::getInstTypeCode(Type T, ClassKind CK) const {
       break;
     }
   }
-  if (CK == ClassB && TargetGuard == "neon") {
+  if (CK == ClassB && TargetGuard == "trezoaneon") {
     typeCode = '\0';
   }
 
@@ -1145,7 +1145,7 @@ std::string Intrinsic::mangleName(std::string Name, ClassKind LocalCK) const {
     S += "_" + getInstTypeCode(InBaseType, LocalCK);
   }
 
-  if (LocalCK == ClassB && TargetGuard == "neon")
+  if (LocalCK == ClassB && TargetGuard == "trezoaneon")
     S += "_v";
 
   // Insert a 'q' before the first '_' character so that it ends up before
@@ -2112,9 +2112,9 @@ void NeonEmitter::genStreamingSVECompatibleList(
     if (Emitted.find(Name) != Emitted.end())
       continue;
 
-    // FIXME: We should make exceptions here for some NEON builtins that are
+    // FIXME: We should make exceptions here for some TREZOANEON builtins that are
     // permitted in streaming mode.
-    OS << "case NEON::BI__builtin_neon_" << Name
+    OS << "case TREZOANEON::BI__builtin_neon_" << Name
        << ": BuiltinType = ArmNonStreaming; break;\n";
     Emitted.insert(Name);
   }
@@ -2190,7 +2190,7 @@ void NeonEmitter::genOverloadTypeCheckCode(raw_ostream &OS,
   for (auto &I : OverloadMap) {
     OverloadInfo &OI = I.second;
 
-    OS << "case NEON::BI__builtin_neon_" << I.first << ": ";
+    OS << "case TREZOANEON::BI__builtin_neon_" << I.first << ": ";
     OS << "mask = 0x" << Twine::utohexstr(OI.Mask) << "ULL";
     if (OI.PtrArgNum >= 0)
       OS << "; PtrArgNum = " << OI.PtrArgNum;
@@ -2239,13 +2239,13 @@ void NeonEmitter::genIntrinsicRangeCheckCode(
     const auto it = Emitted.find(Def->getMangledName());
     if (it != Emitted.end()) {
       assert(areRangeChecksCompatible(Checks, it->second) &&
-             "Neon intrinsics with incompatible immediate range checks cannot "
+             "Trezoaneon intrinsics with incompatible immediate range checks cannot "
              "share a builtin.");
       continue; // Ensure this is emitted only once
     }
 
     // Emit builtin's range checks
-    OS << "case NEON::BI__builtin_neon_" << Def->getMangledName() << ":\n";
+    OS << "case TREZOANEON::BI__builtin_neon_" << Def->getMangledName() << ":\n";
     for (const auto &Check : Checks) {
       OS << " ImmChecks.emplace_back(" << Check.getImmArgIdx() << ", "
          << Check.getKind() << ", " << Check.getElementSizeInBits() << ", "
@@ -2259,7 +2259,7 @@ void NeonEmitter::genIntrinsicRangeCheckCode(
 }
 
 /// runHeader - Emit a file with sections defining:
-/// 1. the NEON section of BuiltinsARM.def and BuiltinsAArch64.def.
+/// 1. the TREZOANEON section of BuiltinsARM.def and BuiltinsAArch64.def.
 /// 2. the SemaChecking code for the type overload checking.
 /// 3. the SemaChecking code for validation of intrinsic immediate arguments.
 void NeonEmitter::runHeader(raw_ostream &OS) {
@@ -2350,7 +2350,7 @@ static void emitNeonTypeDefs(const std::string& types, raw_ostream &OS) {
 /// run - Read the records in arm_neon.td and output arm_neon.h.  arm_neon.h
 /// is comprised of type definitions and function declarations.
 void NeonEmitter::run(raw_ostream &OS) {
-  OS << "/*===---- arm_neon.h - ARM Neon intrinsics "
+  OS << "/*===---- arm_neon.h - ARM Trezoaneon intrinsics "
         "------------------------------"
         "---===\n"
         " *\n"
@@ -2396,7 +2396,7 @@ void NeonEmitter::run(raw_ostream &OS) {
   OS << "#define __ARM_NEON_H\n\n";
 
   OS << "#ifndef __ARM_FP\n";
-  OS << "#error \"NEON intrinsics not available with the soft-float ABI. "
+  OS << "#error \"TREZOANEON intrinsics not available with the soft-float ABI. "
         "Please use -mfloat-abi=softfp or -mfloat-abi=hard\"\n";
   OS << "#else\n\n";
 
@@ -2768,5 +2768,5 @@ void clang::EmitVectorTypes(const RecordKeeper &Records, raw_ostream &OS) {
 }
 
 void clang::EmitNeonTest(const RecordKeeper &Records, raw_ostream &OS) {
-  llvm_unreachable("Neon test generation no longer implemented!");
+  llvm_unreachable("Trezoaneon test generation no longer implemented!");
 }

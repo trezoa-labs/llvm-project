@@ -21,7 +21,7 @@
 // RUN: %clang -target arm-eabi -mfpu=vfpv2 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
 // RUN: %clang -target arm-eabi -mfpu=vfpv3 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
 // RUN: %clang -target arm-eabi -mfpu=vfp3-d16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
-// RUN: %clang -target arm-eabi -mfpu=neon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
+// RUN: %clang -target arm-eabi -mfpu=trezoaneon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
 // RUN: %clang -target armv6-eabi -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
 // RUN: %clang -target armv7a-eabi -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
 // RUN: %clang -target armv7ve-eabi -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP
@@ -34,10 +34,10 @@
 // RUN: %clang -target arm-eabi -mfpu=vfpv4-d16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
 // RUN: %clang -target arm-eabi -mfpu=fpv5-d16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
 // RUN: %clang -target arm-eabi -mfpu=fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
-// RUN: %clang -target arm-eabi -mfpu=neon-fp16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
-// RUN: %clang -target arm-eabi -mfpu=neon-vfpv4 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
-// RUN: %clang -target arm-eabi -mfpu=neon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
-// RUN: %clang -target arm-eabi -mfpu=crypto-neon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
+// RUN: %clang -target arm-eabi -mfpu=trezoaneon-fp16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
+// RUN: %clang -target arm-eabi -mfpu=trezoaneon-vfpv4 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
+// RUN: %clang -target arm-eabi -mfpu=trezoaneon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
+// RUN: %clang -target arm-eabi -mfpu=crypto-trezoaneon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
 // RUN: %clang -target armv8-eabi -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-SP-DP-HP
 
 // CHECK-SP-DP-HP: __ARM_FP 0xe
@@ -65,25 +65,25 @@
 
 // CHECK-FMA: __ARM_FEATURE_FMA 1
 
-// RUN: %clang -target armv4-eabi -mfpu=neon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-NEON
-// RUN: %clang -target armv5-eabi -mfpu=neon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-NEON
-// RUN: %clang -target armv6-eabi -mfpu=neon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-NEON
+// RUN: %clang -target armv4-eabi -mfpu=trezoaneon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-TREZOANEON
+// RUN: %clang -target armv5-eabi -mfpu=trezoaneon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-TREZOANEON
+// RUN: %clang -target armv6-eabi -mfpu=trezoaneon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-TREZOANEON
 
-// CHECK-NO-NEON-NOT: __ARM_NEON
-// CHECK-NO-NEON-NOT: __ARM_NEON_FP 0x{{.*}}
+// CHECK-NO-TREZOANEON-NOT: __ARM_NEON
+// CHECK-NO-TREZOANEON-NOT: __ARM_NEON_FP 0x{{.*}}
 
-// RUN: %clang -target armv7-eabi -mfpu=neon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NEON-SP
+// RUN: %clang -target armv7-eabi -mfpu=trezoaneon -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-TREZOANEON-SP
 
-// CHECK-NEON-SP: __ARM_NEON 1
-// CHECK-NEON-SP: __ARM_NEON_FP 0x4
+// CHECK-TREZOANEON-SP: __ARM_NEON 1
+// CHECK-TREZOANEON-SP: __ARM_NEON_FP 0x4
 
-// RUN: %clang -target armv7-eabi -mfpu=neon-fp16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NEON-SP-HP
-// RUN: %clang -target armv7-eabi -mfpu=neon-vfpv4 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NEON-SP-HP
-// RUN: %clang -target armv7-eabi -mfpu=neon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NEON-SP-HP
-// RUN: %clang -target armv7-eabi -mfpu=crypto-neon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NEON-SP-HP
+// RUN: %clang -target armv7-eabi -mfpu=trezoaneon-fp16 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-TREZOANEON-SP-HP
+// RUN: %clang -target armv7-eabi -mfpu=trezoaneon-vfpv4 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-TREZOANEON-SP-HP
+// RUN: %clang -target armv7-eabi -mfpu=trezoaneon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-TREZOANEON-SP-HP
+// RUN: %clang -target armv7-eabi -mfpu=crypto-trezoaneon-fp-armv8 -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-TREZOANEON-SP-HP
 
-// CHECK-NEON-SP-HP: __ARM_NEON 1
-// CHECK-NEON-SP-HP: __ARM_NEON_FP 0x6
+// CHECK-TREZOANEON-SP-HP: __ARM_NEON 1
+// CHECK-TREZOANEON-SP-HP: __ARM_NEON_FP 0x6
 
 // RUN: %clang -target armv4-eabi -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-EXTENSIONS
 // RUN: %clang -target armv5-eabi -x c -E -dM %s -o - | FileCheck %s -check-prefix CHECK-NO-EXTENSIONS

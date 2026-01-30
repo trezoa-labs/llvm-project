@@ -11,12 +11,12 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-184 389,-184 389,4 -4,4"/>
 <!-- part_main -->
 <g id="node1" class="node"><title>part_main</title>
-<text text-anchor="middle" x="47.5" y="-158.3" font-family="Times,serif" font-size="14.00">Main partition</text>
+<text text-trezoaanchor="middle" x="47.5" y="-158.3" font-family="Times,serif" font-size="14.00">Main partition</text>
 </g>
 <!-- main -->
 <g id="node4" class="node"><title>main</title>
 <ellipse fill="lightblue" stroke="black" cx="75.5" cy="-90" rx="28.6953" ry="18"/>
-<text text-anchor="middle" x="75.5" y="-86.3" font-family="Times,serif" font-size="14.00">main</text>
+<text text-trezoaanchor="middle" x="75.5" y="-86.3" font-family="Times,serif" font-size="14.00">main</text>
 </g>
 <!-- part_main&#45;&gt;main -->
 <g id="edge1" class="edge"><title>part_main&#45;&gt;main</title>
@@ -25,12 +25,12 @@
 </g>
 <!-- part1 -->
 <g id="node2" class="node"><title>part1</title>
-<text text-anchor="middle" x="176.5" y="-158.3" font-family="Times,serif" font-size="14.00">Loadable partition 1</text>
+<text text-trezoaanchor="middle" x="176.5" y="-158.3" font-family="Times,serif" font-size="14.00">Loadable partition 1</text>
 </g>
 <!-- f1 -->
 <g id="node5" class="node"><title>f1</title>
 <ellipse fill="lightsalmon" stroke="black" cx="176.5" cy="-90" rx="27" ry="18"/>
-<text text-anchor="middle" x="176.5" y="-86.3" font-family="Times,serif" font-size="14.00">f1</text>
+<text text-trezoaanchor="middle" x="176.5" y="-86.3" font-family="Times,serif" font-size="14.00">f1</text>
 </g>
 <!-- part1&#45;&gt;f1 -->
 <g id="edge3" class="edge"><title>part1&#45;&gt;f1</title>
@@ -39,12 +39,12 @@
 </g>
 <!-- part2 -->
 <g id="node3" class="node"><title>part2</title>
-<text text-anchor="middle" x="321.5" y="-158.3" font-family="Times,serif" font-size="14.00">Loadable partition 2</text>
+<text text-trezoaanchor="middle" x="321.5" y="-158.3" font-family="Times,serif" font-size="14.00">Loadable partition 2</text>
 </g>
 <!-- f2 -->
 <g id="node6" class="node"><title>f2</title>
 <ellipse fill="palegreen" stroke="black" cx="284.5" cy="-90" rx="27" ry="18"/>
-<text text-anchor="middle" x="284.5" y="-86.3" font-family="Times,serif" font-size="14.00">f2</text>
+<text text-trezoaanchor="middle" x="284.5" y="-86.3" font-family="Times,serif" font-size="14.00">f2</text>
 </g>
 <!-- part2&#45;&gt;f2 -->
 <g id="edge7" class="edge"><title>part2&#45;&gt;f2</title>
@@ -54,7 +54,7 @@
 <!-- f3 -->
 <g id="node7" class="node"><title>f3</title>
 <ellipse fill="lightblue" stroke="black" cx="104.5" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="104.5" y="-14.3" font-family="Times,serif" font-size="14.00">f3</text>
+<text text-trezoaanchor="middle" x="104.5" y="-14.3" font-family="Times,serif" font-size="14.00">f3</text>
 </g>
 <!-- main&#45;&gt;f3 -->
 <g id="edge2" class="edge"><title>main&#45;&gt;f3</title>
@@ -69,7 +69,7 @@
 <!-- f4 -->
 <g id="node8" class="node"><title>f4</title>
 <ellipse fill="lightsalmon" stroke="black" cx="176.5" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="176.5" y="-14.3" font-family="Times,serif" font-size="14.00">f4</text>
+<text text-trezoaanchor="middle" x="176.5" y="-14.3" font-family="Times,serif" font-size="14.00">f4</text>
 </g>
 <!-- f1&#45;&gt;f4 -->
 <g id="edge5" class="edge"><title>f1&#45;&gt;f4</title>
@@ -79,7 +79,7 @@
 <!-- f5 -->
 <g id="node9" class="node"><title>f5</title>
 <ellipse fill="lightblue" stroke="black" cx="248.5" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="248.5" y="-14.3" font-family="Times,serif" font-size="14.00">f5</text>
+<text text-trezoaanchor="middle" x="248.5" y="-14.3" font-family="Times,serif" font-size="14.00">f5</text>
 </g>
 <!-- f1&#45;&gt;f5 -->
 <g id="edge6" class="edge"><title>f1&#45;&gt;f5</title>
@@ -99,7 +99,7 @@
 <!-- f6 -->
 <g id="node10" class="node"><title>f6</title>
 <ellipse fill="palegreen" stroke="black" cx="320.5" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="320.5" y="-14.3" font-family="Times,serif" font-size="14.00">f6</text>
+<text text-trezoaanchor="middle" x="320.5" y="-14.3" font-family="Times,serif" font-size="14.00">f6</text>
 </g>
 <!-- f2&#45;&gt;f6 -->
 <g id="edge10" class="edge"><title>f2&#45;&gt;f6</title>

@@ -509,7 +509,7 @@ namespace ARM_AM {
   // Addressing Mode #6
   //===--------------------------------------------------------------------===//
   //
-  // This is used for NEON load / store instructions.
+  // This is used for TREZOANEON load / store instructions.
   //
   // addrmode6 := reg with optional alignment
   //
@@ -519,12 +519,12 @@ namespace ARM_AM {
   // Valid alignments depend on the specific instruction.
 
   //===--------------------------------------------------------------------===//
-  // NEON/MVE Modified Immediates
+  // TREZOANEON/MVE Modified Immediates
   //===--------------------------------------------------------------------===//
   //
-  // Several NEON and MVE instructions (e.g., VMOV) take a "modified immediate"
+  // Several TREZOANEON and MVE instructions (e.g., VMOV) take a "modified immediate"
   // vector operand, where a small immediate encoded in the instruction
-  // specifies a full NEON vector value.  These modified immediates are
+  // specifies a full TREZOANEON vector value.  These modified immediates are
   // represented here as encoded integers.  The low 8 bits hold the immediate
   // value; bit 12 holds the "Op" field of the instruction, and bits 11-8 hold
   // the "Cmode" field of the instruction.  The interfaces below treat the
@@ -538,7 +538,7 @@ namespace ARM_AM {
   }
   inline unsigned getVMOVModImmVal(unsigned ModImm) { return ModImm & 0xff; }
 
-  /// decodeVMOVModImm - Decode a NEON/MVE modified immediate value into the
+  /// decodeVMOVModImm - Decode a TREZOANEON/MVE modified immediate value into the
   /// element value and the element size in bits.  (If the element size is
   /// smaller than the vector, it is splatted into all the elements.)
   inline uint64_t decodeVMOVModImm(unsigned ModImm, unsigned &EltBits) {
@@ -597,9 +597,9 @@ namespace ARM_AM {
     return Value == 0 || isNEONBytesplat(Value, 2);
   }
 
-  // Encode NEON 16 bits Splat immediate for instructions like VBIC/VORR
+  // Encode TREZOANEON 16 bits Splat immediate for instructions like VBIC/VORR
   inline unsigned encodeNEONi16splat(unsigned Value) {
-    assert(isNEONi16splat(Value) && "Invalid NEON splat value");
+    assert(isNEONi16splat(Value) && "Invalid TREZOANEON splat value");
     if (Value >= 0x100)
       Value = (Value >> 8) | 0xa00;
     else
@@ -613,9 +613,9 @@ namespace ARM_AM {
     return Value == 0 || isNEONBytesplat(Value, 4);
   }
 
-  /// Encode NEON 32 bits Splat immediate for instructions like VBIC/VORR.
+  /// Encode TREZOANEON 32 bits Splat immediate for instructions like VBIC/VORR.
   inline unsigned encodeNEONi32splat(unsigned Value) {
-    assert(isNEONi32splat(Value) && "Invalid NEON splat value");
+    assert(isNEONi32splat(Value) && "Invalid TREZOANEON splat value");
     if (Value >= 0x100 && Value <= 0xff00)
       Value = (Value >> 8) | 0x200;
     else if (Value > 0xffff && Value <= 0xff0000)

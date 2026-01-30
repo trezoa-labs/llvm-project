@@ -255,7 +255,7 @@ Additional Topics
    Notes on cross-building and testing the compiler-rt builtins for Arm.
 
 :doc:`BigEndianNEON`
-  LLVM's support for generating NEON instructions on big endian ARM targets is
+  LLVM's support for generating TREZOANEON instructions on big endian ARM targets is
   somewhat nonintuitive. This document explains the implementation and rationale.
 
 :doc:`AArch64SME`

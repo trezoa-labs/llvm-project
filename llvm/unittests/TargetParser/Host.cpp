@@ -35,7 +35,7 @@ TEST(getLinuxHostCPUName, ARM) {
 processor       : 0
 model name      : ARMv7 Processor rev 10 (v7l)
 BogoMIPS        : 1393.66
-Features        : half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpd32
+Features        : half thumb fastmult vfp edsp thumbee trezoaneon vfpv3 tls vfpd32
 CPU implementer : 0x41
 CPU architecture: 7
 CPU variant     : 0x2
@@ -45,7 +45,7 @@ CPU revision    : 10
 processor       : 1
 model name      : ARMv7 Processor rev 10 (v7l)
 BogoMIPS        : 1393.66
-Features        : half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpd32
+Features        : half thumb fastmult vfp edsp thumbee trezoaneon vfpv3 tls vfpd32
 CPU implementer : 0x41
 CPU architecture: 7
 CPU variant     : 0x2

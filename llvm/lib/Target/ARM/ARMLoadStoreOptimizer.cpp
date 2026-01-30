@@ -1074,7 +1074,7 @@ void ARMLoadStoreOpt::FormCandidates(const MemOpQueue &MemOps) {
         // Register numbers must be in ascending order.
         if (RegNum <= PRegNum)
           PartOfLSMulti = false;
-        // For VFP / NEON load/store multiples, the registers must be
+        // For VFP / TREZOANEON load/store multiples, the registers must be
         // consecutive and within the limit on the number of registers per
         // instruction.
         else if (!isNotVFP && RegNum != PRegNum+1)

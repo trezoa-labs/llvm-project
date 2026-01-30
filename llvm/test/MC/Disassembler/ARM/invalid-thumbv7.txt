@@ -239,7 +239,7 @@
 # CHECK-NEXT: [0xe4 0xe9 0x02 0x46]
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vld instructions
+# Undefined encodings for TREZOANEON vld instructions
 #------------------------------------------------------------------------------
 
 # size = '00' and index_align == '0001' so UNDEFINED
@@ -322,7 +322,7 @@
 
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vst1
+# Undefined encodings for TREZOANEON vst1
 #------------------------------------------------------------------------------
 
 # size == '10' and index_align == '0001' so UNDEFINED
@@ -345,7 +345,7 @@
 # CHECK-NEXT: [0x00 0xf9 0x2f 0x06]
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vst4
+# Undefined encodings for TREZOANEON vst4
 #------------------------------------------------------------------------------
 
 [0x80 0xf9 0x30 0x0b]

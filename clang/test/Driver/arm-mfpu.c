@@ -6,7 +6,7 @@
 // CHECK-DEFAULT-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-DEFAULT-NOT: "-target-feature" "+vfp2"
 // CHECK-DEFAULT-NOT: "-target-feature" "+vfp3"
-// CHECK-DEFAULT-NOT: "-target-feature" "+neon"
+// CHECK-DEFAULT-NOT: "-target-feature" "+trezoaneon"
 
 // RUN: not %clang --target=arm-linux-eabi -mfpu=fpa %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-FPA %s
@@ -28,12 +28,12 @@
 // CHECK-VFP-DAG: "-target-feature" "-vfp3d16sp"
 // CHECK-VFP-DAG: "-target-feature" "-vfp4d16sp"
 // CHECK-VFP-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-VFP-DAG: "-target-feature" "-neon"
+// CHECK-VFP-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-vfp3d16sp"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-vfp4d16sp"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-2-DAG: "-target-feature" "-vfp2sp"
@@ -49,12 +49,12 @@
 // CHECK-VFP3-DAG: "-target-feature" "+vfp3"
 // CHECK-VFP3-DAG: "-target-feature" "-vfp4d16sp"
 // CHECK-VFP3-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-VFP3-DAG: "-target-feature" "-neon"
+// CHECK-VFP3-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-vfp2sp"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-vfp4d16sp"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-3-DAG: "-target-feature" "-vfp3d16sp"
@@ -71,7 +71,7 @@
 // CHECK-VFP3-FP16-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-VFP3-FP16-DAG: "-target-feature" "+fp64"
 // CHECK-VFP3-FP16-DAG: "-target-feature" "+d32"
-// CHECK-VFP3-FP16-DAG: "-target-feature" "-neon"
+// CHECK-VFP3-FP16-DAG: "-target-feature" "-trezoaneon"
 // CHECK-VFP3-FP16-DAG: "-target-feature" "-sha2"
 // CHECK-VFP3-FP16-DAG: "-target-feature" "-aes"
 
@@ -88,7 +88,7 @@
 // CHECK-VFP3-D16-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-VFP3-D16-DAG: "-target-feature" "+fp64"
 // CHECK-VFP3-D16-DAG: "-target-feature" "-d32"
-// CHECK-VFP3-D16-DAG: "-target-feature" "-neon"
+// CHECK-VFP3-D16-DAG: "-target-feature" "-trezoaneon"
 
 // RUN: %clang -target arm-linux-eabi -mfpu=vfpv3-d16-fp16 %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-VFP3-D16-FP16 %s
@@ -102,7 +102,7 @@
 // CHECK-VFP3-D16-FP16-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-VFP3-D16-FP16-DAG: "-target-feature" "+fp64"
 // CHECK-VFP3-D16-FP16-DAG: "-target-feature" "-d32"
-// CHECK-VFP3-D16-FP16-DAG: "-target-feature" "-neon"
+// CHECK-VFP3-D16-FP16-DAG: "-target-feature" "-trezoaneon"
 // CHECK-VFP3-D16-FP16-DAG: "-target-feature" "-sha2"
 // CHECK-VFP3-D16-FP16-DAG: "-target-feature" "-aes"
 
@@ -118,7 +118,7 @@
 // CHECK-VFP3XD-DAG: "-target-feature" "-fp16"
 // CHECK-VFP3XD-DAG: "-target-feature" "-vfp4d16sp"
 // CHECK-VFP3XD-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-VFP3XD-DAG: "-target-feature" "-neon"
+// CHECK-VFP3XD-DAG: "-target-feature" "-trezoaneon"
 // CHECK-VFP3XD-DAG: "-target-feature" "-sha2"
 // CHECK-VFP3XD-DAG: "-target-feature" "-aes"
 
@@ -134,7 +134,7 @@
 // CHECK-VFP3XD-FP16-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-VFP3XD-FP16-DAG: "-target-feature" "-fp64"
 // CHECK-VFP3XD-FP16-DAG: "-target-feature" "-d32"
-// CHECK-VFP3XD-FP16-DAG: "-target-feature" "-neon"
+// CHECK-VFP3XD-FP16-DAG: "-target-feature" "-trezoaneon"
 // CHECK-VFP3XD-FP16-DAG: "-target-feature" "-sha2"
 // CHECK-VFP3XD-FP16-DAG: "-target-feature" "-aes"
 
@@ -148,12 +148,12 @@
 // CHECK-VFP4-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-VFP4-DAG: "-target-feature" "+vfp4"
 // CHECK-VFP4-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-VFP4-DAG: "-target-feature" "-neon"
+// CHECK-VFP4-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-vfp2sp"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-vfp3d16sp"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-4-DAG: "-target-feature" "-vfp4d16sp"
@@ -170,7 +170,7 @@
 // CHECK-VFP4-D16-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-VFP4-D16-DAG: "-target-feature" "+fp64"
 // CHECK-VFP4-D16-DAG: "-target-feature" "-d32"
-// CHECK-VFP4-D16-DAG: "-target-feature" "-neon"
+// CHECK-VFP4-D16-DAG: "-target-feature" "-trezoaneon"
 
 // RUN: %clang -target arm-linux-eabi -mfpu=fp4-sp-d16 %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-FP4-SP-D16 %s
@@ -184,7 +184,7 @@
 // CHECK-FP4-SP-D16-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-FP4-SP-D16-DAG: "-target-feature" "-fp64"
 // CHECK-FP4-SP-D16-DAG: "-target-feature" "-d32"
-// CHECK-FP4-SP-D16-DAG: "-target-feature" "-neon"
+// CHECK-FP4-SP-D16-DAG: "-target-feature" "-trezoaneon"
 
 // RUN: %clang -target arm-linux-eabi -mfpu=fp5-sp-d16 %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-FP5-SP-D16 %s
@@ -195,7 +195,7 @@
 // CHECK-FP5-SP-D16-NOT: "-target-feature" "+soft-float"
 // CHECK-FP5-SP-D16-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-FP5-SP-D16-DAG: "-target-feature" "+fp-armv8d16sp"
-// CHECK-FP5-SP-D16-DAG: "-target-feature" "-neon"
+// CHECK-FP5-SP-D16-DAG: "-target-feature" "-trezoaneon"
 // CHECK-FP5-SP-D16-DAG: "-target-feature" "-fp64"
 // CHECK-FP5-SP-D16-DAG: "-target-feature" "-d32"
 // CHECK-FP5-SP-D16-DAG: "-target-feature" "-sha2"
@@ -212,7 +212,7 @@
 // CHECK-FP5-DP-D16-DAG: "-target-feature" "+fp-armv8d16"
 // CHECK-FP5-DP-D16-DAG: "-target-feature" "+fp64"
 // CHECK-FP5-DP-D16-DAG: "-target-feature" "-d32"
-// CHECK-FP5-DP-D16-DAG: "-target-feature" "-neon"
+// CHECK-FP5-DP-D16-DAG: "-target-feature" "-trezoaneon"
 // CHECK-FP5-DP-D16-DAG: "-target-feature" "-sha2"
 // CHECK-FP5-DP-D16-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "+soft-float"
@@ -220,17 +220,17 @@
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-vfp2sp"
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-vfp3d16sp"
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-vfp4d16sp"
-// CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-5-DAG: "-target-feature" "-fp-armv8d16sp"
 
-// RUN: %clang -target arm-linux-eabi -mfpu=neon %s -### -o %t.o 2>&1 \
-// RUN:   | FileCheck --check-prefix=CHECK-NEON %s
-// RUN: %clang -target arm-linux-eabi -mfpu=neon -mfloat-abi=soft %s -### -o %t.o 2>&1 \
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon %s -### -o %t.o 2>&1 \
+// RUN:   | FileCheck --check-prefix=CHECK-TREZOANEON %s
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon -mfloat-abi=soft %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP-6 %s
-// CHECK-NEON-NOT: "-target-feature" "+soft-float"
-// CHECK-NEON-DAG: "-target-feature" "+neon"
+// CHECK-TREZOANEON-NOT: "-target-feature" "+soft-float"
+// CHECK-TREZOANEON-DAG: "-target-feature" "+trezoaneon"
 // CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-vfp2sp"
 // CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-vfp4d16sp"
@@ -238,41 +238,41 @@
 // CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-vfp3d16sp"
-// CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-6-DAG: "-target-feature" "-trezoaneon"
 
-// RUN: %clang -target arm-linux-eabi -mfpu=neon-fp16 %s -### -o %t.o 2>&1 \
-// RUN:   | FileCheck --check-prefix=CHECK-NEON-FP16 %s
-// RUN: %clang -target arm-linux-eabi -mfpu=neon-fp16 -mfloat-abi=soft %s -### -o %t.o 2>&1 \
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon-fp16 %s -### -o %t.o 2>&1 \
+// RUN:   | FileCheck --check-prefix=CHECK-TREZOANEON-FP16 %s
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon-fp16 -mfloat-abi=soft %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP-6 %s
-// CHECK-NEON-FP16-NOT: "-target-feature" "+soft-float"
-// CHECK-NEON-FP16-DAG: "-target-feature" "+soft-float-abi"
-// CHECK-NEON-FP16-DAG: "-target-feature" "+vfp3"
-// CHECK-NEON-FP16-DAG: "-target-feature" "+fp16"
-// CHECK-NEON-FP16-DAG: "-target-feature" "-vfp4d16sp"
-// CHECK-NEON-FP16-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-NEON-FP16-DAG: "-target-feature" "+fp64"
-// CHECK-NEON-FP16-DAG: "-target-feature" "+d32"
-// CHECK-NEON-FP16-DAG: "-target-feature" "+neon"
-// CHECK-NEON-FP16-DAG: "-target-feature" "-sha2"
-// CHECK-NEON-FP16-DAG: "-target-feature" "-aes"
+// CHECK-TREZOANEON-FP16-NOT: "-target-feature" "+soft-float"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "+soft-float-abi"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "+vfp3"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "+fp16"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "-vfp4d16sp"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "-fp-armv8d16sp"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "+fp64"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "+d32"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "+trezoaneon"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "-sha2"
+// CHECK-TREZOANEON-FP16-DAG: "-target-feature" "-aes"
 
-// RUN: %clang -target arm-linux-eabi -mfpu=neon-vfpv3 %s -### -o %t.o 2>&1 \
-// RUN:   | FileCheck --check-prefix=CHECK-NEON-VFPV3 %s
-// RUN: %clang -target arm-linux-eabi -mfpu=neon-vfpv3 -mfloat-abi=soft %s -### -o %t.o 2>&1 \
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon-vfpv3 %s -### -o %t.o 2>&1 \
+// RUN:   | FileCheck --check-prefix=CHECK-TREZOANEON-VFPV3 %s
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon-vfpv3 -mfloat-abi=soft %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP-6 %s
-// CHECK-NEON-VFPV3-NOT: "-target-feature" "+soft-float"
-// CHECK-NEON-VFPV3-DAG: "-target-feature" "+soft-float-abi"
-// CHECK-NEON-VFPV3-DAG: "-target-feature" "+vfp3"
-// CHECK-NEON-VFPV3-DAG: "-target-feature" "+neon"
+// CHECK-TREZOANEON-VFPV3-NOT: "-target-feature" "+soft-float"
+// CHECK-TREZOANEON-VFPV3-DAG: "-target-feature" "+soft-float-abi"
+// CHECK-TREZOANEON-VFPV3-DAG: "-target-feature" "+vfp3"
+// CHECK-TREZOANEON-VFPV3-DAG: "-target-feature" "+trezoaneon"
 
-// RUN: %clang -target arm-linux-eabi -mfpu=neon-vfpv4 %s -### -o %t.o 2>&1 \
-// RUN:   | FileCheck --check-prefix=CHECK-NEON-VFPV4 %s
-// RUN: %clang -target arm-linux-eabi -mfpu=neon-vfpv4 -mfloat-abi=soft %s -### -o %t.o 2>&1 \
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon-vfpv4 %s -### -o %t.o 2>&1 \
+// RUN:   | FileCheck --check-prefix=CHECK-TREZOANEON-VFPV4 %s
+// RUN: %clang -target arm-linux-eabi -mfpu=trezoaneon-vfpv4 -mfloat-abi=soft %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP-7 %s
-// CHECK-NEON-VFPV4-NOT: "-target-feature" "+soft-float"
-// CHECK-NEON-VFPV4-DAG: "-target-feature" "+soft-float-abi"
-// CHECK-NEON-VFPV4-DAG: "-target-feature" "+vfp4"
-// CHECK-NEON-VFPV4-DAG: "-target-feature" "+neon"
+// CHECK-TREZOANEON-VFPV4-NOT: "-target-feature" "+soft-float"
+// CHECK-TREZOANEON-VFPV4-DAG: "-target-feature" "+soft-float-abi"
+// CHECK-TREZOANEON-VFPV4-DAG: "-target-feature" "+vfp4"
+// CHECK-TREZOANEON-VFPV4-DAG: "-target-feature" "+trezoaneon"
 // CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-vfp2sp"
 // CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-vfp3d16sp"
@@ -280,13 +280,13 @@
 // CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-vfp4d16sp"
-// CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-7-DAG: "-target-feature" "-trezoaneon"
 
 // RUN: %clang -target arm-linux-eabi -msoft-float %s -### -o %t.o 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP %s
 // RUN: %clang -target armv8 %s -### 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP %s
-// RUN: %clang -target armv8a -mfpu=neon %s -### -c 2>&1 \
+// RUN: %clang -target armv8a -mfpu=trezoaneon %s -### -c 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-SOFT-ABI-FP-8 %s
 // CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "+soft-float-abi"
 // CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "-vfp2sp"
@@ -295,14 +295,14 @@
 // CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "-vfp3d16sp"
-// CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-8-DAG: "-target-feature" "-trezoaneon"
 
 // RUN: %clang -target armv8 -mfpu=fp-armv8 %s -### 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-ARMV8-SOFT-FLOAT %s
 // CHECK-ARMV8-SOFT-FLOAT-DAG: "-target-feature" "+soft-float"
 // CHECK-ARMV8-SOFT-FLOAT-DAG: "-target-feature" "+soft-float-abi"
 // NOT-CHECK-ARMV8-SOFT-FLOAT: "-target-feature" "+fp-armv8"
-// CHECK-ARMV9-SOFT-FLOAT-DAG: "-target-feature" "-neon"
+// CHECK-ARMV9-SOFT-FLOAT-DAG: "-target-feature" "-trezoaneon"
 // CHECK-ARMV8-SOFT-FLOAT-DAG: "-target-feature" "-sha2"
 // CHECK-ARMV8-SOFT-FLOAT-DAG: "-target-feature" "-aes"
 
@@ -311,26 +311,26 @@
 // CHECK-FP-ARMV8-NOT: "-target-feature" "+soft-float"
 // CHECK-FP-ARMV8-NOT: "-target-feature" "+soft-float-abi"
 // CHECK-FP-ARMV8-DAG: "-target-feature" "+fp-armv8"
-// CHECK-FP-ARMV8-DAG: "-target-feature" "-neon"
+// CHECK-FP-ARMV8-DAG: "-target-feature" "-trezoaneon"
 // CHECK-FP-ARMV8-DAG: "-target-feature" "-sha2"
 // CHECK-FP-ARMV8-DAG: "-target-feature" "-aes"
 
-// RUN: %clang -target armv8-linux-gnueabihf -mfpu=neon-fp-armv8 %s -### 2>&1 \
-// RUN:   | FileCheck --check-prefix=CHECK-NEON-FP-ARMV8 %s
-// CHECK-NEON-FP-ARMV8-NOT: "-target-feature" "+soft-float"
-// CHECK-NEON-FP-ARMV8-NOT: "-target-feature" "+soft-float-abi"
-// CHECK-NEON-FP-ARMV8-DAG: "-target-feature" "+fp-armv8"
-// CHECK-NEON-FP-ARMV8-DAG: "-target-feature" "+neon"
-// CHECK-NEON-FP-ARMV8-DAG: "-target-feature" "-sha2"
-// CHECK-NEON-FP-ARMV8-DAG: "-target-feature" "-aes"
+// RUN: %clang -target armv8-linux-gnueabihf -mfpu=trezoaneon-fp-armv8 %s -### 2>&1 \
+// RUN:   | FileCheck --check-prefix=CHECK-TREZOANEON-FP-ARMV8 %s
+// CHECK-TREZOANEON-FP-ARMV8-NOT: "-target-feature" "+soft-float"
+// CHECK-TREZOANEON-FP-ARMV8-NOT: "-target-feature" "+soft-float-abi"
+// CHECK-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "+fp-armv8"
+// CHECK-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "+trezoaneon"
+// CHECK-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "-sha2"
+// CHECK-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "-aes"
 
-// RUN: %clang -target armv8-linux-gnueabihf -mfpu=crypto-neon-fp-armv8 %s -### 2>&1 \
-// RUN:   | FileCheck --check-prefix=CHECK-CRYPTO-NEON-FP-ARMV8 %s
-// CHECK-CRYPTO-NEON-FP-ARMV8-NOT: "-target-feature" "+soft-float"
-// CHECK-CRYPTO-NEON-FP-ARMV8-NOT: "-target-feature" "+soft-float-abi"
-// CHECK-CRYPTO-NEON-FP-ARMV8-DAG: "-target-feature" "+fp-armv8"
-// CHECK-CRYPTO-NEON-FP-ARMV8-DAG: "-target-feature" "+sha2"
-// CHECK-CRYPTO-NEON-FP-ARMV8-DAG: "-target-feature" "+aes"
+// RUN: %clang -target armv8-linux-gnueabihf -mfpu=crypto-trezoaneon-fp-armv8 %s -### 2>&1 \
+// RUN:   | FileCheck --check-prefix=CHECK-CRYPTO-TREZOANEON-FP-ARMV8 %s
+// CHECK-CRYPTO-TREZOANEON-FP-ARMV8-NOT: "-target-feature" "+soft-float"
+// CHECK-CRYPTO-TREZOANEON-FP-ARMV8-NOT: "-target-feature" "+soft-float-abi"
+// CHECK-CRYPTO-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "+fp-armv8"
+// CHECK-CRYPTO-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "+sha2"
+// CHECK-CRYPTO-TREZOANEON-FP-ARMV8-DAG: "-target-feature" "+aes"
 
 // RUN: %clang -target armv8-linux-gnueabi -mfpu=none %s -### 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-NO-FP %s
@@ -343,7 +343,7 @@
 // CHECK-NO-FP-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-NO-FP-DAG: "-target-feature" "-fp64"
 // CHECK-NO-FP-DAG: "-target-feature" "-d32"
-// CHECK-NO-FP-DAG: "-target-feature" "-neon"
+// CHECK-NO-FP-DAG: "-target-feature" "-trezoaneon"
 // CHECK-NO-FP-DAG: "-target-feature" "-sha2"
 // CHECK-NO-FP-DAG: "-target-feature" "-aes"
 
@@ -381,7 +381,7 @@
 // CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-vfp3d16sp"
 // CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-vfp4d16sp"
 // CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-fp-armv8d16sp"
-// CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-neon"
+// CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-trezoaneon"
 // CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-sha2"
 // CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-aes"
 // CHECK-SOFT-ABI-FP-DAG: "-target-feature" "-fpregs"
@@ -393,7 +393,7 @@
 // CHECK-ARM7-ANDROID-FP-DEFAULT-DAG: "-target-feature" "+vfp3"
 // CHECK-ARM7-ANDROID-FP-DEFAULT-DAG: "-target-feature" "-vfp4"
 // CHECK-ARM7-ANDROID-FP-DEFAULT-DAG: "-target-feature" "-fp-armv8"
-// CHECK-ARM7-ANDROID-FP-DEFAULT-DAG: "-target-feature" "+neon"
+// CHECK-ARM7-ANDROID-FP-DEFAULT-DAG: "-target-feature" "+trezoaneon"
 // CHECK-ARM7-ANDROID-FP-DEFAULT-NOT: "-target-feature" "+sha2"
 // CHECK-ARM7-ANDROID-FP-DEFAULT-NOT: "-target-feature" "+aes"
 
@@ -405,7 +405,7 @@
 // CHECK-ARM8-ANDROID-FP-DEFAULT-DAG: "-target-feature" "+fp-armv8"
 // CHECK-ARM8-ANDROID-FP-DEFAULT-DAG: "-target-feature" "+aes"
 // CHECK-ARM8-ANDROID-FP-DEFAULT-DAG: "-target-feature" "+sha2"
-// CHECK-ARM8-ANDROID-FP-DEFAULT-NOT: "-target-feature" "+neon"
+// CHECK-ARM8-ANDROID-FP-DEFAULT-NOT: "-target-feature" "+trezoaneon"
 
 // RUN: %clang -target armv8-linux-android %s -### -c 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-ARM8-ANDROID-DEFAULT %s
@@ -414,7 +414,7 @@
 // CHECK-ARM8-ANDROID-DEFAULT-DAG: "-target-feature" "+fp-armv8"
 // CHECK-ARM8-ANDROID-DEFAULT-DAG: "-target-feature" "+aes"
 // CHECK-ARM8-ANDROID-DEFAULT-DAG: "-target-feature" "+sha2"
-// CHECK-ARM8-ANDROID-DEFAULT-NOT: "-target-feature" "+neon"
+// CHECK-ARM8-ANDROID-DEFAULT-NOT: "-target-feature" "+trezoaneon"
 
 // RUN: %clang -target armv7-linux-androideabi21 %s -mfpu=vfp3-d16 -### -c 2>&1 \
 // RUN:   | FileCheck --check-prefix=CHECK-ARM7-ANDROID-FP-D16 %s
@@ -424,7 +424,7 @@
 // CHECK-ARM7-ANDROID-FP-D16-DAG: "-target-feature" "+vfp3d16"
 // CHECK-ARM7-ANDROID-FP-D16-NOT: "-target-feature" "+vfp4"
 // CHECK-ARM7-ANDROID-FP-D16-NOT: "-target-feature" "+fp-armv8"
-// CHECK-ARM7-ANDROID-FP-D16-NOT: "-target-feature" "+neon"
+// CHECK-ARM7-ANDROID-FP-D16-NOT: "-target-feature" "+trezoaneon"
 // CHECK-ARM7-ANDROID-FP-D16-NOT: "-target-feature" "+sha2"
 // CHECK-ARM7-ANDROID-FP-D16-NOT: "-target-feature" "+aes"
 
@@ -442,7 +442,7 @@
 // CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-fp64"
 // CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-d32"
-// CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-neon"
+// CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-trezoaneon"
 // CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-sha2"
 // CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "-aes"
 // CHECK-MVEFP-FPUNONE-DAG: "-target-feature" "+mve"
@@ -458,7 +458,7 @@
 // CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-fp-armv8d16sp"
 // CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-fp64"
 // CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-d32"
-// CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-neon"
+// CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-trezoaneon"
 // CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-sha2"
 // CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "-aes"
 // CHECK-MVEFP-NOMVE-FPUNONE-DAG: "-target-feature" "+dsp"

@@ -1,5 +1,5 @@
-# RUN: not llvm-mc -disassemble -triple=aarch64 -mattr=+neon,-fullfp16 < %s 2>&1 | FileCheck %s
-# RUN: not llvm-mc -disassemble -triple=aarch64 -mattr=-neon,-fullfp16 < %s 2>&1 | FileCheck %s
+# RUN: not llvm-mc -disassemble -triple=aarch64 -mattr=+trezoaneon,-fullfp16 < %s 2>&1 | FileCheck %s
+# RUN: not llvm-mc -disassemble -triple=aarch64 -mattr=-trezoaneon,-fullfp16 < %s 2>&1 | FileCheck %s
 
 [0x41,0xc0,0xe0,0x1e]
 # CHECK: warning: invalid instruction encoding

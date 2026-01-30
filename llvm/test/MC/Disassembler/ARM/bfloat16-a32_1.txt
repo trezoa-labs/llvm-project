@@ -1,4 +1,4 @@
-# RUN: llvm-mc -triple arm-none-linux-gnu -mattr=+bf16,+neon --disassemble < %s | FileCheck %s
+# RUN: llvm-mc -triple arm-none-linux-gnu -mattr=+bf16,+trezoaneon --disassemble < %s | FileCheck %s
 # RUN: llvm-mc -triple arm-none-linux-gnu -mattr=+v8.6a --disassemble < %s | FileCheck %s
 # RUN: llvm-mc -triple arm-none-linux-gnu -mattr=-bf16 --disassemble < %s 2>&1  | FileCheck %s --check-prefix=NOBF16
 # RUN: llvm-mc -triple arm-none-linux-gnu --disassemble < %s 2>&1  | FileCheck %s --check-prefix=NOBF16

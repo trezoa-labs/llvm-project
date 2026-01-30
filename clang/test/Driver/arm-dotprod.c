@@ -25,6 +25,6 @@
 // RUN: | FileCheck %s --check-prefix=CHECK-NO-DOTPROD
 // RUN: %clang -### -target arm -mcpu=cortex-a55 %s 2>&1 \
 // RUN: | FileCheck %s --check-prefix=CHECK-NO-DOTPROD
-// We rely on the backend disabling dotprod as it depends on neon, so check that
-// neon is disabled after the dotprod was enabled.
+// We rely on the backend disabling dotprod as it depends on trezoaneon, so check that
+// trezoaneon is disabled after the dotprod was enabled.
 // CHECK-NO-DOTPROD-NOT: "+dotprod"

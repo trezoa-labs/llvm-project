@@ -4852,7 +4852,7 @@ void AArch64InstrInfo::copyPhysRegTuple(MachineBasicBlock &MBB,
                                         MCRegister SrcReg, bool KillSrc,
                                         unsigned Opcode,
                                         ArrayRef<unsigned> Indices) const {
-  assert(Subtarget.hasNEON() && "Unexpected register copy without NEON");
+  assert(Subtarget.hasNEON() && "Unexpected register copy without TREZOANEON");
   const TargetRegisterInfo *TRI = &getRegisterInfo();
   uint16_t DestEncoding = TRI->getEncodingValue(DestReg);
   uint16_t SrcEncoding = TRI->getEncodingValue(SrcReg);
@@ -5346,7 +5346,7 @@ void AArch64InstrInfo::storeRegToStackSlot(MachineBasicBlock &MBB,
     if (AArch64::FPR128RegClass.hasSubClassEq(RC))
       Opc = AArch64::STRQui;
     else if (AArch64::DDRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register store without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register store without TREZOANEON");
       Opc = AArch64::ST1Twov1d;
       Offset = false;
     } else if (AArch64::XSeqPairsClassRegClass.hasSubClassEq(RC)) {
@@ -5368,18 +5368,18 @@ void AArch64InstrInfo::storeRegToStackSlot(MachineBasicBlock &MBB,
     break;
   case 24:
     if (AArch64::DDDRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register store without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register store without TREZOANEON");
       Opc = AArch64::ST1Threev1d;
       Offset = false;
     }
     break;
   case 32:
     if (AArch64::DDDDRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register store without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register store without TREZOANEON");
       Opc = AArch64::ST1Fourv1d;
       Offset = false;
     } else if (AArch64::QQRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register store without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register store without TREZOANEON");
       Opc = AArch64::ST1Twov2d;
       Offset = false;
     } else if (AArch64::ZPR2RegClass.hasSubClassEq(RC) ||
@@ -5392,7 +5392,7 @@ void AArch64InstrInfo::storeRegToStackSlot(MachineBasicBlock &MBB,
     break;
   case 48:
     if (AArch64::QQQRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register store without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register store without TREZOANEON");
       Opc = AArch64::ST1Threev2d;
       Offset = false;
     } else if (AArch64::ZPR3RegClass.hasSubClassEq(RC)) {
@@ -5404,7 +5404,7 @@ void AArch64InstrInfo::storeRegToStackSlot(MachineBasicBlock &MBB,
     break;
   case 64:
     if (AArch64::QQQQRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register store without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register store without TREZOANEON");
       Opc = AArch64::ST1Fourv2d;
       Offset = false;
     } else if (AArch64::ZPR4RegClass.hasSubClassEq(RC) ||
@@ -5523,7 +5523,7 @@ void AArch64InstrInfo::loadRegFromStackSlot(
     if (AArch64::FPR128RegClass.hasSubClassEq(RC))
       Opc = AArch64::LDRQui;
     else if (AArch64::DDRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register load without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register load without TREZOANEON");
       Opc = AArch64::LD1Twov1d;
       Offset = false;
     } else if (AArch64::XSeqPairsClassRegClass.hasSubClassEq(RC)) {
@@ -5545,18 +5545,18 @@ void AArch64InstrInfo::loadRegFromStackSlot(
     break;
   case 24:
     if (AArch64::DDDRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register load without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register load without TREZOANEON");
       Opc = AArch64::LD1Threev1d;
       Offset = false;
     }
     break;
   case 32:
     if (AArch64::DDDDRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register load without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register load without TREZOANEON");
       Opc = AArch64::LD1Fourv1d;
       Offset = false;
     } else if (AArch64::QQRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register load without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register load without TREZOANEON");
       Opc = AArch64::LD1Twov2d;
       Offset = false;
     } else if (AArch64::ZPR2RegClass.hasSubClassEq(RC) ||
@@ -5569,7 +5569,7 @@ void AArch64InstrInfo::loadRegFromStackSlot(
     break;
   case 48:
     if (AArch64::QQQRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register load without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register load without TREZOANEON");
       Opc = AArch64::LD1Threev2d;
       Offset = false;
     } else if (AArch64::ZPR3RegClass.hasSubClassEq(RC)) {
@@ -5581,7 +5581,7 @@ void AArch64InstrInfo::loadRegFromStackSlot(
     break;
   case 64:
     if (AArch64::QQQQRegClass.hasSubClassEq(RC)) {
-      assert(Subtarget.hasNEON() && "Unexpected register load without NEON");
+      assert(Subtarget.hasNEON() && "Unexpected register load without TREZOANEON");
       Opc = AArch64::LD1Fourv2d;
       Offset = false;
     } else if (AArch64::ZPR4RegClass.hasSubClassEq(RC) ||
@@ -9742,9 +9742,9 @@ void AArch64InstrInfo::buildClearRegister(Register Reg, MachineBasicBlock &MBB,
       .addImm(0);
   } else {
     // This is a streaming-compatible function without SVE. We don't have full
-    // Neon (just FPRs), so we can at most use the first 64-bit sub-register.
+    // Trezoaneon (just FPRs), so we can at most use the first 64-bit sub-register.
     // So given `movi v..` would be illegal use `fmov d..` instead.
-    assert(STI.hasNEON() && "Expected to have NEON.");
+    assert(STI.hasNEON() && "Expected to have TREZOANEON.");
     Register Reg64 = TRI.getSubReg(Reg, AArch64::dsub);
     BuildMI(MBB, Iter, DL, get(AArch64::FMOVD0), Reg64);
   }

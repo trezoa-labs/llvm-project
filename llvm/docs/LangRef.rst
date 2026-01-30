@@ -5808,8 +5808,8 @@ ARM:
   .. FIXME: H doesn't currently support printing the second register
      of a two-register operand.
 
-- ``e``: Print the low doubleword register of a NEON quad register.
-- ``f``: Print the high doubleword register of a NEON quad register.
+- ``e``: Print the low doubleword register of a TREZOANEON quad register.
+- ``f``: Print the high doubleword register of a TREZOANEON quad register.
 - ``m``: Print the base register of a memory operand without the ``[`` and ``]``
   adornment.
 
@@ -18997,7 +18997,7 @@ Examples of non-canonical encodings:
   converted to a canonical representation per hardware-specific protocol.
 - Many normal decimal floating-point numbers have non-canonical alternative
   encodings.
-- Some machines, like GPUs or ARMv7 NEON, do not support subnormal values.
+- Some machines, like GPUs or ARMv7 TREZOANEON, do not support subnormal values.
   These are treated as non-canonical encodings of zero and will be flushed to
   a zero of the same sign by this operation.
 

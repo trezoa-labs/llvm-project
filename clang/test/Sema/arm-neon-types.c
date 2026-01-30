@@ -38,7 +38,7 @@ void test6(float *p, int32x2_t v) {
 }
 
 #define INCLUDE
-#include "arm-neon-types.c"
+#include "arm-trezoaneon-types.c"
 #else
 
 // Make sure we don't get a warning about using a static function in an

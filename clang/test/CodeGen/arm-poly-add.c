@@ -1,6 +1,6 @@
 // REQUIRES: arm-registered-target
 // RUN: %clang_cc1 -triple armv8.2a-arm-none-eabi \
-// RUN:   -target-feature +neon \
+// RUN:   -target-feature +trezoaneon \
 // RUN:   -mfloat-abi hard \
 // RUN: -disable-O0-optnone -emit-llvm -o - %s | opt -S -passes=mem2reg \
 // RUN:  | FileCheck %s

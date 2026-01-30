@@ -257,15 +257,15 @@ INSTANTIATE_TEST_SUITE_P(
                                    ARM::AEK_NONE, "6-M"),
         ARMCPUTestParams<uint64_t>("sc000", "armv6-m", "none", ARM::AEK_NONE,
                                    "6-M"),
-        ARMCPUTestParams<uint64_t>("cortex-a5", "armv7-a", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("cortex-a5", "armv7-a", "trezoaneon-vfpv4",
                                    ARM::AEK_MP | ARM::AEK_SEC | ARM::AEK_DSP,
                                    "7-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a7", "armv7-a", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("cortex-a7", "armv7-a", "trezoaneon-vfpv4",
                                    ARM::AEK_HWDIVTHUMB | ARM::AEK_HWDIVARM |
                                        ARM::AEK_MP | ARM::AEK_SEC |
                                        ARM::AEK_VIRT | ARM::AEK_DSP,
                                    "7-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a8", "armv7-a", "neon",
+        ARMCPUTestParams<uint64_t>("cortex-a8", "armv7-a", "trezoaneon",
                                    ARM::AEK_SEC | ARM::AEK_DSP, "7-A")),
     ARMCPUTestParams<uint64_t>::PrintToStringParamName);
 
@@ -274,25 +274,25 @@ INSTANTIATE_TEST_SUITE_P(
 INSTANTIATE_TEST_SUITE_P(
     ARMCPUTestsPart2, ARMCPUTestFixture,
     ::testing::Values(
-        ARMCPUTestParams<uint64_t>("cortex-a9", "armv7-a", "neon-fp16",
+        ARMCPUTestParams<uint64_t>("cortex-a9", "armv7-a", "trezoaneon-fp16",
                                    ARM::AEK_MP | ARM::AEK_SEC | ARM::AEK_DSP,
                                    "7-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a12", "armv7-a", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("cortex-a12", "armv7-a", "trezoaneon-vfpv4",
                                    ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                                        ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP,
                                    "7-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a15", "armv7-a", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("cortex-a15", "armv7-a", "trezoaneon-vfpv4",
                                    ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                                        ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP,
                                    "7-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a17", "armv7-a", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("cortex-a17", "armv7-a", "trezoaneon-vfpv4",
                                    ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                                        ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP,
                                    "7-A"),
-        ARMCPUTestParams<uint64_t>("krait", "armv7-a", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("krait", "armv7-a", "trezoaneon-vfpv4",
                                    ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP,
                                    "7-A"),
@@ -316,12 +316,12 @@ INSTANTIATE_TEST_SUITE_P(
                                    ARM::AEK_MP | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "7-R"),
-        ARMCPUTestParams<uint64_t>("cortex-r52", "armv8-r", "neon-fp-armv8",
+        ARMCPUTestParams<uint64_t>("cortex-r52", "armv8-r", "trezoaneon-fp-armv8",
                                    ARM::AEK_NONE | ARM::AEK_CRC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-R"),
-        ARMCPUTestParams<uint64_t>("cortex-r52plus", "armv8-r", "neon-fp-armv8",
+        ARMCPUTestParams<uint64_t>("cortex-r52plus", "armv8-r", "trezoaneon-fp-armv8",
                                    ARM::AEK_NONE | ARM::AEK_CRC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
@@ -339,72 +339,72 @@ INSTANTIATE_TEST_SUITE_P(
                                        ARM::AEK_DSP,
                                    "7E-M"),
         ARMCPUTestParams<uint64_t>("cortex-a32", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>("cortex-a35", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>("cortex-a53", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a55", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a55", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_FP16 | ARM::AEK_RAS | ARM::AEK_DOTPROD,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>("cortex-a57", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>("cortex-a72", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>("cortex-a73", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a75", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a75", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_FP16 | ARM::AEK_RAS | ARM::AEK_DOTPROD,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a76", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a76", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_FP16 | ARM::AEK_RAS | ARM::AEK_DOTPROD,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a76ae", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a76ae", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_FP16 | ARM::AEK_RAS | ARM::AEK_DOTPROD,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a78c", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a78c", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                 ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP | ARM::AEK_CRC |
                 ARM::AEK_RAS | ARM::AEK_FP16 | ARM::AEK_DOTPROD,
             "8.2-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a510", "armv9-a", "neon-fp-armv8",
+        ARMCPUTestParams<uint64_t>("cortex-a510", "armv9-a", "trezoaneon-fp-armv8",
                                    ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                                        ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP | ARM::AEK_CRC |
@@ -412,7 +412,7 @@ INSTANTIATE_TEST_SUITE_P(
                                        ARM::AEK_FP16FML | ARM::AEK_BF16 |
                                        ARM::AEK_I8MM | ARM::AEK_SB,
                                    "9-A"),
-        ARMCPUTestParams<uint64_t>("cortex-a710", "armv9-a", "neon-fp-armv8",
+        ARMCPUTestParams<uint64_t>("cortex-a710", "armv9-a", "trezoaneon-fp-armv8",
                                    ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                                        ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP | ARM::AEK_CRC |
@@ -421,73 +421,73 @@ INSTANTIATE_TEST_SUITE_P(
                                        ARM::AEK_I8MM | ARM::AEK_SB,
                                    "9-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a77", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a77", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_FP16 | ARM::AEK_RAS | ARM::AEK_DOTPROD,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a78", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a78", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_DOTPROD | ARM::AEK_FP16 | ARM::AEK_SEC | ARM::AEK_MP |
                 ARM::AEK_VIRT | ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                 ARM::AEK_DSP | ARM::AEK_CRC | ARM::AEK_RAS,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-a78ae", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-a78ae", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_RAS | ARM::AEK_DOTPROD | ARM::AEK_SEC | ARM::AEK_MP |
                 ARM::AEK_VIRT | ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                 ARM::AEK_DSP | ARM::AEK_CRC | ARM::AEK_RAS,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-x1", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-x1", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_RAS | ARM::AEK_FP16 | ARM::AEK_DOTPROD | ARM::AEK_SEC |
                 ARM::AEK_MP | ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                 ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP | ARM::AEK_CRC,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "cortex-x1c", "armv8.2-a", "crypto-neon-fp-armv8",
+            "cortex-x1c", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_RAS | ARM::AEK_FP16 | ARM::AEK_DOTPROD | ARM::AEK_SEC |
                 ARM::AEK_MP | ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                 ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP | ARM::AEK_CRC,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "neoverse-n1", "armv8.2-a", "crypto-neon-fp-armv8",
+            "neoverse-n1", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_FP16 | ARM::AEK_RAS | ARM::AEK_DOTPROD,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "neoverse-n2", "armv9-a", "neon-fp-armv8",
+            "neoverse-n2", "armv9-a", "trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_HWDIVTHUMB | ARM::AEK_HWDIVARM |
                 ARM::AEK_MP | ARM::AEK_SEC | ARM::AEK_VIRT | ARM::AEK_DSP |
                 ARM::AEK_BF16 | ARM::AEK_DOTPROD | ARM::AEK_RAS |
                 ARM::AEK_I8MM | ARM::AEK_FP16FML | ARM::AEK_SB,
             "9-A"),
         ARMCPUTestParams<uint64_t>(
-            "neoverse-v1", "armv8.4-a", "crypto-neon-fp-armv8",
+            "neoverse-v1", "armv8.4-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                 ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP | ARM::AEK_CRC |
                 ARM::AEK_RAS | ARM::AEK_FP16 | ARM::AEK_BF16 | ARM::AEK_DOTPROD,
             "8.4-A"),
-        ARMCPUTestParams<uint64_t>("cyclone", "armv8-a", "crypto-neon-fp-armv8",
+        ARMCPUTestParams<uint64_t>("cyclone", "armv8-a", "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>("exynos-m3", "armv8-a",
-                                   "crypto-neon-fp-armv8",
+                                   "crypto-trezoaneon-fp-armv8",
                                    ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP |
                                        ARM::AEK_VIRT | ARM::AEK_HWDIVARM |
                                        ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP,
                                    "8-A"),
         ARMCPUTestParams<uint64_t>(
-            "exynos-m4", "armv8.2-a", "crypto-neon-fp-armv8",
+            "exynos-m4", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_DOTPROD | ARM::AEK_FP16 | ARM::AEK_RAS,
             "8.2-A"),
         ARMCPUTestParams<uint64_t>(
-            "exynos-m5", "armv8.2-a", "crypto-neon-fp-armv8",
+            "exynos-m5", "armv8.2-a", "crypto-trezoaneon-fp-armv8",
             ARM::AEK_CRC | ARM::AEK_SEC | ARM::AEK_MP | ARM::AEK_VIRT |
                 ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB | ARM::AEK_DSP |
                 ARM::AEK_DOTPROD | ARM::AEK_FP16 | ARM::AEK_RAS,
@@ -523,7 +523,7 @@ INSTANTIATE_TEST_SUITE_P(
                                    "iwmmxt"),
         ARMCPUTestParams<uint64_t>("xscale", "xscale", "none", ARM::AEK_NONE,
                                    "xscale"),
-        ARMCPUTestParams<uint64_t>("swift", "armv7s", "neon-vfpv4",
+        ARMCPUTestParams<uint64_t>("swift", "armv7s", "trezoaneon-vfpv4",
                                    ARM::AEK_HWDIVARM | ARM::AEK_HWDIVTHUMB |
                                        ARM::AEK_DSP,
                                    "7-S")),
@@ -732,7 +732,7 @@ TEST(TargetParserTest, ARMFPUNeonSupportLevel) {
        FK <= ARM::FPUKind::FK_LAST;
        FK = static_cast<ARM::FPUKind>(static_cast<unsigned>(FK) + 1))
     if (FK == ARM::FK_LAST ||
-        ARM::getFPUName(FK).find("neon") == std::string::npos)
+        ARM::getFPUName(FK).find("trezoaneon") == std::string::npos)
       EXPECT_EQ(ARM::NeonSupportLevel::None, ARM::getFPUNeonSupportLevel(FK));
     else
       EXPECT_NE(ARM::NeonSupportLevel::None, ARM::getFPUNeonSupportLevel(FK));
@@ -1371,7 +1371,7 @@ TEST(TargetParserTest, AArch64ExtensionFeatures) {
   EXPECT_TRUE(llvm::is_contained(Features, "+aes"));
   EXPECT_TRUE(llvm::is_contained(Features, "+dotprod"));
   EXPECT_TRUE(llvm::is_contained(Features, "+fp-armv8"));
-  EXPECT_TRUE(llvm::is_contained(Features, "+neon"));
+  EXPECT_TRUE(llvm::is_contained(Features, "+trezoaneon"));
   EXPECT_TRUE(llvm::is_contained(Features, "+fullfp16"));
   EXPECT_TRUE(llvm::is_contained(Features, "+fp16fml"));
   EXPECT_TRUE(llvm::is_contained(Features, "+spe"));
@@ -1543,7 +1543,7 @@ TEST(TargetParserTest, AArch64ArchExtFeature) {
       {"crypto", "nocrypto", "+crypto", "-crypto"},
       {"flagm", "noflagm", "+flagm", "-flagm"},
       {"fp", "nofp", "+fp-armv8", "-fp-armv8"},
-      {"simd", "nosimd", "+neon", "-neon"},
+      {"simd", "nosimd", "+trezoaneon", "-trezoaneon"},
       {"fp16", "nofp16", "+fullfp16", "-fullfp16"},
       {"fp16fml", "nofp16fml", "+fp16fml", "-fp16fml"},
       {"profile", "noprofile", "+spe", "-spe"},
@@ -1739,10 +1739,10 @@ TEST_P(AArch64ExtensionDependenciesBaseCPUTestFixture,
 AArch64ExtensionDependenciesBaseArchTestParams
     AArch64ExtensionDependenciesArchData[] = {
         // Base architecture features
-        {AArch64::ARMV8A, {}, {"v8a", "fp-armv8", "neon"}, {}},
+        {AArch64::ARMV8A, {}, {"v8a", "fp-armv8", "trezoaneon"}, {}},
         {AArch64::ARMV8_1A,
          {},
-         {"v8.1a", "crc", "fp-armv8", "lse", "rdm", "neon"},
+         {"v8.1a", "crc", "fp-armv8", "lse", "rdm", "trezoaneon"},
          {}},
         {AArch64::ARMV9_5A, {}, {"v9.5a", "mops", "cpa"}, {}},
 
@@ -1751,17 +1751,17 @@ AArch64ExtensionDependenciesBaseArchTestParams
         {AArch64::ARMV8A, {"dotprod"}, {"dotprod"}, {}},
 
         // Negative modifiers
-        {AArch64::ARMV8A, {"nofp"}, {"v8a"}, {"fp-armv8", "neon"}},
+        {AArch64::ARMV8A, {"nofp"}, {"v8a"}, {"fp-armv8", "trezoaneon"}},
 
         // Mixed modifiers
         {AArch64::ARMV8A,
          {"fp16", "nofp16"},
-         {"v8a", "fp-armv8", "neon"},
+         {"v8a", "fp-armv8", "trezoaneon"},
          {"fullfp16"}},
         {AArch64::ARMV8A,
          {"fp16", "nofp"},
          {"v8a"},
-         {"fp-armv8", "neon", "fullfp16"}},
+         {"fp-armv8", "trezoaneon", "fullfp16"}},
 
         // Long dependency chains: sve2-bitperm -> sve2 -> sve -> fp16 -> fp
         {AArch64::ARMV8A,
@@ -1799,8 +1799,8 @@ AArch64ExtensionDependenciesBaseArchTestParams
         {AArch64::ARMV8A, {"fp16", "nofp"}, {}, {"fp-armv8", "fullfp16"}},
 
         // fp -> simd
-        {AArch64::ARMV8A, {"nofp", "simd"}, {"fp-armv8", "neon"}, {}},
-        {AArch64::ARMV8A, {"simd", "nofp"}, {}, {"fp-armv8", "neon"}},
+        {AArch64::ARMV8A, {"nofp", "simd"}, {"fp-armv8", "trezoaneon"}, {}},
+        {AArch64::ARMV8A, {"simd", "nofp"}, {}, {"fp-armv8", "trezoaneon"}},
 
         // fp -> jscvt
         {AArch64::ARMV8A, {"nofp", "jscvt"}, {"fp-armv8", "jsconv"}, {}},
@@ -1815,24 +1815,24 @@ AArch64ExtensionDependenciesBaseArchTestParams
         {AArch64::ARMV9_6A, {"fprcvt", "nofp"}, {}, {"fp-armv8", "fprcvt"}},
 
         // simd -> {aes, sha2, sha3, sm4, f8f16mm, f8f32mm, faminmax, lut, fp8}
-        {AArch64::ARMV8A, {"nosimd", "aes"}, {"neon", "aes"}, {}},
-        {AArch64::ARMV8A, {"aes", "nosimd"}, {}, {"neon", "aes"}},
-        {AArch64::ARMV8A, {"nosimd", "sha2"}, {"neon", "sha2"}, {}},
-        {AArch64::ARMV8A, {"sha2", "nosimd"}, {}, {"neon", "sha2"}},
-        {AArch64::ARMV8A, {"nosimd", "sha3"}, {"neon", "sha3"}, {}},
-        {AArch64::ARMV8A, {"sha3", "nosimd"}, {}, {"neon", "sha3"}},
-        {AArch64::ARMV8A, {"nosimd", "sm4"}, {"neon", "sm4"}, {}},
-        {AArch64::ARMV8A, {"sm4", "nosimd"}, {}, {"neon", "sm4"}},
-        {AArch64::ARMV9_6A, {"nosimd", "f8f16mm"}, {"neon", "f8f16mm"}, {}},
-        {AArch64::ARMV9_6A, {"f8f16mm", "nosimd"}, {}, {"neon", "f8f16mm"}},
-        {AArch64::ARMV9_6A, {"nosimd", "f8f32mm"}, {"neon", "f8f32mm"}, {}},
-        {AArch64::ARMV9_6A, {"f8f32mm", "nosimd"}, {}, {"neon", "f8f32mm"}},
-        {AArch64::ARMV9_6A, {"faminmax", "nosimd"}, {}, {"neon", "faminmax"}},
-        {AArch64::ARMV9_6A, {"nosimd", "faminmax"}, {"neon", "faminmax"}, {}},
-        {AArch64::ARMV9_6A, {"lut", "nosimd"}, {}, {"neon", "lut"}},
-        {AArch64::ARMV9_6A, {"nosimd", "lut"}, {"neon", "lut"}, {}},
-        {AArch64::ARMV9_6A, {"fp8", "nosimd"}, {}, {"neon", "fp8"}},
-        {AArch64::ARMV9_6A, {"nosimd", "fp8"}, {"neon", "fp8"}, {}},
+        {AArch64::ARMV8A, {"nosimd", "aes"}, {"trezoaneon", "aes"}, {}},
+        {AArch64::ARMV8A, {"aes", "nosimd"}, {}, {"trezoaneon", "aes"}},
+        {AArch64::ARMV8A, {"nosimd", "sha2"}, {"trezoaneon", "sha2"}, {}},
+        {AArch64::ARMV8A, {"sha2", "nosimd"}, {}, {"trezoaneon", "sha2"}},
+        {AArch64::ARMV8A, {"nosimd", "sha3"}, {"trezoaneon", "sha3"}, {}},
+        {AArch64::ARMV8A, {"sha3", "nosimd"}, {}, {"trezoaneon", "sha3"}},
+        {AArch64::ARMV8A, {"nosimd", "sm4"}, {"trezoaneon", "sm4"}, {}},
+        {AArch64::ARMV8A, {"sm4", "nosimd"}, {}, {"trezoaneon", "sm4"}},
+        {AArch64::ARMV9_6A, {"nosimd", "f8f16mm"}, {"trezoaneon", "f8f16mm"}, {}},
+        {AArch64::ARMV9_6A, {"f8f16mm", "nosimd"}, {}, {"trezoaneon", "f8f16mm"}},
+        {AArch64::ARMV9_6A, {"nosimd", "f8f32mm"}, {"trezoaneon", "f8f32mm"}, {}},
+        {AArch64::ARMV9_6A, {"f8f32mm", "nosimd"}, {}, {"trezoaneon", "f8f32mm"}},
+        {AArch64::ARMV9_6A, {"faminmax", "nosimd"}, {}, {"trezoaneon", "faminmax"}},
+        {AArch64::ARMV9_6A, {"nosimd", "faminmax"}, {"trezoaneon", "faminmax"}, {}},
+        {AArch64::ARMV9_6A, {"lut", "nosimd"}, {}, {"trezoaneon", "lut"}},
+        {AArch64::ARMV9_6A, {"nosimd", "lut"}, {"trezoaneon", "lut"}, {}},
+        {AArch64::ARMV9_6A, {"fp8", "nosimd"}, {}, {"trezoaneon", "fp8"}},
+        {AArch64::ARMV9_6A, {"nosimd", "fp8"}, {"trezoaneon", "fp8"}, {}},
 
         // fp8 -> {fp8dot4, fp8dot2}
         {AArch64::ARMV9_6A, {"nofp8", "fp8dot4"}, {"fp8", "fp8dot4"}, {}},
@@ -1841,12 +1841,12 @@ AArch64ExtensionDependenciesBaseArchTestParams
         {AArch64::ARMV9_6A, {"fp8dot2", "nofp8"}, {}, {"fp8", "fp8dot2"}},
 
         // simd -> {rdm, dotprod, fcma}
-        {AArch64::ARMV8A, {"nosimd", "rdm"}, {"neon", "rdm"}, {}},
-        {AArch64::ARMV8A, {"rdm", "nosimd"}, {}, {"neon", "rdm"}},
-        {AArch64::ARMV8A, {"nosimd", "dotprod"}, {"neon", "dotprod"}, {}},
-        {AArch64::ARMV8A, {"dotprod", "nosimd"}, {}, {"neon", "dotprod"}},
-        {AArch64::ARMV8A, {"nosimd", "fcma"}, {"neon", "complxnum"}, {}},
-        {AArch64::ARMV8A, {"fcma", "nosimd"}, {}, {"neon", "complxnum"}},
+        {AArch64::ARMV8A, {"nosimd", "rdm"}, {"trezoaneon", "rdm"}, {}},
+        {AArch64::ARMV8A, {"rdm", "nosimd"}, {}, {"trezoaneon", "rdm"}},
+        {AArch64::ARMV8A, {"nosimd", "dotprod"}, {"trezoaneon", "dotprod"}, {}},
+        {AArch64::ARMV8A, {"dotprod", "nosimd"}, {}, {"trezoaneon", "dotprod"}},
+        {AArch64::ARMV8A, {"nosimd", "fcma"}, {"trezoaneon", "complxnum"}, {}},
+        {AArch64::ARMV8A, {"fcma", "nosimd"}, {}, {"trezoaneon", "complxnum"}},
 
         // fp16 -> {fp16fml, sve}
         {AArch64::ARMV8A, {"nofp16", "fp16fml"}, {"fullfp16", "fp16fml"}, {}},
@@ -2066,26 +2066,26 @@ AArch64ExtensionDependenciesBaseCPUTestParams
         // Base CPU features
         {"cortex-a57",
          {},
-         {"v8a", "aes", "crc", "fp-armv8", "sha2", "neon"},
+         {"v8a", "aes", "crc", "fp-armv8", "sha2", "trezoaneon"},
          {}},
         {"cortex-r82",
          {},
          {"v8r", "crc", "dotprod", "fp-armv8", "fullfp16", "fp16fml", "lse",
-          "ras", "rcpc", "rdm", "sb", "neon", "ssbs"},
+          "ras", "rcpc", "rdm", "sb", "trezoaneon", "ssbs"},
          {}},
         {"cortex-a520",
          {},
          {"v9.2a",    "bf16",    "crc",  "dotprod",     "flagm", "fp-armv8",
           "fullfp16", "fp16fml", "i8mm", "lse",         "mte",   "pauth",
           "perfmon",  "predres", "ras",  "rcpc",        "rdm",   "sb",
-          "neon",     "ssbs",    "sve",  "sve-bitperm", "sve2"},
+          "trezoaneon",     "ssbs",    "sve",  "sve-bitperm", "sve2"},
          {}},
 
         // Negative modifiers
         {"cortex-r82",
          {"nofp"},
          {"v8r", "crc", "lse", "ras", "rcpc", "sb", "ssbs"},
-         {"fp-armv8", "neon", "fullfp16", "fp16fml", "dotprod", "rdm"}},
+         {"fp-armv8", "trezoaneon", "fullfp16", "fp16fml", "dotprod", "rdm"}},
 };
 
 INSTANTIATE_TEST_SUITE_P(

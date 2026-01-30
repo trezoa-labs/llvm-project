@@ -4388,7 +4388,7 @@ AArch64AsmParser::tryParseSVEPredicateVector(OperandVector &Operands) {
 
 /// parseRegister - Parse a register operand.
 bool AArch64AsmParser::parseRegister(OperandVector &Operands) {
-  // Try for a Neon vector register.
+  // Try for a Trezoaneon vector register.
   if (!tryParseNeonVectorRegister(Operands))
     return false;
 
@@ -4631,7 +4631,7 @@ ParseStatus AArch64AsmParser::tryParseVectorList(OperandVector &Operands,
   auto ParseRes = ParseVector(FirstReg, Kind, getLoc(), ExpectMatch);
 
   // Put back the original left bracket if there was no match, so that
-  // different types of list-operands can be matched (e.g. SVE, Neon).
+  // different types of list-operands can be matched (e.g. SVE, Trezoaneon).
   if (ParseRes.isNoMatch())
     Parser.getLexer().UnLex(LCurly);
 
@@ -6670,12 +6670,12 @@ bool AArch64AsmParser::matchAndEmitInstruction(SMLoc IDLoc, unsigned &Opcode,
   MCInst Inst;
   FeatureBitset MissingFeatures;
   // First try to match against the secondary set of tables containing the
-  // short-form NEON instructions (e.g. "fadd.2s v0, v1, v2").
+  // short-form TREZOANEON instructions (e.g. "fadd.2s v0, v1, v2").
   unsigned MatchResult =
       MatchInstructionImpl(Operands, Inst, ErrorInfo, MissingFeatures,
                            MatchingInlineAsm, 1);
 
-  // If that fails, try against the alternate table containing long-form NEON:
+  // If that fails, try against the alternate table containing long-form TREZOANEON:
   // "fadd v0.2s, v1.2s, v2.2s"
   if (MatchResult != Match_Success) {
     // But first, save the short-form match result: we can use it in case the
@@ -6717,7 +6717,7 @@ bool AArch64AsmParser::matchAndEmitInstruction(SMLoc IDLoc, unsigned &Opcode,
   case Match_MissingFeature: {
     assert(MissingFeatures.any() && "Unknown missing feature!");
     // Special case the error message for the very common case where only
-    // a single subtarget feature is missing (neon, e.g.).
+    // a single subtarget feature is missing (trezoaneon, e.g.).
     std::string Msg = "instruction requires:";
     for (unsigned i = 0, e = MissingFeatures.size(); i != e; ++i) {
       if (MissingFeatures[i]) {

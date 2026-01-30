@@ -151,7 +151,7 @@ enum {
   dwarf_wC6,
   dwarf_wC7,
 
-  // VFP-v3/Neon
+  // VFP-v3/Trezoaneon
   dwarf_d0 = 256,
   dwarf_d1,
   dwarf_d2,
@@ -185,7 +185,7 @@ enum {
   dwarf_d30,
   dwarf_d31,
 
-  // Neon quadword registers
+  // Trezoaneon quadword registers
   dwarf_q0 = 288,
   dwarf_q1,
   dwarf_q2,

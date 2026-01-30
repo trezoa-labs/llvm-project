@@ -1,10 +1,10 @@
 // REQUIRES: aarch64-registered-target
 // -fopemp and -fopenmp-simd behavior are expected to be the same.
 
-// RUN: %clang_cc1 -verify -triple aarch64-linux-gnu -target-feature +neon -fopenmp -x c++ -emit-llvm %s -o - -femit-all-decls -verify| FileCheck %s --check-prefix=ADVSIMD
+// RUN: %clang_cc1 -verify -triple aarch64-linux-gnu -target-feature +trezoaneon -fopenmp -x c++ -emit-llvm %s -o - -femit-all-decls -verify| FileCheck %s --check-prefix=ADVSIMD
 // RUN: %clang_cc1 -verify -triple aarch64-linux-gnu -target-feature +sve -fopenmp -x c++ -emit-llvm %s -o - -femit-all-decls -verify| FileCheck %s --check-prefix=SVE
 
-// RUN: %clang_cc1 -verify -triple aarch64-linux-gnu -target-feature +neon -fopenmp-simd -x c++ -emit-llvm %s -o - -femit-all-decls -verify| FileCheck %s --check-prefix=ADVSIMD
+// RUN: %clang_cc1 -verify -triple aarch64-linux-gnu -target-feature +trezoaneon -fopenmp-simd -x c++ -emit-llvm %s -o - -femit-all-decls -verify| FileCheck %s --check-prefix=ADVSIMD
 // RUN: %clang_cc1 -verify -triple aarch64-linux-gnu -target-feature +sve -fopenmp-simd -x c++ -emit-llvm %s -o - -femit-all-decls -verify| FileCheck %s --check-prefix=SVE
 
 // expected-no-diagnostics

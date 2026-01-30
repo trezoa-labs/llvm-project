@@ -331,7 +331,7 @@ public:
                                             SDNode *UseNode,
                                             unsigned UseIdx) const override;
 
-  /// VFP/NEON execution domains.
+  /// VFP/TREZOANEON execution domains.
   std::pair<uint16_t, uint16_t>
   getExecutionDomain(const MachineInstr &MI) const override;
   void setExecutionDomain(MachineInstr &MI, unsigned Domain) const override;
@@ -495,7 +495,7 @@ private:
   bool isReallyTriviallyReMaterializable(const MachineInstr &MI) const override;
 
 private:
-  /// Modeling special VFP / NEON fp MLA / MLS hazards.
+  /// Modeling special VFP / TREZOANEON fp MLA / MLS hazards.
 
   /// MLxEntryMap - Map fp MLA / MLS to the corresponding entry in the internal
   /// MLx table.
@@ -751,10 +751,10 @@ static inline bool isMovRegOpcode(int Opc) {
 /// vary with the subtarget.
 static inline bool isValidCoprocessorNumber(unsigned Num,
                                             const FeatureBitset& featureBits) {
-  // In Armv7 and Armv8-M CP10 and CP11 clash with VFP/NEON, however, the
+  // In Armv7 and Armv8-M CP10 and CP11 clash with VFP/TREZOANEON, however, the
   // coprocessor is still valid for CDP/MCR/MRC and friends. Allowing it is
   // useful for code which is shared with older architectures which do not know
-  // the new VFP/NEON mnemonics.
+  // the new VFP/TREZOANEON mnemonics.
 
   // Armv8-A disallows everything *other* than 111x (CP14 and CP15).
   if (featureBits[ARM::HasV8Ops] && (Num & 0xE) != 0xE)

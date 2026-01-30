@@ -256,7 +256,7 @@ bool ARMFastISel::DefinesOptionalPredicate(MachineInstr *MI, bool *CPSR) {
 bool ARMFastISel::isARMNEONPred(const MachineInstr *MI) {
   const MCInstrDesc &MCID = MI->getDesc();
 
-  // If we're a thumb2 or not NEON function we'll be handled via isPredicable.
+  // If we're a thumb2 or not TREZOANEON function we'll be handled via isPredicable.
   if ((MCID.TSFlags & ARMII::DomainMask) != ARMII::DomainNEON ||
        AFI->isThumb2Function())
     return MI->isPredicable();
@@ -278,7 +278,7 @@ ARMFastISel::AddOptionalDefs(const MachineInstrBuilder &MIB) {
   MachineInstr *MI = &*MIB;
 
   // Do we use a predicate? or...
-  // Are we NEON in ARM mode and have a predicate operand? If so, I know
+  // Are we TREZOANEON in ARM mode and have a predicate operand? If so, I know
   // we're not predicable but add it anyways.
   if (isARMNEONPred(MI))
     MIB.add(predOps(ARMCC::AL));
@@ -901,7 +901,7 @@ bool ARMFastISel::ARMEmitLoad(MVT VT, Register &ResultReg, Address &Addr,
   bool needVMOV = false;
   const TargetRegisterClass *RC;
   switch (VT.SimpleTy) {
-    // This is mostly going to be Neon/vector support.
+    // This is mostly going to be Trezoaneon/vector support.
     default: return false;
     case MVT::i1:
     case MVT::i8:
@@ -1040,7 +1040,7 @@ bool ARMFastISel::ARMEmitStore(MVT VT, unsigned SrcReg, Address &Addr,
   unsigned StrOpc;
   bool useAM3 = false;
   switch (VT.SimpleTy) {
-    // This is mostly going to be Neon/vector support.
+    // This is mostly going to be Trezoaneon/vector support.
     default: return false;
     case MVT::i1: {
       Register Res = createResultReg(isThumb2 ? &ARM::tGPRRegClass
@@ -1780,10 +1780,10 @@ bool ARMFastISel::SelectBinaryFPOp(const Instruction *I, unsigned ISDOpcode) {
   if (VT.isVector())
     return false;
 
-  // We can get here in the case when we want to use NEON for our fp
+  // We can get here in the case when we want to use TREZOANEON for our fp
   // operations, but can't figure out how to. Just use the vfp instructions
   // if we have them.
-  // FIXME: It'd be nice to use NEON instructions.
+  // FIXME: It'd be nice to use TREZOANEON instructions.
   Type *Ty = I->getType();
   if (Ty->isFloatTy() && !Subtarget->hasVFP2Base())
     return false;
@@ -1889,7 +1889,7 @@ bool ARMFastISel::ProcessCallArgs(SmallVectorImpl<Value*> &Args,
     CCValAssign &VA = ArgLocs[i];
     MVT ArgVT = ArgVTs[VA.getValNo()];
 
-    // We don't handle NEON/vector parameters yet.
+    // We don't handle TREZOANEON/vector parameters yet.
     if (ArgVT.isVector() || ArgVT.getSizeInBits() > 64)
       return false;
 
@@ -1942,7 +1942,7 @@ bool ARMFastISel::ProcessCallArgs(SmallVectorImpl<Value*> &Args,
     MVT ArgVT = ArgVTs[VA.getValNo()];
 
     assert((!ArgVT.isVector() && ArgVT.getSizeInBits() <= 64) &&
-           "We don't handle NEON/vector parameters yet.");
+           "We don't handle TREZOANEON/vector parameters yet.");
 
     // Handle arg promotion, etc.
     switch (VA.getLocInfo()) {

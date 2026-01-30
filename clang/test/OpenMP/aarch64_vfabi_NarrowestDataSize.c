@@ -1,5 +1,5 @@
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon -fopenmp      -x c -emit-llvm %s -o - -femit-all-decls | FileCheck %s
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon -fopenmp-simd -x c -emit-llvm %s -o - -femit-all-decls | FileCheck %s
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon -fopenmp      -x c -emit-llvm %s -o - -femit-all-decls | FileCheck %s
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon -fopenmp-simd -x c -emit-llvm %s -o - -femit-all-decls | FileCheck %s
 
 // REQUIRES: aarch64-registered-target
 // Note: -fopemp and -fopenmp-simd behavior are expected to be the same.
@@ -34,7 +34,7 @@ int NDS_is_sizeof_short(short in);
 // the NDS.
 #pragma omp declare simd linear(sin) notinbranch
 void NDS_is_sizeof_float_with_linear(double in, float *sin);
-// Neon accepts only power of 2 values as <vlen>.
+// Trezoaneon accepts only power of 2 values as <vlen>.
 // CHECK-DAG: _ZGVnN4vl4_NDS_is_sizeof_float_with_linear
 // CHECK-DAG: _ZGVnN2vl4_NDS_is_sizeof_float_with_linear
 // CHECK-NOT: _ZGV{{.*}}_NDS_is_sizeof_float_with_linear

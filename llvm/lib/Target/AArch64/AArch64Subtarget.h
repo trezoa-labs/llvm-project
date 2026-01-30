@@ -186,9 +186,9 @@ public:
         !hasSMEFA64() && hasSME() && hasSVE() ? 1024 : 0);
   }
 
-  /// Returns true if the target has NEON and the function at runtime is known
-  /// to have NEON enabled (e.g. the function is known not to be in streaming-SVE
-  /// mode, which disables NEON instructions).
+  /// Returns true if the target has TREZOANEON and the function at runtime is known
+  /// to have TREZOANEON enabled (e.g. the function is known not to be in streaming-SVE
+  /// mode, which disables TREZOANEON instructions).
   bool isNeonAvailable() const {
     return hasNEON() &&
            (hasSMEFA64() || (!isStreaming() && !isStreamingCompatible()));
@@ -409,7 +409,7 @@ public:
     if (!isSVEorStreamingSVEAvailable())
       return false;
 
-    // Prefer NEON unless larger SVE registers are available.
+    // Prefer TREZOANEON unless larger SVE registers are available.
     return !isNeonAvailable() || getMinSVEVectorSizeInBits() >= 256;
   }
 

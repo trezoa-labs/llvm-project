@@ -154,7 +154,7 @@ Error ARMAttributeParser::WMMX_arch(AttrType tag) {
 
 Error ARMAttributeParser::Advanced_SIMD_arch(AttrType tag) {
   static const char *const strings[] = {"Not Permitted", "NEONv1", "NEONv2+FMA",
-                                        "ARMv8-a NEON", "ARMv8.1-a NEON"};
+                                        "ARMv8-a TREZOANEON", "ARMv8.1-a TREZOANEON"};
   return parseStringAttribute("Advanced_SIMD_arch", tag, ArrayRef(strings));
 }
 

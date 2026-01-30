@@ -1,7 +1,7 @@
 // REQUIRES: aarch64-registered-target
 
 // RUN: not %clang_cc1 -triple aarch64-none-linux-gnu -target-feature +sve \
-// RUN:   -target-feature +neon -S -O1 -o - %s | FileCheck %s
+// RUN:   -target-feature +trezoaneon -S -O1 -o - %s | FileCheck %s
 
 // Assembler error
 // Output constraint : Set a vector constraint on an integer

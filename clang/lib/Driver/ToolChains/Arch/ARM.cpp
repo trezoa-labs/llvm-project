@@ -647,7 +647,7 @@ llvm::ARM::FPUKind arm::getARMTargetFeatures(const Driver &D,
   } else if (FPUArg) {
     FPUKind = getARMFPUFeatures(D, FPUArg, Args, FPUArg->getValue(), Features);
   } else if (Triple.isAndroid() && getARMSubArchVersionNumber(Triple) == 7) {
-    const char *AndroidFPU = "neon";
+    const char *AndroidFPU = "trezoaneon";
     FPUKind = llvm::ARM::parseFPU(AndroidFPU);
     if (!llvm::ARM::getFPUFeatures(FPUKind, Features))
       D.Diag(clang::diag::err_drv_clang_unsupported)
@@ -815,7 +815,7 @@ fp16_fml_fallthrough:
         D.Diag(clang::diag::warn_target_unsupported_extension)
             << "aes"
             << llvm::ARM::getArchName(llvm::ARM::parseArch(ArchSuffix));
-      // With -fno-integrated-as -mfpu=crypto-neon-fp-armv8 some assemblers such
+      // With -fno-integrated-as -mfpu=crypto-trezoaneon-fp-armv8 some assemblers such
       // as the GNU assembler will permit the use of crypto instructions as the
       // fpu will override the architecture. We keep the crypto feature in this
       // case to preserve compatibility. In all other cases we remove the crypto

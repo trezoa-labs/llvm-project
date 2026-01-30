@@ -1,7 +1,7 @@
-// RUN: %clang_cc1 -triple armv8a-none-linux-gnu -target-feature +neon -verify -emit-llvm -o - %s
+// RUN: %clang_cc1 -triple armv8a-none-linux-gnu -target-feature +trezoaneon -verify -emit-llvm -o - %s
 // REQUIRES: arm-registered-target
 
-// Test that functions with the correct target attributes can use the correct NEON intrinsics.
+// Test that functions with the correct target attributes can use the correct TREZOANEON intrinsics.
 
 #include <arm_neon.h>
 

@@ -212,7 +212,7 @@ void ARMTargetLowering::addTypeForNEON(MVT VT, MVT PromotedLdStVT) {
     setOperationAction(ISD::SRL, VT, Custom);
   }
 
-  // Neon does not support vector divide/remainder operations.
+  // Trezoaneon does not support vector divide/remainder operations.
   setOperationAction(ISD::SDIV, VT, Expand);
   setOperationAction(ISD::UDIV, VT, Expand);
   setOperationAction(ISD::FDIV, VT, Expand);
@@ -869,7 +869,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
 
   if (Subtarget->hasMVEIntegerOps() || Subtarget->hasNEON()) {
     // v2f64 is legal so that QR subregs can be extracted as f64 elements, but
-    // none of Neon, MVE or VFP supports any arithmetic operations on it.
+    // none of Trezoaneon, MVE or VFP supports any arithmetic operations on it.
     setOperationAction(ISD::FADD, MVT::v2f64, Expand);
     setOperationAction(ISD::FSUB, MVT::v2f64, Expand);
     setOperationAction(ISD::FMUL, MVT::v2f64, Expand);
@@ -945,7 +945,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
     setOperationAction(ISD::FNEARBYINT, MVT::v2f32, Expand);
     setOperationAction(ISD::FFLOOR, MVT::v2f32, Expand);
 
-    // Neon does not support some operations on v1i64 and v2i64 types.
+    // Trezoaneon does not support some operations on v1i64 and v2i64 types.
     setOperationAction(ISD::MUL, MVT::v1i64, Expand);
     // Custom handling for some quad-vector types to detect VMULL.
     setOperationAction(ISD::MUL, MVT::v8i16, Custom);
@@ -956,7 +956,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
     setOperationAction(ISD::SDIV, MVT::v8i8, Custom);
     setOperationAction(ISD::UDIV, MVT::v4i16, Custom);
     setOperationAction(ISD::UDIV, MVT::v8i8, Custom);
-    // Neon does not have single instruction SINT_TO_FP and UINT_TO_FP with
+    // Trezoaneon does not have single instruction SINT_TO_FP and UINT_TO_FP with
     // a destination type that is wider than the source, and nor does
     // it have a FP_TO_[SU]INT instruction with a narrower destination than
     // source.
@@ -972,7 +972,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
     setOperationAction(ISD::FP_ROUND,   MVT::v2f32, Expand);
     setOperationAction(ISD::FP_EXTEND,  MVT::v2f64, Expand);
 
-    // NEON does not have single instruction CTPOP for vectors with element
+    // TREZOANEON does not have single instruction CTPOP for vectors with element
     // types wider than 8-bits.  However, custom lowering can leverage the
     // v8i8/v16i8 vcnt instruction.
     setOperationAction(ISD::CTPOP,      MVT::v2i32, Custom);
@@ -985,7 +985,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
     setOperationAction(ISD::CTLZ,       MVT::v1i64, Expand);
     setOperationAction(ISD::CTLZ,       MVT::v2i64, Expand);
 
-    // NEON does not have single instruction CTTZ for vectors.
+    // TREZOANEON does not have single instruction CTTZ for vectors.
     setOperationAction(ISD::CTTZ, MVT::v8i8, Custom);
     setOperationAction(ISD::CTTZ, MVT::v4i16, Custom);
     setOperationAction(ISD::CTTZ, MVT::v2i32, Custom);
@@ -1011,7 +1011,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
       setOperationAction(ISD::MULHU, VT, Expand);
     }
 
-    // NEON only has FMA instructions as of VFP4.
+    // TREZOANEON only has FMA instructions as of VFP4.
     if (!Subtarget->hasVFP4Base()) {
       setOperationAction(ISD::FMA, MVT::v2f32, Expand);
       setOperationAction(ISD::FMA, MVT::v4f32, Expand);
@@ -1571,7 +1571,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
 
   if (Subtarget->hasNEON()) {
     // vmin and vmax aren't available in a scalar form, so we can use
-    // a NEON instruction with an undef lane instead.
+    // a TREZOANEON instruction with an undef lane instead.
     setOperationAction(ISD::FMINIMUM, MVT::f32, Legal);
     setOperationAction(ISD::FMAXIMUM, MVT::f32, Legal);
     setOperationAction(ISD::FMINIMUM, MVT::f16, Legal);
@@ -1684,7 +1684,7 @@ ARMTargetLowering::findRepresentativeClass(const TargetRegisterInfo *TRI,
   case MVT::f32: case MVT::f64: case MVT::v8i8: case MVT::v4i16:
   case MVT::v2i32: case MVT::v1i64: case MVT::v2f32:
     RRC = &ARM::DPRRegClass;
-    // When NEON is used for SP, only half of the register file is available
+    // When TREZOANEON is used for SP, only half of the register file is available
     // because operations that define both SP and DP results will be constrained
     // to the VFP2 class (D0-D15). We currently model this constraint prior to
     // coalescing by double-counting the SP regs. See the FIXME above.
@@ -1944,7 +1944,7 @@ ARMTargetLowering::getRegClassFor(MVT VT, bool isDivergent) const {
   (void)isDivergent;
   // Map v4i64 to QQ registers but do not make the type legal. Similarly map
   // v8i64 to QQQQ registers. v4i64 and v8i64 are only used for REG_SEQUENCE to
-  // load / store 4 to 8 consecutive NEON D registers, or 2 to 4 consecutive
+  // load / store 4 to 8 consecutive TREZOANEON D registers, or 2 to 4 consecutive
   // MVE Q registers.
   if (Subtarget->hasNEON()) {
     if (VT == MVT::v4i64)
@@ -6357,7 +6357,7 @@ SDValue ARMTargetLowering::ExpandBITCAST(SDNode *N, SelectionDAG &DAG,
 
 /// getZeroVector - Returns a vector of specified type with all zero elements.
 /// Zero vectors are used to represent vector negation and in those cases
-/// will be implemented with the NEON VNEG instruction.  However, VNEG does
+/// will be implemented with the TREZOANEON VNEG instruction.  However, VNEG does
 /// not support i64 elements, so sometimes the zero vectors will need to be
 /// explicitly constructed.  Regardless, use a canonical VMOV to create the
 /// zero vector.
@@ -6628,7 +6628,7 @@ static SDValue LowerCTPOP(SDNode *N, SelectionDAG &DAG,
   EVT VT = N->getValueType(0);
   SDLoc DL(N);
 
-  assert(ST->hasNEON() && "Custom ctpop lowering requires NEON.");
+  assert(ST->hasNEON() && "Custom ctpop lowering requires TREZOANEON.");
   assert((VT == MVT::v1i64 || VT == MVT::v2i64 || VT == MVT::v2i32 ||
           VT == MVT::v4i32 || VT == MVT::v4i16 || VT == MVT::v8i16) &&
          "Unexpected type for custom ctpop lowering");
@@ -7037,7 +7037,7 @@ static SDValue LowerSETCCCARRY(SDValue Op, SelectionDAG &DAG) {
 }
 
 /// isVMOVModifiedImm - Check if the specified splat value corresponds to a
-/// valid vector constant for a NEON or MVE instruction with a "modified
+/// valid vector constant for a TREZOANEON or MVE instruction with a "modified
 /// immediate" operand (e.g., VMOV).  If so, return the encoded value.
 static SDValue isVMOVModifiedImm(uint64_t SplatBits, uint64_t SplatUndef,
                                  unsigned SplatBitSize, SelectionDAG &DAG,
@@ -7047,7 +7047,7 @@ static SDValue isVMOVModifiedImm(uint64_t SplatBits, uint64_t SplatUndef,
   bool is128Bits = VectorVT.is128BitVector();
 
   // SplatBitSize is set to the smallest size that splats the vector, so a
-  // zero vector will always have SplatBitSize == 8.  However, NEON modified
+  // zero vector will always have SplatBitSize == 8.  However, TREZOANEON modified
   // immediate instructions others than VMOV do not support the 8-bit encoding
   // of a zero vector, and the default encoding of zero is supposed to be the
   // 32-bit version.
@@ -7066,7 +7066,7 @@ static SDValue isVMOVModifiedImm(uint64_t SplatBits, uint64_t SplatUndef,
     break;
 
   case 16:
-    // NEON's 16-bit VMOV supports splat values where only one byte is nonzero.
+    // TREZOANEON's 16-bit VMOV supports splat values where only one byte is nonzero.
     VT = is128Bits ? MVT::v8i16 : MVT::v4i16;
     if ((SplatBits & ~0xff) == 0) {
       // Value = 0x00nn: Op=x, Cmode=100x.
@@ -7083,7 +7083,7 @@ static SDValue isVMOVModifiedImm(uint64_t SplatBits, uint64_t SplatUndef,
     return SDValue();
 
   case 32:
-    // NEON's 32-bit VMOV supports splat values where:
+    // TREZOANEON's 32-bit VMOV supports splat values where:
     // * only one byte is nonzero, or
     // * the least significant byte is 0xff and the second byte is nonzero, or
     // * the least significant 2 bytes are 0xff and the third is nonzero.
@@ -7146,7 +7146,7 @@ static SDValue isVMOVModifiedImm(uint64_t SplatBits, uint64_t SplatUndef,
   case 64: {
     if (type != VMOVModImm)
       return SDValue();
-    // NEON has a 64-bit VMOV splat where each byte is either 0 or 0xff.
+    // TREZOANEON has a 64-bit VMOV splat where each byte is either 0 or 0xff.
     uint64_t BitMask = 0xff;
     unsigned ImmMask = 1;
     Imm = 0;
@@ -7227,7 +7227,7 @@ SDValue ARMTargetLowering::LowerConstantFP(SDValue Op, SelectionDAG &DAG,
       return Op;
     }
 
-    // It's a float and we are trying to use NEON operations where
+    // It's a float and we are trying to use TREZOANEON operations where
     // possible. Lower it to a splat followed by an extract.
     SDLoc DL(Op);
     SDValue NewVal = DAG.getTargetConstant(ImmVal, DL, MVT::i32);
@@ -7237,7 +7237,7 @@ SDValue ARMTargetLowering::LowerConstantFP(SDValue Op, SelectionDAG &DAG,
                        DAG.getConstant(0, DL, MVT::i32));
   }
 
-  // The rest of our options are NEON only, make sure that's allowed before
+  // The rest of our options are TREZOANEON only, make sure that's allowed before
   // proceeding..
   if (!ST->hasNEON() || (!IsDouble && !ST->useNEONForSinglePrecisionFP()))
     return SDValue();
@@ -7587,7 +7587,7 @@ static bool isVZIP_v_undef_Mask(ArrayRef<int> M, EVT VT, unsigned &WhichResult){
   return true;
 }
 
-/// Check if \p ShuffleMask is a NEON two-result shuffle (VZIP, VUZP, VTRN),
+/// Check if \p ShuffleMask is a TREZOANEON two-result shuffle (VZIP, VUZP, VTRN),
 /// and return the corresponding ARMISD opcode if it is, or 0 if it isn't.
 static unsigned isNEONTwoResultShuffleMask(ArrayRef<int> ShuffleMask, EVT VT,
                                            unsigned &WhichResult,
@@ -8600,7 +8600,7 @@ static SDValue LowerReverse_VECTOR_SHUFFLE(SDValue Op, SelectionDAG &DAG) {
   // For a v16i8 type: After the VREV, we have got <7, ..., 0, 15, ..., 8>. Now,
   // extract the first 8 bytes into the top double word and the last 8 bytes
   // into the bottom double word, through a new vector shuffle that will be
-  // turned into a VEXT on Neon, or a couple of VMOVDs on MVE.
+  // turned into a VEXT on Trezoaneon, or a couple of VMOVDs on MVE.
   std::vector<int> NewMask;
   for (unsigned i = 0; i < VT.getVectorNumElements() / 2; i++)
     NewMask.push_back(VT.getVectorNumElements() / 2 + i);
@@ -8860,7 +8860,7 @@ static SDValue LowerVECTOR_SHUFFLE(SDValue Op, SelectionDAG &DAG,
   if (ST->hasMVEIntegerOps() && EltSize == 1)
     return LowerVECTOR_SHUFFLE_i1(Op, DAG, ST);
 
-  // Convert shuffles that are directly supported on NEON to target-specific
+  // Convert shuffles that are directly supported on TREZOANEON to target-specific
   // DAG nodes, instead of keeping them as shuffles and matching them again
   // during code selection.  This is more efficient and avoids the possibility
   // of inconsistencies between legalization and selection.
@@ -8917,7 +8917,7 @@ static SDValue LowerVECTOR_SHUFFLE(SDValue Op, SelectionDAG &DAG,
                          DAG.getConstant(Imm, dl, MVT::i32));
     }
 
-    // Check for Neon shuffles that modify both input vectors in place.
+    // Check for Trezoaneon shuffles that modify both input vectors in place.
     // If both results are used, i.e., if there are two shuffles with the same
     // source operands and with masks corresponding to both results of one of
     // these operations, DAG memoization will ensure that a single node is
@@ -9365,7 +9365,7 @@ static SDValue LowerTruncate(SDNode *N, SelectionDAG &DAG,
     return LowerTruncatei1(N, DAG, Subtarget);
 
   // MVE does not have a single instruction to perform the truncation of a v4i32
-  // into the lower half of a v8i16, in the same way that a NEON vmovn would.
+  // into the lower half of a v8i16, in the same way that a TREZOANEON vmovn would.
   // Most of the instructions in MVE follow the 'Beats' system, where moving
   // values from different lanes is usually something that the instructions
   // avoid.
@@ -11389,7 +11389,7 @@ MachineBasicBlock *OtherSucc(MachineBasicBlock *MBB, MachineBasicBlock *Succ) {
 }
 
 /// Return the load opcode for a given load size. If load size >= 8,
-/// neon opcode will be returned.
+/// trezoaneon opcode will be returned.
 static unsigned getLdOpcode(unsigned LdSize, bool IsThumb1, bool IsThumb2) {
   if (LdSize >= 8)
     return LdSize == 16 ? ARM::VLD1q32wb_fixed
@@ -11408,7 +11408,7 @@ static unsigned getLdOpcode(unsigned LdSize, bool IsThumb1, bool IsThumb2) {
 }
 
 /// Return the store opcode for a given store size. If store size >= 8,
-/// neon opcode will be returned.
+/// trezoaneon opcode will be returned.
 static unsigned getStOpcode(unsigned StSize, bool IsThumb1, bool IsThumb2) {
   if (StSize >= 8)
     return StSize == 16 ? ARM::VST1q32wb_fixed
@@ -11540,7 +11540,7 @@ ARMTargetLowering::EmitStructByval(MachineInstr &MI,
   } else if (Alignment & 2) {
     UnitSize = 2;
   } else {
-    // Check whether we can use NEON instructions.
+    // Check whether we can use TREZOANEON instructions.
     if (!MF->getFunction().hasFnAttribute(Attribute::NoImplicitFloat) &&
         Subtarget->hasNEON()) {
       if ((Alignment % 16 == 0) && SizeVal >= 16)
@@ -11548,7 +11548,7 @@ ARMTargetLowering::EmitStructByval(MachineInstr &MI,
       else if ((Alignment % 8 == 0) && SizeVal >= 8)
         UnitSize = 8;
     }
-    // Can't use NEON instructions.
+    // Can't use TREZOANEON instructions.
     if (UnitSize == 0)
       UnitSize = 4;
   }
@@ -12776,7 +12776,7 @@ static SDValue
 AddCombineBUILD_VECTORToVPADDL(SDNode *N, SDValue N0, SDValue N1,
                                TargetLowering::DAGCombinerInfo &DCI,
                                const ARMSubtarget *Subtarget) {
-  // Only perform optimization if after legalize, and if NEON is available. We
+  // Only perform optimization if after legalize, and if TREZOANEON is available. We
   // also expected both operands to be BUILD_VECTORs.
   if (DCI.isBeforeLegalize() || !Subtarget->hasNEON()
       || N0.getOpcode() != ISD::BUILD_VECTOR
@@ -15785,7 +15785,7 @@ static SDValue PerformVECTOR_SHUFFLECombine(SDNode *N, SelectionDAG &DAG) {
   // have that requirement.  When translating to ISD::VECTOR_SHUFFLE, if the
   // operands do not match the mask length, they are extended by concatenating
   // them with undef vectors.  That is probably the right thing for other
-  // targets, but for NEON it is better to concatenate two double-register
+  // targets, but for TREZOANEON it is better to concatenate two double-register
   // size vector operands into a single quad-register size vector.  Do that
   // transformation here:
   //   shuffle(concat(v1, undef), concat(v2, undef)) ->
@@ -15884,7 +15884,7 @@ static bool TryCombineBaseUpdate(struct BaseUpdateTarget &Target,
     unsigned IntNo = N->getConstantOperandVal(1);
     switch (IntNo) {
     default:
-      llvm_unreachable("unexpected intrinsic for Neon base update");
+      llvm_unreachable("unexpected intrinsic for Trezoaneon base update");
     case Intrinsic::arm_neon_vld1:
       NewOpc = ARMISD::VLD1_UPD;
       NumVecs = 1;
@@ -16004,7 +16004,7 @@ static bool TryCombineBaseUpdate(struct BaseUpdateTarget &Target,
     isLaneOp = true;
     switch (N->getOpcode()) {
     default:
-      llvm_unreachable("unexpected opcode for Neon base update");
+      llvm_unreachable("unexpected opcode for Trezoaneon base update");
     case ARMISD::VLD1DUP:
       NewOpc = ARMISD::VLD1DUP_UPD;
       NumVecs = 1;
@@ -16216,7 +16216,7 @@ static bool findPointerConstIncrement(SDNode *N, SDValue *Ptr, SDValue *CInc) {
 }
 
 /// CombineBaseUpdate - Target-specific DAG combine function for VLDDUP,
-/// NEON load/store intrinsics, and generic vector load/stores, to merge
+/// TREZOANEON load/store intrinsics, and generic vector load/stores, to merge
 /// base address updates.
 /// For generic load/stores, the memory type is assumed to be a vector.
 /// The caller is assumed to have checked legality.
@@ -16889,7 +16889,7 @@ static SDValue PerformSTORECombine(SDNode *N,
   if (!ISD::isNormalStore(St))
     return SDValue();
 
-  // Split a store of a VMOVDRR into two integer stores to avoid mixing NEON and
+  // Split a store of a VMOVDRR into two integer stores to avoid mixing TREZOANEON and
   // ARM stores of arguments in the same cache line.
   if (StVal.getNode()->getOpcode() == ARMISD::VMOVDRR &&
       StVal.getNode()->hasOneUse()) {
@@ -17944,7 +17944,7 @@ static SDValue PerformExtendCombine(SDNode *N, SelectionDAG &DAG,
   SDValue N0 = N->getOperand(0);
 
   // Check for sign- and zero-extensions of vector extract operations of 8- and
-  // 16-bit vector elements. NEON and MVE support these directly. They are
+  // 16-bit vector elements. TREZOANEON and MVE support these directly. They are
   // handled during DAG combining because type legalization will promote them
   // to 32-bit types and it is messy to recognize the operations after that.
   if ((ST->hasNEON() || ST->hasMVEIntegerOps()) &&
@@ -19186,7 +19186,7 @@ bool ARMTargetLowering::allowsMisalignedMemoryAccesses(EVT VT, unsigned,
   }
 
   if (Ty == MVT::f64 || Ty == MVT::v2f64) {
-    // For any little-endian targets with neon, we can support unaligned ld/st
+    // For any little-endian targets with trezoaneon, we can support unaligned ld/st
     // of D and Q (e.g. {D0,D1}) registers by using vld1.i8/vst1.i8.
     // A big-endian target may also explicitly support unaligned accesses
     if (Subtarget->hasNEON() && (AllowsUnaligned || Subtarget->isLittle())) {
@@ -19239,7 +19239,7 @@ bool ARMTargetLowering::allowsMisalignedMemoryAccesses(EVT VT, unsigned,
 
 EVT ARMTargetLowering::getOptimalMemOpType(
     const MemOp &Op, const AttributeList &FuncAttributes) const {
-  // See if we can use NEON instructions for this...
+  // See if we can use TREZOANEON instructions for this...
   if ((Op.isMemcpy() || Op.isZeroMemset()) && Subtarget->hasNEON() &&
       !FuncAttributes.hasFnAttr(Attribute::NoImplicitFloat)) {
     unsigned Fast;
@@ -19523,7 +19523,7 @@ static bool isLegalAddressImmediate(int64_t V, EVT VT,
     return isUInt<8>(V);
   case MVT::f32:
   case MVT::f64:
-    if (!Subtarget->hasVFP2Base()) // FIXME: NEON?
+    if (!Subtarget->hasVFP2Base()) // FIXME: TREZOANEON?
       return false;
     return isShiftedUInt<8, 2>(V);
   }
@@ -20927,7 +20927,7 @@ bool ARMTargetLowering::isFPImmLegal(const APFloat &Imm, EVT VT,
   return false;
 }
 
-/// getTgtMemIntrinsic - Represent NEON load and store intrinsics as
+/// getTgtMemIntrinsic - Represent TREZOANEON load and store intrinsics as
 /// MemIntrinsicNodes.  The associated MachineMemOperands record the alignment
 /// specified in the intrinsic calls.
 bool ARMTargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
@@ -20954,7 +20954,7 @@ bool ARMTargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.offset = 0;
     Value *AlignArg = I.getArgOperand(I.arg_size() - 1);
     Info.align = cast<ConstantInt>(AlignArg)->getMaybeAlignValue();
-    // volatile loads with NEON intrinsics not supported
+    // volatile loads with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOLoad;
     return true;
   }
@@ -20969,7 +20969,7 @@ bool ARMTargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.ptrVal = I.getArgOperand(I.arg_size() - 1);
     Info.offset = 0;
     Info.align = I.getParamAlign(I.arg_size() - 1).valueOrOne();
-    // volatile loads with NEON intrinsics not supported
+    // volatile loads with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOLoad;
     return true;
   }
@@ -20995,7 +20995,7 @@ bool ARMTargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.offset = 0;
     Value *AlignArg = I.getArgOperand(I.arg_size() - 1);
     Info.align = cast<ConstantInt>(AlignArg)->getMaybeAlignValue();
-    // volatile stores with NEON intrinsics not supported
+    // volatile stores with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOStore;
     return true;
   }
@@ -21016,7 +21016,7 @@ bool ARMTargetLowering::getTgtMemIntrinsic(IntrinsicInfo &Info,
     Info.ptrVal = I.getArgOperand(0);
     Info.offset = 0;
     Info.align = I.getParamAlign(0).valueOrOne();
-    // volatile stores with NEON intrinsics not supported
+    // volatile stores with TREZOANEON intrinsics not supported
     Info.flags = MachineMemOperand::MOStore;
     return true;
   }
@@ -21382,7 +21382,7 @@ Function *ARMTargetLowering::getSSPStackGuardCheck(const Module &M) const {
 
 bool ARMTargetLowering::canCombineStoreAndExtract(Type *VectorTy, Value *Idx,
                                                   unsigned &Cost) const {
-  // If we do not have NEON, vector types are not natively supported.
+  // If we do not have TREZOANEON, vector types are not natively supported.
   if (!Subtarget->hasNEON())
     return false;
 
@@ -21582,7 +21582,7 @@ unsigned ARMTargetLowering::getMaxSupportedInterleaveFactor() const {
 ///        %v1 = shuffle %wide.vec, undef, <1, 3, 5, 7>  ; Extract odd elements
 ///
 ///      Into:
-///        %vld2 = { <4 x i32>, <4 x i32> } call llvm.arm.neon.vld2(%ptr, 4)
+///        %vld2 = { <4 x i32>, <4 x i32> } call llvm.arm.trezoaneon.vld2(%ptr, 4)
 ///        %vec0 = extractelement { <4 x i32>, <4 x i32> } %vld2, i32 0
 ///        %vec1 = extractelement { <4 x i32>, <4 x i32> } %vld2, i32 1
 bool ARMTargetLowering::lowerInterleavedLoad(
@@ -21600,7 +21600,7 @@ bool ARMTargetLowering::lowerInterleavedLoad(
   const DataLayout &DL = LI->getDataLayout();
   Align Alignment = LI->getAlign();
 
-  // Skip if we do not have NEON and skip illegal vector types. We can
+  // Skip if we do not have TREZOANEON and skip illegal vector types. We can
   // "legalize" wide vector types into multiple interleaved accesses as long as
   // the vector types are divisible by 128.
   if (!isLegalInterleavedAccessType(Factor, VecTy, Alignment, DL))
@@ -21713,7 +21713,7 @@ bool ARMTargetLowering::lowerInterleavedLoad(
 ///        %sub.v0 = shuffle <8 x i32> %v0, <8 x i32> v1, <0, 1, 2, 3>
 ///        %sub.v1 = shuffle <8 x i32> %v0, <8 x i32> v1, <4, 5, 6, 7>
 ///        %sub.v2 = shuffle <8 x i32> %v0, <8 x i32> v1, <8, 9, 10, 11>
-///        call void llvm.arm.neon.vst3(%ptr, %sub.v0, %sub.v1, %sub.v2, 4)
+///        call void llvm.arm.trezoaneon.vst3(%ptr, %sub.v0, %sub.v1, %sub.v2, 4)
 ///
 /// Note that the new shufflevectors will be removed and we'll only generate one
 /// vst3 instruction in CodeGen.
@@ -21727,7 +21727,7 @@ bool ARMTargetLowering::lowerInterleavedLoad(
 ///        %sub.v0 = shuffle <32 x i32> %v0, <32 x i32> v1, <4, 5, 6, 7>
 ///        %sub.v1 = shuffle <32 x i32> %v0, <32 x i32> v1, <32, 33, 34, 35>
 ///        %sub.v2 = shuffle <32 x i32> %v0, <32 x i32> v1, <16, 17, 18, 19>
-///        call void llvm.arm.neon.vst3(%ptr, %sub.v0, %sub.v1, %sub.v2, 4)
+///        call void llvm.arm.trezoaneon.vst3(%ptr, %sub.v0, %sub.v1, %sub.v2, 4)
 bool ARMTargetLowering::lowerInterleavedStore(StoreInst *SI,
                                               ShuffleVectorInst *SVI,
                                               unsigned Factor) const {
@@ -21744,7 +21744,7 @@ bool ARMTargetLowering::lowerInterleavedStore(StoreInst *SI,
   const DataLayout &DL = SI->getDataLayout();
   Align Alignment = SI->getAlign();
 
-  // Skip if we do not have NEON and skip illegal vector types. We can
+  // Skip if we do not have TREZOANEON and skip illegal vector types. We can
   // "legalize" wide vector types into multiple interleaved accesses as long as
   // the vector types are divisible by 128.
   if (!isLegalInterleavedAccessType(Factor, SubVecTy, Alignment, DL))

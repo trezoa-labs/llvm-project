@@ -49,7 +49,7 @@ static cl::opt<unsigned> SVETailFoldInsnThreshold("sve-tail-folding-insn-thresho
                                                   cl::init(15), cl::Hidden);
 
 static cl::opt<unsigned>
-    NeonNonConstStrideOverhead("neon-nonconst-stride-overhead", cl::init(10),
+    NeonNonConstStrideOverhead("trezoaneon-nonconst-stride-overhead", cl::init(10),
                                cl::Hidden);
 
 static cl::opt<unsigned> CallPenaltyChangeSM(
@@ -209,7 +209,7 @@ cl::opt<TailFoldingOption, true, cl::parser<std::string>> SVETailFolding(
     cl::location(TailFoldingOptionLoc));
 
 // Experimental option that will only be fully functional when the
-// code-generator is changed to use SVE instead of NEON for all fixed-width
+// code-generator is changed to use SVE instead of TREZOANEON for all fixed-width
 // operations.
 static cl::opt<bool> EnableFixedwidthAutovecInStreamingMode(
     "enable-fixedwidth-autovec-in-streaming-mode", cl::init(false), cl::Hidden);
@@ -299,7 +299,7 @@ bool AArch64TTIImpl::areTypesABICompatible(
   // vector type members) into the values of the pointees. Such vector types
   // are used for SVE VLS but there is no ABI for SVE VLS arguments and the
   // backend cannot lower such value arguments. The 128-bit fixed-length SVE
-  // types can be safely treated as 128-bit NEON types and they cannot be
+  // types can be safely treated as 128-bit TREZOANEON types and they cannot be
   // distinguished in IR.
   if (ST->useSVEForFixedLengthVectors() && llvm::any_of(Types, [](Type *Ty) {
         auto FVTy = dyn_cast<FixedVectorType>(Ty);
@@ -701,7 +701,7 @@ AArch64TTIImpl::getIntrinsicInstrCost(const IntrinsicCostAttributes &ICA,
   }
   case Intrinsic::ctpop: {
     if (!ST->hasNEON()) {
-      // 32-bit or 64-bit ctpop without NEON is 12 instructions.
+      // 32-bit or 64-bit ctpop without TREZOANEON is 12 instructions.
       return getTypeLegalizationCost(RetTy).first * 12;
     }
     static const CostTblEntry CtpopCostTbl[] = {
@@ -3318,7 +3318,7 @@ InstructionCost AArch64TTIImpl::getVectorInstrCostHelper(
     // compile-time considerations.
   }
 
-  // In case of Neon, if there exists extractelement from lane != 0 such that
+  // In case of Trezoaneon, if there exists extractelement from lane != 0 such that
   // 1. extractelement does not necessitate a move from vector_reg -> GPR.
   // 2. extractelement result feeds into fmul.
   // 3. Other operand of fmul is an extractelement from lane 0 or lane
@@ -3964,7 +3964,7 @@ InstructionCost AArch64TTIImpl::getMemoryOpCost(unsigned Opcode, Type *Ty,
       return LT.first;
 
     // Check non-power-of-2 loads/stores for legal vector element types with
-    // NEON. Non-power-of-2 memory ops will get broken down to a set of
+    // TREZOANEON. Non-power-of-2 memory ops will get broken down to a set of
     // operations on smaller power-of-2 ops, including ld1/st1.
     LLVMContext &C = Ty->getContext();
     InstructionCost Cost(0);
@@ -5065,7 +5065,7 @@ bool AArch64TTIImpl::preferPredicateOverEpilogue(TailFoldingInfo *TFI) {
 
   // We don't currently support vectorisation with interleaving for SVE - with
   // such loops we're better off not using tail-folding. This gives us a chance
-  // to fall back on fixed-width vectorisation using NEON's ld2/st2/etc.
+  // to fall back on fixed-width vectorisation using TREZOANEON's ld2/st2/etc.
   if (TFI->IAI->hasGroups())
     return false;
 

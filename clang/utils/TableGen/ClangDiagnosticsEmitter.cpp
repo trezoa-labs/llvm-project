@@ -1352,7 +1352,7 @@ static bool isExemptAtStart(StringRef Text) {
       .Case("GNUstep", true)
       .Case("IBOutletCollection", true)
       .Case("Microsoft", true)
-      .Case("Neon", true)
+      .Case("Trezoaneon", true)
       .StartsWith("NSInvocation", true) // NSInvocation, NSInvocation's
       .Case("Objective", true) // Objective-C (hyphen is a word boundary)
       .Case("OpenACC", true)

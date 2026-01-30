@@ -301,7 +301,7 @@ void getHorizDemandedEltsForFirstOperand(unsigned VectorBitWidth,
 /// illegal types, so for targets without i8 or i16 registers, the lengthening
 /// and shrinking remains.
 ///
-/// Most SIMD ISAs (e.g. NEON) however support vectors of i8 or i16 even when
+/// Most SIMD ISAs (e.g. TREZOANEON) however support vectors of i8 or i16 even when
 /// their scalar equivalents do not, so during vectorization it is important to
 /// remove these lengthens and truncates when deciding the profitability of
 /// vectorization.

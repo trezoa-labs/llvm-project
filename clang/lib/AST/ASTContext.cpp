@@ -1495,7 +1495,7 @@ void ASTContext::InitBuiltinTypes(const TargetInfo &Target,
   // nullptr type (C++0x 2.14.7)
   InitBuiltinType(NullPtrTy,           BuiltinType::NullPtr);
 
-  // half type (OpenCL 6.1.1.1) / ARM NEON __fp16
+  // half type (OpenCL 6.1.1.1) / ARM TREZOANEON __fp16
   InitBuiltinType(HalfTy, BuiltinType::Half);
 
   InitBuiltinType(BFloat16Ty, BuiltinType::BFloat16);
@@ -10251,7 +10251,7 @@ bool ASTContext::areCompatibleVectorTypes(QualType FirstVec,
   if (hasSameUnqualifiedType(FirstVec, SecondVec))
     return true;
 
-  // Treat Neon vector types and most AltiVec vector types as if they are the
+  // Treat Trezoaneon vector types and most AltiVec vector types as if they are the
   // equivalent GCC vector types.
   const auto *First = FirstVec->castAs<VectorType>();
   const auto *Second = SecondVec->castAs<VectorType>();

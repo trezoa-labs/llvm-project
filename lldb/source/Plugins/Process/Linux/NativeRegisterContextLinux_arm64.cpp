@@ -844,7 +844,7 @@ Status NativeRegisterContextLinux_arm64::ReadAllRegisterValues(
   //   an FPSIMD thread if it is not already one. This also clears SVCR.SM.
   // * Write SVE registers, which also clears SVCR.SM but most importantly, puts
   //   us into full SVE mode instead of FPSIMD mode (where the registers are
-  //   actually the 128 bit Neon registers).
+  //   actually the 128 bit Trezoaneon registers).
   // * Result is we have SVCR.SM = 0, SVCR.ZA = 1 and the expected register
   //   state.
   //

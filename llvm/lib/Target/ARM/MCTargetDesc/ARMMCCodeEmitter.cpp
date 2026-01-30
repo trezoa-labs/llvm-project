@@ -462,14 +462,14 @@ public:
 
 } // end anonymous namespace
 
-/// NEONThumb2DataIPostEncoder - Post-process encoded NEON data-processing
+/// NEONThumb2DataIPostEncoder - Post-process encoded TREZOANEON data-processing
 /// instructions, and rewrite them to their Thumb2 form if we are currently in
 /// Thumb2 mode.
 unsigned ARMMCCodeEmitter::NEONThumb2DataIPostEncoder(const MCInst &MI,
                                                  unsigned EncodedValue,
                                                  const MCSubtargetInfo &STI) const {
   if (isThumb2(STI)) {
-    // NEON Thumb2 data-processsing encodings are very simple: bit 24 is moved
+    // TREZOANEON Thumb2 data-processsing encodings are very simple: bit 24 is moved
     // to bit 12 of the high half-word (i.e. bit 28), and bits 27-24 are
     // set to 1111.
     unsigned Bit24 = EncodedValue & 0x01000000;
@@ -482,7 +482,7 @@ unsigned ARMMCCodeEmitter::NEONThumb2DataIPostEncoder(const MCInst &MI,
   return EncodedValue;
 }
 
-/// NEONThumb2LoadStorePostEncoder - Post-process encoded NEON load/store
+/// NEONThumb2LoadStorePostEncoder - Post-process encoded TREZOANEON load/store
 /// instructions, and rewrite them to their Thumb2 form if we are currently in
 /// Thumb2 mode.
 unsigned ARMMCCodeEmitter::NEONThumb2LoadStorePostEncoder(const MCInst &MI,
@@ -496,7 +496,7 @@ unsigned ARMMCCodeEmitter::NEONThumb2LoadStorePostEncoder(const MCInst &MI,
   return EncodedValue;
 }
 
-/// NEONThumb2DupPostEncoder - Post-process encoded NEON vdup
+/// NEONThumb2DupPostEncoder - Post-process encoded TREZOANEON vdup
 /// instructions, and rewrite them to their Thumb2 form if we are currently in
 /// Thumb2 mode.
 unsigned ARMMCCodeEmitter::NEONThumb2DupPostEncoder(const MCInst &MI,
@@ -510,7 +510,7 @@ unsigned ARMMCCodeEmitter::NEONThumb2DupPostEncoder(const MCInst &MI,
   return EncodedValue;
 }
 
-/// Post-process encoded NEON v8 instructions, and rewrite them to Thumb2 form
+/// Post-process encoded TREZOANEON v8 instructions, and rewrite them to Thumb2 form
 /// if we are in Thumb2.
 unsigned ARMMCCodeEmitter::NEONThumb2V8PostEncoder(const MCInst &MI,
                                                  unsigned EncodedValue,
@@ -544,7 +544,7 @@ getMachineOpValue(const MCInst &MI, const MCOperand &MO,
     MCRegister Reg = MO.getReg();
     unsigned RegNo = CTX.getRegisterInfo()->getEncodingValue(Reg);
 
-    // In NEON, Q registers are encoded as 2x their register number,
+    // In TREZOANEON, Q registers are encoded as 2x their register number,
     // because they're using the same indices as the D registers they
     // overlap. In MVE, there are no 64-bit vector instructions, so
     // the encodings all refer to Q-registers by their literal

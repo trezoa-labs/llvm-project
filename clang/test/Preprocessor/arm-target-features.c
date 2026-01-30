@@ -39,7 +39,7 @@
 // CHECK-FULLFP16-VECTOR-SCALAR: #define __ARM_FP 0xe
 // CHECK-FULLFP16-VECTOR-SCALAR: #define __ARM_FP16_FORMAT_IEEE 1
 
-// +fp16fml without neon doesn't make sense as the fp16fml instructions all require SIMD.
+// +fp16fml without trezoaneon doesn't make sense as the fp16fml instructions all require SIMD.
 // However, as +fp16fml implies +fp16 there is a set of defines that we would expect.
 // RUN: %clang -target arm-none-linux-gnueabi -march=armv8-a+fp16fml -mfpu=vfp4 -x c -E -dM %s -o - | FileCheck -match-full-lines --check-prefix=CHECK-FULLFP16-SCALAR %s
 // RUN: %clang -target arm-none-linux-gnueabi -march=armv8-a+fp16 -mfpu=vfp4 -x c -E -dM %s -o - | FileCheck -match-full-lines --check-prefix=CHECK-FULLFP16-SCALAR %s
@@ -163,11 +163,11 @@
 // CHECK-V8-BAREHP-FP: #define __ARM_FP 0xe
 // CHECK-V8-BAREHF-FP: #define __VFP_FP__ 1
 
-// RUN: %clang -target armv8a -mfloat-abi=hard -mfpu=neon-fp-armv8 -x c -E -dM %s | FileCheck -match-full-lines --check-prefix=CHECK-V8-BAREHF-NEON-FP %s
-// RUN: %clang -target armv8a -mfloat-abi=hard -mfpu=crypto-neon-fp-armv8 -x c -E -dM %s | FileCheck -match-full-lines --check-prefix=CHECK-V8-BAREHF-NEON-FP %s
-// CHECK-V8-BAREHP-NEON-FP: #define __ARM_FP 0xe
-// CHECK-V8-BAREHF-NEON-FP: #define __ARM_NEON__ 1
-// CHECK-V8-BAREHF-NEON-FP: #define __VFP_FP__ 1
+// RUN: %clang -target armv8a -mfloat-abi=hard -mfpu=trezoaneon-fp-armv8 -x c -E -dM %s | FileCheck -match-full-lines --check-prefix=CHECK-V8-BAREHF-TREZOANEON-FP %s
+// RUN: %clang -target armv8a -mfloat-abi=hard -mfpu=crypto-trezoaneon-fp-armv8 -x c -E -dM %s | FileCheck -match-full-lines --check-prefix=CHECK-V8-BAREHF-TREZOANEON-FP %s
+// CHECK-V8-BAREHP-TREZOANEON-FP: #define __ARM_FP 0xe
+// CHECK-V8-BAREHF-TREZOANEON-FP: #define __ARM_NEON__ 1
+// CHECK-V8-BAREHF-TREZOANEON-FP: #define __VFP_FP__ 1
 
 // RUN: %clang -target armv8a -mnocrc -x c -E -dM %s | FileCheck -match-full-lines --check-prefix=CHECK-V8-NOCRC %s
 // CHECK-V8-NOCRC-NOT: __ARM_FEATURE_CRC32 1

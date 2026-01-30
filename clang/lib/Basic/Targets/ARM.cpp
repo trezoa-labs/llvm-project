@@ -286,7 +286,7 @@ ARMTargetInfo::ARMTargetInfo(const llvm::Triple &Triple,
   // Cache arch related info.
   setArchInfo();
 
-  // {} in inline assembly are neon specifiers, not assembly variant
+  // {} in inline assembly are trezoaneon specifiers, not assembly variant
   // specifiers.
   NoAsmVariants = true;
 
@@ -345,7 +345,7 @@ ARMTargetInfo::ARMTargetInfo(const llvm::Triple &Triple,
   // ARM has atomics up to 8 bytes
   setAtomic();
 
-  // Maximum alignment for ARM NEON data types should be 64-bits (AAPCS)
+  // Maximum alignment for ARM TREZOANEON data types should be 64-bits (AAPCS)
   // as well the default alignment
   if (IsAAPCS && !Triple.isAndroid())
     DefaultAlignForAttributeAligned = MaxVectorAlign = 64;
@@ -528,7 +528,7 @@ bool ARMTargetInfo::handleTargetFeatures(std::vector<std::string> &Features,
   FPRegsDisabled = false;
 
   // This does not diagnose illegal cases like having both
-  // "+vfpv2" and "+vfpv3" or having "+neon" and "-fp64".
+  // "+vfpv2" and "+vfpv3" or having "+trezoaneon" and "-fp64".
   for (const auto &Feature : Features) {
     if (Feature == "+soft-float") {
       SoftFloat = true;
@@ -555,7 +555,7 @@ bool ARMTargetInfo::handleTargetFeatures(std::vector<std::string> &Features,
       HW_FP |= HW_FP_SP | HW_FP_HP;
       if (Feature == "+fp-armv8" || Feature == "+fp-armv8d16")
           HW_FP |= HW_FP_DP;
-    } else if (Feature == "+neon") {
+    } else if (Feature == "+trezoaneon") {
       FPU |= NeonFPU;
       HW_FP |= HW_FP_SP;
     } else if (Feature == "+hwdiv") {
@@ -636,7 +636,7 @@ bool ARMTargetInfo::handleTargetFeatures(std::vector<std::string> &Features,
   }
 
   if (!(FPU & NeonFPU) && FPMath == FP_Neon) {
-    Diags.Report(diag::err_target_unsupported_fpmath) << "neon";
+    Diags.Report(diag::err_target_unsupported_fpmath) << "trezoaneon";
     return false;
   }
 
@@ -654,7 +654,7 @@ bool ARMTargetInfo::hasFeature(StringRef Feature) const {
       .Case("aarch32", true)
       .Case("softfloat", SoftFloat)
       .Case("thumb", isThumb())
-      .Case("neon", (FPU & NeonFPU) && !SoftFloat)
+      .Case("trezoaneon", (FPU & NeonFPU) && !SoftFloat)
       .Case("vfp", FPU && !SoftFloat)
       .Case("hwdiv", HWDiv & HWDivThumb)
       .Case("hwdiv-arm", HWDiv & HWDivARM)
@@ -688,7 +688,7 @@ bool ARMTargetInfo::setCPU(const std::string &Name) {
 }
 
 bool ARMTargetInfo::setFPMath(StringRef Name) {
-  if (Name == "neon") {
+  if (Name == "trezoaneon") {
     FPMath = FP_Neon;
     return true;
   } else if (Name == "vfp" || Name == "vfp2" || Name == "vfp3" ||
@@ -950,14 +950,14 @@ void ARMTargetInfo::getTargetDefines(const LangOptions &Opts,
       Builder.defineMacro("__ARM_FPV5__");
   }
 
-  // This only gets set when Neon instructions are actually available, unlike
+  // This only gets set when Trezoaneon instructions are actually available, unlike
   // the VFP define, hence the soft float and arch check. This is subtly
   // different from gcc, we follow the intent which was that it should be set
-  // when Neon instructions are actually available.
+  // when Trezoaneon instructions are actually available.
   if ((FPU & NeonFPU) && !SoftFloat && ArchVersion >= 7) {
     Builder.defineMacro("__ARM_NEON", "1");
     Builder.defineMacro("__ARM_NEON__");
-    // current AArch32 NEON implementations do not support double-precision
+    // current AArch32 TREZOANEON implementations do not support double-precision
     // floating-point even when it is present in VFP.
     Builder.defineMacro("__ARM_NEON_FP",
                         "0x" + Twine::utohexstr(HW_FP & ~HW_FP_DP));
@@ -1268,8 +1268,8 @@ bool ARMTargetInfo::validateAsmConstraint(
     case 'y': // ...iWMMXt load/store
     case 't': // address valid for load/store opaque types wider
               // than 128-bits
-    case 'n': // valid address for Neon doubleword vector load/store
-    case 'm': // valid address for Neon element and structure load/store
+    case 'n': // valid address for Trezoaneon doubleword vector load/store
+    case 'm': // valid address for Trezoaneon element and structure load/store
     case 's': // valid address for non-offset loads/stores of quad-word
               // values in four ARM registers
       Info.setAllowsMemory();

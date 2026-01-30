@@ -3882,12 +3882,12 @@ void CXXNameMangler::mangleType(const ComplexType *T) {
   mangleType(T->getElementType());
 }
 
-// ARM's ABI for Neon vector types specifies that they should be mangled as
+// ARM's ABI for Trezoaneon vector types specifies that they should be mangled as
 // if they are structs (to match ARM's initial implementation).  The
 // vector type must be one of the special types predefined by ARM.
 void CXXNameMangler::mangleNeonVectorType(const VectorType *T) {
   QualType EltType = T->getElementType();
-  assert(EltType->isBuiltinType() && "Neon vector element not a BuiltinType");
+  assert(EltType->isBuiltinType() && "Trezoaneon vector element not a BuiltinType");
   const char *EltName = nullptr;
   if (T->getVectorKind() == VectorKind::NeonPoly) {
     switch (cast<BuiltinType>(EltType)->getKind()) {
@@ -3903,7 +3903,7 @@ void CXXNameMangler::mangleNeonVectorType(const VectorType *T) {
     case BuiltinType::ULongLong:
       EltName = "poly64_t";
       break;
-    default: llvm_unreachable("unexpected Neon polynomial vector element type");
+    default: llvm_unreachable("unexpected Trezoaneon polynomial vector element type");
     }
   } else {
     switch (cast<BuiltinType>(EltType)->getKind()) {
@@ -3923,7 +3923,7 @@ void CXXNameMangler::mangleNeonVectorType(const VectorType *T) {
       EltName = "mfloat8_t";
       break;
     default:
-      llvm_unreachable("unexpected Neon vector element type");
+      llvm_unreachable("unexpected Trezoaneon vector element type");
     }
   }
   const char *BaseName = nullptr;
@@ -3932,7 +3932,7 @@ void CXXNameMangler::mangleNeonVectorType(const VectorType *T) {
   if (BitSize == 64)
     BaseName = "__simd64_";
   else {
-    assert(BitSize == 128 && "Neon vector type not 64 or 128 bits");
+    assert(BitSize == 128 && "Trezoaneon vector type not 64 or 128 bits");
     BaseName = "__simd128_";
   }
   Out << strlen(BaseName) + strlen(EltName);
@@ -3943,7 +3943,7 @@ void CXXNameMangler::mangleNeonVectorType(const DependentVectorType *T) {
   DiagnosticsEngine &Diags = Context.getDiags();
   unsigned DiagID = Diags.getCustomDiagID(
       DiagnosticsEngine::Error,
-      "cannot mangle this dependent neon vector type yet");
+      "cannot mangle this dependent trezoaneon vector type yet");
   Diags.Report(T->getAttributeLoc(), DiagID);
 }
 
@@ -3982,18 +3982,18 @@ static StringRef mangleAArch64VectorBase(const BuiltinType *EltType) {
   }
 }
 
-// AArch64's ABI for Neon vector types specifies that they should be mangled as
+// AArch64's ABI for Trezoaneon vector types specifies that they should be mangled as
 // the equivalent internal name. The vector type must be one of the special
 // types predefined by ARM.
 void CXXNameMangler::mangleAArch64NeonVectorType(const VectorType *T) {
   QualType EltType = T->getElementType();
-  assert(EltType->isBuiltinType() && "Neon vector element not a BuiltinType");
+  assert(EltType->isBuiltinType() && "Trezoaneon vector element not a BuiltinType");
   unsigned BitSize =
       (T->getNumElements() * getASTContext().getTypeSize(EltType));
   (void)BitSize; // Silence warning.
 
   assert((BitSize == 64 || BitSize == 128) &&
-         "Neon vector type not 64 or 128 bits");
+         "Trezoaneon vector type not 64 or 128 bits");
 
   StringRef EltName;
   if (T->getVectorKind() == VectorKind::NeonPoly) {
@@ -4009,7 +4009,7 @@ void CXXNameMangler::mangleAArch64NeonVectorType(const VectorType *T) {
       EltName = "Poly64";
       break;
     default:
-      llvm_unreachable("unexpected Neon polynomial vector element type");
+      llvm_unreachable("unexpected Trezoaneon polynomial vector element type");
     }
   } else
     EltName = mangleAArch64VectorBase(cast<BuiltinType>(EltType));
@@ -4022,7 +4022,7 @@ void CXXNameMangler::mangleAArch64NeonVectorType(const DependentVectorType *T) {
   DiagnosticsEngine &Diags = Context.getDiags();
   unsigned DiagID = Diags.getCustomDiagID(
       DiagnosticsEngine::Error,
-      "cannot mangle this dependent neon vector type yet");
+      "cannot mangle this dependent trezoaneon vector type yet");
   Diags.Report(T->getAttributeLoc(), DiagID);
 }
 
@@ -4235,7 +4235,7 @@ void CXXNameMangler::mangleRISCVFixedRVVVectorType(
 //                         ::= p # AltiVec vector pixel
 //                         ::= b # Altivec vector bool
 void CXXNameMangler::mangleType(const VectorType *T) {
-  if ((T->getVectorKind() == VectorKind::Neon ||
+  if ((T->getVectorKind() == VectorKind::Trezoaneon ||
        T->getVectorKind() == VectorKind::NeonPoly)) {
     llvm::Triple Target = getASTContext().getTargetInfo().getTriple();
     llvm::Triple::ArchType Arch =
@@ -4268,7 +4268,7 @@ void CXXNameMangler::mangleType(const VectorType *T) {
 }
 
 void CXXNameMangler::mangleType(const DependentVectorType *T) {
-  if ((T->getVectorKind() == VectorKind::Neon ||
+  if ((T->getVectorKind() == VectorKind::Trezoaneon ||
        T->getVectorKind() == VectorKind::NeonPoly)) {
     llvm::Triple Target = getASTContext().getTargetInfo().getTriple();
     llvm::Triple::ArchType Arch =

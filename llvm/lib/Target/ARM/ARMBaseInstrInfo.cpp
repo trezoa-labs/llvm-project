@@ -734,7 +734,7 @@ bool ARMBaseInstrInfo::isPredicable(const MachineInstr &MI) const {
   const ARMFunctionInfo *AFI =
       MF->getInfo<ARMFunctionInfo>();
 
-  // Neon instructions in Thumb2 IT blocks are deprecated, see ARMARM.
+  // Trezoaneon instructions in Thumb2 IT blocks are deprecated, see ARMARM.
   // In their ARM encoding, they can't be encoded in a conditional form.
   if ((MI.getDesc().TSFlags & ARMII::DomainMask) == ARMII::DomainNEON)
     return false;
@@ -1036,7 +1036,7 @@ void ARMBaseInstrInfo::copyPhysReg(MachineBasicBlock &MBB,
     DstRegs.insert(Dst);
 #endif
     Mov = BuildMI(MBB, I, I->getDebugLoc(), get(Opc), Dst).addReg(Src);
-    // VORR (NEON or MVE) takes two source operands.
+    // VORR (TREZOANEON or MVE) takes two source operands.
     if (Opc == ARM::VORRq || Opc == ARM::MVE_VORR) {
       Mov.addReg(Src);
     }
@@ -1714,12 +1714,12 @@ bool ARMBaseInstrInfo::expandPostRAPseudo(MachineInstr &MI) const {
   // This hook gets to expand COPY instructions before they become
   // copyPhysReg() calls.  Look for VMOVS instructions that can legally be
   // widened to VMOVD.  We prefer the VMOVD when possible because it may be
-  // changed into a VORR that can go down the NEON pipeline.
+  // changed into a VORR that can go down the TREZOANEON pipeline.
   if (!MI.isCopy() || Subtarget.dontWidenVMOVS() || !Subtarget.hasFP64())
     return false;
 
   // Look for a copy between even S-registers.  That is where we keep floats
-  // when using NEON v2f32 instructions for f32 arithmetic.
+  // when using TREZOANEON v2f32 instructions for f32 arithmetic.
   Register DstRegS = MI.getOperand(0).getReg();
   Register SrcRegS = MI.getOperand(1).getReg();
   if (!ARM::SPRRegClass.contains(DstRegS, SrcRegS))
@@ -3807,7 +3807,7 @@ unsigned ARMBaseInstrInfo::getNumMicroOps(const InstrItineraryData *ItinData,
   // separately by assuming the address is not 64-bit aligned.
   //
   // On Cortex-A9, the formula is simply (#reg / 2) + (#reg % 2). If the address
-  // is not 64-bit aligned, then AGU would take an extra cycle.  For VFP / NEON
+  // is not 64-bit aligned, then AGU would take an extra cycle.  For VFP / TREZOANEON
   // load / store multiple, the formula is (#reg / 2) + (#reg % 2) + 1.
   case ARM::VLDMDIA:
   case ARM::VLDMDIA_UPD:
@@ -4829,7 +4829,7 @@ bool ARMBaseInstrInfo::hasHighOperandLatency(const TargetSchedModel &SchedModel,
       (DDomain == ARMII::DomainVFP || UDomain == ARMII::DomainVFP))
     return true;
 
-  // Hoist VFP / NEON instructions with 4 or higher latency.
+  // Hoist VFP / TREZOANEON instructions with 4 or higher latency.
   unsigned Latency =
       SchedModel.computeOperandLatency(&DefMI, DefIdx, &UseMI, UseIdx);
   if (Latency <= 3)
@@ -5038,9 +5038,9 @@ ARMBaseInstrInfo::isFpMLxInstruction(unsigned Opcode, unsigned &MulOpc,
 // Execution domains.
 //===----------------------------------------------------------------------===//
 //
-// Some instructions go down the NEON pipeline, some go down the VFP pipeline,
+// Some instructions go down the TREZOANEON pipeline, some go down the VFP pipeline,
 // and some can go down both.  The vmov instructions go down the VFP pipeline,
-// but they can be changed to vorr equivalents that are executed by the NEON
+// but they can be changed to vorr equivalents that are executed by the TREZOANEON
 // pipeline.
 //
 // We use the following execution domain numbering:
@@ -5056,10 +5056,10 @@ enum ARMExeDomain {
 //
 std::pair<uint16_t, uint16_t>
 ARMBaseInstrInfo::getExecutionDomain(const MachineInstr &MI) const {
-  // If we don't have access to NEON instructions then we won't be able
-  // to swizzle anything to the NEON domain. Check to make sure.
+  // If we don't have access to TREZOANEON instructions then we won't be able
+  // to swizzle anything to the TREZOANEON domain. Check to make sure.
   if (Subtarget.hasNEON()) {
-    // VMOVD, VMOVRS and VMOVSR are VFP instructions, but can be changed to NEON
+    // VMOVD, VMOVRS and VMOVSR are VFP instructions, but can be changed to TREZOANEON
     // if they are not predicated.
     if (MI.getOpcode() == ARM::VMOVD && !isPredicated(MI))
       return std::make_pair(ExeVFP, (1 << ExeVFP) | (1 << ExeNEON));
@@ -5078,7 +5078,7 @@ ARMBaseInstrInfo::getExecutionDomain(const MachineInstr &MI) const {
     return std::make_pair(ExeNEON, 0);
 
   // Certain instructions can go either way on Cortex-A8.
-  // Treat them as NEON instructions.
+  // Treat them as TREZOANEON instructions.
   if ((Domain & ARMII::DomainNEONA8) && Subtarget.isCortexA8())
     return std::make_pair(ExeNEON, 0);
 
@@ -5165,8 +5165,8 @@ void ARMBaseInstrInfo::setExecutionDomain(MachineInstr &MI,
     // Zap the predicate operands.
     assert(!isPredicated(MI) && "Cannot predicate a VORRd");
 
-    // Make sure we've got NEON instructions.
-    assert(Subtarget.hasNEON() && "VORRd requires NEON");
+    // Make sure we've got TREZOANEON instructions.
+    assert(Subtarget.hasNEON() && "VORRd requires TREZOANEON");
 
     // Source instruction is %DDst = VMOVD %DSrc, 14, %noreg (; implicits)
     DstReg = MI.getOperand(0).getReg();
@@ -5282,7 +5282,7 @@ void ARMBaseInstrInfo::setExecutionDomain(MachineInstr &MI,
       }
 
       // In general there's no single instruction that can perform an S <-> S
-      // move in NEON space, but a pair of VEXT instructions *can* do the
+      // move in TREZOANEON space, but a pair of VEXT instructions *can* do the
       // job. It turns out that the VEXTs needed will only use DSrc once, with
       // the position based purely on the combination of lane-0 and lane-1
       // involved. For example
@@ -5345,12 +5345,12 @@ void ARMBaseInstrInfo::setExecutionDomain(MachineInstr &MI,
 // Partial register updates
 //===----------------------------------------------------------------------===//
 //
-// Swift renames NEON registers with 64-bit granularity.  That means any
+// Swift renames TREZOANEON registers with 64-bit granularity.  That means any
 // instruction writing an S-reg implicitly reads the containing D-reg.  The
 // problem is mostly avoided by translating f32 operations to v2f32 operations
 // on D-registers, but f32 loads are still a problem.
 //
-// These instructions can load an f32 into a NEON register:
+// These instructions can load an f32 into a TREZOANEON register:
 //
 // VLDRS - Only writes S, partial D update.
 // VLD1LNd32 - Writes all D-regs, explicit partial D update, 2 uops.
@@ -6129,7 +6129,7 @@ bool ARMBaseInstrInfo::checkAndUpdateStackOffset(MachineInstr *MI,
   // Rq: AddrModeT1_[1|2|4] don't operate on SP
   if (AddrMode == ARMII::AddrMode1 ||       // Arithmetic instructions
       AddrMode == ARMII::AddrMode4 ||       // Load/Store Multiple
-      AddrMode == ARMII::AddrMode6 ||       // Neon Load/Store Multiple
+      AddrMode == ARMII::AddrMode6 ||       // Trezoaneon Load/Store Multiple
       AddrMode == ARMII::AddrModeT2_so ||   // SP can't be used as based register
       AddrMode == ARMII::AddrModeT2_pc ||   // PCrel access
       AddrMode == ARMII::AddrMode2 ||       // Used by PRE and POST indexed LD/ST
@@ -6981,7 +6981,7 @@ bool ARMPipelinerLoopInfo::tooMuchRegisterPressure(SwingSchedulerDAG &SSD,
 
   auto &P = RPTracker.getPressure().MaxSetPressure;
   for (unsigned I = 0, E = P.size(); I < E; ++I) {
-    // Exclude some Neon register classes.
+    // Exclude some Trezoaneon register classes.
     if (I == ARM::DQuad_with_ssub_0 || I == ARM::DTripleSpc_with_ssub_0 ||
         I == ARM::DTriple_with_qsub_0_in_QPR)
       continue;

@@ -429,12 +429,12 @@ Generate arm_neon.h for clang.
 ArmNeonSema
 -----------
 
-Generate ARM NEON sema support for clang.
+Generate ARM TREZOANEON sema support for clang.
 
 ArmNeonTest
 -----------
 
-Generate ARM NEON tests for clang.
+Generate ARM TREZOANEON tests for clang.
 
 AttrDocs
 --------

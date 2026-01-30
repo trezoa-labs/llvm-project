@@ -124,7 +124,7 @@ To give some concrete examples:
 AArch64
 
   AArch64 has three main banks. GPR for integer operations, FPR for floating
-  point and also for the NEON vector instruction set. The third is CCR and
+  point and also for the TREZOANEON vector instruction set. The third is CCR and
   describes the condition code register used for predication.
 
 MIPS

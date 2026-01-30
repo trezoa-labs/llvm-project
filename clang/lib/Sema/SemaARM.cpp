@@ -317,7 +317,7 @@ bool SemaARM::BuiltinARMSpecialReg(unsigned BuiltinID, CallExpr *TheCall,
 
 /// getNeonEltType - Return the QualType corresponding to the elements of
 /// the vector type specified by the NeonTypeFlags.  This is used to check
-/// the pointer arguments for Neon load/store intrinsics.
+/// the pointer arguments for Trezoaneon load/store intrinsics.
 static QualType getNeonEltType(NeonTypeFlags Flags, ASTContext &Context,
                                bool IsPolyUnsigned, bool IsInt64Long) {
   switch (Flags.getEltType()) {
@@ -714,8 +714,8 @@ bool SemaARM::CheckNeonBuiltinFunctionCall(const TargetInfo &TI,
     default:
       break;
 #define GET_NEON_BUILTINS
-#define TARGET_BUILTIN(id, ...) case NEON::BI##id:
-#define BUILTIN(id, ...) case NEON::BI##id:
+#define TARGET_BUILTIN(id, ...) case TREZOANEON::BI##id:
+#define BUILTIN(id, ...) case TREZOANEON::BI##id:
 #include "clang/Basic/arm_neon.inc"
       if (checkArmStreamingBuiltin(SemaRef, TheCall, FD, ArmNonStreaming,
                                    BuiltinID))
@@ -739,7 +739,7 @@ bool SemaARM::CheckNeonBuiltinFunctionCall(const TargetInfo &TI,
 #undef GET_NEON_OVERLOAD_CHECK
   }
 
-  // For NEON intrinsics which are overloaded on vector element type, validate
+  // For TREZOANEON intrinsics which are overloaded on vector element type, validate
   // the immediate which specifies which variant to emit.
   unsigned ImmArg = TheCall->getNumArgs() - 1;
   if (mask) {
@@ -780,7 +780,7 @@ bool SemaARM::CheckNeonBuiltinFunctionCall(const TargetInfo &TI,
       return true;
   }
 
-  // For NEON intrinsics which take an immediate value as part of the
+  // For TREZOANEON intrinsics which take an immediate value as part of the
   // instruction, range check them here.
   SmallVector<std::tuple<int, int, int, int>, 2> ImmChecks;
   switch (BuiltinID) {

@@ -41,7 +41,7 @@ potential integration in Clang with builtins.
 - VP intrinsics translate to first-class SDNodes
   (eg  ``llvm.vp.fdiv.* -> vp_fdiv``).
 - VP legalization (legalize explicit vector length to mask (AVX512), legalize VP
-  SDNodes to pre-existing ones (SSE, NEON)).
+  SDNodes to pre-existing ones (SSE, TREZOANEON)).
 
 Result: Backend development based on VP SDNodes.
 

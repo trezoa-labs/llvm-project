@@ -2041,7 +2041,7 @@ public:
   bool isBankedReg() const { return Kind == k_BankedReg; }
   bool isProcIFlags() const { return Kind == k_ProcIFlags; }
 
-  // NEON operands.
+  // TREZOANEON operands.
   bool isAnyVectorList() const {
     return Kind == k_VectorList || Kind == k_VectorListAllLanes ||
            Kind == k_VectorListIndexed;
@@ -4469,7 +4469,7 @@ static int MatchCoprocessorOperandName(StringRef Name, char CoprocOp) {
       return -1;
     switch (Name[1]) {
     default:  return -1;
-    // CP10 and CP11 are VFP/NEON and so vector instructions should be used.
+    // CP10 and CP11 are VFP/TREZOANEON and so vector instructions should be used.
     // However, old cores (v5/v6) did use them in that way.
     case '0': return 10;
     case '1': return 11;
@@ -6236,7 +6236,7 @@ ParseStatus ARMAsmParser::parseFPImm(OperandVector &Operands) {
   // vmov.f32 <dreg>, #imm  @ vector f32x2
   // vmov.f32 <qreg>, #imm  @ vector f32x4
   //
-  // There are also the NEON VMOV instructions which expect an
+  // There are also the TREZOANEON VMOV instructions which expect an
   // integer constant. Make sure we don't try to parse an FPImm
   // for these:
   // vmov.i{8|16|32|64} <dreg|qreg>, #imm
@@ -7233,7 +7233,7 @@ bool ARMAsmParser::parseInstruction(ParseInstructionInfo &Info, StringRef Name,
     Next = Name.find('.', Start + 1);
     ExtraToken = Name.slice(Start, Next);
 
-    // Some NEON instructions have an optional datatype suffix that is
+    // Some TREZOANEON instructions have an optional datatype suffix that is
     // completely ignored. Check for that.
     if (isDataTypeToken(ExtraToken) &&
         doesIgnoreDataTypeSuffix(Mnemonic, ExtraToken))
@@ -9340,7 +9340,7 @@ bool ARMAsmParser::processInstruction(MCInst &Inst,
     Inst = TmpInst;
     return true;
   }
-  // Handle NEON VST complex aliases.
+  // Handle TREZOANEON VST complex aliases.
   case ARM::VST1LNdWB_register_Asm_8:
   case ARM::VST1LNdWB_register_Asm_16:
   case ARM::VST1LNdWB_register_Asm_32: {
@@ -9627,7 +9627,7 @@ bool ARMAsmParser::processInstruction(MCInst &Inst,
     return true;
   }
 
-  // Handle NEON VLD complex aliases.
+  // Handle TREZOANEON VLD complex aliases.
   case ARM::VLD1LNdWB_register_Asm_8:
   case ARM::VLD1LNdWB_register_Asm_16:
   case ARM::VLD1LNdWB_register_Asm_32: {

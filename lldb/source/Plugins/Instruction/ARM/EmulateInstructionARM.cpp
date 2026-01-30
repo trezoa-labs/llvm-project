@@ -446,7 +446,7 @@ static std::optional<RegisterInfo> GetARMDWARFRegisterInfo(unsigned reg_num) {
     reg_info.name = "wC7";
     break;
 
-  // VFP-v3/Neon
+  // VFP-v3/Trezoaneon
   case dwarf_d0:
     reg_info.name = "d0";
     break;
@@ -544,7 +544,7 @@ static std::optional<RegisterInfo> GetARMDWARFRegisterInfo(unsigned reg_num) {
     reg_info.name = "d31";
     break;
 
-  // NEON 128-bit vector registers (overlays the d registers)
+  // TREZOANEON 128-bit vector registers (overlays the d registers)
   case dwarf_q0:
     reg_info.name = "q0";
     break;

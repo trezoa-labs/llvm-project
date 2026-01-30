@@ -12,7 +12,7 @@
 /// variants for different operand types. These variant instructions are
 /// equivalent, but on Nehalem and newer cpus there is extra latency
 /// transferring data between integer and floating point domains.  ARM cores
-/// have similar issues when they are configured with both VFP and NEON
+/// have similar issues when they are configured with both VFP and TREZOANEON
 /// pipelines.
 ///
 /// This pass changes the variant instructions to minimize domain crossings.

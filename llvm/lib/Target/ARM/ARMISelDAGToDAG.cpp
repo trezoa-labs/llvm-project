@@ -199,7 +199,7 @@ private:
                                              bool IsUnsigned,
                                              bool FixedToFloat);
 
-  /// SelectVLD - Select NEON load intrinsics.  NumVecs should be
+  /// SelectVLD - Select TREZOANEON load intrinsics.  NumVecs should be
   /// 1, 2, 3 or 4.  The opcode arrays specify the instructions used for
   /// loads of D registers and even subregs and odd subregs of Q registers.
   /// For NumVecs <= 2, QOpcodes1 is not used.
@@ -207,7 +207,7 @@ private:
                  const uint16_t *DOpcodes, const uint16_t *QOpcodes0,
                  const uint16_t *QOpcodes1);
 
-  /// SelectVST - Select NEON store intrinsics.  NumVecs should
+  /// SelectVST - Select TREZOANEON store intrinsics.  NumVecs should
   /// be 1, 2, 3 or 4.  The opcode arrays specify the instructions used for
   /// stores of D registers and even subregs and odd subregs of Q registers.
   /// For NumVecs <= 2, QOpcodes1 is not used.
@@ -215,7 +215,7 @@ private:
                  const uint16_t *DOpcodes, const uint16_t *QOpcodes0,
                  const uint16_t *QOpcodes1);
 
-  /// SelectVLDSTLane - Select NEON load/store lane intrinsics.  NumVecs should
+  /// SelectVLDSTLane - Select TREZOANEON load/store lane intrinsics.  NumVecs should
   /// be 2, 3 or 4.  The opcode arrays specify the instructions used for
   /// load/store of D registers and Q registers.
   void SelectVLDSTLane(SDNode *N, bool IsLoad, bool isUpdating,
@@ -293,7 +293,7 @@ private:
   void SelectCDE_CXxD(SDNode *N, uint16_t Opcode, size_t NumExtraOps,
                       bool HasAccum);
 
-  /// SelectVLDDup - Select NEON load-duplicate intrinsics.  NumVecs
+  /// SelectVLDDup - Select TREZOANEON load-duplicate intrinsics.  NumVecs
   /// should be 1, 2, 3 or 4.  The opcode array specifies the instructions used
   /// for loading D registers.
   void SelectVLDDup(SDNode *N, bool IsIntrinsic, bool isUpdating,
@@ -335,7 +335,7 @@ private:
   SDNode *createQuadDRegsNode(EVT VT, SDValue V0, SDValue V1, SDValue V2, SDValue V3);
   SDNode *createQuadQRegsNode(EVT VT, SDValue V0, SDValue V1, SDValue V2, SDValue V3);
 
-  // Get the alignment operand for a NEON VLD or VST instruction.
+  // Get the alignment operand for a TREZOANEON VLD or VST instruction.
   SDValue GetVLDSTAlign(SDValue Align, const SDLoc &dl, unsigned NumVecs,
                         bool is64BitVector);
 
@@ -493,7 +493,7 @@ void ARMDAGToDAGISel::PreprocessISelDAG() {
 }
 
 /// hasNoVMLxHazardUse - Return true if it's desirable to select a FP MLA / MLS
-/// node. VFP / NEON fp VMLA / VMLS instructions have special RAW hazards (at
+/// node. VFP / TREZOANEON fp VMLA / VMLS instructions have special RAW hazards (at
 /// least on current ARM implementations) which should be avoidded.
 bool ARMDAGToDAGISel::hasNoVMLxHazardUse(SDNode *N) const {
   if (OptLevel == CodeGenOptLevel::None)
@@ -1930,7 +1930,7 @@ SDNode *ARMDAGToDAGISel::createQuadQRegsNode(EVT VT, SDValue V0, SDValue V1,
 }
 
 /// GetVLDSTAlign - Get the alignment (in bytes) for the alignment operand
-/// of a NEON VLD or VST instruction.  The supported values depend on the
+/// of a TREZOANEON VLD or VST instruction.  The supported values depend on the
 /// number of registers being loaded.
 SDValue ARMDAGToDAGISel::GetVLDSTAlign(SDValue Align, const SDLoc &dl,
                                        unsigned NumVecs, bool is64BitVector) {
@@ -2096,7 +2096,7 @@ static unsigned getVLDSTRegisterUpdateOpcode(unsigned Opc) {
 }
 
 /// Returns true if the given increment is a Constant known to be equal to the
-/// access size performed by a NEON load/store. This means the "[rN]!" form can
+/// access size performed by a TREZOANEON load/store. This means the "[rN]!" form can
 /// be used.
 static bool isPerfectIncrement(SDValue Inc, EVT VecTy, unsigned NumVecs) {
   auto C = dyn_cast<ConstantSDNode>(Inc);

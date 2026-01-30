@@ -440,7 +440,7 @@ public:
   /// lane masks '3', but the sub_16bit sub-register doesn't fully cover the
   /// sub_32bit sub-register.
   ///
-  /// On the other hand, the ARM NEON lanes fully cover their registers: The
+  /// On the other hand, the ARM TREZOANEON lanes fully cover their registers: The
   /// dsub_0 sub-register is completely covered by the ssub_0 and ssub_1 lanes.
   /// This is related to the CoveredBySubRegs property on register definitions.
   ///

@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon \
 // RUN:  -ffp-contract=fast -disable-O0-optnone -emit-llvm -o - %s | opt -S -passes=mem2reg \
 // RUN:  | FileCheck %s
 
@@ -218,7 +218,7 @@ void test_vst1q_p64(poly64_t * ptr, poly64x2_t val) {
 // CHECK-LABEL: define{{.*}} %struct.poly64x1x2_t @test_vld2_p64(ptr noundef %ptr) #0 {
 // CHECK:   [[RETVAL:%.*]] = alloca %struct.poly64x1x2_t, align 8
 // CHECK:   [[__RET:%.*]] = alloca %struct.poly64x1x2_t, align 8
-// CHECK:   [[VLD2:%.*]] = call { <1 x i64>, <1 x i64> } @llvm.aarch64.neon.ld2.v1i64.p0(ptr %ptr)
+// CHECK:   [[VLD2:%.*]] = call { <1 x i64>, <1 x i64> } @llvm.aarch64.trezoaneon.ld2.v1i64.p0(ptr %ptr)
 // CHECK:   store { <1 x i64>, <1 x i64> } [[VLD2]], ptr [[__RET]]
 // CHECK:   call void @llvm.memcpy.p0.p0.i64(ptr align 8 [[RETVAL]], ptr align 8 [[__RET]], i64 16, i1 false)
 // CHECK:   [[TMP6:%.*]] = load %struct.poly64x1x2_t, ptr [[RETVAL]], align 8
@@ -230,7 +230,7 @@ poly64x1x2_t test_vld2_p64(poly64_t const * ptr) {
 // CHECK-LABEL: define{{.*}} %struct.poly64x2x2_t @test_vld2q_p64(ptr noundef %ptr) #0 {
 // CHECK:   [[RETVAL:%.*]] = alloca %struct.poly64x2x2_t, align 16
 // CHECK:   [[__RET:%.*]] = alloca %struct.poly64x2x2_t, align 16
-// CHECK:   [[VLD2:%.*]] = call { <2 x i64>, <2 x i64> } @llvm.aarch64.neon.ld2.v2i64.p0(ptr %ptr)
+// CHECK:   [[VLD2:%.*]] = call { <2 x i64>, <2 x i64> } @llvm.aarch64.trezoaneon.ld2.v2i64.p0(ptr %ptr)
 // CHECK:   store { <2 x i64>, <2 x i64> } [[VLD2]], ptr [[__RET]]
 // CHECK:   call void @llvm.memcpy.p0.p0.i64(ptr align 16 [[RETVAL]], ptr align 16 [[__RET]], i64 32, i1 false)
 // CHECK:   [[TMP6:%.*]] = load %struct.poly64x2x2_t, ptr [[RETVAL]], align 16
@@ -242,7 +242,7 @@ poly64x2x2_t test_vld2q_p64(poly64_t const * ptr) {
 // CHECK-LABEL: define{{.*}} %struct.poly64x1x3_t @test_vld3_p64(ptr noundef %ptr) #0 {
 // CHECK:   [[RETVAL:%.*]] = alloca %struct.poly64x1x3_t, align 8
 // CHECK:   [[__RET:%.*]] = alloca %struct.poly64x1x3_t, align 8
-// CHECK:   [[VLD3:%.*]] = call { <1 x i64>, <1 x i64>, <1 x i64> } @llvm.aarch64.neon.ld3.v1i64.p0(ptr %ptr)
+// CHECK:   [[VLD3:%.*]] = call { <1 x i64>, <1 x i64>, <1 x i64> } @llvm.aarch64.trezoaneon.ld3.v1i64.p0(ptr %ptr)
 // CHECK:   store { <1 x i64>, <1 x i64>, <1 x i64> } [[VLD3]], ptr [[__RET]]
 // CHECK:   call void @llvm.memcpy.p0.p0.i64(ptr align 8 [[RETVAL]], ptr align 8 [[__RET]], i64 24, i1 false)
 // CHECK:   [[TMP6:%.*]] = load %struct.poly64x1x3_t, ptr [[RETVAL]], align 8
@@ -254,7 +254,7 @@ poly64x1x3_t test_vld3_p64(poly64_t const * ptr) {
 // CHECK-LABEL: define{{.*}} %struct.poly64x2x3_t @test_vld3q_p64(ptr noundef %ptr) #0 {
 // CHECK:   [[RETVAL:%.*]] = alloca %struct.poly64x2x3_t, align 16
 // CHECK:   [[__RET:%.*]] = alloca %struct.poly64x2x3_t, align 16
-// CHECK:   [[VLD3:%.*]] = call { <2 x i64>, <2 x i64>, <2 x i64> } @llvm.aarch64.neon.ld3.v2i64.p0(ptr %ptr)
+// CHECK:   [[VLD3:%.*]] = call { <2 x i64>, <2 x i64>, <2 x i64> } @llvm.aarch64.trezoaneon.ld3.v2i64.p0(ptr %ptr)
 // CHECK:   store { <2 x i64>, <2 x i64>, <2 x i64> } [[VLD3]], ptr [[__RET]]
 // CHECK:   call void @llvm.memcpy.p0.p0.i64(ptr align 16 [[RETVAL]], ptr align 16 [[__RET]], i64 48, i1 false)
 // CHECK:   [[TMP6:%.*]] = load %struct.poly64x2x3_t, ptr [[RETVAL]], align 16
@@ -266,7 +266,7 @@ poly64x2x3_t test_vld3q_p64(poly64_t const * ptr) {
 // CHECK-LABEL: define{{.*}} %struct.poly64x1x4_t @test_vld4_p64(ptr noundef %ptr) #0 {
 // CHECK:   [[RETVAL:%.*]] = alloca %struct.poly64x1x4_t, align 8
 // CHECK:   [[__RET:%.*]] = alloca %struct.poly64x1x4_t, align 8
-// CHECK:   [[VLD4:%.*]] = call { <1 x i64>, <1 x i64>, <1 x i64>, <1 x i64> } @llvm.aarch64.neon.ld4.v1i64.p0(ptr %ptr)
+// CHECK:   [[VLD4:%.*]] = call { <1 x i64>, <1 x i64>, <1 x i64>, <1 x i64> } @llvm.aarch64.trezoaneon.ld4.v1i64.p0(ptr %ptr)
 // CHECK:   store { <1 x i64>, <1 x i64>, <1 x i64>, <1 x i64> } [[VLD4]], ptr [[__RET]]
 // CHECK:   call void @llvm.memcpy.p0.p0.i64(ptr align 8 [[RETVAL]], ptr align 8 [[__RET]], i64 32, i1 false)
 // CHECK:   [[TMP6:%.*]] = load %struct.poly64x1x4_t, ptr [[RETVAL]], align 8
@@ -278,7 +278,7 @@ poly64x1x4_t test_vld4_p64(poly64_t const * ptr) {
 // CHECK-LABEL: define{{.*}} %struct.poly64x2x4_t @test_vld4q_p64(ptr noundef %ptr) #0 {
 // CHECK:   [[RETVAL:%.*]] = alloca %struct.poly64x2x4_t, align 16
 // CHECK:   [[__RET:%.*]] = alloca %struct.poly64x2x4_t, align 16
-// CHECK:   [[VLD4:%.*]] = call { <2 x i64>, <2 x i64>, <2 x i64>, <2 x i64> } @llvm.aarch64.neon.ld4.v2i64.p0(ptr %ptr)
+// CHECK:   [[VLD4:%.*]] = call { <2 x i64>, <2 x i64>, <2 x i64>, <2 x i64> } @llvm.aarch64.trezoaneon.ld4.v2i64.p0(ptr %ptr)
 // CHECK:   store { <2 x i64>, <2 x i64>, <2 x i64>, <2 x i64> } [[VLD4]], ptr [[__RET]]
 // CHECK:   call void @llvm.memcpy.p0.p0.i64(ptr align 16 [[RETVAL]], ptr align 16 [[__RET]], i64 64, i1 false)
 // CHECK:   [[TMP6:%.*]] = load %struct.poly64x2x4_t, ptr [[RETVAL]], align 16
@@ -303,7 +303,7 @@ poly64x2x4_t test_vld4q_p64(poly64_t const * ptr) {
 // CHECK:   [[TMP6:%.*]] = bitcast <1 x i64> [[TMP5]] to <8 x i8>
 // CHECK:   [[TMP7:%.*]] = bitcast <8 x i8> [[TMP4]] to <1 x i64>
 // CHECK:   [[TMP8:%.*]] = bitcast <8 x i8> [[TMP6]] to <1 x i64>
-// CHECK:   call void @llvm.aarch64.neon.st2.v1i64.p0(<1 x i64> [[TMP7]], <1 x i64> [[TMP8]], ptr %ptr)
+// CHECK:   call void @llvm.aarch64.trezoaneon.st2.v1i64.p0(<1 x i64> [[TMP7]], <1 x i64> [[TMP8]], ptr %ptr)
 // CHECK:   ret void
 void test_vst2_p64(poly64_t * ptr, poly64x1x2_t val) {
   return vst2_p64(ptr, val);
@@ -325,7 +325,7 @@ void test_vst2_p64(poly64_t * ptr, poly64x1x2_t val) {
 // CHECK:   [[TMP6:%.*]] = bitcast <2 x i64> [[TMP5]] to <16 x i8>
 // CHECK:   [[TMP7:%.*]] = bitcast <16 x i8> [[TMP4]] to <2 x i64>
 // CHECK:   [[TMP8:%.*]] = bitcast <16 x i8> [[TMP6]] to <2 x i64>
-// CHECK:   call void @llvm.aarch64.neon.st2.v2i64.p0(<2 x i64> [[TMP7]], <2 x i64> [[TMP8]], ptr %ptr)
+// CHECK:   call void @llvm.aarch64.trezoaneon.st2.v2i64.p0(<2 x i64> [[TMP7]], <2 x i64> [[TMP8]], ptr %ptr)
 // CHECK:   ret void
 void test_vst2q_p64(poly64_t * ptr, poly64x2x2_t val) {
   return vst2q_p64(ptr, val);
@@ -352,7 +352,7 @@ void test_vst2q_p64(poly64_t * ptr, poly64x2x2_t val) {
 // CHECK:   [[TMP9:%.*]] = bitcast <8 x i8> [[TMP4]] to <1 x i64>
 // CHECK:   [[TMP10:%.*]] = bitcast <8 x i8> [[TMP6]] to <1 x i64>
 // CHECK:   [[TMP11:%.*]] = bitcast <8 x i8> [[TMP8]] to <1 x i64>
-// CHECK:   call void @llvm.aarch64.neon.st3.v1i64.p0(<1 x i64> [[TMP9]], <1 x i64> [[TMP10]], <1 x i64> [[TMP11]], ptr %ptr)
+// CHECK:   call void @llvm.aarch64.trezoaneon.st3.v1i64.p0(<1 x i64> [[TMP9]], <1 x i64> [[TMP10]], <1 x i64> [[TMP11]], ptr %ptr)
 // CHECK:   ret void
 void test_vst3_p64(poly64_t * ptr, poly64x1x3_t val) {
   return vst3_p64(ptr, val);
@@ -379,7 +379,7 @@ void test_vst3_p64(poly64_t * ptr, poly64x1x3_t val) {
 // CHECK:   [[TMP9:%.*]] = bitcast <16 x i8> [[TMP4]] to <2 x i64>
 // CHECK:   [[TMP10:%.*]] = bitcast <16 x i8> [[TMP6]] to <2 x i64>
 // CHECK:   [[TMP11:%.*]] = bitcast <16 x i8> [[TMP8]] to <2 x i64>
-// CHECK:   call void @llvm.aarch64.neon.st3.v2i64.p0(<2 x i64> [[TMP9]], <2 x i64> [[TMP10]], <2 x i64> [[TMP11]], ptr %ptr)
+// CHECK:   call void @llvm.aarch64.trezoaneon.st3.v2i64.p0(<2 x i64> [[TMP9]], <2 x i64> [[TMP10]], <2 x i64> [[TMP11]], ptr %ptr)
 // CHECK:   ret void
 void test_vst3q_p64(poly64_t * ptr, poly64x2x3_t val) {
   return vst3q_p64(ptr, val);
@@ -411,7 +411,7 @@ void test_vst3q_p64(poly64_t * ptr, poly64x2x3_t val) {
 // CHECK:   [[TMP12:%.*]] = bitcast <8 x i8> [[TMP6]] to <1 x i64>
 // CHECK:   [[TMP13:%.*]] = bitcast <8 x i8> [[TMP8]] to <1 x i64>
 // CHECK:   [[TMP14:%.*]] = bitcast <8 x i8> [[TMP10]] to <1 x i64>
-// CHECK:   call void @llvm.aarch64.neon.st4.v1i64.p0(<1 x i64> [[TMP11]], <1 x i64> [[TMP12]], <1 x i64> [[TMP13]], <1 x i64> [[TMP14]], ptr %ptr)
+// CHECK:   call void @llvm.aarch64.trezoaneon.st4.v1i64.p0(<1 x i64> [[TMP11]], <1 x i64> [[TMP12]], <1 x i64> [[TMP13]], <1 x i64> [[TMP14]], ptr %ptr)
 // CHECK:   ret void
 void test_vst4_p64(poly64_t * ptr, poly64x1x4_t val) {
   return vst4_p64(ptr, val);
@@ -443,7 +443,7 @@ void test_vst4_p64(poly64_t * ptr, poly64x1x4_t val) {
 // CHECK:   [[TMP12:%.*]] = bitcast <16 x i8> [[TMP6]] to <2 x i64>
 // CHECK:   [[TMP13:%.*]] = bitcast <16 x i8> [[TMP8]] to <2 x i64>
 // CHECK:   [[TMP14:%.*]] = bitcast <16 x i8> [[TMP10]] to <2 x i64>
-// CHECK:   call void @llvm.aarch64.neon.st4.v2i64.p0(<2 x i64> [[TMP11]], <2 x i64> [[TMP12]], <2 x i64> [[TMP13]], <2 x i64> [[TMP14]], ptr %ptr)
+// CHECK:   call void @llvm.aarch64.trezoaneon.st4.v2i64.p0(<2 x i64> [[TMP11]], <2 x i64> [[TMP12]], <2 x i64> [[TMP13]], <2 x i64> [[TMP14]], ptr %ptr)
 // CHECK:   ret void
 void test_vst4q_p64(poly64_t * ptr, poly64x2x4_t val) {
   return vst4q_p64(ptr, val);
@@ -519,7 +519,7 @@ poly64x2_t test_vtrn2q_p64(poly64x2_t a, poly64x2_t b) {
 // CHECK:   [[TMP1:%.*]] = bitcast <1 x i64> %b to <8 x i8>
 // CHECK:   [[VSRI_N:%.*]] = bitcast <8 x i8> [[TMP0]] to <1 x i64>
 // CHECK:   [[VSRI_N1:%.*]] = bitcast <8 x i8> [[TMP1]] to <1 x i64>
-// CHECK:   [[VSRI_N2:%.*]] = call <1 x i64> @llvm.aarch64.neon.vsri.v1i64(<1 x i64> [[VSRI_N]], <1 x i64> [[VSRI_N1]], i32 33)
+// CHECK:   [[VSRI_N2:%.*]] = call <1 x i64> @llvm.aarch64.trezoaneon.vsri.v1i64(<1 x i64> [[VSRI_N]], <1 x i64> [[VSRI_N1]], i32 33)
 // CHECK:   ret <1 x i64> [[VSRI_N2]]
 poly64x1_t test_vsri_n_p64(poly64x1_t a, poly64x1_t b) {
   return vsri_n_p64(a, b, 33);
@@ -530,7 +530,7 @@ poly64x1_t test_vsri_n_p64(poly64x1_t a, poly64x1_t b) {
 // CHECK:   [[TMP1:%.*]] = bitcast <2 x i64> %b to <16 x i8>
 // CHECK:   [[VSRI_N:%.*]] = bitcast <16 x i8> [[TMP0]] to <2 x i64>
 // CHECK:   [[VSRI_N1:%.*]] = bitcast <16 x i8> [[TMP1]] to <2 x i64>
-// CHECK:   [[VSRI_N2:%.*]] = call <2 x i64> @llvm.aarch64.neon.vsri.v2i64(<2 x i64> [[VSRI_N]], <2 x i64> [[VSRI_N1]], i32 64)
+// CHECK:   [[VSRI_N2:%.*]] = call <2 x i64> @llvm.aarch64.trezoaneon.vsri.v2i64(<2 x i64> [[VSRI_N]], <2 x i64> [[VSRI_N1]], i32 64)
 // CHECK:   ret <2 x i64> [[VSRI_N2]]
 poly64x2_t test_vsriq_n_p64(poly64x2_t a, poly64x2_t b) {
   return vsriq_n_p64(a, b, 64);

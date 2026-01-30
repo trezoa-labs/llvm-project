@@ -1,6 +1,6 @@
 // REQUIRES: aarch64-registered-target
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon  -fopenmp  %s -S  -o %t -verify
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon  -fopenmp-simd  %s -S  -o %t -verify
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon  -fopenmp  %s -S  -o %t -verify
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon  -fopenmp-simd  %s -S  -o %t -verify
 
 #pragma omp declare simd simdlen(6)
 double foo(float x);

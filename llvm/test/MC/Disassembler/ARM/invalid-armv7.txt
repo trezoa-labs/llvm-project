@@ -358,7 +358,7 @@
 # CHECK-NEXT: [0x75 0xf4 0xaf 0xe6]
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON umaal
+# Undefined encodings for TREZOANEON umaal
 #------------------------------------------------------------------------------
 
 # Opcode=419 Name=UMAAL Format=ARM_FORMAT_MULFRM(1)
@@ -374,7 +374,7 @@
 # CHECK-NEXT: [0x98 0xbf 0x4f 0xf0]
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vcvt (float <-> fixed)
+# Undefined encodings for TREZOANEON vcvt (float <-> fixed)
 #------------------------------------------------------------------------------
 
 # imm6=0b0xxxxx -> UNDEFINED
@@ -388,7 +388,7 @@
 
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vext
+# Undefined encodings for TREZOANEON vext
 #------------------------------------------------------------------------------
 
 # invalid imm4 value (0b1xxx)
@@ -398,7 +398,7 @@
 # CHECK-NEXT: [0x8f 0xf9 0xf7 0xf2]
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vldmsdb
+# Undefined encodings for TREZOANEON vldmsdb
 #------------------------------------------------------------------------------
 
 # core registers out of range
@@ -408,7 +408,7 @@
 
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vmov
+# Undefined encodings for TREZOANEON vmov
 #------------------------------------------------------------------------------
 
 # VMOV cmode=0b1111 op=1 is UNDEFINED
@@ -423,7 +423,7 @@
 
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vqadd
+# Undefined encodings for TREZOANEON vqadd
 #------------------------------------------------------------------------------
 
 # Opcode=1225 Name=VQADDsv16i8 Format=ARM_FORMAT_N3Reg(37)
@@ -439,7 +439,7 @@
 
 
 #------------------------------------------------------------------------------
-# Undefined encodings for NEON vld/vst
+# Undefined encodings for TREZOANEON vld/vst
 #------------------------------------------------------------------------------
 
 # A8.6.393 VST2 (multiple 2-element structures)

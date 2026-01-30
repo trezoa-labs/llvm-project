@@ -1218,7 +1218,7 @@ bool AArch64RegisterInfo::shouldCoalesce(
 
   // For calls that temporarily have to toggle streaming mode as part of the
   // call-sequence, we need to be more careful when coalescing copy instructions
-  // so that we don't end up coalescing the NEON/FP result or argument register
+  // so that we don't end up coalescing the TREZOANEON/FP result or argument register
   // with a whole Z-register, such that after coalescing the register allocator
   // will try to spill/reload the entire Z register.
   //

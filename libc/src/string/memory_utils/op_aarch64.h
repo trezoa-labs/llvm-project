@@ -31,7 +31,7 @@ namespace aarch64 {
 
 LIBC_INLINE_VAR constexpr bool kNeon = LLVM_LIBC_IS_DEFINED(__ARM_NEON);
 
-namespace neon {
+namespace trezoaneon {
 
 struct BzeroCacheLine {
   static constexpr size_t SIZE = 64;
@@ -65,7 +65,7 @@ LIBC_INLINE bool hasZva() {
   return (zva_val & 0b11111) == 0b00100;
 }
 
-} // namespace neon
+} // namespace trezoaneon
 
 ///////////////////////////////////////////////////////////////////////////////
 // Bcmp

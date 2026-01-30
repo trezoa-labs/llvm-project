@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon -target-cpu cyclone \
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon -target-cpu cyclone \
 // RUN: -disable-O0-optnone -emit-llvm -o - %s | opt -S -passes=mem2reg | FileCheck %s
 
 // REQUIRES: aarch64-registered-target || arm-registered-target
@@ -49,7 +49,7 @@ float64x1_t test_vmul_n_f64(float64x1_t a, float64_t b) {
 
 // CHECK-LABEL: define{{.*}} float @test_vmulxs_lane_f32(float noundef %a, <2 x float> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <2 x float> %b, i32 1
-// CHECK:   [[VMULXS_F32_I:%.*]] = call float @llvm.aarch64.neon.fmulx.f32(float %a, float [[VGET_LANE]])
+// CHECK:   [[VMULXS_F32_I:%.*]] = call float @llvm.aarch64.trezoaneon.fmulx.f32(float %a, float [[VGET_LANE]])
 // CHECK:   ret float [[VMULXS_F32_I]]
 float32_t test_vmulxs_lane_f32(float32_t a, float32x2_t b) {
   return vmulxs_lane_f32(a, b, 1);
@@ -57,7 +57,7 @@ float32_t test_vmulxs_lane_f32(float32_t a, float32x2_t b) {
 
 // CHECK-LABEL: define{{.*}} float @test_vmulxs_laneq_f32(float noundef %a, <4 x float> noundef %b) #0 {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <4 x float> %b, i32 3
-// CHECK:   [[VMULXS_F32_I:%.*]] = call float @llvm.aarch64.neon.fmulx.f32(float %a, float [[VGETQ_LANE]])
+// CHECK:   [[VMULXS_F32_I:%.*]] = call float @llvm.aarch64.trezoaneon.fmulx.f32(float %a, float [[VGETQ_LANE]])
 // CHECK:   ret float [[VMULXS_F32_I]]
 float32_t test_vmulxs_laneq_f32(float32_t a, float32x4_t b) {
   return vmulxs_laneq_f32(a, b, 3);
@@ -65,7 +65,7 @@ float32_t test_vmulxs_laneq_f32(float32_t a, float32x4_t b) {
 
 // CHECK-LABEL: define{{.*}} double @test_vmulxd_lane_f64(double noundef %a, <1 x double> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <1 x double> %b, i32 0
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double %a, double [[VGET_LANE]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double %a, double [[VGET_LANE]])
 // CHECK:   ret double [[VMULXD_F64_I]]
 float64_t test_vmulxd_lane_f64(float64_t a, float64x1_t b) {
   return vmulxd_lane_f64(a, b, 0);
@@ -73,7 +73,7 @@ float64_t test_vmulxd_lane_f64(float64_t a, float64x1_t b) {
 
 // CHECK-LABEL: define{{.*}} double @test_vmulxd_laneq_f64(double noundef %a, <2 x double> noundef %b) #0 {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <2 x double> %b, i32 1
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double %a, double [[VGETQ_LANE]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double %a, double [[VGETQ_LANE]])
 // CHECK:   ret double [[VMULXD_F64_I]]
 float64_t test_vmulxd_laneq_f64(float64_t a, float64x2_t b) {
   return vmulxd_laneq_f64(a, b, 1);
@@ -82,7 +82,7 @@ float64_t test_vmulxd_laneq_f64(float64_t a, float64x2_t b) {
 // CHECK-LABEL: define{{.*}} <1 x double> @test_vmulx_lane_f64(<1 x double> noundef %a, <1 x double> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <1 x double> %a, i32 0
 // CHECK:   [[VGET_LANE6:%.*]] = extractelement <1 x double> %b, i32 0
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double [[VGET_LANE]], double [[VGET_LANE6]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double [[VGET_LANE]], double [[VGET_LANE6]])
 // CHECK:   [[VSET_LANE:%.*]] = insertelement <1 x double> %a, double [[VMULXD_F64_I]], i32 0
 // CHECK:   ret <1 x double> [[VSET_LANE]]
 float64x1_t test_vmulx_lane_f64(float64x1_t a, float64x1_t b) {
@@ -93,7 +93,7 @@ float64x1_t test_vmulx_lane_f64(float64x1_t a, float64x1_t b) {
 // CHECK-LABEL: define{{.*}} <1 x double> @test_vmulx_laneq_f64_0(<1 x double> noundef %a, <2 x double> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <1 x double> %a, i32 0
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <2 x double> %b, i32 0
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double [[VGET_LANE]], double [[VGETQ_LANE]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double [[VGET_LANE]], double [[VGETQ_LANE]])
 // CHECK:   [[VSET_LANE:%.*]] = insertelement <1 x double> %a, double [[VMULXD_F64_I]], i32 0
 // CHECK:   ret <1 x double> [[VSET_LANE]]
 float64x1_t test_vmulx_laneq_f64_0(float64x1_t a, float64x2_t b) {
@@ -103,7 +103,7 @@ float64x1_t test_vmulx_laneq_f64_0(float64x1_t a, float64x2_t b) {
 // CHECK-LABEL: define{{.*}} <1 x double> @test_vmulx_laneq_f64_1(<1 x double> noundef %a, <2 x double> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <1 x double> %a, i32 0
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <2 x double> %b, i32 1
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double [[VGET_LANE]], double [[VGETQ_LANE]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double [[VGET_LANE]], double [[VGETQ_LANE]])
 // CHECK:   [[VSET_LANE:%.*]] = insertelement <1 x double> %a, double [[VMULXD_F64_I]], i32 0
 // CHECK:   ret <1 x double> [[VSET_LANE]]
 float64x1_t test_vmulx_laneq_f64_1(float64x1_t a, float64x2_t b) {
@@ -208,7 +208,7 @@ float64x1_t test_vfms_laneq_f64(float64x1_t a, float64x1_t b, float64x2_t v) {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <4 x i16> %b, i32 3
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %a, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[VGET_LANE]], i64 0
-// CHECK:   [[VQDMULLH_S16_I:%.*]] = call <4 x i32> @llvm.aarch64.neon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMULLH_S16_I:%.*]] = call <4 x i32> @llvm.aarch64.trezoaneon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[TMP4:%.*]] = extractelement <4 x i32> [[VQDMULLH_S16_I]], i64 0
 // CHECK:   ret i32 [[TMP4]]
 int32_t test_vqdmullh_lane_s16(int16_t a, int16x4_t b) {
@@ -217,7 +217,7 @@ int32_t test_vqdmullh_lane_s16(int16_t a, int16x4_t b) {
 
 // CHECK-LABEL: define{{.*}} i64 @test_vqdmulls_lane_s32(i32 noundef %a, <2 x i32> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <2 x i32> %b, i32 1
-// CHECK:   [[VQDMULLS_S32_I:%.*]] = call i64 @llvm.aarch64.neon.sqdmulls.scalar(i32 %a, i32 [[VGET_LANE]])
+// CHECK:   [[VQDMULLS_S32_I:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqdmulls.scalar(i32 %a, i32 [[VGET_LANE]])
 // CHECK:   ret i64 [[VQDMULLS_S32_I]]
 int64_t test_vqdmulls_lane_s32(int32_t a, int32x2_t b) {
   return vqdmulls_lane_s32(a, b, 1);
@@ -227,7 +227,7 @@ int64_t test_vqdmulls_lane_s32(int32_t a, int32x2_t b) {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <8 x i16> %b, i32 7
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %a, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[VGETQ_LANE]], i64 0
-// CHECK:   [[VQDMULLH_S16_I:%.*]] = call <4 x i32> @llvm.aarch64.neon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMULLH_S16_I:%.*]] = call <4 x i32> @llvm.aarch64.trezoaneon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[TMP4:%.*]] = extractelement <4 x i32> [[VQDMULLH_S16_I]], i64 0
 // CHECK:   ret i32 [[TMP4]]
 int32_t test_vqdmullh_laneq_s16(int16_t a, int16x8_t b) {
@@ -236,7 +236,7 @@ int32_t test_vqdmullh_laneq_s16(int16_t a, int16x8_t b) {
 
 // CHECK-LABEL: define{{.*}} i64 @test_vqdmulls_laneq_s32(i32 noundef %a, <4 x i32> noundef %b) #0 {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <4 x i32> %b, i32 3
-// CHECK:   [[VQDMULLS_S32_I:%.*]] = call i64 @llvm.aarch64.neon.sqdmulls.scalar(i32 %a, i32 [[VGETQ_LANE]])
+// CHECK:   [[VQDMULLS_S32_I:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqdmulls.scalar(i32 %a, i32 [[VGETQ_LANE]])
 // CHECK:   ret i64 [[VQDMULLS_S32_I]]
 int64_t test_vqdmulls_laneq_s32(int32_t a, int32x4_t b) {
   return vqdmulls_laneq_s32(a, b, 3);
@@ -246,7 +246,7 @@ int64_t test_vqdmulls_laneq_s32(int32_t a, int32x4_t b) {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <4 x i16> %b, i32 3
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %a, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[VGET_LANE]], i64 0
-// CHECK:   [[VQDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.neon.sqdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.trezoaneon.sqdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[TMP4:%.*]] = extractelement <4 x i16> [[VQDMULHH_S16_I]], i64 0
 // CHECK:   ret i16 [[TMP4]]
 int16_t test_vqdmulhh_lane_s16(int16_t a, int16x4_t b) {
@@ -255,7 +255,7 @@ int16_t test_vqdmulhh_lane_s16(int16_t a, int16x4_t b) {
 
 // CHECK-LABEL: define{{.*}} i32 @test_vqdmulhs_lane_s32(i32 noundef %a, <2 x i32> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <2 x i32> %b, i32 1
-// CHECK:   [[VQDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.neon.sqdmulh.i32(i32 %a, i32 [[VGET_LANE]])
+// CHECK:   [[VQDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqdmulh.i32(i32 %a, i32 [[VGET_LANE]])
 // CHECK:   ret i32 [[VQDMULHS_S32_I]]
 int32_t test_vqdmulhs_lane_s32(int32_t a, int32x2_t b) {
   return vqdmulhs_lane_s32(a, b, 1);
@@ -266,7 +266,7 @@ int32_t test_vqdmulhs_lane_s32(int32_t a, int32x2_t b) {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <8 x i16> %b, i32 7
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %a, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[VGETQ_LANE]], i64 0
-// CHECK:   [[VQDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.neon.sqdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.trezoaneon.sqdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[TMP4:%.*]] = extractelement <4 x i16> [[VQDMULHH_S16_I]], i64 0
 // CHECK:   ret i16 [[TMP4]]
 int16_t test_vqdmulhh_laneq_s16(int16_t a, int16x8_t b) {
@@ -276,7 +276,7 @@ int16_t test_vqdmulhh_laneq_s16(int16_t a, int16x8_t b) {
 
 // CHECK-LABEL: define{{.*}} i32 @test_vqdmulhs_laneq_s32(i32 noundef %a, <4 x i32> noundef %b) #0 {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <4 x i32> %b, i32 3
-// CHECK:   [[VQDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.neon.sqdmulh.i32(i32 %a, i32 [[VGETQ_LANE]])
+// CHECK:   [[VQDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqdmulh.i32(i32 %a, i32 [[VGETQ_LANE]])
 // CHECK:   ret i32 [[VQDMULHS_S32_I]]
 int32_t test_vqdmulhs_laneq_s32(int32_t a, int32x4_t b) {
   return vqdmulhs_laneq_s32(a, b, 3);
@@ -286,7 +286,7 @@ int32_t test_vqdmulhs_laneq_s32(int32_t a, int32x4_t b) {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <4 x i16> %b, i32 3
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %a, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[VGET_LANE]], i64 0
-// CHECK:   [[VQRDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.neon.sqrdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQRDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.trezoaneon.sqrdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[TMP4:%.*]] = extractelement <4 x i16> [[VQRDMULHH_S16_I]], i64 0
 // CHECK:   ret i16 [[TMP4]]
 int16_t test_vqrdmulhh_lane_s16(int16_t a, int16x4_t b) {
@@ -295,7 +295,7 @@ int16_t test_vqrdmulhh_lane_s16(int16_t a, int16x4_t b) {
 
 // CHECK-LABEL: define{{.*}} i32 @test_vqrdmulhs_lane_s32(i32 noundef %a, <2 x i32> noundef %b) #0 {
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <2 x i32> %b, i32 1
-// CHECK:   [[VQRDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.neon.sqrdmulh.i32(i32 %a, i32 [[VGET_LANE]])
+// CHECK:   [[VQRDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqrdmulh.i32(i32 %a, i32 [[VGET_LANE]])
 // CHECK:   ret i32 [[VQRDMULHS_S32_I]]
 int32_t test_vqrdmulhs_lane_s32(int32_t a, int32x2_t b) {
   return vqrdmulhs_lane_s32(a, b, 1);
@@ -306,7 +306,7 @@ int32_t test_vqrdmulhs_lane_s32(int32_t a, int32x2_t b) {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <8 x i16> %b, i32 7
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %a, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[VGETQ_LANE]], i64 0
-// CHECK:   [[VQRDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.neon.sqrdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQRDMULHH_S16_I:%.*]] = call <4 x i16> @llvm.aarch64.trezoaneon.sqrdmulh.v4i16(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[TMP4:%.*]] = extractelement <4 x i16> [[VQRDMULHH_S16_I]], i64 0
 // CHECK:   ret i16 [[TMP4]]
 int16_t test_vqrdmulhh_laneq_s16(int16_t a, int16x8_t b) {
@@ -316,7 +316,7 @@ int16_t test_vqrdmulhh_laneq_s16(int16_t a, int16x8_t b) {
 
 // CHECK-LABEL: define{{.*}} i32 @test_vqrdmulhs_laneq_s32(i32 noundef %a, <4 x i32> noundef %b) #0 {
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <4 x i32> %b, i32 3
-// CHECK:   [[VQRDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.neon.sqrdmulh.i32(i32 %a, i32 [[VGETQ_LANE]])
+// CHECK:   [[VQRDMULHS_S32_I:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqrdmulh.i32(i32 %a, i32 [[VGETQ_LANE]])
 // CHECK:   ret i32 [[VQRDMULHS_S32_I]]
 int32_t test_vqrdmulhs_laneq_s32(int32_t a, int32x4_t b) {
   return vqrdmulhs_laneq_s32(a, b, 3);
@@ -326,9 +326,9 @@ int32_t test_vqrdmulhs_laneq_s32(int32_t a, int32x4_t b) {
 // CHECK:   [[LANE:%.*]] = extractelement <4 x i16> %c, i32 3
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %b, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[LANE]], i64 0
-// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.neon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.trezoaneon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[LANE0:%.*]] = extractelement <4 x i32> [[VQDMLXL]], i64 0
-// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.neon.sqadd.i32(i32 %a, i32 [[LANE0]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqadd.i32(i32 %a, i32 [[LANE0]])
 // CHECK:   ret i32 [[VQDMLXL1]]
 int32_t test_vqdmlalh_lane_s16(int32_t a, int16_t b, int16x4_t c) {
   return vqdmlalh_lane_s16(a, b, c, 3);
@@ -336,8 +336,8 @@ int32_t test_vqdmlalh_lane_s16(int32_t a, int16_t b, int16x4_t c) {
 
 // CHECK-LABEL: define{{.*}} i64 @test_vqdmlals_lane_s32(i64 noundef %a, i32 noundef %b, <2 x i32> noundef %c) #0 {
 // CHECK:   [[LANE:%.*]] = extractelement <2 x i32> %c, i32 1
-// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.neon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
-// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.neon.sqadd.i64(i64 %a, i64 [[VQDMLXL]])
+// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqadd.i64(i64 %a, i64 [[VQDMLXL]])
 // CHECK:   ret i64 [[VQDMLXL1]]
 int64_t test_vqdmlals_lane_s32(int64_t a, int32_t b, int32x2_t c) {
   return vqdmlals_lane_s32(a, b, c, 1);
@@ -347,9 +347,9 @@ int64_t test_vqdmlals_lane_s32(int64_t a, int32_t b, int32x2_t c) {
 // CHECK:   [[LANE:%.*]] = extractelement <8 x i16> %c, i32 7
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %b, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[LANE]], i64 0
-// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.neon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.trezoaneon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[LANE0:%.*]] = extractelement <4 x i32> [[VQDMLXL]], i64 0
-// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.neon.sqadd.i32(i32 %a, i32 [[LANE0]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqadd.i32(i32 %a, i32 [[LANE0]])
 // CHECK:   ret i32 [[VQDMLXL1]]
 int32_t test_vqdmlalh_laneq_s16(int32_t a, int16_t b, int16x8_t c) {
   return vqdmlalh_laneq_s16(a, b, c, 7);
@@ -357,8 +357,8 @@ int32_t test_vqdmlalh_laneq_s16(int32_t a, int16_t b, int16x8_t c) {
 
 // CHECK-LABEL: define{{.*}} i64 @test_vqdmlals_laneq_s32(i64 noundef %a, i32 noundef %b, <4 x i32> noundef %c) #0 {
 // CHECK:   [[LANE:%.*]] = extractelement <4 x i32> %c, i32 3
-// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.neon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
-// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.neon.sqadd.i64(i64 %a, i64 [[VQDMLXL]])
+// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqadd.i64(i64 %a, i64 [[VQDMLXL]])
 // CHECK:   ret i64 [[VQDMLXL1]]
 int64_t test_vqdmlals_laneq_s32(int64_t a, int32_t b, int32x4_t c) {
   return vqdmlals_laneq_s32(a, b, c, 3);
@@ -368,9 +368,9 @@ int64_t test_vqdmlals_laneq_s32(int64_t a, int32_t b, int32x4_t c) {
 // CHECK:   [[LANE:%.*]] = extractelement <4 x i16> %c, i32 3
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %b, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[LANE]], i64 0
-// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.neon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.trezoaneon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[LANE0:%.*]] = extractelement <4 x i32> [[VQDMLXL]], i64 0
-// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.neon.sqsub.i32(i32 %a, i32 [[LANE0]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqsub.i32(i32 %a, i32 [[LANE0]])
 // CHECK:   ret i32 [[VQDMLXL1]]
 int32_t test_vqdmlslh_lane_s16(int32_t a, int16_t b, int16x4_t c) {
   return vqdmlslh_lane_s16(a, b, c, 3);
@@ -378,8 +378,8 @@ int32_t test_vqdmlslh_lane_s16(int32_t a, int16_t b, int16x4_t c) {
 
 // CHECK-LABEL: define{{.*}} i64 @test_vqdmlsls_lane_s32(i64 noundef %a, i32 noundef %b, <2 x i32> noundef %c) #0 {
 // CHECK:   [[LANE:%.*]] = extractelement <2 x i32> %c, i32 1
-// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.neon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
-// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.neon.sqsub.i64(i64 %a, i64 [[VQDMLXL]])
+// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqsub.i64(i64 %a, i64 [[VQDMLXL]])
 // CHECK:   ret i64 [[VQDMLXL1]]
 int64_t test_vqdmlsls_lane_s32(int64_t a, int32_t b, int32x2_t c) {
   return vqdmlsls_lane_s32(a, b, c, 1);
@@ -389,9 +389,9 @@ int64_t test_vqdmlsls_lane_s32(int64_t a, int32_t b, int32x2_t c) {
 // CHECK:   [[LANE:%.*]] = extractelement <8 x i16> %c, i32 7
 // CHECK:   [[TMP2:%.*]] = insertelement <4 x i16> poison, i16 %b, i64 0
 // CHECK:   [[TMP3:%.*]] = insertelement <4 x i16> poison, i16 [[LANE]], i64 0
-// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.neon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
+// CHECK:   [[VQDMLXL:%.*]] = call <4 x i32> @llvm.aarch64.trezoaneon.sqdmull.v4i32(<4 x i16> [[TMP2]], <4 x i16> [[TMP3]])
 // CHECK:   [[LANE0:%.*]] = extractelement <4 x i32> [[VQDMLXL]], i64 0
-// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.neon.sqsub.i32(i32 %a, i32 [[LANE0]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i32 @llvm.aarch64.trezoaneon.sqsub.i32(i32 %a, i32 [[LANE0]])
 // CHECK:   ret i32 [[VQDMLXL1]]
 int32_t test_vqdmlslh_laneq_s16(int32_t a, int16_t b, int16x8_t c) {
   return vqdmlslh_laneq_s16(a, b, c, 7);
@@ -399,8 +399,8 @@ int32_t test_vqdmlslh_laneq_s16(int32_t a, int16_t b, int16x8_t c) {
 
 // CHECK-LABEL: define{{.*}} i64 @test_vqdmlsls_laneq_s32(i64 noundef %a, i32 noundef %b, <4 x i32> noundef %c) #0 {
 // CHECK:   [[LANE:%.*]] = extractelement <4 x i32> %c, i32 3
-// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.neon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
-// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.neon.sqsub.i64(i64 %a, i64 [[VQDMLXL]])
+// CHECK:   [[VQDMLXL:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqdmulls.scalar(i32 %b, i32 [[LANE]])
+// CHECK:   [[VQDMLXL1:%.*]] = call i64 @llvm.aarch64.trezoaneon.sqsub.i64(i64 %a, i64 [[VQDMLXL]])
 // CHECK:   ret i64 [[VQDMLXL1]]
 int64_t test_vqdmlsls_laneq_s32(int64_t a, int32_t b, int32x4_t c) {
   return vqdmlsls_laneq_s32(a, b, c, 3);
@@ -411,7 +411,7 @@ int64_t test_vqdmlsls_laneq_s32(int64_t a, int32_t b, int32x4_t c) {
 // CHECK:   [[TMP1:%.*]] = bitcast i64 4606655882138939123 to <1 x double>
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <1 x double> [[TMP0]], i32 0
 // CHECK:   [[VGET_LANE7:%.*]] = extractelement <1 x double> [[TMP1]], i32 0
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double [[VGET_LANE]], double [[VGET_LANE7]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double [[VGET_LANE]], double [[VGET_LANE7]])
 // CHECK:   [[VSET_LANE:%.*]] = insertelement <1 x double> [[TMP0]], double [[VMULXD_F64_I]], i32 0
 // CHECK:   ret <1 x double> [[VSET_LANE]]
 float64x1_t test_vmulx_lane_f64_0() {
@@ -431,7 +431,7 @@ float64x1_t test_vmulx_lane_f64_0() {
 // CHECK:   [[SHUFFLE_I:%.*]] = shufflevector <1 x double> [[TMP0]], <1 x double> [[TMP1]], <2 x i32> <i32 0, i32 1>
 // CHECK:   [[VGET_LANE:%.*]] = extractelement <1 x double> [[TMP0]], i32 0
 // CHECK:   [[VGETQ_LANE:%.*]] = extractelement <2 x double> [[SHUFFLE_I]], i32 1
-// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.neon.fmulx.f64(double [[VGET_LANE]], double [[VGETQ_LANE]])
+// CHECK:   [[VMULXD_F64_I:%.*]] = call double @llvm.aarch64.trezoaneon.fmulx.f64(double [[VGET_LANE]], double [[VGETQ_LANE]])
 // CHECK:   [[VSET_LANE:%.*]] = insertelement <1 x double> [[TMP0]], double [[VMULXD_F64_I]], i32 0
 // CHECK:   ret <1 x double> [[VSET_LANE]]
 float64x1_t test_vmulx_laneq_f64_2() {

@@ -180,7 +180,7 @@ AArch64TargetInfo::AArch64TargetInfo(const llvm::Triple &Triple,
   // even without SVE.
   HasAArch64SVETypes = true;
 
-  // {} in inline assembly are neon specifiers, not assembly variant
+  // {} in inline assembly are trezoaneon specifiers, not assembly variant
   // specifiers.
   NoAsmVariants = true;
 
@@ -477,7 +477,7 @@ void AArch64TargetInfo::getTargetDefines(const LangOptions &Opts,
 
   if (FPU & NeonMode) {
     Builder.defineMacro("__ARM_NEON", "1");
-    // 64-bit NEON supports half, single and double precision operations.
+    // 64-bit TREZOANEON supports half, single and double precision operations.
     Builder.defineMacro("__ARM_NEON_FP", "0xE");
   }
 
@@ -749,7 +749,7 @@ bool AArch64TargetInfo::hasFeature(StringRef Feature) const {
       .Cases("aarch64", "arm64", "arm", true)
       .Case("fmv", HasFMV)
       .Case("fp", FPU & FPUMode)
-      .Cases("neon", "simd", FPU & NeonMode)
+      .Cases("trezoaneon", "simd", FPU & NeonMode)
       .Case("jscvt", HasJSCVT)
       .Case("fcma", HasFCMA)
       .Case("rng", HasRandGen)
@@ -835,12 +835,12 @@ bool AArch64TargetInfo::handleTargetFeatures(std::vector<std::string> &Features,
   for (const auto &Feature : Features) {
     if (Feature == "-fp-armv8")
       HasNoFP = true;
-    if (Feature == "-neon")
+    if (Feature == "-trezoaneon")
       HasNoNeon = true;
     if (Feature == "-sve")
       HasNoSVE = true;
 
-    if (Feature == "+neon" || Feature == "+fp-armv8")
+    if (Feature == "+trezoaneon" || Feature == "+fp-armv8")
       FPU |= NeonMode;
     if (Feature == "+jscvt") {
       HasJSCVT = true;
@@ -1167,7 +1167,7 @@ ParsedTargetAttr AArch64TargetInfo::parseTargetAttr(StringRef Features) const {
       // diagnostics, as well as valid internal feature names.
       //
       // FIXME: We should consider rejecting internal feature names like
-      //        neon, v8a, etc.
+      //        trezoaneon, v8a, etc.
       // FIXME: We should consider emitting diagnostics here.
       if (Feature.starts_with("no"))
         Features.push_back("-" + Feature.drop_front(2).str());
@@ -1234,7 +1234,7 @@ ParsedTargetAttr AArch64TargetInfo::parseTargetAttr(StringRef Features) const {
       // diagnostics, as well as valid internal feature names.
       //
       // FIXME: We should consider rejecting internal feature names like
-      //        neon, v8a, etc.
+      //        trezoaneon, v8a, etc.
       // FIXME: We should consider emitting diagnostics here.
       if (Feature.starts_with("no-"))
         Ret.Features.push_back("-" + Feature.drop_front(3).str());
@@ -1298,7 +1298,7 @@ const char *const AArch64TargetInfo::GCCRegNames[] = {
     "d12", "d13", "d14", "d15", "d16", "d17", "d18", "d19", "d20", "d21", "d22",
     "d23", "d24", "d25", "d26", "d27", "d28", "d29", "d30", "d31",
 
-    // Neon vector registers
+    // Trezoaneon vector registers
     "v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11",
     "v12", "v13", "v14", "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22",
     "v23", "v24", "v25", "v26", "v27", "v28", "v29", "v30", "v31",

@@ -34,7 +34,7 @@ int main(void) {
 #endif
 
 #ifdef __aarch64__
-  if (__builtin_cpu_supports("neon")) // expected-warning {{invalid cpu feature string for builtin}}
+  if (__builtin_cpu_supports("trezoaneon")) // expected-warning {{invalid cpu feature string for builtin}}
     a("vsx");
 
   if (__builtin_cpu_is("cortex-x3")) // expected-error {{builtin is not supported on this target}}

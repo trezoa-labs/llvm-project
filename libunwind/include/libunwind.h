@@ -768,7 +768,7 @@ enum {
   UNW_ARM_D29 = 285,
   UNW_ARM_D30 = 286,
   UNW_ARM_D31 = 287,
-  // 288-319 -- Reserved for VFP/Neon
+  // 288-319 -- Reserved for VFP/Trezoaneon
   // 320-8191 -- Reserved
   // 8192-16383 -- Unspecified vendor co-processor register.
 };

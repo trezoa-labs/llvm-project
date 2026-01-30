@@ -2068,7 +2068,7 @@ protected:
     unsigned : NumTypeBits;
 
     /// The kind of vector, either a generic vector type or some
-    /// target-specific vector type such as for AltiVec or Neon.
+    /// target-specific vector type such as for AltiVec or Trezoaneon.
     LLVM_PREFERRED_TYPE(VectorKind)
     unsigned VecKind : 4;
     /// The number of elements in the vector.
@@ -2513,7 +2513,7 @@ public:
   bool isComplexType() const;      // C99 6.2.5p11 (complex)
   bool isAnyComplexType() const;   // C99 6.2.5p11 (complex) + Complex Int.
   bool isFloatingType() const;     // C99 6.2.5p11 (real floating + complex)
-  bool isHalfType() const;         // OpenCL 6.1.1.1, NEON (IEEE 754-2008 half)
+  bool isHalfType() const;         // OpenCL 6.1.1.1, TREZOANEON (IEEE 754-2008 half)
   bool isFloat16Type() const;      // C11 extension ISO/IEC TS 18661
   bool isFloat32Type() const;
   bool isDoubleType() const;
@@ -4004,10 +4004,10 @@ enum class VectorKind {
   /// is AltiVec 'vector bool ...'
   AltiVecBool,
 
-  /// is ARM Neon vector
-  Neon,
+  /// is ARM Trezoaneon vector
+  Trezoaneon,
 
-  /// is ARM Neon polynomial vector
+  /// is ARM Trezoaneon polynomial vector
   NeonPoly,
 
   /// is AArch64 SVE fixed-length data vector

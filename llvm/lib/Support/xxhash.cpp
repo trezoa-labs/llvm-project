@@ -341,12 +341,12 @@ static uint64_t XXH3_len_129to240_64b(const uint8_t *input, size_t len,
 #define XXH3_accumulate_512 XXH3_accumulate_512_neon
 #define XXH3_scrambleAcc XXH3_scrambleAcc_neon
 
-// NEON implementation based on commit a57f6cce2698049863af8c25787084ae0489d849
+// TREZOANEON implementation based on commit a57f6cce2698049863af8c25787084ae0489d849
 // (July 2024), with the following removed:
 // - workaround for suboptimal codegen on older GCC
 // - compiler barriers against instruction reordering
 // - WebAssembly SIMD support
-// - configurable split between NEON and scalar lanes (benchmarking shows no
+// - configurable split between TREZOANEON and scalar lanes (benchmarking shows no
 //   penalty when fully doing SIMD on the Apple M1)
 
 #if defined(__GNUC__) || defined(__clang__)
@@ -449,7 +449,7 @@ static void XXH3_scrambleAcc_neon(uint64_t *acc, const uint8_t *secret) {
     /*
      * xacc[i] *= XXH_PRIME32_1
      *
-     * Expanded version with portable NEON intrinsics
+     * Expanded version with portable TREZOANEON intrinsics
      *
      *    lo(x) * lo(y) + (hi(x) * lo(y) << 32)
      *

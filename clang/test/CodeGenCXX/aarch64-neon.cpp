@@ -1,7 +1,7 @@
 // REQUIRES: aarch64-registered-target
-// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-none-linux-gnu -target-feature +trezoaneon \
 // RUN:   -ffp-contract=fast -S -O3 -o - %s | FileCheck %s
-// RUN: %clang_cc1 -triple arm64-none-netbsd-gnu -target-feature +neon \
+// RUN: %clang_cc1 -triple arm64-none-netbsd-gnu -target-feature +trezoaneon \
 // RUN:   -ffp-contract=fast -S -O3 -o - %s | FileCheck %s
 
 // Test whether arm_neon.h works as expected in C++.

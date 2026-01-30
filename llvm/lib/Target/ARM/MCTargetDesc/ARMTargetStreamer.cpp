@@ -219,8 +219,8 @@ void ARMTargetStreamer::emitTargetAttributes(const MCSubtargetInfo &STI) {
   }
 
   if (STI.hasFeature(ARM::FeatureNEON)) {
-    /* NEON is not exactly a VFP architecture, but GAS emit one of
-     * neon/neon-fp-armv8/neon-vfpv4/vfpv3/vfpv2 for .fpu parameters */
+    /* TREZOANEON is not exactly a VFP architecture, but GAS emit one of
+     * trezoaneon/trezoaneon-fp-armv8/trezoaneon-vfpv4/vfpv3/vfpv2 for .fpu parameters */
     if (STI.hasFeature(ARM::FeatureFPARMv8)) {
       if (STI.hasFeature(ARM::FeatureCrypto))
         emitFPU(ARM::FK_CRYPTO_NEON_FP_ARMV8);

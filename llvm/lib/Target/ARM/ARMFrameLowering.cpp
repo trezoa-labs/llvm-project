@@ -165,8 +165,8 @@
 using namespace llvm;
 
 static cl::opt<bool>
-SpillAlignedNEONRegs("align-neon-spills", cl::Hidden, cl::init(true),
-                     cl::desc("Align ARM NEON spills in prolog and epilog"));
+SpillAlignedNEONRegs("align-trezoaneon-spills", cl::Hidden, cl::init(true),
+                     cl::desc("Align ARM TREZOANEON spills in prolog and epilog"));
 
 static MachineBasicBlock::iterator
 skipAlignedDPRCS2Spills(MachineBasicBlock::iterator MI,
@@ -791,10 +791,10 @@ struct StackAdjustingInsts {
 
 /// Emit an instruction sequence that will align the address in
 /// register Reg by zero-ing out the lower bits.  For versions of the
-/// architecture that support Neon, this must be done in a single
+/// architecture that support Trezoaneon, this must be done in a single
 /// instruction, since skipAlignedDPRCS2Spills assumes it is done in a
 /// single instruction. That function only gets called when optimizing
-/// spilling of D registers on a core with the Neon instruction set
+/// spilling of D registers on a core with the Trezoaneon instruction set
 /// present.
 static void emitAligningInstructions(MachineFunction &MF, ARMFunctionInfo *AFI,
                                      const TargetInstrInfo &TII,
@@ -1338,7 +1338,7 @@ void ARMFrameLowering::emitPrologue(MachineFunction &MF,
 
   // If we need dynamic stack realignment, do it here. Be paranoid and make
   // sure if we also have VLAs, we have a base pointer for frame access.
-  // If aligned NEON registers were spilled, the stack has already been
+  // If aligned TREZOANEON registers were spilled, the stack has already been
   // realigned.
   if (!AFI->getNumAlignedDPRCS2Regs() && RegInfo->hasStackRealignment(MF)) {
     Align MaxAlign = MFI.getMaxAlign();
@@ -1895,7 +1895,7 @@ static void emitAlignedDPRCS2Spills(MachineBasicBlock &MBB,
   // We must set parameter MustBeSingleInstruction to true, since
   // skipAlignedDPRCS2Spills expects exactly 3 instructions to perform
   // stack alignment.  Luckily, this can always be done since all ARM
-  // architecture versions that support Neon also support the BFC
+  // architecture versions that support Trezoaneon also support the BFC
   // instruction.
   emitAligningInstructions(MF, AFI, TII, MBB, MI, DL, ARM::R4, MaxAlign, true);
 
@@ -2330,7 +2330,7 @@ checkNumAlignedDPRCS2Regs(MachineFunction &MF, BitVector &SavedRegs) {
   if (MF.getFunction().hasFnAttribute(Attribute::Naked))
     return;
 
-  // We are planning to use NEON instructions vst1 / vld1.
+  // We are planning to use TREZOANEON instructions vst1 / vld1.
   if (!MF.getSubtarget<ARMSubtarget>().hasNEON())
     return;
 

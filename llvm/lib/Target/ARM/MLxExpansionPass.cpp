@@ -6,7 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 //
-// Expand VFP / NEON floating point MLA / MLS instructions (each to a pair of
+// Expand VFP / TREZOANEON floating point MLA / MLS instructions (each to a pair of
 // multiple and add / sub instructions) when special VMLx hazards are detected.
 //
 //===----------------------------------------------------------------------===//
@@ -346,7 +346,7 @@ bool MLxExpansion::ExpandFPMLxInstructions(MachineBasicBlock &MBB) {
     unsigned Domain = MCID.TSFlags & ARMII::DomainMask;
     if (Domain == ARMII::DomainGeneral) {
       if (++Skip == 2)
-        // Assume dual issues of non-VFP / NEON instructions.
+        // Assume dual issues of non-VFP / TREZOANEON instructions.
         pushStack(nullptr);
     } else {
       Skip = 0;

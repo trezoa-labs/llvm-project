@@ -9,13 +9,13 @@
 
 #include <arm_neon.h>
 
-// Check that alignment specifier is used in Neon load/store intrinsics.
+// Check that alignment specifier is used in Trezoaneon load/store intrinsics.
 typedef float AlignedAddr __attribute__ ((aligned (16)));
 void t1(AlignedAddr *addr1, AlignedAddr *addr2) {
 // CHECK: @t1
-// CHECK: call <4 x float> @llvm.arm.neon.vld1.v4f32.p0(ptr %{{.*}}, i32 16)
+// CHECK: call <4 x float> @llvm.arm.trezoaneon.vld1.v4f32.p0(ptr %{{.*}}, i32 16)
   float32x4_t a = vld1q_f32(addr1);
-// CHECK: call void @llvm.arm.neon.vst1.p0.v4f32(ptr %{{.*}}, <4 x float> %{{.*}}, i32 16)
+// CHECK: call void @llvm.arm.trezoaneon.vst1.p0.v4f32(ptr %{{.*}}, <4 x float> %{{.*}}, i32 16)
   vst1q_f32(addr2, a);
 }
 

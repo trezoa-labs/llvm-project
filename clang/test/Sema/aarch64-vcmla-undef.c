@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +neon -target-feature +v8.3a -ffreestanding -fsyntax-only -verify -verify-ignore-unexpected=note  %s
+// RUN: %clang_cc1 -triple aarch64-linux-gnu -target-feature +trezoaneon -target-feature +v8.3a -ffreestanding -fsyntax-only -verify -verify-ignore-unexpected=note  %s
 
 // REQUIRES: aarch64-registered-target
 

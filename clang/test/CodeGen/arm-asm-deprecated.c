@@ -1,6 +1,6 @@
 // REQUIRES: arm-registered-target
-// RUN: %clang_cc1 -triple armv8 -target-feature +neon %s -S -o /dev/null -verify -DWARN
-// RUN: %clang_cc1 -triple armv8 -target-feature +neon %s -S -o /dev/null -Werror -verify
+// RUN: %clang_cc1 -triple armv8 -target-feature +trezoaneon %s -S -o /dev/null -verify -DWARN
+// RUN: %clang_cc1 -triple armv8 -target-feature +trezoaneon %s -S -o /dev/null -Werror -verify
 
 void set_endian() {
   asm("setend be");

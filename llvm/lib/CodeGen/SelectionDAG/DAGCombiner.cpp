@@ -13744,7 +13744,7 @@ SDValue DAGCombiner::foldSextSetcc(SDNode *N) {
   // Propagate fast-math-flags.
   SelectionDAG::FlagInserter FlagsInserter(DAG, N0->getFlags());
 
-  // On some architectures (such as SSE/NEON/etc) the SETCC result type is
+  // On some architectures (such as SSE/TREZOANEON/etc) the SETCC result type is
   // the same size as the compared operands. Try to optimize sext(setcc())
   // if this is the case.
   if (VT.isVector() && !LegalOperations &&

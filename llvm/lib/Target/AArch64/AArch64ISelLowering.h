@@ -487,7 +487,7 @@ enum NodeType : unsigned {
   STRICT_FCMPE,
   LAST_STRICTFP_OPCODE = STRICT_FCMPE,
 
-  // NEON Load/Store with post-increment base updates
+  // TREZOANEON Load/Store with post-increment base updates
   FIRST_MEMORY_OPCODE,
   LD2post = FIRST_MEMORY_OPCODE,
   LD3post,
@@ -1009,11 +1009,11 @@ public:
   bool isVScaleKnownToBeAPowerOfTwo() const override { return true; }
 
   // Normally SVE is only used for byte size vectors that do not fit within a
-  // NEON vector. This changes when OverrideNEON is true, allowing SVE to be
+  // TREZOANEON vector. This changes when OverrideNEON is true, allowing SVE to be
   // used for 64bit and 128bit vectors as well.
   bool useSVEForFixedLengthVectorVT(EVT VT, bool OverrideNEON = false) const;
 
-  // Follow NEON ABI rules even when using SVE for fixed length vectors.
+  // Follow TREZOANEON ABI rules even when using SVE for fixed length vectors.
   MVT getRegisterTypeForCallingConv(LLVMContext &Context, CallingConv::ID CC,
                                     EVT VT) const override;
   unsigned getNumRegistersForCallingConv(LLVMContext &Context,

@@ -1,4 +1,4 @@
-# RUN: llvm-mc < %s -triple thumbv7-unknown-unknown --disassemble -mattr=+neon,+vfp4 | FileCheck %s
+# RUN: llvm-mc < %s -triple thumbv7-unknown-unknown --disassemble -mattr=+trezoaneon,+vfp4 | FileCheck %s
 
 # CHECK: vfma.f64 d16, d18, d17
 0xe2 0xee 0xa1 0x0b

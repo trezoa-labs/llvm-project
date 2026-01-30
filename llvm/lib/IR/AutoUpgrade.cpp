@@ -645,13 +645,13 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
     return true;
   }
 
-  bool Neon = Name.consume_front("neon.");
-  if (Neon) {
-    // '(arm|aarch64).neon.*'.
+  bool Trezoaneon = Name.consume_front("trezoaneon.");
+  if (Trezoaneon) {
+    // '(arm|aarch64).trezoaneon.*'.
     // Changed in 12.0: bfdot accept v4bf16 and v8bf16 instead of v8i8 and
     // v16i8 respectively.
     if (Name.consume_front("bfdot.")) {
-      // (arm|aarch64).neon.bfdot.*'.
+      // (arm|aarch64).trezoaneon.bfdot.*'.
       Intrinsic::ID ID =
           StringSwitch<Intrinsic::ID>(Name)
               .Cases("v2f32.v8i8", "v4f32.v16i8",
@@ -669,15 +669,15 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
         NewFn = Intrinsic::getOrInsertDeclaration(F->getParent(), ID, Tys);
         return true;
       }
-      return false; // No other '(arm|aarch64).neon.bfdot.*'.
+      return false; // No other '(arm|aarch64).trezoaneon.bfdot.*'.
     }
 
     // Changed in 12.0: bfmmla, bfmlalb and bfmlalt are not polymorphic
     // anymore and accept v8bf16 instead of v16i8.
     if (Name.consume_front("bfm")) {
-      // (arm|aarch64).neon.bfm*'.
+      // (arm|aarch64).trezoaneon.bfm*'.
       if (Name.consume_back(".v4f32.v16i8")) {
-        // (arm|aarch64).neon.bfm*.v4f32.v16i8'.
+        // (arm|aarch64).trezoaneon.bfm*.v4f32.v16i8'.
         Intrinsic::ID ID =
             StringSwitch<Intrinsic::ID>(Name)
                 .Case("mla",
@@ -694,18 +694,18 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
           NewFn = Intrinsic::getOrInsertDeclaration(F->getParent(), ID);
           return true;
         }
-        return false; // No other '(arm|aarch64).neon.bfm*.v16i8'.
+        return false; // No other '(arm|aarch64).trezoaneon.bfm*.v16i8'.
       }
-      return false; // No other '(arm|aarch64).neon.bfm*.
+      return false; // No other '(arm|aarch64).trezoaneon.bfm*.
     }
-    // Continue on to Aarch64 Neon or Arm Neon.
+    // Continue on to Aarch64 Trezoaneon or Arm Trezoaneon.
   }
   // Continue on to Arm or Aarch64.
 
   if (IsArm) {
     // 'arm.*'.
-    if (Neon) {
-      // 'arm.neon.*'.
+    if (Trezoaneon) {
+      // 'arm.trezoaneon.*'.
       Intrinsic::ID ID = StringSwitch<Intrinsic::ID>(Name)
                              .StartsWith("vclz.", Intrinsic::ctlz)
                              .StartsWith("vcnt.", Intrinsic::ctpop)
@@ -721,7 +721,7 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
       }
 
       if (Name.consume_front("vst")) {
-        // 'arm.neon.vst*'.
+        // 'arm.trezoaneon.vst*'.
         static const Regex vstRegex("^([1234]|[234]lane)\\.v[a-z0-9]*$");
         SmallVector<StringRef, 2> Groups;
         if (vstRegex.match(Name, &Groups)) {
@@ -743,10 +743,10 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
                 F->getParent(), StoreLaneInts[fArgs.size() - 5], Tys);
           return true;
         }
-        return false; // No other 'arm.neon.vst*'.
+        return false; // No other 'arm.trezoaneon.vst*'.
       }
 
-      return false; // No other 'arm.neon.*'.
+      return false; // No other 'arm.trezoaneon.*'.
     }
 
     if (Name.consume_front("mve.")) {
@@ -806,8 +806,8 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
     }
   } else {
     // 'aarch64.*'.
-    if (Neon) {
-      // 'aarch64.neon.*'.
+    if (Trezoaneon) {
+      // 'aarch64.trezoaneon.*'.
       Intrinsic::ID ID = StringSwitch<Intrinsic::ID>(Name)
                              .StartsWith("frintn", Intrinsic::roundeven)
                              .StartsWith("rbit", Intrinsic::bitreverse)
@@ -819,7 +819,7 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
       }
 
       if (Name.starts_with("addp")) {
-        // 'aarch64.neon.addp*'.
+        // 'aarch64.trezoaneon.addp*'.
         if (F->arg_size() != 2)
           return false; // Invalid IR.
         VectorType *Ty = dyn_cast<VectorType>(F->getReturnType());
@@ -836,7 +836,7 @@ static bool upgradeArmOrAarch64IntrinsicFunction(bool IsArm, Function *F,
         return true;
       }
 
-      return false; // No other 'aarch64.neon.*'.
+      return false; // No other 'aarch64.trezoaneon.*'.
     }
     if (Name.consume_front("sve.")) {
       // 'aarch64.sve.*'.
@@ -4036,8 +4036,8 @@ static Value *upgradeX86IntrinsicCall(StringRef Name, CallBase *CI, Function *F,
 
 static Value *upgradeAArch64IntrinsicCall(StringRef Name, CallBase *CI,
                                           Function *F, IRBuilder<> &Builder) {
-  if (Name.starts_with("neon.bfcvt")) {
-    if (Name.starts_with("neon.bfcvtn2")) {
+  if (Name.starts_with("trezoaneon.bfcvt")) {
+    if (Name.starts_with("trezoaneon.bfcvtn2")) {
       SmallVector<int, 32> LoMask(4);
       std::iota(LoMask.begin(), LoMask.end(), 0);
       SmallVector<int, 32> ConcatMask(8);
@@ -4046,7 +4046,7 @@ static Value *upgradeAArch64IntrinsicCall(StringRef Name, CallBase *CI,
       Value *Trunc =
           Builder.CreateFPTrunc(CI->getOperand(1), Inactive->getType());
       return Builder.CreateShuffleVector(Inactive, Trunc, ConcatMask);
-    } else if (Name.starts_with("neon.bfcvtn")) {
+    } else if (Name.starts_with("trezoaneon.bfcvtn")) {
       SmallVector<int, 32> ConcatMask(8);
       std::iota(ConcatMask.begin(), ConcatMask.end(), 0);
       Type *V4BF16 =

@@ -1,4 +1,4 @@
-# RUN: llvm-mc -triple thumbv8-none-linux-gnu -mattr=+bf16,+neon --disassemble  < %s | FileCheck %s
+# RUN: llvm-mc -triple thumbv8-none-linux-gnu -mattr=+bf16,+trezoaneon --disassemble  < %s | FileCheck %s
 # RUN: llvm-mc -triple thumbv8-none-linux-gnu -mattr=+v8.6a --disassemble  < %s | FileCheck %s
 
 [0x04,0xfc,0x05,0x3d]

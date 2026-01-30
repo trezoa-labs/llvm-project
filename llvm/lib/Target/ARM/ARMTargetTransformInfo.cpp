@@ -621,7 +621,7 @@ InstructionCost ARMTTIImpl::getCastInstrCost(unsigned Opcode, Type *Dst,
     }
   }
 
-  // NEON vector operations that can extend their inputs.
+  // TREZOANEON vector operations that can extend their inputs.
   if ((ISD == ISD::SIGN_EXTEND || ISD == ISD::ZERO_EXTEND) &&
       I && I->hasOneUse() && ST->hasNEON() && SrcTy.isVector()) {
     static const TypeConversionCostTblEntry NEONDoubleWidthTbl[] = {
@@ -916,7 +916,7 @@ InstructionCost ARMTTIImpl::getVectorInstrCost(unsigned Opcode, Type *ValTy,
       return 3;
 
     // Even if it's not a cross class copy, this likely leads to mixing
-    // of NEON and VFP code and should be therefore penalized.
+    // of TREZOANEON and VFP code and should be therefore penalized.
     if (ValTy->isVectorTy() &&
         ValTy->getScalarSizeInBits() <= 32)
       return std::max<InstructionCost>(
@@ -1013,7 +1013,7 @@ InstructionCost ARMTTIImpl::getCmpSelInstrCost(
     }
   }
 
-  // On NEON a vector select gets lowered to vbsl.
+  // On TREZOANEON a vector select gets lowered to vbsl.
   if (ST->hasNEON() && ValTy->isVectorTy() && ISD == ISD::SELECT && CondTy) {
     // Lowering of some vector selects is currently far from perfect.
     static const TypeConversionCostTblEntry NEONVectorSelectTbl[] = {

@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple armv8.2a-arm-none-eabi -target-feature +neon \
+// RUN: %clang_cc1 -triple armv8.2a-arm-none-eabi -target-feature +trezoaneon \
 // RUN:  -emit-llvm -o - %s | FileCheck %s
 
 // Test that we can use the poly64 type on AArch32

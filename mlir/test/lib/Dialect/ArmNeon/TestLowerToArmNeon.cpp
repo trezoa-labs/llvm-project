@@ -19,7 +19,7 @@
 #include "mlir/Pass/PassManager.h"
 #include "mlir/Transforms/GreedyPatternRewriteDriver.h"
 
-#define PASS_NAME "test-lower-to-arm-neon"
+#define PASS_NAME "test-lower-to-arm-trezoaneon"
 
 using namespace mlir;
 using namespace mlir::arm_neon;
@@ -30,7 +30,7 @@ struct TestLowerToArmNeon
   MLIR_DEFINE_EXPLICIT_INTERNAL_INLINE_TYPE_ID(TestLowerToArmNeon)
 
   StringRef getArgument() const final { return PASS_NAME; }
-  StringRef getDescription() const final { return "Tests lower to arm Neon."; }
+  StringRef getDescription() const final { return "Tests lower to arm Trezoaneon."; }
   TestLowerToArmNeon() = default;
   TestLowerToArmNeon(const TestLowerToArmNeon &pass) = default;
 

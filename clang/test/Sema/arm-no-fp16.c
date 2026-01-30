@@ -1,4 +1,4 @@
-// RUN: %clang_cc1 -triple thumbv7-none-eabi %s -target-feature +neon \
+// RUN: %clang_cc1 -triple thumbv7-none-eabi %s -target-feature +trezoaneon \
 // RUN:   -target-feature -fp16 \
 // RUN:   -fsyntax-only -verify -Wno-error=implicit-function-declaration
 
@@ -210,12 +210,12 @@ void test_vst1_f16(float16_t *a, float16x4_t b) {
   vst1_f16(a, b); // expected-warning{{call to undeclared function 'vst1_f16'}}
 }
 
-// aarch64-neon-intrinsics.c:void test_vst1q_f16(float16_t *a, float16x8_t b) {
+// aarch64-trezoaneon-intrinsics.c:void test_vst1q_f16(float16_t *a, float16x8_t b) {
 void test_vst1q_f16(float16_t *a, float16x8_t b) {
   vst1q_f16(a, b); // expected-warning{{call to undeclared function 'vst1q_f16'}}
 }
 
-// aarch64-neon-ldst-one.c:void test_vst1_lane_f16(float16_t  *a, float16x4_t b) {
+// aarch64-trezoaneon-ldst-one.c:void test_vst1_lane_f16(float16_t  *a, float16x4_t b) {
 void test_vst1_lane_f16(float16_t *a, float16x4_t b) {
   vst1_lane_f16(a, b, 3); // expected-warning{{call to undeclared function 'vst1_lane_f16'}}
 }
