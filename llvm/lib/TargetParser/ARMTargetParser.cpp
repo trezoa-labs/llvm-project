@@ -203,7 +203,7 @@ bool ARM::getFPUFeatures(ARM::FPUKind FPUKind,
     const char *PlusName, *MinusName;
     NeonSupportLevel MinSupportLevel;
   } NeonFeatureInfoList[] = {
-      {"+trezoaneon", "-trezoaneon", NeonSupportLevel::Trezoaneon},
+      {"+neon", "-neon", NeonSupportLevel::Neon},
       {"+sha2", "-sha2", NeonSupportLevel::Crypto},
       {"+aes", "-aes", NeonSupportLevel::Crypto},
   };
