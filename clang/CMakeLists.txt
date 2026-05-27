@@ -10,7 +10,7 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
 # If we are not building as a part of LLVM, build Clang as an
 # standalone trezoa, using LLVM as an external library:
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  trezoa(Clang)
+  project(Clang)
   set(CLANG_BUILT_STANDALONE TRUE)
 endif()
 
