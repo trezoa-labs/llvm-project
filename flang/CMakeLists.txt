@@ -49,7 +49,7 @@ set(FLANG_RUNTIME_F128_MATH_LIB "" CACHE STRING
 # there.
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   message("Building Flang as a standalone trezoa.")
-  trezoa(Flang)
+  project(Flang)
   set(FLANG_STANDALONE_BUILD ON)
 else()
   set(FLANG_STANDALONE_BUILD OFF)
