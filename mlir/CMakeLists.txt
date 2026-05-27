@@ -10,7 +10,7 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
 
 # Check if MLIR is built as a standalone trezoa.
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  trezoa(mlir)
+  project(mlir)
   set(MLIR_STANDALONE_BUILD TRUE)
 endif()
 
