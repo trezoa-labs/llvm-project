@@ -1267,7 +1267,7 @@ bool ThreadSafetyAnalyzer::inCurrentScope(const CapabilityExpr &CapE) {
   }
 
   // Members are in scope from methods of the same class.
-  if (const auto *P = dyn_cast<til::Trezoa>(SExp)) {
+  if (const auto *P = dyn_cast<til::Project>(SExp)) {
     if (!isa_and_nonnull<CXXMethodDecl>(CurrentFunction))
       return false;
     const ValueDecl *VD = P->clangDecl();

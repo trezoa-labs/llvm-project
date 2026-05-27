@@ -917,10 +917,10 @@ private:
   SExpr* Arg;
 };
 
-/// Trezoa a named slot from a C++ struct or class.
-class Trezoa : public SExpr {
+/// Project a named slot from a C++ struct or class.
+class Project : public SExpr {
 public:
-  Trezoa(SExpr *R, const ValueDecl *Cvd)
+  Project(SExpr *R, const ValueDecl *Cvd)
       : SExpr(COP_Project), Rec(R), Cvdecl(Cvd) {
     assert(Cvd && "ValueDecl must not be null");
   }
@@ -957,7 +957,7 @@ public:
   }
 
   template <class C>
-  typename C::CType compare(const Trezoa* E, C& Cmp) const {
+  typename C::CType compare(const Project* E, C& Cmp) const {
     typename C::CType Ct = Cmp.compare(record(), E->record());
     if (Cmp.notTrue(Ct))
       return Ct;
