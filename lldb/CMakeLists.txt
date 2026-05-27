@@ -17,7 +17,7 @@ set(CMAKE_MODULE_PATH
 # If we are not building as part of LLVM, build LLDB as a standalone trezoa,
 # using LLVM as an external library.
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  trezoa(lldb)
+  project(lldb)
   set(LLDB_BUILT_STANDALONE TRUE)
   set(LLVM_INCLUDE_TESTS ON CACHE INTERNAL "")
 endif()
