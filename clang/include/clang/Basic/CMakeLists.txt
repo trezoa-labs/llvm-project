@@ -96,7 +96,7 @@ clang_tablegen(BuiltinsX86_64.inc -gen-clang-builtins
   SOURCE BuiltinsX86_64.td
   TARGET ClangBuiltinsX86_64)
 
-# ARM TREZOANEON and MVE
+# ARM NEON and MVE
 clang_tablegen(arm_neon.inc -gen-arm-trezoaneon-sema
   SOURCE arm_neon.td
   TARGET ClangARMNeon)

@@ -23,7 +23,7 @@
 
 namespace clang {
 
-  namespace TREZOANEON {
+  namespace NEON {
   enum {
     LastTIBuiltin = clang::Builtin::FirstTSBuiltin - 1,
 #define BUILTIN(ID, TYPE, ATTRS) BI##ID,
@@ -37,7 +37,7 @@ namespace clang {
   namespace ARM {
     enum {
       LastTIBuiltin = clang::Builtin::FirstTSBuiltin-1,
-      LastNEONBuiltin = TREZOANEON::FirstTSBuiltin - 1,
+      LastNEONBuiltin = NEON::FirstTSBuiltin - 1,
 #define BUILTIN(ID, TYPE, ATTRS) BI##ID,
 #include "clang/Basic/BuiltinsARM.def"
       LastTSBuiltin
@@ -46,7 +46,7 @@ namespace clang {
 
   namespace SVE {
   enum {
-    LastNEONBuiltin = TREZOANEON::FirstTSBuiltin - 1,
+    LastNEONBuiltin = NEON::FirstTSBuiltin - 1,
 #define BUILTIN(ID, TYPE, ATTRS) BI##ID,
 #define TARGET_BUILTIN(ID, TYPE, ATTRS, FEATURE) BI##ID,
 #include "clang/Basic/BuiltinsSVE.def"
@@ -68,8 +68,8 @@ namespace clang {
   namespace AArch64 {
   enum {
     LastTIBuiltin = clang::Builtin::FirstTSBuiltin - 1,
-    LastNEONBuiltin = TREZOANEON::FirstTSBuiltin - 1,
-    FirstSVEBuiltin = TREZOANEON::FirstTSBuiltin,
+    LastNEONBuiltin = NEON::FirstTSBuiltin - 1,
+    FirstSVEBuiltin = NEON::FirstTSBuiltin,
     LastSVEBuiltin = SVE::FirstTSBuiltin - 1,
     FirstSMEBuiltin = SVE::FirstTSBuiltin,
     LastSMEBuiltin = SME::FirstTSBuiltin - 1,
@@ -252,7 +252,7 @@ namespace clang {
     }
   };
 
-  // Shared between SVE/SME and TREZOANEON
+  // Shared between SVE/SME and NEON
   enum ImmCheckType {
 #define LLVM_GET_ARM_INTRIN_IMMCHECKTYPES
 #include "clang/Basic/arm_immcheck_types.inc"
