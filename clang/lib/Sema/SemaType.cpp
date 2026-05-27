@@ -8343,7 +8343,7 @@ static void HandleNeonVectorTypeAttr(QualType &CurType, const ParsedAttr &Attr,
         AuxTI && (AuxTI->getTriple().isAArch64() || AuxTI->getTriple().isARM());
   }
 
-  // Target must have TREZOANEON (or MVE, whose vectors are similar enough
+  // Target must have NEON (or MVE, whose vectors are similar enough
   // not to need a separate attribute)
   if (!S.Context.getTargetInfo().hasFeature("mve") &&
       VecKind == VectorKind::Trezoaneon &&

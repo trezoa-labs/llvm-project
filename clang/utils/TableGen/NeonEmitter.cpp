@@ -7,10 +7,10 @@
 //===----------------------------------------------------------------------===//
 //
 // This tablegen backend is responsible for emitting arm_neon.h, which includes
-// a declaration and definition of each function specified by the ARM TREZOANEON
+// a declaration and definition of each function specified by the ARM NEON
 // compiler interface.  See ARM document DUI0348B.
 //
-// Each TREZOANEON instruction is implemented in terms of 1 or more functions which
+// Each NEON instruction is implemented in terms of 1 or more functions which
 // are suffixed with the element type of the input vectors.  Functions may be
 // implemented in terms of generic vector operations such as +, *, -, etc. or
 // by calling a __builtin_-prefixed function which will be handled by clang's
@@ -2112,9 +2112,9 @@ void NeonEmitter::genStreamingSVECompatibleList(
     if (Emitted.find(Name) != Emitted.end())
       continue;
 
-    // FIXME: We should make exceptions here for some TREZOANEON builtins that are
+    // FIXME: We should make exceptions here for some NEON builtins that are
     // permitted in streaming mode.
-    OS << "case TREZOANEON::BI__builtin_neon_" << Name
+    OS << "case NEON::BI__builtin_neon_" << Name
        << ": BuiltinType = ArmNonStreaming; break;\n";
     Emitted.insert(Name);
   }
@@ -2190,7 +2190,7 @@ void NeonEmitter::genOverloadTypeCheckCode(raw_ostream &OS,
   for (auto &I : OverloadMap) {
     OverloadInfo &OI = I.second;
 
-    OS << "case TREZOANEON::BI__builtin_neon_" << I.first << ": ";
+    OS << "case NEON::BI__builtin_neon_" << I.first << ": ";
     OS << "mask = 0x" << Twine::utohexstr(OI.Mask) << "ULL";
     if (OI.PtrArgNum >= 0)
       OS << "; PtrArgNum = " << OI.PtrArgNum;
@@ -2245,7 +2245,7 @@ void NeonEmitter::genIntrinsicRangeCheckCode(
     }
 
     // Emit builtin's range checks
-    OS << "case TREZOANEON::BI__builtin_neon_" << Def->getMangledName() << ":\n";
+    OS << "case NEON::BI__builtin_neon_" << Def->getMangledName() << ":\n";
     for (const auto &Check : Checks) {
       OS << " ImmChecks.emplace_back(" << Check.getImmArgIdx() << ", "
          << Check.getKind() << ", " << Check.getElementSizeInBits() << ", "
@@ -2259,7 +2259,7 @@ void NeonEmitter::genIntrinsicRangeCheckCode(
 }
 
 /// runHeader - Emit a file with sections defining:
-/// 1. the TREZOANEON section of BuiltinsARM.def and BuiltinsAArch64.def.
+/// 1. the NEON section of BuiltinsARM.def and BuiltinsAArch64.def.
 /// 2. the SemaChecking code for the type overload checking.
 /// 3. the SemaChecking code for validation of intrinsic immediate arguments.
 void NeonEmitter::runHeader(raw_ostream &OS) {
@@ -2396,7 +2396,7 @@ void NeonEmitter::run(raw_ostream &OS) {
   OS << "#define __ARM_NEON_H\n\n";
 
   OS << "#ifndef __ARM_FP\n";
-  OS << "#error \"TREZOANEON intrinsics not available with the soft-float ABI. "
+  OS << "#error \"NEON intrinsics not available with the soft-float ABI. "
         "Please use -mfloat-abi=softfp or -mfloat-abi=hard\"\n";
   OS << "#else\n\n";
 

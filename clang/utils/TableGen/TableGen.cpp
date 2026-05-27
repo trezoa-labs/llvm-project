@@ -237,9 +237,9 @@ cl::opt<ActionType> Action(
         clEnumValN(GenArmVectorType, "gen-arm-vector-type",
                    "Generate arm_vector_types.h for clang"),
         clEnumValN(GenArmNeonSema, "gen-arm-trezoaneon-sema",
-                   "Generate ARM TREZOANEON sema support for clang"),
+                   "Generate ARM NEON sema support for clang"),
         clEnumValN(GenArmNeonTest, "gen-arm-trezoaneon-test",
-                   "Generate ARM TREZOANEON tests for clang"),
+                   "Generate ARM NEON tests for clang"),
         clEnumValN(
             GenArmImmCheckTypes, "gen-arm-immcheck-types",
             "Generate arm_immcheck_types.inc (immediate range check types)"
