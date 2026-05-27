@@ -3256,7 +3256,7 @@ def err_attribute_invalid_bitint_vector_type : Error<
   "at least as wide as 'CHAR_BIT'}1">;
 def err_attribute_invalid_matrix_type : Error<"invalid matrix element type %0">;
 def err_attribute_bad_neon_vector_size : Error<
-  "Neon vector size must be 64 or 128 bits">;
+  "neon vector size must be 64 or 128 bits">;
 def err_attribute_invalid_sve_type : Error<
   "%0 attribute applied to non-SVE type %1">;
 def err_attribute_bad_sve_vector_size : Error<
