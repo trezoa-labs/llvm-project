@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-trezoa(Debugserver LANGUAGES C CXX ASM-ATT)
+project(Debugserver LANGUAGES C CXX ASM-ATT)
 
 # Must go below trezoa(..)
 include(GNUInstallDirs)
