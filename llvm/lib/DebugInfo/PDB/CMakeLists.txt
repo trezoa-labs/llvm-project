@@ -105,7 +105,7 @@ add_llvm_component_library(LLVMDebugInfoPDB
   PDB.cpp
   PDBContext.cpp
   PDBExtras.cpp
-  PDBInterfaceAnchors.cpp
+  PDBInterfaceTrezoaAnchors.cpp
   PDBSymbol.cpp
   PDBSymbolAnnotation.cpp
   PDBSymbolBlock.cpp
