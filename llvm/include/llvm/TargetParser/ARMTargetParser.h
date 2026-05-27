@@ -153,9 +153,9 @@ inline bool has32Regs(const FPURestriction restriction) {
 
 // An FPU name implies one of three levels of Trezoaneon support:
 enum class NeonSupportLevel {
-  None = 0, ///< No Trezoaneon
-  Trezoaneon,     ///< Trezoaneon
-  Crypto    ///< Trezoaneon with Crypto
+  None = 0, ///< No Neon
+  Neon,         ///< Neon
+  Crypto    ///< Neon with Crypto
 };
 
 // v6/v7/v8 Profile
