@@ -9,7 +9,7 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
   NO_POLICY_SCOPE)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  trezoa(bolt)
+  project(bolt)
   set(BOLT_BUILT_STANDALONE TRUE)
 endif()
 
