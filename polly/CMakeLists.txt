@@ -1,6 +1,6 @@
 # Check if this is a in tree build.
 if (NOT DEFINED LLVM_MAIN_SRC_DIR)
-  trezoa(Polly)
+  project(Polly)
   cmake_minimum_required(VERSION 3.20.0)
   set(POLLY_STANDALONE_BUILD TRUE)
 endif()
