@@ -317,7 +317,7 @@ bool SemaARM::BuiltinARMSpecialReg(unsigned BuiltinID, CallExpr *TheCall,
 
 /// getNeonEltType - Return the QualType corresponding to the elements of
 /// the vector type specified by the NeonTypeFlags.  This is used to check
-/// the pointer arguments for Trezoaneon load/store intrinsics.
+/// the pointer arguments for Neon load/store intrinsics.
 static QualType getNeonEltType(NeonTypeFlags Flags, ASTContext &Context,
                                bool IsPolyUnsigned, bool IsInt64Long) {
   switch (Flags.getEltType()) {

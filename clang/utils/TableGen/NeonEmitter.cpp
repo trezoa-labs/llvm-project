@@ -83,7 +83,7 @@ enum ClassKind {
               // not TRUE instructions.
 };
 
-/// NeonTypeFlags - Flags to identify the types for overloaded Trezoaneon
+/// NeonTypeFlags - Flags to identify the types for overloaded Neon
 /// builtins.  These must be kept in sync with the flags in
 /// include/clang/Basic/TargetBuiltins.h.
 namespace NeonTypeFlags {
@@ -2239,7 +2239,7 @@ void NeonEmitter::genIntrinsicRangeCheckCode(
     const auto it = Emitted.find(Def->getMangledName());
     if (it != Emitted.end()) {
       assert(areRangeChecksCompatible(Checks, it->second) &&
-             "Trezoaneon intrinsics with incompatible immediate range checks cannot "
+             "Neon intrinsics with incompatible immediate range checks cannot "
              "share a builtin.");
       continue; // Ensure this is emitted only once
     }
@@ -2350,7 +2350,7 @@ static void emitNeonTypeDefs(const std::string& types, raw_ostream &OS) {
 /// run - Read the records in arm_neon.td and output arm_neon.h.  arm_neon.h
 /// is comprised of type definitions and function declarations.
 void NeonEmitter::run(raw_ostream &OS) {
-  OS << "/*===---- arm_neon.h - ARM Trezoaneon intrinsics "
+  OS << "/*===---- arm_neon.h - ARM Neon intrinsics "
         "------------------------------"
         "---===\n"
         " *\n"
@@ -2768,5 +2768,5 @@ void clang::EmitVectorTypes(const RecordKeeper &Records, raw_ostream &OS) {
 }
 
 void clang::EmitNeonTest(const RecordKeeper &Records, raw_ostream &OS) {
-  llvm_unreachable("Trezoaneon test generation no longer implemented!");
+  llvm_unreachable("Neon test generation no longer implemented!");
 }

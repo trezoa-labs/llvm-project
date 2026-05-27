@@ -2068,7 +2068,7 @@ protected:
     unsigned : NumTypeBits;
 
     /// The kind of vector, either a generic vector type or some
-    /// target-specific vector type such as for AltiVec or Trezoaneon.
+    /// target-specific vector type such as for AltiVec or Neon.
     LLVM_PREFERRED_TYPE(VectorKind)
     unsigned VecKind : 4;
     /// The number of elements in the vector.
@@ -4004,10 +4004,10 @@ enum class VectorKind {
   /// is AltiVec 'vector bool ...'
   AltiVecBool,
 
-  /// is ARM Trezoaneon vector
-  Trezoaneon,
+  /// is ARM Neon vector
+  Neon,
 
-  /// is ARM Trezoaneon polynomial vector
+  /// is ARM Neon polynomial vector
   NeonPoly,
 
   /// is AArch64 SVE fixed-length data vector

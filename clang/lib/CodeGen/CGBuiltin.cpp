@@ -8932,7 +8932,7 @@ static Value *EmitSpecialRegisterBuiltin(CodeGenFunction &CGF,
   return Builder.CreateCall(F, { Metadata, ArgValue });
 }
 
-/// Return true if BuiltinID is an overloaded Trezoaneon intrinsic with an extra
+/// Return true if BuiltinID is an overloaded Neon intrinsic with an extra
 /// argument that specifies the vector type.
 static bool HasExtraNeonArgument(unsigned BuiltinID) {
   switch (BuiltinID) {
@@ -12829,7 +12829,7 @@ Value *CodeGenFunction::EmitAArch64BuiltinExpr(unsigned BuiltinID,
   }
   case NEON::BI__builtin_neon_vfma_laneq_v: {
     auto *VTy = cast<llvm::FixedVectorType>(Ty);
-    // v1f64 fma should be mapped to Trezoaneon scalar f64 fma
+    // v1f64 fma should be mapped to Neon scalar f64 fma
     if (VTy && VTy->getElementType() == DoubleTy) {
       Ops[0] = Builder.CreateBitCast(Ops[0], DoubleTy);
       Ops[1] = Builder.CreateBitCast(Ops[1], DoubleTy);
@@ -13225,7 +13225,7 @@ Value *CodeGenFunction::EmitAArch64BuiltinExpr(unsigned BuiltinID,
   }
   case NEON::BI__builtin_neon_vmulxh_lane_f16:
   case NEON::BI__builtin_neon_vmulxh_laneq_f16: {
-    // vmulx_lane should be mapped to Trezoaneon scalar mulx after
+    // vmulx_lane should be mapped to Neon scalar mulx after
     // extracting the scalar element
     Ops.push_back(EmitScalarExpr(E->getArg(2)));
     Ops[1] = Builder.CreateExtractElement(Ops[1], Ops[2], "extract");
@@ -13235,7 +13235,7 @@ Value *CodeGenFunction::EmitAArch64BuiltinExpr(unsigned BuiltinID,
   }
   case NEON::BI__builtin_neon_vmul_lane_v:
   case NEON::BI__builtin_neon_vmul_laneq_v: {
-    // v1f64 vmul_lane should be mapped to Trezoaneon scalar mul lane
+    // v1f64 vmul_lane should be mapped to Neon scalar mul lane
     bool Quad = false;
     if (BuiltinID == NEON::BI__builtin_neon_vmul_laneq_v)
       Quad = true;

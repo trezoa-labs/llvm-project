@@ -8331,9 +8331,9 @@ static bool verifyValidIntegerConstantExpr(Sema &S, const ParsedAttr &Attr,
 /// "neon_polyvector_type" attributes are used to create vector types that
 /// are mangled according to ARM's ABI.  Otherwise, these types are identical
 /// to those created with the "vector_size" attribute.  Unlike "vector_size"
-/// the argument to these Trezoaneon attributes is the number of vector elements,
+/// the argument to these Neon attributes is the number of vector elements,
 /// not the vector size in bytes.  The vector width and element type must
-/// match one of the standard Trezoaneon vector types.
+/// match one of the standard Neon vector types.
 static void HandleNeonVectorTypeAttr(QualType &CurType, const ParsedAttr &Attr,
                                      Sema &S, VectorKind VecKind) {
   bool IsTargetCUDAAndHostARM = false;
@@ -8346,7 +8346,7 @@ static void HandleNeonVectorTypeAttr(QualType &CurType, const ParsedAttr &Attr,
   // Target must have NEON (or MVE, whose vectors are similar enough
   // not to need a separate attribute)
   if (!S.Context.getTargetInfo().hasFeature("mve") &&
-      VecKind == VectorKind::Trezoaneon &&
+      VecKind == VectorKind::Neon &&
       S.Context.getTargetInfo().getTriple().isArmMClass()) {
     S.Diag(Attr.getLoc(), diag::err_attribute_unsupported_m_profile)
         << Attr << "'mve'";
@@ -8374,7 +8374,7 @@ static void HandleNeonVectorTypeAttr(QualType &CurType, const ParsedAttr &Attr,
   if (!verifyValidIntegerConstantExpr(S, Attr, numEltsInt))
     return;
 
-  // Only certain element types are supported for Trezoaneon vectors.
+  // Only certain element types are supported for Neon vectors.
   if (!isPermittedNeonBaseType(CurType, VecKind, S) &&
       !IsTargetCUDAAndHostARM) {
     S.Diag(Attr.getLoc(), diag::err_attribute_invalid_vector_type) << CurType;
@@ -8466,7 +8466,7 @@ static void HandleArmMveStrictPolymorphismAttr(TypeProcessingState &State,
                                                QualType &CurType,
                                                ParsedAttr &Attr) {
   const VectorType *VT = dyn_cast<VectorType>(CurType);
-  if (!VT || VT->getVectorKind() != VectorKind::Trezoaneon) {
+  if (!VT || VT->getVectorKind() != VectorKind::Neon) {
     State.getSema().Diag(Attr.getLoc(),
                          diag::err_attribute_arm_mve_polymorphism);
     Attr.setInvalid();
@@ -8825,7 +8825,7 @@ static void processTypeAttrs(TypeProcessingState &state, QualType &type,
       attr.setUsedAsTypeAttr();
       break;
     case ParsedAttr::AT_NeonVectorType:
-      HandleNeonVectorTypeAttr(type, attr, state.getSema(), VectorKind::Trezoaneon);
+      HandleNeonVectorTypeAttr(type, attr, state.getSema(), VectorKind::Neon);
       attr.setUsedAsTypeAttr();
       break;
     case ParsedAttr::AT_NeonPolyVectorType:

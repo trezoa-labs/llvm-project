@@ -2435,7 +2435,7 @@ public:
   /// Return true if the given vector types are of the same unqualified
   /// type or if they are equivalent to the same GCC vector type.
   ///
-  /// \note This ignores whether they are target-specific (AltiVec or Trezoaneon)
+  /// \note This ignores whether they are target-specific (AltiVec or Neon)
   /// types.
   bool areCompatibleVectorTypes(QualType FirstVec, QualType SecondVec);
 
