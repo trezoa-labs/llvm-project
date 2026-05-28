@@ -39,7 +39,7 @@ int Opcode::Dump(Stream *s, uint32_t min_byte_width, const ArchSpec &arch) {
     break;
 
   case Opcode::eType64:
-    if (arch.GetMachine() == llvm::Triple::sbf) {
+    if (arch.GetMachine() == llvm::Triple::tbf) {
       for (uint32_t i = 0; i < 8; ++i) {
         if (i > 0)
           s->PutChar(' ');

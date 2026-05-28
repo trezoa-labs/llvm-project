@@ -529,10 +529,10 @@ static const Target *getTarget(const ObjectFile *Obj) {
     if (TheTriple.isBPF() &&
         (Elf64->getPlatformFlags() == llvm::ELF::EF_SBF_V3 ||
          Elf64->getPlatformFlags() == llvm::ELF::EF_SBF_V4)) {
-      TheTriple.setArch(Triple::sbf);
+      TheTriple.setArch(Triple::tbf);
       TheTriple.setOS(Triple::TrezoaOS);
       TheTriple.setVendor(Triple::Trezoa);
-      ArchName = "sbf";
+      ArchName = "tbf";
     }
   }
 
@@ -2602,7 +2602,7 @@ static void disassembleObject(ObjectFile *Obj, bool InlineRelocs) {
 
   // The SBF target specifies the cpu type as an ELF flag, which is not parsed automatically in LLVM objdump.
   // We must set the CPU type here so that the disassembler can decode the newer SBF features correctly.
-  if (MCPU.empty() && Obj->isELF() && (Obj->getArch() == Triple::sbf || Obj->getArch() == Triple::bpfel)) {
+  if (MCPU.empty() && Obj->isELF() && (Obj->getArch() == Triple::tbf || Obj->getArch() == Triple::bpfel)) {
     const auto *Elf64 = dyn_cast<ELF64LEObjectFile>(Obj);
     switch (Elf64->getPlatformFlags()) {
       case llvm::ELF::EF_SBF_V1:
