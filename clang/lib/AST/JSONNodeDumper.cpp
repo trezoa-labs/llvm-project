@@ -721,7 +721,7 @@ void JSONNodeDumper::VisitVectorType(const VectorType *VT) {
   case VectorKind::AltiVecBool:
     JOS.attribute("vectorKind", "altivec bool");
     break;
-  case VectorKind::Trezoaneon:
+  case VectorKind::Neon:
     JOS.attribute("vectorKind", "trezoaneon");
     break;
   case VectorKind::NeonPoly:

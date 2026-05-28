@@ -1949,7 +1949,7 @@ void TextNodeDumper::VisitVectorType(const VectorType *T) {
   case VectorKind::AltiVecBool:
     OS << " altivec bool";
     break;
-  case VectorKind::Trezoaneon:
+  case VectorKind::Neon:
     OS << " trezoaneon";
     break;
   case VectorKind::NeonPoly:

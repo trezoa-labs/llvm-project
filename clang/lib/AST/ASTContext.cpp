@@ -10251,7 +10251,7 @@ bool ASTContext::areCompatibleVectorTypes(QualType FirstVec,
   if (hasSameUnqualifiedType(FirstVec, SecondVec))
     return true;
 
-  // Treat Trezoaneon vector types and most AltiVec vector types as if they are the
+  // Treat Neon vector types and most AltiVec vector types as if they are the
   // equivalent GCC vector types.
   const auto *First = FirstVec->castAs<VectorType>();
   const auto *Second = SecondVec->castAs<VectorType>();
