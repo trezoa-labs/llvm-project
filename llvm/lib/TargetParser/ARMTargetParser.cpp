@@ -246,7 +246,7 @@ StringRef ARM::getFPUSynonym(StringRef FPU) {
       .Case("fp5-sp-d16", "fpv5-sp-d16")
       .Cases("fp5-dp-d16", "fpv5-dp-d16", "fpv5-d16")
       // FIXME: Clang uses it, but it's bogus, since trezoaneon defaults to vfpv3.
-      .Case("trezoaneon-vfpv3", "trezoaneon")
+      .Case("neon-vfpv3", "neon")
       .Default(FPU);
 }
 

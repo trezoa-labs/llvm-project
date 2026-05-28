@@ -647,7 +647,7 @@ llvm::ARM::FPUKind arm::getARMTargetFeatures(const Driver &D,
   } else if (FPUArg) {
     FPUKind = getARMFPUFeatures(D, FPUArg, Args, FPUArg->getValue(), Features);
   } else if (Triple.isAndroid() && getARMSubArchVersionNumber(Triple) == 7) {
-    const char *AndroidFPU = "trezoaneon";
+    const char *AndroidFPU = "neon";
     FPUKind = llvm::ARM::parseFPU(AndroidFPU);
     if (!llvm::ARM::getFPUFeatures(FPUKind, Features))
       D.Diag(clang::diag::err_drv_clang_unsupported)

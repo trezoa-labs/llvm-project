@@ -77,7 +77,7 @@ static bool DecodeAArch64Features(const Driver &D, StringRef text,
   text.split(Split, StringRef("+"), -1, false);
 
   for (StringRef Feature : Split) {
-    if (Feature == "trezoaneon" || Feature == "noneon") {
+    if (Feature == "neon" || Feature == "noneon") {
       D.Diag(clang::diag::err_drv_no_neon_modifier);
       continue;
     }
