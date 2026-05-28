@@ -231,7 +231,7 @@ RegisterInfo g_register_infos[] = {
     DEFINE_GPR_PSEUDO_8(dil),
     DEFINE_GPR_PSEUDO_8(sil),
     DEFINE_GPR_PSEUDO_8(bpl),
-    DEFINE_GPR_PSEUDO_8(tpl),
+    DEFINE_GPR_PSEUDO_8(spl),
     DEFINE_GPR_PSEUDO_8(r8l),
     DEFINE_GPR_PSEUDO_8(r9l),
     DEFINE_GPR_PSEUDO_8(r10l),

@@ -541,7 +541,7 @@ static const uint32_t g_code_view_to_lldb_registers_x86_64[] = {
     lldb_sil_x86_64,   // SIL
     lldb_dil_x86_64,   // DIL
     lldb_bpl_x86_64,   // BPL
-    lldb_tpl_x86_64,   // TPL
+    lldb_spl_x86_64,   // SPL
     lldb_rax_x86_64,   // RAX
     lldb_rbx_x86_64,   // RBX
     lldb_rcx_x86_64,   // RCX
@@ -664,7 +664,7 @@ lldb_private::npdb::GetRegisterSize(llvm::codeview::RegisterId register_id) {
     case llvm::codeview::RegisterId::SIL:
     case llvm::codeview::RegisterId::DIL:
     case llvm::codeview::RegisterId::BPL:
-    case llvm::codeview::RegisterId::TPL:
+    case llvm::codeview::RegisterId::SPL:
     case llvm::codeview::RegisterId::R8B:
     case llvm::codeview::RegisterId::R9B:
     case llvm::codeview::RegisterId::R10B:
