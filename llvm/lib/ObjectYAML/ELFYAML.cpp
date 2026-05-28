@@ -939,7 +939,7 @@ void ScalarEnumerationTraits<ELFYAML::ELF_REL>::enumeration(
 #include "llvm/BinaryFormat/ELFRelocs/AMDGPU.def"
     break;
   case ELF::EM_BPF:
-#include "llvm/BinaryFormat/ELFRelocs/SBF.def"
+#include "llvm/BinaryFormat/ELFRelocs/BPF.def"
     break;
   case ELF::EM_TBF:
 #include "llvm/BinaryFormat/ELFRelocs/TBF.def"
