@@ -144,7 +144,7 @@ bool TBFAsmPrinter::PrintAsmMemoryOperand(const MachineInstr *MI,
 }
 
 void TBFAsmPrinter::emitInstruction(const MachineInstr *MI) {
-  SBF_MC::verifyInstructionPredicates(MI->getOpcode(),
+  TBF_MC::verifyInstructionPredicates(MI->getOpcode(),
                                       getSubtargetInfo().getFeatureBits());
 
   MCInst TmpInst;
