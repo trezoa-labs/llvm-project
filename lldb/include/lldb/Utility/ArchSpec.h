@@ -103,15 +103,15 @@ public:
 
   // BPF specific e_flags
   enum BPFeflags {
-    eBPF_abi_sbf_v2 = 0x00000020,
+    eBPF_abi_tbf_v2 = 0x00000020,
   };
 
-  enum SBFSubType {
-    eSBFSubType_sbfv0,
-    eSBFSubType_sbfv1,
-    eSBFSubType_sbfv2,
-    eSBFSubType_sbfv3,
-    eSBFSubType_sbfv4,
+  enum TBFSubType {
+    eTBFSubType_tbfv0,
+    eTBFSubType_tbfv1,
+    eTBFSubType_tbfv2,
+    eTBFSubType_tbfv3,
+    eTBFSubType_tbfv4,
   };
 
   enum RISCVSubType {
@@ -250,11 +250,11 @@ public:
     eCore_wasm32,
 
     eCore_bpf,
-    eCore_sbfv0,
-    eCore_sbfv1,
-    eCore_sbfv2,
-    eCore_sbfv3,
-    eCore_sbfv4,
+    eCore_tbfv0,
+    eCore_tbfv1,
+    eCore_tbfv2,
+    eCore_tbfv3,
+    eCore_tbfv4,
 
     kNumCores,
 

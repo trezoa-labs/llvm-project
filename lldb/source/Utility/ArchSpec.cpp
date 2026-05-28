@@ -249,11 +249,11 @@ static const CoreDefinition g_core_definitions[] = {
     {eByteOrderLittle, 4, 1, 4, llvm::Triple::wasm32, ArchSpec::eCore_wasm32,
      "wasm32"},
     {eByteOrderLittle, 8, 8, 8, llvm::Triple::bpfel, ArchSpec::eCore_bpf, "bpf"},
-    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_sbfv0, "sbpf"},
-    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_sbfv1, "sbpfv1"},
-    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_sbfv2, "sbpfv2"},
-    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_sbfv3, "sbpfv3"},
-    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_sbfv4, "sbpfv4"},
+    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_tbfv0, "tbf"},
+    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_tbfv1, "tbfv1"},
+    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_tbfv2, "tbfv2"},
+    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_tbfv3, "tbfv3"},
+    {eByteOrderLittle, 8, 8, 8, llvm::Triple::tbf, ArchSpec::eCore_tbfv4, "tbfv4"},
 };
 
 // Ensure that we have an entry in the g_core_definitions for each core. If you
@@ -440,15 +440,15 @@ static const ArchDefinitionEntry g_elf_arch_entries[] = {
      0xFFFFFFFFu}, // loongarch64
     {ArchSpec::eCore_bpf, llvm::ELF::EM_BPF, LLDB_INVALID_CPUTYPE,
      0xFFFFFFFFu, 0xFFFFFFFFu}, // bpf
-    {ArchSpec::eCore_sbfv0, llvm::ELF::EM_SBF, ArchSpec::eSBFSubType_sbfv0,
+    {ArchSpec::eCore_tbfv0, llvm::ELF::EM_TBF, ArchSpec::eTBFSubType_tbfv0,
      0xFFFFFFFFu, 0xFFFFFFFFu}, // sbf
-    {ArchSpec::eCore_sbfv1, llvm::ELF::EM_SBF, ArchSpec::eSBFSubType_sbfv1,
+    {ArchSpec::eCore_tbfv1, llvm::ELF::EM_TBF, ArchSpec::eTBFSubType_tbfv1,
      0xFFFFFFFFu, 0xFFFFFFFFu}, // sbfv1
-    {ArchSpec::eCore_sbfv2, llvm::ELF::EM_SBF, ArchSpec::eSBFSubType_sbfv2,
+    {ArchSpec::eCore_tbfv2, llvm::ELF::EM_TBF, ArchSpec::eTBFSubType_tbfv2,
      0xFFFFFFFFu, 0xFFFFFFFFu}, // sbfv2
-    {ArchSpec::eCore_sbfv3, llvm::ELF::EM_BPF, ArchSpec::eSBFSubType_sbfv3,
+    {ArchSpec::eCore_tbfv3, llvm::ELF::EM_BPF, ArchSpec::eTBFSubType_tbfv3,
      0xFFFFFFFFu, 0xFFFFFFFFu}, // sbfv3
-    {ArchSpec::eCore_sbfv4, llvm::ELF::EM_BPF, ArchSpec::eSBFSubType_sbfv4,
+    {ArchSpec::eCore_tbfv4, llvm::ELF::EM_BPF, ArchSpec::eTBFSubType_tbfv4,
       0xFFFFFFFFu, 0xFFFFFFFFu}, // sbfv3
 };
 
