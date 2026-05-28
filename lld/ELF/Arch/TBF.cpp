@@ -1,0 +1,148 @@
+//===- TBF.cpp ------------------------------------------------------------===//
+//
+//                             The LLVM Linker
+//
+// This file is distributed under the University of Illinois Open Source
+// License. See LICENSE.TXT for details.
+//
+//===----------------------------------------------------------------------===//
+
+#include "InputFiles.h"
+#include "Symbols.h"
+#include "Target.h"
+#include "lld/Common/ErrorHandler.h"
+#include "llvm/Object/ELF.h"
+#include "llvm/Support/Endian.h"
+
+using namespace llvm;
+using namespace llvm::object;
+using namespace llvm::support::endian;
+using namespace llvm::ELF;
+
+namespace lld {
+namespace elf {
+
+namespace {
+class TBF final : public TargetInfo {
+public:
+  TBF(Ctx & ctx);
+  RelExpr getRelExpr(RelType type, const Symbol &s,
+                     const uint8_t *loc) const override;
+  RelType getDynRel(RelType type) const override;
+  int64_t getImplicitAddend(const uint8_t *buf, RelType type) const override;
+  void relocate(uint8_t *loc, const Relocation &rel, uint64_t val) const override;
+  uint32_t calcEFlags() const override;
+};
+} // namespace
+
+TBF::TBF(Ctx &ctx) : TargetInfo(ctx) {
+  relativeRel = R_TBF_64_RELATIVE;
+  symbolicRel = R_TBF_64_64;
+  defaultCommonPageSize = 8;
+  defaultMaxPageSize = 8;
+  defaultImageBase = 0;
+}
+
+RelExpr TBF::getRelExpr(RelType type, const Symbol &s,
+                        const uint8_t *loc) const {
+  switch (type) {
+    case R_TBF_64_32:
+      return R_PC;
+    case R_TBF_64_ABS32:
+    case R_TBF_64_NODYLD32:
+    case R_TBF_64_ABS64:
+    case R_TBF_64_64:
+      return R_ABS;
+    default:
+      Err(ctx) << getErrorLoc(ctx, loc) << "unrecognized reloc " << type.v;
+  }
+  return R_NONE;
+}
+
+RelType TBF::getDynRel(RelType type) const {
+  switch (type) {
+    case R_TBF_64_ABS64:
+        // R_TBF_64_ABS64 is symbolic like R_TBF_64_64, which is set as our
+        // symbolicRel in the constructor. Return R_TBF_64_64 here so that if
+        // the symbol isn't preemptible, we emit a _RELATIVE relocation instead
+        // and skip emitting the symbol.
+        //
+        // See https://github.com/trezoa-xyz/llvm-trezoa/blob/6b6aef5dbacef31a3c7b3a54f7f1ba54cafc7077/lld/ELF/Relocations.cpp#L1179
+        return R_TBF_64_64;
+    default:
+        return type;
+  }
+}
+
+int64_t TBF::getImplicitAddend(const uint8_t *buf, RelType type) const {
+  switch (type) {
+  case R_TBF_64_ABS32:
+    return SignExtend64<32>(read32le(buf));
+  default:
+    return 0;
+  }
+}
+
+void TBF::relocate(uint8_t *loc, const Relocation &rel, uint64_t val) const {
+  switch (rel.type) {
+    case R_TBF_64_32: {
+      // Relocation of a symbol
+      write32le(loc + 4, ((val - 8) / 8) & 0xFFFFFFFF);
+      break;
+    }
+    case R_TBF_64_ABS32:
+    case R_TBF_64_NODYLD32: {
+      // Relocation used by .BTF.ext and DWARF
+      write32le(loc, val & 0xFFFFFFFF);
+      break;
+    }
+    case R_TBF_64_64: {
+      // Relocation of a lddw instruction
+      // 64 bit address is divided into the imm of this and the following
+      // instructions, lower 32 first.
+      write32le(loc + 4, val & 0xFFFFFFFF);
+      write32le(loc + 8 + 4, val >> 32);
+      break;
+    }
+    case R_TBF_64_ABS64: {
+      // The relocation type is used for normal 64-bit data. The
+      // actual to-be-relocated data is stored at r_offset and the
+      // read/write data bitsize is 64 (8 bytes). The relocation can
+      // be resolved with the symbol value plus implicit addend.
+      write64le(loc, val);
+      break;
+    }
+    default:
+      Err(ctx) << getErrorLoc(ctx, loc) << "unrecognized reloc " << rel.type.v;
+  }
+}
+
+static uint32_t getEFlags(InputFile *file, Ctx &ctx) {
+  if (ctx.arg.ekind == ELF64BEKind)
+    return cast<ObjFile<ELF64BE>>(file)->getObj().getHeader().e_flags;
+  return cast<ObjFile<ELF64LE>>(file)->getObj().getHeader().e_flags;
+}
+
+uint32_t TBF::calcEFlags() const {
+  uint32_t ret = 0;
+
+  // Ensure that all the object files were compiled with the same flags, as
+  // different flags indicate different ABIs.
+  for (InputFile *f : ctx.objectFiles) {
+    uint32_t flags = getEFlags(f, ctx);
+    if (ret == 0) {
+      ret = flags;
+    } else if (ret != flags) {
+      error("can not link object files with incompatible flags");
+    }
+  }
+
+  return ret;
+}
+
+void setTBFTargetInfo(Ctx &ctx) {
+  ctx.target.reset(new TBF(ctx));
+}
+
+} // namespace elf
+} // namespace lld

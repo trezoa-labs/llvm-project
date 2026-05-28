@@ -268,7 +268,7 @@ std::unique_ptr<TargetInfo> AllocateTarget(const llvm::Triple &Triple,
   case llvm::Triple::bpfeb:
   case llvm::Triple::bpfel:
     return std::make_unique<BPFTargetInfo>(Triple, Opts);
-  case llvm::Triple::sbf:
+  case llvm::Triple::tbf:
     return std::make_unique<BPFTargetInfo>(Triple, Opts);
 
   case llvm::Triple::msp430:

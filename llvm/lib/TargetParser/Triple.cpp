@@ -84,7 +84,7 @@ StringRef Triple::getArchTypeName(ArchType Kind) {
   case x86_64:         return "x86_64";
   case xcore:          return "xcore";
   case xtensa:         return "xtensa";
-  case sbf:            return "sbf";
+  case tbf:            return "tbf";
   }
 
   llvm_unreachable("Invalid ArchType!");
@@ -417,11 +417,11 @@ static Triple::ArchType parseBPFArch(StringRef ArchName) {
     return Triple::bpfeb;
   } else if (ArchName == "bpf_le" || ArchName == "bpfel") {
     return Triple::bpfel;
-  } else if (ArchName == "sbf" || ArchName == "sbpf" ||
-             ArchName == "sbpfv0" || ArchName == "sbpfv1" ||
-             ArchName == "sbpfv2" || ArchName == "sbpfv3" ||
-             ArchName == "sbpfv4") {
-    return Triple::sbf;
+  } else if (ArchName == "tbf" || ArchName == "tbpf" ||
+             ArchName == "tbpfv0" || ArchName == "tbpfv1" ||
+             ArchName == "tbpfv2" || ArchName == "tbpfv3" ||
+             ArchName == "tbpfv4") {
+    return Triple::tbf;
   } else {
     return Triple::UnknownArch;
   }
@@ -457,8 +457,8 @@ Triple::ArchType Triple::getArchTypeForLLVMName(StringRef Name) {
     .Case("riscv32", riscv32)
     .Case("riscv64", riscv64)
     .Case("hexagon", hexagon)
-    .Case("sbf", BPFArch)
-    .Case("sbpf", BPFArch)
+    .Case("tbf", BPFArch)
+    .Case("tbpf", BPFArch)
     .Case("sparc", sparc)
     .Case("sparcel", sparcel)
     .Case("sparcv9", sparcv9)
@@ -650,8 +650,8 @@ static Triple::ArchType parseArch(StringRef ArchName) {
     if (ArchName.starts_with("arm") || ArchName.starts_with("thumb") ||
         ArchName.starts_with("aarch64"))
       return parseARMArch(ArchName);
-    if (ArchName.starts_with("bpf") || ArchName.starts_with("sbf") ||
-        ArchName.starts_with("sbpf"))
+    if (ArchName.starts_with("bpf") || ArchName.starts_with("tbf") ||
+        ArchName.starts_with("tbpf"))
       return parseBPFArch(ArchName);
   }
 
@@ -834,13 +834,13 @@ static Triple::SubArchType parseSubArch(StringRef SubArchName) {
         .EndsWith("v1.8", Triple::DXILSubArch_v1_8)
         .Default(Triple::NoSubArch);
 
-  if (SubArchName.starts_with("sbpf")) {
+  if (SubArchName.starts_with("tbpf")) {
     return StringSwitch<Triple::SubArchType>(SubArchName)
-        .EndsWith("v0", Triple::SBFSubArch_v0)
-        .EndsWith("v1", Triple::SBFSubArch_v1)
-        .EndsWith("v2", Triple::SBFSubArch_v2)
-        .EndsWith("v3", Triple::SBFSubArch_v3)
-        .EndsWith("v4", Triple::SBFSubArch_v4)
+        .EndsWith("v0", Triple::TBFSubArch_v0)
+        .EndsWith("v1", Triple::TBFSubArch_v1)
+        .EndsWith("v2", Triple::TBFSubArch_v2)
+        .EndsWith("v3", Triple::TBFSubArch_v3)
+        .EndsWith("v4", Triple::TBFSubArch_v4)
         .Default(Triple::NoSubArch);
   }
 
@@ -996,7 +996,7 @@ static Triple::ObjectFormatType getDefaultFormat(const Triple &T) {
   case Triple::ve:
   case Triple::xcore:
   case Triple::xtensa:
-  case Triple::sbf:
+  case Triple::tbf:
     return Triple::ELF;
 
   case Triple::mipsel:
@@ -1730,7 +1730,7 @@ unsigned Triple::getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::ve:
   case llvm::Triple::wasm64:
   case llvm::Triple::x86_64:
-  case llvm::Triple::sbf:
+  case llvm::Triple::tbf:
     return 64;
   }
   llvm_unreachable("Invalid architecture value");
@@ -1779,7 +1779,7 @@ Triple Triple::get32BitArchVariant() const {
   case Triple::msp430:
   case Triple::systemz:
   case Triple::ve:
-  case Triple::sbf:
+  case Triple::tbf:
     T.setArch(UnknownArch);
     break;
 
@@ -1893,7 +1893,7 @@ Triple Triple::get64BitArchVariant() const {
   case Triple::ve:
   case Triple::wasm64:
   case Triple::x86_64:
-  case Triple::sbf:
+  case Triple::tbf:
     // Already 64-bit.
     break;
 
@@ -1954,7 +1954,7 @@ Triple Triple::getBigEndianArchVariant() const {
   case Triple::renderscript64:
   case Triple::riscv32:
   case Triple::riscv64:
-  case Triple::sbf:
+  case Triple::tbf:
   case Triple::shave:
   case Triple::spir64:
   case Triple::spir:
@@ -2016,7 +2016,7 @@ Triple Triple::getLittleEndianArchVariant() const {
 
   case Triple::aarch64_be: T.setArch(Triple::aarch64);  break;
   case Triple::bpfeb:      T.setArch(Triple::bpfel);    break;
-  case Triple::sbf:        T.setArch(Triple::sbf);      break;
+  case Triple::tbf:        T.setArch(Triple::tbf);      break;
   case Triple::mips64:
     T.setArch(Triple::mips64el, getSubArch());
     break;
@@ -2063,7 +2063,7 @@ bool Triple::isLittleEndian() const {
   case Triple::renderscript64:
   case Triple::riscv32:
   case Triple::riscv64:
-  case Triple::sbf:
+  case Triple::tbf:
   case Triple::shave:
   case Triple::sparcel:
   case Triple::spir64:

@@ -323,7 +323,7 @@ enum {
   EM_VE = 251,            // NEC SX-Aurora VE
   EM_CSKY = 252,          // C-SKY 32-bit processor
   EM_LOONGARCH = 258,     // LoongArch
-  EM_SBF = 263            // Trezoa Bytecode Format
+  EM_TBF = 263            // Trezoa Bytecode Format
 };
 
 // Object file classes.
@@ -951,18 +951,18 @@ enum : unsigned {
   EF_CUDA_VIRTUAL_SM = 0xff0000,
 };
 
-// SBF specific e_flags
+// TBF specific e_flags
 enum : unsigned {
-  EF_SBF_V0 = 0x00,
-  EF_SBF_V1 = 0x01,
-  EF_SBF_V2 = 0x02,
-  EF_SBF_V3 = 0x03,
-  EF_SBF_V4 = 0x04,
+  EF_TBF_V0 = 0x00,
+  EF_TBF_V1 = 0x01,
+  EF_TBF_V2 = 0x02,
+  EF_TBF_V3 = 0x03,
+  EF_TBF_V4 = 0x04,
 };
 
-// ELF Relocation types for SBF.
+// ELF Relocation types for TBF.
 enum {
-#include "ELFRelocs/SBF.def"
+#include "ELFRelocs/TBF.def"
 };
 
 // ELF Relocation types for BPF

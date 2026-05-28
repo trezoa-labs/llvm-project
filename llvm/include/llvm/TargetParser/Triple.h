@@ -104,7 +104,7 @@ public:
     wasm64,         // WebAssembly with 64-bit pointers
     renderscript32, // 32-bit RenderScript
     renderscript64, // 64-bit RenderScript
-    sbf,
+    tbf,
     ve,             // NEC SX-Aurora Vector Engine
     LastArchType = ve
   };
@@ -179,11 +179,11 @@ public:
     DXILSubArch_v1_8,
     LatestDXILSubArch = DXILSubArch_v1_8,
 
-    SBFSubArch_v0,
-    SBFSubArch_v1,
-    SBFSubArch_v2,
-    SBFSubArch_v3,
-    SBFSubArch_v4,
+    TBFSubArch_v0,
+    TBFSubArch_v1,
+    TBFSubArch_v2,
+    TBFSubArch_v3,
+    TBFSubArch_v4,
   };
   enum VendorType {
     UnknownVendor,
@@ -1104,7 +1104,7 @@ public:
   }
 
   /// Tests whether the target is eBPF.
-  /// TODO/TBD: For new sbf backend, we should probably remove sbf check here.
+  /// TODO/TBD: For new tbf backend, we should probably remove tbf check here.
   bool isBPF() const {
     return getArch() == Triple::bpfel || getArch() == Triple::bpfeb;
   }
@@ -1125,9 +1125,9 @@ public:
            Env == llvm::Triple::EABIHF;
   }
 
-  /// Tests whether the target is SBF (little endian).
-  bool isSBF() const {
-    return getArch() == Triple::sbf;
+  /// Tests whether the target is TBF (little endian).
+  bool isTBF() const {
+    return getArch() == Triple::tbf;
   }
 
   /// Tests whether the target supports comdat

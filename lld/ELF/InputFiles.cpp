@@ -1683,8 +1683,8 @@ static uint16_t getBitcodeMachineKind(Ctx &ctx, StringRef path,
     return EM_X86_64;
   case Triple::bpfel:
   case Triple::bpfeb:
-  case Triple::sbf:
-    return EM_SBF;
+  case Triple::tbf:
+    return EM_TBF;
   default:
     ErrAlways(ctx) << path
                    << ": could not infer e_machine from bitcode target triple "

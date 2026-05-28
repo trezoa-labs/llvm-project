@@ -35,7 +35,7 @@ public:
     IntMaxType = SignedLong;
     Int64Type = SignedLong;
     RegParmMax = 5;
-    if (Triple.getArch() == llvm::Triple::sbf) {
+    if (Triple.getArch() == llvm::Triple::tbf) {
       HasTrezoaFeature = true;
     } else {
       for (auto& it : Opts.FeaturesAsWritten) {

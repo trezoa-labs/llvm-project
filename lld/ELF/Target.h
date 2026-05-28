@@ -194,7 +194,7 @@ void setSPARCV9TargetInfo(Ctx &);
 void setSystemZTargetInfo(Ctx &);
 void setX86TargetInfo(Ctx &);
 void setX86_64TargetInfo(Ctx &);
-void setSBFTargetInfo(Ctx &);
+void setTBFTargetInfo(Ctx &);
 
 struct ErrorPlace {
   InputSectionBase *isec;
