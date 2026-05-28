@@ -272,7 +272,7 @@ class JMP_RI_32<TBFJumpOp Opc, string Mnemonic, PatLeaf Cond>
 multiclass J<TBFJumpOp Opc, string Mnemonic, PatLeaf Cond, PatLeaf Cond32>  {
   def _rr : JMP_RR<Opc, Mnemonic, Cond>;
   def _ri : JMP_RI<Opc, Mnemonic, Cond>;
-  let DecoderNamespace = "SBFv3" in {
+  let DecoderNamespace = "TBFv3" in {
       def _rr_32 : JMP_RR_32<Opc, Mnemonic, Cond32>;
       def _ri_32 : JMP_RI_32<Opc, Mnemonic, Cond32>;
   }
@@ -385,7 +385,7 @@ let Constraints = "$dst = $src2", isReMaterializable = 1 in {
                     (ins GPR:$src2, i32imm:$imm),
                     "hor64 $dst, $imm",
                     []>;
-        let DecoderNamespace = "SBFv2" in {
+        let DecoderNamespace = "TBFv2" in {
           def HOR_addr :  MATH_RI<SBF_ALU64, SBF_HOR,
                                   (outs GPR:$dst),
                                   (ins GPR:$src2, u64imm:$imm),
@@ -489,7 +489,7 @@ def MOV_ri_32 : MATH_RI<SBF_ALU, SBF_MOV,
                     "mov32 $dst, $imm",
                     [(set GPR32:$dst, (i32 i32immSExt32:$imm))]>;
 
-let Predicates = [TBFExplicitSignExt], DecoderNamespace = "SBFv2" in {
+let Predicates = [TBFExplicitSignExt], DecoderNamespace = "TBFv2" in {
     def MOV_rr_32_no_sext_v2 : MATH_RR<SBF_ALU64, SBF_MOV,
                                 (outs GPR32:$dst),
                                 (ins GPR32:$src),
@@ -581,7 +581,7 @@ multiclass STOREi64<TBFWidthModifer SizeV1, TBFSizeModifier SizeV2,
                                     string Mnemonic> {
     def _V1 : STORE_V1<SizeV1, Mnemonic>, Requires<[TBFOldMemEncoding]>;
 
-    let DecoderNamespace = "SBFv2" in {
+    let DecoderNamespace = "TBFv2" in {
         def _V2 : STORE_V2<SizeV2, Mnemonic>, Requires<[TBFNewMemEncoding]>;
     }
 }
@@ -651,7 +651,7 @@ multiclass STORE_imm<TBFWidthModifer SizeV1, TBFSizeModifier SizeV2,
                     string Mnemonic> {
     def _V1 : STORE_imm_V1<SizeV1, Mnemonic>, Requires<[TBFOldMemEncoding]>;
 
-    let DecoderNamespace = "SBFv2" in {
+    let DecoderNamespace = "TBFv2" in {
       def _V2 : STORE_imm_V2<SizeV2, Mnemonic>, Requires<[TBFNewMemEncoding]>;
     }
 }
@@ -757,7 +757,7 @@ class LOAD_V2<TBFSizeModifier SizeOp, string Mnemonic>
 multiclass LOADi64<TBFWidthModifer SizeV1, TBFSizeModifier SizeV2, string Mnemonic> {
   def _V1 : LOAD_V1<SizeV1, Mnemonic>, Requires<[TBFOldMemEncoding]>;
 
-  let DecoderNamespace = "SBFv2" in {
+  let DecoderNamespace = "TBFv2" in {
      def _V2 : LOAD_V2<SizeV2, Mnemonic>, Requires<[TBFNewMemEncoding]>;
   }
 }
@@ -901,10 +901,10 @@ let isCall=1, hasDelaySlot=0, Uses = [R10],
     Defs = [R0, R1, R2, R3, R4, R5] in {
   def JAL     : CALL<"call">;
   def JALX    : CALLX<"callx">, Requires<[TBFNoCallxSrc]>;
-  let DecoderNamespace = "SBFv2" in {
+  let DecoderNamespace = "TBFv2" in {
     def JALX_v2 : CALLX_SRC_REG<"callx">, Requires<[TBFCallxSrc]>;
   }
-  let DecoderNamespace = "SBFv3" in {
+  let DecoderNamespace = "TBFv3" in {
     def JALX_v3 : CALLX_DST_REG<"callx">, Requires<[TBFCallxDst]>;
   }
 }
@@ -1254,7 +1254,7 @@ let Constraints = "$dst = $src" in {
     def BE64 : BSWAP<64, "be64", SBF_TO_BE, [(set GPR:$dst, (bswap GPR:$src))]>;
 }
 
-let DecoderNamespace = "SBFv2" in {
+let DecoderNamespace = "TBFv2" in {
   def MOV_32_64 : MATH_RR<SBF_ALU, SBF_MOV,
                          (outs GPR:$dst), (ins GPR32:$src),
                          "mov32 $dst, $src", []>;
@@ -1272,7 +1272,7 @@ let isCodeGenOnly = 1 in {
                                     []>;
 }
 
-let DecoderNamespace = "SBFv2", Predicates = [TBFNoLddw] in {
+let DecoderNamespace = "TBFv2", Predicates = [TBFNoLddw] in {
   def MOV_32_64_imm : MATH_RI<SBF_ALU, SBF_MOV,
                                (outs GPR:$dst), (ins i32imm:$imm),
                                "mov32 $dst, $imm", []>;

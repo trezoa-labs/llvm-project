@@ -205,7 +205,7 @@ DecodeStatus TBFDisassembler::getInstruction(MCInst &Instr, uint64_t &Size,
   else if (isMov32(Insn) && !STI.hasFeature(TBF::ALU32) &&
            STI.hasFeature(TBF::FeatureDisableLddw))
     Result =
-        decodeInstruction(DecoderTableSBFv264, Instr, Insn, Address, this, STI);
+        decodeInstruction(DecoderTableTBFv264, Instr, Insn, Address, this, STI);
   else if (isAlu32NewLoadStoreReg(Insn)) {
     Result =
         decodeInstruction(DecoderTableTBFALU32MEMv264,
@@ -213,15 +213,15 @@ DecodeStatus TBFDisassembler::getInstruction(MCInst &Instr, uint64_t &Size,
   }
   else if (isNewMem(Insn) && STI.hasFeature(TBF::FeatureNewMemEncoding)) {
     Result =
-        decodeInstruction(DecoderTableSBFv264,
+        decodeInstruction(DecoderTableTBFv264,
                           Instr, Insn, Address, this, STI);
   } else if (InstClass == SBF_PQR_OR_JMP32 && !STI.hasFeature(TBF::FeaturePqrInstr)) {
-    Result = decodeInstruction(DecoderTableSBFv364,
+    Result = decodeInstruction(DecoderTableTBFv364,
                                Instr, Insn, Address, this, STI);
   }
   else
     Result =
-        decodeInstruction(DecoderTableSBF64, Instr, Insn, Address, this, STI);
+        decodeInstruction(DecoderTableTBF64, Instr, Insn, Address, this, STI);
 
   if (Result == MCDisassembler::Fail)
     return MCDisassembler::Fail;
@@ -246,10 +246,10 @@ DecodeStatus TBFDisassembler::getInstruction(MCInst &Instr, uint64_t &Size,
   }
   case TBF::JALX: {
     if (STI.hasFeature(TBF::FeatureCallxRegSrc)) {
-      Result = decodeInstruction(DecoderTableSBFv264, Instr, Insn, Address,
+      Result = decodeInstruction(DecoderTableTBFv264, Instr, Insn, Address,
                                  this, STI);
     } else if (STI.hasFeature(TBF::FeatureCallxRegDst)) {
-      Result = decodeInstruction(DecoderTableSBFv364, Instr, Insn, Address,
+      Result = decodeInstruction(DecoderTableTBFv364, Instr, Insn, Address,
                                  this, STI);
     }
   }
