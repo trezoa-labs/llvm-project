@@ -1306,7 +1306,7 @@ static inline bool is32ExtendedReg(MCRegister Reg) {
 }
 
 inline bool isX86_64NonExtLowByteReg(MCRegister Reg) {
-  return (Reg == X86::TPL || Reg == X86::BPL || Reg == X86::SIL ||
+  return (Reg == X86::SPL || Reg == X86::BPL || Reg == X86::SIL ||
           Reg == X86::DIL);
 }
 
