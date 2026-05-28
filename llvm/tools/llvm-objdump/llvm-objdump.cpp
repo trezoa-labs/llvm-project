@@ -527,8 +527,8 @@ static const Target *getTarget(const ObjectFile *Obj) {
   // should use the SBF mnemonics.
   if (const auto *Elf64 = dyn_cast<ELF64LEObjectFile>(Obj)) {
     if (TheTriple.isBPF() &&
-        (Elf64->getPlatformFlags() == llvm::ELF::EF_SBF_V3 ||
-         Elf64->getPlatformFlags() == llvm::ELF::EF_SBF_V4)) {
+        (Elf64->getPlatformFlags() == llvm::ELF::EF_TBF_V3 ||
+         Elf64->getPlatformFlags() == llvm::ELF::EF_TBF_V4)) {
       TheTriple.setArch(Triple::tbf);
       TheTriple.setOS(Triple::TrezoaOS);
       TheTriple.setVendor(Triple::Trezoa);
@@ -2605,16 +2605,16 @@ static void disassembleObject(ObjectFile *Obj, bool InlineRelocs) {
   if (MCPU.empty() && Obj->isELF() && (Obj->getArch() == Triple::tbf || Obj->getArch() == Triple::bpfel)) {
     const auto *Elf64 = dyn_cast<ELF64LEObjectFile>(Obj);
     switch (Elf64->getPlatformFlags()) {
-      case llvm::ELF::EF_SBF_V1:
+      case llvm::ELF::EF_TBF_V1:
         MCPU = "v1";
         break;
-      case llvm::ELF::EF_SBF_V2:
+      case llvm::ELF::EF_TBF_V2:
         MCPU = "v2";
         break;
-      case llvm::ELF::EF_SBF_V3:
+      case llvm::ELF::EF_TBF_V3:
         MCPU = "v3";
         break;
-      case llvm::ELF::EF_SBF_V4:
+      case llvm::ELF::EF_TBF_V4:
         MCPU = "v4";
         break;
       default:
