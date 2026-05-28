@@ -20,7 +20,7 @@ include(${LLVM_COMMON_CMAKE_UTILS}/Modules/CMakePolicy.cmake
 
 include(${LLVM_COMMON_CMAKE_UTILS}/Modules/LLVMVersion.cmake)
 
-trezoa(Runtimes C CXX ASM)
+project(Runtimes C CXX ASM)
 set(LLVM_SUBPROJECT_TITLE "Runtimes")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
