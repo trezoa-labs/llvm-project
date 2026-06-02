@@ -37,7 +37,7 @@ jobs:
           remove-codeql: 'true'
           root-reserve-mb: 2048
       - name: Checkout LLVM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 2
       - name: Setup ccache
@@ -93,7 +93,7 @@ jobs:
           remove-codeql: 'true'
           root-reserve-mb: 2048
       - name: Checkout LLVM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 2
       - name: Setup ccache
@@ -149,7 +149,7 @@ jobs:
           remove-codeql: 'true'
           root-reserve-mb: 2048
       - name: Checkout LLVM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 2
       - name: Setup ccache
@@ -202,7 +202,7 @@ jobs:
         shell: bash
     steps:
       - name: Checkout LLVM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 2
       - name: Setup ccache
@@ -251,7 +251,7 @@ jobs:
     if: (github.event_name != 'pull_request' || github.event.action != 'closed')
     steps:
       - name: Checkout LLVM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 2
       - name: Setup ccache
